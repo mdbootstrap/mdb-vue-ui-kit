@@ -1,5 +1,7 @@
 dist: trusty
 language: node_js
+node_js:
+  - "8"
 
 cache:
   directories:
@@ -9,4 +11,4 @@ before_install:
   - npm install
 
 script:
-  - npm run lint
+  - yarn run lint
