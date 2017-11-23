@@ -1,23 +1,21 @@
-# Vue Bootstrap with Material Design
-MDBootstrap for Vue
+# vu-dev
 
-## Getting Started
-To test, contribute or just see what we did follow few easy steps:
-- clone the repository
-- cd to the directory with the repository
-- run `yarn install` (or `npm install` if you don't use yarn)
-- run the app using `yarn run dev` (or `npm run dev`)
-- enjoy!
+> Vue Bootstrap with Material Design
 
-## TODO
-In progress...
+## Build Setup
 
-## Bugs
-If you want to report a bug or submit your idea feel fre to open an issue
+``` bash
+# install dependencies
+npm install
 
-Before you report a bug, please take your time to find if an issue hasn't been reported yet
+# serve with hot reload at localhost:8080
+npm run dev
 
-We're also open to pull requests
+# build for production with minification
+npm run build
 
-## Something Missing?
-If you still have some questions do not hesitate to ask us. Open an issue or [visit our Slack](https://mdbbetatest.slack.com)
+# build for production and view the bundle analyzer report
+npm run build --report
+```
+
+For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
