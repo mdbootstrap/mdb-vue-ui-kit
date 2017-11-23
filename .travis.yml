@@ -7,6 +7,6 @@ cache:
 
 before_install:
   - npm install
-  
+
 script:
-  - yarn run lint
+  - npm run lint
