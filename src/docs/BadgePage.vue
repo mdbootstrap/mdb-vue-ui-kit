@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import badge from '@/components/Badge';
+import badge from '@/components/Badge.vue';
 
 export default {
   name: 'BadgePage',

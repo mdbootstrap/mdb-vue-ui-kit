@@ -9,16 +9,16 @@
 </template>
 
 <script>
-import container from '@/components/Container';
-import row from '@/components/Row';
-import column from '@/components/Col';
+import Container from '@/components/Container.vue';
+import Row from '@/components/Row.vue';
+import Column from '@/components/Col.vue';
 
 export default {
-  name: 'ContainerPage',
+  name: 'GridPage',
   components: {
-    'Container': container,
-    'Row': row,
-    'Column': column
+    Container,
+    Row,
+    Column
   }
 };
 </script>

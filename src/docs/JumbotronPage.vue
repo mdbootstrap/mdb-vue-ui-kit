@@ -1,6 +1,6 @@
 <template>
-	<container fluid>
-    <jumbotron>
+	<container>
+    <jumbotron fluid>
       <h1 class="display-3">Hello, world!</h1>
       <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
       <hr class="my-2" />
@@ -10,13 +10,11 @@
 </template>
 
 <script>
-import badge from '@/components/Badge';
-import container from '@/components/Container';
+import container from '@/components/Container.vue';
 
 export default {
   name: 'JumbotronPage',
   components: {
-    'Badge': badge,
     'Container': container
   }
 };

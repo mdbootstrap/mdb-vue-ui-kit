@@ -1,5 +1,5 @@
 <template>
-  <breadcrumb tag="ol">
+  <breadcrumb>
     <breadcrumb-item><a href="#">Home</a></breadcrumb-item>
     <breadcrumb-item><a href="#">Library</a></breadcrumb-item>
     <breadcrumb-item active>Data</breadcrumb-item>
@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import Breadcrumb from '@/components/Breadcrumb';
-import BreadcrumbItem from '@/components/BreadcrumbItem';
+import Breadcrumb from '@/components/Breadcrumb.vue';
+import BreadcrumbItem from '@/components/BreadcrumbItem.vue';
 
 export default {
   name: 'BreadcrumbPage',

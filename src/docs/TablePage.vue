@@ -29,16 +29,16 @@
 </template>
 
 <script>
-import table from '@/components/Table';
-import tableHead from '@/components/TableHead';
-import tableBody from '@/components/TableBody';
+import Tbl from '@/components/Table.vue';
+import TblHead from '@/components/TableHead.vue';
+import TblBody from '@/components/TableBody.vue';
 
 export default {
   name: 'TablePage',
   components: {
-    'tbl': table,
-    'tblHead': tableHead,
-    'tblBody': tableBody
+    Tbl,
+    TblHead,
+    TblBody
   }
 };
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <dropdown btn-group>
-      <dropdown-toggle>DROPDOWN</dropdown-toggle>
+      <dropdown-toggle>DROPDOWN 1</dropdown-toggle>
       <dropdown-menu>
         <dropdown-item>Link 1</dropdown-item>
         <dropdown-item>Link 2</dropdown-item>
@@ -9,7 +9,7 @@
       </dropdown-menu>
     </dropdown>
     <dropdown btn-group>
-      <dropdown-toggle color="success">DROPDOWN</dropdown-toggle>
+      <dropdown-toggle color="primary">DROPDOWN 2</dropdown-toggle>
       <dropdown-menu>
         <dropdown-item>Link 1</dropdown-item>
         <dropdown-item>Link 2</dropdown-item>
@@ -17,7 +17,7 @@
       </dropdown-menu>
     </dropdown>
     <dropdown btn-group>
-      <dropdown-toggle color="indigo">DROPDOWN</dropdown-toggle>
+      <dropdown-toggle color="indigo">DROPDOWN 3</dropdown-toggle>
       <dropdown-menu>
         <dropdown-item>Link 1</dropdown-item>
         <dropdown-item>Link 2</dropdown-item>
@@ -25,7 +25,7 @@
       </dropdown-menu>
     </dropdown>
     <dropdown btn-group>
-      <dropdown-toggle color="danger">DROPDOWN</dropdown-toggle>
+      <dropdown-toggle color="danger">DROPDOWN 4</dropdown-toggle>
       <dropdown-menu>
         <dropdown-item>Link 1</dropdown-item>
         <dropdown-item>Link 2</dropdown-item>
@@ -33,8 +33,28 @@
       </dropdown-menu>
     </dropdown>
     <dropdown btn-group>
-      <dropdown-toggle color="info">DROPDOWN</dropdown-toggle>
+      <dropdown-toggle color="info">DROPDOWN 5</dropdown-toggle>
       <dropdown-menu>
+        <dropdown-item>Link 1</dropdown-item>
+        <dropdown-item>Link 2</dropdown-item>
+        <dropdown-item>Link 3</dropdown-item>
+      </dropdown-menu>
+    </dropdown>
+    <br><br>
+    <dropdown btn-group>
+      <btn>Action</btn>
+      <dropdown-toggle size="lg" class="px-3"></dropdown-toggle>
+      <dropdown-menu>
+        <dropdown-item>Link 1</dropdown-item>
+        <dropdown-item>Link 2</dropdown-item>
+        <dropdown-item>Link 3</dropdown-item>
+      </dropdown-menu>
+    </dropdown>
+    <br><br>
+    <dropdown btn-group dropup>
+      <btn>Action</btn>
+      <dropdown-toggle size="lg" class="px-3"></dropdown-toggle>
+      <dropdown-menu dropup>
         <dropdown-item>Link 1</dropdown-item>
         <dropdown-item>Link 2</dropdown-item>
         <dropdown-item>Link 3</dropdown-item>
@@ -44,12 +64,12 @@
 </template>
 
 <script>
-import container from '@/components/Container';
-import button from '@/components/Button';
-import dropdown from '@/components/Dropdown';
-import dropdownToggle from '@/components/DropdownToggle';
-import dropdownMenu from '@/components/DropdownMenu';
-import dropdownItem from '@/components/DropdownItem';
+import Dropdown from '@/components/Dropdown.vue';
+import DropdownToggle from '@/components/DropdownToggle.vue';
+import DropdownMenu from '@/components/DropdownMenu.vue';
+import DropdownItem from '@/components/DropdownItem.vue';
+import drop from '../mixins/drop';
+import Btn from '@/components/Button.vue';
 
 export default {
   name: 'DropdownPage',
@@ -57,29 +77,14 @@ export default {
     return {
     };
   },
-  methods: {
-    toggleMenu(element) {
-      if (element.className == 'dropdown-menu d-none') {
-        element.className = 'dropdown-menu d-block';
-      } else {
-        element.className = 'dropdown-menu d-none';
-      }
-    }
-  },
-  created() {
-    this.$on('drop', function(toggle) {
-      this.toggle = toggle;
-      this.toggleMenu(this.toggle);
-    });
-  },
   components: {
-    'Container': container,
-    'Btn': button,
-    'Dropdown': dropdown,
-    'DropdownToggle': dropdownToggle,
-    'DropdownMenu': dropdownMenu,
-    'DropdownItem': dropdownItem
+    Dropdown,
+    DropdownToggle,
+    DropdownMenu,
+    DropdownItem,
+    Btn
   },
+  mixins: [drop]
 };
 </script>
 

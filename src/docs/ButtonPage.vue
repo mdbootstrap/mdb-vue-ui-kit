@@ -1,9 +1,16 @@
 <template>
-  <btn outline="primary" size="lg">Button</btn>
+  <div>
+    <btn color="primary" size="lg">Button 1</btn>
+    <btn color="info" size="lg">Button 2</btn>
+    <btn color="success" size="lg">Button 3</btn>
+    <btn color="danger" size="lg">Button 4</btn>
+    <btn color="warning" size="lg">Button 5</btn>
+    <btn size="lg">Button 6</btn>
+  </div>
 </template>
 
 <script>
-import Btn from '@/components/Button';
+import Btn from '@/components/Button.vue';
 
 export default {
   name: 'ButtonPage',
@@ -13,7 +20,5 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
 </style>

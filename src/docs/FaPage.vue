@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import fa from '@/components/Fa';
+import fa from '@/components/Fa.vue';
 
 export default {
   name: 'FaPage',
@@ -13,7 +13,6 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
 </style>

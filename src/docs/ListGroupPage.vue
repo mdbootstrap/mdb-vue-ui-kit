@@ -1,7 +1,7 @@
 <template>
 <div class="row">
   <div class="col-md-3 m-3">
-    <list-group  class="justify-content-between">
+    <list-group>
       <list-group-item :action="true" :active="true">Main Menu</list-group-item>
       <list-group-item :action="true">Messages <badge :pill="true">12</badge></list-group-item>
       <list-group-item :action="true">Sell Products</list-group-item>
@@ -13,9 +13,9 @@
 </template>
 
 <script>
-import ListGroup from '@/components/ListGroup';
-import ListGroupItem from '@/components/ListGroupItem';
-import Badge from '@/components/Badge';
+import ListGroup from '@/components/ListGroup.vue';
+import ListGroupItem from '@/components/ListGroupItem.vue';
+import Badge from '@/components/Badge.vue';
 
 export default {
   name: 'ListGroupPage',

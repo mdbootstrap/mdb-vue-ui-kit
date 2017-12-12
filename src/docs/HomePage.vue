@@ -16,7 +16,11 @@
       <li><a href="#/components/liveDemo" target="_blank">Live Demo</a></li>
       <li><a href="#/components/media" target="_blank">Media</a></li>
       <li><a href="#/components/navbar" target="_blank">Navbar</a></li>
+      <li><a href="#/components/pagination" target="_blank">Pagination</a></li>
+      <li><a href="#/components/panel" target="_blank">Panel</a></li>
+      <li><a href="#/components/popover" target="_blank">Popover</a></li>
       <li><a href="#/components/table" target="_blank">Table</a></li>
+      <li><a href="#/components/tooltip" target="_blank">Tooltip</a></li>
       <li><a href="#/components/waves" target="_blank">Waves</a></li>
     </ul>
     <ul>

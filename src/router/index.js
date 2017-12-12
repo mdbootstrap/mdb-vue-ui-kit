@@ -10,13 +10,21 @@ import DropdownPage from '@/docs/DropdownPage';
 import JumbotronPage from '@/docs/JumbotronPage';
 import CarouselPage from '@/docs/CarouselPage';
 import BreadcrumbPage from '@/docs/BreadcrumbPage';
-import WavesPage from '@/docs/WavesPage';
 import FaPage from '@/docs/FaPage';
 import InputsPage from '@/docs/InputsPage';
 import LiveDemoPage from '@/docs/LiveDemoPage';
 import MediaPage from '@/docs/MediaPage';
 import ListGroupPage from '@/docs/ListGroupPage';
 import NavbarPage from '@/docs/NavbarPage';
+import CollapsePage from '@/docs/CollapsePage';
+import PaginationPage from '@/docs/PaginationPage';
+import PanelPage from '@/docs/PanelPage';
+import ChartPage from '@/docs/ChartPage';
+import ProgressBarsPage from '@/docs/ProgressBarsPage';
+import TooltipPage from '@/docs/TooltipPage';
+import PopoverPage from '@/docs/PopoverPage';
+import EdgeHeaderPage from '@/docs/EdgeHeaderPage';
+import MasksPage from '@/docs/MasksPage';
 
 Vue.use(Router);
 
@@ -25,47 +33,43 @@ export default new Router({
     {
       path: '/',
       name: 'Home',
-      component: HomePage,
+      component: HomePage
     }, {
       path: '/components/badge',
       name: 'BadgePage',
-      component: BadgePage,
+      component: BadgePage
     }, {
       path: '/components/grid',
       name: 'GridPage',
-      component: GridPage,
+      component: GridPage
     }, {
       path: '/components/card',
       name: 'CardPage',
-      component: CardPage,
+      component: CardPage
     }, {
       path: '/components/button',
       name: 'ButtonPage',
-      component: ButtonPage,
+      component: ButtonPage
     }, {
       path: '/components/table',
       name: 'TablePage',
-      component: TablePage,
+      component: TablePage
     }, {
       path: '/components/dropdown',
       name: 'Dropdown Page',
-      component: DropdownPage,
+      component: DropdownPage
     }, {
       path: '/components/jumbotron',
       name: 'JumbotronPage',
-      component: JumbotronPage,
+      component: JumbotronPage
     }, {
       path: '/components/carousel',
       name: 'CarouselPage',
-      component: CarouselPage,
+      component: CarouselPage
     }, {
       path: '/components/breadcrumb',
       name: 'BreadcrumbPage',
       component: BreadcrumbPage
-    }, {
-      path: '/components/waves',
-      name: 'WavesPage',
-      component: WavesPage
     }, {
       path: '/components/icons',
       name: 'FaPage',
@@ -90,6 +94,42 @@ export default new Router({
       path: '/components/navbar',
       name: 'NavbarPage',
       component: NavbarPage
+    }, {
+      path: '/components/collapse',
+      name: 'CollapsePage',
+      component: CollapsePage
+    }, {
+      path: '/components/pagination',
+      name: 'PaginationPage',
+      component: PaginationPage
+    }, {
+      path: '/components/panel',
+      name: 'PanelPage',
+      component: PanelPage
+    }, {
+      path: '/components/chart',
+      name: 'ChartPage',
+      component: ChartPage
+    }, {
+      path: '/components/progress-bars',
+      name: 'ProgressBarsPage',
+      component: ProgressBarsPage
+    }, {
+      path: '/components/tooltip',
+      name: 'TooltipPage',
+      component: TooltipPage
+    }, {
+      path: '/components/popover',
+      name: 'PopoverPage',
+      component: PopoverPage
+    }, {
+      path: '/components/edge-header',
+      name: 'EdgeHeaderPage',
+      component: EdgeHeaderPage
+    }, {
+      path: '/components/masks',
+      name: 'MasksPage',
+      component: MasksPage
     }
   ],
 });
