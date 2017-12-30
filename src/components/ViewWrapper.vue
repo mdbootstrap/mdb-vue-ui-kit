@@ -1,38 +1,45 @@
 <template>
   <div :is="tag" :class="className">
-    <img v-if="src" :src="src" :alt="alt" class="img-fluid">
+    <img v-if="src && !video" :src="src" :alt="alt" class="img-fluid">
+    <video v-if="src && video" class="video-fluid" autoplay loop>
+      <source :src="src" type="video/mp4" />
+    </video>
     <slot></slot>
   </div>
 </template>
 
 <script>
-import classNames from 'classnames';
+  import classNames from 'classnames';
 
-export default {
-  props: {
-    tag: {
-      type: String,
-      default: "div"
+  export default {
+    props: {
+      tag: {
+        type: String,
+        default: "div"
+      },
+      overlay: {
+        type: String,
+      },
+      src: {
+        type: String
+      },
+      alt: {
+        type: String
+      },
+      video: {
+        type: Boolean,
+        default: false
+      }
     },
-    overlay: {
-      type: String,
-    },
-    src: {
-      type: String
-    },
-    alt: {
-      type: String
+    data() {
+      return {
+        className: classNames(
+          'view',
+          this.overlay ? 'hm-' + this.overlay : ''
+        ),
+      };
     }
-  },
-  data() {
-    return {
-      className: classNames(
-        'view',
-        this.overlay ? 'hm-' + this.overlay : ''
-      ),
-    };
-  }
-};
+  };
 </script>
 
 <style scoped>
