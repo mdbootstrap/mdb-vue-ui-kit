@@ -19,8 +19,8 @@
 </template>
 
 <script>
-import ProgressWrapper from '@/components/ProgressWrapper.vue';
-import ProgressBar from '@/components/ProgressBar.vue';
+import ProgressWrapper from '../components/ProgressWrapper.vue';
+import ProgressBar from '../components/ProgressBar.vue';
 
 export default {
   name: 'ProgressBarsPage',

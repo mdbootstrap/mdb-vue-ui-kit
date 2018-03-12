@@ -1,6 +1,6 @@
 <template>
   <container>
-    <row>
+    <row class="mt-5">
       <column sm="4">
         <card>
           <card-img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" alt="Card image cap" waves></card-img>
@@ -36,14 +36,14 @@
 </template>
 
 <script>
-import Container from '@/components/Container.vue';
-import Row from '@/components/Row.vue';
-import Column from '@/components/Col.vue';
-import Card from '@/components/Card.vue';
-import CardImg from '@/components/CardImg.vue';
-import CardHeader from '@/components/CardHeader.vue';
-import CardBody from '@/components/CardBody.vue';
-import Btn from '@/components/Button.vue';
+import Container from '../components/Container.vue';
+import Row from '../components/Row.vue';
+import Column from '../components/Col.vue';
+import Card from '../components/Card.vue';
+import CardImg from '../components/CardImg.vue';
+import CardHeader from '../components/CardHeader.vue';
+import CardBody from '../components/CardBody.vue';
+import Btn from '../components/Button.vue';
 
 export default {
   name: 'CardPage',

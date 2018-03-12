@@ -1,6 +1,6 @@
 <template>
 <div class="row">
-  <div class="col-md-3 m-3">
+  <div class="col-md-3 mt-5 mx-3">
     <list-group>
       <list-group-item :action="true" :active="true">Main Menu</list-group-item>
       <list-group-item :action="true">Messages <badge :pill="true">12</badge></list-group-item>
@@ -13,9 +13,9 @@
 </template>
 
 <script>
-import ListGroup from '@/components/ListGroup.vue';
-import ListGroupItem from '@/components/ListGroupItem.vue';
-import Badge from '@/components/Badge.vue';
+import ListGroup from '../components/ListGroup.vue';
+import ListGroupItem from '../components/ListGroupItem.vue';
+import Badge from '../components/Badge.vue';
 
 export default {
   name: 'ListGroupPage',

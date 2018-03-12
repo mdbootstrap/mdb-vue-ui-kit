@@ -2,31 +2,31 @@
   <div class="container">
     <h3>Line Chart</h3>
     <line-chart :data="lineChartData" :options="lineChartOptions" :width="600" :height="300"></line-chart>
-    <hr class="mt-4">
+    <hr class="mt-5">
     <h3>Radar Chart</h3>
     <radar-chart :data="radarChartData" :options="radarChartOptions" :width="600" :height="300"></radar-chart>
-    <hr class="mt-4">
+    <hr class="mt-5">
     <h3>Bar Chart</h3>
     <bar-chart :data="barChartData" :options="barChartOptions" :width="600" :height="300"></bar-chart>
-    <hr class="mt-4">
+    <hr class="mt-5">
     <h3>Polar Chart</h3>
     <polar-chart :data="polarChartData" :options="polarChartOptions" :width="600" :height="300"></polar-chart>
-    <hr class="mt-4">
+    <hr class="mt-5">
     <h3>Pie Chart</h3>
     <pie-chart :data="pieChartData" :options="pieChartOptions" :width="600" :height="300"></pie-chart>
-    <hr class="mt-4">
+    <hr class="mt-5">
     <h3>Doughnut Chart</h3>
     <doughnut-chart :data="pieChartData" :options="pieChartOptions" :width="600" :height="300"></doughnut-chart>
   </div>
 </template>
 
 <script>
-import LineChart from '@/components/ChartLine';
-import RadarChart from '@/components/ChartRadar';
-import BarChart from '@/components/ChartBar';
-import PolarChart from '@/components/ChartPolar';
-import PieChart from '@/components/ChartPie';
-import DoughnutChart from '@/components/ChartDoughnut';
+import LineChart from '../components/ChartLine';
+import RadarChart from '../components/ChartRadar';
+import BarChart from '../components/ChartBar';
+import PolarChart from '../components/ChartPolar';
+import PieChart from '../components/ChartPie';
+import DoughnutChart from '../components/ChartDoughnut';
 
 export default {
   name: 'ChartPage',

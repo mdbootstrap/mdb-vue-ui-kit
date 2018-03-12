@@ -19,7 +19,8 @@ export default {
     return {
       className: classNames(
         'edge-header',
-        this.color ? 'bg-' + this.color : ''
+        this.color ? this.color : '',
+        this.className
       ),
     };
   }

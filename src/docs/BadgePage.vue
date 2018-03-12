@@ -1,9 +1,11 @@
 <template>
-  <badge color="primary">Badge</badge>
+  <div class="text-center mt-5">
+    <badge color="primary-color">Badge</badge>
+  </div>
 </template>
 
 <script>
-import badge from '@/components/Badge.vue';
+import badge from '../components/Badge.vue';
 
 export default {
   name: 'BadgePage',

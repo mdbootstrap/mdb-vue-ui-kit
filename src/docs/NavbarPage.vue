@@ -75,17 +75,17 @@
 </template>
 
 <script>
-import Navbar from '@/components/Navbar.vue';
-import NavbarItem from '@/components/NavbarItem.vue';
-import NavbarNav from '@/components/NavbarNav.vue';
-import NavbarCollapse from '@/components/NavbarCollapse.vue';
-import Container from '@/components/Container.vue';
-import Dropdown from '@/components/Dropdown.vue';
-import DropdownItem from '@/components/DropdownItem.vue';
-import DropdownMenu from '@/components/DropdownMenu.vue';
-import DropdownToggle from '@/components/DropdownToggle.vue';
+import Navbar from '../components/Navbar.vue';
+import NavbarItem from '../components/NavbarItem.vue';
+import NavbarNav from '../components/NavbarNav.vue';
+import NavbarCollapse from '../components/NavbarCollapse.vue';
+import Container from '../components/Container.vue';
+import Dropdown from '../components/Dropdown.vue';
+import DropdownItem from '../components/DropdownItem.vue';
+import DropdownMenu from '../components/DropdownMenu.vue';
+import DropdownToggle from '../components/DropdownToggle.vue';
 import drop from '../mixins/drop';
-import Mdinput from '@/components/MdInput.vue';
+import Mdinput from '../components/MdInput.vue';
 
 export default {
   name: 'NavbarPage',

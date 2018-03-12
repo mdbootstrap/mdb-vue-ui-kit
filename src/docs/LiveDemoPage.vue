@@ -50,16 +50,16 @@
     <section class="text-center">
       <h2>Badges</h2>
       <badge>Primary</badge>
-      <badge color="default">Default</badge>
-      <badge color="success">Success</badge>
-      <badge color="info">Info</badge>
-      <badge color="warning">Warning</badge>
+      <badge color="default-color">Default</badge>
+      <badge color="success-color">Success</badge>
+      <badge color="info-color">Info</badge>
+      <badge color="warning-color">Warning</badge>
       <h5>Pills with Font Awesome</h5>
       <badge pill><fa icon="snowflake-o"/></badge>
-      <badge color="default" pill><fa icon="hand-spock-o"/></badge>
-      <badge color="success" pill><fa icon="image"/></badge>
-      <badge color="info" pill><fa icon="mortar-board"/></badge>
-      <badge color="warning" pill><fa icon="paint-brush"/></badge>
+      <badge color="default-color" pill><fa icon="hand-spock-o"/></badge>
+      <badge color="success-color" pill><fa icon="image"/></badge>
+      <badge color="info-color" pill><fa icon="mortar-board"/></badge>
+      <badge color="warning-color" pill><fa icon="paint-brush"/></badge>
     </section>
     <!-- /BADGES -->
     <hr class="mt-4">
@@ -88,7 +88,7 @@
           </form>
         </navbar-collapse>
       </navbar>
-      <navbar class="bg-unique mt-4" name="Navbar" href="#">
+      <navbar class="unique-color mt-4" name="Navbar" href="#">
         <navbar-collapse>
           <navbar-nav>
             <navbar-item href="#" active>Home</navbar-item>
@@ -436,7 +436,7 @@
           <list-group>
             <list-group-item :action="true" class="special-color text-white">Main Menu</list-group-item>
             <list-group-item :action="true">Messages</list-group-item>
-            <list-group-item :action="true">Sell Products<badge :pill="true" class="special-color">12</badge></list-group-item>
+            <list-group-item :action="true">Sell Products<badge :pill="true" color="special-color">12</badge></list-group-item>
             <list-group-item :action="true">Settings</list-group-item>
             <list-group-item :disabled="true">Can't Touch This</list-group-item>
           </list-group>
@@ -483,22 +483,22 @@
       <row>
         <column col="12" sm="6" class="py-2">
           <view-wrapper src="https://mdbootstrap.com/img/Photos/Others/nature-sm.jpg" alt="view">
-            <mdmask flex-center waves text="No pattern, no overlay, waves effect"></mdmask>
+            <mdmask flex-center waves text="waves"></mdmask>
           </view-wrapper>
         </column>
         <column col="12" sm="6" class="py-2">
-          <view-wrapper overlay="blue-light" src="https://mdbootstrap.com/img/Photos/Others/nature-sm.jpg" alt="view">
-            <mdmask flex-center pattern="3" text="Pattern 3, light overlay, no waves"></mdmask>
+          <view-wrapper src="https://mdbootstrap.com/img/Photos/Others/nature-sm.jpg" alt="view">
+            <mdmask flex-center pattern="3" text="pattern = &quot;3&quot;"></mdmask>
           </view-wrapper>
         </column>
         <column col="12" sm="6">
           <view-wrapper overlay="blue-strong" src="https://mdbootstrap.com/img/Photos/Others/nature-sm.jpg" alt="view">
-            <mdmask flex-center waves text="No pattern, strong overlay, waves effect"></mdmask>
+            <mdmask flex-center waves overlay="blue-strong" text="overlay = &quot;blue-strong&quot; waves"></mdmask>
           </view-wrapper>
         </column>
         <column col="12" sm="6">
           <view-wrapper src="https://mdbootstrap.com/img/Photos/Others/nature-sm.jpg" alt="view">
-            <mdmask flex-center waves pattern="5" text="Pattern 5, no overlay, waves effect"></mdmask>
+            <mdmask flex-center waves pattern="5" text="pattern = &quot;5&quot; waves"></mdmask>
           </view-wrapper>
         </column>
       </row>
@@ -520,7 +520,7 @@
               <!--Naked Form-->
               <card-body>
                 <h2 class="h2-responsive"><strong>Material Design Edge Headers</strong></h2>
-                <p class="pb-4">Example of Material Design Form</p>
+                <p class="pb-4 text-center">Example of Material Design Form</p>
 
                 <!--Body-->
                 <form action="#">
@@ -576,18 +576,18 @@
     <section>
       <h2>Panels</h2>
       <row>
-        <column col="6">
+        <column md="6">
           <card align="center">
-            <card-header color="danger">Danger</card-header>
+            <card-header color="danger-color">Danger</card-header>
             <card-body>
               <h3 class="card-title">This is a card</h3>
               <p class="card-text">And here comes some special text, just for you.</p>
               <btn color="danger" size="sm">Go somewhere</btn>
             </card-body>
-            <card-footer color="danger"><p class="mb-0">Please enjoy this footer</p></card-footer>
+            <card-footer color="danger-color"><p class="mb-0">Please enjoy this footer</p></card-footer>
           </card>
         </column>
-        <column col="6">
+        <column md="6">
           <card align="center">
             <card-header color="indigo">Indigo</card-header>
             <card-body>
@@ -637,53 +637,53 @@
 </template>
 
 <script>
-import Container from '@/components/Container.vue';
-import Row from '@/components/Row.vue';
-import Column from '@/components/Col.vue';
-import Btn from '@/components/Button.vue';
-import Badge from '@/components/Badge.vue';
-import Fa from '@/components/Fa.vue';
-import Navbar from '@/components/Navbar.vue';
-import NavbarItem from '@/components/NavbarItem.vue';
-import NavbarNav from '@/components/NavbarNav.vue';
-import NavbarCollapse from '@/components/NavbarCollapse.vue';
-import Mdinput from '@/components/MdInput.vue';
-import Mdtextarea from '@/components/MdTextarea.vue';
-import InputsPage from '@/docs/InputsPage.vue';
-import Breadcrumb from '@/components/Breadcrumb.vue';
-import BreadcrumbItem from '@/components/BreadcrumbItem.vue';
-import Dropdown from '@/components/Dropdown.vue';
-import DropdownToggle from '@/components/DropdownToggle.vue';
-import DropdownMenu from '@/components/DropdownMenu.vue';
-import DropdownItem from '@/components/DropdownItem.vue';
+import Container from '../components/Container.vue';
+import Row from '../components/Row.vue';
+import Column from '../components/Col.vue';
+import Btn from '../components/Button.vue';
+import Badge from '../components/Badge.vue';
+import Fa from '../components/Fa.vue';
+import Navbar from '../components/Navbar.vue';
+import NavbarItem from '../components/NavbarItem.vue';
+import NavbarNav from '../components/NavbarNav.vue';
+import NavbarCollapse from '../components/NavbarCollapse.vue';
+import Mdinput from '../components/MdInput.vue';
+import Mdtextarea from '../components/MdTextarea.vue';
+import InputsPage from '../docs/InputsPage.vue';
+import Breadcrumb from '../components/Breadcrumb.vue';
+import BreadcrumbItem from '../components/BreadcrumbItem.vue';
+import Dropdown from '../components/Dropdown.vue';
+import DropdownToggle from '../components/DropdownToggle.vue';
+import DropdownMenu from '../components/DropdownMenu.vue';
+import DropdownItem from '../components/DropdownItem.vue';
 import drop from '../mixins/drop';
-import Card from '@/components/Card.vue';
-import CardImg from '@/components/CardImg.vue';
-import CardHeader from '@/components/CardHeader.vue';
-import CardFooter from '@/components/CardFooter.vue';
-import CardBody from '@/components/CardBody.vue';
-import Carousel from '@/docs/CarouselPage.vue';
-import Tbl from '@/components/Table.vue';
-import TblHead from '@/components/TableHead.vue';
-import TblBody from '@/components/TableBody.vue';
-import Pagination from '@/components/Pagination.vue';
-import PageNav from '@/components/PageNav.vue';
-import PageItem from '@/components/PageItem.vue';
-import Media from '@/components/Media.vue';
-import MediaImage from '@/components/MediaImage.vue';
-import MediaBody from '@/components/MediaBody.vue';
-import ListGroup from '@/components/ListGroup.vue';
-import ListGroupItem from '@/components/ListGroupItem.vue';
-import LineChart from '@/components/ChartLine';
-import RadarChart from '@/components/ChartRadar';
-import BarChart from '@/components/ChartBar';
-import PolarChart from '@/components/ChartPolar';
-import PieChart from '@/components/ChartPie';
-import DoughnutChart from '@/components/ChartDoughnut';
-import ViewWrapper from '@/components/ViewWrapper.vue';
-import Mdmask from '@/components/Mdmask.vue';
-import EdgeHeader from '@/components/EdgeHeader.vue';
-import Tooltip from "@/components/Tooltip";
+import Card from '../components/Card.vue';
+import CardImg from '../components/CardImg.vue';
+import CardHeader from '../components/CardHeader.vue';
+import CardFooter from '../components/CardFooter.vue';
+import CardBody from '../components/CardBody.vue';
+import Carousel from '../docs/CarouselPage.vue';
+import Tbl from '../components/Table.vue';
+import TblHead from '../components/TableHead.vue';
+import TblBody from '../components/TableBody.vue';
+import Pagination from '../components/Pagination.vue';
+import PageNav from '../components/PageNav.vue';
+import PageItem from '../components/PageItem.vue';
+import Media from '../components/Media.vue';
+import MediaImage from '../components/MediaImage.vue';
+import MediaBody from '../components/MediaBody.vue';
+import ListGroup from '../components/ListGroup.vue';
+import ListGroupItem from '../components/ListGroupItem.vue';
+import LineChart from '../components/ChartLine';
+import RadarChart from '../components/ChartRadar';
+import BarChart from '../components/ChartBar';
+import PolarChart from '../components/ChartPolar';
+import PieChart from '../components/ChartPie';
+import DoughnutChart from '../components/ChartDoughnut';
+import ViewWrapper from '../components/ViewWrapper.vue';
+import Mdmask from '../components/Mdmask.vue';
+import EdgeHeader from '../components/EdgeHeader.vue';
+import Tooltip from "../components/Tooltip";
 
 export default {
   name: 'LiveDemoPage',

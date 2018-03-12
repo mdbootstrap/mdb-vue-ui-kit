@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="ml-4">
     <div style="margin-top:3rem;max-width:20rem">
       <mdinput type="text" label="Basic example"/>
       <mdinput size="sm" type="text" label="Small input"/>
@@ -26,8 +26,8 @@
 </template>
 
 <script>
-import MdInput from '@/components/MdInput.vue';
-import MdTextarea from '@/components/MdTextarea.vue';
+import MdInput from '../components/MdInput.vue';
+import MdTextarea from '../components/MdTextarea.vue';
 
 export default {
   name: 'InputsPage',

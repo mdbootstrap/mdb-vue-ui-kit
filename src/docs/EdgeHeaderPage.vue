@@ -63,13 +63,13 @@
 </template>
 
 <script>
-import EdgeHeader from '@/components/EdgeHeader.vue';
-import Container from '@/components/Container.vue';
-import Row from '@/components/Row.vue';
-import Column from '@/components/Col.vue';
-import CardBody from '@/components/CardBody.vue';
-import Mdinput from '@/components/MdInput.vue';
-import Mdtextarea from '@/components/MdTextarea.vue';
+import EdgeHeader from '../components/EdgeHeader.vue';
+import Container from '../components/Container.vue';
+import Row from '../components/Row.vue';
+import Column from '../components/Col.vue';
+import CardBody from '../components/CardBody.vue';
+import Mdinput from '../components/MdInput.vue';
+import Mdtextarea from '../components/MdTextarea.vue';
 
 export default {
   name: 'EdgeHeaderPage',

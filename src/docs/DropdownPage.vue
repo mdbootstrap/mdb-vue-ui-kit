@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mt-5 ml-3">
     <dropdown btn-group>
       <dropdown-toggle>DROPDOWN 1</dropdown-toggle>
       <dropdown-menu>
@@ -64,12 +64,12 @@
 </template>
 
 <script>
-import Dropdown from '@/components/Dropdown.vue';
-import DropdownToggle from '@/components/DropdownToggle.vue';
-import DropdownMenu from '@/components/DropdownMenu.vue';
-import DropdownItem from '@/components/DropdownItem.vue';
+import Dropdown from '../components/Dropdown.vue';
+import DropdownToggle from '../components/DropdownToggle.vue';
+import DropdownMenu from '../components/DropdownMenu.vue';
+import DropdownItem from '../components/DropdownItem.vue';
 import drop from '../mixins/drop';
-import Btn from '@/components/Button.vue';
+import Btn from '../components/Button.vue';
 
 export default {
   name: 'DropdownPage',

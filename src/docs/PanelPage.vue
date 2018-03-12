@@ -1,6 +1,8 @@
 <template>
-<row>
-  <column col="5">
+<row class="mt-5">
+  <column col="4">
+  </column>
+  <column col="4">
     <card align="center">
       <card-header>Success!</card-header>
       <card-body>
@@ -11,17 +13,19 @@
       <card-footer><p class="mb-0">Please enjoy this footer</p></card-footer>
     </card>
   </column>
+    <column col="4">
+  </column>
 </row>
 </template>
 
 <script>
-import Row from '@/components/Row.vue';
-import Column from '@/components/Col.vue';
-import Btn from '@/components/Button.vue';
-import Card from '@/components/Card.vue';
-import CardHeader from '@/components/CardHeader.vue';
-import CardBody from '@/components/CardBody.vue';
-import CardFooter from '@/components/CardFooter.vue';
+import Row from '../components/Row.vue';
+import Column from '../components/Col.vue';
+import Btn from '../components/Button.vue';
+import Card from '../components/Card.vue';
+import CardHeader from '../components/CardHeader.vue';
+import CardBody from '../components/CardBody.vue';
+import CardFooter from '../components/CardFooter.vue';
 
 export default {
   name: 'PanelPage',

@@ -24,9 +24,9 @@
 </template>
 
 <script>
-import Media from '@/components/Media.vue';
-import MediaImage from '@/components/MediaImage.vue';
-import MediaBody from '@/components/MediaBody.vue';
+import Media from '../components/Media.vue';
+import MediaImage from '../components/MediaImage.vue';
+import MediaBody from '../components/MediaBody.vue';
 
 export default {
   name: 'MediaPage',

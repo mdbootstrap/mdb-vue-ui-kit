@@ -1,5 +1,5 @@
 <template>
-	<container>
+	<container class="mt-5">
     <jumbotron fluid>
       <h1 class="display-3">Hello, world!</h1>
       <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import container from '@/components/Container.vue';
+import container from '../components/Container.vue';
 
 export default {
   name: 'JumbotronPage',

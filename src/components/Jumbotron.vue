@@ -1,8 +1,8 @@
 
 <template>
-<div :is="tag" :class="className">
-  <slot></slot>
-</div>
+  <div :is="tag" :class="className">
+    <slot></slot>
+  </div>
 </template>
 <script>
 import classNames from 'classnames';

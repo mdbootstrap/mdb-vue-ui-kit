@@ -27,8 +27,7 @@ export default {
   data() {
     return {
       className: classNames(
-        'view',
-        this.overlay ? 'hm-' + this.overlay : ''
+        'view'
       ),
     };
   }

@@ -1,7 +1,7 @@
 <template>
   <div>
-    <button class="btn btn-primary" collapse @click.prevent="collapse1 = !collapse1">Collapse 1</button>
-    <a href="#" class="btn btn-info" @click.prevent="collapse1 = !collapse1">Collapse 2</a>
+    <button class="btn btn-primary" collapse ..click.prevent="collapse1 = !collapse1">Collapse 1</button>
+    <a href="#" class="btn btn-info" ..click.prevent="collapse1 = !collapse1">Collapse 2</a>
     <transition name="slide-toggle">
         <div v-show="collapse1" class="collapse-item">
           <h5>Collapsing text</h5>

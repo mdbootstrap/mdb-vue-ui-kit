@@ -1,5 +1,5 @@
 <template>
-  <carousel :interval="8000">
+  <carousel :interval="8000" class="mt-5 mx-5">
     <carousel-indicators>
       <carousel-indicator :index="0" :class="{active: show[0]}"></carousel-indicator>
       <carousel-indicator :index="1" :class="{active: show[1]}"></carousel-indicator>
@@ -21,15 +21,15 @@
 </template>
 
 <script>
-import Carousel from '@/components/Carousel.vue';
-import CarouselIndicators from '@/components/CarouselIndicators.vue';
-import CarouselIndicator from '@/components/CarouselIndicator.vue';
-import CarouselInner from '@/components/CarouselInner.vue';
-import CarouselItem from '@/components/CarouselItem.vue';
-import CarouselNavigation from '@/components/CarouselNavigation.vue';
-import CarouselCaption from '@/components/CarouselCaption.vue';
-import ViewWrapper from '@/components/ViewWrapper.vue';
-import Mdmask from '@/components/Mdmask.vue';
+import Carousel from '../components/Carousel.vue';
+import CarouselIndicators from '../components/CarouselIndicators.vue';
+import CarouselIndicator from '../components/CarouselIndicator.vue';
+import CarouselInner from '../components/CarouselInner.vue';
+import CarouselItem from '../components/CarouselItem.vue';
+import CarouselNavigation from '../components/CarouselNavigation.vue';
+import CarouselCaption from '../components/CarouselCaption.vue';
+import ViewWrapper from '../components/ViewWrapper.vue';
+import Mdmask from '../components/Mdmask.vue';
 
 export default {
   name: 'CarouselPage',

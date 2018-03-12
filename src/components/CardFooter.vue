@@ -24,7 +24,7 @@ export default {
     return {
       className: classNames(
         'card-footer',
-        'bg-' + this.color,
+        this.color,
         this.textColor + '-text'
       )
     };

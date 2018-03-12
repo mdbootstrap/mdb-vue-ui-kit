@@ -15,7 +15,7 @@ export default {
     },
     color: {
       type: String,
-      default: "primary"
+      default: "primary-color"
     },
     pill: {
       type: Boolean,
@@ -26,11 +26,12 @@ export default {
     return {
       className: classNames(
         'badge',
-        'badge-' + this.color,
+        this.color,
         this.pill ? 'badge-pill' : false
       )
     };
-  }
+  },
+
 };
 </script>
 

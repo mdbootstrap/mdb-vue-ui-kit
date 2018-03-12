@@ -21,7 +21,7 @@ export default {
     return {
       className: classNames(
         'navbar-nav',
-        this.right ? '' : 'mr-auto'
+        this.right ? 'ml-auto' : 'mr-auto'
       )
     };
   }

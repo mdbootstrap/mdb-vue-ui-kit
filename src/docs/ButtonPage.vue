@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="text-center mt-5">
     <btn color="primary" size="lg">Button 1</btn>
     <btn color="info" size="lg">Button 2</btn>
     <btn color="success" size="lg">Button 3</btn>
@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import Btn from '@/components/Button.vue';
+import { Btn } from 'mdbvue';
 
 export default {
   name: 'ButtonPage',

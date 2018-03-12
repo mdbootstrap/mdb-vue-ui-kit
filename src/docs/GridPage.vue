@@ -9,9 +9,9 @@
 </template>
 
 <script>
-import Container from '@/components/Container.vue';
-import Row from '@/components/Row.vue';
-import Column from '@/components/Col.vue';
+import Container from '../components/Container.vue';
+import Row from '../components/Row.vue';
+import Column from '../components/Col.vue';
 
 export default {
   name: 'GridPage',

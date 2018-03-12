@@ -45,7 +45,6 @@ export default {
   data() {
     return {
       className: classNames(
-        'col',
         this.col ? 'col-' + this.col : '',
         this.sm ? 'col-sm-' + this.sm : '',
         this.md ? 'col-md-' + this.md : '',

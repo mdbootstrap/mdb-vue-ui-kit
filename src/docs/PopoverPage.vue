@@ -2,9 +2,7 @@
   <container>
     <row class="mt-5">
       <column col="4"></column>
-      <column col="4">
-        <br>
-        <br>
+      <column col="4" class="mt-5 pt-5">
         <popover trigger="click" :options="{placement: 'top'}" class="mt-5">
           <div class="popover">
             <div class="popover-header">
@@ -25,11 +23,11 @@
 
 
 <script>
-import Popover from "@/components/Popover";
-import Row from "@/components/Row";
-import Column from "@/components/Col";
-import Btn from '@/components/Button';
-import Container from '@/components/Container';
+import Popover from "../components/Popover";
+import Row from "../components/Row";
+import Column from "../components/Col";
+import Btn from '../components/Button';
+import Container from '../components/Container';
 
 export default {
   name: 'PopoverPage',

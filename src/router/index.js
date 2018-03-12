@@ -1,30 +1,33 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import HomePage from '@/docs/HomePage';
-import GridPage from '@/docs/GridPage';
-import BadgePage from '@/docs/BadgePage';
-import CardPage from '@/docs/CardPage';
-import ButtonPage from '@/docs/ButtonPage';
-import TablePage from '@/docs/TablePage';
-import DropdownPage from '@/docs/DropdownPage';
-import JumbotronPage from '@/docs/JumbotronPage';
-import CarouselPage from '@/docs/CarouselPage';
-import BreadcrumbPage from '@/docs/BreadcrumbPage';
-import FaPage from '@/docs/FaPage';
-import InputsPage from '@/docs/InputsPage';
-import LiveDemoPage from '@/docs/LiveDemoPage';
-import MediaPage from '@/docs/MediaPage';
-import ListGroupPage from '@/docs/ListGroupPage';
-import NavbarPage from '@/docs/NavbarPage';
-import CollapsePage from '@/docs/CollapsePage';
-import PaginationPage from '@/docs/PaginationPage';
-import PanelPage from '@/docs/PanelPage';
-import ChartPage from '@/docs/ChartPage';
-import ProgressBarsPage from '@/docs/ProgressBarsPage';
-import TooltipPage from '@/docs/TooltipPage';
-import PopoverPage from '@/docs/PopoverPage';
-import EdgeHeaderPage from '@/docs/EdgeHeaderPage';
-import MasksPage from '@/docs/MasksPage';
+import HomePage from '../docs/HomePage';
+import GridPage from '../docs/GridPage';
+import BadgePage from '../docs/BadgePage';
+import CardPage from '../docs/CardPage';
+import ButtonPage from '../docs/ButtonPage';
+import TablePage from '../docs/TablePage';
+import DropdownPage from '../docs/DropdownPage';
+import JumbotronPage from '../docs/JumbotronPage';
+import CarouselPage from '../docs/CarouselPage';
+import BreadcrumbPage from '../docs/BreadcrumbPage';
+import FaPage from '../docs/FaPage';
+import InputsPage from '../docs/InputsPage';
+import LiveDemoPage from '../docs/LiveDemoPage';
+import MediaPage from '../docs/MediaPage';
+import ListGroupPage from '../docs/ListGroupPage';
+import NavbarPage from '../docs/NavbarPage';
+import CollapsePage from '../docs/CollapsePage';
+import PaginationPage from '../docs/PaginationPage';
+import PanelPage from '../docs/PanelPage';
+import ChartPage from '../docs/ChartPage';
+import ProgressBarsPage from '../docs/ProgressBarsPage';
+import TooltipPage from '../docs/TooltipPage';
+import PopoverPage from '../docs/PopoverPage';
+import EdgeHeaderPage from '../docs/EdgeHeaderPage';
+import MasksPage from '../docs/MasksPage';
+import CSSPage from '../docs/CSSPage';
+import ComponentsPage from '../docs/ComponentsPage';
+import AdvancedPage from '../docs/AdvancedPage';
 
 Vue.use(Router);
 
@@ -130,6 +133,18 @@ export default new Router({
       path: '/components/masks',
       name: 'MasksPage',
       component: MasksPage
+    }, {
+      path: '/css',
+      name: 'CSSPage',
+      component: CSSPage
+    }, {
+      path: '/components',
+      name: 'ComponentsPage',
+      component: ComponentsPage
+    }, {
+      path: '/advanced',
+      name: 'AdvancedPage',
+      component: AdvancedPage
     }
   ],
 });

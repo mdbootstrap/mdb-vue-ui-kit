@@ -24,7 +24,7 @@ export default {
     return {
       className: classNames(
         'card-header',
-        'bg-' + this.color,
+        this.color,
         this.textColor + '-text'
       )
     };

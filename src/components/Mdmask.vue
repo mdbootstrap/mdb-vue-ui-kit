@@ -29,13 +29,17 @@ export default {
       type: Boolean,
       default: false
     },
+    overlay: {
+      type: String
+    }
   },
   data() {
     return {
       className: classNames(
         'mask',
         this.pattern ? 'pattern-' + this.pattern : '',
-        this.flexCenter ? 'flex-center' : ''
+        this.flexCenter ? 'flex-center' : '',
+        this.overlay ? 'rgba-' + this.overlay : ''
       ),
     };
   },

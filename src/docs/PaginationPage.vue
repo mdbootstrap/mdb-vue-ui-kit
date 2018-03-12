@@ -13,9 +13,9 @@
 </template>
 
 <script>
-import Pagination from '@/components/Pagination.vue';
-import PageNav from '@/components/PageNav.vue';
-import PageItem from '@/components/PageItem.vue';
+import Pagination from '../components/Pagination.vue';
+import PageNav from '../components/PageNav.vue';
+import PageItem from '../components/PageItem.vue';
 
 export default {
   name: 'PaginationPage',
