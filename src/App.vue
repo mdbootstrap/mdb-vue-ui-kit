@@ -1,12 +1,12 @@
 <template>
   <div id="app" class="flyout">
-    <navbar position="top" class="default-color navbar-dark" name="MDB Vue" href="#/" scrolling>
+    <navbar position="top" class="default-color navbar-dark" name="MDB Vue" to="/" scrolling>
       <navbar-collapse>
         <navbar-nav right>
-          <navbar-item href="#/" waves-fixed>Home</navbar-item>
-          <navbar-item href="#/css" waves-fixed>CSS</navbar-item>
-          <navbar-item href="#/components" waves-fixed>Components</navbar-item>
-          <navbar-item href="#/advanced" waves-fixed>Advanced</navbar-item>
+          <navbar-item to="/" waves-fixed>Home</navbar-item>
+          <navbar-item to="/css" waves-fixed>CSS</navbar-item>
+          <navbar-item to="/components" waves-fixed>Components</navbar-item>
+          <navbar-item to="/advanced" waves-fixed>Advanced</navbar-item>
         </navbar-nav>
       </navbar-collapse>
     </navbar>

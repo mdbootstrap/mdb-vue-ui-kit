@@ -1,8 +1,8 @@
 <template>
   <nav :class="className" :is="tag">
-    <a :href="href" class="navbar-brand">{{name}}
+    <router-link tag="a" :to="to" class="navbar-brand" exact>{{name}}
       <img v-if="src" :src="src" :alt="alt"/>
-    </a>
+    </router-link>
     <button class="navbar-toggler" type="button" data-toggle="collapse" :data-target="target" aria-controls="navbarSupportedContent"
         aria-expanded="false" aria-label="Toggle navigation" v-on:click="toggle">
       <span class="navbar-toggler-icon"></span>
@@ -28,7 +28,7 @@ export default {
     position: {
       type: String
     },
-    href: {
+    to: {
       type: String,
     },
     src: {

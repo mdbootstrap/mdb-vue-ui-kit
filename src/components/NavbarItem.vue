@@ -1,6 +1,6 @@
 <template>
   <li :is="tag" :class="[className, {'ripple-parent': waves}]" @click="wave">
-    <a :href="href" class="nav-link"><slot></slot></a>
+    <router-link :to="to" class="nav-link"><slot></slot></router-link>
   </li>
 </template>
 
@@ -18,9 +18,9 @@ export default {
       type: Boolean,
       default: false
     },
-    href: {
+    to: {
       type: String,
-      default: '#'
+      default: '/'
     },
     waves: {
       type: Boolean,
