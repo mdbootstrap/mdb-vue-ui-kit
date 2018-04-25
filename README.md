@@ -1,4 +1,4 @@
-[![Material Design for Bootstrap](https://mdbootstrap.com/wp-content/uploads/2018/03/vue-cover-BootstrapStable.jpg)](https://mdbootstrap.com/Vue/)
+[![Material Design for Bootstrap](https://mdbootstrap.com/wp-content/uploads/2018/03/vue-cover-BootstrapStable.jpg)](https://mdbootstrap.com/vue/)
 
 # Material Design for Bootstrap 4 - Vue version
 
@@ -56,7 +56,7 @@ To test, contribute or just see what we did follow few easy steps:
 
 # Documentation:
 
-**Huge, detailed documentation avilable online on**: https://mdbootstrap.com/Vue
+**Huge, detailed documentation avilable online on**: https://mdbootstrap.com/vue
 
 # Additional tutorials:
 
@@ -66,12 +66,12 @@ To test, contribute or just see what we did follow few easy steps:
 
 # Live Preview
 
-[![Material Design for Bootstrap](https://mdbootstrap.com/img/Mockups/Lightbox/Original/img%20%2888%29.jpg)](https://mdbootstrap.com/Vue/)
-[![Material Design for Bootstrap](https://mdbootstrap.com/img/Mockups/Lightbox/Original/img%20%2876%29.jpg)](https://mdbootstrap.com/Vue/)
-[![Material Design for Bootstrap](https://mdbootstrap.com/img/Mockups/Lightbox/Original/img%20%2873%29.jpg)](https://mdbootstrap.com/Vue/)
-[![Material Design for Bootstrap](https://mdbootstrap.com/img/Mockups/Lightbox/Original/img%20%2874%29.jpg)](https://mdbootstrap.com/Vue/)
-[![Material Design for Bootstrap](https://mdbootstrap.com/img/Mockups/Lightbox/Original/img%20%2881%29.jpg)](https://mdbootstrap.com/Vue/)
-[![Material Design for Bootstrap](https://mdbootstrap.com/img/Mockups/Lightbox/Original/img%20%2875%29.jpg)](https://mdbootstrap.com/Vue/)
+[![Material Design for Bootstrap](https://mdbootstrap.com/img/Mockups/Lightbox/Original/img%20%2888%29.jpg)](https://mdbootstrap.com/vue/)
+[![Material Design for Bootstrap](https://mdbootstrap.com/img/Mockups/Lightbox/Original/img%20%2876%29.jpg)](https://mdbootstrap.com/vue/)
+[![Material Design for Bootstrap](https://mdbootstrap.com/img/Mockups/Lightbox/Original/img%20%2873%29.jpg)](https://mdbootstrap.com/vue/)
+[![Material Design for Bootstrap](https://mdbootstrap.com/img/Mockups/Lightbox/Original/img%20%2874%29.jpg)](https://mdbootstrap.com/vue/)
+[![Material Design for Bootstrap](https://mdbootstrap.com/img/Mockups/Lightbox/Original/img%20%2881%29.jpg)](https://mdbootstrap.com/vue/)
+[![Material Design for Bootstrap](https://mdbootstrap.com/img/Mockups/Lightbox/Original/img%20%2875%29.jpg)](https://mdbootstrap.com/vue/)
 
 # Highlights:  
 **Components**  
@@ -152,7 +152,7 @@ LinkedIn: https://www.linkedin.com/company/material-design-for-bootstrap
 
 # PRO version:
 
-**Material Design for Bootstrap Vue PRO**: https://mdbootstrap.com/product/Vue-bootstrap-pro/  
+**Material Design for Bootstrap Vue PRO**: https://mdbootstrap.com/product/vue-bootstrap-pro/  
 
 # Version logs
 
