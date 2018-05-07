@@ -1,12 +1,20 @@
+// FREE
 import Badge from './components/Badge';
 import Breadcrumb from './components/Breadcrumb';
 import BreadcrumbItem from './components/BreadcrumbItem';
 import Btn from './components/Button';
+import BtnGroup from './components/ButtonGroup';
 import Card from './components/Card';
+import CardAvatar from './components/CardAvatar';
+import CardUp from './components/CardUp';
 import CardBody from './components/CardBody';
 import CardFooter from './components/CardFooter';
 import CardHeader from './components/CardHeader';
 import CardImg from './components/CardImg';
+import CardText from './components/CardText';
+import CardTitle from './components/CardTitle';
+import CardGroup from './components/CardGroup';
+import CardDeck from './components/CardDeck';
 import Carousel from './components/Carousel';
 import CarouselCaption from './components/CarouselCaption';
 import CarouselIndicator from './components/CarouselIndicator';
@@ -20,6 +28,7 @@ import BarChart from './components/ChartBar';
 import PolarChart from './components/ChartPolar';
 import PieChart from './components/ChartPie';
 import DoughnutChart from './components/ChartDoughnut';
+import Collapse from './components/Collapse';
 import Column from './components/Col';
 import Container from './components/Container';
 import Dropdown from './components/Dropdown';
@@ -33,11 +42,14 @@ import HelloWorld from './components/HelloWorld';
 import Jumbotron from './components/Jumbotron';
 import ListGroup from './components/ListGroup';
 import ListGroupItem from './components/ListGroupItem';
+import MdInput from './components/MdInput';
+import MdMask from './components/Mdmask';
 import MdTextarea from './components/MdTextarea';
 import Media from './components/Media';
 import MediaBody from './components/MediaBody';
 import MediaImage from './components/MediaImage';
 import Navbar from './components/Navbar';
+import NavbarNav from './components/NavbarNav';
 import NavbarCollapse from './components/NavbarCollapse';
 import NavbarItem from './components/NavbarItem';
 import PageItem from './components/PageItem';
@@ -47,22 +59,37 @@ import Popover from './components/Popover';
 import ProgressBar from './components/ProgressBar';
 import ProgressWrapper from './components/ProgressWrapper';
 import Row from './components/Row';
-import Table from './components/Table';
-import TableBody from './components/TableBody';
-import TableHead from './components/TableHead';
+import Tbl from './components/Table';
+import TblBody from './components/TableBody';
+import TblHead from './components/TableHead';
 import Tooltip from './components/Tooltip';
 import ViewWrapper from './components/ViewWrapper';
+import FormInline from './components/FormInline';
+import Modal from './components/Modal';
+import ModalHeader from './components/ModalHeader';
+import ModalTitle from './components/ModalTitle';
+import ModalBody from './components/ModalBody';
+import ModalFooter from './components/ModalFooter';
+import waves from './mixins/waves';
 
 export {
+  // FREE
   Badge,
   Breadcrumb,
   BreadcrumbItem,
   Btn,
+  BtnGroup,
   Card,
+  CardAvatar,
+  CardUp,
   CardBody,
   CardFooter,
   CardHeader,
   CardImg,
+  CardText,
+  CardTitle,
+  CardGroup,
+  CardDeck,
   Carousel,
   CarouselCaption,
   CarouselIndicator,
@@ -76,6 +103,7 @@ export {
   PolarChart,
   PieChart,
   DoughnutChart,
+  Collapse,
   Column,
   Container,
   Dropdown,
@@ -89,11 +117,14 @@ export {
   Jumbotron,
   ListGroup,
   ListGroupItem,
+  MdInput,
+  MdMask,
   MdTextarea,
   Media,
   MediaBody,
   MediaImage,
   Navbar,
+  NavbarNav,
   NavbarCollapse,
   NavbarItem,
   PageItem,
@@ -103,9 +134,16 @@ export {
   ProgressBar,
   ProgressWrapper,
   Row,
-  Table,
-  TableBody,
-  TableHead,
+  Tbl,
+  TblBody,
+  TblHead,
   Tooltip,
-  ViewWrapper
+  ViewWrapper,
+  FormInline,
+  Modal,
+  ModalHeader,
+  ModalTitle,
+  ModalBody,
+  ModalFooter,
+  waves
 };

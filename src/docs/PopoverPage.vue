@@ -23,11 +23,7 @@
 
 
 <script>
-import Popover from "../components/Popover";
-import Row from "../components/Row";
-import Column from "../components/Col";
-import Btn from '../components/Button';
-import Container from '../components/Container';
+import { Popover, Row, Column, Btn, Container } from 'mdbvue';
 
 export default {
   name: 'PopoverPage',

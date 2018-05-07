@@ -15,7 +15,7 @@ export default {
     },
     color: {
       type: String,
-      default: "primary-color"
+      default: "default-color"
     },
     pill: {
       type: Boolean,

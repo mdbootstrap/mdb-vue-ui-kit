@@ -1,8 +1,8 @@
 <template>
   <div :class="wrapperClass">
     <i v-if="icon" :class="iconClass"/>
-      <textarea :is="tag" :class="className" :type="type" :placeholder="placeholder" :disabled="disabled" @focus="focus" @blur="blur"/>
-      <label v-if="label" :class="labelClass">{{label}}
+      <textarea :is="tag" :class="className" :type="type" :placeholder="placeholder" :disabled="disabled" @focus="focus" @blur="blur" ref="input" :rows="rows"/>
+      <label v-if="label" :class="labelClass" ref="label" @click="focus">{{label}}
       </label><slot></slot>
   </div>
 </template>
@@ -30,13 +30,17 @@ export default {
       type: String
     },
     disabled: {
-      type: [String, Boolean]
+      type: Boolean,
+      default: false
+    },
+    rows: {
+      type: Number
     }
   },
   data() {
     return {
       className: classNames(
-        'md-textarea'
+        'form-control md-textarea'
       ),
       wrapperClass: classNames(
         'md-form'
@@ -54,13 +58,14 @@ export default {
   },
   methods: {
     focus(e) {
-      const label = e.path[0].nextElementSibling;
-      label.classList.add('active');
+      if (this.label && !this.disabled) {
+        this.$refs.label.classList.add('active');
+        this.$refs.input.focus();
+      }
     },
     blur(e) {
-      const label = e.path[0].nextElementSibling;
-      if (label.parentElement.childNodes[2].value == ''){
-        label.classList.remove('active');
+      if (this.$refs.label.parentElement.childNodes[2].value == ''){
+        this.$refs.label.classList.remove('active');
       }
     }
   }

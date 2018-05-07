@@ -2,9 +2,11 @@
   <container>
     <row>
       <column md="8" class="mx-auto">
-        <jumbotron class="mt-3">
+        <jumbotron class="mt-5">
           <h1><Fa icon="cubes" class="grey-text" /> Components</h1>
           <ul class="list-unstyled example-components-list">
+            <!-- FREE -->
+            <h6>FREE</h6>
             <a href="#/components/badge"><li>Badge <fa icon="angle-right"/></li></a>
             <a href="#/components/button"><li>Button <fa icon="angle-right"/></li></a>
             <a href="#/components/breadcrumb"><li>Breadcrumb <fa icon="angle-right"/></li></a>
@@ -14,11 +16,10 @@
             <a href="#/components/listgroup"><li>List Group <fa icon="angle-right"/></li></a>
             <a href="#/components/media"><li>Media <fa icon="angle-right"/></li></a>
             <a href="#/components/navbar"><li>Navbar <fa icon="angle-right"/></li></a>
+            <a href="#/components/navigation"><li>Navigation <fa icon="angle-right"/></li></a>
             <a href="#/components/pagination"><li>Pagination <fa icon="angle-right"/></li></a>
             <a href="#/components/panel"><li>Panel <fa icon="angle-right"/></li></a>
-            <a href="#/components/popover"><li>Popover <fa icon="angle-right"/></li></a>
             <a href="#/components/progress-bars"><li>Progress Bar <fa icon="angle-right"/></li></a>
-            <a href="#/components/tooltip"><li>Tooltips <fa icon="angle-right"/></li></a>
           </ul>
         </jumbotron>
       </column>
@@ -27,11 +28,7 @@
 </template>
 
 <script>
-import Container from '../components/Container.vue';
-import Row from '../components/Row.vue';
-import Column from '../components/Col.vue';
-import Fa from '../components/Fa.vue';
-import Jumbotron from '../components/Jumbotron.vue';
+import { Container, Row, Column, Fa, Jumbotron } from 'mdbvue';
 
 export default {
   name: 'ComponentsPage',
@@ -55,6 +52,11 @@ export default {
   background-color: white;
   border-bottom: 1px solid #f7f7f7;
   transition: .3s;
+}
+
+.example-components-list h6 {
+  padding: 20px 10px 5px 10px;
+  color: grey;
 }
 
 .example-components-list li:hover {

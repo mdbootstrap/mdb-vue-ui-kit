@@ -1,6 +1,6 @@
 <template>
     <div>
-      <edg-hd color="teal darken-1"/>
+      <EdgeHeader color="teal darken-1"/>
       <div class="container free-bird">
         <row>
           <column md="10" class="mx-auto float-none white z-depth-1 py-2 px-2">
@@ -42,43 +42,15 @@
         </column>
       </row>
       <ul class="py-2 text-center">
-        <li><btn tag="a" size="sm" color="default" href="#/components/badge" target="_blank">Badge</btn></li>
-        <li><btn tag="a" size="sm" color="default" href="#/components/breadcrumb" target="_blank">Breadcrumb</btn></li>
-        <li><btn tag="a" size="sm" color="default" href="#/components/button" target="_blank">Button</btn></li>
-        <li><btn tag="a" size="sm" color="default" href="#/components/Card" target="_blank">Card</btn></li>
-        <li><btn tag="a" size="sm" color="default" href="#/components/carousel" target="_blank">Carousel</btn></li>
-        <li><btn tag="a" size="sm" color="default" href="#/components/dropdown" target="_blank">Dropdown</btn></li>
         <li><btn tag="a" size="sm" color="default" href="#/components/grid" target="_blank">Grid</btn></li>
-        <li><btn tag="a" size="sm" color="default" href="#/components/icons" target="_blank">Icons</btn></li>
-        <li><btn tag="a" size="sm" color="default" href="#/components/inputs" target="_blank">Inputs</btn></li>
-        <li><btn tag="a" size="sm" color="default" href="#/components/jumbotron" target="_blank">Jumbotron</btn></li>
-        <li><btn tag="a" size="sm" color="default" href="#/components/listgroup" target="_blank">List group</btn></li>
         <li><btn tag="a" size="sm" color="default" href="#/components/liveDemo" target="_blank">Live Demo</btn></li>
-        <li><btn tag="a" size="sm" color="default" href="#/components/masks" target="_blank">Masks</btn></li>
-        <li><btn tag="a" size="sm" color="default" href="#/components/media" target="_blank">Media</btn></li>
-        <li><btn tag="a" size="sm" color="default" href="#/components/navbar" target="_blank">Navbar</btn></li>
-        <li><btn tag="a" size="sm" color="default" href="#/components/pagination" target="_blank">Pagination</btn></li>
-        <li><btn tag="a" size="sm" color="default" href="#/components/panel" target="_blank">Panel</btn></li>
-        <li><btn tag="a" size="sm" color="default" href="#/components/popover" target="_blank">Popover</btn></li>
-        <li><btn tag="a" size="sm" color="default" href="#/components/table" target="_blank">Table</btn></li>
-        <li><btn tag="a" size="sm" color="default" href="#/components/tooltip" target="_blank">Tooltip</btn></li>
       </ul>
       </container>
     </div>
 </template>
 
 <script>
-import Container from '../components/Container.vue';
-import Row from '../components/Row.vue';
-import Column from '../components/Col.vue';
-import Fa from '../components/Fa.vue';
-import Navbar from '../components/Navbar.vue';
-import NavbarItem from '../components/NavbarItem.vue';
-import NavbarNav from '../components/NavbarNav.vue';
-import NavbarCollapse from '../components/NavbarCollapse.vue';
-import Btn from '../components/Button.vue';
-import EdgHd from '../components/EdgeHeader.vue';
-import CardBody from '../components/CardBody.vue';
+import { Container, Column, Row, Fa, Navbar, NavbarItem, NavbarNav, NavbarCollapse, Btn, EdgeHeader, CardBody } from 'mdbvue';
 
 export default {
   name: 'HomePage',
@@ -92,7 +64,7 @@ export default {
     NavbarNav,
     NavbarCollapse,
     Btn,
-    EdgHd,
+    EdgeHeader,
     CardBody
   }
 };

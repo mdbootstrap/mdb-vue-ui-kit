@@ -19,13 +19,7 @@
 </template>
 
 <script>
-import Row from '../components/Row.vue';
-import Column from '../components/Col.vue';
-import Btn from '../components/Button.vue';
-import Card from '../components/Card.vue';
-import CardHeader from '../components/CardHeader.vue';
-import CardBody from '../components/CardBody.vue';
-import CardFooter from '../components/CardFooter.vue';
+import { Row, Column, Btn, Card, CardFooter, CardBody, CardHeader } from 'mdbvue';
 
 export default {
   name: 'PanelPage',

@@ -1,8 +1,8 @@
 <template>
-  <div :is="tag" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" :class="[className, {'ripple-parent': waves}]" @click.prevent="wave">
+  <button :is="tag" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" :class="[className, {'ripple-parent': waves}]" @click.prevent="wave">
     <span :if="srOnly" class="sr-only">Toggle Dropdown</span>
     <slot></slot>
-  </div>
+  </button>
 </template>
 
 <script>
@@ -72,5 +72,7 @@ export default {
 </script>
 
 <style scoped>
-
+.btn {
+  margin: 0;
+}
 </style>

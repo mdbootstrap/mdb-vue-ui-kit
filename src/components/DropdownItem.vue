@@ -18,13 +18,18 @@ export default {
     disabled: {
       type: Boolean,
       default: false
+    },
+    active: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
     return {
       className: classNames(
         'dropdown-item',
-        this.disabled ? 'disabled' : ''
+        this.disabled ? 'disabled' : '',
+        this.active ? 'active' : ''
       ),
     };
   }

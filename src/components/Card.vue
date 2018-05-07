@@ -14,12 +14,38 @@ export default {
     cascade: {
       type: Boolean,
       default: false
+    },
+    wide: {
+      type: Boolean,
+      default: false
+    },
+    narrow: {
+      type: Boolean,
+      default: false
+    },
+    reverse: {
+      type: Boolean,
+      default: false
+    },
+    dark: {
+      type: Boolean,
+      default: false
+    },
+    testimonial: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
     return {
       className: classNames(
-        this.cascade ? 'card-cascade' : 'card'
+        'card',
+        this.cascade ? 'card-cascade' : '',
+        this.wide ? 'wider' : '',
+        this.narrow ? 'narrower' : '',
+        this.reverse ? 'reverse' : '',
+        this.dark ? 'card-dark' : '',
+        this.testimonial ? 'testimonial-card' : ''
       ),
     };
   }

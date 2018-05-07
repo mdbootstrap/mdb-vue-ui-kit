@@ -15,7 +15,7 @@
   const on = function(element, event, handler) {
     if (element && event && handler) {
       document.addEventListener ? element.addEventListener(event, handler, false) :
-      element.attachEvent('on' + event, handler);
+        element.attachEvent('on' + event, handler);
     }
   };
 

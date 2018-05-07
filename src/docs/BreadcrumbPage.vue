@@ -7,8 +7,7 @@
 </template>
 
 <script>
-import Breadcrumb from '../components/Breadcrumb.vue';
-import BreadcrumbItem from '../components/BreadcrumbItem.vue';
+import { Breadcrumb, BreadcrumbItem } from 'mdbvue';
 
 export default {
   name: 'BreadcrumbPage',

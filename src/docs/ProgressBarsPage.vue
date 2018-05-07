@@ -1,32 +1,33 @@
 <template>
-  <div class="container">
-    <progress-wrapper>
+  <container class="mt-5">
+    <h4 class="pb-2">Basic examples</h4>
+    <progress-wrapper class="mt-2" :height="20">
       <progress-bar :value="0"></progress-bar>
     </progress-wrapper>
-    <progress-wrapper>
-      <progress-bar :value="25" color="indigo" striped animated>25%</progress-bar>
+    <progress-wrapper class="mt-2" :height="20">
+      <progress-bar :value="25" color="blue"></progress-bar>
     </progress-wrapper>
-    <progress-wrapper>
-      <progress-bar :value="50" color="warning" striped animated>50%</progress-bar>
+    <progress-wrapper class="mt-2" :height="20">
+      <progress-bar :value="50" color="blue"></progress-bar>
     </progress-wrapper>
-    <progress-wrapper>
-      <progress-bar :value="75" color="info" striped animated>75%</progress-bar>
+    <progress-wrapper class="mt-2" :height="20">
+      <progress-bar :value="75" color="blue"></progress-bar>
     </progress-wrapper>
-    <progress-wrapper>
-      <progress-bar :value="100" color="danger" striped animated>100%</progress-bar>
+    <progress-wrapper class="mt-2" :height="20">
+      <progress-bar :value="100" color="blue"></progress-bar>
     </progress-wrapper>
-  </div>
+  </container>
 </template>
 
 <script>
-import ProgressWrapper from '../components/ProgressWrapper.vue';
-import ProgressBar from '../components/ProgressBar.vue';
+import { ProgressWrapper, ProgressBar, Container } from 'mdbvue';
 
 export default {
   name: 'ProgressBarsPage',
   components: {
     ProgressWrapper,
-    ProgressBar
+    ProgressBar,
+    Container
   }
 };
 </script>

@@ -31,9 +31,7 @@
 </template>
 
 <script>
-import Tbl from '../components/Table.vue';
-import TblHead from '../components/TableHead.vue';
-import TblBody from '../components/TableBody.vue';
+import { Tbl, TblHead, TblBody } from 'mdbvue';
 
 export default {
   name: 'TablePage',

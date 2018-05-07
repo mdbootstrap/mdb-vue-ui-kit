@@ -1,6 +1,6 @@
 <template>
   <li :is="tag" :class="[className, {'ripple-parent': waves}]" @click="wave">
-    <a :href="href" class="nav-link"><slot></slot></a>
+    <a :href="href" class="nav-link navbar-link"><slot></slot></a>
   </li>
 </template>
 

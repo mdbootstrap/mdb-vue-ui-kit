@@ -66,7 +66,7 @@
     <!-- NAVBARS -->
     <section>
       <h2>Navbars</h2>
-      <navbar class="indigo" name="Navbar" href="#">
+      <navbar color="primary" dark name="Navbar" href="#">
         <navbar-collapse>
           <navbar-nav>
             <navbar-item href="#" active>Home</navbar-item>
@@ -74,8 +74,8 @@
             <navbar-item href="#">Pricing</navbar-item>
             <!-- Dropdown -->
             <dropdown tag="li" class="nav-item">
-              <dropdown-toggle tag="a" navLink color="indigo">Dropdown</dropdown-toggle>
-              <dropdown-menu>
+              <dropdown-toggle @click.native="toggleDropdown(0)" tag="a" navLink color="primary" waves-fixed>Dropdown</dropdown-toggle>
+              <dropdown-menu v-show="active[0]" >
                 <dropdown-item>Action</dropdown-item>
                 <dropdown-item>Another action</dropdown-item>
                 <dropdown-item>Something else here</dropdown-item>
@@ -84,11 +84,11 @@
           </navbar-nav>
             <!-- Search form -->
           <form class="form-inline">
-            <mdinput type="text" placeholder="Search" aria-label="Search" label navInput waves />
+            <md-input type="text" placeholder="Search" aria-label="Search" label navInput waves />
           </form>
         </navbar-collapse>
       </navbar>
-      <navbar class="unique-color mt-4" name="Navbar" href="#">
+      <navbar color="default" dark class="mt-4" name="Navbar" href="#">
         <navbar-collapse>
           <navbar-nav>
             <navbar-item href="#" active>Home</navbar-item>
@@ -96,8 +96,8 @@
             <navbar-item href="#">Pricing</navbar-item>
             <!-- Dropdown -->
             <dropdown tag="li" class="nav-item">
-              <dropdown-toggle tag="a" navLink color="bg-unique">Dropdown</dropdown-toggle>
-              <dropdown-menu nav-menu>
+              <dropdown-toggle @click.native="toggleDropdown(1)" tag="a" navLink color="default" waves-fixed>Dropdown</dropdown-toggle>
+              <dropdown-menu v-show="active[1]" color="default">
                 <dropdown-item>Action</dropdown-item>
                 <dropdown-item>Another action</dropdown-item>
                 <dropdown-item>Something else here</dropdown-item>
@@ -108,10 +108,8 @@
             <navbar-item href="#"><fa icon="twitter"></fa></navbar-item>
             <navbar-item href="#"><fa icon="google-plus"></fa></navbar-item>
             <dropdown tag="li" class="nav-item">
-              <dropdown-toggle tag="a" navLink color="bg-unique">
-                <fa icon="user"></fa>
-              </dropdown-toggle>
-              <dropdown-menu right>
+              <dropdown-toggle @click.native="toggleDropdown(2)" tag="a" navLink color="default" waves-fixed><fa icon="user"></fa></dropdown-toggle>
+              <dropdown-menu v-show="active[2]" color="default">
                 <dropdown-item>Action</dropdown-item>
                 <dropdown-item>Another action</dropdown-item>
                 <dropdown-item>Something else here</dropdown-item>
@@ -120,7 +118,7 @@
           </navbar-nav>
         </navbar-collapse>
       </navbar>
-      <navbar class="bg-info mt-4" name="Navbar" href="#">
+      <navbar color="danger" dark class="mt-4" name="Navbar" href="#">
         <navbar-collapse>
           <navbar-nav>
           </navbar-nav>
@@ -128,11 +126,11 @@
             <navbar-item href="#"><fa icon="envelope"></fa> Contact</navbar-item>
             <navbar-item href="#"><fa icon="cog"></fa> Settings</navbar-item>
             <dropdown tag="li" class="nav-item">
-              <dropdown-toggle tag="a" navLink color="bg-unique">
-                <fa icon="user"></fa> Profile</dropdown-toggle>
-              <dropdown-menu right>
-                <dropdown-item>My account</dropdown-item>
-                <dropdown-item>Log out</dropdown-item>
+              <dropdown-toggle @click.native="toggleDropdown(3)" tag="a" navLink color="danger" waves-fixed><fa icon="user"></fa> Profile</dropdown-toggle>
+              <dropdown-menu v-show="active[3]" color="danger">
+                <dropdown-item>Action</dropdown-item>
+                <dropdown-item>Another action</dropdown-item>
+                <dropdown-item>Something else here</dropdown-item>
               </dropdown-menu>
             </dropdown>
           </navbar-nav>
@@ -152,135 +150,44 @@
     <section class="text-center">
       <h2>Dropdowns</h2>
       <h5>Basic examples</h5>
-      <dropdown btn-group>
-        <dropdown-toggle>DROPDOWN 1</dropdown-toggle>
-        <dropdown-menu>
-          <dropdown-item>Link 1</dropdown-item>
-          <dropdown-item>Link 2</dropdown-item>
-          <dropdown-item>Link 3</dropdown-item>
+      <dropdown>
+        <dropdown-toggle @click.native="toggleDropdown(4)" color="default">Dropdown 1</dropdown-toggle>
+        <dropdown-menu v-show="active[4]" color="default">
+          <dropdown-item>Action</dropdown-item>
+          <dropdown-item>Another action</dropdown-item>
+          <dropdown-item>Something else here</dropdown-item>
         </dropdown-menu>
       </dropdown>
-      <dropdown btn-group>
-        <dropdown-toggle color="primary">DROPDOWN 2</dropdown-toggle>
-        <dropdown-menu>
-          <dropdown-item>Link 1</dropdown-item>
-          <dropdown-item>Link 2</dropdown-item>
-          <dropdown-item>Link 3</dropdown-item>
+      <dropdown>
+        <dropdown-toggle @click.native="toggleDropdown(5)" color="primary">Dropdown 2</dropdown-toggle>
+        <dropdown-menu v-show="active[5]" color="primary">
+          <dropdown-item>Action</dropdown-item>
+          <dropdown-item>Another action</dropdown-item>
+          <dropdown-item>Something else here</dropdown-item>
         </dropdown-menu>
       </dropdown>
-      <dropdown btn-group>
-        <dropdown-toggle color="indigo">DROPDOWN 3</dropdown-toggle>
-        <dropdown-menu>
-          <dropdown-item>Link 1</dropdown-item>
-          <dropdown-item>Link 2</dropdown-item>
-          <dropdown-item>Link 3</dropdown-item>
+      <dropdown>
+        <dropdown-toggle @click.native="toggleDropdown(6)" color="secondary">Dropdown 3</dropdown-toggle>
+        <dropdown-menu v-show="active[6]" color="secondary">
+          <dropdown-item>Action</dropdown-item>
+          <dropdown-item>Another action</dropdown-item>
+          <dropdown-item>Something else here</dropdown-item>
         </dropdown-menu>
       </dropdown>
-      <dropdown btn-group>
-        <dropdown-toggle color="danger">DROPDOWN 4</dropdown-toggle>
-        <dropdown-menu>
-          <dropdown-item>Link 1</dropdown-item>
-          <dropdown-item>Link 2</dropdown-item>
-          <dropdown-item>Link 3</dropdown-item>
+      <dropdown>
+        <dropdown-toggle @click.native="toggleDropdown(7)" color="danger">Dropdown 4</dropdown-toggle>
+        <dropdown-menu v-show="active[7]" color="danger">
+          <dropdown-item>Action</dropdown-item>
+          <dropdown-item>Another action</dropdown-item>
+          <dropdown-item>Something else here</dropdown-item>
         </dropdown-menu>
       </dropdown>
-      <dropdown btn-group>
-        <dropdown-toggle color="info">DROPDOWN 5</dropdown-toggle>
-        <dropdown-menu>
-          <dropdown-item>Link 1</dropdown-item>
-          <dropdown-item>Link 2</dropdown-item>
-          <dropdown-item>Link 3</dropdown-item>
-        </dropdown-menu>
-      </dropdown>
-      <h5>Split button dropdowns and dropups</h5>
-      <dropdown btn-group>
-        <btn color="danger">Action</btn>
-        <dropdown-toggle class="px-3" color="danger"></dropdown-toggle>
-        <dropdown-menu>
-          <dropdown-item>Link 1</dropdown-item>
-          <dropdown-item>Link 2</dropdown-item>
-          <dropdown-item>Link 3</dropdown-item>
-        </dropdown-menu>
-      </dropdown>
-      <dropdown btn-group>
-        <btn color="primary">Action</btn>
-        <dropdown-toggle class="px-3" color="primary"></dropdown-toggle>
-        <dropdown-menu>
-          <dropdown-item>Link 1</dropdown-item>
-          <dropdown-item>Link 2</dropdown-item>
-          <dropdown-item>Link 3</dropdown-item>
-        </dropdown-menu>
-      </dropdown>
-      <dropdown btn-group dropup>
-        <btn color="warning">Action</btn>
-        <dropdown-toggle class="px-3" color="warning"></dropdown-toggle>
-        <dropdown-menu dropup>
-          <dropdown-item>Link 1</dropdown-item>
-          <dropdown-item>Link 2</dropdown-item>
-          <dropdown-item>Link 3</dropdown-item>
-        </dropdown-menu>
-      </dropdown>
-      <dropdown btn-group dropup>
-        <btn color="info">Action</btn>
-        <dropdown-toggle class="px-3" color="info"></dropdown-toggle>
-        <dropdown-menu dropup>
-          <dropdown-item>Link 1</dropdown-item>
-          <dropdown-item>Link 2</dropdown-item>
-          <dropdown-item>Link 3</dropdown-item>
-        </dropdown-menu>
-      </dropdown>
-      <h5>Sizing with disabled items</h5>
-      <dropdown btn-group>
-        <dropdown-toggle color="primary" size="lg">Large button</dropdown-toggle>
-        <dropdown-menu>
-          <dropdown-item>Link 1</dropdown-item>
-          <dropdown-item disabled>Disabled link 2</dropdown-item>
-          <dropdown-item>Link 3</dropdown-item>
-        </dropdown-menu>
-      </dropdown>
-      <dropdown btn-group>
-        <dropdown-toggle color="primary" size="sm">Small button</dropdown-toggle>
-        <dropdown-menu>
-          <dropdown-item>Link 1</dropdown-item>
-          <dropdown-item disabled>Disabled link 2</dropdown-item>
-          <dropdown-item>Link 3</dropdown-item>
-        </dropdown-menu>
-      </dropdown>
-      <h5>Menu headers and dividers</h5>
-      <dropdown btn-group>
-        <dropdown-toggle color="primary">DROPDOWN</dropdown-toggle>
-        <dropdown-menu>
-          <h6 class="dropdown-header">Dropdown header</h6>
-          <dropdown-item>Link 1</dropdown-item>
-          <dropdown-item>Link 2</dropdown-item>
-          <dropdown-item>Link 3</dropdown-item>
-        </dropdown-menu>
-      </dropdown>
-      <dropdown btn-group>
-        <dropdown-toggle color="danger">DROPDOWN</dropdown-toggle>
-        <dropdown-menu>
-          <h6 class="dropdown-header">Dropdown header</h6>
-          <dropdown-item>Link 1</dropdown-item>
-          <dropdown-item>Link 2</dropdown-item>
-          <dropdown-item>Link 3</dropdown-item>
-        </dropdown-menu>
-      </dropdown>
-      <dropdown btn-group>
-        <dropdown-toggle color="info">DROPDOWN</dropdown-toggle>
-        <dropdown-menu>
-          <dropdown-item>Link 1</dropdown-item>
-          <dropdown-item>Link 2</dropdown-item>
-          <div class="dropdown-divider"></div>
-          <dropdown-item>Link 3</dropdown-item>
-        </dropdown-menu>
-      </dropdown>
-      <dropdown btn-group>
-        <dropdown-toggle color="secondary">DROPDOWN</dropdown-toggle>
-        <dropdown-menu>
-          <dropdown-item>Link 1</dropdown-item>
-          <dropdown-item>Link 2</dropdown-item>
-          <div class="dropdown-divider"></div>
-          <dropdown-item>Link 3</dropdown-item>
+      <dropdown>
+        <dropdown-toggle @click.native="toggleDropdown(8)" color="warning">Dropdown 5</dropdown-toggle>
+        <dropdown-menu v-show="active[8]" color="warning">
+          <dropdown-item>Action</dropdown-item>
+          <dropdown-item>Another action</dropdown-item>
+          <dropdown-item>Something else here</dropdown-item>
         </dropdown-menu>
       </dropdown>
     </section>
@@ -323,13 +230,6 @@
       </row>
     </section>
     <!-- /CARDS -->
-    <hr class="mt-4">
-    <!-- CAROUSEL -->
-    <section>
-      <h2>Carousel</h2>
-      <carousel></carousel>
-    </section>
-    <!-- /CAROUSEL -->
     <hr class="mt-4">
     <!-- TABLE -->
     <section>
@@ -378,13 +278,6 @@
       </pagination>
     </section>
     <!-- /PAGINATION -->
-    <hr class="mt-4">
-    <!-- INPUTS -->
-    <section>
-      <h2>Inputs</h2>
-      <inputs-page></inputs-page>
-    </section>
-    <!-- /INPUTS -->
     <hr class="mt-4">
     <!-- MEDIA -->
     <section>
@@ -483,22 +376,22 @@
       <row>
         <column col="12" sm="6" class="py-2">
           <view-wrapper src="https://mdbootstrap.com/img/Photos/Others/nature-sm.jpg" alt="view">
-            <mdmask flex-center waves text="waves"></mdmask>
+            <md-mask flex-center waves text="waves"></md-mask>
           </view-wrapper>
         </column>
         <column col="12" sm="6" class="py-2">
           <view-wrapper src="https://mdbootstrap.com/img/Photos/Others/nature-sm.jpg" alt="view">
-            <mdmask flex-center pattern="3" text="pattern = &quot;3&quot;"></mdmask>
+            <md-mask flex-center pattern="3" text="pattern = &quot;3&quot;"></md-mask>
           </view-wrapper>
         </column>
         <column col="12" sm="6">
           <view-wrapper overlay="blue-strong" src="https://mdbootstrap.com/img/Photos/Others/nature-sm.jpg" alt="view">
-            <mdmask flex-center waves overlay="blue-strong" text="overlay = &quot;blue-strong&quot; waves"></mdmask>
+            <md-mask flex-center waves overlay="blue-strong" text="overlay = &quot;blue-strong&quot; waves"></md-mask>
           </view-wrapper>
         </column>
         <column col="12" sm="6">
           <view-wrapper src="https://mdbootstrap.com/img/Photos/Others/nature-sm.jpg" alt="view">
-            <mdmask flex-center waves pattern="5" text="pattern = &quot;5&quot; waves"></mdmask>
+            <md-mask flex-center waves pattern="5" text="pattern = &quot;5&quot; waves"></md-mask>
           </view-wrapper>
         </column>
       </row>
@@ -527,29 +420,29 @@
 
                   <h5 class="h5-responsive">Basic Textbox</h5>
                   <!-- Basic textbox -->
-                  <mdinput type="text" label="Example label"/>
+                  <md-input type="text" label="Example label"/>
                   <!-- /.Basic textbox -->
 
                   <h5 class="h5-responsive">Textbox with icon</h5>
                   <div class="md-form">
-                    <mdinput type="text" label="Your name" icon="user" />
+                    <md-input type="text" label="Your name" icon="user" />
                   </div>
 
                   <!--Email validation-->
                   <h5 class="h5-responsive">E-mail validation</h5>
                   <div class="md-form">
-                    <mdinput type="email" label="Your email" icon="envelope" />
+                    <md-input type="email" label="Your email" icon="envelope" />
                   </div>
 
                   <!--Textarea with icon-->
                   <h5 class="h5-responsive">Textarea</h5>
                   <div class="md-form">
-                    <mdtextarea type="text" label="Textarea" icon="pencil"></mdtextarea>
+                    <md-textarea type="text" label="Textarea" icon="pencil"></md-textarea>
                   </div>
 
                   <h5 class="h5-responsive">Disabled field</h5>
                   <div class="md-form">
-                    <mdinput type="text" label="Example label" disabled/>
+                    <md-input type="text" label="Example label" disabled/>
                   </div>
 
                   <div class="text-xs-left">
@@ -637,53 +530,7 @@
 </template>
 
 <script>
-import Container from '../components/Container.vue';
-import Row from '../components/Row.vue';
-import Column from '../components/Col.vue';
-import Btn from '../components/Button.vue';
-import Badge from '../components/Badge.vue';
-import Fa from '../components/Fa.vue';
-import Navbar from '../components/Navbar.vue';
-import NavbarItem from '../components/NavbarItem.vue';
-import NavbarNav from '../components/NavbarNav.vue';
-import NavbarCollapse from '../components/NavbarCollapse.vue';
-import Mdinput from '../components/MdInput.vue';
-import Mdtextarea from '../components/MdTextarea.vue';
-import InputsPage from '../docs/InputsPage.vue';
-import Breadcrumb from '../components/Breadcrumb.vue';
-import BreadcrumbItem from '../components/BreadcrumbItem.vue';
-import Dropdown from '../components/Dropdown.vue';
-import DropdownToggle from '../components/DropdownToggle.vue';
-import DropdownMenu from '../components/DropdownMenu.vue';
-import DropdownItem from '../components/DropdownItem.vue';
-import drop from '../mixins/drop';
-import Card from '../components/Card.vue';
-import CardImg from '../components/CardImg.vue';
-import CardHeader from '../components/CardHeader.vue';
-import CardFooter from '../components/CardFooter.vue';
-import CardBody from '../components/CardBody.vue';
-import Carousel from '../docs/CarouselPage.vue';
-import Tbl from '../components/Table.vue';
-import TblHead from '../components/TableHead.vue';
-import TblBody from '../components/TableBody.vue';
-import Pagination from '../components/Pagination.vue';
-import PageNav from '../components/PageNav.vue';
-import PageItem from '../components/PageItem.vue';
-import Media from '../components/Media.vue';
-import MediaImage from '../components/MediaImage.vue';
-import MediaBody from '../components/MediaBody.vue';
-import ListGroup from '../components/ListGroup.vue';
-import ListGroupItem from '../components/ListGroupItem.vue';
-import LineChart from '../components/ChartLine';
-import RadarChart from '../components/ChartRadar';
-import BarChart from '../components/ChartBar';
-import PolarChart from '../components/ChartPolar';
-import PieChart from '../components/ChartPie';
-import DoughnutChart from '../components/ChartDoughnut';
-import ViewWrapper from '../components/ViewWrapper.vue';
-import Mdmask from '../components/Mdmask.vue';
-import EdgeHeader from '../components/EdgeHeader.vue';
-import Tooltip from "../components/Tooltip";
+import { Container, Row, Column, Btn, Badge, Fa, Navbar, NavbarItem, NavbarNav, NavbarCollapse, MdInput, MdTextarea, Breadcrumb, BreadcrumbItem, Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Card, CardImg, CardHeader, CardFooter, CardBody, Tbl, TblHead, TblBody, Pagination, PageNav, PageItem, Media, MediaImage, MediaBody, ListGroup, ListGroupItem, LineChart, RadarChart, BarChart, PolarChart, PieChart, DoughnutChart, ViewWrapper, MdMask, EdgeHeader, Tooltip } from 'mdbvue';
 
 export default {
   name: 'LiveDemoPage',
@@ -698,9 +545,8 @@ export default {
     NavbarItem,
     NavbarNav,
     NavbarCollapse,
-    Mdinput,
-    Mdtextarea,
-    InputsPage,
+    MdInput,
+    MdTextarea,
     Breadcrumb,
     BreadcrumbItem,
     Dropdown,
@@ -712,7 +558,6 @@ export default {
     CardHeader,
     CardFooter,
     CardBody,
-    Carousel,
     Tbl,
     TblHead,
     TblBody,
@@ -731,7 +576,7 @@ export default {
     PieChart,
     DoughnutChart,
     ViewWrapper,
-    Mdmask,
+    MdMask,
     EdgeHeader,
     Tooltip
   },
@@ -880,9 +725,52 @@ export default {
         responsive: true,
         maintainAspectRatio: false,
       },
+      active: {
+        0: false,
+        1: false,
+        2: false,
+        3: false,
+        4: false,
+        5: false,
+        6: false,
+        7: false,
+        8: false,
+        9: false
+      }
     };
   },
-  mixins: [drop]
+  methods: {
+    toggleDropdown(index) {
+      for (let i = 0; i < Object.keys(this.active).length; i++) {
+        if (index !== i) {
+          this.active[i] = false;
+        }
+      }
+      this.active[index] = !this.active[index];
+    },
+    allDropdownsClose(target) {
+      for (let i = 0; i < Object.keys(this.active).length; i++) {
+        this.active[i] = false;
+      }
+    },
+    onClick(e) {
+      let parent = e.target;
+      let body = document.getElementsByTagName('body')[0];
+      while (parent !== body) {
+        if (parent.classList.contains('dropdown') || parent.classList.contains('btn-group')) {
+          return;
+        }
+        parent = parent.parentNode;
+      }
+      this.allDropdownsClose(e.target);
+    }
+  },
+  mounted() {
+    document.addEventListener('click', this.onClick);
+  },
+  destroyed() {
+    document.removeEventListener('click', this.onClick);
+  }
 };
 </script>
 

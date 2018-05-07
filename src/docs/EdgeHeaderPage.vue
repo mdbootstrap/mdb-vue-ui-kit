@@ -63,13 +63,7 @@
 </template>
 
 <script>
-import EdgeHeader from '../components/EdgeHeader.vue';
-import Container from '../components/Container.vue';
-import Row from '../components/Row.vue';
-import Column from '../components/Col.vue';
-import CardBody from '../components/CardBody.vue';
-import Mdinput from '../components/MdInput.vue';
-import Mdtextarea from '../components/MdTextarea.vue';
+import { EdgeHeader, Container, Row, Column, CardBody, MdInput, MdTextarea } from 'mdbvue';
 
 export default {
   name: 'EdgeHeaderPage',
@@ -79,8 +73,8 @@ export default {
     Row,
     Column,
     CardBody,
-    Mdinput,
-    Mdtextarea
+    MdInput,
+    MdTextarea
   }
 };
 </script>

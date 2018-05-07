@@ -1,5 +1,7 @@
 <template>
-  <li :is="tag" :class="className" @click="click"></li>
+  <li :is="tag" :class="className" @click="click">
+    <img v-if="src" :src="src" :alt="alt" class="d-block w-100 img-fluid" />
+  </li>
 </template>
 
 <script>
@@ -17,6 +19,12 @@ export default {
     index: {
       type: Number,
       required: true
+    },
+    src: {
+      type: String
+    },
+    alt: {
+      type: String
     }
   },
   data() {
@@ -28,7 +36,7 @@ export default {
   },
   methods: {
     click() {
-      this.$parent.$parent.$parent.$emit('changeSlide', {'slideIndex': this.index});
+      this.$emit('changeSlide', {'slideIndex': this.index});
     }
   }
 };

@@ -10,12 +10,16 @@ export default {
     tag: {
       type: String,
       default: "div"
+    },
+    color: {
+      type: String
     }
   },
   data() {
     return {
       className: classNames(
-        'card-body'
+        'card-body',
+        this.color ? this.color + '-color' : ''
       )
     };
   }

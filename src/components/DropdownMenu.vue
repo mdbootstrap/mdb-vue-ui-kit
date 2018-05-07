@@ -18,15 +18,29 @@ export default {
     right: {
       type: Boolean,
       default: false
+    },
+    dropright: {
+      type: Boolean,
+      default: false
+    },
+    dropleft: {
+      type: Boolean,
+      default: false
+    },
+    color: {
+      type: String
     }
   },
   data() {
     return {
       className: classNames(
         'dropdown-menu',
-        'd-none',
+        'show',
         this.right ? 'dropdown-menu-right' : '',
-        this.dropup ? 'dropup' : ''
+        this.dropup ? 'dropup' : '',
+        this.color ? 'dropdown-' + this.color : '',
+        this.dropright ? 'dropright' : '',
+        this.dropleft ? 'dropleft' : ''
       ),
     };
   }
@@ -34,20 +48,26 @@ export default {
 </script>
 
 <style scoped>
-.d-fade-in {
-  animation: fadeIn .2s linear;
+.dropdown-menu {
+  position: absolute;
+  left: 0;
 }
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-      opacity: 1;
-  }
+.dropdown-menu-right {
+  left: auto;
+  right: 0;
 }
 .dropup {
   position: absolute;
   top: auto;
   bottom: 100%;
+}
+.dropright {
+  left: 100%;
+  top: 0;
+}
+.dropleft {
+  left: auto;
+  right: 2.5rem;
+  top: 0;
 }
 </style>

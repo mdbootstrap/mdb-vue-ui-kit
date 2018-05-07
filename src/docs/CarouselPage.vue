@@ -1,35 +1,27 @@
 <template>
-  <carousel :interval="8000" class="mt-5 mx-5">
+  <carousel :interval="8000" @defineInterval="handleIntervalChange" full>
     <carousel-indicators>
-      <carousel-indicator :index="0" :class="{active: show[0]}"></carousel-indicator>
-      <carousel-indicator :index="1" :class="{active: show[1]}"></carousel-indicator>
-      <carousel-indicator :index="2" :class="{active: show[2]}"></carousel-indicator>
+      <carousel-indicator :index="0" :class="{active: show[0]}" @changeSlide="handleChangeSlide"></carousel-indicator>
+      <carousel-indicator :index="1" :class="{active: show[1]}" @changeSlide="handleChangeSlide"></carousel-indicator>
+      <carousel-indicator :index="2" :class="{active: show[2]}" @changeSlide="handleChangeSlide"></carousel-indicator>
     </carousel-indicators>
     <carousel-inner>
-      <carousel-item :class="{active: show[0]}" src="https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg" alt="First slide">
-        <carousel-caption title="Carousel Caption" text="First text"></carousel-caption>
+      <carousel-item :class="{active: show[0]}" img src="https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg" mask="black-light" alt="First slide">
+        <carousel-caption title="Light mask" text="First text"></carousel-caption>
       </carousel-item>
-      <carousel-item :class="{active: show[1]}" src="https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg" alt="Seccond slide">
-        <carousel-caption title="Carousel Caption" text="Second text"></carousel-caption>
+      <carousel-item :class="{active: show[1]}" img src="https://mdbootstrap.com/img/Photos/Slides/img%20(6).jpg" mask="black-strong" alt="Second slide">
+        <carousel-caption title="Strong mask" text="Second text"></carousel-caption>
       </carousel-item>
-      <carousel-item :class="{active: show[2]}" src="https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg" alt="Third slide">
-        <carousel-caption title="Carousel Caption" text="Third text"></carousel-caption>
+      <carousel-item :class="{active: show[2]}" img src="https://mdbootstrap.com/img/Photos/Slides/img%20(9).jpg" mask="black-slight" alt="Third slide">
+        <carousel-caption title="Super light mask" text="Third text"></carousel-caption>
       </carousel-item>
     </carousel-inner>
-    <carousel-navigation></carousel-navigation>
+    <carousel-navigation @changeSlide="handleChangeSlide"></carousel-navigation>
   </carousel>
 </template>
 
 <script>
-import Carousel from '../components/Carousel.vue';
-import CarouselIndicators from '../components/CarouselIndicators.vue';
-import CarouselIndicator from '../components/CarouselIndicator.vue';
-import CarouselInner from '../components/CarouselInner.vue';
-import CarouselItem from '../components/CarouselItem.vue';
-import CarouselNavigation from '../components/CarouselNavigation.vue';
-import CarouselCaption from '../components/CarouselCaption.vue';
-import ViewWrapper from '../components/ViewWrapper.vue';
-import Mdmask from '../components/Mdmask.vue';
+import { Carousel, CarouselIndicators, CarouselIndicator, CarouselInner, CarouselItem, CarouselNavigation, CarouselCaption, ViewWrapper, MdMask } from 'mdbvue';
 
 export default {
   name: 'CarouselPage',
@@ -42,7 +34,7 @@ export default {
     CarouselNavigation,
     CarouselCaption,
     ViewWrapper,
-    Mdmask
+    MdMask
   },
   data() {
     return {
@@ -84,17 +76,15 @@ export default {
       this.slide = setInterval(() => {
         this.slidePage('next');
       }, this.interval);
-    }
-  },
-  created() {
-    this.$on('changeSlide', function(showSlide) {
+    },
+    handleChangeSlide(showSlide) {
       this.slidePage(showSlide.slideIndex);
       clearInterval(this.slide);
       this.autoSlide();
-    });
-    this.$on('defineInterval', function(defineInterval) {
+    },
+    handleIntervalChange(defineInterval) {
       this.interval = defineInterval.newInterval;
-    });
+    }
   },
   mounted() {
     this.items = this.$el.querySelectorAll('.carousel-item').length - 1;
@@ -107,6 +97,11 @@ export default {
 <style scoped>
 .carousel {
   overflow: hidden;
+}
+.carousel,
+.carousel-item,
+.carousel-item.active {
+  height: 100%;
 }
 
 .carousel-inner {

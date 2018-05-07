@@ -1,5 +1,5 @@
 <template>
-  <container fluid>
+  <container fluid class="mt-5">
     <row>
       <column sm="2" offset-md="2">Col-sm-2 offset-md-2</column>
       <column sm="4">Col-sm-4</column>
@@ -9,9 +9,7 @@
 </template>
 
 <script>
-import Container from '../components/Container.vue';
-import Row from '../components/Row.vue';
-import Column from '../components/Col.vue';
+import { Container, Row, Column } from 'mdbvue';
 
 export default {
   name: 'GridPage',

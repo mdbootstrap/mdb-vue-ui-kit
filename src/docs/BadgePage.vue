@@ -5,12 +5,12 @@
 </template>
 
 <script>
-import badge from '../components/Badge.vue';
+import { Badge } from 'mdbvue';
 
 export default {
   name: 'BadgePage',
   components: {
-    'Badge': badge
+    Badge
   }
 };
 </script>

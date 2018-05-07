@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <container class="mt-5">
     <pagination>
       <page-nav prev></page-nav>
       <page-item active>1</page-item>
@@ -9,20 +9,19 @@
       <page-item>5</page-item>
       <page-nav next></page-nav>
     </pagination>
-  </div>
+  </container>
 </template>
 
 <script>
-import Pagination from '../components/Pagination.vue';
-import PageNav from '../components/PageNav.vue';
-import PageItem from '../components/PageItem.vue';
+import { Pagination, PageNav, PageItem, Container } from 'mdbvue';
 
 export default {
   name: 'PaginationPage',
   components: {
     Pagination,
     PageNav,
-    PageItem
+    PageItem,
+    Container
   }
 };
 </script>

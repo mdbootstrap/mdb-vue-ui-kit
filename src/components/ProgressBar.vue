@@ -1,5 +1,5 @@
 <template>
-  <div :is="tag" :class="className" role="progressbar" :aria-valuenow="value" aria-valuemin="0" aria-valuemax="100"><slot></slot></div>
+  <div :is="tag" :class="className" role="progressbar" :aria-valuenow="value" aria-valuemin="0" aria-valuemax="100" :style="[{'width' : value + '%'}]"><slot></slot></div>
 </template>
 
 <script>
@@ -25,17 +25,20 @@ export default {
     animated: {
       type: Boolean,
       default: false
+    },
+    indeterminate: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
     return {
       className: classNames(
-        'progress-bar',
+        this.indeterminate ? 'indeterminate' : 'progress-bar',
         this.striped ? 'progress-bar-striped' : '',
         this.color ? 'bg-' + this.color : '',
-        this.animated ? 'progress-bar-animated' : '',
-        'w-' + this.value
-      ),
+        this.animated ? 'progress-bar-animated' : ''
+      )
     };
   }
 };

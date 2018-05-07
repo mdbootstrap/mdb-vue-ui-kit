@@ -21,12 +21,7 @@
 </template>
 
 <script>
-import LineChart from '../components/ChartLine';
-import RadarChart from '../components/ChartRadar';
-import BarChart from '../components/ChartBar';
-import PolarChart from '../components/ChartPolar';
-import PieChart from '../components/ChartPie';
-import DoughnutChart from '../components/ChartDoughnut';
+import { LineChart, RadarChart, BarChart, PolarChart, PieChart, DoughnutChart } from 'mdbvue';
 
 export default {
   name: 'ChartPage',

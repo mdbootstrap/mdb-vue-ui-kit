@@ -5,12 +5,12 @@
 </template>
 
 <script>
-import fa from '../components/Fa.vue';
+import { Fa } from 'mdbvue';
 
 export default {
   name: 'FaPage',
   components: {
-    'Fa': fa
+    Fa
   }
 };
 </script>

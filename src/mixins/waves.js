@@ -1,8 +1,11 @@
+import '../components/Waves.css';
+
 export default {
   methods: {
     wave(e) {
       if (this.waves) {
-        this.getOffsets();
+        this.target = e.currentTarget;
+        this.getOffsets(e);
         this.waveData = { 'top' : e.pageY - this.offsetTop, 'left': e.pageX - this.offsetLeft, 'height': this.$el.offsetHeight, 'width': this.$el.offsetWidth };
         // for fixed elements
         if (this.wavesFixed) {
@@ -10,14 +13,14 @@ export default {
         }
         this.createRipple();
         this.rippleAnimate();
-        this.rippleRemove(this.rippleElement);
+        this.rippleRemove(e.currentTarget, this.rippleElement);
       }
     },
-    getOffsets() {
-      if (this.$el.offsetParent) {
-        this.offsetLeft = this.$el.offsetLeft;
-        this.offsetTop = this.$el.offsetTop;
-        this.parentOffset = this.$el.offsetParent;
+    getOffsets(e) {
+      if (this.target.offsetParent) {
+        this.offsetLeft = this.target.offsetLeft;
+        this.offsetTop = this.target.offsetTop;
+        this.parentOffset = this.target.offsetParent;
         while (this.parentOffset) {
           this.offsetLeft += this.parentOffset.offsetLeft;
           this.offsetTop += this.parentOffset.offsetTop;
@@ -35,14 +38,14 @@ export default {
       if (this.darkWaves) {
         this.rippleElement.style.background = "rgba(0, 0, 0, 0.2)";
       }
-      this.$el.appendChild(this.rippleElement);
+      this.target.appendChild(this.rippleElement);
     },
     rippleAnimate() {
       this.rippleElement.classList.add('is-reppling');
     },
-    rippleRemove(rippleElement) {
+    rippleRemove(target, rippleElement) {
       this.remove = setTimeout(() => {
-        this.$el.removeChild(rippleElement);
+        target.removeChild(rippleElement);
       }, 600);
     }
   }

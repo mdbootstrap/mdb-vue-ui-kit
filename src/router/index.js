@@ -1,5 +1,12 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+
+// PAGES
+import CSSPage from '../docs/CSSPage';
+import ComponentsPage from '../docs/ComponentsPage';
+import AdvancedPage from '../docs/AdvancedPage';
+
+// FREE
 import HomePage from '../docs/HomePage';
 import GridPage from '../docs/GridPage';
 import BadgePage from '../docs/BadgePage';
@@ -16,6 +23,7 @@ import LiveDemoPage from '../docs/LiveDemoPage';
 import MediaPage from '../docs/MediaPage';
 import ListGroupPage from '../docs/ListGroupPage';
 import NavbarPage from '../docs/NavbarPage';
+import NavigationPage from '../docs/NavigationPage';
 import CollapsePage from '../docs/CollapsePage';
 import PaginationPage from '../docs/PaginationPage';
 import PanelPage from '../docs/PanelPage';
@@ -25,9 +33,9 @@ import TooltipPage from '../docs/TooltipPage';
 import PopoverPage from '../docs/PopoverPage';
 import EdgeHeaderPage from '../docs/EdgeHeaderPage';
 import MasksPage from '../docs/MasksPage';
-import CSSPage from '../docs/CSSPage';
-import ComponentsPage from '../docs/ComponentsPage';
-import AdvancedPage from '../docs/AdvancedPage';
+import HoverPage from '../docs/HoverPage';
+import VideoCarouselPage from '../docs/VideoCarouselPage';
+import ModalPage from '../docs/ModalPage';
 
 Vue.use(Router);
 
@@ -37,7 +45,25 @@ export default new Router({
       path: '/',
       name: 'Home',
       component: HomePage
+    },
+
+    // PAGES
+    {
+      path: '/css',
+      name: 'CSSPage',
+      component: CSSPage
     }, {
+      path: '/components',
+      name: 'ComponentsPage',
+      component: ComponentsPage
+    }, {
+      path: '/advanced',
+      name: 'AdvancedPage',
+      component: AdvancedPage
+    },
+
+    // FREE
+    {
       path: '/components/badge',
       name: 'BadgePage',
       component: BadgePage
@@ -54,19 +80,19 @@ export default new Router({
       name: 'ButtonPage',
       component: ButtonPage
     }, {
-      path: '/components/table',
+      path: '/css/table',
       name: 'TablePage',
       component: TablePage
     }, {
       path: '/components/dropdown',
-      name: 'Dropdown Page',
+      name: 'DropdownPage',
       component: DropdownPage
     }, {
-      path: '/components/jumbotron',
+      path: '/css/jumbotron',
       name: 'JumbotronPage',
       component: JumbotronPage
     }, {
-      path: '/components/carousel',
+      path: '/advanced/carousel',
       name: 'CarouselPage',
       component: CarouselPage
     }, {
@@ -74,7 +100,11 @@ export default new Router({
       name: 'BreadcrumbPage',
       component: BreadcrumbPage
     }, {
-      path: '/components/icons',
+      path: '/css/hover',
+      name: 'HoverPagePage',
+      component: HoverPage
+    }, {
+      path: '/css/icons',
       name: 'FaPage',
       component: FaPage
     }, {
@@ -98,7 +128,11 @@ export default new Router({
       name: 'NavbarPage',
       component: NavbarPage
     }, {
-      path: '/components/collapse',
+      path: '/components/navigation',
+      name: 'NavigationPage',
+      component: NavigationPage
+    }, {
+      path: '/advanced/collapse',
       name: 'CollapsePage',
       component: CollapsePage
     }, {
@@ -110,7 +144,7 @@ export default new Router({
       name: 'PanelPage',
       component: PanelPage
     }, {
-      path: '/components/chart',
+      path: '/advanced/chart',
       name: 'ChartPage',
       component: ChartPage
     }, {
@@ -118,11 +152,11 @@ export default new Router({
       name: 'ProgressBarsPage',
       component: ProgressBarsPage
     }, {
-      path: '/components/tooltip',
+      path: '/advanced/tooltip',
       name: 'TooltipPage',
       component: TooltipPage
     }, {
-      path: '/components/popover',
+      path: '/advanced/popover',
       name: 'PopoverPage',
       component: PopoverPage
     }, {
@@ -130,21 +164,17 @@ export default new Router({
       name: 'EdgeHeaderPage',
       component: EdgeHeaderPage
     }, {
-      path: '/components/masks',
+      path: '/css/masks',
       name: 'MasksPage',
       component: MasksPage
     }, {
-      path: '/css',
-      name: 'CSSPage',
-      component: CSSPage
+      path: '/advanced/videocarousel',
+      name: 'VideoCarouselPage',
+      component: VideoCarouselPage
     }, {
-      path: '/components',
-      name: 'ComponentsPage',
-      component: ComponentsPage
-    }, {
-      path: '/advanced',
-      name: 'AdvancedPage',
-      component: AdvancedPage
+      path: '/advanced/modal',
+      name: 'ModalPage',
+      component: ModalPage
     }
-  ],
+  ]
 });

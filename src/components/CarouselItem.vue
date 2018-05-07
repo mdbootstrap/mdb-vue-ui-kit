@@ -1,6 +1,12 @@
 <template>
   <div :is="tag" :class="className">
-    <img v-if="src" :src="src" :alt="alt" class="d-block w-100">
+    <div class="view">
+      <img v-if="img" :src="src" :alt="alt" class="d-block w-100">
+      <div v-if="mask" :class="maskClass"></div>
+    </div>
+    <video v-if="video" class="video-fluid d-block" :autoPlay="auto" :loop="loop">
+      <source :src="src" type="video/mp4" />
+    </video>
     <slot></slot>
   </div>
 </template>
@@ -19,17 +25,52 @@ export default {
     },
     alt: {
       type: String
+    },
+    loop: {
+      type: Boolean
+    },
+    auto: {
+      type: Boolean
+    },
+    full: {
+      type: Boolean
+    },
+    img: {
+      type: Boolean
+    },
+    video: {
+      type: Boolean
+    },
+    mask: {
+      type: String
+    }
+  },
+  computed: {
+    isVideo() {
+      let videoFormats = ['webm', 'ogg', 'mp4'];
+      const check = (formats, string) =>  {
+        return formats.some(function(format){
+          return string.endsWith(format);
+        });
+      };
+      return check(videoFormats, this.src);
     }
   },
   data() {
     return {
       className: classNames(
-        'carousel-item'
+        'carousel-item',
+        this.full && 'full'
       ),
+      maskClass: classNames(
+        'mask',
+        this.mask ? 'rgba-' + this.mask : ''
+      )
     };
   }
 };
 </script>
 
 <style scoped>
+
 </style>

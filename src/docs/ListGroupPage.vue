@@ -13,9 +13,7 @@
 </template>
 
 <script>
-import ListGroup from '../components/ListGroup.vue';
-import ListGroupItem from '../components/ListGroupItem.vue';
-import Badge from '../components/Badge.vue';
+import { ListGroup, ListGroupItem, Badge } from 'mdbvue';
 
 export default {
   name: 'ListGroupPage',

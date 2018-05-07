@@ -12,14 +12,17 @@ export default {
       default: "div"
     },
     height: {
-      type: Number,
-      default: 20
+      type: Number
+    },
+    color: {
+      type: String
     }
   },
   data() {
     return {
       className: classNames(
-        'progress'
+        'progress',
+        this.color ? this.color : ''
       ),
       style: {
         height: this.height + 'px'

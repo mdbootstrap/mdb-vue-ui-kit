@@ -1,7 +1,6 @@
 <template>
-  <row class="mt-5">
-    <column col="4"></column>
-    <column col="4" class="mt-5 pt-5">
+  <container class="mt-5">
+    <div class="mt-5 pt-5 d-flex justify-content-center">
       <tooltip trigger="hover" :options="{placement: 'top'}">
         <div class="tooltip">
           Who's there?
@@ -10,23 +9,18 @@
           Knock Knock
         </btn>
       </tooltip>
-    </column>
-    <column col="4"></column>
-  </row>
+    </div>
+  </container>
 </template>
 
 <script>
-import Tooltip from "../components/Tooltip";
-import Row from "../components/Row";
-import Column from "../components/Col";
-import Btn from '../components/Button';
+import { Tooltip, Container, Btn } from 'mdbvue';
 
 export default {
   name: 'TooltipPage',
   components: {
-    tooltip: Tooltip,
-    Row,
-    Column,
+    Tooltip,
+    Container,
     Btn
   },
 };

@@ -2,13 +2,15 @@
   <container>
     <row>
       <column md="8" class="mx-auto">
-        <jumbotron class="mt-3">
+        <jumbotron class="mt-5">
           <h1><Fa icon="css3" class="grey-text" /> CSS</h1>
           <ul class="list-unstyled example-components-list">
-            <a href="#/components/icons"><li>Icons <fa icon="angle-right"/></li></a>
-            <a href="#/components/jumbotron"><li>Jumbotron <fa icon="angle-right"/></li></a>
-            <a href="#/components/masks"><li>Masks <fa icon="angle-right"/></li></a>
-            <a href="#/components/table"><li>Table <fa icon="angle-right"/></li></a>
+            <h6>FREE</h6>
+            <a href="#/css/hover"><li>Hover effects<fa icon="angle-right"/></li></a>
+            <a href="#/css/icons"><li>Icons <fa icon="angle-right"/></li></a>
+            <a href="#/css/jumbotron"><li>Jumbotron <fa icon="angle-right"/></li></a>
+            <a href="#/css/masks"><li>Masks <fa icon="angle-right"/></li></a>
+            <a href="#/css/table"><li>Table <fa icon="angle-right"/></li></a>
           </ul>
         </jumbotron>
       </column>
@@ -17,11 +19,7 @@
 </template>
 
 <script>
-import Container from '../components/Container.vue';
-import Row from '../components/Row.vue';
-import Column from '../components/Col.vue';
-import Fa from '../components/Fa.vue';
-import Jumbotron from '../components/Jumbotron.vue';
+import { Container, Row, Column, Fa, Jumbotron } from 'mdbvue';
 
 export default {
   name: 'CSSPage',
@@ -45,6 +43,11 @@ export default {
   background-color: white;
   border-bottom: 1px solid #f7f7f7;
   transition: .3s;
+}
+
+.example-components-list h6 {
+  padding: 20px 10px 5px 10px;
+  color: grey;
 }
 
 .example-components-list li:hover {

@@ -12,20 +12,18 @@ export default {
       default: "div"
     },
     color: {
-      type: String,
-      default: 'deep-purple'
+      type: String
     },
     textColor: {
-      type: String,
-      default: 'white'
+      type: String
     }
   },
   data() {
     return {
       className: classNames(
         'card-header',
-        this.color,
-        this.textColor + '-text'
+        this.color ? this.color : '',
+        this.textColor ? this.textColor + '-text' : ''
       )
     };
   }
