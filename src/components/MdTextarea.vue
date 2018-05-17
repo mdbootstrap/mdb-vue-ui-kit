@@ -1,7 +1,7 @@
 <template>
   <div :class="wrapperClass">
     <i v-if="icon" :class="iconClass"/>
-      <textarea :is="tag" :class="className" :type="type" :placeholder="placeholder" :disabled="disabled" @focus="focus" @blur="blur" ref="input" :rows="rows"/>
+      <textarea :is="tag" :class="className" :type="type" :placeholder="placeholder" :disabled="disabled" @focus="focus" @blur="blur" ref="input" :rows="rows" @input="$emit('input', $event.target.value)">{{value}}</textarea>
       <label v-if="label" :class="labelClass" ref="label" @click="focus">{{label}}
       </label><slot></slot>
   </div>
@@ -35,6 +35,10 @@ export default {
     },
     rows: {
       type: Number
+    },
+    value: {
+      type: String,
+      default: ''
     }
   },
   data() {
