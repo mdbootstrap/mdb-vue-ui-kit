@@ -1,7 +1,7 @@
 <template>
   <div :class="wrapperClass">
     <i v-if="icon" :class="iconClass"/>
-    <input :is="tag" :id="id" :class="className" :type="type" :placeholder="placeholder" :disabled="disabled" @focus="focus" @blur="blur" @click="wave" :checked="checked" :value="value" @change="change" ref="input" />
+    <input :is="tag" :id="id" :class="className" :type="type" :placeholder="placeholder" :disabled="disabled" @focus="focus" @blur="blur" @click="wave" :checked="checked" :value="value" @change="change" ref="input" @input="$emit('input', $event.target.value)"/>
     <label v-if="label" :class="labelClass" @click="focus" ref="label" :for="id">{{label}}</label>
     <slot></slot>
   </div>
