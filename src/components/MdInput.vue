@@ -119,7 +119,7 @@ export default {
       }
     },
     change(e) {
-      this.innerValue = e.path[0].value;
+      this.innerValue = this.$refs.input.value;
     }
   },
   mixins: [waves]
