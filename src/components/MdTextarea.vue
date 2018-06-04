@@ -40,15 +40,12 @@ export default {
     value: {
       type: String,
       default: ''
-<<<<<<< HEAD
     },
     iconClass: {
       type: String
     },
     iconStyle: {
       type: String
-=======
->>>>>>> 611720ffe4eec7cfdeafd37a937ab32eaf1f3d1c
     }
   },
   components: {
