@@ -1,4 +1,4 @@
-[![Material Design for Bootstrap](https://mdbootstrap.com/wp-content/uploads/2018/03/vue-cover-BootstrapStable.jpg)](https://mdbootstrap.com/vue/)
+[![Material Design for Bootstrap](https://mdbootstrap.com/img/Marketing/products/social/vue/mdb-vue-free.jpg)](https://mdbootstrap.com/vue/)
 
 # Material Design for Bootstrap 4 - Vue version
 
