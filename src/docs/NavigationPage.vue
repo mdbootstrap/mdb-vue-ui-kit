@@ -49,7 +49,7 @@
     </navbar>
     <!--/.Navbar-->
     <!--Navbar-->
-    <navbar v-show="navbarType == 'regular-fixed-transparent'" position="top" style="margin-top: 60px" dark color="primary" name="Your Logo" href="#" scrolling transparent>
+    <navbar class="fixed-transparent-navbar" v-show="navbarType == 'regular-fixed-transparent'" position="top" style="margin-top: 60px" dark name="Your Logo" href="#" scrolling transparent>
       <navbar-collapse>
         <navbar-nav>
           <navbar-item href="#" waves-fixed>Home</navbar-item>
@@ -64,7 +64,7 @@
     </navbar>
     <!--/.Navbar-->
     <!--Navbar-->
-    <navbar v-show="navbarType == 'regular-non-fixed-transparent'" style="margin-top: 5px; margin-bottom: -60px; z-index: 1" dark color="primary" name="Your Logo" href="#" transparent>
+    <navbar v-show="navbarType == 'regular-non-fixed-transparent'" style="margin-top: 5px; margin-bottom: -60px; z-index: 1" dark name="Your Logo" href="#" transparent>
       <navbar-collapse>
         <navbar-nav>
           <navbar-item href="#" waves-fixed>Home</navbar-item>
@@ -175,5 +175,11 @@ export default {
 <style>
 .navbar .dropdown-menu a:hover {
   color: inherit !important;
+}
+.navbar.fixed-transparent-navbar {
+  transition: 1s !important;
+}
+.navbar.fixed-transparent-navbar.scrolling-navbar.top-nav-collapse {
+  background-color: #4285F4 !important;
 }
 </style>

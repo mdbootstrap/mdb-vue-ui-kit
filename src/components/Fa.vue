@@ -52,9 +52,9 @@ export default {
       default: false
     }
   },
-  data() {
-    return {
-      className: classNames(
+  computed: {
+    className() {
+      return classNames(
         'fa',
         this.icon ? 'fa-' + this.icon : '',
         this.size ? 'fa-' + this.size : false,
@@ -67,8 +67,8 @@ export default {
         this.flip ? 'fa-flip-' + this.flip : false,
         this.inverse ? 'fa-inverse' : false,
         this.stack ? 'fa-' + this.stack : false
-      )
-    };
+      );
+    }
   }
 };
 </script>

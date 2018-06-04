@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="flyout">
-    <navbar dark position="top" class="default-color" name="MDB Vue" href="#/" scrolling>
+    <navbar dark position="top" class="default-color" name="MDB Vue" href="#/" scrolling brandStyle="font-weight: bolder;">
       <navbar-collapse>
         <navbar-nav right>
           <navbar-item href="#/" waves-fixed>Home</navbar-item>

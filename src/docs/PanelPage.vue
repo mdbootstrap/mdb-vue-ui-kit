@@ -4,7 +4,7 @@
   </column>
   <column col="4">
     <card align="center">
-      <card-header>Success!</card-header>
+      <card-header color="deep-purple" class="white-text">Success!</card-header>
       <card-body>
         <h3 class="card-title">This is a card</h3>
         <p class="card-text">And here comes some special text, just for you.</p>

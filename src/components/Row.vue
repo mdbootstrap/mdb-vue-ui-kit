@@ -1,5 +1,7 @@
 <template>
-  <div :is="tag" :class="className"><slot></slot></div>
+  <div :is="tag" :class="className">
+    <slot></slot>
+  </div>
 </template>
 
 <script>
@@ -12,12 +14,12 @@ export default {
       default: "div"
     },
   },
-  data() {
-    return {
-      className: classNames(
+  computed: {
+    className() {
+      return classNames(
         'row'
-      ),
-    };
+      );
+    }
   }
 };
 </script>

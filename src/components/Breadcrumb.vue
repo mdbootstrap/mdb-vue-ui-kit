@@ -12,12 +12,12 @@ export default {
       default: "ol"
     }
   },
-  data() {
-    return {
-      className: classNames(
+  computed: {
+    className() {
+      return classNames(
         'breadcrumb'
-      ),
-    };
+      );
+    }
   }
 };
 </script>

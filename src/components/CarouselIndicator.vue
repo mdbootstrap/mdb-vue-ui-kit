@@ -27,12 +27,12 @@ export default {
       type: String
     }
   },
-  data() {
-    return {
-      className: classNames(
+  computed: {
+    className() {
+      return classNames(
         this.active ? 'active' : ''
-      ),
-    };
+      );
+    }
   },
   methods: {
     click() {

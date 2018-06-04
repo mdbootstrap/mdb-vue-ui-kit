@@ -1,5 +1,5 @@
 <template>
-  <form :is="tag" :class="classes">
+  <form :is="tag" :class="className">
     <slot></slot>
   </form>
 </template>
@@ -13,16 +13,17 @@ export default {
       type: String,
       default: "form"
     },
-    className: {
+    classes: {
       type: String
     }
   },
-  data() {
-    return {
-      classes: classNames(
-        'form-inline'
-      )
-    };
+  computed: {
+    className() {
+      return classNames(
+        'form-inline',
+        this.classes
+      );
+    }
   }
 };
 </script>

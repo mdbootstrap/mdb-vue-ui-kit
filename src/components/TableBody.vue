@@ -1,5 +1,7 @@
 <template>
-  <tbody :is="tag" :class="className"><slot></slot></tbody>
+  <tbody :is="tag" :class="className">
+    <slot></slot>
+  </tbody>
 </template>
 
 <script>
@@ -15,12 +17,12 @@ export default {
       type: String,
     }
   },
-  data() {
-    return {
-      className: classNames(
+  computed: {
+    className() {
+      return classNames(
         this.color ? 'tbody-' + this.color : ''
-      )
-    };
+      );
+    }
   }
 };
 </script>

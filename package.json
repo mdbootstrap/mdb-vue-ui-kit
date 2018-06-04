@@ -1,6 +1,6 @@
 {
   "name": "mdbvue",
-  "version": "4.2.0",
+  "version": "4.3.0",
   "description": "Vue Bootstrap with Material Design",
   "author": "MDBootstrap <support@mdbootstrap.com>",
   "private": true,
@@ -18,7 +18,6 @@
     "chart.js": "^2.7.1",
     "classnames": "^2.2.5",
     "font-awesome": "^4.7.0",
-    "mdbootstrap": "^4.4.3",
     "moment": "^2.11.1",
     "npm": "^6.0.0",
     "vue": "^2.5.2",

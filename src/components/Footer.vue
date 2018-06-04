@@ -17,13 +17,13 @@ export default {
       type: String
     }
   },
-  data() {
-    return {
-      className: classNames(
+  computed: {
+    className() {
+      return classNames(
         'page-footer mt-4',
         this.color ? this.color : ''
-      )
-    };
+      );
+    }
   }
 };
 </script>

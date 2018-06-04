@@ -44,26 +44,31 @@ export default {
     },
     gradient: {
       type: String
+    },
+    circle: {
+      type: Boolean
     }
   },
-  data() {
-    return {
-      className: classNames(
+  computed: {
+    className() {
+      return classNames(
         'view',
         this.hover ? 'overlay' : '',
         this.zoom ? 'zoom' : '',
-        this.shadow ? 'pb-3':'',
         this.wrapperClass ? this.wrapperClass : '',
+        this.rounded ? 'rounded' : '',
+        this.circle ? 'rounded-circle' : '',
         this.gradient ? 'gradient-card-header ' + this.gradient + '-gradient' : ''
-      ),
-      imgClass: classNames(
-        this.rounded ? 'rounded-circle' : '',
-        this.shadow ? 'hoverable mx-auto' : '',
+      );
+    },
+    imgClass() {
+      return classNames(
         this.zoom ? 'w-100' : '',
         'img-fluid',
-        this.imageClass ? this.imageClass :''
-      )
-    };
+        this.imageClass ? this.imageClass :'',
+        this.shadow ? 'hoverable' : ''
+      );
+    }
   }
 };
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <button :is="tag" :class="[className, {'active': active, 'ripple-parent': waves}]" :type="type" :role="role" @click="wave">
+  <button :is="tag" :class="className" :type="type" :role="role" @click="wave">
     <fa v-if="iconLeft" :icon="icon"/>
     <slot></slot>
     <fa v-if="iconRight" :icon="icon"/>
@@ -95,9 +95,9 @@ export default {
       default: false
     }
   },
-  data () {
-    return {
-      className: classNames(
+  computed: {
+    className() {
+      return classNames(
         this.floating ? 'btn-floating' : 'btn',
         this.outline ? 'btn-outline-' + this.outline : this.flat ? 'btn-flat' : this.transparent ? '' : 'btn-' + this.color,
         this.size ? 'btn-' + this.size : '',
@@ -106,9 +106,11 @@ export default {
         this.gradient ? this.gradient + '-gradient' : '',
         this.rounded ? 'btn-rounded' : '',
         this.action ? 'btn-action' : '',
-        this.save ? 'btn-save' : ''
-      )
-    };
+        this.save ? 'btn-save' : '',
+        this.active ? 'active' : '',
+        this.waves ? 'ripple-parent' : ''
+      );
+    }
   },
   mixins: [waves]
 };

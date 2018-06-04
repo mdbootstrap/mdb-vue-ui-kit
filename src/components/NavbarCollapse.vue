@@ -16,12 +16,12 @@ export default {
       default: 'navbarSupportedContent'
     }
   },
-  data() {
-    return {
-      className: classNames(
+  computed: {
+    className() {
+      return classNames(
         'navbar-collapse'
-      )
-    };
+      );
+    }
   }
 };
 </script>

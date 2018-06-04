@@ -32,16 +32,16 @@ export default {
       default: 'blue'
     }
   },
-  data() {
-    return {
-      className: classNames(
+  computed: {
+    className() {
+      return classNames(
         'pagination',
         this.sm  ? 'pagination-sm' : false,
         this.lg  ? 'pagination-lg' : false,
         this.circle ? 'pagination-circle' : false,
         this.color ? 'pg-'+this.color : false
-      )
-    };
+      );
+    }
   }
 };
 </script>

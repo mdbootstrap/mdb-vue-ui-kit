@@ -1,15 +1,16 @@
 <template>
   <div :class="wrapperClass">
-    <i v-if="icon" :class="iconClass"/>
-      <textarea :is="tag" :class="className" :type="type" :placeholder="placeholder" :disabled="disabled" @focus="focus" @blur="blur" ref="input" :rows="rows"/>
-      <label v-if="label" :class="labelClass" ref="label" @click="focus">{{label}}
-      </label><slot></slot>
+    <fa v-if="icon" :icon="icon" :class="iconClasses" :style="iconStyle"/>
+    <textarea :is="tag" :class="textareaClass" :type="type" :placeholder="placeholder" :disabled="disabled" @focus="focus" @blur="blur" ref="input" :rows="rows" @input="$emit('input', $event.target.value)" v-model="value"></textarea>
+    <label v-if="label" :class="labelClass" ref="label" @click="focus">{{label}}
+    </label><slot></slot>
   </div>
 </template>
 
 <script>
 import classNames from 'classnames';
 import 'font-awesome/css/font-awesome.min.css';
+import Fa from './Fa';
 
 export default {
   props: {
@@ -35,26 +36,44 @@ export default {
     },
     rows: {
       type: Number
+    },
+    value: {
+      type: String,
+      default: ''
+    },
+    iconClass: {
+      type: String
+    },
+    iconStyle: {
+      type: String
     }
   },
-  data() {
-    return {
-      className: classNames(
+  components: {
+    Fa
+  },
+  computed: {
+    textareaClass() {
+      return classNames(
         'form-control md-textarea'
-      ),
-      wrapperClass: classNames(
+      );
+    },
+    wrapperClass() {
+      return classNames(
         'md-form'
-      ),
-      iconClass: classNames(
-        'fa',
-        this.icon ? 'fa-'+this.icon : '',
-        'prefix'
-      ),
-      labelClass: classNames(
+      );
+    },
+    iconClasses() {
+      return classNames(
+        'prefix',
+        this.iconClass
+      );
+    },
+    labelClass() {
+      return classNames(
         this.placeholder ? 'active': '',
         this.disabled ? 'disabled' : ''
-      ),
-    };
+      );
+    }
   },
   methods: {
     focus(e) {
@@ -73,5 +92,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

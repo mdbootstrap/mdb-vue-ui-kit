@@ -12,6 +12,7 @@
             <a href="#/components/breadcrumb"><li>Breadcrumb <fa icon="angle-right"/></li></a>
             <a href="#/components/card"><li>Cards <fa icon="angle-right"/></li></a>
             <a href="#/components/dropdown"><li>Dropdown <fa icon="angle-right"/></li></a>
+            <a href="#/components/edge-header"><li>Edge Header <fa icon="angle-right"/></li></a>
             <a href="#/components/inputs"><li>Input <fa icon="angle-right"/></li></a>
             <a href="#/components/listgroup"><li>List Group <fa icon="angle-right"/></li></a>
             <a href="#/components/media"><li>Media <fa icon="angle-right"/></li></a>

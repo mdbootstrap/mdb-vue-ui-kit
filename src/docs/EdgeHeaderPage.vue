@@ -18,29 +18,29 @@
 
               <h5 class="h5-responsive">Basic Textbox</h5>
               <!-- Basic textbox -->
-              <mdinput type="text" label="Example label"/>
+              <md-input type="text" label="Example label"/>
               <!-- /.Basic textbox -->
 
               <h5 class="h5-responsive">Textbox with icon</h5>
               <div class="md-form">
-                <mdinput type="text" label="Your name" icon="user" />
+                <md-input type="text" label="Your name" icon="user" />
               </div>
 
               <!--Email validation-->
               <h5 class="h5-responsive">E-mail validation</h5>
               <div class="md-form">
-                <mdinput type="email" label="Your email" icon="envelope" />
+                <md-input type="email" label="Your email" icon="envelope" />
               </div>
 
               <!--Textarea with icon-->
               <h5 class="h5-responsive">Textarea</h5>
               <div class="md-form">
-                <mdtextarea type="text" label="Textarea" icon="pencil"></mdtextarea>
+                <md-textarea type="text" label="Textarea" icon="pencil"></md-textarea>
               </div>
 
               <h5 class="h5-responsive">Disabled field</h5>
               <div class="md-form">
-                <mdinput type="text" label="Example label" disabled/>
+                <md-input type="text" label="Example label" disabled/>
               </div>
 
               <div class="text-xs-left">

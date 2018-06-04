@@ -1,5 +1,7 @@
 <template>
-  <table :is="tag" :class="className"><slot></slot></table>
+  <table :is="tag" :class="className">
+    <slot></slot>
+  </table>
 </template>
 
 <script>
@@ -52,9 +54,9 @@ export default {
       default: false
     }
   },
-  data() {
-    return {
-      className: classNames(
+  computed: {
+    className() {
+      return classNames(
         'table',
         this.dark ? 'table-dark' : '',
         this.striped ? 'table-striped' : '',
@@ -66,8 +68,8 @@ export default {
         this.responsiveMd ? 'table-responsive-md' : '',
         this.responsiveLg ? 'table-responsive-lg' : '',
         this.responsiveXl ? 'table-responsive-xl' : ''
-      )
-    };
+      );
+    }
   }
 };
 </script>

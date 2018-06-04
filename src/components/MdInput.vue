@@ -1,7 +1,7 @@
 <template>
   <div :class="wrapperClass">
-    <i v-if="icon" :class="iconClass"/>
-    <input :is="tag" :id="id" :class="className" :type="type" :placeholder="placeholder" :disabled="disabled" @focus="focus" @blur="blur" @click="wave" :checked="checked" :value="value" @change="change" ref="input" />
+    <fa v-if="icon" :icon="icon" :class="iconClasses" :style="iconStyle"/>
+    <input :is="tag" :id="id" :class="className" :type="type" :placeholder="placeholder" :disabled="disabled" @focus="focus" @blur="blur" @click="wave" :checked="checked" :value="value" @change="change" ref="input" @input="$emit('input', $event.target.value)"/>
     <label v-if="label" :class="labelClass" @click="focus" ref="label" :for="id">{{label}}</label>
     <slot></slot>
   </div>
@@ -11,6 +11,7 @@
 import classNames from 'classnames';
 import 'font-awesome/css/font-awesome.min.css';
 import waves from '../mixins/waves';
+import Fa from './Fa';
 
 export default {
   props: {
@@ -66,34 +67,60 @@ export default {
     value: {
       type: String,
       default: ''
+    },
+    labelColor: {
+      type: String
+    },
+    iconClass: {
+      type: String
+    },
+    iconStyle: {
+      type: String
+    },
+    inline: {
+      type: Boolean
     }
+  },
+  components: {
+    Fa
   },
   data() {
     return {
-      className: classNames(
+      innerValue: this.value
+    };
+  },
+  computed: {
+    className() {
+      return classNames(
         'form-control',
         this.type === 'checkbox' ? this.gap ? false : 'form-check-input' : false,
         this.type === 'radio' ? 'form-check-input' : false,
         this.filled && 'filled-in',
         this.gap ? 'with-gap' : false
-      ),
-      wrapperClass: classNames(
-        this.type === 'checkbox' || this.type === 'radio' ? 'form-check my-3' : 'md-form',
+      );
+    },
+    wrapperClass() {
+      return classNames(
+        (this.type === 'checkbox' || this.type === 'radio') && this.inline ?
+          'form-check' : this.type === 'checkbox' || this.type === 'radio' ? 'form-check my-3' : 'md-form',
         this.size ? 'form-' + this.size : '',
         this.waves ? 'ripple-parent' : ''
-      ),
-      iconClass: classNames(
-        'fa',
-        this.icon ? 'fa-'+this.icon : '',
-        'prefix'
-      ),
-      labelClass: classNames(
+      );
+    },
+    iconClasses(){
+      return classNames(
+        'prefix',
+        this.iconClass
+      );
+    },
+    labelClass() {
+      return classNames(
         this.placeholder ? 'active': '',
         this.disabled ? 'disabled' : '',
-        this.type === 'checkbox' || this.type === 'radio' ? 'form-check-label mr-5' : false
-      ),
-      innerValue: this.value
-    };
+        this.type === 'checkbox' || this.type === 'radio' ? 'form-check-label mr-5' : false,
+        this.labelColor && 'text-' + this.labelColor
+      );
+    }
   },
   methods: {
     focus(e) {
@@ -119,7 +146,7 @@ export default {
       }
     },
     change(e) {
-      this.innerValue = e.path[0].value;
+      this.innerValue = this.$refs.input.value;
     }
   },
   mixins: [waves]
@@ -129,5 +156,6 @@ export default {
 <style scoped>
 .navbar .md-form {
   margin-top: 0;
+  margin-bottom: 0;
 }
 </style>

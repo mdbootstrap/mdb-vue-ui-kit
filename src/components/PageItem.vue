@@ -1,5 +1,5 @@
 <template>
-  <li :is="tag" :class="[className, {'ripple-parent': waves}]" @click="wave">
+  <li :is="tag" :class="className" @click="wave">
     <a class="page-link" :href="href">
       <slot></slot>
     </a>
@@ -38,14 +38,15 @@ export default {
       default: true
     }
   },
-  data() {
-    return {
-      className: classNames(
+  computed: {
+    className() {
+      return classNames(
         'page-item',
         this.active ? 'active' : false,
-        this.disabled ? 'disabled' : false
-      )
-    };
+        this.disabled ? 'disabled' : false,
+        this.waves ? 'ripple-parent' : false
+      );
+    }
   },
   mixins: [waves]
 };

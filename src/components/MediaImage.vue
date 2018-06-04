@@ -33,14 +33,14 @@ export default {
       default: "#"
     }
   },
-  data() {
-    return {
-      className: classNames(
+  computed: {
+    className() {
+      return classNames(
         'd-flex',
         this.side === 'right'? 'ml-3' : 'mr-3',
         this.align === 'center' ? 'align-self-center' : this.align === 'bottom' ? 'align-self-end' : 'align-self-start'
-      )
-    };
+      );
+    }
   }
 };
 </script>

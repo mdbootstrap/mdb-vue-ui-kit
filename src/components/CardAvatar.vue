@@ -15,13 +15,13 @@ export default {
       type: String
     }
   },
-  data() {
-    return {
-      className: classNames(
+  computed: {
+    className() {
+      return classNames(
         'avatar',
         this.color ? this.color : ''
-      ),
-    };
+      );
+    }
   }
 };
 </script>

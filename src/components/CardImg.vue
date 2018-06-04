@@ -1,6 +1,6 @@
 <template>
   <div @click="wave" :class="{'ripple-parent': waves}">
-    <img :src="src" :alt="alt" :class="className">
+    <img :src="src" :alt="alt" :class="className"/>
   </div>
 </template>
 
@@ -20,14 +20,18 @@ export default {
     waves: {
       type: Boolean,
       default: false
+    },
+    top: {
+      type: Boolean
     }
   },
-  data() {
-    return {
-      className: classNames(
-        'img-fluid'
-      )
-    };
+  computed: {
+    className() {
+      return classNames(
+        'img-fluid',
+        this.top && 'card-img-top'
+      );
+    }
   },
   mixins: [waves]
 };

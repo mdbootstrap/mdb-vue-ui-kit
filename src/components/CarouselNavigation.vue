@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="top" class="controls-top">
+    <div v-if="top" :class="className">
       <a class="btn-floating" @click.prevent="prev"><i class="fa fa-chevron-left"></i></a>
       <a class="btn-floating" @click.prevent="next"><i class="fa fa-chevron-right"></i></a>
     </div>
@@ -18,16 +18,21 @@
 </template>
 
 <script>
+import classNames from 'classnames';
+
 export default {
-  data() {
-    return {
-    };
-  },
   props: {
     top: {
       type: Boolean,
       default: false
     },
+  },
+  computed: {
+    className() {
+      return classNames(
+        'controls-top'
+      );
+    }
   },
   methods: {
     prev() {

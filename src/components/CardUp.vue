@@ -18,14 +18,14 @@ export default {
       type: String
     }
   },
-  data() {
-    return {
-      className: classNames(
+  computed: {
+    className() {
+      return classNames(
         'card-up',
-        this.color ? this.color : '',
+        this.color ? this.color + '-color' : '',
         this.gradient ? this.gradient + '-gradient' : ''
-      ),
-    };
+      );
+    }
   }
 };
 </script>

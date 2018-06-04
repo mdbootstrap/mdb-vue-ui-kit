@@ -20,13 +20,13 @@ export default {
       default: false
     }
   },
-  data() {
-    return {
-      className: classNames(
+  computed: {
+    className() {
+      return classNames(
         this.fluid ? 'container-fluid' : 'container',
         this.freeBird ? 'free-bird' : ''
-      ),
-    };
+      );
+    }
   }
 };
 </script>

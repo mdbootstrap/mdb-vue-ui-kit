@@ -25,9 +25,9 @@ export default {
       default: false
     }
   },
-  data(){
-    return {
-      className: classNames(
+  computed: {
+    className(){
+      return classNames(
         'list-group-item',
         'justify-content-between',
         'd-flex',
@@ -35,8 +35,8 @@ export default {
         this.action ? 'list-group-item-action' : '',
         this.disabled ? 'disabled' : '',
         this.active ? 'active' : ''
-      )
-    };
+      );
+    }
   }
 };
 </script>

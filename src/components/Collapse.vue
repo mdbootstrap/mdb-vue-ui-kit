@@ -14,14 +14,13 @@ export default {
       default: "div"
     },
   },
-  data() {
-    return {
-      className: classNames(
+  computed: {
+    className() {
+      return classNames(
         'collapse show'
-      )
-    };
-  },
-
+      );
+    }
+  }
 };
 </script>
 

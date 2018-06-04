@@ -46,6 +46,18 @@ export default {
     }
   },
   computed: {
+    className() {
+      return classNames(
+        'carousel-item',
+        this.full && 'full'
+      );
+    },
+    maskClass() {
+      return classNames(
+        'mask',
+        this.mask ? 'rgba-' + this.mask : ''
+      );
+    },
     isVideo() {
       let videoFormats = ['webm', 'ogg', 'mp4'];
       const check = (formats, string) =>  {
@@ -55,18 +67,6 @@ export default {
       };
       return check(videoFormats, this.src);
     }
-  },
-  data() {
-    return {
-      className: classNames(
-        'carousel-item',
-        this.full && 'full'
-      ),
-      maskClass: classNames(
-        'mask',
-        this.mask ? 'rgba-' + this.mask : ''
-      )
-    };
   }
 };
 </script>

@@ -31,15 +31,15 @@ export default {
       default: false
     }
   },
-  data() {
-    return {
-      className: classNames(
+  computed: {
+    className() {
+      return classNames(
         this.indeterminate ? 'indeterminate' : 'progress-bar',
         this.striped ? 'progress-bar-striped' : '',
         this.color ? 'bg-' + this.color : '',
         this.animated ? 'progress-bar-animated' : ''
-      )
-    };
+      );
+    }
   }
 };
 </script>

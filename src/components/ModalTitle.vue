@@ -14,14 +14,13 @@ export default {
       default: "h5"
     },
   },
-  data() {
-    return {
-      className: classNames(
+  computed: {
+    className() {
+      return classNames(
         'modal-title'
-      )
-    };
-  },
-
+      );
+    }
+  }
 };
 </script>
 

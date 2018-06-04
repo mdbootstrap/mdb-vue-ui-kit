@@ -22,16 +22,15 @@ export default {
       default: false
     }
   },
-  data() {
-    return {
-      className: classNames(
+  computed: {
+    className() {
+      return classNames(
         'badge',
         this.color,
         this.pill ? 'badge-pill' : false
-      )
-    };
-  },
-
+      );
+    }
+  }
 };
 </script>
 

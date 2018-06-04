@@ -15,12 +15,12 @@ export default {
       type: String
     }
   },
-  data() {
-    return {
-      className: classNames(
+  computed: {
+    className() {
+      return classNames(
         this.color ? 'thead-' + this.color : ''
-      )
-    };
+      );
+    }
   }
 };
 </script>

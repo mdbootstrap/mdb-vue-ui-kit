@@ -31,9 +31,9 @@ export default {
       type: String
     }
   },
-  data() {
-    return {
-      className: classNames(
+  computed: {
+    className() {
+      return classNames(
         'dropdown-menu',
         'show',
         this.right ? 'dropdown-menu-right' : '',
@@ -41,8 +41,8 @@ export default {
         this.color ? 'dropdown-' + this.color : '',
         this.dropright ? 'dropright' : '',
         this.dropleft ? 'dropleft' : ''
-      ),
-    };
+      );
+    }
   }
 };
 </script>

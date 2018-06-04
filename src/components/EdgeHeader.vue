@@ -15,14 +15,13 @@ export default {
       type: String
     }
   },
-  data() {
-    return {
-      className: classNames(
+  computed: {
+    className() {
+      return classNames(
         'edge-header',
-        this.color ? this.color : '',
-        this.className
-      ),
-    };
+        this.color ? this.color : ''
+      );
+    }
   }
 };
 </script>

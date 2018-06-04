@@ -34,20 +34,45 @@ export default {
     testimonial: {
       type: Boolean,
       default: false
+    },
+    personal: {
+      type: Boolean,
+      default: false
+    },
+    news: {
+      type: Boolean,
+      default: false
+    },
+    ecommerce: {
+      type: Boolean,
+      default: false
+    },
+    collection: {
+      type: Boolean,
+      default: false
+    },
+    pricing: {
+      type: Boolean,
+      default: false
     }
   },
-  data() {
-    return {
-      className: classNames(
+  computed: {
+    className() {
+      return classNames(
         'card',
         this.cascade ? 'card-cascade' : '',
-        this.wide ? 'wider' : '',
-        this.narrow ? 'narrower' : '',
-        this.reverse ? 'reverse' : '',
+        this.wide ? 'card-cascade wider' : '',
+        this.narrow ? 'card-cascade narrower' : '',
+        this.reverse ? 'card-cascade wider reverse' : '',
         this.dark ? 'card-dark' : '',
-        this.testimonial ? 'testimonial-card' : ''
-      ),
-    };
+        this.testimonial ? 'testimonial-card' : '',
+        this.personal ? 'card-personal' : '',
+        this.news ? 'news-card' : '',
+        this.ecommerce && 'card-ecommerce',
+        this.collection && 'collection-card',
+        this.pricing && 'pricing-card'
+      );
+    }
   }
 };
 </script>

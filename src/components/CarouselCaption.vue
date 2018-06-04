@@ -1,11 +1,13 @@
 <template>
-  <div :is="tag" class="carousel-caption">
+  <div :is="tag" :class="className">
     <h3 class="h3-responsive">{{ title }}</h3>
     <p>{{ text }}</p>
   </div>
 </template>
 
 <script>
+import classNames from 'classnames';
+
 export default {
   props: {
     tag: {
@@ -19,6 +21,13 @@ export default {
       type: String
     }
   },
+  computed: {
+    className() {
+      return classNames(
+        'carousel-caption'
+      );
+    }
+  }
 };
 </script>
 

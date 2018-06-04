@@ -18,14 +18,14 @@ export default {
       type: String
     }
   },
-  data() {
-    return {
-      className: classNames(
+  computed: {
+    className() {
+      return classNames(
         'card-header',
         this.color ? this.color : '',
         this.textColor ? this.textColor + '-text' : ''
-      )
-    };
+      );
+    }
   }
 };
 </script>

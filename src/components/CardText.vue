@@ -12,12 +12,12 @@ export default {
       default: "p"
     }
   },
-  data() {
-    return {
-      className: classNames(
+  computed: {
+    className() {
+      return classNames(
         'card-text'
-      ),
-    };
+      );
+    }
   }
 };
 </script>

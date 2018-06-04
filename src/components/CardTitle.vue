@@ -12,12 +12,12 @@ export default {
       default: "h4"
     }
   },
-  data() {
-    return {
-      className: classNames(
+  computed: {
+    className() {
+      return classNames(
         'card-title'
-      ),
-    };
+      );
+    }
   }
 };
 </script>

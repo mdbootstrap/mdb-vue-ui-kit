@@ -1,5 +1,5 @@
 <template>
-  <div :is="tag" :class="[className, {'ripple-parent': waves}]" @click="wave">
+  <div :is="tag" :class="className" @click="wave">
     <p v-if="text" class="white-text">{{text}}</p>
     <slot></slot>
   </div>
@@ -33,15 +33,16 @@ export default {
       type: String
     }
   },
-  data() {
-    return {
-      className: classNames(
+  computed: {
+    className() {
+      return classNames(
         'mask',
         this.pattern ? 'pattern-' + this.pattern : '',
         this.flexCenter ? 'flex-center' : '',
-        this.overlay ? 'rgba-' + this.overlay : ''
-      ),
-    };
+        this.overlay ? 'rgba-' + this.overlay : '',
+        this.waves ? 'ripple-parent' : ''
+      );
+    }
   },
   mixins: [waves]
 };

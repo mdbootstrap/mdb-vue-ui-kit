@@ -1,5 +1,5 @@
 <template>
-  <li :class="[className, {'ripple-parent': waves}]" @click="wave">
+  <li :class="className" @click="wave">
     <a v-if="prev" class="page-link" href="#" aria-label="Previous">
       <span aria-hidden="true">&laquo;</span>
       <span class="sr-only">Previous</span>
@@ -50,14 +50,15 @@ export default {
       default: true
     }
   },
-  data() {
-    return {
-      className: classNames(
+  computed: {
+    className() {
+      return classNames(
         'page-item',
         this.active ? 'active' : false,
-        this.disabled ? 'disabled' : false
-      )
-    };
+        this.disabled ? 'disabled' : false,
+        this.waves ? 'ripple-parent' : false
+      );
+    }
   },
   mixins: [waves]
 };

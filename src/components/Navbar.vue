@@ -1,6 +1,6 @@
 <template>
-  <nav :class="className" :is="tag" :style="navStyle">
-    <a :href="href" class="navbar-brand">{{name}}
+  <nav :class="navClass" :is="tag" :style="navStyles">
+    <a :href="href" :class="brandClasses" :style="brandStyle">{{name}}
       <img v-if="src" :src="src" :alt="alt"/>
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" :data-target="target" aria-controls="navbarSupportedContent"
@@ -57,11 +57,26 @@ export default {
     },
     transparent: {
       type: Boolean
+    },
+    navStyle: {
+      type: String
+    },
+    brandClass: {
+      type: String
+    },
+    brandStyle: {
+      type: String
     }
   },
   data() {
     return {
-      className: classNames(
+      scrolled: false,
+      toggleClicked : true,
+    };
+  },
+  computed: {
+    navClass() {
+      return  classNames(
         'navbar',
         this.dark ? 'navbar-dark' : 'navbar-light',
         this.color ? this.color + '-color' : '',
@@ -70,14 +85,22 @@ export default {
             this.expand === 'large' ? 'navbar-expand-lg' : 'navbar-expand-lx',
         this.position === 'top' ? 'fixed-top' :
           this.position === 'bottom' ? 'fixed-bottom' : '',
-        this.scrolling ? 'scrolling-navbar' : ''
-      ),
-      scrolled: false,
-      toggleClicked : true,
-      navStyle: (
-        this.transparent && 'background-color: transparent !important'
-      )
-    };
+        this.scrolling ? 'scrolling-navbar' : '',
+        this.scrolled && 'top-nav-collapse'
+      );
+    },
+    brandClasses() {
+      return classNames(
+        'navbar-brand',
+        this.brandClass
+      );
+    },
+    navStyles() {
+      return (
+        this.transparent && 'background-color: transparent',
+        this.navStyle
+      );
+    }
   },
   methods: {
     toggle() {

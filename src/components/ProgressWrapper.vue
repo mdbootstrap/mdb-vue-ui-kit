@@ -18,16 +18,16 @@ export default {
       type: String
     }
   },
-  data() {
-    return {
-      className: classNames(
+  computed: {
+    className() {
+      return classNames(
         'progress',
         this.color ? this.color : ''
-      ),
-      style: {
-        height: this.height + 'px'
-      }
-    };
+      );
+    },
+    style() {
+      return { height: this.height + 'px'};
+    }
   }
 };
 </script>

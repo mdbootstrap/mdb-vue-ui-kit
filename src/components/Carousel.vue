@@ -12,7 +12,7 @@ export default {
       default: "div"
     },
     interval: {
-      type: Number,
+      type: [Number, Boolean],
       default: 10000
     },
     full: {
@@ -34,33 +34,43 @@ export default {
     thumbnails: {
       type: Boolean,
       default: false
+    },
+    testimonial: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
     return {
-      className: classNames(
+      render: 0
+    };
+  },
+  computed: {
+    className() {
+      return classNames(
         'carousel',
         this.half && 'half',
         this.full && 'full',
         this.fade && 'carousel-fade',
         this.multi && 'carousel-multi-item',
-        this.thumbnails && 'carousel-thumbnails'
-      ),
-      render: 0
-    };
+        this.thumbnails && 'carousel-thumbnails',
+        this.testimonial && 'testimonial-carousel'
+      );
+    }
   },
   created() {
-    if (this.render == 0) {
-      this.$emit('defineInterval', {'newInterval': this.interval});
-      this.render++;
+    if (this.interval !== false) {
+      if (this.render == 0) {
+        this.$emit('defineInterval', {'newInterval': this.interval});
+        this.render++;
+      }
     }
   }
 };
 </script>
 
 <style scoped>
-
-.full, .full carousel-item{
+.full, .full .carousel-item{
   height: 100% !important;
 }
 

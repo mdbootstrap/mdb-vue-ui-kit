@@ -34,16 +34,16 @@ export default {
       default: false
     }
   },
-  data() {
-    return {
-      className: classNames(
+  computed: {
+    className() {
+      return classNames(
         this.btnGroup ? 'btn-group' : 'dropdown',
         this.show ? 'show' : '',
         this.dropup ? 'dropup' : '',
         this.dropright ? 'dropright' : '',
         this.dropleft ? 'dropleft' : ''
-      )
-    };
+      );
+    }
   }
 };
 </script>

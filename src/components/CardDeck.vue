@@ -12,12 +12,12 @@ export default {
       default: "div"
     }
   },
-  data() {
-    return {
-      className: classNames(
+  computed: {
+    className() {
+      return classNames(
         'card-deck'
-      ),
-    };
+      );
+    }
   }
 };
 </script>

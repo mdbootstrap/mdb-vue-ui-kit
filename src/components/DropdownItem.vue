@@ -24,14 +24,14 @@ export default {
       default: false
     }
   },
-  data() {
-    return {
-      className: classNames(
+  computed: {
+    className() {
+      return classNames(
         'dropdown-item',
         this.disabled ? 'disabled' : '',
         this.active ? 'active' : ''
-      ),
-    };
+      );
+    }
   }
 };
 </script>

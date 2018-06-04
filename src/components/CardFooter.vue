@@ -20,14 +20,14 @@ export default {
       default: 'white'
     }
   },
-  data() {
-    return {
-      className: classNames(
+  computed: {
+    className() {
+      return classNames(
         'card-footer',
         this.color,
         this.textColor + '-text'
-      )
-    };
+      );
+    }
   }
 };
 </script>

@@ -19,12 +19,12 @@ export default {
       default: true
     }
   },
-  data() {
-    return {
-      className: classNames(
+  computed: {
+    className() {
+      return classNames(
         'modal-header'
-      )
-    };
+      );
+    }
   },
   methods: {
     away() {

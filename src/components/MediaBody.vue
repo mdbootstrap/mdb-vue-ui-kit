@@ -1,5 +1,5 @@
 <template>
-  <div :is="tag">
+  <div :class="className" :is="tag">
     <slot></slot>
   </div>
 </template>
@@ -14,12 +14,12 @@ export default {
       default: "div"
     }
   },
-  data () {
-    return {
-      className: classNames(
+  computed: {
+    className() {
+      return classNames(
         'media-body'
-      )
-    };
+      );
+    }
   }
 };
 

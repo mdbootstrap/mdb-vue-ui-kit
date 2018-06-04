@@ -1,6 +1,7 @@
 <template>
-<ul :is="tag" :class="className"><slot></slot></ul>
-
+  <ul :is="tag" :class="className">
+    <slot></slot>
+  </ul>
 </template>
 
 <script>
@@ -17,13 +18,13 @@ export default {
       default: false
     }
   },
-  data() {
-    return {
-      className: classNames(
+  computed: {
+    className() {
+      return classNames(
         'navbar-nav',
         this.right ? 'ml-auto' : 'mr-auto'
-      )
-    };
+      );
+    }
   }
 };
 </script>

@@ -54,9 +54,9 @@ export default {
       default: false
     }
   },
-  data() {
-    return {
-      className: classNames(
+  computed: {
+    className() {
+      return classNames(
         this.navLink ? 'nav-link' : 'btn',
         this.outline ? 'btn-outline-' + this.outline : 'btn-' + this.color,
         this.size ? 'btn-' + this.size : '',
@@ -64,8 +64,8 @@ export default {
         this.active ? 'active' : '',
         this.disabled ? 'disabled' : '',
         'dropdown-toggle'
-      ),
-    };
+      );
+    }
   },
   mixins: [waves]
 };

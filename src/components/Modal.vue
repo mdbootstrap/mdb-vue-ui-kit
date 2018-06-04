@@ -1,6 +1,6 @@
 <template>
   <transition name="fade">
-    <div :is="tag" :class="className">
+    <div :is="tag" :class="wrapperClass">
       <div :class="dialogClass" role="document" v-on-clickaway="away">
         <div :class="contentClass">
           <slot></slot>
@@ -47,13 +47,15 @@ export default {
       default: false
     }
   },
-  data() {
-    return {
-      className: classNames(
+  computed: {
+    wrapperClass() {
+      return classNames(
         'modal',
         this.removeBackdrop && 'modal-without-backdrop'
-      ),
-      dialogClass: classNames(
+      );
+    },
+    dialogClass() {
+      return classNames(
         'modal-dialog',
         this.size ? 'modal-' + this.size : '',
         this.side && 'modal-side',
@@ -61,11 +63,13 @@ export default {
         this.frame && 'modal-frame',
         this.position ? 'modal-' + this.position : '',
         this.centered && 'modal-dialog-centered'
-      ),
-      contentClass: classNames(
+      );
+    },
+    contentClass() {
+      return classNames(
         'modal-content'
-      )
-    };
+      );
+    }
   },
   methods: {
     away() {

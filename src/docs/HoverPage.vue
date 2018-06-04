@@ -25,8 +25,7 @@
       </column>
       <column md="6" class="text-center">
         <h4 class="text-center">Shadow effect</h4>
-        <view-wrapper rounded shadow src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(132).jpg">
-        </view-wrapper>
+        <img class="img-fluid rounded-circle hoverable" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(132).jpg" alt="shadow effect"/>
       </column>
     </row>
   </container>

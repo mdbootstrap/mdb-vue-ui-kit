@@ -13,12 +13,12 @@ export default {
       default: "ul"
     }
   },
-  data(){
-    return {
-      className: classNames(
+  computed: {
+    className(){
+      return classNames(
         'list-group'
-      )
-    };
+      );
+    }
   }
 };
 </script>

@@ -13,12 +13,12 @@ export default {
       default: "div"
     }
   },
-  data() {
-    return {
-      className: classNames(
+  computed: {
+    className() {
+      return classNames(
         'media'
-      )
-    };
+      );
+    }
   }
 };
 </script>
