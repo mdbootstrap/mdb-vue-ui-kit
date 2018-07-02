@@ -13,6 +13,7 @@
             <a href="#/advanced/modal"><li>Modal <fa icon="angle-right"/></li></a>
             <a href="#/advanced/popover"><li>Popover <fa icon="angle-right"/></li></a>
             <a href="#/advanced/tooltip"><li>Tooltip <fa icon="angle-right"/></li></a>
+            <a href="#/advanced/validation"><li>Validation <fa icon="angle-right"/></li></a>
             <a href="#/advanced/videocarousel"><li>Video Carousel <fa icon="angle-right"/></li></a>
           </ul>
         </jumbotron>

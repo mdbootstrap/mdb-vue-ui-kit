@@ -1,7 +1,17 @@
 <template>
   <div :class="wrapperClass">
-    <fa v-if="icon" :icon="icon" :class="iconClasses" :style="iconStyle"/>
-    <textarea :is="tag" :class="textareaClass" :type="type" :placeholder="placeholder" :disabled="disabled" @focus="focus" @blur="blur" ref="input" :rows="rows" @input="$emit('input', $event.target.value)" v-model="value"></textarea>
+    <i v-if="icon" :class="iconClasses"/>
+    <textarea 
+              :is="tag" 
+              :class="textareaClass" 
+              :type="type" 
+              :placeholder="placeholder" 
+              :disabled="disabled" @focus="focus" 
+              @blur="blur" 
+              ref="input" 
+              :rows="rows" 
+              @input="onChange"
+              v-model="innerValue" />
     <label v-if="label" :class="labelClass" ref="label" @click="focus">{{label}}
     </label><slot></slot>
   </div>
@@ -9,8 +19,8 @@
 
 <script>
 import classNames from 'classnames';
-import 'font-awesome/css/font-awesome.min.css';
-import Fa from './Fa';
+// import 'font-awesome/css/font-awesome.min.css';
+// import Fa from './Fa';
 
 export default {
   props: {
@@ -43,13 +53,14 @@ export default {
     },
     iconClass: {
       type: String
-    },
-    iconStyle: {
-      type: String
     }
   },
-  components: {
-    Fa
+
+  data() {
+    return {
+      isTouched: false,
+      innerValue: this.value
+    };
   },
   computed: {
     textareaClass() {
@@ -64,28 +75,32 @@ export default {
     },
     iconClasses() {
       return classNames(
-        'prefix',
+        'prefix fa fa-' + this.icon,
+        this.isTouched && 'active',
         this.iconClass
       );
     },
     labelClass() {
       return classNames(
-        this.placeholder ? 'active': '',
-        this.disabled ? 'disabled' : ''
+        (this.isTouched || this.placeholder || this.innerValue !== '') && 'active',
+        this.disabled && 'disabled'
       );
     }
   },
   methods: {
     focus(e) {
       if (this.label && !this.disabled) {
-        this.$refs.label.classList.add('active');
+        this.isTouched = true;
         this.$refs.input.focus();
       }
     },
     blur(e) {
-      if (this.$refs.label.parentElement.childNodes[2].value == ''){
-        this.$refs.label.classList.remove('active');
-      }
+      this.isTouched = false;
+      this.$refs.input.blur();
+    },
+    onChange(e) {
+      this.$emit('input', e.target.value);
+      this.innerValue = e.target.value;
     }
   }
 };

@@ -47,6 +47,9 @@ export default {
     },
     circle: {
       type: Boolean
+    },
+    cascade: {
+      type: Boolean
     }
   },
   computed: {
@@ -58,7 +61,8 @@ export default {
         this.wrapperClass ? this.wrapperClass : '',
         this.rounded ? 'rounded' : '',
         this.circle ? 'rounded-circle' : '',
-        this.gradient ? 'gradient-card-header ' + this.gradient + '-gradient' : ''
+        this.gradient ? 'gradient-card-header ' + this.gradient + '-gradient' : '',
+        this.cascade && 'view-cascade'
       );
     },
     imgClass() {

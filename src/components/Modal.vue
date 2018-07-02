@@ -45,6 +45,10 @@ export default {
     centered: {
       type: Boolean,
       default: false
+    },
+    cascade: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
@@ -62,7 +66,8 @@ export default {
         this.fullHeight && 'modal-full-height',
         this.frame && 'modal-frame',
         this.position ? 'modal-' + this.position : '',
-        this.centered && 'modal-dialog-centered'
+        this.centered && 'modal-dialog-centered',
+        this.cascade && 'cascading-modal'
       );
     },
     contentClass() {

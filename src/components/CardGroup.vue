@@ -10,12 +10,20 @@ export default {
     tag: {
       type: String,
       default: "div"
+    },
+    deck: {
+      type: Boolean,
+      default: false
+    },
+    column: {
+      type: Boolean,
+      defaul: false
     }
   },
   computed: {
     className() {
       return classNames(
-        'card-group'
+        this.deck ? 'card-deck' : this.column ? 'card-columns' : 'card-group'
       );
     }
   }

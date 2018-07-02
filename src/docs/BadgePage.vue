@@ -1,6 +1,6 @@
 <template>
   <div class="text-center mt-5">
-    <badge color="primary-color">Badge</badge>
+    <badge color="red">Badge</badge>
   </div>
 </template>
 

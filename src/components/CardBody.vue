@@ -13,13 +13,17 @@ export default {
     },
     color: {
       type: String
+    },
+    cascade: {
+      type: Boolean
     }
   },
   computed: {
     className() {
       return classNames(
         'card-body',
-        this.color ? this.color + '-color' : ''
+        this.color ? this.color + '-color' : '',
+        this.cascade && 'card-body-cascade'
       );
     }
   }

@@ -14,7 +14,6 @@ import CardImg from './components/CardImg';
 import CardText from './components/CardText';
 import CardTitle from './components/CardTitle';
 import CardGroup from './components/CardGroup';
-import CardDeck from './components/CardDeck';
 import Carousel from './components/Carousel';
 import CarouselCaption from './components/CarouselCaption';
 import CarouselIndicator from './components/CarouselIndicator';
@@ -70,6 +69,7 @@ import ModalHeader from './components/ModalHeader';
 import ModalTitle from './components/ModalTitle';
 import ModalBody from './components/ModalBody';
 import ModalFooter from './components/ModalFooter';
+import NumericInput from './components/NumericInput';
 import waves from './mixins/waves';
 
 export {
@@ -89,7 +89,6 @@ export {
   CardText,
   CardTitle,
   CardGroup,
-  CardDeck,
   Carousel,
   CarouselCaption,
   CarouselIndicator,
@@ -145,5 +144,6 @@ export {
   ModalTitle,
   ModalBody,
   ModalFooter,
+  NumericInput,
   waves
 };

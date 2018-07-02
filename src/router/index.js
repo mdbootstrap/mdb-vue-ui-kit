@@ -36,6 +36,10 @@ import MasksPage from '../docs/MasksPage';
 import HoverPage from '../docs/HoverPage';
 import VideoCarouselPage from '../docs/VideoCarouselPage';
 import ModalPage from '../docs/ModalPage';
+import FormsPage from '../docs/FormsPage';
+import SearchPage from '../docs/SearchPage';
+import ValidationPage from '../docs/ValidationPage';
+import FooterPage from '../docs/FooterPage';
 
 Vue.use(Router);
 
@@ -168,6 +172,10 @@ export default new Router({
       name: 'MasksPage',
       component: MasksPage
     }, {
+      path: '/advanced/validation',
+      name: 'ValidationPage',
+      component: ValidationPage
+    }, {
       path: '/advanced/videocarousel',
       name: 'VideoCarouselPage',
       component: VideoCarouselPage
@@ -175,6 +183,18 @@ export default new Router({
       path: '/advanced/modal',
       name: 'ModalPage',
       component: ModalPage
+    }, {
+      path: '/components/forms',
+      name: 'FormsPage',
+      component: FormsPage
+    }, {
+      path: '/components/search',
+      name: 'SearchPage',
+      component: SearchPage
+    }, {
+      path: '/components/footer',
+      name: 'FooterPage',
+      component: FooterPage
     }
   ]
 });

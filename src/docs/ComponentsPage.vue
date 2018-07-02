@@ -13,6 +13,8 @@
             <a href="#/components/card"><li>Cards <fa icon="angle-right"/></li></a>
             <a href="#/components/dropdown"><li>Dropdown <fa icon="angle-right"/></li></a>
             <a href="#/components/edge-header"><li>Edge Header <fa icon="angle-right"/></li></a>
+            <a href="#/components/footer"><li>Footer <fa icon="angle-right"/></li></a>
+            <a href="#/components/forms"><li>Forms <fa icon="angle-right"/></li></a>
             <a href="#/components/inputs"><li>Input <fa icon="angle-right"/></li></a>
             <a href="#/components/listgroup"><li>List Group <fa icon="angle-right"/></li></a>
             <a href="#/components/media"><li>Media <fa icon="angle-right"/></li></a>
@@ -21,6 +23,7 @@
             <a href="#/components/pagination"><li>Pagination <fa icon="angle-right"/></li></a>
             <a href="#/components/panel"><li>Panel <fa icon="angle-right"/></li></a>
             <a href="#/components/progress-bars"><li>Progress Bar <fa icon="angle-right"/></li></a>
+            <a href="#/components/search"><li>Search <fa icon="angle-right"/></li></a>
           </ul>
         </jumbotron>
       </column>

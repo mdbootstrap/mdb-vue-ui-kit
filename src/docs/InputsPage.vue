@@ -23,6 +23,12 @@
     <div style="margin-top:3rem;max-width:20rem">
       <md-textarea label="Textarea" />
     </div>
+    <h4 class="mt-5 mb-3"><strong>Numeric inputs</strong></h4>
+    <div style="margin-top:3rem;max-width:20rem">
+      <numeric-input :max="10" :emptyValue="5" minus /><br/>
+      <numeric-input :min="0" :max="10" :precision="1" :emptyValue="5.3" /><br/>
+      <numeric-input :min="0" :max="10" placeholder="placeholder" />
+    </div>
     <h4 class="mt-5 mb-3"><strong>Default inputs</strong></h4>
     <div style="max-width:20rem">
       <label for="exampleForm2">Default input</label>
@@ -236,14 +242,15 @@
 </template>
 
 <script>
-import { MdInput, MdTextarea, Container } from "mdbvue";
+import { MdInput, MdTextarea, Container, NumericInput } from "mdbvue";
 
 export default {
   name: "InputsPage",
   components: {
     MdInput,
     MdTextarea,
-    Container
+    Container,
+    NumericInput
   }
 };
 </script>

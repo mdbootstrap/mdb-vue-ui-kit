@@ -1,7 +1,20 @@
 <template>
   <div :class="wrapperClass">
-    <fa v-if="icon" :icon="icon" :class="iconClasses" :style="iconStyle"/>
-    <input :is="tag" :id="id" :class="className" :type="type" :placeholder="placeholder" :disabled="disabled" @focus="focus" @blur="blur" @click="wave" :checked="checked" :value="value" @change="change" ref="input" @input="$emit('input', $event.target.value)"/>
+    <i v-if="icon" :class="iconClasses"/>
+    <input :is="tag"
+           :id="id"
+           :class="className"
+           :type="type"
+           :placeholder="placeholder"
+           :disabled="disabled"
+           @focus="focus"
+           @blur="blur"
+           @click="wave"
+           :checked="checked"
+           :value="value"
+           @change="onChange"
+           ref="input"
+           @input="onChange"/>
     <label v-if="label" :class="labelClass" @click="focus" ref="label" :for="id">{{label}}</label>
     <slot></slot>
   </div>
@@ -9,9 +22,7 @@
 
 <script>
 import classNames from 'classnames';
-import 'font-awesome/css/font-awesome.min.css';
 import waves from '../mixins/waves';
-import Fa from './Fa';
 
 export default {
   props: {
@@ -46,7 +57,8 @@ export default {
       default: false
     },
     checked: {
-      type: Boolean
+      type: Boolean,
+      default: false
     },
     navInput: {
       type: Boolean,
@@ -65,7 +77,7 @@ export default {
       default: false
     },
     value: {
-      type: String,
+      type: [String, Number],
       default: ''
     },
     labelColor: {
@@ -74,25 +86,37 @@ export default {
     iconClass: {
       type: String
     },
-    iconStyle: {
-      type: String
-    },
     inline: {
       type: Boolean
+    },
+    successMsg: {
+      type: String
+    },
+    errorMsg: {
+      type: String
+    },
+    valid: {
+      type: Boolean
+    },
+    active: {
+      type: Boolean,
+      default: false
     }
-  },
-  components: {
-    Fa
   },
   data() {
     return {
-      innerValue: this.value
+      innerValue: this.value,
+      innerRadio: '',
+      isTouched: this.active,
+      innerChecked: this.checked
     };
   },
   computed: {
     className() {
       return classNames(
         'form-control',
+        this.valid && 'validate valid',
+        this.invalid && 'validate invalid',
         this.type === 'checkbox' ? this.gap ? false : 'form-check-input' : false,
         this.type === 'radio' ? 'form-check-input' : false,
         this.filled && 'filled-in',
@@ -109,13 +133,14 @@ export default {
     },
     iconClasses(){
       return classNames(
-        'prefix',
+        'prefix fa fa-' + this.icon,
+        this.isTouched && 'active',
         this.iconClass
       );
     },
     labelClass() {
       return classNames(
-        this.placeholder ? 'active': '',
+        (this.placeholder || this.isTouched || this.innerValue !=='') ? 'active': '',
         this.disabled ? 'disabled' : '',
         this.type === 'checkbox' || this.type === 'radio' ? 'form-check-label mr-5' : false,
         this.labelColor && 'text-' + this.labelColor
@@ -124,8 +149,8 @@ export default {
   },
   methods: {
     focus(e) {
-      if (this.label && !this.disabled) {
-        this.$refs.label.classList.add('active');
+      this.isTouched = true;
+      if (!this.disabled) {
         this.$refs.input.focus();
       }
       // styles for navbar input
@@ -135,18 +160,21 @@ export default {
       }
     },
     blur(e) {
-      if (this.label && !this.disabled && !this.placeholder) {
-        if (this.$refs.label.parentElement.childNodes[2].value == ''){
-          this.$refs.label.classList.remove('active');
-        }
-      }
+      this.isTouched = false;
       // styles for navbar input
       if (this.navInput) {
         this.$el.firstElementChild.style.borderColor = "#fff";
       }
     },
-    change(e) {
-      this.innerValue = this.$refs.input.value;
+    onChange(e) {
+      this.$emit('input', e.target.value);
+      if (this.type == "text" || this.type == "email" || this.type == "password") {
+        this.innerValue = e.target.value;
+      }
+      if (this.type == 'checkbox') {
+        this.innerChecked = e.target.checked;
+      }
+      this.$forceUpdate();
     }
   },
   mixins: [waves]

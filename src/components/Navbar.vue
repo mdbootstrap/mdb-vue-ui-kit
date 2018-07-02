@@ -135,14 +135,16 @@ export default {
       this.toggleClicked = true;
     },
     handleScroll() {
-      if (window.scrollY > 100 && this.scrolled === false) {
-        this.$el.style.paddingTop = 5 + 'px';
-        this.$el.style.paddingBottom = 5 + 'px';
-        this.scrolled = true;
-      } else if (window.scrollY < 100 && this.scrolled === true) {
-        this.$el.style.paddingTop = 12 + 'px';
-        this.$el.style.paddingBottom = 12 + 'px';
-        this.scrolled = false;
+      if (this.scrolling) {
+        if (window.scrollY > 100 && this.scrolled === false) {
+          this.$el.style.paddingTop = 5 + 'px';
+          this.$el.style.paddingBottom = 5 + 'px';
+          this.scrolled = true;
+        } else if (window.scrollY < 100 && this.scrolled === true) {
+          this.$el.style.paddingTop = 12 + 'px';
+          this.$el.style.paddingBottom = 12 + 'px';
+          this.scrolled = false;
+        }
       }
     },
     onClick(e) {
