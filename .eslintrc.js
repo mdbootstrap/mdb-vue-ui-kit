@@ -99,10 +99,10 @@ module.exports = {
             }
         ],
         'line-comment-position': 'error',
-        'linebreak-style': [
-            'warn',
-            'unix'
-        ],
+        // 'linebreak-style': [
+        //     'warn',
+        //     'windows'
+        // ],
         'lines-around-comment': 'error',
         'lines-around-directive': 'error',
         'max-depth': 'error',
