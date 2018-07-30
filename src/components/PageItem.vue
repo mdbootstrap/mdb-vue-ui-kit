@@ -11,7 +11,7 @@
 import classNames from 'classnames';
 import waves from '../mixins/waves';
 
-export default {
+const PageItem = {
   props: {
     tag: {
       type: String,
@@ -50,6 +50,9 @@ export default {
   },
   mixins: [waves]
 };
+
+export default PageItem;
+export { PageItem as mdbPageItem };
 </script>
 
 <style scoped>

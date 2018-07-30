@@ -5,7 +5,7 @@
 <script>
 import classNames from 'classnames';
 
-export default {
+const Card = {
   props: {
     tag: {
       type: String,
@@ -54,6 +54,15 @@ export default {
     pricing: {
       type: Boolean,
       default: false
+    },
+    color: {
+      type: String
+    },
+    textColor: {
+      type: String
+    },
+    border: {
+      type: String
     }
   },
   computed: {
@@ -70,11 +79,17 @@ export default {
         this.news ? 'news-card' : '',
         this.ecommerce && 'card-ecommerce',
         this.collection && 'collection-card',
-        this.pricing && 'pricing-card'
+        this.pricing && 'pricing-card',
+        (this.color && !this.textColor) ? this.color + ' white-text':
+          this.textColor ? this.color + ' ' + this.textColor+'-text' : false,
+        this.border && 'border-'+this.border
       );
     }
   }
 };
+
+export default Card;
+export { Card as mdbCard };
 </script>
 
 <style scoped>

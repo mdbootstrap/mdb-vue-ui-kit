@@ -1,5 +1,5 @@
 import { Doughnut } from 'vue-chartjs';
-export default {
+const DoughnutChart = {
   extends: Doughnut,
   props: ['data', 'options'],
   mounted () {
@@ -7,3 +7,6 @@ export default {
     this.renderChart(this.data, this.options);
   }
 };
+
+export default DoughnutChart;
+export { DoughnutChart as mdbDoughnutChart };

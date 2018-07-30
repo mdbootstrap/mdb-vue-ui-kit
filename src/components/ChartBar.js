@@ -1,5 +1,5 @@
 import { Bar } from 'vue-chartjs';
-export default {
+const BarChart = {
   extends: Bar,
   props: ['data', 'options'],
   mounted () {
@@ -7,3 +7,6 @@ export default {
     this.renderChart(this.data, this.options);
   }
 };
+
+export default BarChart;
+export { BarChart as mdbBarChart };

@@ -1,5 +1,5 @@
 import { PolarArea } from 'vue-chartjs';
-export default {
+const PolarChart = {
   extends: PolarArea,
   props: ['data', 'options'],
   mounted () {
@@ -7,3 +7,6 @@ export default {
     this.renderChart(this.data, this.options);
   }
 };
+
+export default PolarChart;
+export { PolarChart as mdbPolarChart };

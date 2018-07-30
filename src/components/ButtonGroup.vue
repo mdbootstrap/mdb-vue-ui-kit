@@ -7,7 +7,7 @@
 <script>
 import classNames from 'classnames';
 
-export default {
+const Btn = {
   props: {
     tag: {
       type: String,
@@ -22,6 +22,10 @@ export default {
     }
   }
 };
+
+export default Btn;
+export { Btn as mdbBtnGroup };
+
 </script>
 
 <style scoped>

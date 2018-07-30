@@ -9,7 +9,7 @@
 import classNames from 'classnames';
 import waves from '../mixins/waves';
 
-export default {
+const MdMask = {
   props: {
     tag: {
       type: String,
@@ -46,6 +46,9 @@ export default {
   },
   mixins: [waves]
 };
+
+export default MdMask;
+export { MdMask as mdbMask };
 </script>
 
 <style scoped>

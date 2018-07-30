@@ -7,7 +7,7 @@
 <script>
 import classNames from 'classnames';
 
-export default {
+const Footer = {
   props: {
     tag: {
       type: String,
@@ -26,6 +26,9 @@ export default {
     }
   }
 };
+
+export default Footer;
+export { Footer as mdbFooter };
 </script>
 
 <style scoped>

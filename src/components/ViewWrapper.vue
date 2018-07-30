@@ -8,7 +8,7 @@
 <script>
 import classNames from 'classnames';
 
-export default {
+const ViewWrapper = {
   props: {
     tag: {
       type: String,
@@ -75,6 +75,9 @@ export default {
     }
   }
 };
+
+export default ViewWrapper;
+export { ViewWrapper as mdbView };
 </script>
 
 <style scoped>

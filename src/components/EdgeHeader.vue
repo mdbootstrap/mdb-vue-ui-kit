@@ -5,7 +5,7 @@
 <script>
 import classNames from 'classnames';
 
-export default {
+const EdgeHeader = {
   props: {
     tag: {
       type: String,
@@ -24,6 +24,9 @@ export default {
     }
   }
 };
+
+export default EdgeHeader;
+export { EdgeHeader as mdbEdgeHeader };
 </script>
 
 <style scoped>

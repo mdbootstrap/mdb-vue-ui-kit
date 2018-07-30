@@ -1,6 +1,9 @@
 <template>
   <div id="app" class="flyout">
-    <navbar dark position="top" class="default-color" name="MDB Vue" href="#/" scrolling brandStyle="font-weight: bolder;">
+    <navbar dark position="top" class="default-color" scrolling>
+      <mdb-navbar-brand href="#/" style="font-weight: bolder;">
+        MDB Vue
+      </mdb-navbar-brand>
       <navbar-collapse>
         <navbar-nav right>
           <navbar-item href="#/" waves-fixed>Home</navbar-item>
@@ -28,6 +31,7 @@ import NavbarNav from '@/components/NavbarNav.vue';
 import NavbarCollapse from '@/components/NavbarCollapse.vue';
 import Ftr from '@/components/Footer.vue';
 import EdgHd from '@/components/EdgeHeader.vue';
+import mdbNavbarBrand from '@/components/NavbarBrand.vue';
 
 export default {
   name: 'app',
@@ -38,6 +42,7 @@ export default {
     NavbarCollapse,
     Ftr,
     EdgHd,
+    mdbNavbarBrand
   }
 };
 

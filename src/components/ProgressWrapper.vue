@@ -5,7 +5,7 @@
 <script>
 import classNames from 'classnames';
 
-export default {
+const ProgressWrapper = {
   props: {
     tag: {
       type: String,
@@ -30,6 +30,9 @@ export default {
     }
   }
 };
+
+export default ProgressWrapper;
+export { ProgressWrapper as mdbProgressWrapper };
 </script>
 
 <style scoped>

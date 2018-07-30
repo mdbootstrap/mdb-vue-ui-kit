@@ -5,7 +5,7 @@
 <script>
 import classNames from 'classnames';
 
-export default {
+const ProgressBar = {
   props: {
     tag: {
       type: String,
@@ -42,6 +42,9 @@ export default {
     }
   }
 };
+
+export default ProgressBar;
+export { ProgressBar as mdbProgress };
 </script>
 
 <style scoped>

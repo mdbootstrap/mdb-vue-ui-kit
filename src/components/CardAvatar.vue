@@ -5,7 +5,7 @@
 <script>
 import classNames from 'classnames';
 
-export default {
+const CardAvatar = {
   props: {
     tag: {
       type: String,
@@ -24,6 +24,9 @@ export default {
     }
   }
 };
+
+export default CardAvatar;
+export { CardAvatar as mdbCardAvatar };
 </script>
 
 <style scoped>

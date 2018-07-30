@@ -14,11 +14,14 @@
 <script>
 import classNames from 'classnames';
 
-export default {
+const CarouselItem = {
   props: {
     tag: {
       type: String,
       default: "div"
+    },
+    active: {
+      type: Boolean
     },
     src: {
       type: String
@@ -49,13 +52,14 @@ export default {
     className() {
       return classNames(
         'carousel-item',
+        this.active && 'active',
         this.full && 'full'
       );
     },
     maskClass() {
       return classNames(
         'mask',
-        this.mask ? 'rgba-' + this.mask : ''
+        this.mask && 'rgba-' + this.mask
       );
     },
     isVideo() {
@@ -69,6 +73,9 @@ export default {
     }
   }
 };
+
+export default CarouselItem;
+export { CarouselItem as mdbCarouselItem };
 </script>
 
 <style scoped>

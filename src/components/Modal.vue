@@ -14,7 +14,7 @@
 import classNames from 'classnames';
 import { mixin as clickaway } from 'vue-clickaway';
 
-export default {
+const Modal = {
   props: {
     tag: {
       type: String,
@@ -86,6 +86,9 @@ export default {
   },
   mixins: [clickaway]
 };
+
+export default Modal;
+export { Modal as mdbModal };
 </script>
 
 <style scoped>

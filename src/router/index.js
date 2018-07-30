@@ -13,6 +13,13 @@ import BadgePage from '../docs/BadgePage';
 import CardPage from '../docs/CardPage';
 import ButtonPage from '../docs/ButtonPage';
 import TablePage from '../docs/TablePage';
+import TableAdditionalPage from '../docs/TableAdditionalPage';
+import DataTablePage from '../docs/DataTablePage';
+import TableResponsivePage from '../docs/TableResponsivePage';
+import TablePaginationPage from '../docs/TablePaginationPage';
+import TableScrollPage from '../docs/TableScrollPage';
+import TableSearchPage from '../docs/TableSearchPage';
+import TableSortPage from '../docs/TableSortPage';
 import DropdownPage from '../docs/DropdownPage';
 import JumbotronPage from '../docs/JumbotronPage';
 import CarouselPage from '../docs/CarouselPage';
@@ -87,6 +94,34 @@ export default new Router({
       path: '/css/table',
       name: 'TablePage',
       component: TablePage
+    }, {
+      path: '/css/table-additional',
+      name: 'TableAdditionalPage',
+      component: TableAdditionalPage
+    }, {
+      path: '/advanced/datatable',
+      name: 'DataTablePage',
+      component: DataTablePage
+    }, {
+      path: '/advanced/table-pagination',
+      name: 'TablePaginationPage',
+      component: TablePaginationPage
+    }, {
+      path: '/css/table-responsive',
+      name: 'TableResponsviePage',
+      component: TableResponsivePage
+    }, {
+      path: '/advanced/table-search',
+      name: 'TableSearchPage',
+      component: TableSearchPage
+    }, {
+      path: '/advanced/table-sort',
+      name: 'TableSortPage',
+      component: TableSortPage
+    }, {
+      path: '/advanced/table-scroll',
+      name: 'TableScrollPage',
+      component: TableScrollPage
     }, {
       path: '/components/dropdown',
       name: 'DropdownPage',

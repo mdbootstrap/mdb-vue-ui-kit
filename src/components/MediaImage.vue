@@ -7,7 +7,7 @@
 <script>
 import classNames from 'classnames';
 
-export default {
+const MediaImage = {
   props: {
     tag: {
       type: String,
@@ -43,6 +43,9 @@ export default {
     }
   }
 };
+
+export default MediaImage;
+export { MediaImage as mdbMediaImage };
 </script>
 
 <style scoped>

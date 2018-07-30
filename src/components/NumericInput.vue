@@ -6,7 +6,7 @@
 import classNames from 'classnames';
 import VueNumeric from 'vue-numeric';
 
-export default {
+const NumericInput = {
   props: {
     emptyValue: {
       type: Number,
@@ -47,6 +47,9 @@ export default {
     number: ''
   }),
 };
+
+export default NumericInput;
+export { NumericInput as mdbNumericInput };
 </script>
 
 

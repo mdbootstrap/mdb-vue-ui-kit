@@ -8,7 +8,7 @@
 <script>
 import classNames from 'classnames';
 
-export default {
+const CarouselCaption = {
   props: {
     tag: {
       type: String,
@@ -29,6 +29,9 @@ export default {
     }
   }
 };
+
+export default CarouselCaption;
+export { CarouselCaption as mdbCarouselCaption };
 </script>
 
 <style scoped>

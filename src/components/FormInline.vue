@@ -7,7 +7,7 @@
 <script>
 import classNames from 'classnames';
 
-export default {
+const FormInline = {
   props: {
     tag: {
       type: String,
@@ -26,6 +26,9 @@ export default {
     }
   }
 };
+
+export default FormInline;
+export { FormInline as mdbFormInline };
 </script>
 
 <style scoped>

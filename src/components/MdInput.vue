@@ -24,7 +24,7 @@
 import classNames from 'classnames';
 import waves from '../mixins/waves';
 
-export default {
+const MdInput = {
   props: {
     tag: {
       type: String,
@@ -179,6 +179,9 @@ export default {
   },
   mixins: [waves]
 };
+
+export default MdInput;
+export { MdInput as mdbInput };
 </script>
 
 <style scoped>

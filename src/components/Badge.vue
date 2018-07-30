@@ -7,7 +7,7 @@
 <script>
 import classNames from 'classnames';
 
-export default {
+const Badge =  {
   props: {
     tag: {
       type: String,
@@ -32,6 +32,9 @@ export default {
     }
   }
 };
+
+export default Badge;
+export { Badge as mdbBadge };
 </script>
 
 <style scoped>

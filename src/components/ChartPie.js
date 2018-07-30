@@ -1,5 +1,5 @@
 import { Pie } from 'vue-chartjs';
-export default {
+const PieChart = {
   extends: Pie,
   props: ['data', 'options'],
   mounted () {
@@ -7,3 +7,6 @@ export default {
     this.renderChart(this.data, this.options);
   }
 };
+
+export default PieChart;
+export { PieChart as mdbPieChart };

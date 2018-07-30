@@ -5,7 +5,7 @@
 <script>
 import classNames from 'classnames';
 
-export default {
+const TblHead = {
   props: {
     tag: {
       type: String,
@@ -13,16 +13,24 @@ export default {
     },
     color: {
       type: String
+    },
+    textWhite: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
     className() {
       return classNames(
-        this.color ? 'thead-' + this.color : ''
+        (this.color !== 'dark' && this.color !== 'light') ? this.color : `thead-${this.color}`,
+        this.textWhite && 'text-white'
       );
     }
   }
 };
+
+export default TblHead;
+export { TblHead as mdbTblHead };
 </script>
 
 <style scoped>

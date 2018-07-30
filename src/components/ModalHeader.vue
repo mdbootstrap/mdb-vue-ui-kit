@@ -8,7 +8,7 @@
 <script>
 import classNames from 'classnames';
 
-export default {
+const ModalHeader = {
   props: {
     tag: {
       type: String,
@@ -32,6 +32,9 @@ export default {
     }
   }
 };
+
+export default ModalHeader;
+export { ModalHeader as mdbModalHeader };
 </script>
 
 <style scoped>

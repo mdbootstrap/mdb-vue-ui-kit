@@ -8,7 +8,7 @@
 import classNames from 'classnames';
 import waves from '../mixins/waves';
 
-export default {
+const CardImg = {
   props: {
     src: {
       type: String,
@@ -35,6 +35,9 @@ export default {
   },
   mixins: [waves]
 };
+
+export default CardImg;
+export { CardImg as mdbCardImage };
 </script>
 
 <style scoped>

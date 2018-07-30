@@ -6,7 +6,7 @@
 
 <script>
 import classNames from 'classnames';
-export default {
+const ListGroupItem = {
   props: {
     tag: {
       type: String,
@@ -39,6 +39,9 @@ export default {
     }
   }
 };
+
+export default ListGroupItem;
+export { ListGroupItem as mdbListGroupItem };
 </script>
 
 <style scoped>

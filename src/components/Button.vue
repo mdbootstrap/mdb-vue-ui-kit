@@ -11,7 +11,7 @@ import classNames from 'classnames';
 import waves from '../mixins/waves';
 import Fa from './Fa';
 
-export default {
+const Btn =  {
   components: {
     Fa
   },
@@ -114,6 +114,10 @@ export default {
   },
   mixins: [waves]
 };
+
+export default Btn;
+export { Btn as mdbBtn };
+
 </script>
 
 <style scoped>

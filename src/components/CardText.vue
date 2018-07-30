@@ -5,7 +5,7 @@
 <script>
 import classNames from 'classnames';
 
-export default {
+const CardText = {
   props: {
     tag: {
       type: String,
@@ -20,6 +20,9 @@ export default {
     }
   }
 };
+
+export default CardText;
+export { CardText as mdbCardText };
 </script>
 
 <style scoped>

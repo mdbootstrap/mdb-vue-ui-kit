@@ -6,7 +6,7 @@
 import classNames from 'classnames';
 import 'font-awesome/css/font-awesome.min.css';
 
-export default {
+const Fa = {
   props: {
     icon: {
       type: String,
@@ -71,6 +71,9 @@ export default {
     }
   }
 };
+
+export default Fa;
+export { Fa as mdbIcon };
 </script>
 
 <style scoped>

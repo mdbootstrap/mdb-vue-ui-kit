@@ -7,7 +7,7 @@
 <script>
 import classNames from 'classnames';
 
-export default {
+const Jumbotron = {
   props: {
     tag: {
       type: String,
@@ -27,6 +27,9 @@ export default {
     }
   }
 };
+
+export default Jumbotron;
+export { Jumbotron as mdbJumbotron };
 </script>
 
 <style scoped>

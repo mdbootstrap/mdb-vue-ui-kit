@@ -5,7 +5,7 @@
 <script>
 import classNames from 'classnames';
 
-export default {
+const Column = {
   props: {
     tag: {
       type: String,
@@ -60,6 +60,9 @@ export default {
     }
   }
 };
+
+export default Column;
+export { Column as mdbCol };
 </script>
 
 <style scoped>

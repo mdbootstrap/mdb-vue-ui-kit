@@ -9,7 +9,7 @@
 import classNames from 'classnames';
 import waves from '../mixins/waves';
 
-export default {
+const DropdownToggle = {
   props: {
     tag: {
       type: String,
@@ -69,6 +69,9 @@ export default {
   },
   mixins: [waves]
 };
+
+export default DropdownToggle;
+export { DropdownToggle as mdbDropdownToggle };
 </script>
 
 <style scoped>

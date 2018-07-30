@@ -5,7 +5,7 @@
 <script>
 import classNames from 'classnames';
 
-export default {
+const NavbarCollapse = {
   props: {
     tag: {
       type: String,
@@ -24,6 +24,9 @@ export default {
     }
   }
 };
+
+export default NavbarCollapse;
+export { NavbarCollapse as mdbNavbarToggler };
 </script>
 
 <style scoped>

@@ -5,7 +5,7 @@
 <script>
 import classNames from 'classnames';
 
-export default {
+const Breadcrumb =  {
   props: {
     tag: {
       type: String,
@@ -20,6 +20,10 @@ export default {
     }
   }
 };
+
+export default Breadcrumb;
+export { Breadcrumb as mdbBreadcrumb };
+
 </script>
 
 <style scoped>

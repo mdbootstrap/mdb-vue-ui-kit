@@ -1,15 +1,13 @@
 <template>
-  <nav>
     <ul :is="tag" :class="className">
       <slot></slot>
     </ul>
-  </nav>
 </template>
 
 <script>
 import classNames from 'classnames';
 
-export default {
+const Pagination = {
   props: {
     tag: {
       type: String,
@@ -44,6 +42,9 @@ export default {
     }
   }
 };
+
+export default Pagination;
+export { Pagination as mdbPagination };
 </script>
 
 <style scoped>

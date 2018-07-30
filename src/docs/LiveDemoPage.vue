@@ -74,8 +74,8 @@
             <navbar-item href="#">Pricing</navbar-item>
             <!-- Dropdown -->
             <dropdown tag="li" class="nav-item">
-              <dropdown-toggle @click.native="toggleDropdown(0)" tag="a" navLink color="primary" waves-fixed>Dropdown</dropdown-toggle>
-              <dropdown-menu v-show="active[0]" >
+              <dropdown-toggle slot="toggle" tag="a" navLink color="primary" waves-fixed>Dropdown</dropdown-toggle>
+              <dropdown-menu>
                 <dropdown-item>Action</dropdown-item>
                 <dropdown-item>Another action</dropdown-item>
                 <dropdown-item>Something else here</dropdown-item>
@@ -96,8 +96,8 @@
             <navbar-item href="#">Pricing</navbar-item>
             <!-- Dropdown -->
             <dropdown tag="li" class="nav-item">
-              <dropdown-toggle @click.native="toggleDropdown(1)" tag="a" navLink color="default" waves-fixed>Dropdown</dropdown-toggle>
-              <dropdown-menu v-show="active[1]" color="default">
+              <dropdown-toggle slot="toggle" tag="a" navLink color="default" waves-fixed>Dropdown</dropdown-toggle>
+              <dropdown-menu color="default">
                 <dropdown-item>Action</dropdown-item>
                 <dropdown-item>Another action</dropdown-item>
                 <dropdown-item>Something else here</dropdown-item>
@@ -108,8 +108,8 @@
             <navbar-item href="#"><fa icon="twitter"></fa></navbar-item>
             <navbar-item href="#"><fa icon="google-plus"></fa></navbar-item>
             <dropdown tag="li" class="nav-item">
-              <dropdown-toggle @click.native="toggleDropdown(2)" tag="a" navLink color="default" waves-fixed><fa icon="user"></fa></dropdown-toggle>
-              <dropdown-menu v-show="active[2]" color="default">
+              <dropdown-toggle slot="toggle" tag="a" navLink color="default" waves-fixed><fa icon="user"></fa></dropdown-toggle>
+              <dropdown-menu color="default">
                 <dropdown-item>Action</dropdown-item>
                 <dropdown-item>Another action</dropdown-item>
                 <dropdown-item>Something else here</dropdown-item>
@@ -126,8 +126,8 @@
             <navbar-item href="#"><fa icon="envelope"></fa> Contact</navbar-item>
             <navbar-item href="#"><fa icon="cog"></fa> Settings</navbar-item>
             <dropdown tag="li" class="nav-item">
-              <dropdown-toggle @click.native="toggleDropdown(3)" tag="a" navLink color="danger" waves-fixed><fa icon="user"></fa> Profile</dropdown-toggle>
-              <dropdown-menu v-show="active[3]" color="danger">
+              <dropdown-toggle slot="toggle" tag="a" navLink color="danger" waves-fixed><fa icon="user"></fa> Profile</dropdown-toggle>
+              <dropdown-menu color="danger">
                 <dropdown-item>Action</dropdown-item>
                 <dropdown-item>Another action</dropdown-item>
                 <dropdown-item>Something else here</dropdown-item>
@@ -151,40 +151,40 @@
       <h2>Dropdowns</h2>
       <h5>Basic examples</h5>
       <dropdown>
-        <dropdown-toggle @click.native="toggleDropdown(4)" color="default">Dropdown 1</dropdown-toggle>
-        <dropdown-menu v-show="active[4]" color="default">
+        <dropdown-toggle slot="toggle" color="default">Dropdown 1</dropdown-toggle>
+        <dropdown-menu color="default">
           <dropdown-item>Action</dropdown-item>
           <dropdown-item>Another action</dropdown-item>
           <dropdown-item>Something else here</dropdown-item>
         </dropdown-menu>
       </dropdown>
       <dropdown>
-        <dropdown-toggle @click.native="toggleDropdown(5)" color="primary">Dropdown 2</dropdown-toggle>
-        <dropdown-menu v-show="active[5]" color="primary">
+        <dropdown-toggle slot="toggle" color="primary">Dropdown 2</dropdown-toggle>
+        <dropdown-menu color="primary">
           <dropdown-item>Action</dropdown-item>
           <dropdown-item>Another action</dropdown-item>
           <dropdown-item>Something else here</dropdown-item>
         </dropdown-menu>
       </dropdown>
       <dropdown>
-        <dropdown-toggle @click.native="toggleDropdown(6)" color="secondary">Dropdown 3</dropdown-toggle>
-        <dropdown-menu v-show="active[6]" color="secondary">
+        <dropdown-toggle slot="toggle" color="secondary">Dropdown 3</dropdown-toggle>
+        <dropdown-menu color="secondary">
           <dropdown-item>Action</dropdown-item>
           <dropdown-item>Another action</dropdown-item>
           <dropdown-item>Something else here</dropdown-item>
         </dropdown-menu>
       </dropdown>
       <dropdown>
-        <dropdown-toggle @click.native="toggleDropdown(7)" color="danger">Dropdown 4</dropdown-toggle>
-        <dropdown-menu v-show="active[7]" color="danger">
+        <dropdown-toggle slot="toggle" color="danger">Dropdown 4</dropdown-toggle>
+        <dropdown-menu color="danger">
           <dropdown-item>Action</dropdown-item>
           <dropdown-item>Another action</dropdown-item>
           <dropdown-item>Something else here</dropdown-item>
         </dropdown-menu>
       </dropdown>
       <dropdown>
-        <dropdown-toggle @click.native="toggleDropdown(8)" color="warning">Dropdown 5</dropdown-toggle>
-        <dropdown-menu v-show="active[8]" color="warning">
+        <dropdown-toggle slot="toggle" color="warning">Dropdown 5</dropdown-toggle>
+        <dropdown-menu color="warning">
           <dropdown-item>Action</dropdown-item>
           <dropdown-item>Another action</dropdown-item>
           <dropdown-item>Something else here</dropdown-item>

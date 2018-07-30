@@ -25,7 +25,7 @@
     }
   };
 
-  export default {
+  const Popover = {
     props: {
       trigger: {
         type: String,
@@ -253,6 +253,9 @@
       this.destroyPopper();
     }
   };
+
+  export default Popover;
+  export { Popover as mdbPopover };
 </script>
 
 <style>

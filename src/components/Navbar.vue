@@ -1,8 +1,5 @@
 <template>
   <nav :class="navClass" :is="tag" :style="navStyles">
-    <a :href="href" :class="brandClasses" :style="brandStyle">{{name}}
-      <img v-if="src" :src="src" :alt="alt"/>
-    </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" :data-target="target" aria-controls="navbarSupportedContent"
         aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -15,7 +12,7 @@
 <script>
 import classNames from 'classnames';
 
-export default {
+const Navbar = {
   props: {
     tag: {
       type: String,
@@ -32,18 +29,6 @@ export default {
     position: {
       type: String
     },
-    href: {
-      type: String,
-    },
-    src: {
-      type: String,
-    },
-    alt: {
-      type: String,
-    },
-    name: {
-      type: String,
-    },
     target: {
       type: String,
       default: '#navbarSupportedContent'
@@ -59,12 +44,6 @@ export default {
       type: Boolean
     },
     navStyle: {
-      type: String
-    },
-    brandClass: {
-      type: String
-    },
-    brandStyle: {
       type: String
     }
   },
@@ -85,14 +64,7 @@ export default {
             this.expand === 'large' ? 'navbar-expand-lg' : 'navbar-expand-lx',
         this.position === 'top' ? 'fixed-top' :
           this.position === 'bottom' ? 'fixed-bottom' : '',
-        this.scrolling ? 'scrolling-navbar' : '',
-        this.scrolled && 'top-nav-collapse'
-      );
-    },
-    brandClasses() {
-      return classNames(
-        'navbar-brand',
-        this.brandClass
+        this.scrolling ? 'scrolling-navbar' : ''
       );
     },
     navStyles() {
@@ -179,6 +151,8 @@ export default {
   }
 };
 
+export default Navbar;
+export { Navbar as mdbNavbar };
 </script>
 
 <style scoped>
@@ -187,5 +161,11 @@ export default {
 }
 .nav-item {
   position: relative;
+}
+.navbar-toggler {
+  order: 1;
+}
+.navbar-collapse {
+  order: 2;
 }
 </style>

@@ -5,7 +5,7 @@
 <script>
 import classNames from 'classnames';
 
-export default {
+const CarouselInner = {
   props: {
     tag: {
       type: String,
@@ -20,6 +20,9 @@ export default {
     }
   }
 };
+
+export default CarouselInner;
+export { CarouselInner as mdbCarouselInner };
 </script>
 
 <style scoped>

@@ -1,6 +1,6 @@
 <template>
   <li :is="tag" :class="className" @click="wave">
-    <a :href="href" class="nav-link navbar-link"><slot></slot></a>
+    <a :href="href" class="nav-link navbar-link" :class="{disabled: disabled, active: active}"><slot></slot></a>
   </li>
 </template>
 
@@ -8,7 +8,7 @@
 import classNames from 'classnames';
 import waves from '../mixins/waves';
 
-export default {
+const NavbarItem = {
   props: {
     tag: {
       type: String,
@@ -29,19 +29,24 @@ export default {
     wavesFixed: {
       type: Boolean,
       default: false
+    },
+    disabled: {
+      type: Boolean
     }
   },
   computed: {
     className() {
       return classNames(
         'nav-item',
-        this.active ? 'active' : '',
-        this.waves ? 'ripple-parent' : ''
+        this.waves && 'ripple-parent'
       );
     }
   },
   mixins: [waves]
 };
+
+export default NavbarItem;
+export { NavbarItem as mdbNavItem };
 </script>
 
 <style scoped>

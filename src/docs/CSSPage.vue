@@ -11,6 +11,8 @@
             <a href="#/css/jumbotron"><li>Jumbotron <fa icon="angle-right"/></li></a>
             <a href="#/css/masks"><li>Masks <fa icon="angle-right"/></li></a>
             <a href="#/css/table"><li>Table <fa icon="angle-right"/></li></a>
+            <a href="#/css/table-additional"><li>Table Additional <fa icon="angle-right"/></li></a>
+            <a href="#/css/table-responsive"><li>Table Responsive <fa icon="angle-right"/></li></a>
           </ul>
         </jumbotron>
       </column>

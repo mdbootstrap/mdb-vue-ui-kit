@@ -7,7 +7,7 @@
 <script>
 import classNames from 'classnames';
 
-export default {
+const NavbarNav = {
   props: {
     tag: {
       type: String,
@@ -27,6 +27,9 @@ export default {
     }
   }
 };
+
+export default NavbarNav;
+export { NavbarNav as mdbNavbarNav };
 </script>
 
 <style scoped>

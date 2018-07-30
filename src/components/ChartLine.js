@@ -1,5 +1,5 @@
 import { Line } from 'vue-chartjs';
-export default {
+const LineChart = {
   extends: Line,
   props: ['data', 'options'],
   mounted () {
@@ -7,3 +7,6 @@ export default {
     this.renderChart(this.data, this.options);
   }
 };
+
+export default LineChart;
+export { LineChart as mdbLineChart };

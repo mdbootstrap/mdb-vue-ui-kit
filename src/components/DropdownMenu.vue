@@ -5,7 +5,7 @@
 <script>
 import classNames from 'classnames';
 
-export default {
+const DropdownMenu = {
   props: {
     tag: {
       type: String,
@@ -45,6 +45,9 @@ export default {
     }
   }
 };
+
+export default DropdownMenu;
+export { DropdownMenu as mdbDropdownMenu };
 </script>
 
 <style scoped>
@@ -60,6 +63,7 @@ export default {
   position: absolute;
   top: auto;
   bottom: 100%;
+  margin-bottom: 3rem;
 }
 .dropright {
   left: 100%;

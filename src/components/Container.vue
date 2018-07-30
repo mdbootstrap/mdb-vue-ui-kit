@@ -5,7 +5,7 @@
 <script>
 import classNames from 'classnames';
 
-export default {
+const Container = {
   props: {
     tag: {
       type: String,
@@ -29,6 +29,9 @@ export default {
     }
   }
 };
+
+export default Container;
+export { Container as mdbContainer };
 </script>
 
 <style scoped>

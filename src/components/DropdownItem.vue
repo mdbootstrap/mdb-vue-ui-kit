@@ -5,7 +5,7 @@
 <script>
 import classNames from 'classnames';
 
-export default {
+const DropdownItem = {
   props: {
     tag: {
       type: String,
@@ -34,6 +34,9 @@ export default {
     }
   }
 };
+
+export default DropdownItem;
+export { DropdownItem as mdbDropdownItem };
 </script>
 
 <style scoped>

@@ -24,7 +24,7 @@
     }
   };
 
-  export default {
+  const Tooltip = {
     props: {
       trigger: {
         type: String,
@@ -253,6 +253,9 @@
       this.destroyPopper();
     }
   };
+
+  export default Tooltip;
+  export { Tooltip as mdbTooltip };
 </script>
 
 <style>

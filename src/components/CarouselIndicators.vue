@@ -5,7 +5,7 @@
 <script>
 import classNames from 'classnames';
 
-export default {
+const CarouselIndicators = {
   props: {
     tag: {
       type: String,
@@ -20,6 +20,9 @@ export default {
     }
   }
 };
+
+export default CarouselIndicators;
+export { CarouselIndicators as mdbCarouselIndicators };
 </script>
 
 <style scoped>

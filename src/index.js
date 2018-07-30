@@ -1,75 +1,78 @@
 // FREE
-import Badge from './components/Badge';
-import Breadcrumb from './components/Breadcrumb';
-import BreadcrumbItem from './components/BreadcrumbItem';
-import Btn from './components/Button';
-import BtnGroup from './components/ButtonGroup';
-import Card from './components/Card';
-import CardAvatar from './components/CardAvatar';
-import CardUp from './components/CardUp';
-import CardBody from './components/CardBody';
-import CardFooter from './components/CardFooter';
-import CardHeader from './components/CardHeader';
-import CardImg from './components/CardImg';
-import CardText from './components/CardText';
-import CardTitle from './components/CardTitle';
-import CardGroup from './components/CardGroup';
-import Carousel from './components/Carousel';
-import CarouselCaption from './components/CarouselCaption';
-import CarouselIndicator from './components/CarouselIndicator';
-import CarouselIndicators from './components/CarouselIndicators';
-import CarouselInner from './components/CarouselInner';
-import CarouselItem from './components/CarouselItem';
-import CarouselNavigation from './components/CarouselNavigation';
-import LineChart from './components/ChartLine';
-import RadarChart from './components/ChartRadar';
-import BarChart from './components/ChartBar';
-import PolarChart from './components/ChartPolar';
-import PieChart from './components/ChartPie';
-import DoughnutChart from './components/ChartDoughnut';
-import Collapse from './components/Collapse';
-import Column from './components/Col';
-import Container from './components/Container';
-import Dropdown from './components/Dropdown';
-import DropdownItem from './components/DropdownItem';
-import DropdownMenu from './components/DropdownMenu';
-import DropdownToggle from './components/DropdownToggle';
-import EdgeHeader from './components/EdgeHeader';
-import Fa from './components/Fa';
-import Footer from './components/Footer';
-import HelloWorld from './components/HelloWorld';
-import Jumbotron from './components/Jumbotron';
-import ListGroup from './components/ListGroup';
-import ListGroupItem from './components/ListGroupItem';
-import MdInput from './components/MdInput';
-import MdMask from './components/Mdmask';
-import MdTextarea from './components/MdTextarea';
-import Media from './components/Media';
-import MediaBody from './components/MediaBody';
-import MediaImage from './components/MediaImage';
-import Navbar from './components/Navbar';
-import NavbarNav from './components/NavbarNav';
-import NavbarCollapse from './components/NavbarCollapse';
-import NavbarItem from './components/NavbarItem';
-import PageItem from './components/PageItem';
-import PageNav from './components/PageNav';
-import Pagination from './components/Pagination';
-import Popover from './components/Popover';
-import ProgressBar from './components/ProgressBar';
-import ProgressWrapper from './components/ProgressWrapper';
-import Row from './components/Row';
-import Tbl from './components/Table';
-import TblBody from './components/TableBody';
-import TblHead from './components/TableHead';
-import Tooltip from './components/Tooltip';
-import ViewWrapper from './components/ViewWrapper';
-import FormInline from './components/FormInline';
-import Modal from './components/Modal';
-import ModalHeader from './components/ModalHeader';
-import ModalTitle from './components/ModalTitle';
-import ModalBody from './components/ModalBody';
-import ModalFooter from './components/ModalFooter';
-import NumericInput from './components/NumericInput';
+import Badge, { mdbBadge } from './components/Badge';
+import Breadcrumb, { mdbBreadcrumb } from './components/Breadcrumb';
+import BreadcrumbItem, { mdbBreadcrumbItem } from './components/BreadcrumbItem';
+import Btn, { mdbBtn } from './components/Button';
+import BtnGroup, { mdbBtnGroup } from './components/ButtonGroup';
+import Card, { mdbCard } from './components/Card';
+import CardAvatar, { mdbCardAvatar } from './components/CardAvatar';
+import CardUp, { mdbCardUp } from './components/CardUp';
+import CardBody, { mdbCardBody } from './components/CardBody';
+import CardFooter, { mdbCardFooter } from './components/CardFooter';
+import CardHeader, { mdbCardHeader } from './components/CardHeader';
+import CardImg, { mdbCardImage } from './components/CardImg';
+import CardText, { mdbCardText } from './components/CardText';
+import CardTitle, { mdbCardTitle } from './components/CardTitle';
+import CardGroup, { mdbCardGroup } from './components/CardGroup';
+import Carousel, { mdbCarousel } from './components/Carousel';
+import CarouselCaption, { mdbCarouselCaption } from './components/CarouselCaption';
+import CarouselIndicator, { mdbCarouselIndicator } from './components/CarouselIndicator';
+import CarouselIndicators, { mdbCarouselIndicators } from './components/CarouselIndicators';
+import CarouselInner, { mdbCarouselInner } from './components/CarouselInner';
+import CarouselItem, { mdbCarouselItem } from './components/CarouselItem';
+import CarouselNavigation, { mdbCarouselControl } from './components/CarouselNavigation';
+import LineChart, { mdbLineChart } from './components/ChartLine';
+import RadarChart, { mdbRadarChart } from './components/ChartRadar';
+import BarChart, { mdbBarChart } from './components/ChartBar';
+import PolarChart, { mdbPolarChart } from './components/ChartPolar';
+import PieChart, { mdbPieChart } from './components/ChartPie';
+import DoughnutChart, { mdbDoughnutChart } from './components/ChartDoughnut';
+import Collapse, { mdbCollapse } from './components/Collapse';
+import Column, { mdbCol } from './components/Col';
+import Container, { mdbContainer } from './components/Container';
+import Datatable, { mdbDatatable } from './components/Datatable';
+let Dropdown = require('./components/Dropdown').default;
+let mdbDropdown = require('./components/Dropdown').default;
+import DropdownItem, { mdbDropdownItem } from './components/DropdownItem';
+import DropdownMenu, { mdbDropdownMenu } from './components/DropdownMenu';
+import DropdownToggle, { mdbDropdownToggle } from './components/DropdownToggle';
+import EdgeHeader, { mdbEdgeHeader } from './components/EdgeHeader';
+import Fa, { mdbIcon } from './components/Fa';
+import Footer, { mdbFooter } from './components/Footer';
+import HelloWorld, { mdbHelloWorld } from './components/HelloWorld';
+import Jumbotron, { mdbJumbotron } from './components/Jumbotron';
+import ListGroup, { mdbListGroup } from './components/ListGroup';
+import ListGroupItem, { mdbListGroupItem } from './components/ListGroupItem';
+import MdInput, { mdbInput } from './components/MdInput';
+import MdMask, { mdbMask } from './components/Mdmask';
+import MdTextarea, { mdbTextarea } from './components/MdTextarea';
+import Media, { mdbMedia } from './components/Media';
+import MediaBody, { mdbMediaBody } from './components/MediaBody';
+import MediaImage, { mdbMediaImage } from './components/MediaImage';
+import Navbar, { mdbNavbar } from './components/Navbar';
+import mdbNavbarBrand from './components/NavbarBrand';
+import NavbarNav, { mdbNavbarNav } from './components/NavbarNav';
+import NavbarCollapse, { mdbNavbarToggler } from './components/NavbarCollapse';
+import NavbarItem, { mdbNavItem } from './components/NavbarItem';
+import PageItem, { mdbPageItem } from './components/PageItem';
+import PageNav, { mdbPageNav } from './components/PageNav';
+import Pagination, { mdbPagination } from './components/Pagination';
+import Popover, { mdbPopover } from './components/Popover';
+import ProgressBar, { mdbProgress } from './components/ProgressBar';
+import ProgressWrapper, { mdbProgressWrapper } from './components/ProgressWrapper';
+import Row, { mdbRow } from './components/Row';
+import Tbl, { mdbTable } from './components/Table';
+import TblBody, { mdbTblBody } from './components/TableBody';
+import TblHead, { mdbTblHead } from './components/TableHead';
+import Tooltip, { mdbTooltip } from './components/Tooltip';
+import ViewWrapper, { mdbView } from './components/ViewWrapper';
+import FormInline, { mdbFormInline } from './components/FormInline';
+import Modal, { mdbModal } from './components/Modal';
+import ModalHeader, { mdbModalHeader } from './components/ModalHeader';
+import ModalTitle, { mdbModalTitle } from './components/ModalTitle';
+import ModalBody, { mdbModalBody } from './components/ModalBody';
+import ModalFooter, { mdbModalFooter } from './components/ModalFooter';
+import NumericInput, { mdbNumericInput } from './components/NumericInput';
 import waves from './mixins/waves';
 
 export {
@@ -105,6 +108,7 @@ export {
   Collapse,
   Column,
   Container,
+  Datatable,
   Dropdown,
   DropdownItem,
   DropdownMenu,
@@ -145,5 +149,79 @@ export {
   ModalBody,
   ModalFooter,
   NumericInput,
-  waves
+  waves,
+  // MDB FREE
+  mdbBadge,
+  mdbBreadcrumb,
+  mdbBreadcrumbItem,
+  mdbBtn,
+  mdbBtnGroup,
+  mdbCard,
+  mdbCardAvatar,
+  mdbCardUp,
+  mdbCardBody,
+  mdbCardFooter,
+  mdbCardHeader,
+  mdbCardImage,
+  mdbCardText,
+  mdbCardTitle,
+  mdbCardGroup,
+  mdbCarousel,
+  mdbCarouselCaption,
+  mdbCarouselIndicator,
+  mdbCarouselIndicators,
+  mdbCarouselInner,
+  mdbCarouselItem,
+  mdbCarouselControl,
+  mdbLineChart,
+  mdbRadarChart,
+  mdbBarChart,
+  mdbPolarChart,
+  mdbPieChart,
+  mdbDoughnutChart,
+  mdbCollapse,
+  mdbCol,
+  mdbContainer,
+  mdbDatatable,
+  mdbDropdown,
+  mdbDropdownItem,
+  mdbDropdownMenu,
+  mdbDropdownToggle,
+  mdbEdgeHeader,
+  mdbIcon,
+  mdbFooter,
+  mdbHelloWorld,
+  mdbJumbotron,
+  mdbListGroup,
+  mdbListGroupItem,
+  mdbInput,
+  mdbMask,
+  mdbTextarea,
+  mdbMedia,
+  mdbMediaBody,
+  mdbMediaImage,
+  mdbNavbar,
+  mdbNavbarBrand,
+  mdbNavbarNav,
+  mdbNavbarToggler,
+  mdbNavItem,
+  mdbPageItem,
+  mdbPageNav,
+  mdbPagination,
+  mdbPopover,
+  mdbProgress,
+  mdbProgressWrapper,
+  mdbRow,
+  mdbTable,
+  mdbTblBody,
+  mdbTblHead,
+  mdbTooltip,
+  mdbView,
+  mdbFormInline,
+  mdbModal,
+  mdbModalHeader,
+  mdbModalTitle,
+  mdbModalBody,
+  mdbModalFooter,
+  mdbNumericInput
 };

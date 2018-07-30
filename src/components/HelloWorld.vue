@@ -13,13 +13,16 @@
 </template>
 
 <script>
-export default {
+const HelloWorld = {
   data() {
     return {
 
     };
   },
 };
+
+export default HelloWorld;
+export { HelloWorld as mdbHelloWorld };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

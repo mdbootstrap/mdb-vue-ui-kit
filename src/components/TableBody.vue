@@ -7,7 +7,7 @@
 <script>
 import classNames from 'classnames';
 
-export default {
+const TblBody = {
   props: {
     tag: {
       type: String,
@@ -25,6 +25,9 @@ export default {
     }
   }
 };
+
+export default TblBody;
+export { TblBody as mdbTblBody };
 </script>
 
 <style scoped>

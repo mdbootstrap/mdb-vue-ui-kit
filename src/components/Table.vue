@@ -1,23 +1,17 @@
 <template>
-  <table :is="tag" :class="className">
-    <slot></slot>
-  </table>
+  <div :class="wrapperClasses">
+    <table :class="tableClasses" :is="tag" >
+      <slot></slot>
+    </table>
+  </div>
 </template>
 
 <script>
 import classNames from 'classnames';
 
-export default {
+const Tbl = {
   props: {
-    tag: {
-      type: String,
-      default: "table"
-    },
-    dark: {
-      type: Boolean,
-      default: false
-    },
-    striped: {
+    autoWidth: {
       type: Boolean,
       default: false
     },
@@ -25,11 +19,31 @@ export default {
       type: Boolean,
       default: false
     },
-    hover: {
+    borderless: {
       type: Boolean,
       default: false
     },
-    sm: {
+    btn: {
+      type: Boolean,
+      default: false
+    },
+    dark: {
+      type: Boolean,
+      default: false
+    },
+    datatable: {
+      type: Boolean,
+      default: false
+    },
+    dtScrollY: {
+      type: Boolean,
+      default: false
+    },
+    fixed: {
+      type: Boolean,
+      default: false
+    },
+    hover: {
       type: Boolean,
       default: false
     },
@@ -52,26 +66,56 @@ export default {
     responsiveXl: {
       type: Boolean,
       default: false
+    },
+    scrollY: {
+      type: Boolean,
+      defautl: false
+    },
+    sm: {
+      type: Boolean,
+      default: false
+    },
+    striped: {
+      type: Boolean,
+      default: false
+    },
+    tag: {
+      type: String,
+      default: "table"
     }
   },
   computed: {
-    className() {
+    wrapperClasses() {
+      return classNames(
+        this.dark && 'table-dark',
+        this.dtScrollY && 'dataTables-scrollBody',
+        this.responsive && 'table-responsive',
+        this.responsiveSm && 'table-responsive-sm',
+        this.responsiveMd && 'table-responsive-md',
+        this.responsiveLg && 'table-responsive-lg',
+        this.responsiveXl && 'table-responsive-xl',
+        this.scrollY && 'table-wrapper-scroll-y'
+      );
+    },
+    tableClasses() {
       return classNames(
         'table',
-        this.dark ? 'table-dark' : '',
-        this.striped ? 'table-striped' : '',
-        this.bordered ? 'table-bordered' : '',
-        this.hover ? 'table-hover' : '',
-        this.sm ? 'table-sm' : '',
-        this.responsive ? 'table-responsive' : '',
-        this.responsiveSm ? 'table-responsive-sm' : '',
-        this.responsiveMd ? 'table-responsive-md' : '',
-        this.responsiveLg ? 'table-responsive-lg' : '',
-        this.responsiveXl ? 'table-responsive-xl' : ''
+        this.autoWidth && 'w-auto',
+        this.bordered && 'table-bordered',
+        this.borderless && 'table-borderless',
+        this.btn && 'btn-table',
+        this.datatable && 'dataTable',
+        this.fixed && 'table-fixed',
+        this.hover && 'table-hover',
+        this.sm && 'table-sm',
+        this.striped &&'table-striped'
       );
     }
   }
 };
+
+export default Tbl;
+export { Tbl as mdbTable };
 </script>
 
 <style scoped>

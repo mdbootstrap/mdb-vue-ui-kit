@@ -10,8 +10,13 @@
             <a href="#/advanced/carousel"><li>Carousel <fa icon="angle-right"/></li></a>
             <a href="#/advanced/chart"><li>Charts <fa icon="angle-right"/></li></a>
             <a href="#/advanced/collapse"><li>Collapse <fa icon="angle-right"/></li></a>
+            <a href="#/advanced/datatable"><li>Datatable <fa icon="angle-right"/></li></a>
             <a href="#/advanced/modal"><li>Modal <fa icon="angle-right"/></li></a>
             <a href="#/advanced/popover"><li>Popover <fa icon="angle-right"/></li></a>
+            <a href="#/advanced/table-pagination"><li>Table pagination <fa icon="angle-right"/></li></a>
+            <a href="#/advanced/table-scroll"><li>Table Scroll <fa icon="angle-right"/></li></a>
+            <a href="#/advanced/table-search"><li>Table Search <fa icon="angle-right"/></li></a>
+            <a href="#/advanced/table-sort"><li>Table Sort <fa icon="angle-right"/></li></a>
             <a href="#/advanced/tooltip"><li>Tooltip <fa icon="angle-right"/></li></a>
             <a href="#/advanced/validation"><li>Validation <fa icon="angle-right"/></li></a>
             <a href="#/advanced/videocarousel"><li>Video Carousel <fa icon="angle-right"/></li></a>

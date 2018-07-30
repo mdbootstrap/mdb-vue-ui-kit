@@ -7,7 +7,7 @@
 <script>
 import classNames from 'classnames';
 
-export default {
+const ModalFooter = {
   props: {
     tag: {
       type: String,
@@ -22,6 +22,9 @@ export default {
     }
   }
 };
+
+export default ModalFooter;
+export { ModalFooter as mdbModalFooter };
 </script>
 
 <style scoped>

@@ -7,7 +7,7 @@
 <script>
 import classNames from 'classnames';
 
-export default {
+const ModalBody = {
   props: {
     tag: {
       type: String,
@@ -22,6 +22,9 @@ export default {
     }
   }
 };
+
+export default ModalBody;
+export { ModalBody as mdbModalBody };
 </script>
 
 <style scoped>

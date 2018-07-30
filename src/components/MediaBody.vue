@@ -7,7 +7,7 @@
 <script>
 import classNames from 'classnames';
 
-export default {
+const MediaBody = {
   props: {
     tag: {
       type: String,
@@ -23,6 +23,8 @@ export default {
   }
 };
 
+export default MediaBody;
+export { MediaBody as mdbMediaBody };
 </script>
 
 <style scoped>

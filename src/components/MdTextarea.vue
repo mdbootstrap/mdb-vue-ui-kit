@@ -1,15 +1,15 @@
 <template>
   <div :class="wrapperClass">
     <i v-if="icon" :class="iconClasses"/>
-    <textarea 
-              :is="tag" 
-              :class="textareaClass" 
-              :type="type" 
-              :placeholder="placeholder" 
-              :disabled="disabled" @focus="focus" 
-              @blur="blur" 
-              ref="input" 
-              :rows="rows" 
+    <textarea
+              :is="tag"
+              :class="textareaClass"
+              :type="type"
+              :placeholder="placeholder"
+              :disabled="disabled" @focus="focus"
+              @blur="blur"
+              ref="input"
+              :rows="rows"
               @input="onChange"
               v-model="innerValue" />
     <label v-if="label" :class="labelClass" ref="label" @click="focus">{{label}}
@@ -22,7 +22,7 @@ import classNames from 'classnames';
 // import 'font-awesome/css/font-awesome.min.css';
 // import Fa from './Fa';
 
-export default {
+const MdTextarea = {
   props: {
     tag: {
       type: String,
@@ -104,6 +104,9 @@ export default {
     }
   }
 };
+
+export default MdTextarea;
+export { MdTextarea as mdbTextarea };
 </script>
 
 <style scoped>
