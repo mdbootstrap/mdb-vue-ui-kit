@@ -1,5 +1,11 @@
 <template>
+
   <container>
+    <row class="mt-5 align-items-center justify-content-start">
+      <h4 style="margin: 0" class="grey-text"><strong>Panels</strong></h4>
+      <a href="https://mdbootstrap.com/vue/components/panels/" waves-fixed class="border grey-text px-2 border-light rounded ml-2" target="_blank"><fa icon="graduation-cap" class="mr-2"/>Docs</a>
+    </row>
+    <hr class="mb-5" />
     <row>
       <column col="4">
         <card class="card-body" style="width: 22rem; margin-top: 1rem;">
@@ -152,6 +158,16 @@
     </row>
     <row class="mt-4">
       <card class="text-center">
+        <card-header>
+          <tab header>
+            <navbar-item active to="#">Active
+            </navbar-item>
+            <navbar-item to="#">Link
+            </navbar-item>
+            <navbar-item disabled to="#">Disabled
+            </navbar-item>
+          </tab>
+        </card-header>
         <card-body>
           <card-title>Special title treatment</card-title>
           <card-text>With supporting text below as a natural lead-in to additional content.</card-text>
@@ -453,7 +469,7 @@
 
 
 <script>
-import { Container, Row, Column, Btn, Card, CardTitle, CardText, CardFooter, CardBody, CardHeader, ListGroup, ListGroupItem, NavbarItem, CardGroup, Jumbotron } from 'mdbvue';
+import { Container,  Row, Column, Btn, Card, CardTitle, CardText, CardFooter, CardBody, CardHeader, ListGroup, ListGroupItem, Tab, NavbarItem, CardGroup, Jumbotron, Fa } from 'mdbvue';
 
 export default {
   name: 'PanelPage',
@@ -470,9 +486,11 @@ export default {
     CardHeader,
     ListGroup,
     ListGroupItem,
+    Tab,
     NavbarItem,
     CardGroup,
-    Jumbotron
+    Jumbotron,
+    Fa
   },
   data(){
     return {

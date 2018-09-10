@@ -1,27 +1,34 @@
 <template>
-  <div class="container">
-    <h3>Line Chart</h3>
-    <line-chart :data="lineChartData" :options="lineChartOptions" :width="600" :height="300"></line-chart>
-    <hr class="mt-5">
-    <h3>Radar Chart</h3>
-    <radar-chart :data="radarChartData" :options="radarChartOptions" :width="600" :height="300"></radar-chart>
-    <hr class="mt-5">
-    <h3>Bar Chart</h3>
-    <bar-chart :data="barChartData" :options="barChartOptions" :width="600" :height="300"></bar-chart>
-    <hr class="mt-5">
-    <h3>Polar Chart</h3>
-    <polar-chart :data="polarChartData" :options="polarChartOptions" :width="600" :height="300"></polar-chart>
-    <hr class="mt-5">
-    <h3>Pie Chart</h3>
-    <pie-chart :data="pieChartData" :options="pieChartOptions" :width="600" :height="300"></pie-chart>
-    <hr class="mt-5">
-    <h3>Doughnut Chart</h3>
-    <doughnut-chart :data="pieChartData" :options="pieChartOptions" :width="600" :height="300"></doughnut-chart>
-  </div>
+  <container>
+    <row class="mt-5 align-items-center justify-content-start">
+      <h4 style="margin: 0" class="grey-text"><strong>Charts</strong></h4>
+      <a href="https://mdbootstrap.com/vue/advanced/charts/" waves-fixed class="border grey-text px-2 border-light rounded ml-2" target="_blank"><fa icon="graduation-cap" class="mr-2"/>Docs</a>
+    </row>
+    <hr />
+    <div class="container">
+      <h3>Line Chart</h3>
+      <line-chart :data="lineChartData" :options="lineChartOptions" :width="600" :height="300"></line-chart>
+      <hr class="mt-5">
+      <h3>Radar Chart</h3>
+      <radar-chart :data="radarChartData" :options="radarChartOptions" :width="600" :height="300"></radar-chart>
+      <hr class="mt-5">
+      <h3>Bar Chart</h3>
+      <bar-chart :data="barChartData" :options="barChartOptions" :width="600" :height="300"></bar-chart>
+      <hr class="mt-5">
+      <h3>Polar Chart</h3>
+      <polar-chart :data="polarChartData" :options="polarChartOptions" :width="600" :height="300"></polar-chart>
+      <hr class="mt-5">
+      <h3>Pie Chart</h3>
+      <pie-chart :data="pieChartData" :options="pieChartOptions" :width="600" :height="300"></pie-chart>
+      <hr class="mt-5">
+      <h3>Doughnut Chart</h3>
+      <doughnut-chart :data="pieChartData" :options="pieChartOptions" :width="600" :height="300"></doughnut-chart>
+    </div>
+  </container>
 </template>
 
 <script>
-import { LineChart, RadarChart, BarChart, PolarChart, PieChart, DoughnutChart } from 'mdbvue';
+import { LineChart, RadarChart, BarChart, PolarChart, PieChart, DoughnutChart, Container, Row, Fa } from 'mdbvue';
 
 export default {
   name: 'ChartPage',
@@ -31,7 +38,10 @@ export default {
     BarChart,
     PolarChart,
     PieChart,
-    DoughnutChart
+    DoughnutChart,
+    Row,
+    Container,
+    Fa
   },
   data() {
     return {

@@ -84,7 +84,7 @@
           </navbar-nav>
             <!-- Search form -->
           <form class="form-inline">
-            <md-input type="text" placeholder="Search" aria-label="Search" label navInput waves />
+            <mdb-input type="text" placeholder="Search" aria-label="Search" label navInput waves />
           </form>
         </navbar-collapse>
       </navbar>
@@ -420,18 +420,18 @@
 
                   <h5 class="h5-responsive">Basic Textbox</h5>
                   <!-- Basic textbox -->
-                  <md-input type="text" label="Example label"/>
+                  <mdb-input type="text" label="Example label"/>
                   <!-- /.Basic textbox -->
 
                   <h5 class="h5-responsive">Textbox with icon</h5>
                   <div class="md-form">
-                    <md-input type="text" label="Your name" icon="user" />
+                    <mdb-input type="text" label="Your name" icon="user" />
                   </div>
 
                   <!--Email validation-->
                   <h5 class="h5-responsive">E-mail validation</h5>
                   <div class="md-form">
-                    <md-input type="email" label="Your email" icon="envelope" />
+                    <mdb-input type="email" label="Your email" icon="envelope" />
                   </div>
 
                   <!--Textarea with icon-->
@@ -442,7 +442,7 @@
 
                   <h5 class="h5-responsive">Disabled field</h5>
                   <div class="md-form">
-                    <md-input type="text" label="Example label" disabled/>
+                    <mdb-input type="text" label="Example label" disabled/>
                   </div>
 
                   <div class="text-xs-left">
@@ -530,7 +530,7 @@
 </template>
 
 <script>
-import { Container, Row, Column, Btn, Badge, Fa, Navbar, NavbarItem, NavbarNav, NavbarCollapse, MdInput, MdTextarea, Breadcrumb, BreadcrumbItem, Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Card, CardImg, CardHeader, CardFooter, CardBody, Tbl, TblHead, TblBody, Pagination, PageNav, PageItem, Media, MediaImage, MediaBody, ListGroup, ListGroupItem, LineChart, RadarChart, BarChart, PolarChart, PieChart, DoughnutChart, ViewWrapper, MdMask, EdgeHeader, Tooltip } from 'mdbvue';
+import { Container, Row, Column, Btn, Badge, Fa, Navbar, NavbarItem, NavbarNav, NavbarCollapse, mdbInput, MdTextarea, Breadcrumb, BreadcrumbItem, Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Card, CardImg, CardHeader, CardFooter, CardBody, Tbl, TblHead, TblBody, Pagination, PageNav, PageItem, Media, MediaImage, MediaBody, ListGroup, ListGroupItem, LineChart, RadarChart, BarChart, PolarChart, PieChart, DoughnutChart, ViewWrapper, MdMask, EdgeHeader, Tooltip } from 'mdbvue';
 
 export default {
   name: 'LiveDemoPage',
@@ -545,7 +545,7 @@ export default {
     NavbarItem,
     NavbarNav,
     NavbarCollapse,
-    MdInput,
+    mdbInput,
     MdTextarea,
     Breadcrumb,
     BreadcrumbItem,

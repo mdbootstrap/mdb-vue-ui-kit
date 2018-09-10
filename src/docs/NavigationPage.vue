@@ -19,7 +19,7 @@
         </navbar-nav>
         <!-- Search form -->
         <form>
-          <md-input type="text" class="text-white" placeholder="Search" aria-label="Search" label navInput waves waves-fixed/>
+          <mdb-input type="text" class="text-white" placeholder="Search" aria-label="Search" label navInput waves waves-fixed/>
         </form>
       </navbar-collapse>
     </navbar>
@@ -43,7 +43,7 @@
         </navbar-nav>
         <!-- Search form -->
         <form>
-          <md-input type="text" class="text-white" placeholder="Search" aria-label="Search" label navInput waves waves-fixed/>
+          <mdb-input type="text" class="text-white" placeholder="Search" aria-label="Search" label navInput waves waves-fixed/>
         </form>
       </navbar-collapse>
     </navbar>
@@ -58,7 +58,7 @@
         </navbar-nav>
         <!-- Search form -->
         <form>
-          <md-input type="text" class="text-white" placeholder="Search" aria-label="Search" label navInput waves waves-fixed/>
+          <mdb-input type="text" class="text-white" placeholder="Search" aria-label="Search" label navInput waves waves-fixed/>
         </form>
       </navbar-collapse>
     </navbar>
@@ -73,7 +73,7 @@
         </navbar-nav>
         <!-- Search form -->
         <form>
-          <md-input type="text" class="text-white" placeholder="Search" aria-label="Search" label navInput waves waves-fixed/>
+          <mdb-input type="text" class="text-white" placeholder="Search" aria-label="Search" label navInput waves waves-fixed/>
         </form>
       </navbar-collapse>
     </navbar>
@@ -103,7 +103,7 @@
 </template>
 
 <script>
-import { Navbar, NavbarItem, NavbarNav, NavbarCollapse, Dropdown, DropdownItem, DropdownMenu, DropdownToggle, MdInput, Btn } from 'mdbvue';
+import { Navbar, NavbarItem, NavbarNav, NavbarCollapse, Dropdown, DropdownItem, DropdownMenu, DropdownToggle, mdbInput, Btn } from 'mdbvue';
 
 export default {
   name: 'NavigationPage',
@@ -116,7 +116,7 @@ export default {
     DropdownItem,
     DropdownMenu,
     DropdownToggle,
-    MdInput,
+    mdbInput,
     Btn
   },
   data() {

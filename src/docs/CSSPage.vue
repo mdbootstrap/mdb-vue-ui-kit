@@ -3,17 +3,45 @@
     <row>
       <column md="8" class="mx-auto">
         <jumbotron class="mt-5">
-          <h1><Fa icon="css3" class="grey-text" /> CSS</h1>
-          <ul class="list-unstyled example-components-list">
-            <h6>FREE</h6>
-            <a href="#/css/hover"><li>Hover effects<fa icon="angle-right"/></li></a>
-            <a href="#/css/icons"><li>Icons <fa icon="angle-right"/></li></a>
-            <a href="#/css/jumbotron"><li>Jumbotron <fa icon="angle-right"/></li></a>
-            <a href="#/css/masks"><li>Masks <fa icon="angle-right"/></li></a>
-            <a href="#/css/table"><li>Table <fa icon="angle-right"/></li></a>
-            <a href="#/css/table-additional"><li>Table Additional <fa icon="angle-right"/></li></a>
-            <a href="#/css/table-responsive"><li>Table Responsive <fa icon="angle-right"/></li></a>
-          </ul>
+          <h1 class="pb-2"><Fa icon="css3" class="grey-text mr-2" /> CSS</h1>
+          <h6 class="my-3">FREE</h6>
+          <list-group>
+            <navbar-item class="list-group-item list-group-item-action" router href="/css/hover">
+              <h5 class="justify-content-between d-flex align-items-center">
+                Hover effects<fa icon="angle-right"/>
+              </h5>
+            </navbar-item>
+            <navbar-item class="list-group-item list-group-item-action" router href="/css/icons">
+              <h5 class="justify-content-between d-flex align-items-center">
+                Icons <fa icon="angle-right"/>
+              </h5>
+            </navbar-item>
+            <navbar-item class="list-group-item list-group-item-action" router href="/css/jumbotron">
+              <h5 class="justify-content-between d-flex align-items-center">
+                Jumbotron <fa icon="angle-right"/>
+              </h5>
+            </navbar-item>
+            <navbar-item class="list-group-item list-group-item-action" router href="/css/masks">
+              <h5 class="justify-content-between d-flex align-items-center">
+                Masks <fa icon="angle-right"/>
+              </h5>
+            </navbar-item>
+            <navbar-item class="list-group-item list-group-item-action" router href="/css/table">
+              <h5 class="justify-content-between d-flex align-items-center">
+                Table <fa icon="angle-right"/>
+              </h5>
+            </navbar-item>
+            <navbar-item class="list-group-item list-group-item-action" router href="/css/table-additional">
+              <h5 class="justify-content-between d-flex align-items-center">
+                Table Additional <fa icon="angle-right"/>
+              </h5>
+            </navbar-item>
+            <navbar-item class="list-group-item list-group-item-action" router href="/css/table-responsive">
+              <h5 class="justify-content-between d-flex align-items-center">
+                Table Responsive <fa icon="angle-right"/>
+              </h5>
+            </navbar-item>
+          </list-group>
         </jumbotron>
       </column>
     </row>
@@ -21,7 +49,7 @@
 </template>
 
 <script>
-import { Container, Row, Column, Fa, Jumbotron } from 'mdbvue';
+import { Container, Row, Column, Fa, Jumbotron, ListGroup, NavbarItem } from 'mdbvue';
 
 export default {
   name: 'CSSPage',
@@ -30,7 +58,9 @@ export default {
     Row,
     Column,
     Fa,
-    Jumbotron
+    Jumbotron,
+    ListGroup,
+    NavbarItem
   }
 };
 </script>
@@ -59,5 +89,9 @@ export default {
 .example-components-list i {
   float: right;
   padding-top: 3px;
+}
+
+.nav-link.navbar-link h5 {
+  color: #212529;
 }
 </style>

@@ -1,5 +1,10 @@
 <template>
   <container>
+    <row class="mt-5 align-items-center justify-content-start">
+      <h4 style="margin: 0" class="grey-text"><strong>Popovers</strong></h4>
+      <a href="https://mdbootstrap.com/vue/advanced/popovers/" waves-fixed class="border grey-text px-2 border-light rounded ml-2" target="_blank"><fa icon="graduation-cap" class="mr-2"/>Docs</a>
+    </row>
+    <hr />
     <row class="mt-5">
       <column col="4"></column>
       <column col="4" class="mt-5 pt-5">
@@ -23,7 +28,7 @@
 
 
 <script>
-import { Popover, Row, Column, Btn, Container } from 'mdbvue';
+import { Popover, Row, Column, Btn, Container, Fa } from 'mdbvue';
 
 export default {
   name: 'PopoverPage',
@@ -35,7 +40,8 @@ export default {
     Row,
     Column,
     Btn,
-    Container
+    Container,
+    Fa
   },
 };
 </script>

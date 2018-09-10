@@ -4,16 +4,16 @@ export default {
   methods: {
     wave(e) {
       if (this.waves) {
-        this.target = e.currentTarget;
+        this.target = e.target.classList.contains('ripple-parent') ? e.currentTarget : e.target.parentElement;
         this.getOffsets(e);
         this.waveData = { 'top' : e.pageY - this.offsetTop, 'left': e.pageX - this.offsetLeft, 'height': this.$el.offsetHeight, 'width': this.$el.offsetWidth };
         // for fixed elements
         if (this.wavesFixed) {
-          this.waveData.top = e.clientY;
+          this.waveData.top = e.clientY - this.offsetTop;
         }
         this.createRipple();
         this.rippleAnimate();
-        this.rippleRemove(e.currentTarget, this.rippleElement);
+        this.rippleRemove(this.target, this.rippleElement);
       }
     },
     getOffsets(e) {

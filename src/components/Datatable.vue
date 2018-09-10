@@ -4,37 +4,12 @@
     <div class="row">
       <div class="col-sm-12 col-md-6">
         <div v-if="pagination">
-          <div v-if="!materialInputs" class="dataTables_length bs-select">
-            <label>
-              Show <select v-model="entries" class="custom-select custom-select-sm form-control form-control-sm"><option v-for="option in options" :key="option">{{option}}</option></select> entries
-            </label>
-          </div>
-
-          <div v-else class="dataTables_length d-flex flex-row">
-            <!-- to supported yet -->
-            <!-- <label>Show entries</label>
-            <mdb-select :wrapperClass="'mdb-select'">
-              <select-input :value="entries"/>
-              <select-options>
-                <select-option v-for="option in options" :key="option" :value="option">
-                  {{option}}
-                </select-option>
-              </select-options>
-            </mdb-select> -->
-          </div>
+          <datatable-select @getValue="updateEntries" :options="options" />
         </div>
       </div>    
 
       <div v-if="searching" class="col-sm-12 col-md-6">
-        <div v-if="!materialInputs" class="dataTables_filter">
-          <label>
-            Search <input v-model="search" type="search" class="form-control form-control-sm" placeholder="Search" />
-          </label>
-        </div>
-
-        <div v-else class="dataTables_filter md-form">
-          <input v-model="search" type="search" class="form-control" placeholder="Search" />
-        </div>
+        <datatable-search @getValue="updateSearch" />
       </div>
     </div>
     <!-- Entries input and search -->
@@ -58,6 +33,9 @@
           <td v-for="(value, key) in row" :key="key">
             {{value}}
           </td>
+        </tr>
+        <tr v-if="!pages.length">
+          <td :colspan="columns.length">No matching records found</td>
         </tr>
       </tbl-body>
       <tbl-head tag="tfoot">
@@ -100,6 +78,9 @@
             <td v-for="(value, key) in row" :key="key">
               {{value}}
             </td>
+          </tr>
+          <tr v-if="!pages.length">
+            <td :colspan="columns.length">No matching records found</td>
           </tr>
         </tbl-body>
       </tbl>
@@ -169,15 +150,31 @@ import TblHead from './TableHead';
 import TblBody from './TableBody';
 import Pagination from './Pagination';
 import PageItem from './PageItem';
+import mdbInput from './Input';
+let DatatableSelect;
+try {
+  DatatableSelect = require('./pro/DatatableSelect').default;
+}
+catch (err) {
+  DatatableSelect = require('./DatatableSelect').default;
+}
+let DatatableSearch;
+try {
+  DatatableSearch = require('./pro/DatatableSearch').default;
+}
+catch (err) {
+  DatatableSearch = require('./DatatableSearch').default;
+}
 
 const Datatable = {
   name: 'Datatable',
   props: {
-    columns: {
-      type: Array
-    },
-    rows: {
-      type: Array
+    data: {
+      type: [Object, String],
+      default: () => ({
+        columns: [],
+        rows: []
+      })
     },
     autoWidth: {
       type: Boolean,
@@ -215,6 +212,9 @@ const Datatable = {
       default: false
     },
     maxWidth: {
+      type: String
+    },
+    maxHeight: {
       type: String
     },
     order: {
@@ -263,6 +263,8 @@ const Datatable = {
   },
   data() {
     return {
+      rows: this.data.rows || [],
+      columns: this.data.columns || [],
       options: [10, 25, 50, 100],
       entries: 10,
       pages: [],
@@ -281,7 +283,8 @@ const Datatable = {
         responsiveLg: this.responsiveLg,
         responsiveXl: this.responsiveXl,
         striped: this.striped,
-        dtScrollY: this.scrollY
+        dtScrollY: this.scrollY,
+        maxHeight: this.maxHeight
       },
       wrapperStyle: {
         maxWidth: this.maxWidth ? this.maxWidth : '100%',
@@ -290,11 +293,14 @@ const Datatable = {
     };
   },
   components: {
+    DatatableSearch,
+    DatatableSelect,
     Tbl,
     TblHead,
     TblBody,
     Pagination,
-    PageItem
+    PageItem,
+    mdbInput
   },
   computed: {
     // filter objects by parameters match
@@ -321,9 +327,27 @@ const Datatable = {
           this.rows.sort((a, b) => (a[field] > b[field] ? -1 : 1));
         this.columns[this.columns.findIndex(column => column.field === field)].sort = sort === 'asc' ? 'desc' : 'asc';
       } 
+    },
+    updateEntries(value) {
+      this.entries = value;
+    },
+    updateSearch(value) {
+      this.search = value;
     }
   },
   mounted() {
+    // bind data or download form API
+    if (typeof this.data === 'string') {
+      fetch(this.data) 
+        .then(res => res.json())
+        .then(json => {
+          this.columns = json.columns;
+          this.rows = json.rows;
+          this.$emit('fields', this.columns);
+        })
+        .catch(err => console.log(err));
+    }
+
     // findout rows amount, and slice it into array (split into pages)
     const pagesAmount = Math.ceil(this.filteredRows.length / this.entries);
     this.pages = [];
@@ -342,6 +366,9 @@ const Datatable = {
     if (this.order) {
       this.sort(this.columns[this.order[0]].field, this.order[1]);
     }
+
+    this.$emit('pages', this.pages);
+    this.$emit('fields', this.columns);
   },
   watch: {
     entries() {
@@ -353,6 +380,8 @@ const Datatable = {
         this.pages.push(this.filteredRows.slice(pageEndIndex-this.entries, pageEndIndex));
       }
       this.activePage = this.activePage < this.pages.length ? this.activePage : this.pages.length-1;
+
+      this.$emit('pages', this.pages);
     },
     filteredRows() {
       // do the split on every change in rows (searching)
@@ -368,6 +397,8 @@ const Datatable = {
         this.pages.push(this.filteredRows);
       }
       this.activePage = 0;
+
+      this.$emit('pages', this.pages);
     } 
   }
 };
@@ -381,5 +412,10 @@ export { Datatable as mdbDatatable };
   display: block;
   overflow-y: auto;
   -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+.dataTables-scrollBody td,
+.dataTables-scrollBody th {
+  white-space: nowrap;
 }
 </style>

@@ -1,5 +1,10 @@
 <template>
   <container>
+    <row class="mt-5 align-items-center justify-content-start">
+      <h4 class="grey-text"><strong>Cards </strong></h4>
+      <a href="https://mdbootstrap.com/vue/components/cards/" waves-fixed class="border grey-text px-2 border-light rounded ml-2" target="_blank"><fa icon="graduation-cap" class="mr-2"/>Docs</a>
+    </row>
+    <hr class="mb-5" />
     <row class="mt-5">
       <column sm="4">
         <card>
@@ -114,7 +119,7 @@
 </template>
 
 <script>
-import { Container, Row, Column, Card, CardImg, CardHeader, CardBody, CardTitle, CardText, Btn, ViewWrapper, MdMask, CardGroup } from 'mdbvue';
+import { Container, Row, Column, Card, CardImg, CardHeader, CardBody, CardTitle, CardText, Btn, ViewWrapper, MdMask, CardGroup, Fa } from 'mdbvue';
 
 export default {
   name: 'CardPage',
@@ -131,12 +136,16 @@ export default {
     Btn,
     ViewWrapper,
     MdMask,
-    CardGroup
+    CardGroup,
+    Fa
   }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  h4 {
+    margin: 0;
+  }
 
 </style>

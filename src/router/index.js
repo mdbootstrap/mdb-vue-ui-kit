@@ -5,6 +5,10 @@ import Router from 'vue-router';
 import CSSPage from '../docs/CSSPage';
 import ComponentsPage from '../docs/ComponentsPage';
 import AdvancedPage from '../docs/AdvancedPage';
+import NavigationMenuPage from '../docs/NavigationMenuPage';
+import FormsMenuPage from '../docs/FormsMenuPage';
+import TablesPage from '../docs/TablesPage';
+import ModalsPage from '../docs/ModalsPage';
 
 // FREE
 import HomePage from '../docs/HomePage';
@@ -72,6 +76,26 @@ export default new Router({
       name: 'AdvancedPage',
       component: AdvancedPage
     },
+    {
+      path: '/navigation',
+      name: 'NavigationMenuPage',
+      component: NavigationMenuPage
+    },
+    {
+      path: '/forms',
+      name: 'FormsMenuPage',
+      component: FormsMenuPage
+    },
+    {
+      path: '/tables',
+      name: 'TablesPage',
+      component: TablesPage
+    },
+    {
+      path: '/modals',
+      name: 'ModalsPage',
+      component: ModalsPage
+    },
 
     // FREE
     {
@@ -99,11 +123,11 @@ export default new Router({
       name: 'TableAdditionalPage',
       component: TableAdditionalPage
     }, {
-      path: '/advanced/datatable',
+      path: '/tables/datatable',
       name: 'DataTablePage',
       component: DataTablePage
     }, {
-      path: '/advanced/table-pagination',
+      path: '/tables/table-pagination',
       name: 'TablePaginationPage',
       component: TablePaginationPage
     }, {
@@ -111,15 +135,15 @@ export default new Router({
       name: 'TableResponsviePage',
       component: TableResponsivePage
     }, {
-      path: '/advanced/table-search',
+      path: '/tables/table-search',
       name: 'TableSearchPage',
       component: TableSearchPage
     }, {
-      path: '/advanced/table-sort',
+      path: '/tables/table-sort',
       name: 'TableSortPage',
       component: TableSortPage
     }, {
-      path: '/advanced/table-scroll',
+      path: '/tables/table-scroll',
       name: 'TableScrollPage',
       component: TableScrollPage
     }, {
@@ -135,7 +159,7 @@ export default new Router({
       name: 'CarouselPage',
       component: CarouselPage
     }, {
-      path: '/components/breadcrumb',
+      path: '/navigation/breadcrumb',
       name: 'BreadcrumbPage',
       component: BreadcrumbPage
     }, {
@@ -147,7 +171,7 @@ export default new Router({
       name: 'FaPage',
       component: FaPage
     }, {
-      path: '/components/inputs',
+      path: '/forms/inputs',
       name: 'InputsPage',
       component: InputsPage
     }, {
@@ -163,11 +187,11 @@ export default new Router({
       name: 'ListGroupPage',
       component: ListGroupPage
     }, {
-      path: '/components/navbar',
+      path: '/navigation/navbar',
       name: 'NavbarPage',
       component: NavbarPage
     }, {
-      path: '/components/navigation',
+      path: '/navigation/navigation',
       name: 'NavigationPage',
       component: NavigationPage
     }, {
@@ -207,7 +231,7 @@ export default new Router({
       name: 'MasksPage',
       component: MasksPage
     }, {
-      path: '/advanced/validation',
+      path: '/forms/validation',
       name: 'ValidationPage',
       component: ValidationPage
     }, {
@@ -215,19 +239,19 @@ export default new Router({
       name: 'VideoCarouselPage',
       component: VideoCarouselPage
     }, {
-      path: '/advanced/modal',
+      path: '/modals/modal',
       name: 'ModalPage',
       component: ModalPage
     }, {
-      path: '/components/forms',
+      path: '/forms/forms',
       name: 'FormsPage',
       component: FormsPage
     }, {
-      path: '/components/search',
+      path: '/forms/search',
       name: 'SearchPage',
       component: SearchPage
     }, {
-      path: '/components/footer',
+      path: '/navigation/footer',
       name: 'FooterPage',
       component: FooterPage
     }

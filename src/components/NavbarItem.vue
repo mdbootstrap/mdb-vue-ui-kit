@@ -1,7 +1,11 @@
 <template>
   <li :is="tag" :class="className" @click="wave">
-    <a :href="href" class="nav-link navbar-link" :class="{disabled: disabled, active: active}"><slot></slot></a>
+    <a v-if="!router" :href="link" :class="anchorClassName"><slot></slot></a>
+    <router-link tag="a" v-if="router" :exact="exact" active-class='active' exact-active-class='active' :class='anchorClassName' :to="link">
+      <slot></slot>
+    </router-link>
   </li>
+
 </template>
 
 <script>
@@ -32,6 +36,14 @@ const NavbarItem = {
     },
     disabled: {
       type: Boolean
+    },
+    router: {
+      type: Boolean,
+      default: false
+    },
+    exact: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
@@ -40,7 +52,19 @@ const NavbarItem = {
         'nav-item',
         this.waves && 'ripple-parent'
       );
-    }
+    },
+    anchorClassName() {
+      return classNames({
+        'nav-link': true,
+        'navbar-link': true,
+        'disabled': this.disabled,
+        'active': this.active
+      }
+      );
+    },
+    link() {
+      return this.router ? this.href : '#' + this.href;
+    },
   },
   mixins: [waves]
 };

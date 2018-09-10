@@ -3,42 +3,36 @@
     <row>
       <column md="8" class="mx-auto">
         <jumbotron class="mt-5">
-          <h1 class="pb-2"><Fa icon="code" class="grey-text mr-2" />Advanced</h1>
+          <h1 class="pb-2"><Fa icon="table" class="grey-text mr-2" />Tables</h1>
           <h6 class="my-3">FREE</h6>
           <list-group>
             <!-- FREE -->
-            <navbar-item class="list-group-item list-group-item-action" router href="/advanced/carousel">
+            <navbar-item class="list-group-item list-group-item-action" router href="/tables/datatable">
               <h5 class="justify-content-between d-flex align-items-center">
-                Carousel<fa icon="angle-right"/>
+                Datatable<fa icon="angle-right"/>
               </h5>
             </navbar-item>
-            <navbar-item class="list-group-item list-group-item-action" router href="/advanced/chart">
+            <navbar-item class="list-group-item list-group-item-action" router href="/tables/table-pagination">
               <h5 class="justify-content-between d-flex align-items-center">
-                Charts<fa icon="angle-right"/>
+                Table pagination<fa icon="angle-right"/>
               </h5>
             </navbar-item>
-            <navbar-item class="list-group-item list-group-item-action" router href="/advanced/collapse">
+            <navbar-item class="list-group-item list-group-item-action" router href="/tables/table-scroll">
               <h5 class="justify-content-between d-flex align-items-center">
-                Collapse<fa icon="angle-right"/>
+                Table Scroll<fa icon="angle-right"/>
+              </h5>
+            </navbar-item>
+            <navbar-item class="list-group-item list-group-item-action" router href="/tables/table-search">
+              <h5 class="justify-content-between d-flex align-items-center">
+                Table Search<fa icon="angle-right"/>
+              </h5>
+            </navbar-item>
+            <navbar-item class="list-group-item list-group-item-action" router href="/tables/table-sort">
+              <h5 class="justify-content-between d-flex align-items-center">
+                Table Sort<fa icon="angle-right"/>
               </h5>
             </navbar-item>
 
-
-            <navbar-item class="list-group-item list-group-item-action" router href="/advanced/popover">
-              <h5 class="justify-content-between d-flex align-items-center">
-                Popover<fa icon="angle-right"/>
-              </h5>
-            </navbar-item>
-            <navbar-item class="list-group-item list-group-item-action" router href="/advanced/tooltip">
-              <h5 class="justify-content-between d-flex align-items-center">
-                Tooltip<fa icon="angle-right"/>
-              </h5>
-            </navbar-item>
-            <navbar-item class="list-group-item list-group-item-action" router href="/advanced/videocarousel">
-              <h5 class="justify-content-between d-flex align-items-center">
-                Video Carousel<fa icon="angle-right"/>
-              </h5>
-            </navbar-item>
           </list-group>
         </jumbotron>
       </column>

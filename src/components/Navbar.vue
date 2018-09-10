@@ -58,7 +58,7 @@ const Navbar = {
       return  classNames(
         'navbar',
         this.dark ? 'navbar-dark' : 'navbar-light',
-        this.color ? this.color + '-color' : '',
+        this.color && !this.transparent ? this.color + '-color' : '',
         this.expand === 'small' ? 'navbar-expand-sm' :
           this.expand === 'medium' ? 'navbar-expand-md' :
             this.expand === 'large' ? 'navbar-expand-lg' : 'navbar-expand-lx',
@@ -69,7 +69,6 @@ const Navbar = {
     },
     navStyles() {
       return (
-        this.transparent && 'background-color: transparent',
         this.navStyle
       );
     }
@@ -111,10 +110,12 @@ const Navbar = {
         if (window.scrollY > 100 && this.scrolled === false) {
           this.$el.style.paddingTop = 5 + 'px';
           this.$el.style.paddingBottom = 5 + 'px';
+          if (this.transparent) this.$el.classList.add(`${this.color}-color`);
           this.scrolled = true;
         } else if (window.scrollY < 100 && this.scrolled === true) {
           this.$el.style.paddingTop = 12 + 'px';
           this.$el.style.paddingBottom = 12 + 'px';
+          if (this.transparent) this.$el.classList.remove(`${this.color}-color`);
           this.scrolled = false;
         }
       }

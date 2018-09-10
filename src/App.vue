@@ -6,32 +6,31 @@
       </mdb-navbar-brand>
       <navbar-collapse>
         <navbar-nav right>
-          <navbar-item href="#/" waves-fixed>Home</navbar-item>
-          <navbar-item href="#/css" waves-fixed>CSS</navbar-item>
-          <navbar-item href="#/components" waves-fixed>Components</navbar-item>
-          <navbar-item href="#/advanced" waves-fixed>Advanced</navbar-item>
+          <navbar-item router exact href="/" waves-fixed>Home</navbar-item>
+          <navbar-item router href="/css" waves-fixed>CSS</navbar-item>
+          <navbar-item router href="/components" waves-fixed>Components</navbar-item>
+          <navbar-item router href="/advanced" waves-fixed>Advanced</navbar-item>
+          <navbar-item router href="/navigation" waves-fixed>Navigation</navbar-item>
+          <navbar-item router href="/forms" waves-fixed>Forms</navbar-item>
+          <navbar-item router href="/tables" waves-fixed>Tables</navbar-item>
+          <navbar-item router href="/modals" waves-fixed>Modals</navbar-item>
+          <navbar-item router href="/sections" waves-fixed>Sections</navbar-item>
         </navbar-nav>
       </navbar-collapse>
     </navbar>
     <main :style="{marginTop: '60px'}">
       <router-view></router-view>
     </main>
-    <Ftr color="default-color">
+    <Footer color="default-color">
       <p class="footer-copyright mb-0 py-3 text-center">
         &copy; {{new Date().getFullYear()}} Copyright: <a href="https://www.MDBootstrap.com"> MDBootstrap.com </a>
       </p>
-    </Ftr>
+    </Footer>
   </div>
 </template>
 
 <script>
-import Navbar from '@/components/Navbar.vue';
-import NavbarItem from '@/components/NavbarItem.vue';
-import NavbarNav from '@/components/NavbarNav.vue';
-import NavbarCollapse from '@/components/NavbarCollapse.vue';
-import Ftr from '@/components/Footer.vue';
-import EdgHd from '@/components/EdgeHeader.vue';
-import mdbNavbarBrand from '@/components/NavbarBrand.vue';
+import { Navbar, NavbarItem, NavbarNav, NavbarCollapse, mdbNavbarBrand, Footer } from 'mdbvue';
 
 export default {
   name: 'app',
@@ -40,9 +39,8 @@ export default {
     NavbarItem,
     NavbarNav,
     NavbarCollapse,
-    Ftr,
-    EdgHd,
-    mdbNavbarBrand
+    mdbNavbarBrand,
+    Footer
   }
 };
 
@@ -54,6 +52,10 @@ export default {
 	flex-direction: column;
 	min-height:100vh;
 	justify-content: space-between;
+}
+
+.active{
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 </style>

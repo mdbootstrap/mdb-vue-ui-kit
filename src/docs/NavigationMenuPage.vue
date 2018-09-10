@@ -3,40 +3,28 @@
     <row>
       <column md="8" class="mx-auto">
         <jumbotron class="mt-5">
-          <h1 class="pb-2"><Fa icon="code" class="grey-text mr-2" />Advanced</h1>
+          <h1 class="pb-2"><Fa icon="bars" class="grey-text mr-2" />Navigation</h1>
           <h6 class="my-3">FREE</h6>
           <list-group>
             <!-- FREE -->
-            <navbar-item class="list-group-item list-group-item-action" router href="/advanced/carousel">
+            <navbar-item class="list-group-item list-group-item-action" router href="/navigation/breadcrumb">
               <h5 class="justify-content-between d-flex align-items-center">
-                Carousel<fa icon="angle-right"/>
+                Breadcrumb <fa icon="angle-right"/>
               </h5>
             </navbar-item>
-            <navbar-item class="list-group-item list-group-item-action" router href="/advanced/chart">
+            <navbar-item class="list-group-item list-group-item-action" router href="/navigation/footer">
               <h5 class="justify-content-between d-flex align-items-center">
-                Charts<fa icon="angle-right"/>
+                Footer <fa icon="angle-right"/>
               </h5>
             </navbar-item>
-            <navbar-item class="list-group-item list-group-item-action" router href="/advanced/collapse">
+            <navbar-item class="list-group-item list-group-item-action" router href="/navigation/navbar">
               <h5 class="justify-content-between d-flex align-items-center">
-                Collapse<fa icon="angle-right"/>
+                Navbar <fa icon="angle-right"/>
               </h5>
             </navbar-item>
-
-
-            <navbar-item class="list-group-item list-group-item-action" router href="/advanced/popover">
+            <navbar-item class="list-group-item list-group-item-action" router href="/navigation/navigation">
               <h5 class="justify-content-between d-flex align-items-center">
-                Popover<fa icon="angle-right"/>
-              </h5>
-            </navbar-item>
-            <navbar-item class="list-group-item list-group-item-action" router href="/advanced/tooltip">
-              <h5 class="justify-content-between d-flex align-items-center">
-                Tooltip<fa icon="angle-right"/>
-              </h5>
-            </navbar-item>
-            <navbar-item class="list-group-item list-group-item-action" router href="/advanced/videocarousel">
-              <h5 class="justify-content-between d-flex align-items-center">
-                Video Carousel<fa icon="angle-right"/>
+                Navigation <fa icon="angle-right"/>
               </h5>
             </navbar-item>
           </list-group>
@@ -50,7 +38,7 @@
 import { Container, Row, Column, Fa, Jumbotron, NavbarItem, ListGroup } from 'mdbvue';
 
 export default {
-  name: 'AdvancedPage',
+  name: 'ComponentsPage',
   components: {
     Container,
     Row,

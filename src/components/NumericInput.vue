@@ -46,6 +46,11 @@ const NumericInput = {
   data: () => ({
     number: ''
   }),
+  watch: {
+    number () {
+      this.$emit('input', this.number);
+    }
+  }
 };
 
 export default NumericInput;

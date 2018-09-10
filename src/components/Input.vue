@@ -1,21 +1,26 @@
 <template>
   <div :class="wrapperClass">
     <i v-if="icon" :class="iconClasses"/>
-    <input :is="tag"
-           :id="id"
-           :class="className"
-           :type="type"
-           :placeholder="placeholder"
-           :disabled="disabled"
-           @focus="focus"
-           @blur="blur"
-           @click="wave"
-           :checked="checked"
-           :value="value"
-           @change="onChange"
-           ref="input"
-           @input="onChange"/>
-    <label v-if="label" :class="labelClass" @click="focus" ref="label" :for="id">{{label}}</label>
+    <label v-if="label && basic" :class="labelClass" @click="focus" ref="label" :for="id">{{label}}</label>
+    <input 
+      :is="tag"
+      :id="id"
+      :class="className"
+      :type="type"
+      :placeholder="placeholder"
+      :disabled="disabled"
+      @focus="focus"
+      @blur="blur"
+      @click="wave"
+      @change="onChange"
+      ref="input"
+      @input="onChange"
+      :name="name"
+      :required="required"
+      :checked="innerChecked"
+      :value="innerValue"
+    />  
+    <label v-if="label && !basic" :class="labelClass" @click="focus" ref="label" :for="id">{{label}}</label>
     <slot></slot>
   </div>
 </template>
@@ -24,8 +29,19 @@
 import classNames from 'classnames';
 import waves from '../mixins/waves';
 
-const MdInput = {
+const Input = {
   props: {
+    basic: {
+      type: Boolean,
+      default: false
+    },
+    name: {
+      type: String
+    },
+    required: {
+      type: Boolean,
+      default: false
+    },
     tag: {
       type: String,
       default: "input"
@@ -98,6 +114,9 @@ const MdInput = {
     valid: {
       type: Boolean
     },
+    invalid: {
+      type: Boolean
+    },
     active: {
       type: Boolean,
       default: false
@@ -115,21 +134,27 @@ const MdInput = {
     className() {
       return classNames(
         'form-control',
-        this.valid && 'validate valid',
-        this.invalid && 'validate invalid',
+        {
+          'validate valid': this.valid,
+          'validate invalid': this.invalid,
+          'filled-in': this.filled,
+          'with-gap': this.gap
+        },
         this.type === 'checkbox' ? this.gap ? false : 'form-check-input' : false,
-        this.type === 'radio' ? 'form-check-input' : false,
-        this.filled && 'filled-in',
-        this.gap ? 'with-gap' : false
+        this.type === 'radio' ? 'form-check-input' : false
       );
     },
     wrapperClass() {
-      return classNames(
-        (this.type === 'checkbox' || this.type === 'radio') && this.inline ?
-          'form-check' : this.type === 'checkbox' || this.type === 'radio' ? 'form-check my-3' : 'md-form',
-        this.size ? 'form-' + this.size : '',
-        this.waves ? 'ripple-parent' : ''
-      );
+      if (!this.basic) {
+        return classNames(
+          (this.type === 'checkbox' || this.type === 'radio') && this.inline ?
+            'form-check' : (this.type === 'checkbox' || this.type === 'radio') ? 'form-check my-3' : 'md-form',
+          this.size && 'form-' + this.size,
+          this.waves && 'ripple-parent'
+        );
+      }
+
+      return null;
     },
     iconClasses(){
       return classNames(
@@ -140,9 +165,11 @@ const MdInput = {
     },
     labelClass() {
       return classNames(
-        (this.placeholder || this.isTouched || this.innerValue !=='') ? 'active': '',
-        this.disabled ? 'disabled' : '',
-        this.type === 'checkbox' || this.type === 'radio' ? 'form-check-label mr-5' : false,
+        {
+          'active': (this.placeholder || this.isTouched || this.innerValue !==''),
+          'disabled': this.disabled,
+          'form-check-label mr-5': (this.type === 'checkbox' || this.type === 'radio')
+        },
         this.labelColor && 'text-' + this.labelColor
       );
     }
@@ -167,21 +194,22 @@ const MdInput = {
       }
     },
     onChange(e) {
-      this.$emit('input', e.target.value);
-      if (this.type == "text" || this.type == "email" || this.type == "password") {
+      if (this.type == "text" || this.type == "email" || this.type == "password" || this.type == "radio") {
+        this.$emit('input', e.target.value);
         this.innerValue = e.target.value;
       }
-      if (this.type == 'checkbox') {
+      if (this.type == "checkbox") {
+        this.$emit('change', e.target.checked);
         this.innerChecked = e.target.checked;
       }
       this.$forceUpdate();
-    }
+    },
   },
   mixins: [waves]
 };
 
-export default MdInput;
-export { MdInput as mdbInput };
+export default Input;
+export { Input as mdbInput };
 </script>
 
 <style scoped>

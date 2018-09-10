@@ -43,7 +43,7 @@ import HelloWorld, { mdbHelloWorld } from './components/HelloWorld';
 import Jumbotron, { mdbJumbotron } from './components/Jumbotron';
 import ListGroup, { mdbListGroup } from './components/ListGroup';
 import ListGroupItem, { mdbListGroupItem } from './components/ListGroupItem';
-import MdInput, { mdbInput } from './components/MdInput';
+import Input, { mdbInput } from './components/Input';
 import MdMask, { mdbMask } from './components/Mdmask';
 import MdTextarea, { mdbTextarea } from './components/MdTextarea';
 import Media, { mdbMedia } from './components/Media';
@@ -120,7 +120,7 @@ export {
   Jumbotron,
   ListGroup,
   ListGroupItem,
-  MdInput,
+  Input,
   MdMask,
   MdTextarea,
   Media,
@@ -150,6 +150,7 @@ export {
   ModalFooter,
   NumericInput,
   waves,
+
   // MDB FREE
   mdbBadge,
   mdbBreadcrumb,
@@ -223,5 +224,5 @@ export {
   mdbModalTitle,
   mdbModalBody,
   mdbModalFooter,
-  mdbNumericInput
+  mdbNumericInput,
 };

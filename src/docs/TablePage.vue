@@ -1,4 +1,10 @@
 <template>
+<container class="mt-5">
+  <row class="mt-5 align-items-center justify-content-start">
+    <h4 style="margin: 0" class="grey-text"><strong>Tables</strong></h4>
+    <a href="https://mdbootstrap.com/vue/content/table-styles/" waves-fixed class="border grey-text px-2 border-light rounded ml-2" target="_blank"><fa icon="graduation-cap" class="mr-2"/>Docs</a>
+  </row>
+  <hr />
 	<div class="mt-5 pt-5 mx-3">
 		<h3>Basic example</h3>
 		<br />
@@ -12,7 +18,7 @@
 				</tr>
 			</tbl-head>
 			<tbl-body>
-				<tr scope="row"> 
+				<tr scope="row">
 					<td>1</td>
 					<td>tbody col 1</td>
 					<td>tbody col 2</td>
@@ -45,7 +51,7 @@
 				</tr>
 			</tbl-head>
 			<tbl-body>
-				<tr scope="row"> 
+				<tr scope="row">
 					<td>1</td>
 					<td>tbody col 1</td>
 					<td>tbody col 2</td>
@@ -78,7 +84,7 @@
 				</tr>
 			</tbl-head>
 			<tbl-body>
-				<tr scope="row"> 
+				<tr scope="row">
 					<td>1</td>
 					<td>tbody col 1</td>
 					<td>tbody col 2</td>
@@ -111,7 +117,7 @@
 				</tr>
 			</tbl-head>
 			<tbl-body>
-				<tr scope="row"> 
+				<tr scope="row">
 					<td>1</td>
 					<td>tbody col 1</td>
 					<td>tbody col 2</td>
@@ -144,7 +150,7 @@
 				</tr>
 			</tbl-head>
 			<tbl-body>
-				<tr scope="row"> 
+				<tr scope="row">
 					<td>1</td>
 					<td>tbody col 1</td>
 					<td>tbody col 2</td>
@@ -177,7 +183,7 @@
 				</tr>
 			</tbl-head>
 			<tbl-body>
-				<tr scope="row"> 
+				<tr scope="row">
 					<td>1</td>
 					<td>tbody col 1</td>
 					<td>tbody col 2</td>
@@ -210,7 +216,7 @@
 				</tr>
 			</tbl-head>
 			<tbl-body>
-				<tr scope="row"> 
+				<tr scope="row">
 					<td>1</td>
 					<td>tbody col 1</td>
 					<td>tbody col 2</td>
@@ -244,7 +250,7 @@
 				</tr>
 			</tbl-head>
 			<tbl-body>
-				<tr scope="row"> 
+				<tr scope="row">
 					<td>1</td>
 					<td>tbody col 1</td>
 					<td>tbody col 2</td>
@@ -265,17 +271,21 @@
 			</tbl-body>
 		</tbl>
 	</div>
+</container>
 </template>
 
 <script>
-import { Tbl, TblHead, TblBody } from 'mdbvue';
+import { Tbl, TblHead, TblBody, Fa, Container, Row } from 'mdbvue';
 
 export default {
   name: 'TablePage',
   components: {
     Tbl,
     TblHead,
-    TblBody
+    TblBody,
+    Row,
+    Fa,
+    Container
   }
 };
 </script>

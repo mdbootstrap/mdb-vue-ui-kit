@@ -18,18 +18,18 @@
 
               <h5 class="h5-responsive">Basic Textbox</h5>
               <!-- Basic textbox -->
-              <md-input type="text" label="Example label"/>
+              <mdb-input type="text" label="Example label"/>
               <!-- /.Basic textbox -->
 
               <h5 class="h5-responsive">Textbox with icon</h5>
               <div class="md-form">
-                <md-input type="text" label="Your name" icon="user" />
+                <mdb-input type="text" label="Your name" icon="user" />
               </div>
 
               <!--Email validation-->
               <h5 class="h5-responsive">E-mail validation</h5>
               <div class="md-form">
-                <md-input type="email" label="Your email" icon="envelope" />
+                <mdb-input type="email" label="Your email" icon="envelope" />
               </div>
 
               <!--Textarea with icon-->
@@ -40,7 +40,7 @@
 
               <h5 class="h5-responsive">Disabled field</h5>
               <div class="md-form">
-                <md-input type="text" label="Example label" disabled/>
+                <mdb-input type="text" label="Example label" disabled/>
               </div>
 
               <div class="text-xs-left">
@@ -63,7 +63,7 @@
 </template>
 
 <script>
-import { EdgeHeader, Container, Row, Column, CardBody, MdInput, MdTextarea } from 'mdbvue';
+import { EdgeHeader, Container, Row, Column, CardBody, mdbInput, MdTextarea } from 'mdbvue';
 
 export default {
   name: 'EdgeHeaderPage',
@@ -73,7 +73,7 @@ export default {
     Row,
     Column,
     CardBody,
-    MdInput,
+    mdbInput,
     MdTextarea
   }
 };

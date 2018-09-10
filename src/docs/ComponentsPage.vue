@@ -3,28 +3,63 @@
     <row>
       <column md="8" class="mx-auto">
         <jumbotron class="mt-5">
-          <h1><Fa icon="cubes" class="grey-text" /> Components</h1>
-          <ul class="list-unstyled example-components-list">
+          <h1 class="pb-2"><Fa icon="cubes" class="grey-text mr-2" />Components</h1>
+          <h6 class="my-3">FREE</h6>
+          <list-group>
             <!-- FREE -->
-            <h6>FREE</h6>
-            <a href="#/components/badge"><li>Badge <fa icon="angle-right"/></li></a>
-            <a href="#/components/button"><li>Button <fa icon="angle-right"/></li></a>
-            <a href="#/components/breadcrumb"><li>Breadcrumb <fa icon="angle-right"/></li></a>
-            <a href="#/components/card"><li>Cards <fa icon="angle-right"/></li></a>
-            <a href="#/components/dropdown"><li>Dropdown <fa icon="angle-right"/></li></a>
-            <a href="#/components/edge-header"><li>Edge Header <fa icon="angle-right"/></li></a>
-            <a href="#/components/footer"><li>Footer <fa icon="angle-right"/></li></a>
-            <a href="#/components/forms"><li>Forms <fa icon="angle-right"/></li></a>
-            <a href="#/components/inputs"><li>Input <fa icon="angle-right"/></li></a>
-            <a href="#/components/listgroup"><li>List Group <fa icon="angle-right"/></li></a>
-            <a href="#/components/media"><li>Media <fa icon="angle-right"/></li></a>
-            <a href="#/components/navbar"><li>Navbar <fa icon="angle-right"/></li></a>
-            <a href="#/components/navigation"><li>Navigation <fa icon="angle-right"/></li></a>
-            <a href="#/components/pagination"><li>Pagination <fa icon="angle-right"/></li></a>
-            <a href="#/components/panel"><li>Panel <fa icon="angle-right"/></li></a>
-            <a href="#/components/progress-bars"><li>Progress Bar <fa icon="angle-right"/></li></a>
-            <a href="#/components/search"><li>Search <fa icon="angle-right"/></li></a>
-          </ul>
+            <navbar-item class="list-group-item list-group-item-action" router href="/components/badge">
+              <h5 class="justify-content-between d-flex align-items-center">
+                Badge<fa icon="angle-right"/>
+              </h5>
+            </navbar-item>
+            <navbar-item class="list-group-item list-group-item-action" router href="/components/button">
+              <h5 class="justify-content-between d-flex align-items-center">
+                Button <fa icon="angle-right"/>
+              </h5>
+            </navbar-item>
+            <navbar-item class="list-group-item list-group-item-action" router href="/components/card">
+              <h5 class="justify-content-between d-flex align-items-center">
+                Cards <fa icon="angle-right"/>
+              </h5>
+            </navbar-item>
+            <navbar-item class="list-group-item list-group-item-action" router href="/components/dropdown">
+              <h5 class="justify-content-between d-flex align-items-center">
+                Dropdown <fa icon="angle-right"/>
+              </h5>
+            </navbar-item>
+            <navbar-item class="list-group-item list-group-item-action" router href="/components/edge-header">
+              <h5 class="justify-content-between d-flex align-items-center">
+                Edge Header <fa icon="angle-right"/>
+              </h5>
+            </navbar-item>
+            <navbar-item class="list-group-item list-group-item-action" router href="/components/listgroup">
+              <h5 class="justify-content-between d-flex align-items-center">
+                List Group <fa icon="angle-right"/>
+              </h5>
+            </navbar-item>
+            <navbar-item class="list-group-item list-group-item-action" router href="/components/media">
+              <h5 class="justify-content-between d-flex align-items-center">
+                Media <fa icon="angle-right"/>
+              </h5>
+            </navbar-item>
+
+            <navbar-item class="list-group-item list-group-item-action" router href="/components/pagination">
+              <h5 class="justify-content-between d-flex align-items-center">
+                Pagination <fa icon="angle-right"/>
+              </h5>
+            </navbar-item>
+            <navbar-item class="list-group-item list-group-item-action" router href="/components/panel">
+              <h5 class="justify-content-between d-flex align-items-center">
+                Panel <fa icon="angle-right"/>
+              </h5>
+            </navbar-item>
+            <navbar-item class="list-group-item list-group-item-action" router href="/components/progress-bars">
+              <h5 class="justify-content-between d-flex align-items-center">
+                Progress Bar <fa icon="angle-right"/>
+              </h5>
+            </navbar-item>
+
+          </list-group>
         </jumbotron>
       </column>
     </row>
@@ -32,7 +67,7 @@
 </template>
 
 <script>
-import { Container, Row, Column, Fa, Jumbotron } from 'mdbvue';
+import { Container, Row, Column, Fa, Jumbotron, NavbarItem, ListGroup } from 'mdbvue';
 
 export default {
   name: 'ComponentsPage',
@@ -41,7 +76,9 @@ export default {
     Row,
     Column,
     Fa,
-    Jumbotron
+    Jumbotron,
+    NavbarItem,
+    ListGroup
   }
 };
 </script>
@@ -70,5 +107,9 @@ export default {
 .example-components-list i {
   float: right;
   padding-top: 3px;
+}
+
+.nav-link.navbar-link h5 {
+  color: #212529;
 }
 </style>

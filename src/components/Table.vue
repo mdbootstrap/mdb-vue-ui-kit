@@ -1,5 +1,5 @@
 <template>
-  <div :class="wrapperClasses">
+  <div :class="wrapperClasses" :style="{maxHeight: maxHeight}">
     <table :class="tableClasses" :is="tag" >
       <slot></slot>
     </table>
@@ -82,6 +82,9 @@ const Tbl = {
     tag: {
       type: String,
       default: "table"
+    },
+    maxHeight: {
+      type: String
     }
   },
   computed: {
@@ -119,4 +122,9 @@ export { Tbl as mdbTable };
 </script>
 
 <style scoped>
+.table-wrapper-scroll-y {
+  display: block;
+  overflow-y: auto;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
 </style>

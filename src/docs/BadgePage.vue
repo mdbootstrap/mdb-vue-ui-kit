@@ -1,5 +1,10 @@
 <template>
   <container class="text-center mt-5">
+    <row class="mt-5 align-items-center justify-content-start">
+      <h4 class="grey-text"><strong>Badges </strong></h4>
+      <a href="https://mdbootstrap.com/vue/components/badges/" waves-fixed class="border grey-text px-2 border-light rounded ml-2" target="_blank"><fa icon="graduation-cap" class="mr-2"/>Docs</a>
+    </row>
+    <hr class="mb-5" />
     <row between>
       <badge>Default</badge>
       <badge color="primary-color">Primary</badge>
@@ -67,5 +72,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  h4 {
+    margin: 0;
+  }
 
 </style>
