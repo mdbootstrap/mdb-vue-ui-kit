@@ -1,8 +1,8 @@
 <template>
   <div :class="wrapperClasses" :style="{maxHeight: maxHeight}">
-    <table :class="tableClasses" :is="tag" >
+    <component :class="tableClasses" :style="tableStyle" :is="tag" >
       <slot></slot>
-    </table>
+    </component>
   </div>
 </template>
 
@@ -84,6 +84,9 @@ const Tbl = {
       default: "table"
     },
     maxHeight: {
+      type: String
+    },
+    tableStyle: {
       type: String
     }
   },

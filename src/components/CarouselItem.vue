@@ -1,5 +1,5 @@
 <template>
-  <div :is="tag" :class="className">
+  <component :is="tag" :class="className">
     <div class="view">
       <img v-if="img" :src="src" :alt="alt" class="d-block w-100">
       <div v-if="mask" :class="maskClass"></div>
@@ -8,7 +8,7 @@
       <source :src="src" type="video/mp4" />
     </video>
     <slot></slot>
-  </div>
+  </component>
 </template>
 
 <script>

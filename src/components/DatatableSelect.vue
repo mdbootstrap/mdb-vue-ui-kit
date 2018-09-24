@@ -1,8 +1,9 @@
 <template>
   <div class="dataTables_length bs-select">
     <label>
-      Show <select v-model="entries" class="custom-select custom-select-sm form-control form-control-sm"><option v-for="option in options" :key="option">{{option}}</option></select> entries
+      Show entries
     </label>
+    <select v-model="entries" class="custom-select custom-select-sm form-control form-control-sm"><option v-for="option in options" :key="option">{{option}}</option></select> 
   </div>
 </template>
 

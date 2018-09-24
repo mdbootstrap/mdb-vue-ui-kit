@@ -14,7 +14,6 @@
           <navbar-item router href="/forms" waves-fixed>Forms</navbar-item>
           <navbar-item router href="/tables" waves-fixed>Tables</navbar-item>
           <navbar-item router href="/modals" waves-fixed>Modals</navbar-item>
-          <navbar-item router href="/sections" waves-fixed>Sections</navbar-item>
         </navbar-nav>
       </navbar-collapse>
     </navbar>
@@ -23,7 +22,7 @@
     </main>
     <Footer color="default-color">
       <p class="footer-copyright mb-0 py-3 text-center">
-        &copy; {{new Date().getFullYear()}} Copyright: <a href="https://www.MDBootstrap.com"> MDBootstrap.com </a>
+        &copy; {{new Date().getFullYear()}} Copyright: <a href="https://www.mdbootstrap.com/?utm_source=DemoApp&utm_medium=MDBVue"> MDBootstrap.com </a>
       </p>
     </Footer>
   </div>

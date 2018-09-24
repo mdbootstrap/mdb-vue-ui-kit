@@ -6,7 +6,7 @@
         <div v-if="pagination">
           <datatable-select @getValue="updateEntries" :options="options" />
         </div>
-      </div>    
+      </div>
 
       <div v-if="searching" class="col-sm-12 col-md-6">
         <datatable-search @getValue="updateSearch" />
@@ -112,7 +112,7 @@
         </div>
       </div>
       <div class="col-sm-12 col-md-7">
-        <div class="dataTables_paginate">
+        <div class="dataTables_paginate float-right">
           <pagination id="pagination">
             <page-item
               v-on:click.native="changePage(activePage-1)"
@@ -144,27 +144,14 @@
 </template>
 
 <script>
-// import classNames from 'classnames';
 import Tbl from './Table';
 import TblHead from './TableHead';
 import TblBody from './TableBody';
 import Pagination from './Pagination';
 import PageItem from './PageItem';
 import mdbInput from './Input';
-let DatatableSelect;
-try {
-  DatatableSelect = require('./pro/DatatableSelect').default;
-}
-catch (err) {
-  DatatableSelect = require('./DatatableSelect').default;
-}
-let DatatableSearch;
-try {
-  DatatableSearch = require('./pro/DatatableSearch').default;
-}
-catch (err) {
-  DatatableSearch = require('./DatatableSearch').default;
-}
+import DatatableSelect from './DatatableSelect';
+import DatatableSearch from './DatatableSearch';
 
 const Datatable = {
   name: 'Datatable',
@@ -417,5 +404,16 @@ export { Datatable as mdbDatatable };
 .dataTables-scrollBody td,
 .dataTables-scrollBody th {
   white-space: nowrap;
+}
+</style>
+
+<style>
+.dataTables_wrapper select {
+  display: inline-flex !important;
+  width: auto;
+}
+.dataTables_wrapper input {
+  display: inline-flex !important;
+  width: auto;
 }
 </style>

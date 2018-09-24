@@ -1,7 +1,7 @@
 <template>
-    <a :href="href" :is="tag" class='navbar-brand'>
+    <component :href="href" :is="tag" class='navbar-brand'>
       <slot></slot>
-    </a>
+    </component>
 </template>
 
 <script>

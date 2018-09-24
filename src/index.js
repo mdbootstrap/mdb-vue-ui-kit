@@ -30,7 +30,8 @@ import DoughnutChart, { mdbDoughnutChart } from './components/ChartDoughnut';
 import Collapse, { mdbCollapse } from './components/Collapse';
 import Column, { mdbCol } from './components/Col';
 import Container, { mdbContainer } from './components/Container';
-import Datatable, { mdbDatatable } from './components/Datatable';
+let Datatable = require('./components/Datatable').default;
+let mdbDatatable = require('./components/Datatable').default;
 let Dropdown = require('./components/Dropdown').default;
 let mdbDropdown = require('./components/Dropdown').default;
 import DropdownItem, { mdbDropdownItem } from './components/DropdownItem';
@@ -39,7 +40,6 @@ import DropdownToggle, { mdbDropdownToggle } from './components/DropdownToggle';
 import EdgeHeader, { mdbEdgeHeader } from './components/EdgeHeader';
 import Fa, { mdbIcon } from './components/Fa';
 import Footer, { mdbFooter } from './components/Footer';
-import HelloWorld, { mdbHelloWorld } from './components/HelloWorld';
 import Jumbotron, { mdbJumbotron } from './components/Jumbotron';
 import ListGroup, { mdbListGroup } from './components/ListGroup';
 import ListGroupItem, { mdbListGroupItem } from './components/ListGroupItem';
@@ -116,7 +116,6 @@ export {
   EdgeHeader,
   Fa,
   Footer,
-  HelloWorld,
   Jumbotron,
   ListGroup,
   ListGroupItem,
@@ -191,7 +190,6 @@ export {
   mdbEdgeHeader,
   mdbIcon,
   mdbFooter,
-  mdbHelloWorld,
   mdbJumbotron,
   mdbListGroup,
   mdbListGroupItem,

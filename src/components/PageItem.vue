@@ -1,9 +1,9 @@
 <template>
-  <li :is="tag" :class="className" @click="wave">
+  <component :is="tag" :class="className" @click="wave">
     <a class="page-link" :href="href">
       <slot></slot>
     </a>
-  </li>
+  </component>
 
 </template>
 
@@ -26,8 +26,7 @@ const PageItem = {
       default: false
     },
     href: {
-      type: String,
-      default: '#'
+      type: String
     },
     waves: {
       type: Boolean,

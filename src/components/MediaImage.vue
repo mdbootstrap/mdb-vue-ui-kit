@@ -1,7 +1,7 @@
 <template>
-  <a :is="tag" :href="href" :class="className">
+  <component :is="tag" :href="href" :class="className">
     <img :src="src" :alt="alt">
-  </a>
+  </component>
 </template>
 
 <script>

@@ -35,6 +35,7 @@ import MediaPage from '../docs/MediaPage';
 import ListGroupPage from '../docs/ListGroupPage';
 import NavbarPage from '../docs/NavbarPage';
 import NavigationPage from '../docs/NavigationPage';
+import NotificationPage from '../docs/NotificationPage';
 import CollapsePage from '../docs/CollapsePage';
 import PaginationPage from '../docs/PaginationPage';
 import PanelPage from '../docs/PanelPage';
@@ -194,6 +195,10 @@ export default new Router({
       path: '/navigation/navigation',
       name: 'NavigationPage',
       component: NavigationPage
+    }, {
+      path: '/components/notification',
+      name: 'NotificationPage',
+      component: NotificationPage
     }, {
       path: '/advanced/collapse',
       name: 'CollapsePage',

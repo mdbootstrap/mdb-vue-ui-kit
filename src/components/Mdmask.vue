@@ -1,8 +1,8 @@
 <template>
-  <div :is="tag" :class="className" @click="wave">
+  <component :is="tag" :class="className" @click="wave">
     <p v-if="text" class="white-text">{{text}}</p>
     <slot></slot>
-  </div>
+  </component>
 </template>
 
 <script>

@@ -1,6 +1,6 @@
 <template>
-  <div :class="className" :is="tag"><slot></slot>
-  </div>
+  <component :class="className" :is="tag"><slot></slot>
+  </component>
 </template>
 
 <script>

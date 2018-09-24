@@ -1,5 +1,5 @@
 <template>
-  <li :class="className" @click="wave">
+  <component :is="tag" :class="className" @click="wave">
     <a v-if="prev" class="page-link" href="#" aria-label="Previous">
       <span aria-hidden="true">&laquo;</span>
       <span class="sr-only">Previous</span>
@@ -8,7 +8,7 @@
       <span aria-hidden="true">&raquo;</span>
       <span class="sr-only">Next</span>
     </a>
-  </li>
+  </component>
 </template>
 
 <script>
@@ -30,8 +30,7 @@ const PageNav = {
       default: false
     },
     href: {
-      type: String,
-      default: '#'
+      type: String
     },
     waves: {
       type: Boolean,

@@ -1,12 +1,12 @@
 <template>
-  <div :is="tag" :class="className" :style="style">
+  <component :is="tag" :class="className" :style="style">
     <span @click="toggle = !toggle" v-on-clickaway="away">
       <slot name="toggle"></slot>
     </span>
     <div v-if="toggle">
       <slot></slot>
     </div>
-  </div>
+  </component>
 </template>
 
 <script>

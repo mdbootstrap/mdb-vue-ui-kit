@@ -1,9 +1,9 @@
 <template>
-  <button :is="tag" :class="className" :type="type" :role="role" @click="wave">
+  <component :is="tag" :class="className" :type="type" :role="role" @click="wave">
     <fa v-if="iconLeft" :icon="icon"/>
     <slot></slot>
     <fa v-if="iconRight" :icon="icon"/>
-  </button>
+  </component>
 </template>
 
 <script>

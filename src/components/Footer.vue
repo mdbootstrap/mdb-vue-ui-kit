@@ -1,7 +1,7 @@
 <template>
-  <footer :is="tag" :class="className">
+  <component :is="tag" :class="className">
     <slot></slot>
-  </footer>
+  </component>
 </template>
 
 <script>

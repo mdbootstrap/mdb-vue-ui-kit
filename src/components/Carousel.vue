@@ -1,5 +1,5 @@
 <template>
-  <div :is="tag" :class="className">
+  <component :is="tag" :class="className">
     <carousel-navigation v-if="showControls && multi" top @changeSlide="handleChangeSlide"></carousel-navigation>
     <carousel-indicators v-if="showIndicators && !thumbnails">
       <div v-for="(item, index) in items" :key="index">
@@ -15,7 +15,7 @@
       <slot></slot>
     </carousel-inner>
     <carousel-navigation :testimonial="testimonial" v-if="showControls && !multi" @changeSlide="handleChangeSlide"></carousel-navigation>
-  </div>
+  </component>
 </template>
 
 <script>
@@ -168,10 +168,10 @@ const Carousel ={
     className() {
       return classNames(
         'carousel',
+        this.multi ? 'carousel-multi-item' : 'carousel-fade',
         this.half && 'half',
         this.full && 'full',
         this.fade && 'carousel-fade',
-        this.multi && 'carousel-multi-item',
         this.thumbnails && 'carousel-thumbnails',
         this.testimonial && 'testimonial-carousel'
       );
@@ -184,28 +184,40 @@ export { Carousel as mdbCarousel };
 </script>
 
 <style>
-.carousel-item {
-  display: block !important;
-  visibility: hidden;
-  height: 0;
-  opacity: 0.5;
-  transition: transform 0ms ease-in-out, opacity .3s ease-in;
-  transform: translate3d(0, 0, 0) !important;
+.carousel-inner {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
 }
 
-.carousel-item.active {
-  opacity: 1;
-  left: auto;
+.carousel-fade .carousel-item {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
   height: 100%;
-  visibility: visible;
-  transition: transform 0ms ease-in-out, opacity .3s ease-in;
-  transform: translate3d(0, 0, 0) !important;
+  display: block !important;
+  opacity: 0;
+  z-index: 0;
+  transition: transform 0ms ease-in-out, opacity 0.8s ease-out;
+}
+
+.carousel-fade .carousel-item.active {
+  position: relative;
+  z-index: 1;
+  opacity: 1;
+}
+
+.carousel-control-prev, .carousel-control-next, .carousel-item-prev, .carousel-item-next {
+  z-index: 2;
 }
 
 .carousel-multi-item .carousel-slide-item {
   transition: left 0.5s;
   top: 0;
 }
+
 </style>
 
 <style scoped>

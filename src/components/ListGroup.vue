@@ -1,7 +1,7 @@
 <template>
-  <ul :class="className" :is="tag">
+  <component :class="className" :is="tag">
     <slot></slot>
-  </ul>
+  </component>
 </template>
 
 <script>

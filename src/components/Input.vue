@@ -2,7 +2,7 @@
   <div :class="wrapperClass">
     <i v-if="icon" :class="iconClasses"/>
     <label v-if="label && basic" :class="labelClass" @click="focus" ref="label" :for="id">{{label}}</label>
-    <input 
+    <component 
       :is="tag"
       :id="id"
       :class="className"

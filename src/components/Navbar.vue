@@ -1,11 +1,11 @@
 <template>
-  <nav :class="navClass" :is="tag" :style="navStyles">
+  <component :class="navClass" :is="tag" :style="navStyles">
     <button class="navbar-toggler" type="button" data-toggle="collapse" :data-target="target" aria-controls="navbarSupportedContent"
         aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <slot></slot>
-  </nav>
+  </component>
 </template>
 
 

@@ -1,8 +1,8 @@
 <template>
-  <div :is="tag" :class="className">
+  <component :is="tag" :class="className">
     <h3 class="h3-responsive">{{ title }}</h3>
     <p>{{ text }}</p>
-  </div>
+  </component>
 </template>
 
 <script>

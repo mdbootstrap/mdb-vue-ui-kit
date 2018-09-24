@@ -1,8 +1,8 @@
 <template>
-  <div :is="tag" :class="className">
+  <component :is="tag" :class="className">
     <img v-if="src" :src="src" :alt="alt" :class="imgClass">
     <slot></slot>
-  </div>
+  </component>
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 <template>
-  <div :is="tag" :class="className" role="progressbar" :aria-valuenow="value" aria-valuemin="0" aria-valuemax="100" :style="[{'width' : value + '%'}]"><slot></slot></div>
+  <component :is="tag" :class="className" role="progressbar" :aria-valuenow="value" aria-valuemin="0" aria-valuemax="100" :style="[{'width' : value + '%'}]"><slot></slot></component>
 </template>
 
 <script>

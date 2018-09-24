@@ -1,8 +1,8 @@
 <template>
-  <div :is="tag" :class="className">
+  <component :is="tag" :class="className">
     <slot></slot>
     <a v-if="close" flat class="close" @click.prevent="away">&times;</a>
-  </div>
+  </component>
 </template>
 
 <script>

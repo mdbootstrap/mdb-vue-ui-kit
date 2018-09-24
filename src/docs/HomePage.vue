@@ -9,7 +9,7 @@
               <p>Vue Bootstrap with Material Design</p>
               <p class="pb-4">This application shows the actual use of MDB Vue components in the application.</p>
               <row class="d-flex flex-row justify-content-center">
-                <a href="https://mdbootstrap.com/vue/" waves-fixed class="border nav-link border-light rounded mr-1" target="_blank"><fa icon="graduation-cap" class="mr-2"/>Official documentation</a>
+                <a href="https://mdbootstrap.com/vue/?utm_source=DemoApp&utm_medium=MDBVue" waves-fixed class="border nav-link border-light rounded mr-1" target="_blank"><fa icon="graduation-cap" class="mr-2"/>Official documentation</a>
                 <!-- <btn tag="a" size="sm" color="default" href="#/components/liveDemo" target="_blank">Live Demo</btn> -->
               </row>
             </card-body>

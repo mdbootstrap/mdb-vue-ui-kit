@@ -1,5 +1,5 @@
 <template>
-  <div :is="tag" :class="className" :style="style"><slot></slot></div>
+  <component :is="tag" :class="className" :style="style"><slot></slot></component>
 </template>
 
 <script>

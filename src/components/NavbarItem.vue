@@ -1,10 +1,10 @@
 <template>
-  <li :is="tag" :class="className" @click="wave">
+  <component :is="tag" :class="className" @click="wave">
     <a v-if="!router" :href="link" :class="anchorClassName"><slot></slot></a>
     <router-link tag="a" v-if="router" :exact="exact" active-class='active' exact-active-class='active' :class='anchorClassName' :to="link">
       <slot></slot>
     </router-link>
-  </li>
+  </component>
 
 </template>
 

@@ -12,6 +12,8 @@ module.exports = {
   entry: {
     app: './src/main.js'
   },
+  mode: 'development',
+  performance: { hints: false },
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',

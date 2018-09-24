@@ -42,7 +42,11 @@
                 Media <fa icon="angle-right"/>
               </h5>
             </navbar-item>
-
+            <navbar-item class="list-group-item list-group-item-action" router href="/components/notification">
+              <h5 class="justify-content-between d-flex align-items-center">
+                Notification <fa icon="angle-right"/>
+              </h5>
+            </navbar-item>
             <navbar-item class="list-group-item list-group-item-action" router href="/components/pagination">
               <h5 class="justify-content-between d-flex align-items-center">
                 Pagination <fa icon="angle-right"/>
@@ -58,7 +62,6 @@
                 Progress Bar <fa icon="angle-right"/>
               </h5>
             </navbar-item>
-
           </list-group>
         </jumbotron>
       </column>

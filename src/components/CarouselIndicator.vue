@@ -1,7 +1,7 @@
 <template>
-  <li :is="tag" :class="className" @click="click">
+  <component :is="tag" :class="className" @click="click">
     <img v-if="src" :src="src" :alt="alt" class="d-block w-100 img-fluid" />
-  </li>
+  </component>
 </template>
 
 <script>

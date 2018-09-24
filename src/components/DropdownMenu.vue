@@ -1,5 +1,5 @@
 <template>
-  <div :is="tag" data-toggle="dropdown-menu" :class="className"><slot></slot></div>
+  <component :is="tag" data-toggle="dropdown-menu" :class="className"><slot></slot></component>
 </template>
 
 <script>
@@ -63,7 +63,6 @@ export { DropdownMenu as mdbDropdownMenu };
   position: absolute;
   top: auto;
   bottom: 100%;
-  margin-bottom: 3rem;
 }
 .dropright {
   left: 100%;

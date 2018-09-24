@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button v-for="(toggler, index) in togglers" :key="index" :is="toggleTag[index]" :class="btnClass" @click.prevent="collapse = !collapse">{{toggleText[index]}}</button>
+    <component v-for="(toggler, index) in togglers" :key="index" :is="toggleTag[index]" :class="btnClass" @click.prevent="collapse = !collapse">{{toggleText[index]}}</component>
     <transition @before-enter="beforeEnter" @after-enter="afterEnter" @before-leave="beforeLeave">
       <div ref="collapseContent" v-if="collapse" class="collapse show collapse-item">
         <slot></slot>

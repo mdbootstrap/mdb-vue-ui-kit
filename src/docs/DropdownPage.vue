@@ -1,8 +1,8 @@
 <template>
-  <container>
+  <container class="mb-5 pb-5">
     <row class="mt-5 align-items-center justify-content-start">
       <h4 style="margin: 0" class="grey-text"><strong>Dropdowns</strong></h4>
-      <a href="https://mdbootstrap.com/vue/components/dropdowns/" waves-fixed class="border grey-text px-2 border-light rounded ml-2" target="_blank"><fa icon="graduation-cap" class="mr-2"/>Docs</a>
+      <a href="https://mdbootstrap.com/vue/components/dropdowns/?utm_source=DemoApp&utm_medium=MDBVueFree" waves-fixed class="border grey-text px-2 border-light rounded ml-2" target="_blank"><fa icon="graduation-cap" class="mr-2"/>Docs</a>
     </row>
     <hr class="mb-5" />
     <container class="mt-5">
@@ -171,8 +171,8 @@
           <dropdown-item>Separated link</dropdown-item>
         </dropdown-menu>
       </dropdown>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     </container>
+    <br/>
   </container>
 </template>
 

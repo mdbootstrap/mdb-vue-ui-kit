@@ -1,12 +1,12 @@
 <template>
   <transition name="fade">
-    <div :is="tag" :class="wrapperClass">
+    <component :is="tag" :class="wrapperClass">
       <div :class="dialogClass" role="document" v-on-clickaway="away">
         <div :class="contentClass">
           <slot></slot>
         </div>
       </div>
-    </div>
+    </component>
   </transition>
 </template>
 

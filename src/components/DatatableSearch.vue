@@ -1,8 +1,9 @@
 <template>
-  <div class="dataTables_filter">
+  <div class="dataTables_filter float-right">
     <label>
-      Search <input v-model="search" type="search" class="form-control form-control-sm" placeholder="Search" />
+      Search 
     </label>
+    <input v-model="search" type="search" class="form-control form-control-sm" placeholder="Search" />
   </div>
 </template>
 
