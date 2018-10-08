@@ -11,6 +11,7 @@ import TablesPage from '../docs/TablesPage';
 import ModalsPage from '../docs/ModalsPage';
 
 // FREE
+import AccordionPage from '../docs/AccordionPage';
 import HomePage from '../docs/HomePage';
 import GridPage from '../docs/GridPage';
 import BadgePage from '../docs/BadgePage';
@@ -48,6 +49,9 @@ import MasksPage from '../docs/MasksPage';
 import HoverPage from '../docs/HoverPage';
 import VideoCarouselPage from '../docs/VideoCarouselPage';
 import ModalPage from '../docs/ModalPage';
+import ModalEventsPage from '../docs/ModalEventsPage';
+import ModalFormsPage from '../docs/ModalFormsPage';
+import ModalStylesPage from '../docs/ModalStylesPage';
 import FormsPage from '../docs/FormsPage';
 import SearchPage from '../docs/SearchPage';
 import ValidationPage from '../docs/ValidationPage';
@@ -100,6 +104,10 @@ export default new Router({
 
     // FREE
     {
+      path: '/advanced/accordion',
+      name: 'AccordionPage',
+      component: AccordionPage
+    }, {
       path: '/components/badge',
       name: 'BadgePage',
       component: BadgePage
@@ -248,6 +256,19 @@ export default new Router({
       name: 'ModalPage',
       component: ModalPage
     }, {
+      path: '/modals/events',
+      name: 'ModalEventsPage',
+      component: ModalEventsPage
+    }, {
+      path: '/modals/forms',
+      name: 'ModalFormsPage',
+      component: ModalFormsPage
+    }, {
+      path: '/modals/styles',
+      name: 'ModalStylesPage',
+      component: ModalStylesPage
+    }, {
+
       path: '/forms/forms',
       name: 'FormsPage',
       component: FormsPage

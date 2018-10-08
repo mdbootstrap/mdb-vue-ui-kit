@@ -13,11 +13,16 @@ const ModalTitle = {
       type: String,
       default: "h5"
     },
+    bold: {
+      type: Boolean,
+      default: false
+    }
   },
   computed: {
     className() {
       return classNames(
-        'modal-title'
+        'modal-title',
+        this.bold && 'font-weight-bold'
       );
     }
   }
@@ -26,7 +31,3 @@ const ModalTitle = {
 export default ModalTitle;
 export { ModalTitle as mdbModalTitle };
 </script>
-
-<style scoped>
-
-</style>

@@ -6,7 +6,7 @@
     </row>
     <hr class="mb-5" />
     <row>
-      <badge>Default</badge>
+      <badge color="default-color">Default</badge>
       <badge color="primary-color">Primary</badge>
       <badge color="success-color">Success</badge>
       <badge color="info-color">Info</badge>

@@ -50,23 +50,28 @@ const Fa = {
     stack: {
       type: [Boolean, String],
       default: false
-    }
+    },
+    color: {
+      type: String,
+      default: ''
+    },
   },
   computed: {
     className() {
       return classNames(
         'fa',
-        this.icon ? 'fa-' + this.icon : '',
-        this.size ? 'fa-' + this.size : false,
-        this.fixed ? 'fa-fw' : false,
-        this.pull ? 'fa-pull-' + this.pull : false,
-        this.border ? 'fa-border' : false,
-        this.spin ? 'fa-spin' : false,
-        this.pulse ? 'fa-pulse' : false,
-        this.rotate ? 'fa-rotate-' + this.rotate : false,
-        this.flip ? 'fa-flip-' + this.flip : false,
-        this.inverse ? 'fa-inverse' : false,
-        this.stack ? 'fa-' + this.stack : false
+        this.icon && 'fa-' + this.icon,
+        this.size && 'fa-' + this.size,
+        this.fixed && 'fa-fw',
+        this.pull && 'fa-pull-' + this.pull,
+        this.border && 'fa-border',
+        this.spin && 'fa-spin',
+        this.pulse && 'fa-pulse',
+        this.rotate && 'fa-rotate-' + this.rotate,
+        this.flip && 'fa-flip-' + this.flip,
+        this.inverse && 'fa-inverse',
+        this.stack && 'fa-' + this.stack,
+        this.color && 'text-' + this.color
       );
     }
   }

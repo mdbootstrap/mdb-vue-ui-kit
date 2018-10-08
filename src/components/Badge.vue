@@ -15,7 +15,6 @@ const Badge =  {
     },
     color: {
       type: String,
-      default: "default-color"
     },
     pill: {
       type: Boolean,

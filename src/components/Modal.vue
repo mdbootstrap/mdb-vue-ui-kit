@@ -1,8 +1,11 @@
 <template>
-  <transition name="fade">
+  <transition name="fade"
+  @after-enter="afterEnter"
+  @after-leave="afterLeave"
+>
     <component :is="tag" :class="wrapperClass">
       <div :class="dialogClass" role="document" v-on-clickaway="away">
-        <div :class="contentClass">
+        <div :class="contentClass" :style="computedContentStyle">
           <slot></slot>
         </div>
       </div>
@@ -49,6 +52,62 @@ const Modal = {
     cascade: {
       type: Boolean,
       default: false
+    },
+    danger: {
+      type: Boolean,
+      default: false
+    },
+    info: {
+      type: Boolean,
+      default: false
+    },
+    success: {
+      type: Boolean,
+      default: false
+    },
+    warning: {
+      type: Boolean,
+      default: false
+    },
+    tabs: {
+      type: Boolean,
+      default: false
+    },
+    avatar: {
+      type: Boolean,
+      default: false
+    },
+    elegant: {
+      type: Boolean,
+      default: false
+    },
+    dark: {
+      type: Boolean,
+      default: false
+    },
+    bgSrc: {
+      type: String,
+      default:''
+    }
+  },
+  beforeMount() {
+    this.$emit('show', this);
+  },
+  beforeDestroy() {
+    this.$emit('hide', this);
+  },
+  methods: {
+    away() {
+      if (this.removeBackdrop) {
+        return;
+      }
+      this.$emit('close', this);
+    },
+    afterEnter() {
+      this.$emit('shown', this);
+    },
+    afterLeave() {
+      this.$emit('hidden', this);
     }
   },
   computed: {
@@ -61,27 +120,31 @@ const Modal = {
     dialogClass() {
       return classNames(
         'modal-dialog',
-        this.size ? 'modal-' + this.size : '',
+        this.size && 'modal-' + this.size,
         this.side && 'modal-side',
         this.fullHeight && 'modal-full-height',
         this.frame && 'modal-frame',
         this.position ? 'modal-' + this.position : '',
         this.centered && 'modal-dialog-centered',
-        this.cascade && 'cascading-modal'
+        (this.cascade || this.tabs) && 'cascading-modal',
+        this.danger && 'modal-notify modal-danger',
+        this.info && 'modal-notify modal-info',
+        this.success && 'modal-notify modal-success',
+        this.warning && 'modal-notify modal-warning',
+        this.avatar && 'modal-avatar cascading-modal',
+        this.dark && 'form-dark'
       );
     },
     contentClass() {
       return classNames(
-        'modal-content'
+        'modal-content',
+        this.tabs && 'modal-c-tabs',
+        this.elegant && 'form-elegant',
+        this.dark && 'card card-image'
       );
-    }
-  },
-  methods: {
-    away() {
-      if (this.removeBackdrop) {
-        return;
-      }
-      this.$emit('close');
+    },
+    computedContentStyle() {
+      return this.bgSrc ? {'background-image': `url("${this.bgSrc}")`} : false;
     }
   },
   mixins: [clickaway]
@@ -127,4 +190,6 @@ export { Modal as mdbModal };
   -webkit-transform: translate(0,-25%);
   transform: translate(0,-25%);
 }
+
+
 </style>

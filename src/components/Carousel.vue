@@ -127,9 +127,11 @@ const Carousel ={
       }
     },
     autoSlide() {
-      this.startSlide = setInterval(() => {
-        this.slidePage('next');
-      }, this.interval);
+      if (this.interval) {
+        this.startSlide = setInterval(() => {
+          this.slidePage('next');
+        }, this.interval);
+      }
     },
     handleChangeSlide(showSlide) {
       this.slidePage(showSlide.slideIndex);

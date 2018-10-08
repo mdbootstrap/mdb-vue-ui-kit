@@ -9,7 +9,7 @@
       <div class="col-md-3 mt-5 mx-3">
         <list-group>
           <list-group-item :action="true" :active="true">Main Menu</list-group-item>
-          <list-group-item :action="true">Messages <badge :pill="true">12</badge></list-group-item>
+          <list-group-item :action="true">Messages <badge :pill="true" color="default-color">12</badge></list-group-item>
           <list-group-item :action="true">Sell Products</list-group-item>
           <list-group-item :action="true">Settings</list-group-item>
           <list-group-item :disabled="true">Can't Touch This</list-group-item>

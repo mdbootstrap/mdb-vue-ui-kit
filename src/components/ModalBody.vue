@@ -28,5 +28,10 @@ export { ModalBody as mdbModalBody };
 </script>
 
 <style scoped>
+.form-elegant .modal-body {
+    font-weight: 400; }
 
+.form-dark .font-small,
+.form-elegant .font-small {
+    font-size: 0.8rem; }
 </style>

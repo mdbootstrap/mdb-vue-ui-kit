@@ -3,13 +3,28 @@
     <row>
       <column md="8" class="mx-auto">
         <jumbotron class="mt-5">
-          <h1 class="pb-2"><Fa icon="code" class="grey-text mr-2" />Advanced</h1>
+          <h1 class="pb-2"><Fa icon="window-restore" class="grey-text mr-2" />Modals</h1>
           <h6 class="my-3">FREE</h6>
           <list-group>
             <!-- FREE -->
             <navbar-item class="list-group-item list-group-item-action" router href="/modals/modal">
               <h5 class="justify-content-between d-flex align-items-center">
                 Modal<fa icon="angle-right"/>
+              </h5>
+            </navbar-item>
+            <navbar-item class="list-group-item list-group-item-action" router href="/modals/events">
+              <h5 class="justify-content-between d-flex align-items-center">
+                Events<fa icon="angle-right"/>
+              </h5>
+            </navbar-item>
+            <navbar-item class="list-group-item list-group-item-action" router href="/modals/forms">
+              <h5 class="justify-content-between d-flex align-items-center">
+                Forms<fa icon="angle-right"/>
+              </h5>
+            </navbar-item>
+            <navbar-item class="list-group-item list-group-item-action" router href="/modals/styles">
+              <h5 class="justify-content-between d-flex align-items-center">
+                Styles<fa icon="angle-right"/>
               </h5>
             </navbar-item>
           </list-group>

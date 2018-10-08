@@ -18,6 +18,7 @@
           <btn color="primary">Save changes</btn>
         </modal-footer>
       </modal>
+
       <h4 class="mt-4">Sizes</h4>
       <btn color="primary" @click.native="showModal2 = true">Small modal</btn>
       <modal size="sm" v-if="showModal2" @close="showModal2 = false">
@@ -52,6 +53,7 @@
           <btn color="primary">Save changes</btn>
         </modal-footer>
       </modal>
+
       <h4 class="mt-4">Position</h4>
       <btn color="primary" @click.native="showModal5 = true">Top right</btn>
       <modal side position="top-right" v-if="showModal5" @close="showModal5 = false">
@@ -98,6 +100,7 @@
           <btn color="primary">Save changes</btn>
         </modal-footer>
       </modal>
+
       <h4 class="mt-4">Frame modal</h4>
       <btn color="primary" @click.native="showModal9 = true">Bottom</btn>
       <modal frame position="bottom" v-if="showModal9" @close="showModal9 = false">
@@ -115,6 +118,7 @@
           <btn color="primary">Save changes</btn>
         </modal-body>
       </modal>
+
       <h4 class="mt-4">Remove backdrop</h4>
       <btn color="primary" @click.native="showModal11 = true">Launch modal</btn>
       <modal removeBackdrop side position="top-right" v-if="showModal11" @close="showModal11 = false">
@@ -127,6 +131,7 @@
           <btn color="primary">Save changes</btn>
         </modal-footer>
       </modal>
+
       <h4 class="mt-4">Scrolling </h4>
       <btn color="primary" @click.native="showModal12 = true">Launch modal</btn>
       <modal v-if="showModal12" @close="showModal12 = false">
@@ -155,6 +160,7 @@
           <btn color="primary">Save changes</btn>
         </modal-footer>
       </modal>
+
       <h4 class="mt-4">Centered</h4>
       <btn color="primary" @click.native="showModal13 = true">Launch modal</btn>
       <modal centered v-if="showModal13" @close="showModal13 = false">
@@ -167,6 +173,7 @@
           <btn color="primary">Save changes</btn>
         </modal-footer>
       </modal>
+
       <h4 class="mt-4">Tooltips and popovers</h4>
       <btn color="primary" @click.native="showModal14 = true">Launch modal</btn>
       <modal v-if="showModal14" @close="showModal14 = false">
@@ -217,6 +224,7 @@
           <btn color="primary">Save changes</btn>
         </modal-footer>
       </modal>
+
       <h4 class="mt-4">Using the grid</h4>
       <btn color="primary" @click.native="showModal15 = true">Launch modal</btn>
       <modal v-if="showModal15" @close="showModal15 = false">

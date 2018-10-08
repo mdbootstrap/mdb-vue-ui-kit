@@ -84,7 +84,7 @@
           <div class="mask rgba-black-strong flex-center">
             <div class="container">
               <div class="white-text text-center wow fadeInUp">
-                <h2>This is test message</h2>
+                <h2>This is just a test message</h2>
               </div>
             </div>
           </div>

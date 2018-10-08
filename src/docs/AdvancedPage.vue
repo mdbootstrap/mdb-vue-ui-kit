@@ -7,6 +7,11 @@
           <h6 class="my-3">FREE</h6>
           <list-group>
             <!-- FREE -->
+            <navbar-item class="list-group-item list-group-item-action" router href="/advanced/accordion">
+              <h5 class="justify-content-between d-flex align-items-center">
+                Accordion <fa icon="angle-right"/>
+              </h5>
+            </navbar-item>
             <navbar-item class="list-group-item list-group-item-action" router href="/advanced/carousel">
               <h5 class="justify-content-between d-flex align-items-center">
                 Carousel<fa icon="angle-right"/>

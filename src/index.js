@@ -1,4 +1,6 @@
 // FREE
+import Accordion, { mdbAccordion } from './components/Accordion';
+import AccordionPane, { mdbAccordionPane } from './components/AccordionPane';
 import Badge, { mdbBadge } from './components/Badge';
 import Breadcrumb, { mdbBreadcrumb } from './components/Breadcrumb';
 import BreadcrumbItem, { mdbBreadcrumbItem } from './components/BreadcrumbItem';
@@ -77,6 +79,8 @@ import waves from './mixins/waves';
 
 export {
   // FREE
+  Accordion,
+  AccordionPane,
   Badge,
   Breadcrumb,
   BreadcrumbItem,
@@ -151,6 +155,8 @@ export {
   waves,
 
   // MDB FREE
+  mdbAccordion,
+  mdbAccordionPane,
   mdbBadge,
   mdbBreadcrumb,
   mdbBreadcrumbItem,
