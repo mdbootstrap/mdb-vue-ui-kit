@@ -1,13 +1,15 @@
 <template>
   <component :class="navClass" :is="tag" :style="navStyles">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" :data-target="target" aria-controls="navbarSupportedContent"
-        aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+    <button :class="navTogglerClass" type="button" data-toggle="collapse" :data-target="target" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation" @click="onClick">
+      <div v-if="animated" ref="animatedIcon" :class="'animated-icon' + animation"><span></span><span></span><span></span><span v-if="animation === '3'"></span></div>
+      <span v-else :class="navTogglerIcon">
+        <i v-if="hamburger" class="fa fa-bars fa-1x"/>
+      </span>
     </button>
     <slot></slot>
   </component>
 </template>
-
 
 <script>
 import classNames from 'classnames';
@@ -45,6 +47,22 @@ const Navbar = {
     },
     navStyle: {
       type: String
+    },
+    hamburger: {
+      type: Boolean
+    },
+    navIconClass: {
+      type: String
+    },
+    animated: {
+      type: Boolean
+    },
+    animation: {
+      type: String,
+      default: '1'
+    },
+    togglerClass: {
+      type: String
     }
   },
   data() {
@@ -55,7 +73,7 @@ const Navbar = {
   },
   computed: {
     navClass() {
-      return  classNames(
+      return classNames(
         'navbar',
         this.dark ? 'navbar-dark' : 'navbar-light',
         this.color && !this.transparent ? this.color + '-color' : '',
@@ -67,9 +85,21 @@ const Navbar = {
         this.scrolling ? 'scrolling-navbar' : ''
       );
     },
+    navTogglerIcon() {
+      return classNames(
+        this.hamburger ? '' : 'navbar-toggler-icon',
+        this.navIconClass
+      );
+    },
     navStyles() {
       return (
         this.navStyle
+      );
+    },
+    navTogglerClass() {
+      return classNames(
+        'navbar-toggler',
+        this.togglerClass
       );
     }
   },
@@ -83,6 +113,9 @@ const Navbar = {
         this.collapseOverflow = setTimeout(() => {
           this.collapse.style.overflow = 'initial';
         }, 300);
+        if (this.animated) {
+          this.$refs.animatedIcon.classList.add('open');
+        }
         this.toggleClicked = false;
       } else {
         this.collapse.classList.add('hide-navbar');
@@ -92,10 +125,14 @@ const Navbar = {
           this.collapse.classList.toggle('collapse');
           this.collapse.style.overflow = 'initial';
         }, 300);
+        if (this.animated) {
+          this.$refs.animatedIcon.classList.remove('open');
+        }
         this.toggleClicked = true;
       }
     },
     close() {
+      if (window.innerWidth > 990) {return;}
       this.collapse.classList.add('hide-navbar');
       this.collapse.classList.remove('show-navbar');
       this.collapse.style.overflow = 'hidden';
@@ -103,6 +140,9 @@ const Navbar = {
         this.collapse.classList.add('collapse');
         this.collapse.style.overflow = 'initial';
       }, 300);
+      if (this.animated) {
+        this.$refs.animatedIcon.classList.remove('open');
+      }
       this.toggleClicked = true;
     },
     handleScroll() {
@@ -123,23 +163,10 @@ const Navbar = {
     onClick(e) {
       if (e.target.classList.contains('navbar-toggler') || e.target.parentNode.classList.contains('navbar-toggler')) {
         this.toggle();
-      } else if (this.toggleClicked === false) {
-        let target = e.target;
-        let body = document.getElementsByTagName('body')[0];
-        if (!target.classList.contains('navbar-link')) {
-          while (target !== body) {
-            if (target.classList.contains('navbar')) {
-              return;
-            }
-            target = target.parentNode;
-          }
-        }
-        this.close();
       }
     }
   },
   mounted() {
-    document.addEventListener('click', this.onClick);
     this.collapse = this.$el.children.navbarSupportedContent;
     this.collapse.classList.add('collapse');
   },
@@ -168,5 +195,179 @@ export { Navbar as mdbNavbar };
 }
 .navbar-collapse {
   order: 2;
+}
+.navbar-toggler i {
+  pointer-events: none;
+}
+
+/* Icon 1 */
+
+.animated-icon1, .animated-icon3, .animated-icon4 {
+  width: 30px;
+  height: 20px;
+  position: relative;
+  margin: 0px;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: .5s ease-in-out;
+  -moz-transition: .5s ease-in-out;
+  -o-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+  cursor: pointer;
+}
+
+.animated-icon1 span, .animated-icon3 span, .animated-icon4 span {
+  display: block;
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  border-radius: 9px;
+  opacity: 1;
+  left: 0;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: .25s ease-in-out;
+  -moz-transition: .25s ease-in-out;
+  -o-transition: .25s ease-in-out;
+  transition: .25s ease-in-out;
+  pointer-events: none;
+}
+
+.animated-icon1 span {
+    background: #e65100;
+}
+
+.animated-icon3 span {
+    background: #e3f2fd;
+}
+
+.animated-icon4 span {
+    background: #f3e5f5;
+}
+
+.animated-icon1 span:nth-child(1) {
+  top: 0px;
+}
+
+.animated-icon1 span:nth-child(2) {
+  top: 10px;
+}
+
+.animated-icon1 span:nth-child(3) {
+  top: 20px;
+}
+
+.animated-icon1.open span:nth-child(1) {
+  top: 11px;
+  -webkit-transform: rotate(135deg);
+  -moz-transform: rotate(135deg);
+  -o-transform: rotate(135deg);
+  transform: rotate(135deg);
+}
+
+.animated-icon1.open span:nth-child(2) {
+  opacity: 0;
+  left: -60px;
+}
+
+.animated-icon1.open span:nth-child(3) {
+  top: 11px;
+  -webkit-transform: rotate(-135deg);
+  -moz-transform: rotate(-135deg);
+  -o-transform: rotate(-135deg);
+  transform: rotate(-135deg);
+}
+
+/* Icon 3*/
+
+.animated-icon3 span:nth-child(1) {
+  top: 0px;
+}
+
+.animated-icon3 span:nth-child(2), .animated-icon3 span:nth-child(3) {
+  top: 10px;
+}
+
+.animated-icon3 span:nth-child(4) {
+  top: 20px;
+}
+
+.animated-icon3.open span:nth-child(1) {
+  top: 11px;
+  width: 0%;
+  left: 50%;
+}
+
+.animated-icon3.open span:nth-child(2) {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.animated-icon3.open span:nth-child(3) {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.animated-icon3.open span:nth-child(4) {
+  top: 11px;
+  width: 0%;
+  left: 50%;
+}
+
+/* Icon 4 */
+
+.animated-icon4 span:nth-child(1) {
+  top: 0px;
+  -webkit-transform-origin: left center;
+  -moz-transform-origin: left center;
+  -o-transform-origin: left center;
+  transform-origin: left center;
+}
+
+.animated-icon4 span:nth-child(2) {
+  top: 10px;
+  -webkit-transform-origin: left center;
+  -moz-transform-origin: left center;
+  -o-transform-origin: left center;
+  transform-origin: left center;
+}
+
+.animated-icon4 span:nth-child(3) {
+  top: 20px;
+  -webkit-transform-origin: left center;
+  -moz-transform-origin: left center;
+  -o-transform-origin: left center;
+  transform-origin: left center;
+}
+
+.animated-icon4.open span:nth-child(1) {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  top: 0px;
+  left: 8px;
+}
+
+.animated-icon4.open span:nth-child(2) {
+  width: 0%;
+  opacity: 0;
+}
+
+.animated-icon4.open span:nth-child(3) {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  top: 21px;
+  left: 8px;
 }
 </style>

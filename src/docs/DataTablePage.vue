@@ -13,6 +13,7 @@
         striped
         bordered
         materialInputs
+        filter="office"
       />
     </div>
     <hr />

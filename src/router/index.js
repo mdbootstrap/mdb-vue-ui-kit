@@ -1,22 +1,28 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-// PAGES
-import CSSPage from '../docs/CSSPage';
-import ComponentsPage from '../docs/ComponentsPage';
-import AdvancedPage from '../docs/AdvancedPage';
-import NavigationMenuPage from '../docs/NavigationMenuPage';
-import FormsMenuPage from '../docs/FormsMenuPage';
-import TablesPage from '../docs/TablesPage';
-import ModalsPage from '../docs/ModalsPage';
+// CATEGORIES
+import CSSPage from '../docs/categories/CSSPage';
+import ComponentsPage from '../docs/categories/ComponentsPage';
+import AdvancedPage from '../docs/categories/AdvancedPage';
+import NavigationMenuPage from '../docs/categories/NavigationMenuPage';
+import FormsMenuPage from '../docs/categories/FormsMenuPage';
+import TablesPage from '../docs/categories/TablesPage';
+import ModalsPage from '../docs/categories/ModalsPage';
+import AddonsPage from '../docs/categories/AddonsPage';
 
 // FREE
 import AccordionPage from '../docs/AccordionPage';
+import IframePage from '../docs/IframePage';
 import HomePage from '../docs/HomePage';
 import GridPage from '../docs/GridPage';
 import BadgePage from '../docs/BadgePage';
+import BackgroundImagePage from '../docs/BackgroundImagePage';
 import CardPage from '../docs/CardPage';
 import ButtonPage from '../docs/ButtonPage';
+import HamburgerMenuPage from '../docs/HamburgerMenuPage';
+import GradientPage from '../docs/GradientPage';
+import GoogleMapsPage from '../docs/GoogleMapsPage';
 import TablePage from '../docs/TablePage';
 import TableAdditionalPage from '../docs/TableAdditionalPage';
 import DataTablePage from '../docs/DataTablePage';
@@ -50,12 +56,15 @@ import HoverPage from '../docs/HoverPage';
 import VideoCarouselPage from '../docs/VideoCarouselPage';
 import ModalPage from '../docs/ModalPage';
 import ModalEventsPage from '../docs/ModalEventsPage';
+import ModalExamplesPage from '../docs/ModalExamplesPage';
 import ModalFormsPage from '../docs/ModalFormsPage';
 import ModalStylesPage from '../docs/ModalStylesPage';
 import FormsPage from '../docs/FormsPage';
 import SearchPage from '../docs/SearchPage';
 import ValidationPage from '../docs/ValidationPage';
 import FooterPage from '../docs/FooterPage';
+import SliderPage from '../docs/SliderPage';
+import VideoPage from '../docs/VideoPage';
 
 Vue.use(Router);
 
@@ -67,7 +76,7 @@ export default new Router({
       component: HomePage
     },
 
-    // PAGES
+    // CATEGORIES
     {
       path: '/css',
       name: 'CSSPage',
@@ -101,6 +110,11 @@ export default new Router({
       name: 'ModalsPage',
       component: ModalsPage
     },
+    {
+      path: '/addons',
+      name: 'AddonsPage',
+      component: AddonsPage
+    },
 
     // FREE
     {
@@ -111,6 +125,14 @@ export default new Router({
       path: '/components/badge',
       name: 'BadgePage',
       component: BadgePage
+    }, {
+      path: '/css/background',
+      name: 'BackgroundImagePage',
+      component: BackgroundImagePage
+    }, {
+      path: '/css/gradient',
+      name: 'GradientPage',
+      component: GradientPage
     }, {
       path: '/components/grid',
       name: 'GridPage',
@@ -124,6 +146,10 @@ export default new Router({
       name: 'ButtonPage',
       component: ButtonPage
     }, {
+      path: '/navigation/hamburger',
+      name: 'HamburgerMenuPage',
+      component: HamburgerMenuPage
+    }, {
       path: '/css/table',
       name: 'TablePage',
       component: TablePage
@@ -136,9 +162,17 @@ export default new Router({
       name: 'DataTablePage',
       component: DataTablePage
     }, {
+      path: '/components/iframe',
+      name: 'IframePage',
+      component: IframePage
+    }, {
       path: '/tables/table-pagination',
       name: 'TablePaginationPage',
       component: TablePaginationPage
+    }, {
+      path: '/advanced/maps',
+      name: 'GoogleMapsPage',
+      component: GoogleMapsPage
     }, {
       path: '/css/table-responsive',
       name: 'TableResponsviePage',
@@ -260,6 +294,10 @@ export default new Router({
       name: 'ModalEventsPage',
       component: ModalEventsPage
     }, {
+      path: '/modals/examples',
+      name: 'ModalExamplesPage',
+      component: ModalExamplesPage
+    }, {
       path: '/modals/forms',
       name: 'ModalFormsPage',
       component: ModalFormsPage
@@ -268,7 +306,10 @@ export default new Router({
       name: 'ModalStylesPage',
       component: ModalStylesPage
     }, {
-
+      path: '/components/slider',
+      name: 'SliderPage',
+      component: SliderPage
+    }, {
       path: '/forms/forms',
       name: 'FormsPage',
       component: FormsPage
@@ -280,6 +321,10 @@ export default new Router({
       path: '/navigation/footer',
       name: 'FooterPage',
       component: FooterPage
+    }, {
+      path: '/addons/video',
+      name: 'VideoPage',
+      component: VideoPage
     }
   ]
 });

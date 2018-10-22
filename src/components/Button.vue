@@ -1,8 +1,8 @@
 <template>
-  <component :is="tag" :class="className" :type="type" :role="role" @click="wave">
-    <fa v-if="iconLeft" :icon="icon"/>
+  <component :is="tag" :class="btnClasses" :type="type" :role="role" @click="handleClick">
+    <fa v-if="(icon && !iconRight)" :icon="icon" :class="iconClasses" :color="iconColor"/>
     <slot></slot>
-    <fa v-if="iconRight" :icon="icon"/>
+    <fa v-if="(icon && iconRight)" :icon="icon" :class="iconClasses" :color="iconColor"/>
   </component>
 </template>
 
@@ -93,10 +93,23 @@ const Btn =  {
     save: {
       type: Boolean,
       default: false
+    },
+    iconClass: {
+      type: [String, Array],
+      default: null
+    },
+    iconColor: {
+      type: String
+    }
+  },
+  methods: {
+    handleClick(e) {
+      this.wave(e);
+      this.$emit('click', this);
     }
   },
   computed: {
-    className() {
+    btnClasses() {
       return classNames(
         this.floating ? 'btn-floating' : 'btn',
         this.outline ? 'btn-outline-' + this.outline : this.flat ? 'btn-flat' : this.transparent ? '' : 'btn-' + this.color,
@@ -109,6 +122,11 @@ const Btn =  {
         this.save ? 'btn-save' : '',
         this.active ? 'active' : '',
         this.waves ? 'ripple-parent' : ''
+      );
+    },
+    iconClasses() {
+      return classNames(
+        this.iconClass
       );
     }
   },

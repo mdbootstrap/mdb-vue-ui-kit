@@ -1,14 +1,14 @@
 <template>
   <component :is="tag" :class="className">
-    <carousel-navigation v-if="showControls && multi" top @changeSlide="handleChangeSlide"></carousel-navigation>
+    <carousel-navigation v-if="showControls && multi" :top="multi" :testimonial="testimonial" :leftIcon="leftIcon" :rightIcon="rightIcon" :floating="floating" :navClass="navClass" @changeSlide="handleChangeSlide"></carousel-navigation>
     <carousel-indicators v-if="showIndicators && !thumbnails">
       <div v-for="(item, index) in items" :key="index">
-        <carousel-indicator :index="index" :active="active(index)" @changeSlide="handleChangeSlide"/>
+        <carousel-indicator :index="index" :active="active(index)" :indicatorClass="indicatorClass" @changeSlide="handleChangeSlide"/>
       </div>
     </carousel-indicators>
     <carousel-indicators v-if="showIndicators && thumbnails">
       <div v-for="(item, index) in items" :key="index">
-        <carousel-indicator :index="index" :active="active(index)" @changeSlide="handleChangeSlide" :src="thumbnailsSrc[index]" />
+        <carousel-indicator :index="index" :active="active(index)" :indicatorClass="indicatorClass" @changeSlide="handleChangeSlide" :src="thumbnailsSrc[index]" :indicatorStyle="indicatorStyle"/>
       </div>
     </carousel-indicators>
     <carousel-inner>
@@ -73,6 +73,27 @@ const Carousel ={
     },
     slide: {
       type: Boolean
+    },
+    leftIcon: {
+      type: String,
+      default: 'chevron-left'
+    },
+    rightIcon: {
+      type: String,
+      default: 'chevron-right'
+    },
+    floating: {
+      type: Boolean,
+      default: true
+    },
+    navClass: {
+      type: String
+    },
+    indicatorClass: {
+      type: String
+    },
+    indicatorStyle: {
+      type: [Object]
     }
   },
   data() {

@@ -1,8 +1,8 @@
 <template>
   <div>
     <div v-if="top" :class="className">
-      <a class="btn-floating" @click.prevent="prev"><i class="fa fa-chevron-left"></i></a>
-      <a class="btn-floating" @click.prevent="next"><i class="fa fa-chevron-right"></i></a>
+      <a :class="btnFloating" @click.prevent="prev"><i :class="'fa fa-' + leftIcon"></i></a>
+      <a :class="btnFloating" @click.prevent="next"><i :class="'fa fa-' + rightIcon"></i></a>
     </div>
     <div v-else-if="testimonial">
       <a class="carousel-control carousel-item-prev left" @click.prevent="prev">
@@ -36,14 +36,32 @@ const CarouselNavigation = {
       type: Boolean,
       default: false
     },
+    leftIcon: {
+      type: String
+    },
+    rightIcon: {
+      type: String
+    },
+    floating: {
+      type: Boolean
+    },
     testimonial: {
       type: Boolean
+    },
+    navClass: {
+      type: String
     }
   },
   computed: {
     className() {
       return classNames(
         'controls-top'
+      );
+    },
+    btnFloating() {
+      return classNames(
+        this.floating && 'btn-floating',
+        this.navClass
       );
     }
   },

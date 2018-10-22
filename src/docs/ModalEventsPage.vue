@@ -2,7 +2,7 @@
   <container>
     <row class="mt-5 align-items-center justify-content-start">
       <h4 style="margin: 0" class="grey-text"><strong>Modal events</strong></h4>
-      <a href="/?utm_source=DemoApp&utm_medium=MDBVueFree" waves-fixed class="border grey-text px-2 border-light rounded ml-2" target="_blank"><fa icon="graduation-cap" class="mr-2"/>{{text}}</a>
+      <a href="https://mdbootstrap.com/vue/advanced/modals/?utm_source=DemoApp&utm_medium=MDBVueFree" waves-fixed class="border grey-text px-2 border-light rounded ml-2" target="_blank"><fa icon="graduation-cap" class="mr-2"/>{{text}}</a>
     </row>
     <hr class="my-5"/>
 
@@ -72,28 +72,30 @@
     <h4>Hidden</h4>
 
     <btn rounded color="default" @click.native="hidden=true">launch warning modal <fa icon="eye" class="ml-1"/></btn>
-    <modal v-if="hidden" @hidden="handleHidden" @close="hidden = false" warning>
-      <modal-header>
-        <modal-title>Warning Modal</modal-title>
-      </modal-header>
-      <modal-body>
-        <row>
-          <column col="3" class="text-center">
-            <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(1).jpg" class="img-fluid z-depth-1-half rounded-circle mb-2">
-                  <p class="title mb-0">Jane</p>
-                  <p class="text-muted " style="font-size: 13px">Consultant</p>
-          </column>
-          <column col="9">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, molestiae provident temporibus sunt earum.</p>
-            <p class="card-text"><strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</strong></p>
-          </column>
-        </row>
-      </modal-body>
-      <modal-footer center>
-        <btn color="primary" @click.native="hidden = false">Get it now <fa icon="diamond" class="ml-1" color="white"/></btn>
-        <btn outline="primary" @click.native="hidden = false">No, thanks</btn>
-      </modal-footer>
-    </modal>
+    <container @hidden="handleHidden">
+      <modal v-if="hidden" @close="hidden = false" warning>
+        <modal-header>
+          <modal-title>Warning Modal</modal-title>
+        </modal-header>
+        <modal-body>
+          <row>
+            <column col="3" class="text-center">
+              <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(1).jpg" alt="Michal Szymanski - founder of Material Design for Bootstrap" class="img-fluid z-depth-1-half rounded-circle mb-2">
+                    <p class="title mb-0">Jane</p>
+                    <p class="text-muted " style="font-size: 13px">Consultant</p>
+            </column>
+            <column col="9">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, molestiae provident temporibus sunt earum.</p>
+              <p class="card-text"><strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</strong></p>
+            </column>
+          </row>
+        </modal-body>
+        <modal-footer center>
+          <btn color="primary" @click.native="hidden = false">Get it now <fa icon="diamond" class="ml-1" color="white"/></btn>
+          <btn outline="primary" @click.native="hidden = false">No, thanks</btn>
+        </modal-footer>
+      </modal>
+    </container>
   </container>
 </template>
 
@@ -139,7 +141,6 @@ export default {
     handleHidden() {
       /* eslint-disable no-alert*/
       alert('hidden!');
-      console.log('was the /hidden/ event acted upon?');
     }
   }
 };

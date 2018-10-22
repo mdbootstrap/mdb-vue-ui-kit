@@ -32,6 +32,11 @@
                 Edge Header <fa icon="angle-right"/>
               </h5>
             </navbar-item>
+            <navbar-item class="list-group-item list-group-item-action" router href="/components/iframe">
+              <h5 class="justify-content-between d-flex align-items-center">
+                iFrame<fa icon="angle-right"/>
+              </h5>
+            </navbar-item>
             <navbar-item class="list-group-item list-group-item-action" router href="/components/listgroup">
               <h5 class="justify-content-between d-flex align-items-center">
                 List Group <fa icon="angle-right"/>
@@ -60,6 +65,11 @@
             <navbar-item class="list-group-item list-group-item-action" router href="/components/progress-bars">
               <h5 class="justify-content-between d-flex align-items-center">
                 Progress Bar <fa icon="angle-right"/>
+              </h5>
+            </navbar-item>
+            <navbar-item class="list-group-item list-group-item-action" router href="/components/slider">
+              <h5 class="justify-content-between d-flex align-items-center">
+                Slider <fa icon="angle-right"/>
               </h5>
             </navbar-item>
           </list-group>

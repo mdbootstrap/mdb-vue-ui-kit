@@ -2,11 +2,11 @@
   <component :is="tag" :class="className">
     <div class="view">
       <img v-if="img" :src="src" :alt="alt" class="d-block w-100">
+      <video v-if="video" class="video-fluid d-block" :autoPlay="auto" :loop="loop">
+        <source :src="src" type="video/mp4" />
+      </video>
       <div v-if="mask" :class="maskClass"></div>
     </div>
-    <video v-if="video" class="video-fluid d-block" :autoPlay="auto" :loop="loop">
-      <source :src="src" type="video/mp4" />
-    </video>
     <slot></slot>
   </component>
 </template>

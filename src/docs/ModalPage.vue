@@ -56,7 +56,7 @@
 
       <h4 class="mt-4">Position</h4>
       <btn color="primary" @click.native="showModal5 = true">Top right</btn>
-      <modal side position="top-right" v-if="showModal5" @close="showModal5 = false">
+      <modal side position="top-right" direction="right" v-if="showModal5" @close="showModal5 = false">
         <modal-header>
           <modal-title>Modal title</modal-title>
         </modal-header>
@@ -67,7 +67,7 @@
         </modal-footer>
       </modal>
       <btn color="primary" @click.native="showModal6 = true">Bottom left</btn>
-      <modal side position="bottom-left" v-if="showModal6" @close="showModal6 = false">
+      <modal side position="bottom-left" direction="left" v-if="showModal6" @close="showModal6 = false">
         <modal-header>
           <modal-title>Modal title</modal-title>
         </modal-header>
@@ -79,7 +79,7 @@
       </modal>
       <h4 class="mt-4">Fluid modal</h4>
       <btn color="primary" @click.native="showModal7 = true">Right</btn>
-      <modal fullHeight position="right" v-if="showModal7" @close="showModal7 = false">
+      <modal fullHeight position="right" direction="right" v-if="showModal7" @close="showModal7 = false">
         <modal-header>
           <modal-title>Modal title</modal-title>
         </modal-header>
@@ -90,7 +90,7 @@
         </modal-footer>
       </modal>
       <btn color="primary" @click.native="showModal8 = true">Bottom</btn>
-      <modal fullHeight position="bottom" v-if="showModal8" @close="showModal8 = false">
+      <modal fullHeight position="bottom" direction="bottom" v-if="showModal8" @close="showModal8 = false">
         <modal-header>
           <modal-title>Modal title</modal-title>
         </modal-header>
@@ -103,7 +103,7 @@
 
       <h4 class="mt-4">Frame modal</h4>
       <btn color="primary" @click.native="showModal9 = true">Bottom</btn>
-      <modal frame position="bottom" v-if="showModal9" @close="showModal9 = false">
+      <modal frame position="bottom" direction="bottom" v-if="showModal9" @close="showModal9 = false">
         <modal-body class="text-center">
           <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit nisi quo provident fugiat reprehenderit nostrum quos...</span>
           <btn color="secondary" @click.native="showModal9 = false">Close</btn>

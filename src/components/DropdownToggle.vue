@@ -52,13 +52,16 @@ const DropdownToggle = {
     srOnly: {
       type: Boolean,
       default: false
+    },
+    transparent: {
+      type: Boolean
     }
   },
   computed: {
     className() {
       return classNames(
         this.navLink ? 'nav-link' : 'btn',
-        this.outline ? 'btn-outline-' + this.outline : 'btn-' + this.color,
+        this.outline ? 'btn-outline-' + this.outline : this.transparent ? '' : 'btn-' + this.color,
         this.size ? 'btn-' + this.size : '',
         this.block ? 'btn-block' : '',
         this.active ? 'active' : '',

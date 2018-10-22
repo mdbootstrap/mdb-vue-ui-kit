@@ -108,9 +108,9 @@
               <fa icon="arrows" size="2x" class="blue-text" />
             </column>
             <column col="10" md="8" lg="10" class="float-right">
-              <h4 class="font-weight-bold">EXTENDED</h4>
+              <h4 class="font-weight-bold">ADDONS</h4>
               <p class="grey-text">Google Maps, Social Buttons, Pre-built Contact Forms and Steppers. Find out more about our extended components.</p>
-              <navbar-item router href="/extended" waves-fixed><btn size="sm" color="default">Learn more</btn></navbar-item>
+              <navbar-item router href="/addons" waves-fixed><btn size="sm" color="default">Learn more</btn></navbar-item>
             </column>
           </column>
           <column md="4" class="mb-5">

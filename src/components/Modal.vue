@@ -1,6 +1,8 @@
 <template>
   <transition name="fade"
+  @enter="enter"
   @after-enter="afterEnter"
+  @before-leave="beforeLeave"
   @after-leave="afterLeave"
 >
     <component :is="tag" :class="wrapperClass">
@@ -88,13 +90,29 @@ const Modal = {
     bgSrc: {
       type: String,
       default:''
+    },
+    direction: {
+      type: String,
+      default:'top'
     }
   },
   beforeMount() {
     this.$emit('show', this);
+    if (this.direction === 'right') {
+      this.dialogTransform = 'translate(25%,0)';
+    } else if (this.direction === 'bottom') {
+      this.dialogTransform = 'translate(0,25%)';
+    } else if (this.direction === 'left') {
+      this.dialogTransform = 'translate(-25%,0)';
+    }
   },
   beforeDestroy() {
     this.$emit('hide', this);
+  },
+  data() {
+    return {
+      dialogTransform: 'translate(0,-25%)'
+    };
   },
   methods: {
     away() {
@@ -103,11 +121,21 @@ const Modal = {
       }
       this.$emit('close', this);
     },
-    afterEnter() {
+    enter(el) {
+      el.style.opacity = 0;
+      el.childNodes[0].style.transform = this.dialogTransform;
+    },
+    afterEnter(el) {
       this.$emit('shown', this);
+      el.style.opacity = 1;
+      el.childNodes[0].style.transform = 'translate(0,0)';
+    },
+    beforeLeave(el) {
+      el.style.opacity = 0;
+      el.childNodes[0].style.transform = this.dialogTransform;
     },
     afterLeave() {
-      this.$emit('hidden', this);
+      this.$parent.$emit('hidden', this);
     }
   },
   computed: {
@@ -170,26 +198,4 @@ export { Modal as mdbModal };
   background: none;
   pointer-events: none;
 }
-
-.fade-enter {
-  transform: translate(0,0);
-  opacity: 1;
-}
-
-.fade-leave-active {
-  transform: translate(0,0);
-  opacity: 1;
-}
-
-.fade-enter, .fade-leave-active {
-  opacity: 0;
-}
-
-.fade-enter .modal-dialog,
-.fade-leave-active .modal-dialog {
-  -webkit-transform: translate(0,-25%);
-  transform: translate(0,-25%);
-}
-
-
 </style>

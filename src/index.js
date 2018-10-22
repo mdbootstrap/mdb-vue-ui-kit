@@ -42,6 +42,7 @@ import DropdownToggle, { mdbDropdownToggle } from './components/DropdownToggle';
 import EdgeHeader, { mdbEdgeHeader } from './components/EdgeHeader';
 import Fa, { mdbIcon } from './components/Fa';
 import Footer, { mdbFooter } from './components/Footer';
+import GoogleMap, { mdbGoogleMap } from './components/GoogleMap';
 import Jumbotron, { mdbJumbotron } from './components/Jumbotron';
 import ListGroup, { mdbListGroup } from './components/ListGroup';
 import ListGroupItem, { mdbListGroupItem } from './components/ListGroupItem';
@@ -120,6 +121,7 @@ export {
   EdgeHeader,
   Fa,
   Footer,
+  GoogleMap,
   Jumbotron,
   ListGroup,
   ListGroupItem,
@@ -196,6 +198,7 @@ export {
   mdbEdgeHeader,
   mdbIcon,
   mdbFooter,
+  mdbGoogleMap,
   mdbJumbotron,
   mdbListGroup,
   mdbListGroupItem,
@@ -228,5 +231,5 @@ export {
   mdbModalTitle,
   mdbModalBody,
   mdbModalFooter,
-  mdbNumericInput,
+  mdbNumericInput
 };

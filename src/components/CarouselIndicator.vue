@@ -1,6 +1,6 @@
 <template>
-  <component :is="tag" :class="className" @click="click">
-    <img v-if="src" :src="src" :alt="alt" class="d-block w-100 img-fluid" />
+  <component :is="tag" :class="className" @click="click" :style="indicatorStyle">
+    <img v-if="src" :src="src" :alt="alt" class="d-block w-100 img-fluid"/>
   </component>
 </template>
 
@@ -25,12 +25,19 @@ const CarouselIndicator = {
     },
     alt: {
       type: String
+    },
+    indicatorClass: {
+      type: String
+    },
+    indicatorStyle: {
+      type: [String, Object]
     }
   },
   computed: {
     className() {
       return classNames(
-        this.active ? 'active' : ''
+        this.active ? 'active' : '',
+        this.indicatorClass
       );
     }
   },

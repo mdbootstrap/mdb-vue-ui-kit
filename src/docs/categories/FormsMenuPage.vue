@@ -6,28 +6,27 @@
           <h1 class="pb-2"><Fa icon="edit" class="grey-text mr-2" />Forms</h1>
           <h6 class="my-3">FREE</h6>
           <list-group>
-          <!-- FREE -->
-          <navbar-item class="list-group-item list-group-item-action" router href="/forms/forms">
-            <h5 class="justify-content-between d-flex align-items-center">
-              Forms <fa icon="angle-right"/>
-            </h5>
-          </navbar-item>
-          <navbar-item class="list-group-item list-group-item-action" router href="/forms/inputs">
+            <!-- FREE -->
+            <navbar-item class="list-group-item list-group-item-action" router href="/forms/forms">
               <h5 class="justify-content-between d-flex align-items-center">
-                Input <fa icon="angle-right"/>
+                Forms <fa icon="angle-right"/>
               </h5>
             </navbar-item>
-          <navbar-item class="list-group-item list-group-item-action" router href="/forms/search">
+            <navbar-item class="list-group-item list-group-item-action" router href="/forms/inputs">
+                <h5 class="justify-content-between d-flex align-items-center">
+                  Input <fa icon="angle-right"/>
+                </h5>
+              </navbar-item>
+            <navbar-item class="list-group-item list-group-item-action" router href="/forms/search">
+                <h5 class="justify-content-between d-flex align-items-center">
+                  Search <fa icon="angle-right"/>
+                </h5>
+            </navbar-item>
+            <navbar-item class="list-group-item list-group-item-action" router href="/forms/validation">
               <h5 class="justify-content-between d-flex align-items-center">
-                Search <fa icon="angle-right"/>
+                Validation<fa icon="angle-right"/>
               </h5>
-          </navbar-item>
-          <navbar-item class="list-group-item list-group-item-action" router href="/forms/validation">
-            <h5 class="justify-content-between d-flex align-items-center">
-              Validation<fa icon="angle-right"/>
-            </h5>
-          </navbar-item>
-
+            </navbar-item>
           </list-group>
         </jumbotron>
       </column>

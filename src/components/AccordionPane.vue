@@ -11,9 +11,10 @@
       </h5>
       <!-- ICON HEADER -->
       <a v-else-if="type==='icon'" data-toggle="collapse" :aria-expanded="isOpen" :class="{collapsed: !isOpen}" >
-        <h3 :class="headingClass" v-html="title">
+        <h3 :class="headingClass">
           {{title}}
-          <fa icon="angle-down" class="rotate-icon" size="2x"/>
+          <div v-if="hamburger" ref="animatedIcon" class="animated-icon1 float-right mt-1"><span></span><span></span><span></span></div>
+          <fa v-else icon="angle-down" class="rotate-icon" size="2x"/>
         </h3>
       </a>
       <!-- COLOR SHADES OR PHOTOBG HEADER -->
@@ -79,6 +80,9 @@ const AccordionPane = {
     },
     icon: {
       type: String
+    },
+    hamburger: {
+      type: Boolean
     }
   },
   components: {
@@ -102,12 +106,14 @@ const AccordionPane = {
     },
     beforeEnter(el) {
       this.elHeight = el.scrollHeight;
+      this.hamburger && this.$refs.animatedIcon.classList.toggle('open');
     },
     enter(el) {
       el.style.height = this.elHeight+'px';
     },
     beforeLeave(el) {
       el.style.height = 0;
+      this.hamburger && this.$refs.animatedIcon.classList.toggle('open');
     }
   },
   computed: {
@@ -168,5 +174,86 @@ a.fix:not([href]):not([tabindex]):hover {
   height: 0;
   padding: 0;
   transition: height .5s;
+}
+
+/* Icon 1 */
+
+.animated-icon1, .animated-icon3, .animated-icon4 {
+  width: 30px;
+  height: 20px;
+  position: relative;
+  margin: 0px;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: .5s ease-in-out;
+  -moz-transition: .5s ease-in-out;
+  -o-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+  cursor: pointer;
+}
+
+.animated-icon1 span, .animated-icon3 span, .animated-icon4 span {
+  display: block;
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  border-radius: 9px;
+  opacity: 1;
+  left: 0;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: .25s ease-in-out;
+  -moz-transition: .25s ease-in-out;
+  -o-transition: .25s ease-in-out;
+  transition: .25s ease-in-out;
+}
+
+.animated-icon1 span {
+    background: #e65100;
+}
+
+.animated-icon3 span {
+    background: #e3f2fd;
+}
+
+.animated-icon4 span {
+    background: #f3e5f5;
+}
+
+.animated-icon1 span:nth-child(1) {
+  top: 0px;
+}
+
+.animated-icon1 span:nth-child(2) {
+  top: 10px;
+}
+
+.animated-icon1 span:nth-child(3) {
+  top: 20px;
+}
+
+.animated-icon1.open span:nth-child(1) {
+  top: 11px;
+  -webkit-transform: rotate(135deg);
+  -moz-transform: rotate(135deg);
+  -o-transform: rotate(135deg);
+  transform: rotate(135deg);
+}
+
+.animated-icon1.open span:nth-child(2) {
+  opacity: 0;
+  left: -60px;
+}
+
+.animated-icon1.open span:nth-child(3) {
+  top: 11px;
+  -webkit-transform: rotate(-135deg);
+  -moz-transform: rotate(-135deg);
+  -o-transform: rotate(-135deg);
+  transform: rotate(-135deg);
 }
 </style>

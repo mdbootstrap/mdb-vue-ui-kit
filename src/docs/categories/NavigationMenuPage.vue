@@ -3,36 +3,35 @@
     <row>
       <column md="8" class="mx-auto">
         <jumbotron class="mt-5">
-          <h1 class="pb-2"><Fa icon="table" class="grey-text mr-2" />Tables</h1>
+          <h1 class="pb-2"><Fa icon="bars" class="grey-text mr-2" />Navigation</h1>
           <h6 class="my-3">FREE</h6>
           <list-group>
             <!-- FREE -->
-            <navbar-item class="list-group-item list-group-item-action" router href="/tables/datatable">
+            <navbar-item class="list-group-item list-group-item-action" router href="/navigation/breadcrumb">
               <h5 class="justify-content-between d-flex align-items-center">
-                Datatable<fa icon="angle-right"/>
+                Breadcrumb <fa icon="angle-right"/>
               </h5>
             </navbar-item>
-            <navbar-item class="list-group-item list-group-item-action" router href="/tables/table-pagination">
+            <navbar-item class="list-group-item list-group-item-action" router href="/navigation/footer">
               <h5 class="justify-content-between d-flex align-items-center">
-                Table pagination<fa icon="angle-right"/>
+                Footer <fa icon="angle-right"/>
               </h5>
             </navbar-item>
-            <navbar-item class="list-group-item list-group-item-action" router href="/tables/table-scroll">
+            <navbar-item class="list-group-item list-group-item-action" router href="/navigation/hamburger">
               <h5 class="justify-content-between d-flex align-items-center">
-                Table Scroll<fa icon="angle-right"/>
+                Hamburger Menu <fa icon="angle-right"/>
               </h5>
             </navbar-item>
-            <navbar-item class="list-group-item list-group-item-action" router href="/tables/table-search">
+            <navbar-item class="list-group-item list-group-item-action" router href="/navigation/navbar">
               <h5 class="justify-content-between d-flex align-items-center">
-                Table Search<fa icon="angle-right"/>
+                Navbar <fa icon="angle-right"/>
               </h5>
             </navbar-item>
-            <navbar-item class="list-group-item list-group-item-action" router href="/tables/table-sort">
+            <navbar-item class="list-group-item list-group-item-action" router href="/navigation/navigation">
               <h5 class="justify-content-between d-flex align-items-center">
-                Table Sort<fa icon="angle-right"/>
+                Navigation <fa icon="angle-right"/>
               </h5>
             </navbar-item>
-
           </list-group>
         </jumbotron>
       </column>
@@ -44,7 +43,7 @@
 import { Container, Row, Column, Fa, Jumbotron, NavbarItem, ListGroup } from 'mdbvue';
 
 export default {
-  name: 'AdvancedPage',
+  name: 'ComponentsPage',
   components: {
     Container,
     Row,

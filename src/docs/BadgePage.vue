@@ -30,7 +30,7 @@
       <badge pill color="green">Green</badge>
     </row>
     <row class="mt-5">
-      <badge><fa icon="facebook"/></badge>
+      <badge color="default-color"><fa icon="facebook"/></badge>
       <badge color="primary-color"><fa icon="instagram"/></badge>
       <badge color="success-color"><fa icon="snapchat-ghost"/></badge>
       <badge color="info-color"><fa icon="anchor"/></badge>

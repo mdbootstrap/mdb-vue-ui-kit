@@ -23,6 +23,26 @@ const ModalHeader = {
     },
     textColor: {
       type: String
+    },
+    start: {
+      type: Boolean,
+      default: false
+    },
+    end: {
+      type: Boolean,
+      default: false
+    },
+    center: {
+      type: Boolean,
+      default: false
+    },
+    between: {
+      type: Boolean,
+      default: false
+    },
+    around: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -42,6 +62,11 @@ const ModalHeader = {
     className() {
       return classNames(
         'modal-header',
+        this.start && "justify-content-start",
+        this.end && "justify-content-end",
+        this.center && "justify-content-center",
+        this.between && "justify-content-between",
+        this.around && "justify-content-around",
         ((this.color && !this.textColor) || this.isStyled) ? this.color + ' white-text':
           this.textColor ? this.color + ' ' + this.textColor+'-text' : false
       );

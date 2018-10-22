@@ -3,28 +3,33 @@
     <row>
       <column md="8" class="mx-auto">
         <jumbotron class="mt-5">
-          <h1 class="pb-2"><Fa icon="window-restore" class="grey-text mr-2" />Modals</h1>
+          <h1 class="pb-2"><Fa icon="table" class="grey-text mr-2" />Tables</h1>
           <h6 class="my-3">FREE</h6>
           <list-group>
             <!-- FREE -->
-            <navbar-item class="list-group-item list-group-item-action" router href="/modals/modal">
+            <navbar-item class="list-group-item list-group-item-action" router href="/tables/datatable">
               <h5 class="justify-content-between d-flex align-items-center">
-                Modal<fa icon="angle-right"/>
+                Datatable<fa icon="angle-right"/>
               </h5>
             </navbar-item>
-            <navbar-item class="list-group-item list-group-item-action" router href="/modals/events">
+            <navbar-item class="list-group-item list-group-item-action" router href="/tables/table-pagination">
               <h5 class="justify-content-between d-flex align-items-center">
-                Events<fa icon="angle-right"/>
+                Table pagination<fa icon="angle-right"/>
               </h5>
             </navbar-item>
-            <navbar-item class="list-group-item list-group-item-action" router href="/modals/forms">
+            <navbar-item class="list-group-item list-group-item-action" router href="/tables/table-scroll">
               <h5 class="justify-content-between d-flex align-items-center">
-                Forms<fa icon="angle-right"/>
+                Table Scroll<fa icon="angle-right"/>
               </h5>
             </navbar-item>
-            <navbar-item class="list-group-item list-group-item-action" router href="/modals/styles">
+            <navbar-item class="list-group-item list-group-item-action" router href="/tables/table-search">
               <h5 class="justify-content-between d-flex align-items-center">
-                Styles<fa icon="angle-right"/>
+                Table Search<fa icon="angle-right"/>
+              </h5>
+            </navbar-item>
+            <navbar-item class="list-group-item list-group-item-action" router href="/tables/table-sort">
+              <h5 class="justify-content-between d-flex align-items-center">
+                Table Sort<fa icon="angle-right"/>
               </h5>
             </navbar-item>
           </list-group>

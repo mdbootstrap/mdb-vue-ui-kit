@@ -14,6 +14,7 @@
           <navbar-item router href="/forms" waves-fixed>Forms</navbar-item>
           <navbar-item router href="/tables" waves-fixed>Tables</navbar-item>
           <navbar-item router href="/modals" waves-fixed>Modals</navbar-item>
+          <navbar-item router href="/addons" waves-fixed>Addons</navbar-item>
         </navbar-nav>
       </navbar-collapse>
     </navbar>

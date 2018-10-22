@@ -13,6 +13,7 @@
       :order="index"
       :icon="pane.icon"
       :options="pane.options"
+      :hamburger="hamburger"
       >
       </accordion-pane>
   </component>
@@ -67,6 +68,9 @@ const Accordion = {
       type: Boolean,
       default: false
     },
+    hamburger: {
+      type: Boolean
+    }
   },
   data() {
     return {
@@ -120,5 +124,4 @@ export { Accordion as mdbAccordion };
 </script>
 
 <style scoped>
-
 </style>

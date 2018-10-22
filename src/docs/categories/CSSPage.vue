@@ -6,6 +6,16 @@
           <h1 class="pb-2"><Fa icon="css3" class="grey-text mr-2" /> CSS</h1>
           <h6 class="my-3">FREE</h6>
           <list-group>
+            <navbar-item class="list-group-item list-group-item-action" router href="/css/background">
+              <h5 class="justify-content-between d-flex align-items-center">
+                Background Image<fa icon="angle-right"/>
+              </h5>
+            </navbar-item>
+            <navbar-item class="list-group-item list-group-item-action" router href="/css/gradient">
+              <h5 class="justify-content-between d-flex align-items-center">
+                Gradient<fa icon="angle-right"/>
+              </h5>
+            </navbar-item>
             <navbar-item class="list-group-item list-group-item-action" router href="/css/hover">
               <h5 class="justify-content-between d-flex align-items-center">
                 Hover effects<fa icon="angle-right"/>

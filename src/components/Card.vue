@@ -93,4 +93,11 @@ export { Card as mdbCard };
 </script>
 
 <style scoped>
+.card-wrapper .card-rotating .front {
+  position: relative;
+}
+.card-wrapper .card-rotating .back {
+  position: relative;
+  margin-top: -100%;
+}
 </style>

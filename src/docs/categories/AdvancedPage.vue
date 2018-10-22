@@ -27,6 +27,11 @@
                 Collapse<fa icon="angle-right"/>
               </h5>
             </navbar-item>
+            <navbar-item class="list-group-item list-group-item-action" router href="/advanced/maps">
+              <h5 class="justify-content-between d-flex align-items-center">
+                Google Maps<fa icon="angle-right"/>
+              </h5>
+            </navbar-item>
             <navbar-item class="list-group-item list-group-item-action" router href="/advanced/popover">
               <h5 class="justify-content-between d-flex align-items-center">
                 Popover<fa icon="angle-right"/>

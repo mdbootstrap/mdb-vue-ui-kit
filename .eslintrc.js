@@ -18,7 +18,8 @@ module.exports = {
     },
     'globals': {
         'Tether': true,
-        'Promise': true
+        'Promise': true,
+        'google': true
     },
     'plugins': [
         'html', 'vue'
