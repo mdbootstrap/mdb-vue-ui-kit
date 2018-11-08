@@ -1,7 +1,7 @@
 <template>
-  <component :class="navClass" :is="tag" :style="navStyles">
+  <component :class="navClass" :is="tag" :style="navStyles" @click="close">
     <button :class="navTogglerClass" type="button" data-toggle="collapse" :data-target="target" aria-controls="navbarSupportedContent"
-        aria-expanded="false" aria-label="Toggle navigation" @click="onClick">
+        aria-expanded="false" aria-label="Toggle navigation" @click.stop="onClick">
       <div v-if="animated" ref="animatedIcon" :class="'animated-icon' + animation"><span></span><span></span><span></span><span v-if="animation === '3'"></span></div>
       <span v-else :class="navTogglerIcon">
         <i v-if="hamburger" class="fa fa-bars fa-1x"/>
@@ -33,7 +33,7 @@ const Navbar = {
     },
     target: {
       type: String,
-      default: '#navbarSupportedContent'
+      default: 'navbarSupportedContent'
     },
     scrolling: {
       type: Boolean,
@@ -164,11 +164,33 @@ const Navbar = {
       if (e.target.classList.contains('navbar-toggler') || e.target.parentNode.classList.contains('navbar-toggler')) {
         this.toggle();
       }
+    },
+    searchForCollapseContent(node) {
+      if ((typeof node.attributes === 'undefined') || (typeof node.attributes.id === 'undefined')) return;
+      if (node.id === this.target) {
+        this.collapse = node;
+        this.collapse.classList.add('collapse');
+      }
     }
   },
   mounted() {
-    this.collapse = this.$el.children.navbarSupportedContent;
-    this.collapse.classList.add('collapse');
+    this.$slots.default.forEach(child => {
+      if (child.elm.id === this.target) {
+        this.collapse = child.elm;
+        this.collapse.classList.add('collapse');
+      } else {
+        this.children = child.elm.childNodes;
+        this.children.forEach(nextChild => {
+          this.searchForCollapseContent(nextChild);
+          nextChild.childNodes.forEach(nextChild2 => {
+            this.searchForCollapseContent(nextChild2);
+            nextChild2.childNodes.forEach(nextChild3 => {
+              this.searchForCollapseContent(nextChild3);
+            });
+          });
+        });
+      }
+    });
   },
   created() {
     window.addEventListener('scroll', this.handleScroll);
