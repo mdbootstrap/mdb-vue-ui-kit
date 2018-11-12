@@ -2,7 +2,7 @@
   <container>
     <row class="mt-5 align-items-center justify-content-start">
       <h4 style="margin: 0" class="grey-text"><strong>Modal Examples</strong></h4>
-      <a href="https://mdbootstrap.com/vue/advanced/modals/?utm_source=DemoApp&utm_medium=MDBVueFree" waves-fixed class="border grey-text px-2 border-light rounded ml-2" target="_blank"><fa icon="graduation-cap" class="mr-2"/>Docs</a>
+      <a href="https://mdbootstrap.com/docs/vue/modals/basic/?utm_source=DemoApp&utm_medium=MDBVueFree" waves-fixed class="border grey-text px-2 border-light rounded ml-2" target="_blank"><fa icon="graduation-cap" class="mr-2"/>Docs</a>
     </row>
     <hr />
 
@@ -192,29 +192,30 @@
               <th>Remove</th>
             </tr>
            </tbl-head>
+           <tbl-body>
             <tr>
               <th scope="row">1</th>
               <td>Product 1</td>
               <td>100$</td>
-              <td><a><i class="fa fa-remove"></i></a></td>
+              <td><a><mdb-icon icon="remove"/></a></td>
             </tr>
             <tr>
               <th scope="row">2</th>
               <td>Product 2</td>
               <td>100$</td>
-              <td><a><i class="fa fa-remove"></i></a></td>
+              <td><a><mdb-icon icon="remove"/></a></td>
             </tr>
             <tr>
               <th scope="row">3</th>
               <td>Product 3</td>
               <td>100$</td>
-              <td><a><i class="fa fa-remove"></i></a></td>
+              <td><a><mdb-icon icon="remove"/></a></td>
             </tr>
             <tr>
               <th scope="row">4</th>
               <td>Product 4</td>
               <td>100$</td>
-              <td><a><i class="fa fa-remove"></i></a></td>
+              <td><a><mdb-icon icon="remove"/></a></td>
             </tr>
             <tr class="total">
               <th scope="row">5</th>
@@ -222,7 +223,6 @@
               <td>400$</td>
               <td></td>
             </tr>
-           <tbl-body>
            </tbl-body>
          </tbl>
       </modal-body>
@@ -243,11 +243,33 @@
         <p>Do you want to receive the push notification about the newest posts?</p>
       </modal-body>
       <modal-footer center>
-        <btn outline="primary" @click="push=false" tag="a" href="https://mdbootstrap.com/vue/newsletter/" target="_blank">Yes</btn>
+        <btn outline="primary" @click="push=false" tag="a" href="https://mdbootstrap.com/docs/vue/newsletter/" target="_blank">Yes</btn>
         <btn color="primary" @click="push=false">No</btn>
       </modal-footer>
     </modal>
 
+    <btn color="default" class="mb-3" @click="share=true">Social Share</btn>
+    <modal v-if="share" @close="share = false" cascade >
+      <modal-header color="light-blue darken-3 white-text">
+          <h4 class="title"><fa icon="users"/> Spreed the word!</h4>
+      </modal-header>
+      <modal-body class="text-center">
+        <btn floating tag="a" class="btn-fb" icon="facebook"/>
+        <btn floating tag="a" class="btn-tw" icon="twitter"/>
+        <btn floating tag="a" class="btn-gplus" icon="google-plus"/>
+        <btn floating tag="a" class="btn-li" icon="linkedin"/>
+        <btn floating tag="a" class="btn-ins" icon="instagram"/>
+        <btn floating tag="a" class="btn-pin" icon="pinterest"/>
+        <btn floating tag="a" class="btn-yt" icon="youtube"/>
+        <btn floating tag="a" class="btn-dribbble" icon="dribbble"/>
+        <btn floating tag="a" class="btn-vk" icon="vk"/>
+        <btn floating tag="a" class="btn-so" icon="stack-overflow"/>
+        <btn floating tag="a" class="btn-slack" icon="slack"/>
+        <btn floating tag="a" class="btn-git" icon="github"/>
+        <btn floating tag="a" class="btn-comm" icon="comments"/>
+        <btn floating tag="a" class="btn-email" icon="envelope"/>
+      </modal-body>
+    </modal>
       </column>
     </row>
   </container>

@@ -1,6 +1,6 @@
 {
   "name": "mdbvue",
-  "version": "4.8.1",
+  "version": "4.8.2",
   "description": "Vue Bootstrap with Material Design",
   "author": "MDBootstrap <support@mdbootstrap.com>",
   "license": "MIT",
@@ -8,8 +8,8 @@
   "scripts": {
     "dev": "node build/dev-server.js",
     "sass-compile": "node-sass build/scss -o build/css",
-    "start": "yarn run sass-compile && yarn run dev",
-    "start-npm": "npm run sass-compile && npm run dev",
+    "start": "yarn run dev",
+    "start-npm": "npm run dev",
     "build": "node build/build.js",
     "lint": "eslint --ext .js,.vue src"
   },

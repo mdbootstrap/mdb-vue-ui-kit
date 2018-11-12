@@ -3,7 +3,7 @@
   <container>
     <row class="mt-5 align-items-center justify-content-start">
       <h4 style="margin: 0" class="grey-text"><strong>Panels</strong></h4>
-      <a href="https://mdbootstrap.com/vue/components/panels/?utm_source=DemoApp&utm_medium=MDBVueFree" waves-fixed class="border grey-text px-2 border-light rounded ml-2" target="_blank"><fa icon="graduation-cap" class="mr-2"/>Docs</a>
+      <a href="https://mdbootstrap.com/docs/vue/components/panels/?utm_source=DemoApp&utm_medium=MDBVueFree" waves-fixed class="border grey-text px-2 border-light rounded ml-2" target="_blank"><fa icon="graduation-cap" class="mr-2"/>Docs</a>
     </row>
     <hr class="mb-5" />
     <row>
@@ -149,6 +149,22 @@
 
     <row class="mt-4">
       <card class="text-right" style="width: 18rem; margin-top: 1rem;">
+        <card-body>
+          <card-title>Special title treatment</card-title>
+          <card-text>With supporting text below as a natural lead-in to additional content.</card-text>
+          <btn color="primary">go somewhere</btn>
+        </card-body>
+      </card>
+    </row>
+    <row class="mt-4">
+      <card class="text-center">
+        <card-header>
+          <ul class="nav nav-tabs card-header-tabs">
+            <navbar-item active to="#">Active</navbar-item>
+            <navbar-item to="#">Link</navbar-item>
+            <navbar-item disabled to="#">Disabled</navbar-item>
+          </ul>
+        </card-header>
         <card-body>
           <card-title>Special title treatment</card-title>
           <card-text>With supporting text below as a natural lead-in to additional content.</card-text>

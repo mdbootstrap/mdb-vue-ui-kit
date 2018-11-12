@@ -6,23 +6,21 @@ const GoogleMap = {
   name: 'google-map',
   props: {
     name: {
-      type: String
+      type: String,
+      default: 'default'
     },
     markerCoordinates: {
       type: Array
     },
     zoom: {
-      type: Number
+      type: Number,
+      default: 14
     },
     modal: {
       type: Boolean
     },
     styles: {
       type: Array
-    },
-    satellite: {
-      type: Boolean,
-      defaul: false
     },
     type: {
       type: String,

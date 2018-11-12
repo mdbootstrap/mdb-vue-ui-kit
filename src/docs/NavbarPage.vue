@@ -2,7 +2,7 @@
   <container>
     <row class="mt-5 align-items-center justify-content-start">
       <h4 style="margin: 0" class="grey-text"><strong>Navbar</strong></h4>
-      <a href="https://mdbootstrap.com/vue/components/navbar/?utm_source=DemoApp&utm_medium=MDBVueFree" waves-fixed class="border grey-text px-2 border-light rounded ml-2" target="_blank"><fa icon="graduation-cap" class="mr-2"/>Docs</a>
+      <a href="https://mdbootstrap.com/docs/vue/navigation/navbar/?utm_source=DemoApp&utm_medium=MDBVueFree" waves-fixed class="border grey-text px-2 border-light rounded ml-2" target="_blank"><fa icon="graduation-cap" class="mr-2"/>Docs</a>
     </row>
     <hr />
     <container>

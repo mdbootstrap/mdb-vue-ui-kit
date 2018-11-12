@@ -2,7 +2,7 @@
   <container>
     <row class="mt-5 align-items-center justify-content-start">
       <h4 style="margin: 0" class="grey-text"><strong>Modal forms</strong></h4>
-      <a href="https://mdbootstrap.com/vue/advanced/modals/?utm_source=DemoApp&utm_medium=MDBVueFree" waves-fixed class="border grey-text px-2 border-light rounded ml-2" target="_blank"><fa icon="graduation-cap" class="mr-2"/>Docs</a>
+      <a href="https://mdbootstrap.com/docs/vue/modals/basic/?utm_source=DemoApp&utm_medium=MDBVueFree" waves-fixed class="border grey-text px-2 border-light rounded ml-2" target="_blank"><fa icon="graduation-cap" class="mr-2"/>Docs</a>
     </row>
 
     <hr />
@@ -88,7 +88,7 @@
             <h5 class="mt-1 mb-2">Maria Doe</h5>
             <mdb-input label="Enter password" type="password"/>
             <div class="mt-5 text-center">
-              <btn color="cyan">Login<fa icon="sign-in" class="ml-1"/></btn>
+              <btn color="cyan" icon="sign-in" iconRight iconClass="ml-1">Login</btn>
             </div>
           </modal-body>
         </modal>

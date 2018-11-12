@@ -2,7 +2,7 @@
   <mdb-container class="text-center mt-5">
     <mdb-row class="mt-5">
       <h4 class="grey-text"><strong>Video </strong></h4>
-      <a href="https://mdbootstrap.com/vue/components/video/?utm_source=DemoApp&utm_medium=MDBVueFree" waves-fixed class="border grey-text px-2 border-light rounded ml-2" target="_blank"><mdb-icon icon="graduation-cap" class="mr-2"/>Docs</a>
+      <a href="https://mdbootstrap.com/plugins/vue/video/?utm_source=DemoApp&utm_medium=MDBVueFree" waves-fixed class="border grey-text px-2 border-light rounded ml-2" target="_blank"><mdb-icon icon="graduation-cap" class="mr-2"/>Docs</a>
     </mdb-row>
     <hr class="mb-5" />
     <h4 class="my-4 text-left">Responsive video</h4>

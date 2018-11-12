@@ -2,7 +2,7 @@
   <mdb-container>
     <mdb-row class="mt-5 align-items-center justify-content-start">
       <h4 style="margin: 0" class="grey-text"><strong>Hamburger Menu</strong></h4>
-      <a href="https://mdbootstrap.com/vue/components/hamburger-menu/?utm_source=DemoApp&utm_medium=MDBVueFree" waves-fixed class="border grey-text px-2 border-light rounded ml-2" target="_blank"><mdb-icon icon="graduation-cap" class="mr-2"/>Docs</a>
+      <a href="https://mdbootstrap.com/docs/vue/navigation/hamburger-menu/?utm_source=DemoApp&utm_medium=MDBVueFree" waves-fixed class="border grey-text px-2 border-light rounded ml-2" target="_blank"><mdb-icon icon="graduation-cap" class="mr-2"/>Docs</a>
     </mdb-row>
     <hr />
     <h4 class="my-4">Hamburger menu basic</h4>

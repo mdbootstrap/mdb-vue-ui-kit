@@ -2,7 +2,7 @@
   <container class="mt-5">
     <row class="mt-5 align-items-center justify-content-start">
       <h4 style="margin: 0" class="grey-text"><strong>Google maps </strong></h4>
-      <a href="https://mdbootstrap.com/vue/advanced/google-map/?utm_source=DemoApp&utm_medium=MDBVueFree" waves-fixed class="border grey-text px-2 border-light rounded ml-2" target="_blank"><fa icon="graduation-cap" class="mr-2"/>Docs</a>
+      <a href="https://mdbootstrap.com/docs/vue/advanced/google-map/?utm_source=DemoApp&utm_medium=MDBVueFree" waves-fixed class="border grey-text px-2 border-light rounded ml-2" target="_blank"><fa icon="graduation-cap" class="mr-2"/>Docs</a>
     </row>
     <hr class="mb-4" />
     <row>
@@ -213,7 +213,7 @@
             :zoom="14"
             wrapperClass="z-depth-1-half"
             :modal="regular">
-            ></google-map>
+          </google-map>
         </modal-body>
         <modal-footer center>
           <btn color="info" size="md">Save location<fa icon="map-marker" class="ml-1"/></btn>
@@ -233,7 +233,7 @@
             wrapperClass="z-depth-1-half"
             :modal="satellite"
             type="satellite">
-            ></google-map>
+          </google-map>
         </modal-body>
         <modal-footer center>
           <btn color="default" size="md">Save location<fa icon="map-marker" class="ml-1"/></btn>
@@ -253,7 +253,7 @@
             :styles="styles"
             wrapperClass="z-depth-1-half"
             :modal="regular">
-            ></google-map>
+          </google-map>
         </modal-body>
         <modal-footer center>
           <btn color="secondary" size="md">Save location<fa icon="map-marker" class="ml-1"/></btn>

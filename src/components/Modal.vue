@@ -1,10 +1,10 @@
 <template>
   <transition name="fade"
-  @enter="enter"
-  @after-enter="afterEnter"
-  @before-leave="beforeLeave"
-  @after-leave="afterLeave"
->
+    @enter="enter"
+    @after-enter="afterEnter"
+    @before-leave="beforeLeave"
+    @after-leave="afterLeave"
+  >
     <component :is="tag" :class="wrapperClass">
       <div :class="dialogClass" role="document" v-on-clickaway="away">
         <div :class="contentClass" :style="computedContentStyle">

@@ -155,7 +155,6 @@ export {
   ModalFooter,
   NumericInput,
   waves,
-
   // MDB FREE
   mdbAccordion,
   mdbAccordionPane,
