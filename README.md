@@ -18,4 +18,4 @@ npm run build
 npm run build --report
 ```
 
-For a detailed explanation on how things work, check out the [MDBootstrap Vue Official documentation](https://mdbootstrap.com/vue/).
+For a detailed explanation on how things work, check out the [MDBootstrap Vue Official documentation](https://mdbootstrap.com/docs/vue/).
