@@ -109,7 +109,7 @@
             </column>
             <column col="10" md="8" lg="10" class="float-right">
               <h4 class="font-weight-bold">ADDONS</h4>
-              <p class="grey-text">Google Maps, Social Buttons, Pre-built Contact Forms and Steppers. Find out more about our extended components.</p>
+              <p class="grey-text">Find out more about our extended components.</p>
               <navbar-item router href="/addons" waves-fixed><btn size="sm" color="default">Learn more</btn></navbar-item>
             </column>
           </column>

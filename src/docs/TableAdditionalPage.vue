@@ -5,10 +5,10 @@
       <a href="https://mdbootstrap.com/docs/vue/tables/additional/?utm_source=DemoApp&utm_medium=MDBVueFree" waves-fixed class="border grey-text px-2 border-light rounded ml-2" target="_blank"><fa icon="graduation-cap" class="mr-2"/>Docs</a>
     </row>
     <hr />
-    <div class="mt-5 pt-5 mx-3">
+    <div class="pt-5 mx-3">
       <h3>Table with buttons</h3>
       <br />
-      <tbl btn responsive striped>
+      <tbl btn responsive striped class="mb-5">
         <tbl-head>
           <tr>
             <th>#</th>
@@ -47,7 +47,7 @@
 
       <h3>Table with checkboxes</h3>
       <br />
-      <tbl responsive striped>
+      <tbl responsive striped class="my-5">
         <tbl-head>
           <tr>
             <th>#</th>
@@ -98,7 +98,7 @@
 
       <h3>Table with icons</h3>
       <br />
-      <tbl btn responsive striped>
+      <tbl btn responsive striped class="my-5">
         <tbl-head>
           <tr>
             <th>#</th>
@@ -132,7 +132,7 @@
       <h3>Table with panel</h3>
       <br />
       <!-- Table with panel -->
-      <div class="card card-cascade narrower">
+      <div class="card card-cascade narrower my-5">
 
         <!--Card image-->
         <div class="view view-cascade gradient-card-header blue-gradient narrower py-2 mx-4 mb-3 d-flex justify-content-between align-items-center">

@@ -6,7 +6,7 @@
 
 <script>
 
-const mdbNavbarBrand = {
+const NavbarBrand = {
   props: {
     tag: {
       type: String,
@@ -18,7 +18,8 @@ const mdbNavbarBrand = {
   }
 };
 
-export default mdbNavbarBrand;
+export default NavbarBrand;
+export { NavbarBrand as mdbNavbarBrand };
 </script>
 
 <style scoped>

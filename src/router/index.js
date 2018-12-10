@@ -12,6 +12,7 @@ import ModalsPage from '../docs/categories/ModalsPage';
 import AddonsPage from '../docs/categories/AddonsPage';
 
 // FREE
+import AlertPage from '../docs/AlertPage';
 import AccordionPage from '../docs/AccordionPage';
 import IframePage from '../docs/IframePage';
 import HomePage from '../docs/HomePage';
@@ -42,7 +43,6 @@ import MediaPage from '../docs/MediaPage';
 import ListGroupPage from '../docs/ListGroupPage';
 import NavbarPage from '../docs/NavbarPage';
 import NavigationPage from '../docs/NavigationPage';
-import NotificationPage from '../docs/NotificationPage';
 import CollapsePage from '../docs/CollapsePage';
 import PaginationPage from '../docs/PaginationPage';
 import PanelPage from '../docs/PanelPage';
@@ -238,9 +238,9 @@ export default new Router({
       name: 'NavigationPage',
       component: NavigationPage
     }, {
-      path: '/components/notification',
-      name: 'NotificationPage',
-      component: NotificationPage
+      path: '/components/alert',
+      name: 'AlertPage',
+      component: AlertPage
     }, {
       path: '/advanced/collapse',
       name: 'CollapsePage',

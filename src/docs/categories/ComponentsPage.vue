@@ -7,6 +7,11 @@
           <h6 class="my-3">FREE</h6>
           <list-group>
             <!-- FREE -->
+            <navbar-item class="list-group-item list-group-item-action" router href="/components/alert">
+              <h5 class="justify-content-between d-flex align-items-center">
+                Alerts<fa icon="angle-right"/>
+              </h5>
+            </navbar-item>
             <navbar-item class="list-group-item list-group-item-action" router href="/components/badge">
               <h5 class="justify-content-between d-flex align-items-center">
                 Badge<fa icon="angle-right"/>
@@ -47,11 +52,6 @@
                 Media <fa icon="angle-right"/>
               </h5>
             </navbar-item>
-            <navbar-item class="list-group-item list-group-item-action" router href="/components/notification">
-              <h5 class="justify-content-between d-flex align-items-center">
-                Notification <fa icon="angle-right"/>
-              </h5>
-            </navbar-item>
             <navbar-item class="list-group-item list-group-item-action" router href="/components/pagination">
               <h5 class="justify-content-between d-flex align-items-center">
                 Pagination <fa icon="angle-right"/>
@@ -59,7 +59,7 @@
             </navbar-item>
             <navbar-item class="list-group-item list-group-item-action" router href="/components/panel">
               <h5 class="justify-content-between d-flex align-items-center">
-                Panel <fa icon="angle-right"/>
+                Panels <fa icon="angle-right"/>
               </h5>
             </navbar-item>
             <navbar-item class="list-group-item list-group-item-action" router href="/components/progress-bars">

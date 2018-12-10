@@ -330,14 +330,16 @@ export default {
         }
       ],
       colors: [
-        "White",
-        "Black",
-        "Pink"
+        {value: -1, text: 'Choose your color', disabled: true, selected: true },
+        {value: 'White', text: 'White'},
+        {value: 'Black', text: 'Black'},
+        {value: 'Pink', text: 'Pink'}
       ],
       sizes: [
-        "XS",
-        "S",
-        "L"
+        {value: -1, text: 'Choose your size', disabled: true, selected: true },
+        {value: 'XS', text: 'XS'},
+        {value: 'S', text: 'S'},
+        {value: 'L', text: 'L'}
       ],
       share: false
     };
