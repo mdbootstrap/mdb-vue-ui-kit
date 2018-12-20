@@ -1,148 +1,148 @@
 <template>
-  <container>
+  <mdb-container>
     <h1>MD Bootstrap Components</h1>
     <p>This presentation shows first part of components and features available in MDB Vue.js</p>
     <!-- BUTTONS -->
     <section class="text-center">
       <h2>Buttons</h2>
       <h5>Basic buttons</h5>
-      <btn color="primary">Primary</btn>
-      <btn>Default</btn>
-      <btn color="secondary">Secondary</btn>
-      <btn color="success">Success</btn>
-      <btn color="info">Info</btn>
-      <btn color="warning">Warning</btn>
-      <btn color="danger">Danger</btn>
+      <mdb-btn color="primary">Primary</mdb-btn>
+      <mdb-btn>Default</mdb-btn>
+      <mdb-btn color="secondary">Secondary</mdb-btn>
+      <mdb-btn color="success">Success</mdb-btn>
+      <mdb-btn color="info">Info</mdb-btn>
+      <mdb-btn color="warning">Warning</mdb-btn>
+      <mdb-btn color="danger">Danger</mdb-btn>
       <h5>Additional buttons</h5>
-      <btn color="elegant">Elegant</btn>
-      <btn color="unique">Unique</btn>
-      <btn color="pink">Pink</btn>
-      <btn color="purple">Purple</btn>
-      <btn color="deep-purple">Deep-purple</btn>
-      <btn color="indigo">Indigo</btn>
-      <btn color="light-blue">Light-blue</btn>
-      <btn color="cyan">Cyan</btn>
-      <btn color="dark-green">Dark-green</btn>
-      <btn color="light-green">Light-green</btn>
-      <btn color="yellow">Yellow</btn>
-      <btn color="amber">Amber</btn>
-      <btn color="deep-orange">Deep-orange</btn>
-      <btn color="brown">Brown</btn>
-      <btn color="grey">Grey</btn>
-      <btn color="mdb">Mdb</btn>
+      <mdb-btn color="elegant">Elegant</mdb-btn>
+      <mdb-btn color="unique">Unique</mdb-btn>
+      <mdb-btn color="pink">Pink</mdb-btn>
+      <mdb-btn color="purple">Purple</mdb-btn>
+      <mdb-btn color="deep-purple">Deep-purple</mdb-btn>
+      <mdb-btn color="indigo">Indigo</mdb-btn>
+      <mdb-btn color="light-blue">Light-blue</mdb-btn>
+      <mdb-btn color="cyan">Cyan</mdb-btn>
+      <mdb-btn color="dark-green">Dark-green</mdb-btn>
+      <mdb-btn color="light-green">Light-green</mdb-btn>
+      <mdb-btn color="yellow">Yellow</mdb-btn>
+      <mdb-btn color="amber">Amber</mdb-btn>
+      <mdb-btn color="deep-orange">Deep-orange</mdb-btn>
+      <mdb-btn color="brown">Brown</mdb-btn>
+      <mdb-btn color="grey">Grey</mdb-btn>
+      <mdb-btn color="mdb">Mdb</mdb-btn>
       <h5>Outline buttons</h5>
-      <btn outline="primary" darkWaves>Primary</btn>
-      <btn outline="default" darkWaves>Default</btn>
-      <btn outline="secondary" darkWaves>Secondary</btn>
-      <btn outline="success" darkWaves>Success</btn>
-      <btn outline="info" darkWaves>Info</btn>
-      <btn outline="warning" darkWaves>Warning</btn>
-      <btn outline="danger" darkWaves>Danger</btn>
+      <mdb-btn outline="primary" darkWaves>Primary</mdb-btn>
+      <mdb-btn outline="default" darkWaves>Default</mdb-btn>
+      <mdb-btn outline="secondary" darkWaves>Secondary</mdb-btn>
+      <mdb-btn outline="success" darkWaves>Success</mdb-btn>
+      <mdb-btn outline="info" darkWaves>Info</mdb-btn>
+      <mdb-btn outline="warning" darkWaves>Warning</mdb-btn>
+      <mdb-btn outline="danger" darkWaves>Danger</mdb-btn>
       <h5>Sizes</h5>
-      <btn size="lg">Large button</btn>
-      <btn size="lg">Large button</btn><br>
-      <btn size="sm">Small button</btn>
-      <btn size="sm">Small button</btn>
+      <mdb-btn size="lg">Large button</mdb-btn>
+      <mdb-btn size="lg">Large button</mdb-btn><br>
+      <mdb-btn size="sm">Small button</mdb-btn>
+      <mdb-btn size="sm">Small button</mdb-btn>
     </section>
     <!-- /BUTTONS -->
     <hr class="mt-4">
     <!-- BADGES -->
     <section class="text-center">
       <h2>Badges</h2>
-      <badge>Primary</badge>
-      <badge color="default-color">Default</badge>
-      <badge color="success-color">Success</badge>
-      <badge color="info-color">Info</badge>
-      <badge color="warning-color">Warning</badge>
+      <mdb-badge color="primary-color">Primary</mdb-badge>
+      <mdb-badge color="default-color">Default</mdb-badge>
+      <mdb-badge color="success-color">Success</mdb-badge>
+      <mdb-badge color="info-color">Info</mdb-badge>
+      <mdb-badge color="warning-color">Warning</mdb-badge>
       <h5>Pills with Font Awesome</h5>
-      <badge pill><fa icon="snowflake-o"/></badge>
-      <badge color="default-color" pill><fa icon="hand-spock-o"/></badge>
-      <badge color="success-color" pill><fa icon="image"/></badge>
-      <badge color="info-color" pill><fa icon="mortar-board"/></badge>
-      <badge color="warning-color" pill><fa icon="paint-brush"/></badge>
+      <mdb-badge pill color="primary-color"><mdb-icon icon="snowflake-o"/></mdb-badge>
+      <mdb-badge color="default-color" pill><mdb-icon icon="hand-spock-o"/></mdb-badge>
+      <mdb-badge color="success-color" pill><mdb-icon icon="image"/></mdb-badge>
+      <mdb-badge color="info-color" pill><mdb-icon icon="mortar-board"/></mdb-badge>
+      <mdb-badge color="warning-color" pill><mdb-icon icon="paint-brush"/></mdb-badge>
     </section>
     <!-- /BADGES -->
     <hr class="mt-4">
     <!-- NAVBARS -->
     <section>
       <h2>Navbars</h2>
-      <navbar color="primary" dark name="Navbar" href="#">
-        <navbar-collapse>
-          <navbar-nav>
-            <navbar-item href="#" active>Home</navbar-item>
-            <navbar-item href="#">Features</navbar-item>
-            <navbar-item href="#">Pricing</navbar-item>
-            <!-- Dropdown -->
-            <dropdown tag="li" class="nav-item">
-              <dropdown-toggle slot="toggle" tag="a" navLink color="primary" waves-fixed>Dropdown</dropdown-toggle>
-              <dropdown-menu>
-                <dropdown-item>Action</dropdown-item>
-                <dropdown-item>Another action</dropdown-item>
-                <dropdown-item>Something else here</dropdown-item>
-              </dropdown-menu>
-            </dropdown>
-          </navbar-nav>
+      <mdb-navbar color="primary" dark name="Navbar" href="#">
+        <mdb-navbar-toggler>
+          <mdb-navbar-nav>
+            <mdb-nav-item href="#" active>Home</mdb-nav-item>
+            <mdb-nav-item href="#">Features</mdb-nav-item>
+            <mdb-nav-item href="#">Pricing</mdb-nav-item>
+            <!-- mdbDropdown -->
+            <mdb-dropdown tag="li" class="nav-item">
+              <mdb-dropdown-toggle slot="toggle" tag="a" navLink color="primary" waves-fixed>Dropdown</mdb-dropdown-toggle>
+              <mdb-dropdown-menu>
+                <mdb-dropdown-item>Action</mdb-dropdown-item>
+                <mdb-dropdown-item>Another action</mdb-dropdown-item>
+                <mdb-dropdown-item>Something else here</mdb-dropdown-item>
+              </mdb-dropdown-menu>
+            </mdb-dropdown>
+          </mdb-navbar-nav>
             <!-- Search form -->
           <form class="form-inline">
             <mdb-input type="text" placeholder="Search" aria-label="Search" label navInput waves />
           </form>
-        </navbar-collapse>
-      </navbar>
-      <navbar color="default" dark class="mt-4" name="Navbar" href="#">
-        <navbar-collapse>
-          <navbar-nav>
-            <navbar-item href="#" active>Home</navbar-item>
-            <navbar-item href="#">Features</navbar-item>
-            <navbar-item href="#">Pricing</navbar-item>
-            <!-- Dropdown -->
-            <dropdown tag="li" class="nav-item">
-              <dropdown-toggle slot="toggle" tag="a" navLink color="default" waves-fixed>Dropdown</dropdown-toggle>
-              <dropdown-menu color="default">
-                <dropdown-item>Action</dropdown-item>
-                <dropdown-item>Another action</dropdown-item>
-                <dropdown-item>Something else here</dropdown-item>
-              </dropdown-menu>
-            </dropdown>
-          </navbar-nav>
-          <navbar-nav right>
-            <navbar-item href="#"><fa icon="twitter"></fa></navbar-item>
-            <navbar-item href="#"><fa icon="google-plus"></fa></navbar-item>
-            <dropdown tag="li" class="nav-item">
-              <dropdown-toggle slot="toggle" tag="a" navLink color="default" waves-fixed><fa icon="user"></fa></dropdown-toggle>
-              <dropdown-menu color="default">
-                <dropdown-item>Action</dropdown-item>
-                <dropdown-item>Another action</dropdown-item>
-                <dropdown-item>Something else here</dropdown-item>
-              </dropdown-menu>
-            </dropdown>
-          </navbar-nav>
-        </navbar-collapse>
-      </navbar>
-      <navbar color="danger" dark class="mt-4" name="Navbar" href="#">
-        <navbar-collapse>
-          <navbar-nav>
-          </navbar-nav>
-          <navbar-nav right>
-            <navbar-item href="#"><fa icon="envelope"></fa> Contact</navbar-item>
-            <navbar-item href="#"><fa icon="cog"></fa> Settings</navbar-item>
-            <dropdown tag="li" class="nav-item">
-              <dropdown-toggle slot="toggle" tag="a" navLink color="danger" waves-fixed><fa icon="user"></fa> Profile</dropdown-toggle>
-              <dropdown-menu color="danger">
-                <dropdown-item>Action</dropdown-item>
-                <dropdown-item>Another action</dropdown-item>
-                <dropdown-item>Something else here</dropdown-item>
-              </dropdown-menu>
-            </dropdown>
-          </navbar-nav>
-        </navbar-collapse>
-      </navbar>
+        </mdb-navbar-toggler>
+      </mdb-navbar>
+      <mdb-navbar color="default" dark class="mt-4" name="Navbar" href="#">
+        <mdb-navbar-toggler>
+          <mdb-navbar-nav>
+            <mdb-nav-item href="#" active>Home</mdb-nav-item>
+            <mdb-nav-item href="#">Features</mdb-nav-item>
+            <mdb-nav-item href="#">Pricing</mdb-nav-item>
+            <!-- mdbDropdown -->
+            <mdb-dropdown tag="li" class="nav-item">
+              <mdb-dropdown-toggle slot="toggle" tag="a" navLink color="default" waves-fixed>Dropdown</mdb-dropdown-toggle>
+              <mdb-dropdown-menu color="default">
+                <mdb-dropdown-item>Action</mdb-dropdown-item>
+                <mdb-dropdown-item>Another action</mdb-dropdown-item>
+                <mdb-dropdown-item>Something else here</mdb-dropdown-item>
+              </mdb-dropdown-menu>
+            </mdb-dropdown>
+          </mdb-navbar-nav>
+          <mdb-navbar-nav right>
+            <mdb-nav-item href="#"><mdb-icon icon="twitter"></mdb-icon></mdb-nav-item>
+            <mdb-nav-item href="#"><mdb-icon icon="google-plus"></mdb-icon></mdb-nav-item>
+            <mdb-dropdown tag="li" class="nav-item">
+              <mdb-dropdown-toggle slot="toggle" tag="a" navLink color="default" waves-fixed><mdb-icon icon="user"></mdb-icon></mdb-dropdown-toggle>
+              <mdb-dropdown-menu color="default">
+                <mdb-dropdown-item>Action</mdb-dropdown-item>
+                <mdb-dropdown-item>Another action</mdb-dropdown-item>
+                <mdb-dropdown-item>Something else here</mdb-dropdown-item>
+              </mdb-dropdown-menu>
+            </mdb-dropdown>
+          </mdb-navbar-nav>
+        </mdb-navbar-toggler>
+      </mdb-navbar>
+      <mdb-navbar color="danger" dark class="mt-4" name="Navbar" href="#">
+        <mdb-navbar-toggler>
+          <mdb-navbar-nav>
+          </mdb-navbar-nav>
+          <mdb-navbar-nav right>
+            <mdb-nav-item href="#"><mdb-icon icon="envelope"></mdb-icon> Contact</mdb-nav-item>
+            <mdb-nav-item href="#"><mdb-icon icon="cog"></mdb-icon> Settings</mdb-nav-item>
+            <mdb-dropdown tag="li" class="nav-item">
+              <mdb-dropdown-toggle slot="toggle" tag="a" navLink color="danger" waves-fixed><mdb-icon icon="user"></mdb-icon> Profile</mdb-dropdown-toggle>
+              <mdb-dropdown-menu color="danger">
+                <mdb-dropdown-item>Action</mdb-dropdown-item>
+                <mdb-dropdown-item>Another action</mdb-dropdown-item>
+                <mdb-dropdown-item>Something else here</mdb-dropdown-item>
+              </mdb-dropdown-menu>
+            </mdb-dropdown>
+          </mdb-navbar-nav>
+        </mdb-navbar-toggler>
+      </mdb-navbar>
       <h5>Breadcrumbs</h5>
-      <breadcrumb>
-        <breadcrumb-item><a href="#">Menu</a></breadcrumb-item>
-        <breadcrumb-item><a href="#">Nav</a></breadcrumb-item>
-        <breadcrumb-item><a href="#">Elements</a></breadcrumb-item>
-        <breadcrumb-item active>Element 1</breadcrumb-item>
-      </breadcrumb>
+      <mdb-breadcrumb>
+        <mdb-breadcrumb-item><a href="#">Menu</a></mdb-breadcrumb-item>
+        <mdb-breadcrumb-item><a href="#">Nav</a></mdb-breadcrumb-item>
+        <mdb-breadcrumb-item><a href="#">Elements</a></mdb-breadcrumb-item>
+        <mdb-breadcrumb-item active>Element 1</mdb-breadcrumb-item>
+      </mdb-breadcrumb>
     </section>
     <!-- /NAVBARS -->
     <hr class="mt-4">
@@ -150,100 +150,100 @@
     <section class="text-center">
       <h2>Dropdowns</h2>
       <h5>Basic examples</h5>
-      <dropdown>
-        <dropdown-toggle slot="toggle" color="default">Dropdown 1</dropdown-toggle>
-        <dropdown-menu color="default">
-          <dropdown-item>Action</dropdown-item>
-          <dropdown-item>Another action</dropdown-item>
-          <dropdown-item>Something else here</dropdown-item>
-        </dropdown-menu>
-      </dropdown>
-      <dropdown>
-        <dropdown-toggle slot="toggle" color="primary">Dropdown 2</dropdown-toggle>
-        <dropdown-menu color="primary">
-          <dropdown-item>Action</dropdown-item>
-          <dropdown-item>Another action</dropdown-item>
-          <dropdown-item>Something else here</dropdown-item>
-        </dropdown-menu>
-      </dropdown>
-      <dropdown>
-        <dropdown-toggle slot="toggle" color="secondary">Dropdown 3</dropdown-toggle>
-        <dropdown-menu color="secondary">
-          <dropdown-item>Action</dropdown-item>
-          <dropdown-item>Another action</dropdown-item>
-          <dropdown-item>Something else here</dropdown-item>
-        </dropdown-menu>
-      </dropdown>
-      <dropdown>
-        <dropdown-toggle slot="toggle" color="danger">Dropdown 4</dropdown-toggle>
-        <dropdown-menu color="danger">
-          <dropdown-item>Action</dropdown-item>
-          <dropdown-item>Another action</dropdown-item>
-          <dropdown-item>Something else here</dropdown-item>
-        </dropdown-menu>
-      </dropdown>
-      <dropdown>
-        <dropdown-toggle slot="toggle" color="warning">Dropdown 5</dropdown-toggle>
-        <dropdown-menu color="warning">
-          <dropdown-item>Action</dropdown-item>
-          <dropdown-item>Another action</dropdown-item>
-          <dropdown-item>Something else here</dropdown-item>
-        </dropdown-menu>
-      </dropdown>
+      <mdb-dropdown>
+        <mdb-dropdown-toggle slot="toggle" color="default">Dropdown 1</mdb-dropdown-toggle>
+        <mdb-dropdown-menu color="default">
+          <mdb-dropdown-item>Action</mdb-dropdown-item>
+          <mdb-dropdown-item>Another action</mdb-dropdown-item>
+          <mdb-dropdown-item>Something else here</mdb-dropdown-item>
+        </mdb-dropdown-menu>
+      </mdb-dropdown>
+      <mdb-dropdown>
+        <mdb-dropdown-toggle slot="toggle" color="primary">Dropdown 2</mdb-dropdown-toggle>
+        <mdb-dropdown-menu color="primary">
+          <mdb-dropdown-item>Action</mdb-dropdown-item>
+          <mdb-dropdown-item>Another action</mdb-dropdown-item>
+          <mdb-dropdown-item>Something else here</mdb-dropdown-item>
+        </mdb-dropdown-menu>
+      </mdb-dropdown>
+      <mdb-dropdown>
+        <mdb-dropdown-toggle slot="toggle" color="secondary">Dropdown 3</mdb-dropdown-toggle>
+        <mdb-dropdown-menu color="secondary">
+          <mdb-dropdown-item>Action</mdb-dropdown-item>
+          <mdb-dropdown-item>Another action</mdb-dropdown-item>
+          <mdb-dropdown-item>Something else here</mdb-dropdown-item>
+        </mdb-dropdown-menu>
+      </mdb-dropdown>
+      <mdb-dropdown>
+        <mdb-dropdown-toggle slot="toggle" color="danger">Dropdown 4</mdb-dropdown-toggle>
+        <mdb-dropdown-menu color="danger">
+          <mdb-dropdown-item>Action</mdb-dropdown-item>
+          <mdb-dropdown-item>Another action</mdb-dropdown-item>
+          <mdb-dropdown-item>Something else here</mdb-dropdown-item>
+        </mdb-dropdown-menu>
+      </mdb-dropdown>
+      <mdb-dropdown>
+        <mdb-dropdown-toggle slot="toggle" color="warning">Dropdown 5</mdb-dropdown-toggle>
+        <mdb-dropdown-menu color="warning">
+          <mdb-dropdown-item>Action</mdb-dropdown-item>
+          <mdb-dropdown-item>Another action</mdb-dropdown-item>
+          <mdb-dropdown-item>Something else here</mdb-dropdown-item>
+        </mdb-dropdown-menu>
+      </mdb-dropdown>
     </section>
     <!-- /DROPDOWNS -->
     <hr class="mt-4">
     <!-- CARDS -->
     <section>
       <h2>Cards</h2>
-      <row>
-        <column sm="4">
-          <card>
-            <card-img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" alt="Card image cap" waves></card-img>
-            <card-body>
+      <mdb-row>
+        <mdb-col sm="4">
+          <mdb-card>
+            <mdb-card-image src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" alt="Card image cap" waves/>
+            <mdb-card-body>
               <h4 class="card-title">Card with waves effect</h4>
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <btn color="primary">Button</btn>
-            </card-body>
-          </card>
-        </column>
-        <column sm="4">
-          <card>
-            <card-img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%286%29.jpg" alt="Card image cap"></card-img>
-            <card-body>
+              <mdb-btn color="primary">Button</mdb-btn>
+            </mdb-card-body>
+          </mdb-card>
+        </mdb-col>
+        <mdb-col sm="4">
+          <mdb-card>
+            <mdb-card-image src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%286%29.jpg" alt="Card image cap"/>
+            <mdb-card-body>
               <h4 class="card-title">Basic card</h4>
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <btn color="primary">Button</btn>
-            </card-body>
-          </card>
-        </column>
-        <column sm="4">
-          <card>
-            <card-img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%287%29.jpg" alt="Card image cap" waves></card-img>
-            <card-body>
+              <mdb-btn color="primary">Button</mdb-btn>
+            </mdb-card-body>
+          </mdb-card>
+        </mdb-col>
+        <mdb-col sm="4">
+          <mdb-card>
+            <mdb-card-image src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%287%29.jpg" alt="Card image cap" waves/>
+            <mdb-card-body>
               <h4 class="card-title">Card with waves effect</h4>
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <btn color="primary">Button</btn>
-            </card-body>
-          </card>
-        </column>
-      </row>
+              <mdb-btn color="primary">Button</mdb-btn>
+            </mdb-card-body>
+          </mdb-card>
+        </mdb-col>
+      </mdb-row>
     </section>
     <!-- /CARDS -->
     <hr class="mt-4">
     <!-- TABLE -->
     <section>
       <h2>Table</h2>
-      <tbl striped bordered dark hover responsive-lg>
-        <tbl-head>
+      <mdb-tbl striped bordered dark hover responsive-lg>
+        <mdb-tbl-head>
           <tr>
           <th>thead col 1</th>
           <th>thead col 2</th>
           <th>thead col 3</th>
           <th>thead col 4</th>
           </tr>
-        </tbl-head>
-        <tbl-body>
+        </mdb-tbl-head>
+        <mdb-tbl-body>
           <tr>
           <td>tbody col 1</td>
           <td>tbody col 2</td>
@@ -259,142 +259,142 @@
           <tr>
           <td colspan="4">tbody col wide</td>
           </tr>
-        </tbl-body>
-      </tbl>
+        </mdb-tbl-body>
+      </mdb-tbl>
     </section>
     <!-- /TABLE -->
     <hr class="mt-4">
     <!-- PAGINATION -->
     <section>
       <h2>Pagination</h2>
-      <pagination class="d-flex justify-content-center">
+      <mdb-pagination class="d-flex justify-content-center">
         <page-nav prev></page-nav>
-        <page-item active>1</page-item>
-        <page-item>2</page-item>
-        <page-item>3</page-item>
-        <page-item>4</page-item>
-        <page-item>5</page-item>
+        <mdb-page-item active>1</mdb-page-item>
+        <mdb-page-item>2</mdb-page-item>
+        <mdb-page-item>3</mdb-page-item>
+        <mdb-page-item>4</mdb-page-item>
+        <mdb-page-item>5</mdb-page-item>
         <page-nav next></page-nav>
-      </pagination>
+      </mdb-pagination>
     </section>
     <!-- /PAGINATION -->
     <hr class="mt-4">
     <!-- MEDIA -->
     <section>
       <h2>Media</h2>
-      <media>
-        <media-image src="http://via.placeholder.com/64x64"></media-image>
-        <media-body>
+      <mdb-media>
+        <mdb-media-image src="http://via.placeholder.com/64x64"></mdb-media-image>
+        <mdb-media-body>
           <h5 class="mt-0 text-left">This is heading</h5>
           <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.
           Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac
           nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
-        </media-body>
-      </media>
-      <media>
-        <media-image src="http://via.placeholder.com/64x64"></media-image>
-        <media-body>
+        </mdb-media-body>
+      </mdb-media>
+      <mdb-media>
+        <mdb-media-image src="http://via.placeholder.com/64x64"></mdb-media-image>
+        <mdb-media-body>
           <h5 class="mt-0 text-left">This is another heading</h5>
           <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.
           Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac
           nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
-        </media-body>
-      </media>
+        </mdb-media-body>
+      </mdb-media>
     </section>
     <!-- /MEDIA -->
     <hr class="mt-4">
     <!-- LIST GROUPS -->
     <section>
       <h2>List Groups</h2>
-      <row>
-        <column col="12" sm="4">
-          <list-group>
-            <list-group-item :action="true" :active="true">Main Menu</list-group-item>
-            <list-group-item :action="true">Messages<badge :pill="true">12</badge></list-group-item>
-            <list-group-item :action="true">Sell Products</list-group-item>
-            <list-group-item :action="true">Settings</list-group-item>
-            <list-group-item :disabled="true">Can't Touch This</list-group-item>
-          </list-group>
-        </column>
-        <column col="12" sm="4">
-          <list-group>
-            <list-group-item :action="true" class="indigo text-white">Main Menu</list-group-item>
-            <list-group-item :action="true">Messages</list-group-item>
-            <list-group-item :action="true">Sell Products</list-group-item>
-            <list-group-item :action="true">Settings<badge :pill="true" color="indigo">12</badge></list-group-item>
-            <list-group-item :disabled="true">Can't Touch This</list-group-item>
-          </list-group>
-        </column>
-        <column col="12" sm="4">
-          <list-group>
-            <list-group-item :action="true" class="special-color text-white">Main Menu</list-group-item>
-            <list-group-item :action="true">Messages</list-group-item>
-            <list-group-item :action="true">Sell Products<badge :pill="true" color="special-color">12</badge></list-group-item>
-            <list-group-item :action="true">Settings</list-group-item>
-            <list-group-item :disabled="true">Can't Touch This</list-group-item>
-          </list-group>
-        </column>
-      </row>
+      <mdb-row>
+        <mdb-col col="12" sm="4">
+          <mdb-list-group>
+            <mdb-list-group-item :action="true" :active="true">Main Menu</mdb-list-group-item>
+            <mdb-list-group-item :action="true">Messages<mdb-badge :pill="true">12</mdb-badge></mdb-list-group-item>
+            <mdb-list-group-item :action="true">Sell Products</mdb-list-group-item>
+            <mdb-list-group-item :action="true">Settings</mdb-list-group-item>
+            <mdb-list-group-item :disabled="true">Can't Touch This</mdb-list-group-item>
+          </mdb-list-group>
+        </mdb-col>
+        <mdb-col col="12" sm="4">
+          <mdb-list-group>
+            <mdb-list-group-item :action="true" class="indigo text-white">Main Menu</mdb-list-group-item>
+            <mdb-list-group-item :action="true">Messages</mdb-list-group-item>
+            <mdb-list-group-item :action="true">Sell Products</mdb-list-group-item>
+            <mdb-list-group-item :action="true">Settings<mdb-badge :pill="true" color="indigo">12</mdb-badge></mdb-list-group-item>
+            <mdb-list-group-item :disabled="true">Can't Touch This</mdb-list-group-item>
+          </mdb-list-group>
+        </mdb-col>
+        <mdb-col col="12" sm="4">
+          <mdb-list-group>
+            <mdb-list-group-item :action="true" class="special-color text-white">Main Menu</mdb-list-group-item>
+            <mdb-list-group-item :action="true">Messages</mdb-list-group-item>
+            <mdb-list-group-item :action="true">Sell Products<mdb-badge :pill="true" color="special-color">12</mdb-badge></mdb-list-group-item>
+            <mdb-list-group-item :action="true">Settings</mdb-list-group-item>
+            <mdb-list-group-item :disabled="true">Can't Touch This</mdb-list-group-item>
+          </mdb-list-group>
+        </mdb-col>
+      </mdb-row>
     </section>
     <!-- /LIST GROUPS -->
     <hr class="mt-4">
     <!-- CHARTS -->
     <section>
       <h2>Charts</h2>
-      <row>
-        <column col="6" class="pb-5">
+      <mdb-row>
+        <mdb-col col="6" class="pb-5">
           <h5>Line Chart</h5>
-          <line-chart :data="lineChartData" :options="lineChartOptions" :height="300"></line-chart>
-        </column>
-        <column col="6" class="pb-5">
+          <mdb-line-chart :data="lineChartData" :options="lineChartOptions" :height="300"/>
+        </mdb-col>
+        <mdb-col col="6" class="pb-5">
           <h5>Radar Chart</h5>
-          <radar-chart :data="radarChartData" :options="radarChartOptions" :width="600" :height="300"></radar-chart>
-        </column>
-        <column col="6" class="pb-5">
+          <mdb-radar-chart :data="radarChartData" :options="radarChartOptions" :width="600" :height="300"/>
+        </mdb-col>
+        <mdb-col col="6" class="pb-5">
           <h5>Bar Chart</h5>
-          <bar-chart :data="barChartData" :options="barChartOptions" :width="600" :height="300"></bar-chart>
-        </column>
-        <column col="6" class="pb-5">
+          <mdb-bar-chart :data="barChartData" :options="barChartOptions" :width="600" :height="300"/>
+        </mdb-col>
+        <mdb-col col="6" class="pb-5">
           <h5>Polar Chart</h5>
-          <polar-chart :data="polarChartData" :options="polarChartOptions" :width="600" :height="300"></polar-chart>
-        </column>
-        <column col="6" class="pb-5">
+          <mdb-polar-chart :data="polarChartData" :options="polarChartOptions" :width="600" :height="300"/>
+        </mdb-col>
+        <mdb-col col="6" class="pb-5">
           <h5>Pie Chart</h5>
-          <pie-chart :data="pieChartData" :options="pieChartOptions" :width="600" :height="300"></pie-chart>
-        </column>
-        <column col="6" class="pb-5">
+          <mdb-pie-chart :data="pieChartData" :options="pieChartOptions" :width="600" :height="300"/>
+        </mdb-col>
+        <mdb-col col="6" class="pb-5">
           <h5>Doughnut Chart</h5>
-          <doughnut-chart :data="pieChartData" :options="pieChartOptions" :width="600" :height="300"></doughnut-chart>
-        </column>
-      </row>
+          <mdb-doughnut-chart :data="pieChartData" :options="pieChartOptions" :width="600" :height="300"/>
+        </mdb-col>
+      </mdb-row>
     </section>
     <!-- /CHARTS -->
     <hr class="mt-4">
     <!-- MASKS -->
     <section>
       <h2>Masks</h2>
-      <row>
-        <column col="12" sm="6" class="py-2">
+      <mdb-row>
+        <mdb-col col="12" sm="6" class="py-2">
           <view-wrapper src="https://mdbootstrap.com/img/Photos/Others/nature-sm.jpg" alt="view">
-            <md-mask flex-center waves text="waves"></md-mask>
+            <mdb-mask flex-center waves text="waves"></mdb-mask>
           </view-wrapper>
-        </column>
-        <column col="12" sm="6" class="py-2">
+        </mdb-col>
+        <mdb-col col="12" sm="6" class="py-2">
           <view-wrapper src="https://mdbootstrap.com/img/Photos/Others/nature-sm.jpg" alt="view">
-            <md-mask flex-center pattern="3" text="pattern = &quot;3&quot;"></md-mask>
+            <mdb-mask flex-center pattern="3" text="pattern = &quot;3&quot;"></mdb-mask>
           </view-wrapper>
-        </column>
-        <column col="12" sm="6">
+        </mdb-col>
+        <mdb-col col="12" sm="6">
           <view-wrapper overlay="blue-strong" src="https://mdbootstrap.com/img/Photos/Others/nature-sm.jpg" alt="view">
-            <md-mask flex-center waves overlay="blue-strong" text="overlay = &quot;blue-strong&quot; waves"></md-mask>
+            <mdb-mask flex-center waves overlay="blue-strong" text="overlay = &quot;blue-strong&quot; waves"></mdb-mask>
           </view-wrapper>
-        </column>
-        <column col="12" sm="6">
+        </mdb-col>
+        <mdb-col col="12" sm="6">
           <view-wrapper src="https://mdbootstrap.com/img/Photos/Others/nature-sm.jpg" alt="view">
-            <md-mask flex-center waves pattern="5" text="pattern = &quot;5&quot; waves"></md-mask>
+            <mdb-mask flex-center waves pattern="5" text="pattern = &quot;5&quot; waves"></mdb-mask>
           </view-wrapper>
-        </column>
-      </row>
+        </mdb-col>
+      </mdb-row>
     </section>
     <!-- /MASKS -->
     <hr class="mt-4">
@@ -403,15 +403,15 @@
       <h2>Edge Header</h2>
       <div style="background: #ededed; padding-bottom: 100px">
       <!-- Purple Header -->
-        <edge-header color="indigo"></edge-header>
+        <mdb-edge-header color="indigo"></mdb-edge-header>
 
-        <!-- Main Container -->
-        <container free-bird>
-          <row>
-            <column md="8" lg="7" class="mx-auto float-none white z-depth-1 py-2 px-2">
+        <!-- Main mdbContainer -->
+        <mdb-container free-bird>
+          <mdb-row>
+            <mdb-col md="8" lg="7" class="mx-auto float-none white z-depth-1 py-2 px-2">
 
               <!--Naked Form-->
-              <card-body>
+              <mdb-card-body>
                 <h2 class="h2-responsive"><strong>Material Design Edge Headers</strong></h2>
                 <p class="pb-4 text-center">Example of Material Design Form</p>
 
@@ -437,7 +437,7 @@
                   <!--Textarea with icon-->
                   <h5 class="h5-responsive">Textarea</h5>
                   <div class="md-form">
-                    <md-textarea type="text" label="Textarea" icon="pencil"></md-textarea>
+                    <mdb-textarea type="text" label="Textarea" icon="pencil"></mdb-textarea>
                   </div>
 
                   <h5 class="h5-responsive">Disabled field</h5>
@@ -454,13 +454,13 @@
                     <p style="font-weight:300;font-size:0.75rem">Never submit your passwords here</p>
                 </div>
 
-              </card-body>
+              </mdb-card-body>
               <!--Naked Form-->
 
-            </column>
-          </row>
-        </container>
-      <!-- /.Main Container -->
+            </mdb-col>
+          </mdb-row>
+        </mdb-container>
+      <!-- /.Main mdbContainer -->
       </div>
     </section>
     <!-- /EdgeHeaders -->
@@ -468,116 +468,116 @@
     <!-- Panel -->
     <section>
       <h2>Panels</h2>
-      <row>
-        <column md="6">
-          <card align="center">
-            <card-header color="danger-color">Danger</card-header>
-            <card-body>
+      <mdb-row>
+        <mdb-col md="6">
+          <mdb-card align="center">
+            <mdb-card-header color="danger-color">Danger</mdb-card-header>
+            <mdb-card-body>
               <h3 class="card-title">This is a card</h3>
               <p class="card-text">And here comes some special text, just for you.</p>
-              <btn color="danger" size="sm">Go somewhere</btn>
-            </card-body>
-            <card-footer color="danger-color"><p class="mb-0">Please enjoy this footer</p></card-footer>
-          </card>
-        </column>
-        <column md="6">
-          <card align="center">
-            <card-header color="indigo">Indigo</card-header>
-            <card-body>
+              <mdb-btn color="danger" size="sm">Go somewhere</mdb-btn>
+            </mdb-card-body>
+            <mdb-card-footer color="danger-color"><p class="mb-0">Please enjoy this footer</p></mdb-card-footer>
+          </mdb-card>
+        </mdb-col>
+        <mdb-col md="6">
+          <mdb-card align="center">
+            <mdb-card-header color="indigo">Indigo</mdb-card-header>
+            <mdb-card-body>
               <h3 class="card-title">This is a card</h3>
               <p class="card-text">And here comes some special text, just for you.</p>
-              <btn color="indigo" size="sm">Go somewhere</btn>
-            </card-body>
-            <card-footer color="indigo"><p class="mb-0">Please enjoy this footer</p></card-footer>
-          </card>
-        </column>
-      </row>
+              <mdb-btn color="indigo" size="sm">Go somewhere</mdb-btn>
+            </mdb-card-body>
+            <mdb-card-footer color="indigo"><p class="mb-0">Please enjoy this footer</p></mdb-card-footer>
+          </mdb-card>
+        </mdb-col>
+      </mdb-row>
     </section>
     <!-- /Panels -->
     <hr class="mt-4">
     <!-- Tooltips -->
     <section class="text-center">
       <h2>Tooltips</h2>
-      <row>
-        <column col="3">
-          <tooltip trigger="hover" :options="{placement: 'top'}">
+      <mdb-row>
+        <mdb-col col="3">
+          <mdb-tooltip trigger="hover" :options="{placement: 'top'}">
             <div class="tooltip">Tooltip</div>
-            <btn slot="reference" color="info">Tooltip top</btn>
-          </tooltip>
-        </column>
-        <column col="3">
-          <tooltip trigger="hover" :options="{placement: 'right'}">
+            <mdb-btn slot="reference" color="info">Tooltip top</mdb-btn>
+          </mdb-tooltip>
+        </mdb-col>
+        <mdb-col col="3">
+          <mdb-tooltip trigger="hover" :options="{placement: 'right'}">
             <div class="tooltip">Tooltip</div>
-            <btn slot="reference" color="info">Tooltip right</btn>
-          </tooltip>
-        </column>
-        <column col="3">
-          <tooltip trigger="hover" :options="{placement: 'bottom'}">
+            <mdb-btn slot="reference" color="info">Tooltip right</mdb-btn>
+          </mdb-tooltip>
+        </mdb-col>
+        <mdb-col col="3">
+          <mdb-tooltip trigger="hover" :options="{placement: 'bottom'}">
             <div class="tooltip">Tooltip</div>
-            <btn slot="reference" color="info">Tooltip bottom</btn>
-          </tooltip>
-        </column>
-        <column col="3">
-          <tooltip trigger="hover" :options="{placement: 'left'}">
+            <mdb-btn slot="reference" color="info">Tooltip bottom</mdb-btn>
+          </mdb-tooltip>
+        </mdb-col>
+        <mdb-col col="3">
+          <mdb-tooltip trigger="hover" :options="{placement: 'left'}">
             <div class="tooltip">Tooltip</div>
-            <btn slot="reference" color="info">Tooltip left</btn>
-          </tooltip>
-        </column>
-      </row>
+            <mdb-btn slot="reference" color="info">Tooltip left</mdb-btn>
+          </mdb-tooltip>
+        </mdb-col>
+      </mdb-row>
     </section>
     <!-- /Tooltips -->
-  </container>
+  </mdb-container>
 </template>
 
 <script>
-import { Container, Row, Column, Btn, Badge, Fa, Navbar, NavbarItem, NavbarNav, NavbarCollapse, mdbInput, MdTextarea, Breadcrumb, BreadcrumbItem, Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Card, CardImg, CardHeader, CardFooter, CardBody, Tbl, TblHead, TblBody, Pagination, PageNav, PageItem, Media, MediaImage, MediaBody, ListGroup, ListGroupItem, LineChart, RadarChart, BarChart, PolarChart, PieChart, DoughnutChart, ViewWrapper, MdMask, EdgeHeader, Tooltip } from 'mdbvue';
+import { mdbContainer, mdbRow, mdbCol, mdbBadge, mdbBtn, mdbIcon, mdbNavbar, mdbNavItem, mdbNavbarNav, mdbNavbarToggler, mdbInput, mdbTextarea, mdbBreadcrumb, mdbBreadcrumbItem, mdbDropdown, mdbDropdownToggle, mdbDropdownMenu, mdbDropdownItem, mdbCard,  mdbCardImage, mdbCardHeader, mdbCardFooter, mdbCardBody, mdbTbl, mdbTblHead, mdbTblBody, mdbPagination, mdbPageNav, mdbPageItem,mdbMedia,mdbMediaImage,mdbMediaBody, mdbListGroup, mdbListGroupItem, mdbLineChart, mdbRadarChart, mdbBarChart, mdbPolarChart, mdbPieChart, mdbDoughnutChart, ViewWrapper, mdbMask, mdbEdgeHeader, Tooltip } from 'mdbvue';
 
 export default {
   name: 'LiveDemoPage',
   components: {
-    Container,
-    Row,
-    Column,
-    Btn,
-    Badge,
-    Fa,
-    Navbar,
-    NavbarItem,
-    NavbarNav,
-    NavbarCollapse,
+    mdbContainer,
+    mdbRow,
+    mdbCol,
+    mdbBtn,
+    mdbBadge,
+    mdbIcon,
+    mdbNavbar,
+    mdbNavItem,
+    mdbNavbarNav,
+    mdbNavbarToggler,
     mdbInput,
-    MdTextarea,
-    Breadcrumb,
-    BreadcrumbItem,
-    Dropdown,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem,
-    Card,
-    CardImg,
-    CardHeader,
-    CardFooter,
-    CardBody,
-    Tbl,
-    TblHead,
-    TblBody,
-    Pagination,
-    PageNav,
-    PageItem,
-    Media,
-    MediaImage,
-    MediaBody,
-    ListGroup,
-    ListGroupItem,
-    LineChart,
-    RadarChart,
-    BarChart,
-    PolarChart,
-    PieChart,
-    DoughnutChart,
+    mdbTextarea,
+    mdbBreadcrumb,
+    mdbBreadcrumbItem,
+    mdbDropdown,
+    mdbDropdownToggle,
+    mdbDropdownMenu,
+    mdbDropdownItem,
+    mdbCard,
+    mdbCardImage,
+    mdbCardHeader,
+    mdbCardFooter,
+    mdbCardBody,
+    mdbTbl,
+    mdbTblHead,
+    mdbTblBody,
+    mdbPagination,
+    mdbPageNav,
+    mdbPageItem,
+    mdbMedia,
+    mdbMediaImage,
+    mdbMediaBody,
+    mdbListGroup,
+    mdbListGroupItem,
+    mdbLineChart,
+    mdbRadarChart,
+    mdbBarChart,
+    mdbPolarChart,
+    mdbPieChart,
+    mdbDoughnutChart,
     ViewWrapper,
-    MdMask,
-    EdgeHeader,
+    mdbMask,
+    mdbEdgeHeader,
     Tooltip
   },
   data() {

@@ -1,22 +1,22 @@
 <template>
-  <container>
-    <row class="mt-5 align-items-center justify-content-start">
+  <mdb-container>
+    <mdb-row class="mt-5 align-items-center justify-content-start">
       <h4 style="margin: 0" class="grey-text"><strong>Accordion</strong></h4>
-      <a href="https://mdbootstrap.com/docs/vue/advanced/accordion/?utm_source=DemoApp&utm_medium=MDBVueFree" waves-fixed class="border grey-text px-2 border-light rounded ml-2" target="_blank"><fa icon="graduation-cap" class="mr-2"/>Docs</a>
-    </row>
+      <a href="https://mdbootstrap.com/docs/vue/advanced/accordion/?utm_source=DemoApp&utm_medium=MDBVueFree" waves-fixed class="border grey-text px-2 border-light rounded ml-2" target="_blank"><mdb-icon icon="graduation-cap" class="mr-2"/>Docs</a>
+    </mdb-row>
     <hr class="mb-4" />
-    <accordion :panes="panes"/>
-  </container>
+    <mdb-accordion :panes="panes"/>
+  </mdb-container>
 </template>
 
 <script>
-import { Container, Accordion, Row, Fa } from 'mdbvue';
+import { mdbContainer, mdbAccordion, mdbRow, mdbIcon } from 'mdbvue';
 export default {
   components: {
-    Container,
-    Accordion,
-    Row,
-    Fa
+    mdbContainer,
+    mdbAccordion,
+    mdbRow,
+    mdbIcon
   },
   data() {
     return {

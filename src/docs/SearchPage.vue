@@ -1,31 +1,31 @@
 <template>
-  <container>
-    <row class="mt-5 align-items-center justify-content-start">
+  <mdb-container>
+    <mdb-row class="mt-5 align-items-center justify-content-start">
       <h4 style="margin: 0" class="grey-text"><strong>Search</strong></h4>
-      <a href="https://mdbootstrap.com/docs/vue/components/demo/search/?utm_source=DemoApp&utm_medium=MDBVueFree" waves-fixed class="border grey-text px-2 border-light rounded ml-2" target="_blank"><fa icon="graduation-cap" class="mr-2"/>Docs</a>
-    </row>
+      <a href="https://mdbootstrap.com/docs/vue/components/demo/search/?utm_source=DemoApp&utm_medium=MDBVueFree" waves-fixed class="border grey-text px-2 border-light rounded ml-2" target="_blank"><mdb-icon icon="graduation-cap" class="mr-2"/>Docs</a>
+    </mdb-row>
     <hr />
-    <container>
+    <mdb-container>
       <h3 class="my-5">Basic example</h3>
-      <row>
-        <column md="6">
+      <mdb-row>
+        <mdb-col md="6">
           <mdb-input label="Search" type="text" class="mt-0"/>
-        </column>
-        <column md="6">
+        </mdb-col>
+        <mdb-col md="6">
           <input class="form-control" type="text" placeholder="Search" aria-label="Search"/>
-        </column>
-      </row>
+        </mdb-col>
+      </mdb-row>
       <h3 class="mt-4">Search with colorful border</h3>
-      <row>
-        <column md="6">
+      <mdb-row>
+        <mdb-col md="6">
           <mdb-input label="Search" type="text" class="active-pink active-pink-2 mt-0 mb-3"/>
           <mdb-input label="Search" type="text" class="active-purple active-purple-2 mt-0 mb-3"/>
           <mdb-input label="Search" type="text" class="active-cyan active-cyan-2 mt-0 mb-3"/>
           <mdb-input label="Search" type="text" class="active-pink-2 mt-0 mb-3"/>
           <mdb-input label="Search" type="text" class="active-purple-2 mt-0 mb-3"/>
           <mdb-input label="Search" type="text" class="active-cyan-2 active-purple-2 mt-0 mb-3"/>
-        </column>
-        <column md="6">
+        </mdb-col>
+        <mdb-col md="6">
           <div class="active-pink-3 active-pink-4 mb-3">
             <input class="form-control" type="text" placeholder="Search" aria-label="Search"/>
           </div>
@@ -44,41 +44,41 @@
           <div class="active-cyan-4 mb-3">
             <input class="form-control" type="text" placeholder="Search" aria-label="Search"/>
           </div>
-        </column>
-      </row>
+        </mdb-col>
+      </mdb-row>
       <h3 class="mt-4">Search with icon</h3>
-      <row>
-        <column md="6">
-          <form-inline class="md-form">
-            <fa icon="search" />
+      <mdb-row>
+        <mdb-col md="6">
+          <mdb-form-inline class="md-form">
+            <mdb-icon icon="search" />
             <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search" aria-label="Search"/>
-          </form-inline>
-          <form-inline class="md-form active-pink active-pink-2">
-            <fa icon="search" />
+          </mdb-form-inline>
+          <mdb-form-inline class="md-form active-pink active-pink-2">
+            <mdb-icon icon="search" />
             <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search" aria-label="Search"/>
-          </form-inline>
-          <form-inline class="md-form active-purple active-purple-2">
-            <fa icon="search" />
+          </mdb-form-inline>
+          <mdb-form-inline class="md-form active-purple active-purple-2">
+            <mdb-icon icon="search" />
             <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search" aria-label="Search"/>
-          </form-inline>
-          <form-inline class="md-form active-cyan active-cyan-2 ">
-            <fa icon="search" />
+          </mdb-form-inline>
+          <mdb-form-inline class="md-form active-cyan active-cyan-2 ">
+            <mdb-icon icon="search" />
             <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search" aria-label="Search"/>
-          </form-inline>
-          <form-inline class="md-form active-pink-2">
+          </mdb-form-inline>
+          <mdb-form-inline class="md-form active-pink-2">
             <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search" aria-label="Search"/>
-            <fa icon="search" />
-          </form-inline>
-          <form-inline class="md-form active-purple-2">
+            <mdb-icon icon="search" />
+          </mdb-form-inline>
+          <mdb-form-inline class="md-form active-purple-2">
             <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search" aria-label="Search"/>
-            <fa icon="search" />
-          </form-inline>
-          <form-inline class="md-form active-cyan-2 ">
+            <mdb-icon icon="search" />
+          </mdb-form-inline>
+          <mdb-form-inline class="md-form active-cyan-2 ">
             <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search" aria-label="Search"/>
-            <fa icon="search" />
-          </form-inline>
-        </column>
-        <column md="6">
+            <mdb-icon icon="search" />
+          </mdb-form-inline>
+        </mdb-col>
+        <mdb-col md="6">
           <form class="form-inline mt-4 mb-4">
             <i class="fa fa-search" aria-hidden="true"></i>
             <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search" aria-label="Search" />
@@ -111,8 +111,8 @@
             <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search" aria-label="Search" />
             <i class="fa fa-search" aria-hidden="true"></i>
           </form>
-        </column>
-      </row>
+        </mdb-col>
+      </mdb-row>
       <h3 class="mt-4">Search with input group</h3>
       <div class="input-group md-form form-sm form-1 pl-0">
         <div class="input-group-prepend">
@@ -150,22 +150,22 @@
           <span class="input-group-text red lighten-3" id="basic-text1"><i class="fa fa-search text-grey" aria-hidden="true"></i></span>
         </div>
       </div>
-    </container>
-  </container>
+    </mdb-container>
+  </mdb-container>
 </template>
 
 <script>
-import { Container, Row, Column, mdbInput, FormInline, Fa } from 'mdbvue';
+import { mdbContainer, mdbRow, mdbCol, mdbInput, mdbFormInline, mdbIcon } from 'mdbvue';
 
 export default {
   name: 'MasksPage',
   components: {
-    Container,
-    Row,
-    Column,
+    mdbContainer,
+    mdbRow,
+    mdbCol,
     mdbInput,
-    FormInline,
-    Fa
+    mdbFormInline,
+    mdbIcon
   }
 };
 </script>

@@ -1,57 +1,57 @@
 <template>
-  <container>
-    <row>
-      <column md="8" class="mx-auto">
-        <jumbotron class="mt-5">
-          <h1 class="pb-2"><Fa icon="window-restore" class="grey-text mr-2" />Modals</h1>
+  <mdb-container>
+    <mdb-row>
+      <mdb-col md="8" class="mx-auto">
+        <mdb-jumbotron class="mt-5">
+          <h1 class="pb-2"><mdb-icon icon="window-restore" class="grey-text mr-2" />Modals</h1>
           <h6 class="my-3">FREE</h6>
-          <list-group>
+          <mdb-list-group>
             <!-- FREE -->
-            <navbar-item class="list-group-item list-group-item-action" router href="/modals/modal">
+            <mdb-nav-item class="list-group-item list-group-item-action" router href="/modals/modal">
               <h5 class="justify-content-between d-flex align-items-center">
-                Modal<fa icon="angle-right"/>
+                Modal<mdb-icon icon="angle-right"/>
               </h5>
-            </navbar-item>
-            <navbar-item class="list-group-item list-group-item-action" router href="/modals/events">
+            </mdb-nav-item>
+            <mdb-nav-item class="list-group-item list-group-item-action" router href="/modals/events">
               <h5 class="justify-content-between d-flex align-items-center">
-                Events<fa icon="angle-right"/>
+                Events<mdb-icon icon="angle-right"/>
               </h5>
-            </navbar-item>
-            <navbar-item class="list-group-item list-group-item-action" router href="/modals/examples">
+            </mdb-nav-item>
+            <mdb-nav-item class="list-group-item list-group-item-action" router href="/modals/examples">
               <h5 class="justify-content-between d-flex align-items-center">
-                Examples<fa icon="angle-right"/>
+                Examples<mdb-icon icon="angle-right"/>
               </h5>
-            </navbar-item>
-            <navbar-item class="list-group-item list-group-item-action" router href="/modals/forms">
+            </mdb-nav-item>
+            <mdb-nav-item class="list-group-item list-group-item-action" router href="/modals/forms">
               <h5 class="justify-content-between d-flex align-items-center">
-                Forms<fa icon="angle-right"/>
+                Forms<mdb-icon icon="angle-right"/>
               </h5>
-            </navbar-item>
-            <navbar-item class="list-group-item list-group-item-action" router href="/modals/styles">
+            </mdb-nav-item>
+            <mdb-nav-item class="list-group-item list-group-item-action" router href="/modals/styles">
               <h5 class="justify-content-between d-flex align-items-center">
-                Styles<fa icon="angle-right"/>
+                Styles<mdb-icon icon="angle-right"/>
               </h5>
-            </navbar-item>
-          </list-group>
-        </jumbotron>
-      </column>
-    </row>
-  </container>
+            </mdb-nav-item>
+          </mdb-list-group>
+        </mdb-jumbotron>
+      </mdb-col>
+    </mdb-row>
+  </mdb-container>
 </template>
 
 <script>
-import { Container, Row, Column, Fa, Jumbotron, NavbarItem, ListGroup } from 'mdbvue';
+import { mdbContainer, mdbRow, mdbCol, mdbIcon, mdbJumbotron, mdbNavItem, mdbListGroup } from 'mdbvue';
 
 export default {
   name: 'AdvancedPage',
   components: {
-    Container,
-    Row,
-    Column,
-    Fa,
-    Jumbotron,
-    NavbarItem,
-    ListGroup
+    mdbContainer,
+    mdbRow,
+    mdbCol,
+    mdbIcon,
+    mdbJumbotron,
+    mdbNavItem,
+    mdbListGroup
   }
 };
 </script>

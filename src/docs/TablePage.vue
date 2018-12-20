@@ -1,23 +1,23 @@
 <template>
-<container class="mt-5">
-  <row class="mt-5 align-items-center justify-content-start">
+<mdb-container class="mt-5">
+  <mdb-row class="mt-5 align-items-center justify-content-start">
     <h4 style="margin: 0" class="grey-text"><strong>Tables</strong></h4>
-    <a href="https://mdbootstrap.com/docs/vue/tables/additional/?utm_source=DemoApp&utm_medium=MDBVueFree" waves-fixed class="border grey-text px-2 border-light rounded ml-2" target="_blank"><fa icon="graduation-cap" class="mr-2"/>Docs</a>
-  </row>
+    <a href="https://mdbootstrap.com/docs/vue/tables/additional/?utm_source=DemoApp&utm_medium=MDBVueFree" waves-fixed class="border grey-text px-2 border-light rounded ml-2" target="_blank"><mdb-icon icon="graduation-cap" class="mr-2"/>Docs</a>
+  </mdb-row>
   <hr />
 	<div class="mt-5 pt-5 mx-3">
 		<h3>Basic example</h3>
 		<br />
-		<tbl>
-			<tbl-head>
+		<mdb-tbl>
+			<mdb-tbl-head>
 				<tr>
 					<th>#</th>
 					<th>thead col 1</th>
 					<th>thead col 2</th>
 					<th>thead col 3</th>
 				</tr>
-			</tbl-head>
-			<tbl-body>
+			</mdb-tbl-head>
+			<mdb-tbl-body>
 				<tr scope="row">
 					<td>1</td>
 					<td>tbody col 1</td>
@@ -36,21 +36,21 @@
 					<td>tbody col 2</td>
 					<td>tbody col 3</td>
 				</tr>
-			</tbl-body>
-		</tbl>
+			</mdb-tbl-body>
+		</mdb-tbl>
 
 		<h3>Table head options</h3>
 		<br />
-		<tbl>
-			<tbl-head color="primary-color" textWhite>
+		<mdb-tbl>
+			<mdb-tbl-head color="primary-color" textWhite>
 				<tr>
 					<th>#</th>
 					<th>thead col 1</th>
 					<th>thead col 2</th>
 					<th>thead col 3</th>
 				</tr>
-			</tbl-head>
-			<tbl-body>
+			</mdb-tbl-head>
+			<mdb-tbl-body>
 				<tr scope="row">
 					<td>1</td>
 					<td>tbody col 1</td>
@@ -69,21 +69,21 @@
 					<td>tbody col 2</td>
 					<td>tbody col 3</td>
 				</tr>
-			</tbl-body>
-		</tbl>
+			</mdb-tbl-body>
+		</mdb-tbl>
 
 		<h3>Striped rows</h3>
 		<br />
-		<tbl striped>
-			<tbl-head>
+		<mdb-tbl striped>
+			<mdb-tbl-head>
 				<tr>
 					<th>#</th>
 					<th>thead col 1</th>
 					<th>thead col 2</th>
 					<th>thead col 3</th>
 				</tr>
-			</tbl-head>
-			<tbl-body>
+			</mdb-tbl-head>
+			<mdb-tbl-body>
 				<tr scope="row">
 					<td>1</td>
 					<td>tbody col 1</td>
@@ -102,21 +102,21 @@
 					<td>tbody col 2</td>
 					<td>tbody col 3</td>
 				</tr>
-			</tbl-body>
-		</tbl>
+			</mdb-tbl-body>
+		</mdb-tbl>
 
 		<h3>Bordered table</h3>
 		<br />
-		<tbl bordered>
-			<tbl-head>
+		<mdb-tbl bordered>
+			<mdb-tbl-head>
 				<tr>
 					<th>#</th>
 					<th>thead col 1</th>
 					<th>thead col 2</th>
 					<th>thead col 3</th>
 				</tr>
-			</tbl-head>
-			<tbl-body>
+			</mdb-tbl-head>
+			<mdb-tbl-body>
 				<tr scope="row">
 					<td>1</td>
 					<td>tbody col 1</td>
@@ -135,21 +135,21 @@
 					<td>tbody col 2</td>
 					<td>tbody col 3</td>
 				</tr>
-			</tbl-body>
-		</tbl>
+			</mdb-tbl-body>
+		</mdb-tbl>
 
 		<h3>Borderless table</h3>
 		<br />
-		<tbl borderless>
-			<tbl-head>
+		<mdb-tbl borderless>
+			<mdb-tbl-head>
 				<tr>
 					<th>#</th>
 					<th>thead col 1</th>
 					<th>thead col 2</th>
 					<th>thead col 3</th>
 				</tr>
-			</tbl-head>
-			<tbl-body>
+			</mdb-tbl-head>
+			<mdb-tbl-body>
 				<tr scope="row">
 					<td>1</td>
 					<td>tbody col 1</td>
@@ -168,21 +168,21 @@
 					<td>tbody col 2</td>
 					<td>tbody col 3</td>
 				</tr>
-			</tbl-body>
-		</tbl>
+			</mdb-tbl-body>
+		</mdb-tbl>
 
 		<h3>Hoverable rows</h3>
 		<br />
-		<tbl hover>
-			<tbl-head>
+		<mdb-tbl hover>
+			<mdb-tbl-head>
 				<tr>
 					<th>#</th>
 					<th>thead col 1</th>
 					<th>thead col 2</th>
 					<th>thead col 3</th>
 				</tr>
-			</tbl-head>
-			<tbl-body>
+			</mdb-tbl-head>
+			<mdb-tbl-body>
 				<tr scope="row">
 					<td>1</td>
 					<td>tbody col 1</td>
@@ -201,21 +201,21 @@
 					<td>tbody col 2</td>
 					<td>tbody col 3</td>
 				</tr>
-			</tbl-body>
-		</tbl>
+			</mdb-tbl-body>
+		</mdb-tbl>
 
 		<h3>Small table</h3>
 		<br />
-		<tbl sm>
-			<tbl-head>
+		<mdb-tbl sm>
+			<mdb-tbl-head>
 				<tr>
 					<th>#</th>
 					<th>thead col 1</th>
 					<th>thead col 2</th>
 					<th>thead col 3</th>
 				</tr>
-			</tbl-head>
-			<tbl-body>
+			</mdb-tbl-head>
+			<mdb-tbl-body>
 				<tr scope="row">
 					<td>1</td>
 					<td>tbody col 1</td>
@@ -234,22 +234,22 @@
 					<td>tbody col 2</td>
 					<td>tbody col 3</td>
 				</tr>
-			</tbl-body>
-		</tbl>
+			</mdb-tbl-body>
+		</mdb-tbl>
 
 		<h3>Captions</h3>
 		<br />
-		<tbl>
+		<mdb-tbl>
 			<caption>Example caption</caption>
-			<tbl-head>
+			<mdb-tbl-head>
 				<tr>
 					<th>#</th>
 					<th>thead col 1</th>
 					<th>thead col 2</th>
 					<th>thead col 3</th>
 				</tr>
-			</tbl-head>
-			<tbl-body>
+			</mdb-tbl-head>
+			<mdb-tbl-body>
 				<tr scope="row">
 					<td>1</td>
 					<td>tbody col 1</td>
@@ -268,20 +268,20 @@
 					<td>tbody col 2</td>
 					<td>tbody col 3</td>
 				</tr>
-			</tbl-body>
-		</tbl>
+			</mdb-tbl-body>
+		</mdb-tbl>
 
 		<h3>Table fixed header</h3>
-		<tbl class="fixed-header">
-			<tbl-head>
+		<mdb-tbl class="fixed-header">
+			<mdb-tbl-head>
 				<tr>
 					<th>#</th>
 					<th>thead col 1</th>
 					<th>thead col 2</th>
 					<th>thead col 3</th>
 				</tr>
-			</tbl-head>
-			<tbl-body>
+			</mdb-tbl-head>
+			<mdb-tbl-body>
 				<tr scope="row">
 					<td>1</td>
 					<td>tbody col 1</td>
@@ -342,12 +342,12 @@
 					<td>tbody col 2</td>
 					<td>tbody col 3</td>
 				</tr>
-			</tbl-body>
-		</tbl>		
+			</mdb-tbl-body>
+		</mdb-tbl>
 
 		<h3 class="mt-5">Table fixed column</h3>
-		<tbl class="fixed-column">
-			<tbl-head>
+		<mdb-tbl class="fixed-column">
+			<mdb-tbl-head>
 				<tr>
 					<th>thead col 1</th>
 					<th>thead col 2</th>
@@ -368,8 +368,8 @@
 					<th>thead col 17</th>
 					<th>thead col 18</th>
 				</tr>
-			</tbl-head>
-			<tbl-body>
+			</mdb-tbl-head>
+			<mdb-tbl-body>
 				<tr scope="row">
 					<td>tbody col 1</td>
 					<td>tbody col 2</td>
@@ -390,25 +390,25 @@
 					<td>tbody col 17</td>
 					<td>tbody col 18</td>
 				</tr>
-			</tbl-body>
-		</tbl>		
+			</mdb-tbl-body>
+		</mdb-tbl>
 
 	</div>
-</container>
+</mdb-container>
 </template>
 
 <script>
-import { Tbl, TblHead, TblBody, Fa, Container, Row } from 'mdbvue';
+import { mdbTbl, mdbTblHead, mdbTblBody, mdbIcon, mdbContainer, mdbRow } from 'mdbvue';
 
 export default {
   name: 'TablePage',
   components: {
-    Tbl,
-    TblHead,
-    TblBody,
-    Row,
-    Fa,
-    Container
+    mdbTbl,
+    mdbTblHead,
+    mdbTblBody,
+    mdbRow,
+    mdbIcon,
+    mdbContainer
   }
 };
 </script>
@@ -427,11 +427,11 @@ export default {
 .fixed-header tbody {
 	display: block;
 	height: 200px;
-	overflow-y: scroll; 
+	overflow-y: scroll;
 }
 
 .fixed-column {
-	overflow-x: scroll; 
+	overflow-x: scroll;
 	margin-left: 100px;
 }
 

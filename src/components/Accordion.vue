@@ -1,7 +1,7 @@
 <template>
   <component :is="tag" :class="outerAccodionClasses" role="tablist">
       <slot></slot>
-    <accordion-pane
+    <mdb-accordion-pane
       v-for="(pane, index) in panes"
       :key="index"
       :title="pane.title"
@@ -15,13 +15,13 @@
       :options="pane.options"
       :hamburger="hamburger"
       >
-      </accordion-pane>
+      </mdb-accordion-pane>
   </component>
 </template>
 
 <script>
 import classNames from 'classnames';
-import AccordionPane from './AccordionPane';
+import {mdbAccordionPane} from './AccordionPane';
 
 const Accordion = {
   props: {
@@ -78,7 +78,7 @@ const Accordion = {
     };
   },
   components: {
-    AccordionPane
+    mdbAccordionPane
   },
   mounted() {
     if (this.open!==null) {

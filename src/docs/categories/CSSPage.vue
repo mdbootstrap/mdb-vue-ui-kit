@@ -1,76 +1,76 @@
 <template>
-  <container>
-    <row>
-      <column md="8" class="mx-auto">
-        <jumbotron class="mt-5">
-          <h1 class="pb-2"><Fa icon="css3" class="grey-text mr-2" /> CSS</h1>
+  <mdb-container>
+    <mdb-row>
+      <mdb-col md="8" class="mx-auto">
+        <mdb-jumbotron class="mt-5">
+          <h1 class="pb-2"><mdb-icon icon="css3" class="grey-text mr-2" /> CSS</h1>
           <h6 class="my-3">FREE</h6>
-          <list-group>
-            <navbar-item class="list-group-item list-group-item-action" router href="/css/background">
+          <mdb-list-group>
+            <mdb-nav-item class="list-group-item list-group-item-action" router href="/css/background">
               <h5 class="justify-content-between d-flex align-items-center">
-                Background Image<fa icon="angle-right"/>
+                Background Image<mdb-icon icon="angle-right"/>
               </h5>
-            </navbar-item>
-            <navbar-item class="list-group-item list-group-item-action" router href="/css/gradient">
+            </mdb-nav-item>
+            <mdb-nav-item class="list-group-item list-group-item-action" router href="/css/gradient">
               <h5 class="justify-content-between d-flex align-items-center">
-                Gradient<fa icon="angle-right"/>
+                Gradient<mdb-icon icon="angle-right"/>
               </h5>
-            </navbar-item>
-            <navbar-item class="list-group-item list-group-item-action" router href="/css/hover">
+            </mdb-nav-item>
+            <mdb-nav-item class="list-group-item list-group-item-action" router href="/css/hover">
               <h5 class="justify-content-between d-flex align-items-center">
-                Hover effects<fa icon="angle-right"/>
+                Hover effects<mdb-icon icon="angle-right"/>
               </h5>
-            </navbar-item>
-            <navbar-item class="list-group-item list-group-item-action" router href="/css/icons">
+            </mdb-nav-item>
+            <mdb-nav-item class="list-group-item list-group-item-action" router href="/css/icons">
               <h5 class="justify-content-between d-flex align-items-center">
-                Icons <fa icon="angle-right"/>
+                Icons <mdb-icon icon="angle-right"/>
               </h5>
-            </navbar-item>
-            <navbar-item class="list-group-item list-group-item-action" router href="/css/jumbotron">
+            </mdb-nav-item>
+            <mdb-nav-item class="list-group-item list-group-item-action" router href="/css/jumbotron">
               <h5 class="justify-content-between d-flex align-items-center">
-                Jumbotron <fa icon="angle-right"/>
+               Jumbotron <mdb-icon icon="angle-right"/>
               </h5>
-            </navbar-item>
-            <navbar-item class="list-group-item list-group-item-action" router href="/css/masks">
+            </mdb-nav-item>
+            <mdb-nav-item class="list-group-item list-group-item-action" router href="/css/masks">
               <h5 class="justify-content-between d-flex align-items-center">
-                Masks <fa icon="angle-right"/>
+                Masks <mdb-icon icon="angle-right"/>
               </h5>
-            </navbar-item>
-            <navbar-item class="list-group-item list-group-item-action" router href="/css/table">
+            </mdb-nav-item>
+            <mdb-nav-item class="list-group-item list-group-item-action" router href="/css/table">
               <h5 class="justify-content-between d-flex align-items-center">
-                Table <fa icon="angle-right"/>
+                Table <mdb-icon icon="angle-right"/>
               </h5>
-            </navbar-item>
-            <navbar-item class="list-group-item list-group-item-action" router href="/css/table-additional">
+            </mdb-nav-item>
+            <mdb-nav-item class="list-group-item list-group-item-action" router href="/css/table-additional">
               <h5 class="justify-content-between d-flex align-items-center">
-                Table Additional <fa icon="angle-right"/>
+                Table Additional <mdb-icon icon="angle-right"/>
               </h5>
-            </navbar-item>
-            <navbar-item class="list-group-item list-group-item-action" router href="/css/table-responsive">
+            </mdb-nav-item>
+            <mdb-nav-item class="list-group-item list-group-item-action" router href="/css/table-responsive">
               <h5 class="justify-content-between d-flex align-items-center">
-                Table Responsive <fa icon="angle-right"/>
+                Table Responsive <mdb-icon icon="angle-right"/>
               </h5>
-            </navbar-item>
-          </list-group>
-        </jumbotron>
-      </column>
-    </row>
-  </container>
+            </mdb-nav-item>
+          </mdb-list-group>
+        </mdb-jumbotron>
+      </mdb-col>
+    </mdb-row>
+  </mdb-container>
 </template>
 
 <script>
-import { Container, Row, Column, Fa, Jumbotron, ListGroup, NavbarItem } from 'mdbvue';
+import { mdbContainer, mdbRow, mdbCol, mdbIcon, mdbJumbotron, mdbListGroup, mdbNavItem } from 'mdbvue';
 
 export default {
   name: 'CSSPage',
   components: {
-    Container,
-    Row,
-    Column,
-    Fa,
-    Jumbotron,
-    ListGroup,
-    NavbarItem
+    mdbContainer,
+    mdbRow,
+    mdbCol,
+    mdbIcon,
+    mdbJumbotron,
+    mdbListGroup,
+    mdbNavItem
   }
 };
 </script>

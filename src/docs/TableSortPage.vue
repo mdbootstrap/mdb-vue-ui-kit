@@ -1,9 +1,9 @@
 <template>
-  <container>
-    <row class="mt-5 align-items-center justify-content-start">
+  <mdb-container>
+    <mdb-row class="mt-5 align-items-center justify-content-start">
       <h4 style="margin: 0" class="grey-text"><strong>Table Sort</strong></h4>
-      <a href="https://mdbootstrap.com/docs/vue/tables/sort/?utm_source=DemoApp&utm_medium=MDBVueFree" waves-fixed class="border grey-text px-2 border-light rounded ml-2" target="_blank"><fa icon="graduation-cap" class="mr-2"/>Docs</a>
-    </row>
+      <a href="https://mdbootstrap.com/docs/vue/tables/sort/?utm_source=DemoApp&utm_medium=MDBVueFree" waves-fixed class="border grey-text px-2 border-light rounded ml-2" target="_blank"><mdb-icon icon="graduation-cap" class="mr-2"/>Docs</a>
+    </mdb-row>
     <hr />
     <div class="mt-5 pt-5 mx-3">
       <h3>Basic example</h3>
@@ -31,22 +31,22 @@
         :order="[3, 'asc']"
       />
     </div>
-  </container>
+  </mdb-container>
 </template>
 
 <script>
-import { Tbl, TblHead, TblBody, mdbDatatable, Container, Row, Fa } from 'mdbvue';
+import { mdbTbl, mdbTblHead, mdbTblBody, mdbDatatable,mdbContainer, mdbRow, mdbIcon } from 'mdbvue';
 
 export default {
   name: 'TableSortPage',
   components: {
-    Tbl,
-    TblHead,
-    TblBody,
+    mdbTbl,
+    mdbTblHead,
+    mdbTblBody,
     mdbDatatable,
-    Container,
-    Row,
-    Fa
+    mdbContainer,
+    mdbRow,
+    mdbIcon
   },
   data() {
     return {

@@ -1,9 +1,9 @@
 <template>
-  <container class="mt-5">
-    <row class="mt-5 align-items-center justify-content-start">
+  <mdb-container class="mt-5">
+    <mdb-row class="mt-5 align-items-center justify-content-start">
       <h4 style="margin: 0" class="grey-text"><strong>Table Pagination</strong></h4>
-      <a href="https://mdbootstrap.com/docs/vue/tables/pagination/?utm_source=DemoApp&utm_medium=MDBVueFree" waves-fixed class="border grey-text px-2 border-light rounded ml-2" target="_blank"><fa icon="graduation-cap" class="mr-2"/>Docs</a>
-    </row>
+      <a href="https://mdbootstrap.com/docs/vue/tables/pagination/?utm_source=DemoApp&utm_medium=MDBVueFree" waves-fixed class="border grey-text px-2 border-light rounded ml-2" target="_blank"><mdb-icon icon="graduation-cap" class="mr-2"/>Docs</a>
+    </mdb-row>
     <hr />
     <div class="mt-5 pt-5 mx-3">
       <h3>Basic example</h3>
@@ -23,19 +23,19 @@
         :pagination="false"
       />
     </div>
-  </container>
+  </mdb-container>
 </template>
 
 <script>
-import { mdbDatatable, Container, Row, Fa  } from 'mdbvue';
+import { mdbDatatable, mdbContainer, mdbRow, mdbIcon  } from 'mdbvue';
 
 export default {
   name: 'TablePagination',
   components: {
     mdbDatatable,
-    Container,
-    Row,
-    Fa
+    mdbContainer,
+    mdbRow,
+    mdbIcon
   },
   data() {
     return {

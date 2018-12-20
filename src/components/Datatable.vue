@@ -18,9 +18,9 @@
     <tbl v-if="!scrollY" v-bind="tableProps" sm datatable>
       <tbl-head :color="headerColor" :textWhite="headerWhite">
         <tr>
-          <th 
-            v-for="column in columns" 
-            :key="column.field" 
+          <th
+            v-for="column in columns"
+            :key="column.field"
             class="th-sm sorting"
             v-on:click="sort(column.field, column.sort)"
           >
@@ -40,9 +40,9 @@
       </tbl-body>
       <tbl-head tag="tfoot">
         <tr>
-          <th 
-            v-for="column in columns" 
-            :key="column.field+'_foot'" 
+          <th
+            v-for="column in columns"
+            :key="column.field+'_foot'"
             class="th-sm sorting"
           >
             {{column.label}}
@@ -59,9 +59,9 @@
           <tbl v-bind="tableProps" sm datatable>
             <tbl-head :color="headerColor" :textWhite="headerWhite">
               <tr>
-                <th 
-                  v-for="column in columns" 
-                  :key="column.field" 
+                <th
+                  v-for="column in columns"
+                  :key="column.field"
                   class="th-sm sorting"
                   v-on:click="sort(column.field, column.sort)"
                 >
@@ -89,9 +89,9 @@
           <tbl v-bind="tableProps" sm datatable>
             <tbl-head tag="tfoot">
               <tr>
-                <th 
-                  v-for="column in columns" 
-                  :key="column.field+'_foot'" 
+                <th
+                  v-for="column in columns"
+                  :key="column.field+'_foot'"
                   class="th-sm sorting"
                 >
                   {{column.label}}
@@ -120,9 +120,9 @@
             >
               Previous
             </page-item>
-            <page-item 
-              v-for="(page, index) in pages" 
-              :key="index" 
+            <page-item
+              v-for="(page, index) in pages"
+              :key="index"
               v-on:click.native="changePage(index)"
               :active="activePage === index ? true : false"
             >
@@ -275,7 +275,7 @@ const Datatable = {
       },
       wrapperStyle: {
         maxWidth: this.maxWidth ? this.maxWidth : '100%',
-        margin: '0 auto' 
+        margin: '0 auto'
       }
     };
   },
@@ -299,8 +299,8 @@ const Datatable = {
             if (stringValue.toLowerCase().match(this.search.toLowerCase())) return true;
           }
         }
-        return false; 
-      }); 
+        return false;
+      });
     }
   },
   methods: {
@@ -313,7 +313,7 @@ const Datatable = {
           this.rows.sort((a, b) => (a[field] > b[field] ? 1 : -1)) :
           this.rows.sort((a, b) => (a[field] > b[field] ? -1 : 1));
         this.columns[this.columns.findIndex(column => column.field === field)].sort = sort === 'asc' ? 'desc' : 'asc';
-      } 
+      }
     },
     updateEntries(value) {
       this.entries = value;
@@ -325,7 +325,7 @@ const Datatable = {
   mounted() {
     // bind data or download form API
     if (typeof this.data === 'string') {
-      fetch(this.data) 
+      fetch(this.data)
         .then(res => res.json())
         .then(json => {
           this.columns = json.columns;
@@ -386,7 +386,7 @@ const Datatable = {
       this.activePage = 0;
 
       this.$emit('pages', this.pages);
-    } 
+    }
   }
 };
 

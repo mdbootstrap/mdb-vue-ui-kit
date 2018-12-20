@@ -34,7 +34,7 @@
       </a>
 
     </card-header>
-    <transition @before-enter="beforeEnter" @enter="enter" @before-leave="beforeLeave">
+    <transition @before-enter="beforeEnter" @enter="enter" @before-leave="beforeLeave" @leave="leave">
       <card-body v-if="isOpen" class="collapse-item" :class="bodyClass" ref="body">
         <p :class="paragraphClass" v-html="content" v-if="content">
         {{content}}
@@ -100,20 +100,26 @@ const AccordionPane = {
 
     };
   },
+  mounted() {
+    if (this.isOpen) {
+      this.$refs.body.$el.style.height = this.$refs.body.$el.scrollHeight + 'px';
+    }
+  },
   methods: {
     toggleVisible() {
       this.$emit('pane-clicked', this);
     },
     beforeEnter(el) {
-      this.elHeight = el.scrollHeight;
-      this.hamburger && this.$refs.animatedIcon.classList.toggle('open');
+      el.style.height = '0';
     },
     enter(el) {
-      el.style.height = this.elHeight+'px';
+      el.style.height = el.scrollHeight + 'px';
     },
     beforeLeave(el) {
-      el.style.height = 0;
-      this.hamburger && this.$refs.animatedIcon.classList.toggle('open');
+      el.style.height = el.scrollHeight + 'px';
+    },
+    leave(el) {
+      el.style.height = '0';
     }
   },
   computed: {

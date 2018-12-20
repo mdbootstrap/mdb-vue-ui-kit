@@ -1,25 +1,25 @@
 <template>
-  <container>
-    <row class="mt-5 align-items-center justify-content-start">
+  <mdb-container>
+    <mdb-row class="mt-5 align-items-center justify-content-start">
       <h4 style="margin: 0" class="grey-text"><strong>Table Scroll</strong></h4>
-      <a href="https://mdbootstrap.com/docs/vue/tables/scroll/?utm_source=DemoApp&utm_medium=MDBVueFree" waves-fixed class="border grey-text px-2 border-light rounded ml-2" target="_blank"><fa icon="graduation-cap" class="mr-2"/>Docs</a>
-    </row>
+      <a href="https://mdbootstrap.com/docs/vue/tables/scroll/?utm_source=DemoApp&utm_medium=MDBVueFree" waves-fixed class="border grey-text px-2 border-light rounded ml-2" target="_blank"><mdb-icon icon="graduation-cap" class="mr-2"/>Docs</a>
+    </mdb-row>
     <hr />
     <div class="mt-5 pt-5 mx-3">
       <h1>Table Scroll</h1>
       <br />
       <h3>Static table vertical scroll</h3>
       <br />
-      <tbl scrollY :maxHeight="'100px'">
-        <tbl-head color="light">
+      <mdb-tbl scrollY :maxHeight="'100px'">
+        <mdb-tbl-head color="light">
           <tr>
             <th>#</th>
             <th>thead col 1</th>
             <th>thead col 2</th>
             <th>thead col 3</th>
           </tr>
-        </tbl-head>
-        <tbl-body>
+        </mdb-tbl-head>
+        <mdb-tbl-body>
           <tr scope="row">
             <td>1</td>
             <td>tbody col 1</td>
@@ -62,8 +62,8 @@
             <td>tbody col 2</td>
             <td>tbody col 3</td>
           </tr>
-        </tbl-body>
-      </tbl>
+        </mdb-tbl-body>
+      </mdb-tbl>
 
     <br />
     <h3>Datatable vertical scroll</h3>
@@ -97,22 +97,22 @@
       maxWidth="700px"
     />
   </div>
-</container>
+</mdb-container>
 </template>
 
 <script>
-import { Tbl, TblHead, TblBody, mdbDatatable, Container, Row, Fa  } from 'mdbvue';
+import { mdbTbl, mdbTblHead, mdbTblBody, mdbDatatable, mdbContainer, mdbRow, mdbIcon  } from 'mdbvue';
 
 export default {
   name: 'TableScrollPage',
   components: {
-    Tbl,
-    TblHead,
-    TblBody,
+    mdbTbl,
+    mdbTblHead,
+    mdbTblBody,
     mdbDatatable,
-    Container,
-    Row,
-    Fa
+    mdbContainer,
+    mdbRow,
+    mdbIcon
   },
   data() {
     return {

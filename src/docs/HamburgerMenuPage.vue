@@ -7,9 +7,7 @@
     <hr />
     <h4 class="my-4">Hamburger menu basic</h4>
     <mdb-container>
-      <!--Navbar-->
       <mdb-navbar class="mt-2" hamburger>
-        <!-- Navbar brand -->
         <mdb-navbar-brand>
           Navbar
         </mdb-navbar-brand>
@@ -21,10 +19,7 @@
           </mdb-navbar-nav>
         </mdb-navbar-toggler>
       </mdb-navbar>
-      <!--/.Navbar-->
-      <!--Navbar-->
       <mdb-navbar class="mt-2 light-blue lighten-4" hamburger navIconClass="dark-blue-text">
-        <!-- Navbar brand -->
         <mdb-navbar-brand>
           Navbar
         </mdb-navbar-brand>
@@ -36,10 +31,7 @@
           </mdb-navbar-nav>
         </mdb-navbar-toggler>
       </mdb-navbar>
-      <!--/.Navbar-->
-      <!--Navbar-->
       <mdb-navbar class="mt-2 pink lighten-4" hamburger navIconClass="dark-pink-text">
-        <!-- Navbar brand -->
         <mdb-navbar-brand>
           Navbar
         </mdb-navbar-brand>
@@ -51,10 +43,7 @@
           </mdb-navbar-nav>
         </mdb-navbar-toggler>
       </mdb-navbar>
-      <!--/.Navbar-->
-      <!--Navbar-->
       <mdb-navbar class="mt-2 amber lighten-4" hamburger navIconClass="dark-amber-text">
-        <!-- Navbar brand -->
         <mdb-navbar-brand>
           Navbar
         </mdb-navbar-brand>
@@ -66,10 +55,7 @@
           </mdb-navbar-nav>
         </mdb-navbar-toggler>
       </mdb-navbar>
-      <!--/.Navbar-->
-      <!--Navbar-->
       <mdb-navbar class="mt-2 teal lighten-4" hamburger navIconClass="dark-teal-text">
-        <!-- Navbar brand -->
         <mdb-navbar-brand>
           Navbar
         </mdb-navbar-brand>
@@ -81,13 +67,10 @@
           </mdb-navbar-nav>
         </mdb-navbar-toggler>
       </mdb-navbar>
-      <!--/.Navbar-->
     </mdb-container>
     <h4 class="my-4">Various hamburger menu icons</h4>
     <mdb-container>
-      <!--Navbar-->
       <mdb-navbar class="mt-2 navbar-1">
-        <!-- Navbar brand -->
         <mdb-navbar-brand>
           Navbar
         </mdb-navbar-brand>
@@ -99,10 +82,7 @@
           </mdb-navbar-nav>
         </mdb-navbar-toggler>
       </mdb-navbar>
-      <!--/.Navbar-->
-      <!--Navbar-->
       <mdb-navbar class="mt-2 navbar-2" dark color="primary">
-        <!-- Navbar brand -->
         <mdb-navbar-brand class="text-white">
           Navbar
         </mdb-navbar-brand>
@@ -114,10 +94,7 @@
           </mdb-navbar-nav>
         </mdb-navbar-toggler>
       </mdb-navbar>
-      <!--/.Navbar-->
-      <!--Navbar-->
       <mdb-navbar class="mt-2 navbar-3" dark color="default">
-        <!-- Navbar brand -->
         <mdb-navbar-brand class="text-white">
           Navbar
         </mdb-navbar-brand>
@@ -129,10 +106,7 @@
           </mdb-navbar-nav>
         </mdb-navbar-toggler>
       </mdb-navbar>
-      <!--/.Navbar-->
-      <!--Navbar-->
       <mdb-navbar class="mt-2 navbar-4 pink" dark>
-        <!-- Navbar brand -->
         <mdb-navbar-brand class="text-white">
           Navbar
         </mdb-navbar-brand>
@@ -144,10 +118,7 @@
           </mdb-navbar-nav>
         </mdb-navbar-toggler>
       </mdb-navbar>
-      <!--/.Navbar-->
-      <!--Navbar-->
       <mdb-navbar class="mt-2 navbar-5" dark color="secondary">
-        <!-- Navbar brand -->
         <mdb-navbar-brand class="text-white">
           Navbar
         </mdb-navbar-brand>
@@ -159,10 +130,7 @@
           </mdb-navbar-nav>
         </mdb-navbar-toggler>
       </mdb-navbar>
-      <!--/.Navbar-->
-      <!--Navbar-->
       <mdb-navbar class="mt-2 navbar-6" dark color="success">
-        <!-- Navbar brand -->
         <mdb-navbar-brand class="text-white">
           Navbar
         </mdb-navbar-brand>
@@ -174,10 +142,7 @@
           </mdb-navbar-nav>
         </mdb-navbar-toggler>
       </mdb-navbar>
-      <!--/.Navbar-->
-      <!--Navbar-->
       <mdb-navbar class="mt-2 navbar-7" dark color="info">
-        <!-- Navbar brand -->
         <mdb-navbar-brand class="text-white">
           Navbar
         </mdb-navbar-brand>
@@ -189,10 +154,7 @@
           </mdb-navbar-nav>
         </mdb-navbar-toggler>
       </mdb-navbar>
-      <!--/.Navbar-->
-      <!--Navbar-->
       <mdb-navbar class="mt-2 navbar-8" dark color="warning">
-        <!-- Navbar brand -->
         <mdb-navbar-brand class="text-white">
           Navbar
         </mdb-navbar-brand>
@@ -204,10 +166,7 @@
           </mdb-navbar-nav>
         </mdb-navbar-toggler>
       </mdb-navbar>
-      <!--/.Navbar-->
-      <!--Navbar-->
       <mdb-navbar class="mt-2 navbar-9" dark color="danger">
-        <!-- Navbar brand -->
         <mdb-navbar-brand class="text-white">
           Navbar
         </mdb-navbar-brand>
@@ -219,13 +178,10 @@
           </mdb-navbar-nav>
         </mdb-navbar-toggler>
       </mdb-navbar>
-      <!--/.Navbar-->
     </mdb-container>
     <h4 class="my-4">Hamburger menu icon animations</h4>
     <mdb-container>
-      <!--Navbar-->
       <mdb-navbar class="mt-2 amber lighten-4" animated animation="1">
-        <!-- Navbar brand -->
         <mdb-navbar-brand>
           Navbar
         </mdb-navbar-brand>
@@ -237,10 +193,7 @@
           </mdb-navbar-nav>
         </mdb-navbar-toggler>
       </mdb-navbar>
-      <!--/.Navbar-->
-      <!--Navbar-->
       <mdb-navbar class="mt-2 red lighten-1" dark animated animation="3">
-        <!-- Navbar brand -->
         <mdb-navbar-brand class="text-white">
           Navbar
         </mdb-navbar-brand>
@@ -252,10 +205,7 @@
           </mdb-navbar-nav>
         </mdb-navbar-toggler>
       </mdb-navbar>
-      <!--/.Navbar-->
-      <!--Navbar-->
       <mdb-navbar class="mt-2 indigo darken-2" dark animated animation="4">
-        <!-- Navbar brand -->
         <mdb-navbar-brand class="text-white">
           Navbar
         </mdb-navbar-brand>
@@ -267,7 +217,6 @@
           </mdb-navbar-nav>
         </mdb-navbar-toggler>
       </mdb-navbar>
-      <!--/.Navbar-->
     </mdb-container>
   </mdb-container>
 </template>
@@ -291,7 +240,6 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
 .dark-blue-text {
   color: #0A38F5;

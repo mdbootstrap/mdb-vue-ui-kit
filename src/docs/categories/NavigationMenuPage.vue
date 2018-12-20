@@ -1,57 +1,57 @@
 <template>
-  <container>
-    <row>
-      <column md="8" class="mx-auto">
-        <jumbotron class="mt-5">
-          <h1 class="pb-2"><Fa icon="bars" class="grey-text mr-2" />Navigation</h1>
+  <mdb-container>
+    <mdb-row>
+      <mdb-col md="8" class="mx-auto">
+        <mdb-jumbotron class="mt-5">
+          <h1 class="pb-2"><mdb-icon icon="bars" class="grey-text mr-2" />Navigation</h1>
           <h6 class="my-3">FREE</h6>
-          <list-group>
+          <mdb-list-group>
             <!-- FREE -->
-            <navbar-item class="list-group-item list-group-item-action" router href="/navigation/breadcrumb">
+            <mdb-nav-item class="list-group-item list-group-item-action" router href="/navigation/breadcrumb">
               <h5 class="justify-content-between d-flex align-items-center">
-                Breadcrumb <fa icon="angle-right"/>
+                Breadcrumb <mdb-icon icon="angle-right"/>
               </h5>
-            </navbar-item>
-            <navbar-item class="list-group-item list-group-item-action" router href="/navigation/footer">
+            </mdb-nav-item>
+            <mdb-nav-item class="list-group-item list-group-item-action" router href="/navigation/footer">
               <h5 class="justify-content-between d-flex align-items-center">
-                Footer <fa icon="angle-right"/>
+                Footer <mdb-icon icon="angle-right"/>
               </h5>
-            </navbar-item>
-            <navbar-item class="list-group-item list-group-item-action" router href="/navigation/hamburger">
+            </mdb-nav-item>
+            <mdb-nav-item class="list-group-item list-group-item-action" router href="/navigation/hamburger">
               <h5 class="justify-content-between d-flex align-items-center">
-                Hamburger Menu <fa icon="angle-right"/>
+                Hamburger Menu <mdb-icon icon="angle-right"/>
               </h5>
-            </navbar-item>
-            <navbar-item class="list-group-item list-group-item-action" router href="/navigation/navbar">
+            </mdb-nav-item>
+            <mdb-nav-item class="list-group-item list-group-item-action" router href="/navigation/navbar">
               <h5 class="justify-content-between d-flex align-items-center">
-                Navbar <fa icon="angle-right"/>
+                Navbar <mdb-icon icon="angle-right"/>
               </h5>
-            </navbar-item>
-            <navbar-item class="list-group-item list-group-item-action" router href="/navigation/navigation">
+            </mdb-nav-item>
+            <mdb-nav-item class="list-group-item list-group-item-action" router href="/navigation/navigation">
               <h5 class="justify-content-between d-flex align-items-center">
-                Navigation <fa icon="angle-right"/>
+                Navigation <mdb-icon icon="angle-right"/>
               </h5>
-            </navbar-item>
-          </list-group>
-        </jumbotron>
-      </column>
-    </row>
-  </container>
+            </mdb-nav-item>
+          </mdb-list-group>
+        </mdb-jumbotron>
+      </mdb-col>
+    </mdb-row>
+  </mdb-container>
 </template>
 
 <script>
-import { Container, Row, Column, Fa, Jumbotron, NavbarItem, ListGroup } from 'mdbvue';
+import { mdbContainer, mdbRow, mdbCol, mdbIcon, mdbJumbotron, mdbNavItem, mdbListGroup } from 'mdbvue';
 
 export default {
   name: 'ComponentsPage',
   components: {
-    Container,
-    Row,
-    Column,
-    Fa,
-    Jumbotron,
-    NavbarItem,
-    ListGroup
+    mdbContainer,
+    mdbRow,
+    mdbCol,
+    mdbIcon,
+    mdbJumbotron,
+    mdbNavItem,
+    mdbListGroup
   }
 };
 </script>

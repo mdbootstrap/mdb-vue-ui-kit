@@ -1,82 +1,82 @@
 <template>
   <div>
     <!--Navbar-->
-    <navbar v-show="navbarType == 'regular-fixed'" position="top" style="margin-top: 60px" dark color="primary" name="Your Logo" href="#" scrolling>
-      <navbar-collapse>
-        <navbar-nav>
-          <navbar-item href="#" waves-fixed>Home</navbar-item>
-          <navbar-item href="#" waves-fixed>Features</navbar-item>
-          <navbar-item href="#" waves-fixed>Pricing</navbar-item>
-          <!-- Dropdown -->
-          <dropdown tag="li" class="nav-item">
-            <dropdown-toggle slot="toggle" tag="a" navLink color="primary" waves-fixed>Dropdown</dropdown-toggle>
-            <dropdown-menu>
-              <dropdown-item>Action</dropdown-item>
-              <dropdown-item>Another action</dropdown-item>
-              <dropdown-item>Something else here</dropdown-item>
-            </dropdown-menu>
-          </dropdown>
-        </navbar-nav>
+    <mdb-navbar v-show="navbarType == 'regular-fixed'" position="top" style="margin-top: 60px" dark color="primary" name="Your Logo" href="#" scrolling>
+      <mdb-navbar-toggler>
+        <mdb-navbar-nav>
+          <mdb-nav-item href="#" waves-fixed>Home</mdb-nav-item>
+          <mdb-nav-item href="#" waves-fixed>Features</mdb-nav-item>
+          <mdb-nav-item href="#" waves-fixed>Pricing</mdb-nav-item>
+          <!-- mdbDropdown -->
+          <mdb-dropdown tag="li" class="nav-item">
+            <mdb-dropdown-toggle slot="toggle" tag="a" navLink color="primary" waves-fixed>Dropdown</mdb-dropdown-toggle>
+            <mdb-dropdown-menu>
+              <mdb-dropdown-item>Action</mdb-dropdown-item>
+              <mdb-dropdown-item>Another action</mdb-dropdown-item>
+              <mdb-dropdown-item>Something else here</mdb-dropdown-item>
+            </mdb-dropdown-menu>
+          </mdb-dropdown>
+        </mdb-navbar-nav>
         <!-- Search form -->
         <form>
           <mdb-input type="text" class="text-white" placeholder="Search" aria-label="Search" label navInput waves waves-fixed/>
         </form>
-      </navbar-collapse>
-    </navbar>
+      </mdb-navbar-toggler>
+    </mdb-navbar>
     <!--/.Navbar-->
     <!--Navbar-->
-    <navbar v-show="navbarType == 'regular-non-fixed'" style="margin-top: 5px" dark color="primary" name="Your Logo" href="#">
-      <navbar-collapse>
-        <navbar-nav>
-          <navbar-item href="#" waves-fixed>Home</navbar-item>
-          <navbar-item href="#" waves-fixed>Features</navbar-item>
-          <navbar-item href="#" waves-fixed>Pricing</navbar-item>
-          <!-- Dropdown -->
-          <dropdown tag="li" class="nav-item">
-            <dropdown-toggle slot="toggle" tag="a" navLink color="primary" waves-fixed>Dropdown</dropdown-toggle>
-            <dropdown-menu>
-              <dropdown-item>Action</dropdown-item>
-              <dropdown-item>Another action</dropdown-item>
-              <dropdown-item>Something else here</dropdown-item>
-            </dropdown-menu>
-          </dropdown>
-        </navbar-nav>
+    <mdb-navbar v-show="navbarType == 'regular-non-fixed'" style="margin-top: 5px" dark color="primary" name="Your Logo" href="#">
+      <mdb-navbar-toggler>
+        <mdb-navbar-nav>
+          <mdb-nav-item href="#" waves-fixed>Home</mdb-nav-item>
+          <mdb-nav-item href="#" waves-fixed>Features</mdb-nav-item>
+          <mdb-nav-item href="#" waves-fixed>Pricing</mdb-nav-item>
+          <!-- mdbDropdown -->
+          <mdb-dropdown tag="li" class="nav-item">
+            <mdb-dropdown-toggle slot="toggle" tag="a" navLink color="primary" waves-fixed>Dropdown</mdb-dropdown-toggle>
+            <mdb-dropdown-menu>
+              <mdb-dropdown-item>Action</mdb-dropdown-item>
+              <mdb-dropdown-item>Another action</mdb-dropdown-item>
+              <mdb-dropdown-item>Something else here</mdb-dropdown-item>
+            </mdb-dropdown-menu>
+          </mdb-dropdown>
+        </mdb-navbar-nav>
         <!-- Search form -->
         <form>
           <mdb-input type="text" class="text-white" placeholder="Search" aria-label="Search" label navInput waves waves-fixed/>
         </form>
-      </navbar-collapse>
-    </navbar>
+      </mdb-navbar-toggler>
+    </mdb-navbar>
     <!--/.Navbar-->
     <!--Navbar-->
-    <navbar class="fixed-transparent-navbar" v-show="navbarType == 'regular-fixed-transparent'" position="top" style="margin-top: 60px" dark name="Your Logo" href="#" scrolling transparent>
-      <navbar-collapse>
-        <navbar-nav>
-          <navbar-item href="#" waves-fixed>Home</navbar-item>
-          <navbar-item href="#" waves-fixed>Features</navbar-item>
-          <navbar-item href="#" waves-fixed>Pricing</navbar-item>
-        </navbar-nav>
+    <mdb-navbar class="fixed-transparent-navbar" v-show="navbarType == 'regular-fixed-transparent'" position="top" style="margin-top: 60px" dark name="Your Logo" href="#" scrolling transparent>
+      <mdb-navbar-toggler>
+        <mdb-navbar-nav>
+          <mdb-nav-item href="#" waves-fixed>Home</mdb-nav-item>
+          <mdb-nav-item href="#" waves-fixed>Features</mdb-nav-item>
+          <mdb-nav-item href="#" waves-fixed>Pricing</mdb-nav-item>
+        </mdb-navbar-nav>
         <!-- Search form -->
         <form>
           <mdb-input type="text" class="text-white" placeholder="Search" aria-label="Search" label navInput waves waves-fixed/>
         </form>
-      </navbar-collapse>
-    </navbar>
+      </mdb-navbar-toggler>
+    </mdb-navbar>
     <!--/.Navbar-->
     <!--Navbar-->
-    <navbar v-show="navbarType == 'regular-non-fixed-transparent'" style="margin-top: 5px; margin-bottom: -60px; z-index: 1" dark name="Your Logo" href="#" transparent>
-      <navbar-collapse>
-        <navbar-nav>
-          <navbar-item href="#" waves-fixed>Home</navbar-item>
-          <navbar-item href="#" waves-fixed>Features</navbar-item>
-          <navbar-item href="#" waves-fixed>Pricing</navbar-item>
-        </navbar-nav>
+    <mdb-navbar v-show="navbarType == 'regular-non-fixed-transparent'" style="margin-top: 5px; margin-bottom: -60px; z-index: 1" dark name="Your Logo" href="#" transparent>
+      <mdb-navbar-toggler>
+        <mdb-navbar-nav>
+          <mdb-nav-item href="#" waves-fixed>Home</mdb-nav-item>
+          <mdb-nav-item href="#" waves-fixed>Features</mdb-nav-item>
+          <mdb-nav-item href="#" waves-fixed>Pricing</mdb-nav-item>
+        </mdb-navbar-nav>
         <!-- Search form -->
         <form>
           <mdb-input type="text" class="text-white" placeholder="Search" aria-label="Search" label navInput waves waves-fixed/>
         </form>
-      </navbar-collapse>
-    </navbar>
+      </mdb-navbar-toggler>
+    </mdb-navbar>
     <!--/.Navbar-->
     <div style="height: 100vh">
       <div v-show="content" class="view intro-2">
@@ -92,32 +92,32 @@
       </div>
     </div>
     <div style="position: absolute; left: 100px; top: 200px; z-index: 50">
-      <btn size="sm" color="primary" @click.native="navbarType='regular-fixed', content=false">Regular fixed Navbar</btn>
-      <btn size="sm" color="primary" @click.native="navbarType='regular-non-fixed', content=false">Regular non-fixed Navbar</btn>
-      <btn size="sm" color="primary" @click.native="navbarType='regular-non-fixed', content=true">Full Page Intro with non-fixed Navbar</btn>
-      <btn size="sm" color="primary" @click.native="navbarType='regular-fixed', content=true">Full Page Intro with fixed Navbar</btn>
-      <btn size="sm" color="primary" @click.native="navbarType='regular-fixed-transparent', content=true">Full Page Intro with fixed, transparent Navbar</btn>
-      <btn size="sm" color="primary" @click.native="navbarType='regular-non-fixed-transparent', content=true">Full Page Intro with non-fixed, transparent Navbar</btn>
+      <mdb-btn size="sm" color="primary" @click.native="navbarType='regular-fixed', content=false">Regular fixed mdbNavbar</mdb-btn>
+      <mdb-btn size="sm" color="primary" @click.native="navbarType='regular-non-fixed', content=false">Regular non-fixed mdbNavbar</mdb-btn>
+      <mdb-btn size="sm" color="primary" @click.native="navbarType='regular-non-fixed', content=true">Full Page Intro with non-fixed mdbNavbar</mdb-btn>
+      <mdb-btn size="sm" color="primary" @click.native="navbarType='regular-fixed', content=true">Full Page Intro with fixed mdbNavbar</mdb-btn>
+      <mdb-btn size="sm" color="primary" @click.native="navbarType='regular-fixed-transparent', content=true">Full Page Intro with fixed, transparent mdbNavbar</mdb-btn>
+      <mdb-btn size="sm" color="primary" @click.native="navbarType='regular-non-fixed-transparent', content=true">Full Page Intro with non-fixed, transparent mdbNavbar</mdb-btn>
     </div>
   </div>
 </template>
 
 <script>
-import { Navbar, NavbarItem, NavbarNav, NavbarCollapse, Dropdown, DropdownItem, DropdownMenu, DropdownToggle, mdbInput, Btn } from 'mdbvue';
+import { mdbNavbar, mdbNavItem, mdbNavbarNav, mdbNavbarToggler, mdbDropdown, mdbDropdownItem, mdbDropdownMenu, mdbDropdownToggle, mdbInput, mdbBtn } from 'mdbvue';
 
 export default {
   name: 'NavigationPage',
   components: {
-    Navbar,
-    NavbarItem,
-    NavbarNav,
-    NavbarCollapse,
-    Dropdown,
-    DropdownItem,
-    DropdownMenu,
-    DropdownToggle,
+    mdbNavbar,
+    mdbNavItem,
+    mdbNavbarNav,
+    mdbNavbarToggler,
+    mdbDropdown,
+    mdbDropdownItem,
+    mdbDropdownMenu,
+    mdbDropdownToggle,
     mdbInput,
-    Btn
+    mdbBtn
   },
   data() {
     return {

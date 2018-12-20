@@ -1,23 +1,23 @@
 <template>
-  <container class="mt-5">
-    <row class="mt-5 align-items-center justify-content-start">
+  <mdb-container class="mt-5">
+    <mdb-row class="mt-5 align-items-center justify-content-start">
       <h4 style="margin: 0" class="grey-text"><strong>Tables examples</strong></h4>
-      <a href="https://mdbootstrap.com/docs/vue/tables/additional/?utm_source=DemoApp&utm_medium=MDBVueFree" waves-fixed class="border grey-text px-2 border-light rounded ml-2" target="_blank"><fa icon="graduation-cap" class="mr-2"/>Docs</a>
-    </row>
+      <a href="https://mdbootstrap.com/docs/vue/tables/additional/?utm_source=DemoApp&utm_medium=MDBVueFree" waves-fixed class="border grey-text px-2 border-light rounded ml-2" target="_blank"><mdb-icon icon="graduation-cap" class="mr-2"/>Docs</a>
+    </mdb-row>
     <hr />
     <div class="pt-5 mx-3">
       <h3>Table with buttons</h3>
       <br />
-      <tbl btn responsive striped class="mb-5">
-        <tbl-head>
+      <mdb-tbl btn responsive striped class="mb-5">
+        <mdb-tbl-head>
           <tr>
             <th>#</th>
             <th>thead col 1</th>
             <th>thead col 2</th>
             <th>thead col 3</th>
           </tr>
-        </tbl-head>
-        <tbl-body>
+        </mdb-tbl-head>
+        <mdb-tbl-body>
           <tr scope="row">
             <td>1</td>
             <td>tbody col 1</td>
@@ -42,21 +42,21 @@
               <button type="button" class="btn btn-indigo btn-sm m-0">Button</button>
             </td>
           </tr>
-        </tbl-body>
-      </tbl>
+        </mdb-tbl-body>
+      </mdb-tbl>
 
       <h3>Table with checkboxes</h3>
       <br />
-      <tbl responsive striped class="my-5">
-        <tbl-head>
+      <mdb-tbl responsive striped class="my-5">
+        <mdb-tbl-head>
           <tr>
             <th>#</th>
             <th>thead col 1</th>
             <th>thead col 2</th>
             <th>thead col 3</th>
           </tr>
-        </tbl-head>
-        <tbl-body>
+        </mdb-tbl-head>
+        <mdb-tbl-body>
           <tr scope="row">
             <td>1</td>
             <td>tbody col 1</td>
@@ -93,21 +93,21 @@
               </div>
             </td>
           </tr>
-        </tbl-body>
-      </tbl>
+        </mdb-tbl-body>
+      </mdb-tbl>
 
       <h3>Table with icons</h3>
       <br />
-      <tbl btn responsive striped class="my-5">
-        <tbl-head>
+      <mdb-tbl btn responsive striped class="my-5">
+        <mdb-tbl-head>
           <tr>
             <th>#</th>
             <th><i class="fa fa-leaf mr-2 blue-text" aria-hidden="true"></i> thead col 1</th>
             <th><i class="fa fa-leaf mr-2 teal-text" aria-hidden="true"></i> thead col 2</th>
             <th><i class="fa fa-leaf mr-2 indigo-text" aria-hidden="true"></i> thead col 3</th>
           </tr>
-        </tbl-head>
-        <tbl-body>
+        </mdb-tbl-head>
+        <mdb-tbl-body>
           <tr>
             <th scope="row">1</th>
             <td><i class="fa fa-diamond mr-2 grey-text" aria-hidden="true"></i>Cell 1</td>
@@ -126,8 +126,8 @@
             <td><i class="fa fa-table mr-2 grey-text" aria-hidden="true"></i>Cell 8</td>
             <td><i class="fa fa-edit mr-2 grey-text" aria-hidden="true"></i>Cell 9</td>
           </tr>
-        </tbl-body>
-      </tbl>
+        </mdb-tbl-body>
+      </mdb-tbl>
 
       <h3>Table with panel</h3>
       <br />
@@ -167,10 +167,10 @@
 
           <div class="table-wrapper">
             <!--Table-->
-            <tbl class="table table-hover mb-0">
+            <mdb-tbl class="table table-hover mb-0">
 
               <!--Table head-->
-              <tbl-head>
+              <mdb-tbl-head>
                 <tr>
                   <th>
                     <input class="form-check-input" type="checkbox" id="checkbox">
@@ -195,11 +195,11 @@
                     Username
                   </th>
                 </tr>
-              </tbl-head>
+              </mdb-tbl-head>
               <!--Table head-->
 
               <!--Table body-->
-              <tbl-body>
+              <mdb-tbl-body>
                 <tr>
                   <th scope="row">
                     <input class="form-check-input" type="checkbox" id="checkbox1">
@@ -260,9 +260,9 @@
                   <td>the Bird</td>
                   <td>@twitter</td>
                 </tr>
-              </tbl-body>
+              </mdb-tbl-body>
               <!--Table body-->
-            </tbl>
+            </mdb-tbl>
             <!--Table-->
           </div>
 
@@ -272,21 +272,21 @@
       <!-- Table with panel -->
 
     </div>
-  </container>
+  </mdb-container>
 </template>
 
 <script>
-import { Tbl, TblHead, TblBody, Fa, Container, Row } from 'mdbvue';
+import { mdbTbl, mdbTblHead, mdbTblBody, mdbIcon, mdbContainer, mdbRow } from 'mdbvue';
 
 export default {
   name: 'TableAdditionalPage',
   components: {
-    Tbl,
-    TblHead,
-    TblBody,
-    Row,
-    Container,
-    Fa
+    mdbTbl,
+    mdbTblHead,
+    mdbTblBody,
+    mdbRow,
+    mdbContainer,
+    mdbIcon
   }
 };
 </script>

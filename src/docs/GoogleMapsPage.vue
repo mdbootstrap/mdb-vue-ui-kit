@@ -1,105 +1,105 @@
 <template>
-  <container class="mt-5">
-    <row class="mt-5 align-items-center justify-content-start">
+  <mdb-container class="mt-5">
+    <mdb-row class="mt-5 align-items-center justify-content-start">
       <h4 style="margin: 0" class="grey-text"><strong>Google maps </strong></h4>
-      <a href="https://mdbootstrap.com/docs/vue/advanced/google-map/?utm_source=DemoApp&utm_medium=MDBVueFree" waves-fixed class="border grey-text px-2 border-light rounded ml-2" target="_blank"><fa icon="graduation-cap" class="mr-2"/>Docs</a>
-    </row>
+      <a href="https://mdbootstrap.com/docs/vue/advanced/google-map/?utm_source=DemoApp&utm_medium=MDBVueFree" waves-fixed class="border grey-text px-2 border-light rounded ml-2" target="_blank"><mdb-icon icon="graduation-cap" class="mr-2"/>Docs</a>
+    </mdb-row>
     <hr class="mb-4" />
-    <row>
+    <mdb-row>
       <h2 class="mb-3">Regular Map</h2>
-      <column md="12">
-        <google-map
+      <mdb-col md="12">
+        <mdb-google-map
           name="reg"
           class="col-md-12"
           :markerCoordinates="coordinates"
           style=" height: 500px"
           :zoom="14">
-        ></google-map>
-      </column>
-    </row>
+        ></mdb-google-map>
+      </mdb-col>
+    </mdb-row>
     <hr class="mb-4" />
-    <row>
+    <mdb-row>
     <h2 class="mb-3">Custom Map</h2>
-      <column md="12">
+      <mdb-col md="12">
 
-      <google-map
+      <mdb-google-map
         name="custom"
         class="col-md-12"
         :markerCoordinates="coordinates"
         style=" height: 500px"
         :zoom="14"
         :styles="styles">
-      </google-map>
-      </column>
+      </mdb-google-map>
+      </mdb-col>
 
-    </row>
+    </mdb-row>
     <hr class="mb-4" />
-    <row>
+    <mdb-row>
     <h2 class="mb-3">Satellite Map</h2>
-      <column md="12">
-      <google-map
+      <mdb-col md="12">
+      <mdb-google-map
         name="satellite-example"
         class="col-md-12"
         :markerCoordinates="coordinatesSat"
         style=" height: 500px"
         :zoom="16"
         type="satellite">
-      </google-map>
-      </column>
-    </row>
+      </mdb-google-map>
+      </mdb-col>
+    </mdb-row>
         <hr class="mb-4" />
-    <row>
+    <mdb-row>
     <h2 class="mb-3">Full Page Map</h2>
-      <column md="12" >
-      <google-map
+      <mdb-col md="12" >
+      <mdb-google-map
         name="full"
         class="col-md-12"
         :markerCoordinates="coordinatesSat"
         :zoom="16"
         :wrapperStyle="{width: '100vw', height: '100vh', overflow: 'visible'}"
         type="satellite">
-      </google-map>
-      </column>
-    </row>
+      </mdb-google-map>
+      </mdb-col>
+    </mdb-row>
     <hr class="mb-4" />
-    <row>
+    <mdb-row>
     <h2 class="mb-3 w-100">Map within a card</h2>
-      <column md="6" mb="4">
-        <card narrow>
+      <mdb-col md="6" mb="4">
+        <mdb-card narrow>
           <view-wrapper cascade gradient="blue">
             Regular map
           </view-wrapper>
-          <card-body cascade>
-            <google-map
+          <mdb-card-body cascade>
+            <mdb-google-map
               name="card"
               class="col-md-12"
               :markerCoordinates="coordinates"
               :zoom="14"
               :wrapperStyle="{ height: '300px'}">
-            </google-map>
-          </card-body>
-        </card>
-      </column>
-      <column md="6" mb="4">
-        <card narrow>
+            </mdb-google-map>
+          </mdb-card-body>
+        </mdb-card>
+      </mdb-col>
+      <mdb-col md="6" mb="4">
+        <mdb-card narrow>
           <view-wrapper cascade gradient="peach">
             Custom map
           </view-wrapper>
-          <card-body cascade>
-            <google-map
+          <mdb-card-body cascade>
+            <mdb-google-map
                   name="card2"
                   class="col-md-12"
                   :markerCoordinates="coordinates"
                   :zoom="14"
                   :styles="styles"
                   :wrapperStyle="{ height: '300px'}">
-            </google-map>
-          </card-body>
-        </card>
-      </column>
-    </row>
+            </mdb-google-map>
+          </mdb-card-body>
+        </mdb-card>
+      </mdb-col>
+    </mdb-row>
     <hr class="mb-4" />
-    <row>
+    <mdb-row>
     <h2 class="mb-3 w-100">Map within a card</h2>
     <section class="section pb-5">
       <!--Section heading-->
@@ -107,66 +107,66 @@
       <!--Section description-->
       <p class="section-description pb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum quisquam eum porro a pariatur accusamus veniam.</p>
 
-      <row>
-        <column lg="5" class="mb-4">
-          <card>
-            <card-body>
+      <mdb-row>
+        <mdb-col lg="5" class="mb-4">
+          <mdb-card>
+            <mdb-card-body>
               <div class="form-header blue accent-1">
                 <h3>
-                  <fa icon="envelope"/> Write to us:</h3>
+                  <mdb-icon icon="envelope"/> Write to us:</h3>
               </div>
               <p>We'll write rarely, but only with the best content.</p><br>
               <mdb-input icon="user" label="Your name" iconClass="grey-text"/>
               <mdb-input icon="envelope" label="Your email" iconClass="grey-text"/>
               <mdb-input icon="tag" label="Subject" iconClass="grey-text"/>
-              <md-textarea icon="pencil" label="Your message" iconClass="grey-text" :rows="3"/>
+              <mdb-textarea icon="pencil" label="Your message" iconClass="grey-text" :rows="3"/>
               <div class="text-center mt-4">
-                <btn color="light-blue">Submit</btn>
+                <mdb-btn color="light-blue">Submit</mdb-btn>
               </div>
-            </card-body>
-          </card>
-        </column>
+            </mdb-card-body>
+          </mdb-card>
+        </mdb-col>
 
-        <column lg="7">
-          <google-map
+        <mdb-col lg="7">
+          <mdb-google-map
               name="form"
               class="col-md-12"
               :markerCoordinates="coordinates"
               :zoom="14"
               wrapperClass="z-depth-1-half"
               :wrapperStyle="{ height: '400px'}">
-          </google-map>
-          <row class="text-center mt-4">
-            <column md="4">
-              <btn tag="a" floating icon="map-marker" class="blue accent-1" iconRight/>
+          </mdb-google-map>
+          <mdb-row class="text-center mt-4">
+            <mdb-col md="4">
+              <mdb-btn tag="a" floating icon="map-marker" class="blue accent-1" iconRight/>
               <p>San Francisco, CA 94126</p>
               <p>United States</p>
-            </column>
-            <column md="4">
-              <btn tag="a" floating icon="phone" class="blue accent-1"/>
+            </mdb-col>
+            <mdb-col md="4">
+              <mdb-btn tag="a" floating icon="phone" class="blue accent-1"/>
           <p>+ 01 234 567 89</p>
           <p>Mon - Fri, 8:00-22:00</p>
-            </column>
-            <column md="4">
-              <btn tag="a" floating icon="envelope" class="blue accent-1"/>
+            </mdb-col>
+            <mdb-col md="4">
+              <mdb-btn tag="a" floating icon="envelope" class="blue accent-1"/>
           <p>info@gmail.com</p>
           <p>sale@gmail.com</p>
-            </column>
-          </row>
-        </column>
-      </row>
+            </mdb-col>
+          </mdb-row>
+        </mdb-col>
+      </mdb-row>
 
     </section>
 
-    </row>
+    </mdb-row>
       <hr class="mb-4" />
-    <row>
+    <mdb-row>
     <h2 class="mb-3 w-100">Full width map within contact form</h2>
     <section class="section">
       <h2 class="section-heading h1 pt-4 mb-5">Contact us</h2>
-        <card>
-          <card-body>
-            <google-map
+        <mdb-card>
+          <mdb-card-body>
+            <mdb-google-map
               name="form2"
               class="col-md-12"
               :markerCoordinates="coordinates"
@@ -174,38 +174,38 @@
               :wrapperStyle="{ height: '200px'}"
               wrapperClass="z-depth-1-half mb-4"
               >
-          </google-map>
-          <row>
-            <column md="6" class="mb-4">
+          </mdb-google-map>
+          <mdb-row>
+            <mdb-col md="6" class="mb-4">
               <mdb-input label="Your name" />
               <mdb-input label="Your email" />
               <mdb-input label="Subject" />
-            </column>
-            <column md="6" class="mb-4">
-            <md-textarea label="Your messge" :rows="5"/>
-            </column>
-            <column md="12">
+            </mdb-col>
+            <mdb-col md="6" class="mb-4">
+            <mdb-textarea label="Your messge" :rows="5"/>
+            </mdb-col>
+            <mdb-col md="12">
               <div class="text-center">
-                <btn color="mdb-color" block>Send Message</btn>
+                <mdb-btn color="mdb-color" block>Send Message</mdb-btn>
               </div>
-            </column>
-          </row>
-          </card-body>
-        </card>
+            </mdb-col>
+          </mdb-row>
+          </mdb-card-body>
+        </mdb-card>
     </section>
-    </row>
+    </mdb-row>
       <hr class="mb-4" />
-    <row>
+    <mdb-row>
     <h2 class="mb-3 w-100">Map within modal</h2>
-    <row class="w-100 mb-4" center>
-      <btn color="primary" @click.native="regular=true">Regular Map Modal</btn>
-      <btn color="default" @click.native="satellite=true">Satellite Map Modal</btn>
-      <btn color="secondary" @click.native="custom=true">Regular Map Modal</btn>
-    </row>
-      <!-- Regular Map Modal -->
-      <modal v-if="regular" @close="regular=false" size="lg">
-        <modal-body class="p-0">
-          <google-map
+    <mdb-row class="w-100 mb-4" center>
+      <mdb-btn color="primary" @click.native="regular=true">Regular Map mdbModal</mdb-btn>
+      <mdb-btn color="default" @click.native="satellite=true">Satellite Map mdbModal</mdb-btn>
+      <mdb-btn color="secondary" @click.native="custom=true">Regular Map mdbModal</mdb-btn>
+    </mdb-row>
+      <!-- Regular Map mdbModal -->
+      <mdb-modal v-if="regular" @close="regular=false" size="lg">
+        <mdb-modal-body class="p-0">
+          <mdb-google-map
             name="modal-reg"
             class="col-md-12"
             style="height: 400px; position: relative; overflow: hidden"
@@ -213,18 +213,18 @@
             :zoom="14"
             wrapperClass="z-depth-1-half"
             :modal="regular">
-          </google-map>
-        </modal-body>
-        <modal-footer center>
-          <btn color="info" size="md">Save location<fa icon="map-marker" class="ml-1"/></btn>
-          <btn outline="info" size="md" @click.native="regular=false">close<fa icon="times" class="ml-1"/></btn>
-        </modal-footer>
-      </modal>
+          </mdb-google-map>
+        </mdb-modal-body>
+        <mdb-modal-footer center>
+          <mdb-btn color="info" size="md">Save location<mdb-icon icon="map-marker" class="ml-1"/></mdb-btn>
+          <mdb-btn outline="info" size="md" @click.native="regular=false">close<mdb-icon icon="times" class="ml-1"/></mdb-btn>
+        </mdb-modal-footer>
+      </mdb-modal>
 
-      <!-- Satellite Map Modal -->
-      <modal v-if="satellite" @close="satellite=false" size="lg">
-        <modal-body class="p-0">
-          <google-map
+      <!-- Satellite Map mdbModal -->
+      <mdb-modal v-if="satellite" @close="satellite=false" size="lg">
+        <mdb-modal-body class="p-0">
+          <mdb-google-map
             name="modal-sat"
             class="col-md-12"
             style="height: 400px; position: relative; overflow: hidden"
@@ -233,18 +233,18 @@
             wrapperClass="z-depth-1-half"
             :modal="satellite"
             type="satellite">
-          </google-map>
-        </modal-body>
-        <modal-footer center>
-          <btn color="default" size="md">Save location<fa icon="map-marker" class="ml-1"/></btn>
-          <btn outline="default" size="md" @click.native="satellite=false">close<fa icon="times" class="ml-1"/></btn>
-        </modal-footer>
-      </modal>
+          </mdb-google-map>
+        </mdb-modal-body>
+        <mdb-modal-footer center>
+          <mdb-btn color="default" size="md">Save location<mdb-icon icon="map-marker" class="ml-1"/></mdb-btn>
+          <mdb-btn outline="default" size="md" @click.native="satellite=false">close<mdb-icon icon="times" class="ml-1"/></mdb-btn>
+        </mdb-modal-footer>
+      </mdb-modal>
 
-      <!-- Custom Map Modal -->
-      <modal v-if="custom" @close="custom=false" size="lg">
-        <modal-body class="p-0">
-          <google-map
+      <!-- Custom Map mdbModal -->
+      <mdb-modal v-if="custom" @close="custom=false" size="lg">
+        <mdb-modal-body class="p-0">
+          <mdb-google-map
             name="modal-custom"
             class="col-md-12"
             style="height: 400px; position: relative; overflow: hidden"
@@ -253,37 +253,37 @@
             :styles="styles"
             wrapperClass="z-depth-1-half"
             :modal="regular">
-          </google-map>
-        </modal-body>
-        <modal-footer center>
-          <btn color="secondary" size="md">Save location<fa icon="map-marker" class="ml-1"/></btn>
-          <btn outline="secondary" size="md" @click.native="custom=false">close<fa icon="times" class="ml-1"/></btn>
-        </modal-footer>
-      </modal>
-    </row>
-  </container>
+          </mdb-google-map>
+        </mdb-modal-body>
+        <mdb-modal-footer center>
+          <mdb-btn color="secondary" size="md">Save location<mdb-icon icon="map-marker" class="ml-1"/></mdb-btn>
+          <mdb-btn outline="secondary" size="md" @click.native="custom=false">close<mdb-icon icon="times" class="ml-1"/></mdb-btn>
+        </mdb-modal-footer>
+      </mdb-modal>
+    </mdb-row>
+  </mdb-container>
 
 </template>
 
 <script>
-import { Container, Row, GoogleMap, Column, Fa, Card, ViewWrapper, CardBody, mdbInput, MdTextarea, Btn, Modal, ModalBody, ModalFooter  } from 'mdbvue';
+import { mdbContainer, mdbRow, mdbGoogleMap, mdbCol, mdbIcon, mdbCard, ViewWrapper, mdbCardBody, mdbInput, mdbTextarea, mdbBtn, mdbModal, mdbModalBody, mdbModalFooter  } from 'mdbvue';
 export default {
   name:'GoogleMapsPage',
   components: {
-    Container,
-    Row,
-    GoogleMap,
-    Column,
-    Fa,
-    Card,
+    mdbContainer,
+    mdbRow,
+    mdbGoogleMap,
+    mdbCol,
+    mdbIcon,
+    mdbCard,
     ViewWrapper,
-    CardBody,
+    mdbCardBody,
     mdbInput,
-    MdTextarea,
-    Btn,
-    Modal,
-    ModalBody,
-    ModalFooter
+    mdbTextarea,
+    mdbBtn,
+    mdbModal,
+    mdbModalBody,
+    mdbModalFooter
   },
   data() {
     return {

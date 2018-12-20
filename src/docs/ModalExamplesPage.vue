@@ -1,50 +1,50 @@
 <template>
-  <container>
-    <row class="mt-5 align-items-center justify-content-start">
+  <mdb-container>
+    <mdb-row class="mt-5 align-items-center justify-content-start">
       <h4 style="margin: 0" class="grey-text"><strong>Modal Examples</strong></h4>
-      <a href="https://mdbootstrap.com/docs/vue/modals/basic/?utm_source=DemoApp&utm_medium=MDBVueFree" waves-fixed class="border grey-text px-2 border-light rounded ml-2" target="_blank"><fa icon="graduation-cap" class="mr-2"/>Docs</a>
-    </row>
+      <a href="https://mdbootstrap.com/docs/vue/modals/basic/?utm_source=DemoApp&utm_medium=MDBVueFree" waves-fixed class="border grey-text px-2 border-light rounded ml-2" target="_blank"><mdb-icon icon="graduation-cap" class="mr-2"/>Docs</a>
+    </mdb-row>
     <hr />
 
-    <row>
-      <column col="3">
-    <btn color="default" @click="cookies=true" class="mb-3">cookies</btn>
-    <modal v-if="cookies" removeBackdrop fullHeight position="bottom">
-      <modal-body>
-        <row center class="align-items-center">
+    <mdb-row>
+      <mdb-col col="3">
+    <mdb-btn color="default" @click="cookies=true" class="mb-3">cookies</mdb-btn>
+    <mdb-modal v-if="cookies" removeBackdrop fullHeight position="bottom">
+      <mdb-modal-body>
+        <mdb-row center class="align-items-center">
           <p class="pr-2 mb-0">We use cookies to improve your website experience</p>
-          <btn color="primary" @click="cookies = false" icon="book" iconClass="ml-1" iconRight>Learn more</btn>
-          <btn outline="primary" @click="cookies = false">Ok, thanks</btn>
-        </row>
-      </modal-body>
-    </modal>
+          <mdb-btn color="primary" @click="cookies = false" icon="book" iconClass="ml-1" iconRight>Learn more</mdb-btn>
+          <mdb-btn outline="primary" @click="cookies = false">Ok, thanks</mdb-btn>
+        </mdb-row>
+      </mdb-modal-body>
+    </mdb-modal>
 
-    <btn color="default" class="mb-3" @click="coupon=true">Coupon</btn>
-    <modal v-if="coupon" @close="coupon = false" removeBackdrop fullHeight position="top" success>
-      <modal-body>
-        <row center class="align-items-center" >
-          <h2><badge>v52gs1</badge></h2>
+    <mdb-btn color="default" class="mb-3" @click="coupon=true">Coupon</mdb-btn>
+    <mdb-modal v-if="coupon" @close="coupon = false" removeBackdrop fullHeight position="top" success>
+      <mdb-modal-body>
+        <mdb-row center class="align-items-center" >
+          <h2><mdb-badge>v52gs1</mdb-badge></h2>
           <p class="pt-3 mx-4">We have a gift for you! Use this code to get a
             <strong>10% discount</strong>.</p>
-          <btn color="success" @click="coupon = false" icon="book" iconClass="ml-1" iconColor="white" iconRight>Get it</btn>
-          <btn outline="success" @click="coupon = false">No, thanks</btn>
-        </row>
-      </modal-body>
-    </modal>
+          <mdb-btn color="success" @click="coupon = false" icon="book" iconClass="ml-1" iconColor="white" iconRight>Get it</mdb-btn>
+          <mdb-btn outline="success" @click="coupon = false">No, thanks</mdb-btn>
+        </mdb-row>
+      </mdb-modal-body>
+    </mdb-modal>
 
-    <btn color="default" class="mb-3" @click="discount=true">Discount</btn>
-    <modal v-if="discount" @close="discount = false" removeBackdrop side position="bottom-right" danger>
-      <modal-header>
+    <mdb-btn color="default" class="mb-3" @click="discount=true">Discount</mdb-btn>
+    <mdb-modal v-if="discount" @close="discount = false" removeBackdrop side position="bottom-right" danger>
+      <mdb-modal-header>
         <p class="heading">Discount offer:
           <strong>10% off</strong>
         </p>
-      </modal-header>
-      <modal-body>
-        <row>
-          <column col="3">
-            <fa icon="gift" size="4x"/>
-          </column>
-          <column col="9">
+      </mdb-modal-header>
+      <mdb-modal-body>
+        <mdb-row>
+          <mdb-col col="3">
+            <mdb-icon icon="gift" size="4x"/>
+          </mdb-col>
+          <mdb-col col="9">
             <p>
               Sharing is caring. Therefore, from time to time we like to give our visitors small gifts. Today is one of those days.</p>
             <p>
@@ -52,81 +52,81 @@
                 <u>one day</u>.</strong>
             </p>
             <h2>
-              <badge>v52gs1</badge>
+              <mdb-badge>v52gs1</mdb-badge>
             </h2>
-          </column>
-        </row>
-      </modal-body>
-      <modal-footer center>
-        <btn color="danger" tag="a" href="https://mdbootstrap.com/product/vue-bootstrap-pro/" target="_blank" icon="diamond" iconClass="ml-1" iconColor="white" iconRight>Get it</btn>
-        <btn outline="danger" @click="discount = false">No, thanks</btn>
-      </modal-footer>
-    </modal>
+          </mdb-col>
+        </mdb-row>
+      </mdb-modal-body>
+      <mdb-modal-footer center>
+        <mdb-btn color="danger" tag="a" href="https://mdbootstrap.com/product/vue-bootstrap-pro/" target="_blank" icon="diamond" iconClass="ml-1" iconColor="white" iconRight>Get it</mdb-btn>
+        <mdb-btn outline="danger" @click="discount = false">No, thanks</mdb-btn>
+      </mdb-modal-footer>
+    </mdb-modal>
 
-    <btn color="default" class="mb-3" @click="related=true">Related content</btn>
-    <modal v-if="related" @close="related = false" removeBackdrop side position="bottom-right" info>
-      <modal-header>
+    <mdb-btn color="default" class="mb-3" @click="related=true">Related content</mdb-btn>
+    <mdb-modal v-if="related" @close="related = false" removeBackdrop side position="bottom-right" info>
+      <mdb-modal-header>
         <p class="heading">Related article</p>
-      </modal-header>
-      <modal-body>
-        <row>
-          <column col="5">
+      </mdb-modal-header>
+      <mdb-modal-body>
+        <mdb-row>
+          <mdb-col col="5">
             <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(55).jpg" class="img-fluid" alt="Baloon floating in Mind-Space">
-          </column>
-          <column col="7">
+          </mdb-col>
+          <mdb-col col="7">
             <p><strong>My travel to paradise</strong></p>
              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit [...]</p>
-            <btn color="primary">Read more</btn>
-          </column>
-        </row>
-      </modal-body>
-    </modal>
+            <mdb-btn color="primary">Read more</mdb-btn>
+          </mdb-col>
+        </mdb-row>
+      </mdb-modal-body>
+    </mdb-modal>
 
-    <btn color="default" class="mb-3" @click="abandoned=true">Abandoned card</btn>
-    <modal v-if="abandoned" @close="abandoned = false" removeBackdrop side position="bottom-right" info>
-      <modal-header>
+    <mdb-btn color="default" class="mb-3" @click="abandoned=true">Abandoned card</mdb-btn>
+    <mdb-modal v-if="abandoned" @close="abandoned = false" removeBackdrop side position="bottom-right" info>
+      <mdb-modal-header>
         <p class="heading">Product in the cart</p>
-      </modal-header>
-      <modal-body>
-        <row>
-          <column col="3">
-            <p class="text-center mt-3"><fa icon="shopping-cart" size="4x"/></p>
-          </column>
-          <column col="9">
+      </mdb-modal-header>
+      <mdb-modal-body>
+        <mdb-row>
+          <mdb-col col="3">
+            <p class="text-center mt-3"><mdb-icon icon="shopping-cart" size="4x"/></p>
+          </mdb-col>
+          <mdb-col col="9">
             <p>Do you need more time to make a purchase decision?</p>
             <p>No pressure, your product will be waiting for you in the cart.</p>
-          </column>
-        </row>
-      </modal-body>
-      <modal-footer center>
-        <btn tag="a" color="primary">Go to cart</btn>
-        <btn tag="a" outline="primary" @click="abandoned=false">Cancel</btn>
-      </modal-footer>
-    </modal>
+          </mdb-col>
+        </mdb-row>
+      </mdb-modal-body>
+      <mdb-modal-footer center>
+        <mdb-btn tag="a" color="primary">Go to cart</mdb-btn>
+        <mdb-btn tag="a" outline="primary" @click="abandoned=false">Cancel</mdb-btn>
+      </mdb-modal-footer>
+    </mdb-modal>
 
 
-    <btn color="default" class="mb-3" @click="confirm=true">Confirm delete</btn>
-    <modal v-if="confirm" @close="confirm = false" size="sm" class="text-center" danger>
-      <modal-header center :close="false">
+    <mdb-btn color="default" class="mb-3" @click="confirm=true">Confirm delete</mdb-btn>
+    <mdb-modal v-if="confirm" @close="confirm = false" size="sm" class="text-center" danger>
+      <mdb-modal-header center :close="false">
         <p class="heading">Are you sure?</p>
-      </modal-header>
-      <modal-body>
-         <fa icon="times" size="4x" class="animated rotateIn"/>
-      </modal-body>
-      <modal-footer center>
-        <btn outline="danger" @click="confirm=false">Yes</btn>
-        <btn color="danger" @click="confirm=false">No</btn>
-      </modal-footer>
-    </modal>
+      </mdb-modal-header>
+      <mdb-modal-body>
+         <mdb-icon icon="times" size="4x" class="animated rotateIn"/>
+      </mdb-modal-body>
+      <mdb-modal-footer center>
+        <mdb-btn outline="danger" @click="confirm=false">Yes</mdb-btn>
+        <mdb-btn color="danger" @click="confirm=false">No</mdb-btn>
+      </mdb-modal-footer>
+    </mdb-modal>
 
-    <btn color="default" class="mb-3 mr-5" @click="poll=true">Poll</btn>
-    <modal v-if="poll" @close="poll = false" fullHeight info removeBackdrop>
-      <modal-header center :close="false">
+    <mdb-btn color="default" class="mb-3 mr-5" @click="poll=true">Poll</mdb-btn>
+    <mdb-modal v-if="poll" @close="poll = false" fullHeight info removeBackdrop>
+      <mdb-modal-header center :close="false">
         <p class="heading lead">Feedback request</p>
-      </modal-header>
-      <modal-body>
+      </mdb-modal-header>
+      <mdb-modal-body>
         <div class="text-center">
-          <fa icon="file-text-o" size="4x" class="mb-3 animated rotateIn"/>
+          <mdb-icon icon="file-text-o" size="4x" class="mb-3 animated rotateIn"/>
           <p><strong>Your opinion matters</strong></p>
           <p>Have some ideas how to improve our product?
           <strong>Give us your feedback.</strong></p>
@@ -136,31 +136,31 @@
           <strong>Your rating</strong>
         </p>
 
-        <Input type="radio"
+        <mdb-input type="radio"
           id="option1-1"
           name="option1"
           value="option1"
           label="Very good"
         />
-        <Input type="radio"
+        <mdb-input type="radio"
           id="option1-2"
           name="option1"
           value="option2"
           label="Good"
         />
-        <Input type="radio"
+        <mdb-input type="radio"
           id="option1-3"
           name="option1"
           value="option3"
           label="Mediocre"
         />
-        <Input type="radio"
+        <mdb-input type="radio"
           id="option1-4"
           name="option1"
           value="option4"
           label="Bad"
         />
-        <Input type="radio"
+        <mdb-input type="radio"
           id="option1-5"
           name="option1"
           value="option5"
@@ -169,30 +169,30 @@
         <p class="text-center">
           <strong>What could we improve?</strong>
         </p>
-        <md-textarea :rows="3" label="Your message"/>
-      </modal-body>
-      <modal-footer center>
-        <btn color="primary" @click="poll=false" icon="paper-plane" iconRight iconClass="ml-1 white-text">Send</btn>
-        <btn outline="primary" @click="poll=false">Cancel</btn>
-      </modal-footer>
-    </modal>
+        <mdb-textarea :rows="3" label="Your message"/>
+      </mdb-modal-body>
+      <mdb-modal-footer center>
+        <mdb-btn color="primary" @click="poll=false" icon="paper-plane" iconRight iconClass="ml-1 white-text">Send</mdb-btn>
+        <mdb-btn outline="primary" @click="poll=false">Cancel</mdb-btn>
+      </mdb-modal-footer>
+    </mdb-modal>
 
-    <btn color="default" class="mb-3 mr-5" @click="cart=true">Cart</btn>
-    <modal v-if="cart" @close="cart = false" class="text-center">
-      <modal-header>
+    <mdb-btn color="default" class="mb-3 mr-5" @click="cart=true">Cart</mdb-btn>
+    <mdb-modal v-if="cart" @close="cart = false" class="text-center">
+      <mdb-modal-header>
         <h4 class="modal-title" id="myModalLabel">Your cart</h4>
-      </modal-header>
-      <modal-body>
-         <tbl hover>
-           <tbl-head>
+      </mdb-modal-header>
+      <mdb-modal-body>
+         <mdb-tbl hover>
+           <mdb-tbl-head>
             <tr>
               <th>#</th>
               <th>Product name</th>
               <th>Price</th>
               <th>Remove</th>
             </tr>
-           </tbl-head>
-           <tbl-body>
+           </mdb-tbl-head>
+           <mdb-tbl-body>
             <tr>
               <th scope="row">1</th>
               <td>Product 1</td>
@@ -223,86 +223,86 @@
               <td>400$</td>
               <td></td>
             </tr>
-           </tbl-body>
-         </tbl>
-      </modal-body>
-      <modal-footer>
-        <btn outline="primary" @click="cart=false">Close</btn>
-        <btn color="primary" @click="cart=false">Checkout</btn>
-      </modal-footer>
-    </modal>
+           </mdb-tbl-body>
+         </mdb-tbl>
+      </mdb-modal-body>
+      <mdb-modal-footer>
+        <mdb-btn outline="primary" @click="cart=false">Close</mdb-btn>
+        <mdb-btn color="primary" @click="cart=false">Checkout</mdb-btn>
+      </mdb-modal-footer>
+    </mdb-modal>
 
 
-    <btn color="default" class="mb-3" @click="push=true">Push</btn>
-    <modal v-if="push" @close="push = false" class="text-center" info>
-      <modal-header center :close="false">
+    <mdb-btn color="default" class="mb-3" @click="push=true">Push</mdb-btn>
+    <mdb-modal v-if="push" @close="push = false" class="text-center" info>
+      <mdb-modal-header center :close="false">
         <p class="heading">Be always up to date</p>
-      </modal-header>
-      <modal-body>
-        <fa icon="bell" size="4x" class="animated rotateIn mb-4"/>
+      </mdb-modal-header>
+      <mdb-modal-body>
+        <mdb-icon icon="bell" size="4x" class="animated rotateIn mb-4"/>
         <p>Do you want to receive the push notification about the newest posts?</p>
-      </modal-body>
-      <modal-footer center>
-        <btn outline="primary" @click="push=false" tag="a" href="https://mdbootstrap.com/docs/vue/newsletter/" target="_blank">Yes</btn>
-        <btn color="primary" @click="push=false">No</btn>
-      </modal-footer>
-    </modal>
+      </mdb-modal-body>
+      <mdb-modal-footer center>
+        <mdb-btn outline="primary" @click="push=false" tag="a" href="https://mdbootstrap.com/docs/vue/newsletter/" target="_blank">Yes</mdb-btn>
+        <mdb-btn color="primary" @click="push=false">No</mdb-btn>
+      </mdb-modal-footer>
+    </mdb-modal>
 
-    <btn color="default" class="mb-3" @click="share=true">Social Share</btn>
-    <modal v-if="share" @close="share = false" cascade >
-      <modal-header color="light-blue darken-3 white-text">
-          <h4 class="title"><fa icon="users"/> Spreed the word!</h4>
-      </modal-header>
-      <modal-body class="text-center">
-        <btn floating tag="a" class="btn-fb" icon="facebook"/>
-        <btn floating tag="a" class="btn-tw" icon="twitter"/>
-        <btn floating tag="a" class="btn-gplus" icon="google-plus"/>
-        <btn floating tag="a" class="btn-li" icon="linkedin"/>
-        <btn floating tag="a" class="btn-ins" icon="instagram"/>
-        <btn floating tag="a" class="btn-pin" icon="pinterest"/>
-        <btn floating tag="a" class="btn-yt" icon="youtube"/>
-        <btn floating tag="a" class="btn-dribbble" icon="dribbble"/>
-        <btn floating tag="a" class="btn-vk" icon="vk"/>
-        <btn floating tag="a" class="btn-so" icon="stack-overflow"/>
-        <btn floating tag="a" class="btn-slack" icon="slack"/>
-        <btn floating tag="a" class="btn-git" icon="github"/>
-        <btn floating tag="a" class="btn-comm" icon="comments"/>
-        <btn floating tag="a" class="btn-email" icon="envelope"/>
-      </modal-body>
-    </modal>
-      </column>
-    </row>
-  </container>
+    <mdb-btn color="default" class="mb-3" @click="share=true">Social Share</mdb-btn>
+    <mdb-modal v-if="share" @close="share = false" cascade >
+      <mdb-modal-header color="light-blue darken-3 white-text">
+          <h4 class="title"><mdb-icon icon="users"/> Spreed the word!</h4>
+      </mdb-modal-header>
+      <mdb-modal-body class="text-center">
+        <mdb-btn floating tag="a" class="btn-fb" icon="facebook"/>
+        <mdb-btn floating tag="a" class="btn-tw" icon="twitter"/>
+        <mdb-btn floating tag="a" class="btn-gplus" icon="google-plus"/>
+        <mdb-btn floating tag="a" class="btn-li" icon="linkedin"/>
+        <mdb-btn floating tag="a" class="btn-ins" icon="instagram"/>
+        <mdb-btn floating tag="a" class="btn-pin" icon="pinterest"/>
+        <mdb-btn floating tag="a" class="btn-yt" icon="youtube"/>
+        <mdb-btn floating tag="a" class="btn-dribbble" icon="dribbble"/>
+        <mdb-btn floating tag="a" class="btn-vk" icon="vk"/>
+        <mdb-btn floating tag="a" class="btn-so" icon="stack-overflow"/>
+        <mdb-btn floating tag="a" class="btn-slack" icon="slack"/>
+        <mdb-btn floating tag="a" class="btn-git" icon="github"/>
+        <mdb-btn floating tag="a" class="btn-comm" icon="comments"/>
+        <mdb-btn floating tag="a" class="btn-email" icon="envelope"/>
+      </mdb-modal-body>
+    </mdb-modal>
+      </mdb-col>
+    </mdb-row>
+  </mdb-container>
 </template>
 
 <script>
-import {Container, Row, Column, Fa, Btn, Modal, ModalHeader, ModalBody, ModalFooter, ModalTitle, Badge, Input, MdTextarea, Tbl, TblHead, TblBody, Carousel, CarouselItem, CarouselIndicators, CarouselIndicator, Accordion, CardBody } from 'mdbvue';
+import { mdbContainer, mdbRow, mdbCol, mdbIcon, mdbBtn, mdbModal, mdbModalHeader, mdbModalBody, mdbModalFooter, mdbModalTitle, mdbBadge, mdbInput, mdbTextarea, mdbTbl, mdbTblHead, mdbTblBody, mdbCarousel, mdbCarouselItem, mdbCarouselIndicators, mdbCarouselIndicator, mdbAccordion, mdbCardBody } from 'mdbvue';
 
 export default {
   name: 'ModalExamplesPage',
   components: {
-    Container,
-    Row,
-    Column,
-    Fa,
-    Btn,
-    Modal,
-    ModalHeader,
-    ModalBody,
-    ModalFooter,
-    ModalTitle,
-    Badge,
-    Input,
-    MdTextarea,
-    Tbl,
-    TblHead,
-    TblBody,
-    Carousel,
-    CarouselItem,
-    CarouselIndicators,
-    CarouselIndicator,
-    Accordion,
-    CardBody
+    mdbContainer,
+    mdbRow,
+    mdbCol,
+    mdbIcon,
+    mdbBtn,
+    mdbModal,
+    mdbModalHeader,
+    mdbModalBody,
+    mdbModalFooter,
+    mdbModalTitle,
+    mdbBadge,
+    mdbInput,
+    mdbTextarea,
+    mdbTbl,
+    mdbTblHead,
+    mdbTblBody,
+    mdbCarousel,
+    mdbCarouselItem,
+    mdbCarouselIndicators,
+    mdbCarouselIndicator,
+    mdbAccordion,
+    mdbCardBody
   },
   data() {
     return {

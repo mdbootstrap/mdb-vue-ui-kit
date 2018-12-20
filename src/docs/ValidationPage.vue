@@ -1,11 +1,11 @@
 <template>
-  <container>
-    <row class="mt-5 align-items-center justify-content-start">
+  <mdb-container>
+    <mdb-row class="mt-5 align-items-center justify-content-start">
       <h4 style="margin: 0" class="grey-text"><strong>Form Validation</strong></h4>
-      <a href="https://mdbootstrap.com/docs/vue/forms/validation/?utm_source=DemoApp&utm_medium=MDBVueFree" waves-fixed class="border grey-text px-2 border-light rounded ml-2" target="_blank"><fa icon="graduation-cap" class="mr-2"/>Docs</a>
-    </row>
+      <a href="https://mdbootstrap.com/docs/vue/forms/validation/?utm_source=DemoApp&utm_medium=MDBVueFree" waves-fixed class="border grey-text px-2 border-light rounded ml-2" target="_blank"><mdb-icon icon="graduation-cap" class="mr-2"/>Docs</a>
+    </mdb-row>
     <hr />
-    <container class="mt-5">
+    <mdb-container class="mt-5">
       <h1 class="my-5">Form Validation</h1>
       <!-- Custom styles -->
       <h2 class="my-5">Custom styles</h2>
@@ -72,7 +72,7 @@
             </div>
           </div>
         </div>
-        <btn type="submit">Submit form</btn>
+        <mdb-btn type="submit">Submit form</mdb-btn>
       </form>
 
       <!-- Supported elements -->
@@ -165,22 +165,22 @@
             </div>
           </div>
         </div>
-        <btn type="submit">Submit form</btn>
+        <mdb-btn type="submit">Submit form</mdb-btn>
       </form>
-    </container>
-  </container>
+    </mdb-container>
+  </mdb-container>
 </template>
 
 <script>
-import { Container, Btn, Fa, Row } from "mdbvue";
+import { mdbContainer, mdbBtn, mdbIcon, mdbRow } from "mdbvue";
 
 export default {
   name: "InputsPage",
   components: {
-    Container,
-    Btn,
-    Fa,
-    Row
+    mdbContainer,
+    mdbBtn,
+    mdbIcon,
+    mdbRow
   },
   data() {
     return {

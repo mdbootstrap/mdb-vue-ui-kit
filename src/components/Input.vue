@@ -14,7 +14,7 @@
       @click="wave"
       @change="onChange"
       ref="input"
-      @input="onChange"
+      @input="onInput"
       :name="name"
       :required="required"
       :checked="innerChecked"
@@ -133,6 +133,17 @@ const Input = {
       innerChecked: this.checked
     };
   },
+  mounted() {
+    if (this.type === "checkbox") {
+      this.$emit('change', this.innerChecked);
+    } else if (this.type === "radio") {
+      if (this.checked) {
+        this.$emit('input', this.innerValue);
+      }
+    } else {
+      this.$emit('input', this.innerValue);
+    }
+  },
   computed: {
     className() {
       return classNames(
@@ -198,18 +209,29 @@ const Input = {
       }
     },
     onChange(e) {
-      if (this.type == "text" || this.type == "email" || this.type == "password" || this.type == "radio") {
-        this.$emit('input', e.target.value);
-        this.innerValue = e.target.value;
-      }
-      if (this.type == "checkbox") {
+      if (this.type === "checkbox") {
         this.$emit('change', e.target.checked);
         this.innerChecked = e.target.checked;
       }
-      this.$forceUpdate();
+      else {
+        this.$emit('change', e.target.value);
+      }
     },
+    onInput(e) {
+      if (this.type !== "checkbox") {
+        this.$emit('input', e.target.value);
+        this.innerValue = e.target.value;
+      }
+    }
   },
-  mixins: [waves]
+  mixins: [waves],
+  watch: {
+    value(val) {
+      this.$refs.input.value = val;
+      this.innerValue = val;
+      this.$emit('change', this.innerValue);
+    }
+  }
 };
 
 export default Input;

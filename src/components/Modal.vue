@@ -3,10 +3,10 @@
     @enter="enter"
     @after-enter="afterEnter"
     @before-leave="beforeLeave"
-    @after-leave="afterLeave"
+    @after-leave="afterLeave" 
   >
-    <component :is="tag" :class="wrapperClass">
-      <div :class="dialogClass" role="document" v-on-clickaway="away">
+    <component :is="tag" :class="wrapperClass" @click.self="away">
+      <div :class="dialogClass" role="document" >
         <div :class="contentClass" :style="computedContentStyle">
           <slot></slot>
         </div>

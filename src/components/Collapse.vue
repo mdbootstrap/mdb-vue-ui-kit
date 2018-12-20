@@ -1,7 +1,7 @@
 <template>
   <div>
     <component v-for="(toggler, index) in togglers" :key="index" :is="toggleTag[index]" :class="btnClass" @click.prevent="collapse = !collapse">{{toggleText[index]}}</component>
-    <transition @before-enter="beforeEnter" @after-enter="afterEnter" @before-leave="beforeLeave">
+    <transition @before-enter="beforeEnter" @enter="enter" @before-leave="beforeLeave" @leave="leave">
       <div ref="collapseContent" v-if="collapse" class="collapse show collapse-item">
         <slot></slot>
       </div>
@@ -43,12 +43,15 @@ const Collapse = {
   },
   methods: {
     beforeEnter(el) {
-      el.style.height = 0;
+      el.style.height = '0';
     },
-    afterEnter(el) {
-      el.style.height = this.height + 'px';
+    enter(el) {
+      el.style.height = el.scrollHeight + 'px';
     },
     beforeLeave(el) {
+      el.style.height = el.scrollHeight + 'px';
+    },
+    leave(el) {
       el.style.height = '0';
     }
   },

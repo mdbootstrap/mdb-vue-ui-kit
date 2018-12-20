@@ -1,11 +1,11 @@
 <template>
-  <container class="mt-5">
-    <row class="mt-5 align-items-center justify-content-start">
+  <mdb-container class="mt-5">
+    <mdb-row class="mt-5 align-items-center justify-content-start">
       <h4 style="margin: 0" class="grey-text"><strong>Background Image </strong></h4>
-      <a href="https://mdbootstrap.com/docs/vue/css/background-image/?utm_source=DemoApp&utm_medium=MDBVueFree" waves-fixed class="border grey-text px-2 border-light rounded ml-2" target="_blank"><fa icon="graduation-cap" class="mr-2"/>Docs</a>
-    </row>
+      <a href="https://mdbootstrap.com/docs/vue/css/background-image/?utm_source=DemoApp&utm_medium=MDBVueFree" waves-fixed class="border grey-text px-2 border-light rounded ml-2" target="_blank"><mdb-icon icon="graduation-cap" class="mr-2"/>Docs</a>
+    </mdb-row>
     <hr class="mb-4" />
-    <row>
+    <mdb-row>
       <h2 class="mb-3">Full Page Background Image</h2>
       <pre><code>
 &lt;template>
@@ -35,9 +35,9 @@
 &lt;/style>
 </code></pre>
 
-    </row>
+    </mdb-row>
     <hr class="mb-4" />
-    <row>
+    <mdb-row>
       <h2 class="mb-3">Half Page Background Image</h2>
 
             <pre><code>
@@ -67,42 +67,42 @@
   }
 &lt;/style></code></pre>
 
-    </row>
+    </mdb-row>
     <hr class="mb-4" />
-    <row>
+    <mdb-row>
       <h2 class="mb-3 w-100">Background image layout - first option</h2>
-      <btn tag="a" href="#/sections/app" outline="primary" rounded>see live preview</btn>
+      <mdb-btn tag="a" href="#/sections/app" outline="primary" rounded>see live preview</mdb-btn>
 
-    </row>
+    </mdb-row>
     <hr class="mb-4" />
-    <row>
+    <mdb-row>
       <h2 class="mb-3 w-100">Background image layout - second option</h2>
-      <btn tag="a" href="#/sections/classic" outline="primary" rounded>see live preview</btn>
+      <mdb-btn tag="a" href="#/sections/classic" outline="primary" rounded>see live preview</mdb-btn>
 
-    </row>
+    </mdb-row>
     <hr class="mb-4" />
-    <row>
+    <mdb-row>
       <h2 class="mb-3">Background image layout - third option -> SOON</h2>
 
-    </row>
+    </mdb-row>
     <hr class="mb-4" />
-    <row>
+    <mdb-row>
       <h2 class="mb-3 w-100">Background video layout</h2>
-      <btn tag="a" href="#/sections/video" outline="primary" rounded>see live preview</btn>
-    </row>
-  </container>
+      <mdb-btn tag="a" href="#/sections/video" outline="primary" rounded>see live preview</mdb-btn>
+    </mdb-row>
+  </mdb-container>
 </template>
 
 <script>
-import { Container, Row, Fa, Btn } from 'mdbvue';
+import { mdbContainer, mdbRow, mdbIcon, mdbBtn } from 'mdbvue';
 
 export default {
   name: 'BackgroundImagePage',
   components: {
-    Container,
-    Row,
-    Fa,
-    Btn
+    mdbContainer,
+    mdbRow,
+    mdbIcon,
+    mdbBtn
   }
 };
 </script>

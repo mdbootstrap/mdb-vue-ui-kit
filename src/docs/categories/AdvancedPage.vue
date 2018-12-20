@@ -1,72 +1,72 @@
 <template>
-  <container>
-    <row>
-      <column md="8" class="mx-auto">
-        <jumbotron class="mt-5">
-          <h1 class="pb-2"><Fa icon="code" class="grey-text mr-2" />Advanced</h1>
+  <mdb-container>
+    <mdb-row>
+      <mdb-col md="8" class="mx-auto">
+        <mdb-jumbotron class="mt-5">
+          <h1 class="pb-2"><mdb-icon icon="code" class="grey-text mr-2" />Advanced</h1>
           <h6 class="my-3">FREE</h6>
-          <list-group>
+          <mdb-list-group>
             <!-- FREE -->
-            <navbar-item class="list-group-item list-group-item-action" router href="/advanced/accordion">
+            <mdb-nav-item class="list-group-item list-group-item-action" router href="/advanced/accordion">
               <h5 class="justify-content-between d-flex align-items-center">
-                Accordion <fa icon="angle-right"/>
+                Accordion <mdb-icon icon="angle-right"/>
               </h5>
-            </navbar-item>
-            <navbar-item class="list-group-item list-group-item-action" router href="/advanced/carousel">
+            </mdb-nav-item>
+            <mdb-nav-item class="list-group-item list-group-item-action" router href="/advanced/carousel">
               <h5 class="justify-content-between d-flex align-items-center">
-                Carousel<fa icon="angle-right"/>
+                Carousel<mdb-icon icon="angle-right"/>
               </h5>
-            </navbar-item>
-            <navbar-item class="list-group-item list-group-item-action" router href="/advanced/chart">
+            </mdb-nav-item>
+            <mdb-nav-item class="list-group-item list-group-item-action" router href="/advanced/chart">
               <h5 class="justify-content-between d-flex align-items-center">
-                Charts<fa icon="angle-right"/>
+                Charts<mdb-icon icon="angle-right"/>
               </h5>
-            </navbar-item>
-            <navbar-item class="list-group-item list-group-item-action" router href="/advanced/collapse">
+            </mdb-nav-item>
+            <mdb-nav-item class="list-group-item list-group-item-action" router href="/advanced/collapse">
               <h5 class="justify-content-between d-flex align-items-center">
-                Collapse<fa icon="angle-right"/>
+                Collapse<mdb-icon icon="angle-right"/>
               </h5>
-            </navbar-item>
-            <navbar-item class="list-group-item list-group-item-action" router href="/advanced/maps">
+            </mdb-nav-item>
+            <mdb-nav-item class="list-group-item list-group-item-action" router href="/advanced/maps">
               <h5 class="justify-content-between d-flex align-items-center">
-                Google Maps<fa icon="angle-right"/>
+                Google Maps<mdb-icon icon="angle-right"/>
               </h5>
-            </navbar-item>
-            <navbar-item class="list-group-item list-group-item-action" router href="/advanced/popover">
+            </mdb-nav-item>
+            <mdb-nav-item class="list-group-item list-group-item-action" router href="/advanced/popover">
               <h5 class="justify-content-between d-flex align-items-center">
-                Popover<fa icon="angle-right"/>
+                Popover<mdb-icon icon="angle-right"/>
               </h5>
-            </navbar-item>
-            <navbar-item class="list-group-item list-group-item-action" router href="/advanced/tooltip">
+            </mdb-nav-item>
+            <mdb-nav-item class="list-group-item list-group-item-action" router href="/advanced/tooltip">
               <h5 class="justify-content-between d-flex align-items-center">
-                Tooltip<fa icon="angle-right"/>
+                Tooltip<mdb-icon icon="angle-right"/>
               </h5>
-            </navbar-item>
-            <navbar-item class="list-group-item list-group-item-action" router href="/advanced/videocarousel">
+            </mdb-nav-item>
+            <mdb-nav-item class="list-group-item list-group-item-action" router href="/advanced/videocarousel">
               <h5 class="justify-content-between d-flex align-items-center">
-                Video Carousel<fa icon="angle-right"/>
+                Video Carousel<mdb-icon icon="angle-right"/>
               </h5>
-            </navbar-item>
-          </list-group>
-        </jumbotron>
-      </column>
-    </row>
-  </container>
+            </mdb-nav-item>
+          </mdb-list-group>
+        </mdb-jumbotron>
+      </mdb-col>
+    </mdb-row>
+  </mdb-container>
 </template>
 
 <script>
-import { Container, Row, Column, Fa, Jumbotron, NavbarItem, ListGroup } from 'mdbvue';
+import { mdbContainer, mdbRow, mdbCol, mdbIcon, mdbJumbotron, mdbNavItem, mdbListGroup } from 'mdbvue';
 
 export default {
   name: 'AdvancedPage',
   components: {
-    Container,
-    Row,
-    Column,
-    Fa,
-    Jumbotron,
-    NavbarItem,
-    ListGroup
+    mdbContainer,
+    mdbRow,
+    mdbCol,
+    mdbIcon,
+    mdbJumbotron,
+    mdbNavItem,
+    mdbListGroup
   }
 };
 </script>

@@ -1,15 +1,15 @@
 <template>
   <div style="background: #ededed; padding-bottom: 100px">
   <!-- Purple Header -->
-    <edge-header color="indigo"></edge-header>
+    <mdb-edge-header color="indigo"></mdb-edge-header>
 
-    <!-- Main Container -->
-    <container free-bird>
-      <row>
-        <column md="8" lg="7" class="mx-auto float-none white z-depth-1 py-2 px-2">
+    <!-- MainmdbContainer -->
+    <mdb-container free-bird>
+      <mdb-row>
+        <mdb-col md="8" lg="7" class="mx-auto float-none white z-depth-1 py-2 px-2">
 
           <!--Naked Form-->
-          <card-body>
+          <mdb-card-body>
             <h2 class="h2-responsive"><strong>Material Design Edge Headers</strong></h2>
             <p class="pb-4">Example of Material Design Form</p>
 
@@ -35,7 +35,7 @@
               <!--Textarea with icon-->
               <h5 class="h5-responsive">Textarea</h5>
               <div class="md-form">
-                <md-textarea type="text" label="Textarea" icon="pencil"></md-textarea>
+                <mdb-textarea type="text" label="Textarea" icon="pencil"></mdb-textarea>
               </div>
 
               <h5 class="h5-responsive">Disabled field</h5>
@@ -52,29 +52,29 @@
                 <p style="font-weight:300;font-size:0.75rem">Never submit your passwords here</p>
             </div>
 
-          </card-body>
+          </mdb-card-body>
           <!--Naked Form-->
 
-        </column>
-      </row>
-    </container>
-  <!-- /.Main Container -->
+        </mdb-col>
+      </mdb-row>
+    </mdb-container>
+  <!-- /.MainmdbContainer -->
   </div>
 </template>
 
 <script>
-import { EdgeHeader, Container, Row, Column, CardBody, mdbInput, MdTextarea } from 'mdbvue';
+import { mdbEdgeHeader, mdbContainer, mdbRow, mdbCol, mdbCardBody, mdbInput, mdbTextarea } from 'mdbvue';
 
 export default {
   name: 'EdgeHeaderPage',
   components: {
-    EdgeHeader,
-    Container,
-    Row,
-    Column,
-    CardBody,
+    mdbEdgeHeader,
+    mdbContainer,
+    mdbRow,
+    mdbCol,
+    mdbCardBody,
     mdbInput,
-    MdTextarea
+    mdbTextarea
   }
 };
 </script>

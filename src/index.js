@@ -69,10 +69,9 @@ import PageItem, { mdbPageItem } from './components/PageItem';
 import PageNav, { mdbPageNav } from './components/PageNav';
 import Pagination, { mdbPagination } from './components/Pagination';
 import Popover, { mdbPopover } from './components/Popover';
-import ProgressBar, { mdbProgress } from './components/ProgressBar';
-import ProgressWrapper, { mdbProgressWrapper } from './components/ProgressWrapper';
+import Progress, { mdbProgress } from './components/Progress';
 import Row, { mdbRow } from './components/Row';
-import Tbl, { mdbTable } from './components/Table';
+import Tbl, { mdbTbl } from './components/Table';
 import TblBody, { mdbTblBody } from './components/TableBody';
 import TblHead, { mdbTblHead } from './components/TableHead';
 import Tooltip, { mdbTooltip } from './components/Tooltip';
@@ -149,8 +148,7 @@ export {
   PageNav,
   Pagination,
   Popover,
-  ProgressBar,
-  ProgressWrapper,
+  Progress,
   Row,
   Tbl,
   TblBody,
@@ -227,12 +225,11 @@ export {
   mdbPagination,
   mdbPopover,
   mdbProgress,
-  mdbProgressWrapper,
   mdbRow,
-  mdbTable,
+  mdbTbl,
   mdbTblBody,
   mdbTblHead,
   mdbTextarea,
   mdbTooltip,
-  mdbView,
+  mdbView
 };

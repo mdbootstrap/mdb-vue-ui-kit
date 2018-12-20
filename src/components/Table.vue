@@ -121,7 +121,7 @@ const Tbl = {
 };
 
 export default Tbl;
-export { Tbl as mdbTable };
+export { Tbl as mdbTbl };
 </script>
 
 <style scoped>

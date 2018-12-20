@@ -63,6 +63,10 @@ const Navbar = {
     },
     togglerClass: {
       type: String
+    },
+    double: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -82,7 +86,8 @@ const Navbar = {
             this.expand === 'large' ? 'navbar-expand-lg' : 'navbar-expand-lx',
         this.position === 'top' ? 'fixed-top' :
           this.position === 'bottom' ? 'fixed-bottom' : '',
-        this.scrolling ? 'scrolling-navbar' : ''
+        this.scrolling && 'scrolling-navbar',
+        this.double && 'double-nav'
       );
     },
     navTogglerIcon() {
@@ -131,8 +136,10 @@ const Navbar = {
         this.toggleClicked = true;
       }
     },
-    close() {
-      if (window.innerWidth > 990) {return;}
+    close(e) {
+      if (window.innerWidth > 990) return;
+      if (e.target.classList.contains('dropdown-toggle')) return;
+      if (e.target.tagName === 'INPUT') return;
       this.collapse.classList.add('hide-navbar');
       this.collapse.classList.remove('show-navbar');
       this.collapse.style.overflow = 'hidden';

@@ -1,14 +1,14 @@
 <template>
-  <container>
-    <row class="mt-5 align-items-center justify-content-start">
+  <mdb-container>
+    <mdb-row class="mt-5 align-items-center justify-content-start">
       <h4 style="margin: 0" class="grey-text"><strong>Forms</strong></h4>
-      <a href="https://mdbootstrap.com/docs/vue/forms/basic/?utm_source=DemoApp&utm_medium=MDBVueFree" waves-fixed class="border grey-text px-2 border-light rounded ml-2" target="_blank"><fa icon="graduation-cap" class="mr-2"/>Docs</a>
-    </row>
+      <a href="https://mdbootstrap.com/docs/vue/forms/basic/?utm_source=DemoApp&utm_medium=MDBVueFree" waves-fixed class="border grey-text px-2 border-light rounded ml-2" target="_blank"><mdb-icon icon="graduation-cap" class="mr-2"/>Docs</a>
+    </mdb-row>
     <hr />
-    <container>
+    <mdb-container>
       <h2 class="my-5">Form login</h2>
-      <row>
-        <column md="6">
+      <mdb-row>
+        <mdb-col md="6">
           <form>
             <p class="h4 text-center mb-4">Sign in</p>
             <div class="grey-text">
@@ -16,11 +16,11 @@
               <mdb-input label="Your password" icon="lock" type="password"/>
             </div>
             <div class="text-center">
-              <btn>Login</btn>
+              <mdb-btn>Login</mdb-btn>
             </div>
           </form>
-        </column>
-        <column md="6">
+        </mdb-col>
+        <mdb-col md="6">
           <form>
             <p class="h4 text-center mb-4">Sign in</p>
             <label for="defaultFormLoginEmailEx" class="grey-text">Your email</label>
@@ -32,11 +32,11 @@
               <button class="btn btn-indigo" type="submit">Login</button>
             </div>
           </form>
-        </column>
-      </row>
+        </mdb-col>
+      </mdb-row>
       <h2 class="my-5">Form register</h2>
-      <row>
-        <column md="6">
+      <mdb-row>
+        <mdb-col md="6">
           <form>
             <p class="h4 text-center mb-4">Sign up</p>
             <div class="grey-text">
@@ -46,11 +46,11 @@
               <mdb-input label="Your password" icon="lock" type="password"/>
             </div>
             <div class="text-center">
-              <btn color="primary">Register</btn>
+              <mdb-btn color="primary">Register</mdb-btn>
             </div>
           </form>
-        </column>
-        <column md="6">
+        </mdb-col>
+        <mdb-col md="6">
           <form>
             <p class="h4 text-center mb-4">Sign up</p>
             <label for="defaultFormRegisterNameEx" class="grey-text">Your name</label>
@@ -68,11 +68,11 @@
               <button class="btn btn-unique" type="submit">Register</button>
             </div>
           </form>
-        </column>
-      </row>
+        </mdb-col>
+      </mdb-row>
       <h2 class="my-5">Form subscription</h2>
-      <row>
-        <column md="6">
+      <mdb-row>
+        <mdb-col md="6">
           <form>
             <p class="h5 text-center mb-4">Subscribe</p>
             <div class="grey-text">
@@ -80,11 +80,11 @@
               <mdb-input label="Your email" icon="envelope" type="email"/>
             </div>
             <div class="text-center">
-              <btn outline="info">Send <fa icon="paper-plane-o" class="ml-1"/></btn>
+              <mdb-btn outline="info">Send <mdb-icon icon="paper-plane-o" class="ml-1"/></mdb-btn>
             </div>
           </form>
-        </column>
-        <column md="6">
+        </mdb-col>
+        <mdb-col md="6">
           <form>
             <p class="h4 text-center mb-4">Subscribe</p>
             <label for="defaultFormSubscriptionNameEx" class="grey-text">Your name</label>
@@ -96,25 +96,25 @@
               <button class="btn btn-outline-purple" type="submit">Send<i class="fa fa-paper-plane-o ml-2"></i></button>
             </div>
           </form>
-        </column>
-      </row>
+        </mdb-col>
+      </mdb-row>
       <h2 class="my-5">Form contact</h2>
-      <row>
-        <column md="6">
+      <mdb-row>
+        <mdb-col md="6">
           <form>
             <p class="h4 text-center mb-4">Write to us</p>
             <div class="grey-text">
               <mdb-input label="Your name" icon="user" group type="text" validate error="wrong" success="right"/>
               <mdb-input label="Your email" icon="envelope" group type="email" validate error="wrong" success="right"/>
               <mdb-input label="Subject" icon="tag" group type="text" validate error="wrong" success="right"/>
-              <md-textarea :rows="2" label="Your message" icon="pencil"/>
+              <mdb-textarea :rows="2" label="Your message" icon="pencil"/>
             </div>
             <div class="text-center">
-              <btn outline="secondary">Send <Fa icon="paper-plane-o" class="ml-1"/></btn>
+              <mdb-btn outline="secondary">Send <mdb-icon icon="paper-plane-o" class="ml-1"/></mdb-btn>
             </div>
           </form>
-        </column>
-        <column md="6">
+        </mdb-col>
+        <mdb-col md="6">
           <form>
             <p class="h4 text-center mb-4">Write to us</p>
             <label for="defaultFormContactNameEx" class="grey-text">Your name</label>
@@ -132,13 +132,13 @@
               <button class="btn btn-outline-warning" type="submit">Send<i class="fa fa-paper-plane-o ml-2"></i></button>
             </div>
           </form>
-        </column>
-      </row>
+        </mdb-col>
+      </mdb-row>
       <h2 class="my-5">A form within a card</h2>
-      <row>
-        <column md="6">
-          <card>
-            <card-body>
+      <mdb-row>
+        <mdb-col md="6">
+          <mdb-card>
+            <mdb-card-body>
               <form>
                 <p class="h4 text-center py-4">Sign up</p>
                 <div class="grey-text">
@@ -148,13 +148,13 @@
                   <mdb-input label="Your password" icon="lock" group type="password" validate/>
                 </div>
                 <div class="text-center py-4 mt-3">
-                  <btn color="cyan" type="submit">Register</btn>
+                  <mdb-btn color="cyan" type="submit">Register</mdb-btn>
                 </div>
               </form>
-            </card-body>
-          </card>
-        </column>
-        <column md="6">
+            </mdb-card-body>
+          </mdb-card>
+        </mdb-col>
+        <mdb-col md="6">
           <div class="card mx-xl-5">
             <div class="card-body">
               <form>
@@ -170,52 +170,52 @@
               </form>
             </div>
           </div>
-        </column>
-      </row>
+        </mdb-col>
+      </mdb-row>
       <h2 class="my-5">A form within a modal</h2>
-      <row>
-        <column size="12" class="text-center mb-5">
-          <btn @click.native="showModal = true" color="info">Launch modal contact form</btn>
-          <modal v-if="showModal" @close="showModal = false" cascade class="text-left">
-            <modal-header class="primary-color white-text">
-              <h4 class="title"><fa class="fa fa-pencil" /> Contact form</h4>
-            </modal-header>
-            <modal-body class="grey-text">
+      <mdb-row>
+        <mdb-col size="12" class="text-center mb-5">
+          <mdb-btn @click.native="showModal = true" color="info">Launch modal contact form</mdb-btn>
+          <mdb-modal v-if="showModal" @close="showModal = false" cascade class="text-left">
+            <mdb-modal-header class="primary-color white-text">
+              <h4 class="title"><mdb-icon class="fa fa-pencil" /> Contact form</h4>
+            </mdb-modal-header>
+            <mdb-modal-body class="grey-text">
               <mdb-input size="sm" label="Your name" icon="user" group type="text" validate error="wrong" success="right"/>
               <mdb-input size="sm" label="Your email" icon="envelope" group type="email" validate error="wrong" success="right"/>
               <mdb-input size="sm" label="Subject" icon="tag" group type="text" validate error="wrong" success="right"/>
-              <md-textarea size="sm" :rows="2" label="Your message" icon="pencil"/>
-            </modal-body>
-            <modal-footer>
-              <btn color="secondary" @click.native="showModal = false">Close</btn>
-              <btn color="primary">Save changes</btn>
-            </modal-footer>
-          </modal>
-        </column>
-      </row>
-    </container>
-  </container>
+              <mdb-textarea size="sm" :rows="2" label="Your message" icon="pencil"/>
+            </mdb-modal-body>
+            <mdb-modal-footer>
+              <mdb-btn color="secondary" @click.native="showModal = false">Close</mdb-btn>
+              <mdb-btn color="primary">Save changes</mdb-btn>
+            </mdb-modal-footer>
+          </mdb-modal>
+        </mdb-col>
+      </mdb-row>
+    </mdb-container>
+  </mdb-container>
 </template>
 
 <script>
-import { Container, Row, Column, mdbInput, MdTextarea, Btn, Fa, Card, CardBody, Modal, ModalHeader, ModalBody, ModalFooter } from 'mdbvue';
+import { mdbContainer, mdbRow, mdbCol, mdbInput, mdbTextarea, mdbBtn, mdbIcon, mdbCard, mdbCardBody, mdbModal, mdbModalHeader, mdbModalBody, mdbModalFooter } from 'mdbvue';
 
 export default {
   name: 'FormsPage',
   components: {
-    Container,
-    Row,
-    Column,
+    mdbContainer,
+    mdbRow,
+    mdbCol,
     mdbInput,
-    MdTextarea,
-    Btn,
-    Fa,
-    Card,
-    CardBody,
-    Modal,
-    ModalHeader,
-    ModalBody,
-    ModalFooter
+    mdbTextarea,
+    mdbBtn,
+    mdbIcon,
+    mdbCard,
+    mdbCardBody,
+    mdbModal,
+    mdbModalHeader,
+    mdbModalBody,
+    mdbModalFooter
   },
   data() {
     return {

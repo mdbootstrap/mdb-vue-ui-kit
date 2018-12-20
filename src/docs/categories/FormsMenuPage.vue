@@ -1,52 +1,52 @@
 <template>
-  <container>
-    <row>
-      <column md="8" class="mx-auto">
-        <jumbotron class="mt-5">
-          <h1 class="pb-2"><Fa icon="edit" class="grey-text mr-2" />Forms</h1>
+  <mdb-container>
+    <mdb-row>
+      <mdb-col md="8" class="mx-auto">
+        <mdb-jumbotron class="mt-5">
+          <h1 class="pb-2"><mdb-icon icon="edit" class="grey-text mr-2" />Forms</h1>
           <h6 class="my-3">FREE</h6>
-          <list-group>
+          <mdb-list-group>
             <!-- FREE -->
-            <navbar-item class="list-group-item list-group-item-action" router href="/forms/forms">
+            <mdb-nav-item class="list-group-item list-group-item-action" router href="/forms/forms">
               <h5 class="justify-content-between d-flex align-items-center">
-                Forms <fa icon="angle-right"/>
+                Forms <mdb-icon icon="angle-right"/>
               </h5>
-            </navbar-item>
-            <navbar-item class="list-group-item list-group-item-action" router href="/forms/inputs">
+            </mdb-nav-item>
+            <mdb-nav-item class="list-group-item list-group-item-action" router href="/forms/inputs">
                 <h5 class="justify-content-between d-flex align-items-center">
-                  Input <fa icon="angle-right"/>
+                  Input <mdb-icon icon="angle-right"/>
                 </h5>
-              </navbar-item>
-            <navbar-item class="list-group-item list-group-item-action" router href="/forms/search">
+              </mdb-nav-item>
+            <mdb-nav-item class="list-group-item list-group-item-action" router href="/forms/search">
                 <h5 class="justify-content-between d-flex align-items-center">
-                  Search <fa icon="angle-right"/>
+                  Search <mdb-icon icon="angle-right"/>
                 </h5>
-            </navbar-item>
-            <navbar-item class="list-group-item list-group-item-action" router href="/forms/validation">
+            </mdb-nav-item>
+            <mdb-nav-item class="list-group-item list-group-item-action" router href="/forms/validation">
               <h5 class="justify-content-between d-flex align-items-center">
-                Validation<fa icon="angle-right"/>
+                Validation<mdb-icon icon="angle-right"/>
               </h5>
-            </navbar-item>
-          </list-group>
-        </jumbotron>
-      </column>
-    </row>
-  </container>
+            </mdb-nav-item>
+          </mdb-list-group>
+        </mdb-jumbotron>
+      </mdb-col>
+    </mdb-row>
+  </mdb-container>
 </template>
 
 <script>
-import { Container, Row, Column, Fa, Jumbotron, NavbarItem, ListGroup } from 'mdbvue';
+import { mdbContainer, mdbRow, mdbCol, mdbIcon, mdbJumbotron, mdbNavItem, mdbListGroup } from 'mdbvue';
 
 export default {
   name: 'ComponentsPage',
   components: {
-    Container,
-    Row,
-    Column,
-    Fa,
-    Jumbotron,
-    NavbarItem,
-    ListGroup
+    mdbContainer,
+    mdbRow,
+    mdbCol,
+    mdbIcon,
+    mdbJumbotron,
+    mdbNavItem,
+    mdbListGroup
   }
 };
 </script>
