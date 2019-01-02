@@ -17,7 +17,7 @@
 </p>
 
 <p align="center">
-Based on the latest <b>Bootstrap 4 and Vue 2.5.21</b>.
+  Based on the latest <b>Bootstrap 4</b> and Vue <b>2.5.21</b>.
 </p>
 <p align="center">
 <b>400+</b> material UI elements, <b>600+</b> material icons, <b>74</b> CSS animations, SASS files, templates, tutorials and many more. <b>Free for personal and commercial use.</b>
