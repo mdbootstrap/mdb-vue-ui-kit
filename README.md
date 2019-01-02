@@ -114,7 +114,7 @@ Please read [CONTRIBUTING.md](https://github.com/mdbootstrap/Vue-Bootstrap-with-
 
 # PRO version
 
-**Angular Bootstrap with Material Design PRO (from $79)**: https://mdbootstrap.com/products/vue-ui-kit/  
+**Vue Bootstrap with Material Design PRO (from $79)**: https://mdbootstrap.com/products/vue-ui-kit/  
 
 # Documentation
 
@@ -167,21 +167,21 @@ jQuery version: https://github.com/mdbootstrap/bootstrap-material-design
 
 React version: https://github.com/mdbootstrap/React-Bootstrap-with-Material-Design
 
-Vue version: https://github.com/mdbootstrap/Vue-Bootstrap-with-Material-Design
+Angular version: https://github.com/mdbootstrap/Angular-Bootstrap-with-Material-Design
 
-Getting started: https://mdbootstrap.com/angular-bootstrap-getting-started/  
+Getting started: https://mdbootstrap.com/docs/vue/getting-started/download/
 
-5 min quick start: https://mdbootstrap.com/angular/5min-quickstart/  
+5 min quick start: https://mdbootstrap.com/docs/vue/getting-started/quick-start/
 
-Material Design + Bootstrap Tutorial: https://mdbootstrap.com/bootstrap-tutorial/  
+Material Design + Bootstrap Tutorial: https://mdbootstrap.com/education/bootstrap/
 
-Material Design + WordPress Tutorial: https://mdbootstrap.com/wordpress-tutorial/  
+Material Design + WordPress Tutorial: https://mdbootstrap.com/education/wordpress/
 
 Freebies: https://mdbootstrap.com/freebies/  
 
-Premium Templates: https://mdbootstrap.com/templates/  
+Premium Templates: https://mdbootstrap.com/templates/
 
-Changelog: https://mdbootstrap.com/angular/changelog/
+Changelog: https://mdbootstrap.com/vue/changelog/
 
 # Social Media
 
