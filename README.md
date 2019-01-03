@@ -42,7 +42,7 @@ __________
 * [Highlights](#highlights)
 * [Useful Links](#useful-links)
 * [Social Media](#social-media)
-* [Contact](contact)
+* [Contact](#contact)
 
 
 # Other Technologies
