@@ -54,7 +54,7 @@ __________
 
 # Version
 
-- MDBVue - 4.10.0
+- MDBVue 4.10.0
 - Vue 2.5.21
 
 # Quick start
