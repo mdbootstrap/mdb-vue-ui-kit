@@ -42,6 +42,7 @@ __________
 * [Highlights](#highlights)
 * [Useful Links](#useful-links)
 * [Social Media](#social-media)
+* [Contact](contact)
 
 
 # Other Technologies
@@ -198,6 +199,6 @@ Dribbble: https://dribbble.com/mdbootstrap
 
 LinkedIn: https://www.linkedin.com/company/material-design-for-bootstrap
 
-## Contact
+# Contact
 
 office@mdbootstrap.com
