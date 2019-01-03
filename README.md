@@ -40,8 +40,8 @@ __________
 * [Additional tutorials](#additional-tutorials)
 * [PRO verion](#pro-version)
 * [Highlights](#highlights)
-* [Social Media](#social-media)
 * [Useful Links](#useful-links)
+* [Social Media](#social-media)
 
 
 # Other Technologies
