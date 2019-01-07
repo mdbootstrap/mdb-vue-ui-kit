@@ -7,10 +7,10 @@
     <hr class="mb-5" />
     <mdb-container class="mt-5">
       <h4 class="pb-2">Basic examples</h4>
-      <mdb-progress class="mb-2" :height="20" :value="0" />
-      <mdb-progress class="mb-2" :height="20" :value="25" color="blue" />
-      <mdb-progress class="mb-2" :height="20" :value="50" color="blue" />
-      <mdb-progress class="mb-2" :height="20" :value="75" color="blue" />
+      <mdb-progress :height="20" :value="0" />
+      <mdb-progress :height="20" :value="25" color="blue" />
+      <mdb-progress :height="20" :value="50" color="blue" />
+      <mdb-progress :height="20" :value="75" color="blue" />
       <mdb-progress :height="20" :value="100" color="blue" />
     </mdb-container>
   </mdb-container>

@@ -108,9 +108,9 @@
               <mdb-icon icon="arrows" size="2x" class="blue-text" />
             </mdb-col>
             <mdb-col col="10" md="8" lg="10" class="float-right">
-              <h4 class="font-weight-bold">ADDONS</h4>
+              <h4 class="font-weight-bold">PLUGINS & ADDONS</h4>
               <p class="grey-text">Find out more about our extended components.</p>
-              <mdb-nav-item router href="/addons" waves-fixed><mdb-btn size="sm" color="default">Learn more</mdb-btn></mdb-nav-item>
+              <mdb-nav-item router href="/plugins" waves-fixed><mdb-btn size="sm" color="default">Learn more</mdb-btn></mdb-nav-item>
             </mdb-col>
           </mdb-col>
           <mdb-col md="4" class="mb-5">

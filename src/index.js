@@ -71,6 +71,11 @@ import Pagination, { mdbPagination } from './components/Pagination';
 import Popover, { mdbPopover } from './components/Popover';
 import Progress, { mdbProgress } from './components/Progress';
 import Row, { mdbRow } from './components/Row';
+import Tabs, { mdbTabs } from './components/Tabs';
+import Tab, { mdbTab } from './components/Tab';
+import TabContent, { mdbTabContent } from './components/TabContent';
+import TabItem, { mdbTabItem } from './components/TabItem';
+import TabPane, { mdbTabPane } from './components/TabPane';
 import Tbl, { mdbTbl } from './components/Table';
 import TblBody, { mdbTblBody } from './components/TableBody';
 import TblHead, { mdbTblHead } from './components/TableHead';
@@ -150,16 +155,22 @@ export {
   Popover,
   Progress,
   Row,
+  Tabs,
+  Tab,
+  TabContent,
+  TabItem,
+  TabPane,
   Tbl,
   TblBody,
   TblHead,
   Tooltip,
   ViewWrapper,
   waves,
+
   // MDB FREE
-  mdbAlert,
   mdbAccordion,
   mdbAccordionPane,
+  mdbAlert,
   mdbBadge,
   mdbBreadcrumb,
   mdbBreadcrumbItem,
@@ -226,6 +237,11 @@ export {
   mdbPopover,
   mdbProgress,
   mdbRow,
+  mdbTabs,
+  mdbTab,
+  mdbTabContent,
+  mdbTabItem,
+  mdbTabPane,
   mdbTbl,
   mdbTblBody,
   mdbTblHead,

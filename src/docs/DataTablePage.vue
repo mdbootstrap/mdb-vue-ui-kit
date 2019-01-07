@@ -27,19 +27,6 @@
         materialInputs
       />
     </div>
-    <hr />
-    <div class="mt-5 pt-5 mx-3">
-      <h2>Datatable export to CSV</h2>
-      <br />
-      <mdb-datatable
-        :data="'https://my-json-server.typicode.com/Rotarepmi/exjson/db'"
-        striped
-        bordered
-        materialInputs
-        @pages="handlePages"
-        @fields="handleFields"
-      />
-    </div>
   </mdb-container>
 
 </template>

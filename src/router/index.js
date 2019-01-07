@@ -64,6 +64,7 @@ import SearchPage from '../docs/SearchPage';
 import ValidationPage from '../docs/ValidationPage';
 import FooterPage from '../docs/FooterPage';
 import SliderPage from '../docs/SliderPage';
+import TabsPage from '../docs/TabsPage';
 import VideoPage from '../docs/VideoPage';
 
 Vue.use(Router);
@@ -111,7 +112,7 @@ export default new Router({
       component: ModalsPage
     },
     {
-      path: '/addons',
+      path: '/plugins',
       name: 'AddonsPage',
       component: AddonsPage
     },
@@ -162,7 +163,7 @@ export default new Router({
       name: 'DataTablePage',
       component: DataTablePage
     }, {
-      path: '/components/iframe',
+      path: '/plugins/iframe',
       name: 'IframePage',
       component: IframePage
     }, {
@@ -322,7 +323,11 @@ export default new Router({
       name: 'FooterPage',
       component: FooterPage
     }, {
-      path: '/addons/video',
+      path: '/components/tabs',
+      name: 'TabsPage',
+      component: TabsPage
+    }, {
+      path: '/plugins/video',
       name: 'VideoPage',
       component: VideoPage
     }

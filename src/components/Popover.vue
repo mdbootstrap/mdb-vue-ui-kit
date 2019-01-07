@@ -29,7 +29,7 @@
     props: {
       trigger: {
         type: String,
-        default: 'hover',
+        default: 'click',
         validator: value => ['click', 'hover'].indexOf(value) > -1
       },
       delayOnMouseOut: {

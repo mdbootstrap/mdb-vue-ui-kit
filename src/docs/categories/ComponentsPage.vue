@@ -37,11 +37,6 @@
                 Edge Header <mdb-icon icon="angle-right"/>
               </h5>
             </mdb-nav-item>
-            <mdb-nav-item class="list-group-item list-group-item-action" router href="/components/iframe">
-              <h5 class="justify-content-between d-flex align-items-center">
-                iFrame<mdb-icon icon="angle-right"/>
-              </h5>
-            </mdb-nav-item>
             <mdb-nav-item class="list-group-item list-group-item-action" router href="/components/listgroup">
               <h5 class="justify-content-between d-flex align-items-center">
                 List Group <mdb-icon icon="angle-right"/>
@@ -72,7 +67,11 @@
                 Slider <mdb-icon icon="angle-right"/>
               </h5>
             </mdb-nav-item>
-
+            <mdb-nav-item class="list-group-item list-group-item-action" router href="/components/tabs">
+              <h5 class="justify-content-between d-flex align-items-center">
+                Tabs <mdb-icon icon="angle-right"/>
+              </h5>
+            </mdb-nav-item>
           </mdb-list-group>
         </mdb-jumbotron>
       </mdb-col>

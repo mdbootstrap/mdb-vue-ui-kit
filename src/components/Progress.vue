@@ -1,6 +1,6 @@
 <template>
   <component :is="tag" :class="className" :style="style">
-    <component :is="barTag" :class="barClassName" role="progressbar" :aria-valuenow="value" aria-valuemin="0" aria-valuemax="100" :style="[{'width' : value + '%'}]"><slot></slot></component>
+    <component :is="barTag" :class="barClassName" role="progressbar" :aria-valuenow="value" :aria-valuemin="min" :aria-valuemax="max" :style="[{'width' : (value - min) / (max - min) * 100 + '%'}]"><slot></slot></component>
   </component>
 </template>
 
@@ -41,6 +41,14 @@ const Progress = {
     indeterminate: {
       type: Boolean,
       default: false
+    },
+    min: {
+      type: Number,
+      default: 0
+    },
+    max: {
+      type: Number,
+      default: 100
     }
   },
   computed: {
@@ -54,7 +62,7 @@ const Progress = {
       return classNames(
         this.indeterminate ? 'indeterminate' : 'progress-bar',
         this.striped ? 'progress-bar-striped' : '',
-        this.color ? 'bg-' + this.color : '',
+        this.color ? ['bg-' + this.color, this.color] : '',
         this.animated ? 'progress-bar-animated' : ''
       );
     },

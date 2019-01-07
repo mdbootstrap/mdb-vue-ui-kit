@@ -14,7 +14,7 @@
           <mdb-nav-item router href="/forms" waves-fixed>Forms</mdb-nav-item>
           <mdb-nav-item router href="/tables" waves-fixed>Tables</mdb-nav-item>
           <mdb-nav-item router href="/modals" waves-fixed>Modals</mdb-nav-item>
-          <mdb-nav-item router href="/addons" waves-fixed>Addons</mdb-nav-item>
+          <mdb-nav-item router href="/plugins" waves-fixed>Plugins & addons</mdb-nav-item>
         </mdb-navbar-nav>
       </mdb-navbar-toggler>
     </mdb-navbar>
