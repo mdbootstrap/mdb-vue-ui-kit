@@ -1,12 +1,18 @@
 <template>
   <component :is="tag" :class="className">
-    <img v-if="src" :src="src" :alt="alt" :class="imgClass">
+    <img v-if="src && !video" :src="src" :alt="alt" :class="imgClass">
+    <video v-if="src && video"
+           class="video-fluid"
+           :autoplay="autoplay ? 'true' : null"
+           :loop="loop ? 'true' : null">
+      <source :src="src" :type="videoType" />
+    </video>
     <slot></slot>
   </component>
 </template>
 
 <script>
-import classNames from 'classnames';
+  import classNames from 'classnames';
 
 const ViewWrapper = {
   props: {
@@ -50,6 +56,22 @@ const ViewWrapper = {
     },
     cascade: {
       type: Boolean
+    },
+    video: {
+      type: Boolean,
+      default: false
+    },
+    videoType: {
+      type: String,
+      default: 'video/mp4'
+    },
+    autoplay: {
+      type: Boolean,
+      default: true
+    },
+    loop: {
+      type: Boolean,
+      default: true
     }
   },
   computed: {
@@ -78,6 +100,7 @@ const ViewWrapper = {
 
 export default ViewWrapper;
 export { ViewWrapper as mdbView };
+
 </script>
 
 <style scoped>
