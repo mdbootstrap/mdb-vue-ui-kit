@@ -3,16 +3,16 @@
     <mdb-row>
       <mdb-col md="8" class="mx-auto">
         <mdb-jumbotron class="mt-5">
-          <h1 class="pb-2"><mdb-icon icon="window-restore" class="grey-text mr-2" />Plugins & addons</h1>
+          <h1 class="pb-2"><mdb-icon icon="plus-square" class="grey-text mr-2" />Plugins & addons</h1>
           <h6 class="my-3">FREE</h6>
           <mdb-list-group>
             <!-- FREE -->
-            <mdb-nav-item class="list-group-item list-group-item-action" router href="/plugins/iframe">
+            <mdb-nav-item class="list-group-item list-group-item-action" to="/plugins/iframe">
               <h5 class="justify-content-between d-flex align-items-center">
                 iFrame<mdb-icon icon="angle-right"/>
               </h5>
             </mdb-nav-item>
-            <mdb-nav-item class="list-group-item list-group-item-action" router href="/plugins/video">
+            <mdb-nav-item class="list-group-item list-group-item-action" to="/plugins/video">
               <h5 class="justify-content-between d-flex align-items-center">
                 Video<mdb-icon icon="angle-right"/>
               </h5>

@@ -6,7 +6,12 @@
     </mdb-row>
     <hr />
     <div class="text-center">
-      <mdb-icon icon="hand-spock-o" size="5x" class="mt-5"/>
+      <mdb-icon icon="calendar-check" size="3x" class="mt-5 mr-4"/>
+      <mdb-icon icon="exclamation-circle" size="3x" class="mt-5 mr-4"/>
+      <mdb-icon icon="folder" size="3x" class="mt-5 mr-4"/>
+      <mdb-icon icon="eye" size="3x" class="mt-5 mr-4"/>
+      <mdb-icon icon="map-marker-alt" size="3x" class="mt-5 mr-4"/>
+      <mdb-icon icon="hand-spock" size="3x" class="mt-5 mr-4"/>
     </div>
   </mdb-container>
 </template>

@@ -1,8 +1,8 @@
 <template>
   <div>
     <div v-if="top" :class="className">
-      <a :class="btnFloating" @click.prevent="prev"><i :class="'fa fa-' + leftIcon"></i></a>
-      <a :class="btnFloating" @click.prevent="next"><i :class="'fa fa-' + rightIcon"></i></a>
+      <a :class="btnFloating" @click.prevent="prev"><i :class="'fas fa-' + leftIcon"></i></a>
+      <a :class="btnFloating" @click.prevent="next"><i :class="'fas fa-' + rightIcon"></i></a>
     </div>
     <div v-else-if="testimonial">
       <a class="carousel-control carousel-item-prev left" @click.prevent="prev">

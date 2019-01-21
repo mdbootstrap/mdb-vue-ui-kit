@@ -1,7 +1,7 @@
 <template>
   <component :is="tag" :class="className">
     <a :class="anchorClass" href="#" role="tab">
-      <mdb-icon v-if="icon" :icon="icon" />
+      <mdb-icon v-if="icon" :icon="icon" :far="far || regular" :fal="fal || light" :fab="fab || brands" />
       <slot></slot>
     </a>
   </component>
@@ -29,6 +29,30 @@ const TabItem = {
     },
     disabled: {
       type: Boolean
+    },
+    far: {
+      type: Boolean,
+      default: false
+    },
+    regular: {
+      type: Boolean,
+      default: false
+    },
+    fal: {
+      type: Boolean,
+      default: false
+    },
+    light: {
+      type: Boolean,
+      default: false
+    },
+    fab: {
+      type: Boolean,
+      default: false
+    },
+    brands: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {

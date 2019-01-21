@@ -35,7 +35,7 @@
               <!--Textarea with icon-->
               <h5 class="h5-responsive">Textarea</h5>
               <div class="md-form">
-                <mdb-textarea type="text" label="Textarea" icon="pencil"></mdb-textarea>
+                <mdb-textarea type="text" label="Textarea" icon="pencil-alt"></mdb-textarea>
               </div>
 
               <h5 class="h5-responsive">Disabled field</h5>

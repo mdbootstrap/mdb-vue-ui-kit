@@ -13,7 +13,7 @@
           <img src="https://mdbootstrap.com/img/logo/mdb-transparent.png" height="30" alt="">
         </mdb-navbar-brand>
         <mdb-navbar-toggler>
-          <mdb-navbar-nav>
+          <mdb-navbar-nav left>
             <mdb-nav-item href="#" waves-fixed>Home</mdb-nav-item>
             <mdb-nav-item href="#" waves-fixed>Features</mdb-nav-item>
             <mdb-nav-item href="#" waves-fixed>Pricing</mdb-nav-item>

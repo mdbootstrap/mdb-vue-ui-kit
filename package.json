@@ -1,6 +1,6 @@
 {
   "name": "mdbvue",
-  "version": "4.10.1",
+  "version": "5.0.0",
   "description": "Vue Bootstrap with Material Design",
   "author": "MDBootstrap <support@mdbootstrap.com>",
   "license": "MIT",
@@ -11,13 +11,16 @@
     "start": "yarn run dev",
     "start-npm": "npm run dev",
     "build": "node build/build.js",
-    "lint": "eslint --ext .js,.vue src"
+    "lint": "eslint --ext .js,.vue src",
+    "remove-pro-dirs": "del-cli src/components/pro src/docs/pro build/scss build/css",
+    "remove-pro-code": "gulp index-remove-pro router-remove-pro",
+    "free": "yarn run remove-pro-dirs && yarn run remove-pro-code"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.6.3",
     "bootstrap-css-only": "^4.2.1",
     "chart.js": "^2.7.3",
     "classnames": "^2.2.6",
-    "font-awesome": "^4.7.0",
     "moment": "^2.23.0",
     "npm": "^6.5.0",
     "popper.js": "^1.14.6",
@@ -41,6 +44,7 @@
     "connect-history-api-fallback": "^1.3.0",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^1.0.0",
+    "del-cli": "^1.1.0",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-friendly-formatter": "^4.0.1",
@@ -55,6 +59,8 @@
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "^1.1.4",
     "friendly-errors-webpack-plugin": "^1.6.1",
+    "gulp": "^4.0.0",
+    "gulp-remove-code": "^3.0.4",
     "html-webpack-plugin": "^3.2.0",
     "http-proxy-middleware": "^0.18.0",
     "node-sass": "^4.9.3",

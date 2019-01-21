@@ -8,24 +8,24 @@
     <mdb-container>
         <mdb-row class="mt-5">
           <mdb-col col="12" sm="6" class="py-2">
-            <view-wrapper src="https://mdbootstrap.com/img/Photos/Others/nature-sm.jpg" alt="view">
+            <mdb-view src="https://mdbootstrap.com/img/Photos/Others/nature-sm.jpg" alt="view">
               <mdb-mask flex-center waves text="waves"></mdb-mask>
-            </view-wrapper>
+            </mdb-view>
           </mdb-col>
           <mdb-col col="12" sm="6" class="py-2">
-            <view-wrapper src="https://mdbootstrap.com/img/Photos/Others/nature-sm.jpg" alt="view">
+            <mdb-view src="https://mdbootstrap.com/img/Photos/Others/nature-sm.jpg" alt="view">
               <mdb-mask flex-center pattern="3" text="pattern = &quot;3&quot;"></mdb-mask>
-            </view-wrapper>
+            </mdb-view>
           </mdb-col>
           <mdb-col col="12" sm="6">
-            <view-wrapper src="https://mdbootstrap.com/img/Photos/Others/nature-sm.jpg" alt="view">
+            <mdb-view src="https://mdbootstrap.com/img/Photos/Others/nature-sm.jpg" alt="view">
               <mdb-mask flex-center waves overlay="blue-strong" text="overlay = &quot;blue-strong&quot; waves"></mdb-mask>
-            </view-wrapper>
+            </mdb-view>
           </mdb-col>
           <mdb-col col="12" sm="6">
-            <view-wrapper src="https://mdbootstrap.com/img/Photos/Others/nature-sm.jpg" alt="view">
+            <mdb-view src="https://mdbootstrap.com/img/Photos/Others/nature-sm.jpg" alt="view">
               <mdb-mask flex-center waves pattern="5" text="pattern = &quot;5&quot; waves"></mdb-mask>
-            </view-wrapper>
+            </mdb-view>
           </mdb-col>
         </mdb-row>
     </mdb-container>
@@ -33,12 +33,12 @@
 </template>
 
 <script>
-import { ViewWrapper, mdbMask, mdbContainer, mdbRow, mdbCol, mdbIcon } from 'mdbvue';
+import { mdbView, mdbMask, mdbContainer, mdbRow, mdbCol, mdbIcon } from 'mdbvue';
 
 export default {
   name: 'MasksPage',
   components: {
-    ViewWrapper,
+    mdbView,
     mdbMask,
     mdbContainer,
     mdbRow,

@@ -20,8 +20,7 @@ const DropdownToggle = {
       default: false
     },
     color: {
-      type: String,
-      default: "default"
+      type: String
     },
     outline: {
       type: String,

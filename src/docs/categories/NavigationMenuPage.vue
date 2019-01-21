@@ -7,29 +7,34 @@
           <h6 class="my-3">FREE</h6>
           <mdb-list-group>
             <!-- FREE -->
-            <mdb-nav-item class="list-group-item list-group-item-action" router href="/navigation/breadcrumb">
+            <mdb-nav-item class="list-group-item list-group-item-action" to="/navigation/breadcrumb">
               <h5 class="justify-content-between d-flex align-items-center">
                 Breadcrumb <mdb-icon icon="angle-right"/>
               </h5>
             </mdb-nav-item>
-            <mdb-nav-item class="list-group-item list-group-item-action" router href="/navigation/footer">
+            <mdb-nav-item class="list-group-item list-group-item-action" to="/navigation/footer">
               <h5 class="justify-content-between d-flex align-items-center">
                 Footer <mdb-icon icon="angle-right"/>
               </h5>
             </mdb-nav-item>
-            <mdb-nav-item class="list-group-item list-group-item-action" router href="/navigation/hamburger">
+            <mdb-nav-item class="list-group-item list-group-item-action" to="/navigation/hamburger">
               <h5 class="justify-content-between d-flex align-items-center">
                 Hamburger Menu <mdb-icon icon="angle-right"/>
               </h5>
             </mdb-nav-item>
-            <mdb-nav-item class="list-group-item list-group-item-action" router href="/navigation/navbar">
+            <mdb-nav-item class="list-group-item list-group-item-action" to="/navigation/navbar">
               <h5 class="justify-content-between d-flex align-items-center">
                 Navbar <mdb-icon icon="angle-right"/>
               </h5>
             </mdb-nav-item>
-            <mdb-nav-item class="list-group-item list-group-item-action" router href="/navigation/navigation">
+            <mdb-nav-item class="list-group-item list-group-item-action" to="/navigation/navigation">
               <h5 class="justify-content-between d-flex align-items-center">
                 Navigation <mdb-icon icon="angle-right"/>
+              </h5>
+            </mdb-nav-item>
+            <mdb-nav-item class="list-group-item list-group-item-action" to="/navigation/navs">
+              <h5 class="justify-content-between d-flex align-items-center">
+                Navs <mdb-icon icon="angle-right"/>
               </h5>
             </mdb-nav-item>
           </mdb-list-group>

@@ -68,7 +68,7 @@
             <mdb-input label="Your name" icon="user" class="mb-5"/>
             <mdb-input label="Your email" icon="envelope" type="email" class="mb-5"/>
             <mdb-input label="Subject" icon="tag" class="mb-5"/>
-            <mdb-textarea icon="pencil" label="Your message"/>
+            <mdb-textarea icon="pencil-alt" label="Your message"/>
           </mdb-modal-body>
           <mdb-modal-footer center>
             <mdb-btn @click.native="contact = false" color="unique">Send <mdb-icon icon="paper-plane-o" class="ml-1"/></mdb-btn>

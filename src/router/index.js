@@ -21,6 +21,7 @@ import BadgePage from '../docs/BadgePage';
 import BackgroundImagePage from '../docs/BackgroundImagePage';
 import CardPage from '../docs/CardPage';
 import ButtonPage from '../docs/ButtonPage';
+import ButtonsGroupPage from '../docs/ButtonsGroupPage';
 import HamburgerMenuPage from '../docs/HamburgerMenuPage';
 import GradientPage from '../docs/GradientPage';
 import GoogleMapsPage from '../docs/GoogleMapsPage';
@@ -42,6 +43,7 @@ import LiveDemoPage from '../docs/LiveDemoPage';
 import MediaPage from '../docs/MediaPage';
 import ListGroupPage from '../docs/ListGroupPage';
 import NavbarPage from '../docs/NavbarPage';
+import NavsPage from '../docs/NavsPage';
 import NavigationPage from '../docs/NavigationPage';
 import CollapsePage from '../docs/CollapsePage';
 import PaginationPage from '../docs/PaginationPage';
@@ -70,6 +72,7 @@ import VideoPage from '../docs/VideoPage';
 Vue.use(Router);
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
@@ -147,6 +150,10 @@ export default new Router({
       name: 'ButtonPage',
       component: ButtonPage
     }, {
+      path: '/components/button-group',
+      name: 'ButtonsGroupPage',
+      component: ButtonsGroupPage
+    }, {
       path: '/navigation/hamburger',
       name: 'HamburgerMenuPage',
       component: HamburgerMenuPage
@@ -195,7 +202,7 @@ export default new Router({
       name: 'DropdownPage',
       component: DropdownPage
     }, {
-      path: '/css/jumbotron',
+      path: '/components/jumbotron',
       name: 'JumbotronPage',
       component: JumbotronPage
     }, {
@@ -234,6 +241,10 @@ export default new Router({
       path: '/navigation/navbar',
       name: 'NavbarPage',
       component: NavbarPage
+    }, {
+      path: '/navigation/navs',
+      name: 'NavsPage',
+      component: NavsPage
     }, {
       path: '/navigation/navigation',
       name: 'NavigationPage',
@@ -330,6 +341,6 @@ export default new Router({
       path: '/plugins/video',
       name: 'VideoPage',
       component: VideoPage
-    }
+    },
   ]
 });

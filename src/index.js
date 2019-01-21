@@ -7,6 +7,7 @@ import Breadcrumb, { mdbBreadcrumb } from './components/Breadcrumb';
 import BreadcrumbItem, { mdbBreadcrumbItem } from './components/BreadcrumbItem';
 import Btn, { mdbBtn } from './components/Button';
 import BtnGroup, { mdbBtnGroup } from './components/ButtonGroup';
+import BtnToolbar, { mdbBtnToolbar } from './components/ButtonToolbar';
 import Card, { mdbCard } from './components/Card';
 import CardAvatar, { mdbCardAvatar } from './components/CardAvatar';
 import CardBody, { mdbCardBody } from './components/CardBody';
@@ -93,6 +94,7 @@ export {
   BreadcrumbItem,
   Btn,
   BtnGroup,
+  BtnToolbar,
   Card,
   CardAvatar,
   CardBody,
@@ -176,6 +178,7 @@ export {
   mdbBreadcrumbItem,
   mdbBtn,
   mdbBtnGroup,
+  mdbBtnToolbar,
   mdbCard,
   mdbCardAvatar,
   mdbCardBody,
@@ -247,5 +250,5 @@ export {
   mdbTblHead,
   mdbTextarea,
   mdbTooltip,
-  mdbView
+  mdbView,
 };

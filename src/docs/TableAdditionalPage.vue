@@ -102,29 +102,29 @@
         <mdb-tbl-head>
           <tr>
             <th>#</th>
-            <th><i class="fa fa-leaf mr-2 blue-text" aria-hidden="true"></i> thead col 1</th>
-            <th><i class="fa fa-leaf mr-2 teal-text" aria-hidden="true"></i> thead col 2</th>
-            <th><i class="fa fa-leaf mr-2 indigo-text" aria-hidden="true"></i> thead col 3</th>
+            <th><i class="fas fa-leaf mr-2 blue-text" aria-hidden="true"></i> thead col 1</th>
+            <th><i class="fas fa-leaf mr-2 teal-text" aria-hidden="true"></i> thead col 2</th>
+            <th><i class="fas fa-leaf mr-2 indigo-text" aria-hidden="true"></i> thead col 3</th>
           </tr>
         </mdb-tbl-head>
         <mdb-tbl-body>
           <tr>
             <th scope="row">1</th>
-            <td><i class="fa fa-diamond mr-2 grey-text" aria-hidden="true"></i>Cell 1</td>
-            <td><i class="fa fa-download mr-2 grey-text" aria-hidden="true"></i>Cell 2</td>
-            <td><i class="fa fa-book mr-2 grey-text" aria-hidden="true"></i>Cell 3</td>
+            <td><i class="fas fa-gem mr-2 grey-text" aria-hidden="true"></i>Cell 1</td>
+            <td><i class="fas fa-download mr-2 grey-text" aria-hidden="true"></i>Cell 2</td>
+            <td><i class="fas fa-book mr-2 grey-text" aria-hidden="true"></i>Cell 3</td>
           </tr>
           <tr>
             <th scope="row">2</th>
-            <td><i class="fa fa-graduation-cap mr-2 grey-text" aria-hidden="true"></i>Cell 4</td>
-            <td><i class="fa fa-gift mr-2 grey-text" aria-hidden="true"></i>Cell 5</td>
-            <td><i class="fa fa-image mr-2 grey-text" aria-hidden="true"></i>Cell 6</td>
+            <td><i class="fas fa-graduation-cap mr-2 grey-text" aria-hidden="true"></i>Cell 4</td>
+            <td><i class="fas fa-gift mr-2 grey-text" aria-hidden="true"></i>Cell 5</td>
+            <td><i class="fas fa-image mr-2 grey-text" aria-hidden="true"></i>Cell 6</td>
           </tr>
           <tr>
             <th scope="row">3</th>
-            <td><i class="fa fa-magic mr-2 grey-text" aria-hidden="true"></i>Cell 7</td>
-            <td><i class="fa fa-table mr-2 grey-text" aria-hidden="true"></i>Cell 8</td>
-            <td><i class="fa fa-edit mr-2 grey-text" aria-hidden="true"></i>Cell 9</td>
+            <td><i class="fas fa-magic mr-2 grey-text" aria-hidden="true"></i>Cell 7</td>
+            <td><i class="fas fa-table mr-2 grey-text" aria-hidden="true"></i>Cell 8</td>
+            <td><i class="fas fa-edit mr-2 grey-text" aria-hidden="true"></i>Cell 9</td>
           </tr>
         </mdb-tbl-body>
       </mdb-tbl>
@@ -139,10 +139,10 @@
 
             <div>
                 <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2">
-                    <i class="fa fa-th-large mt-0"></i>
+                    <i class="fas fa-th-large mt-0"></i>
                 </button>
                 <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2">
-                    <i class="fa fa-columns mt-0"></i>
+                    <i class="fas fa-columns mt-0"></i>
                 </button>
             </div>
 
@@ -150,13 +150,13 @@
 
             <div>
                 <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2">
-                    <i class="fa fa-pencil mt-0"></i>
+                    <i class="fas fa-pencil mt-0"></i>
                 </button>
                 <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2">
-                    <i class="fa fa-remove mt-0"></i>
+                    <i class="fas fa-remove mt-0"></i>
                 </button>
                 <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2">
-                    <i class="fa fa-info-circle mt-0"></i>
+                    <i class="fas fa-info-circle mt-0"></i>
                 </button>
             </div>
 

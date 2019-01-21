@@ -233,6 +233,7 @@ export { Carousel as mdbCarousel };
 }
 
 .carousel-control-prev, .carousel-control-next, .carousel-item-prev, .carousel-item-next {
+  position: absolute;
   z-index: 2;
 }
 

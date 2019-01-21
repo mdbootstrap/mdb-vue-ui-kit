@@ -7,27 +7,27 @@
           <h6 class="my-3">FREE</h6>
           <mdb-list-group>
             <!-- FREE -->
-            <mdb-nav-item class="list-group-item list-group-item-action" router href="/modals/modal">
+            <mdb-nav-item class="list-group-item list-group-item-action" to="/modals/modal">
               <h5 class="justify-content-between d-flex align-items-center">
                 Modal<mdb-icon icon="angle-right"/>
               </h5>
             </mdb-nav-item>
-            <mdb-nav-item class="list-group-item list-group-item-action" router href="/modals/events">
+            <mdb-nav-item class="list-group-item list-group-item-action" to="/modals/events">
               <h5 class="justify-content-between d-flex align-items-center">
                 Events<mdb-icon icon="angle-right"/>
               </h5>
             </mdb-nav-item>
-            <mdb-nav-item class="list-group-item list-group-item-action" router href="/modals/examples">
+            <mdb-nav-item class="list-group-item list-group-item-action" to="/modals/examples">
               <h5 class="justify-content-between d-flex align-items-center">
                 Examples<mdb-icon icon="angle-right"/>
               </h5>
             </mdb-nav-item>
-            <mdb-nav-item class="list-group-item list-group-item-action" router href="/modals/forms">
+            <mdb-nav-item class="list-group-item list-group-item-action" to="/modals/forms">
               <h5 class="justify-content-between d-flex align-items-center">
                 Forms<mdb-icon icon="angle-right"/>
               </h5>
             </mdb-nav-item>
-            <mdb-nav-item class="list-group-item list-group-item-action" router href="/modals/styles">
+            <mdb-nav-item class="list-group-item list-group-item-action" to="/modals/styles">
               <h5 class="justify-content-between d-flex align-items-center">
                 Styles<mdb-icon icon="angle-right"/>
               </h5>

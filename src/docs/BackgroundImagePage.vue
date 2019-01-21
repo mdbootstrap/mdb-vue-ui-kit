@@ -70,25 +70,24 @@
     </mdb-row>
     <hr class="mb-4" />
     <mdb-row>
-      <h2 class="mb-3 w-100">Background image layout - first option</h2>
-      <mdb-btn tag="a" href="#/sections/app" outline="primary" rounded>see live preview</mdb-btn>
-
-    </mdb-row>
-    <hr class="mb-4" />
-    <mdb-row>
-      <h2 class="mb-3 w-100">Background image layout - second option</h2>
-      <mdb-btn tag="a" href="#/sections/classic" outline="primary" rounded>see live preview</mdb-btn>
-
-    </mdb-row>
-    <hr class="mb-4" />
-    <mdb-row>
-      <h2 class="mb-3">Background image layout - third option -> SOON</h2>
+      <h2 class="mb-3 w-100">Background image layout - live previews</h2>
+      <router-link to="/sections/app">
+        <mdb-btn tag="a" outline="primary" rounded>first option</mdb-btn>
+      </router-link>
+      <router-link to="/sections/classic">
+        <mdb-btn tag="a" href="" outline="primary" rounded>second option</mdb-btn>
+      </router-link>
+      <router-link to="/sections/minimalist">
+        <mdb-btn tag="a" href="" outline="primary" rounded>third option</mdb-btn>
+      </router-link>
 
     </mdb-row>
     <hr class="mb-4" />
     <mdb-row>
       <h2 class="mb-3 w-100">Background video layout</h2>
-      <mdb-btn tag="a" href="#/sections/video" outline="primary" rounded>see live preview</mdb-btn>
+      <router-link to="/sections/video">
+        <mdb-btn tag="a" href="/sections/video" outline="primary" rounded>see live preview</mdb-btn>
+      </router-link>
     </mdb-row>
   </mdb-container>
 </template>

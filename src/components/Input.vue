@@ -123,6 +123,30 @@ const Input = {
     },
     labelClass: {
       type: [Array, String]
+    },
+    far: {
+      type: Boolean,
+      default: false
+    },
+    regular: {
+      type: Boolean,
+      default: false
+    },
+    fal: {
+      type: Boolean,
+      default: false
+    },
+    light: {
+      type: Boolean,
+      default: false
+    },
+    fab: {
+      type: Boolean,
+      default: false
+    },
+    brands: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -172,7 +196,10 @@ const Input = {
     },
     iconClasses(){
       return classNames(
-        'prefix fa fa-' + this.icon,
+        this.far || this.regular ? 'far' :
+          this.fal || this.light ? 'fal' :
+            this.fab || this.brands ? 'fab' : 'fas',
+        'prefix fa-' + this.icon,
         this.isTouched && 'active',
         this.iconClass
       );

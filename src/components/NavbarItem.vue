@@ -1,9 +1,11 @@
 <template>
   <component :is="tag" :class="className" @click="wave">
-    <a v-if="!router" :href="link" :class="anchorClassName"><slot></slot></a>
-    <router-link tag="a" v-if="router" :exact="exact" active-class='active' exact-active-class='active' :class='anchorClassName' :to="link">
+    <router-link tag="a" v-if="to" :exact="exact" active-class='active' exact-active-class='active' :class='anchorClassName' :to="to" :target="tab">
       <slot></slot>
     </router-link>
+    <a v-else :href="href" :class="anchorClassName" :target="tab">
+      <slot></slot>
+    </a>
   </component>
 
 </template>
@@ -22,9 +24,22 @@ const NavbarItem = {
       type: Boolean,
       default: false
     },
+    disabled: {
+      type: Boolean
+    },
+    exact: {
+      type: Boolean,
+      default: false
+    },
     href: {
       type: String,
-      default: '#'
+    },
+    newTab: {
+      type: Boolean,
+      default: false
+    },
+    to: {
+      type: String,
     },
     waves: {
       type: Boolean,
@@ -34,16 +49,8 @@ const NavbarItem = {
       type: Boolean,
       default: false
     },
-    disabled: {
-      type: Boolean
-    },
-    router: {
-      type: Boolean,
-      default: false
-    },
-    exact: {
-      type: Boolean,
-      default: false
+    anchorClass: {
+      type: String
     }
   },
   computed: {
@@ -58,13 +65,16 @@ const NavbarItem = {
         'nav-link': true,
         'navbar-link': true,
         'disabled': this.disabled,
-        'active': this.active
-      }
+        'active': this.active,
+      },
+      this.anchorClass
       );
     },
-    link() {
-      return this.router ? this.href : '#' + this.href;
-    },
+    tab() {
+      if (this.newTab) {
+        return "_blank";
+      } return false;
+    }
   },
   mixins: [waves]
 };

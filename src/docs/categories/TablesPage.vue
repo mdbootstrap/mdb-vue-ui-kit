@@ -7,27 +7,27 @@
           <h6 class="my-3">FREE</h6>
           <mdb-list-group>
             <!-- FREE -->
-            <mdb-nav-item class="list-group-item list-group-item-action" router href="/tables/datatable">
+            <mdb-nav-item class="list-group-item list-group-item-action" to="/tables/datatable">
               <h5 class="justify-content-between d-flex align-items-center">
                 Datatable<mdb-icon icon="angle-right"/>
               </h5>
             </mdb-nav-item>
-            <mdb-nav-item class="list-group-item list-group-item-action" router href="/tables/table-pagination">
+            <mdb-nav-item class="list-group-item list-group-item-action" to="/tables/table-pagination">
               <h5 class="justify-content-between d-flex align-items-center">
                 Table pagination<mdb-icon icon="angle-right"/>
               </h5>
             </mdb-nav-item>
-            <mdb-nav-item class="list-group-item list-group-item-action" router href="/tables/table-scroll">
+            <mdb-nav-item class="list-group-item list-group-item-action" to="/tables/table-scroll">
               <h5 class="justify-content-between d-flex align-items-center">
                 Table Scroll<mdb-icon icon="angle-right"/>
               </h5>
             </mdb-nav-item>
-            <mdb-nav-item class="list-group-item list-group-item-action" router href="/tables/table-search">
+            <mdb-nav-item class="list-group-item list-group-item-action" to="/tables/table-search">
               <h5 class="justify-content-between d-flex align-items-center">
                 Table Search<mdb-icon icon="angle-right"/>
               </h5>
             </mdb-nav-item>
-            <mdb-nav-item class="list-group-item list-group-item-action" router href="/tables/table-sort">
+            <mdb-nav-item class="list-group-item list-group-item-action" to="/tables/table-sort">
               <h5 class="justify-content-between d-flex align-items-center">
                 Table Sort<mdb-icon icon="angle-right"/>
               </h5>

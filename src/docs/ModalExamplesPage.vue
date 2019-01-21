@@ -58,7 +58,7 @@
         </mdb-row>
       </mdb-modal-body>
       <mdb-modal-footer center>
-        <mdb-btn color="danger" tag="a" href="https://mdbootstrap.com/product/vue-bootstrap-pro/" target="_blank" icon="diamond" iconClass="ml-1" iconColor="white" iconRight>Get it</mdb-btn>
+        <mdb-btn color="danger" tag="a" href="https://mdbootstrap.com/product/vue-bootstrap-pro/" target="_blank" icon="gem" iconClass="ml-1" far iconColor="white" iconRight>Get it</mdb-btn>
         <mdb-btn outline="danger" @click="discount = false">No, thanks</mdb-btn>
       </mdb-modal-footer>
     </mdb-modal>
@@ -197,25 +197,25 @@
               <th scope="row">1</th>
               <td>Product 1</td>
               <td>100$</td>
-              <td><a><mdb-icon icon="remove"/></a></td>
+              <td><a><mdb-icon icon="times"/></a></td>
             </tr>
             <tr>
               <th scope="row">2</th>
               <td>Product 2</td>
               <td>100$</td>
-              <td><a><mdb-icon icon="remove"/></a></td>
+              <td><a><mdb-icon icon="times"/></a></td>
             </tr>
             <tr>
               <th scope="row">3</th>
               <td>Product 3</td>
               <td>100$</td>
-              <td><a><mdb-icon icon="remove"/></a></td>
+              <td><a><mdb-icon icon="times"/></a></td>
             </tr>
             <tr>
               <th scope="row">4</th>
               <td>Product 4</td>
               <td>100$</td>
-              <td><a><mdb-icon icon="remove"/></a></td>
+              <td><a><mdb-icon icon="times"/></a></td>
             </tr>
             <tr class="total">
               <th scope="row">5</th>
@@ -247,31 +247,9 @@
         <mdb-btn color="primary" @click="push=false">No</mdb-btn>
       </mdb-modal-footer>
     </mdb-modal>
-
-    <mdb-btn color="default" class="mb-3" @click="share=true">Social Share</mdb-btn>
-    <mdb-modal v-if="share" @close="share = false" cascade >
-      <mdb-modal-header color="light-blue darken-3 white-text">
-          <h4 class="title"><mdb-icon icon="users"/> Spreed the word!</h4>
-      </mdb-modal-header>
-      <mdb-modal-body class="text-center">
-        <mdb-btn floating tag="a" class="btn-fb" icon="facebook"/>
-        <mdb-btn floating tag="a" class="btn-tw" icon="twitter"/>
-        <mdb-btn floating tag="a" class="btn-gplus" icon="google-plus"/>
-        <mdb-btn floating tag="a" class="btn-li" icon="linkedin"/>
-        <mdb-btn floating tag="a" class="btn-ins" icon="instagram"/>
-        <mdb-btn floating tag="a" class="btn-pin" icon="pinterest"/>
-        <mdb-btn floating tag="a" class="btn-yt" icon="youtube"/>
-        <mdb-btn floating tag="a" class="btn-dribbble" icon="dribbble"/>
-        <mdb-btn floating tag="a" class="btn-vk" icon="vk"/>
-        <mdb-btn floating tag="a" class="btn-so" icon="stack-overflow"/>
-        <mdb-btn floating tag="a" class="btn-slack" icon="slack"/>
-        <mdb-btn floating tag="a" class="btn-git" icon="github"/>
-        <mdb-btn floating tag="a" class="btn-comm" icon="comments"/>
-        <mdb-btn floating tag="a" class="btn-email" icon="envelope"/>
-      </mdb-modal-body>
-    </mdb-modal>
       </mdb-col>
     </mdb-row>
+
   </mdb-container>
 </template>
 
@@ -302,7 +280,7 @@ export default {
     mdbCarouselIndicators,
     mdbCarouselIndicator,
     mdbAccordion,
-    mdbCardBody
+    mdbCardBody,
   },
   data() {
     return {
@@ -316,31 +294,6 @@ export default {
       cart: false,
       push: false,
       product: false,
-      panes: [
-        {
-          title: 'Description',
-          content: 'Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.'
-        }, {
-          title: 'Details',
-          content: 'Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.'
-        },
-        {
-          title: 'Shipping',
-          content: 'Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.'
-        }
-      ],
-      colors: [
-        {value: -1, text: 'Choose your color', disabled: true, selected: true },
-        {value: 'White', text: 'White'},
-        {value: 'Black', text: 'Black'},
-        {value: 'Pink', text: 'Pink'}
-      ],
-      sizes: [
-        {value: -1, text: 'Choose your size', disabled: true, selected: true },
-        {value: 'XS', text: 'XS'},
-        {value: 'S', text: 'S'},
-        {value: 'L', text: 'L'}
-      ],
       share: false
     };
   }

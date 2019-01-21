@@ -7,67 +7,77 @@
           <h6 class="my-3">FREE</h6>
           <mdb-list-group>
             <!-- FREE -->
-            <mdb-nav-item class="list-group-item list-group-item-action" router href="/components/alert">
+            <mdb-nav-item class="list-group-item list-group-item-action" to="/components/alert">
               <h5 class="justify-content-between d-flex align-items-center">
                 Alerts<mdb-icon icon="angle-right"/>
               </h5>
             </mdb-nav-item>
-            <mdb-nav-item class="list-group-item list-group-item-action" router href="/components/badge">
+            <mdb-nav-item class="list-group-item list-group-item-action" to="/components/badge">
               <h5 class="justify-content-between d-flex align-items-center">
                 Badge<mdb-icon icon="angle-right"/>
               </h5>
             </mdb-nav-item>
-            <mdb-nav-item class="list-group-item list-group-item-action" router href="/components/button">
+            <mdb-nav-item class="list-group-item list-group-item-action" to="/components/button">
               <h5 class="justify-content-between d-flex align-items-center">
                 Button <mdb-icon icon="angle-right"/>
               </h5>
             </mdb-nav-item>
-            <mdb-nav-item class="list-group-item list-group-item-action" router href="/components/card">
+            <mdb-nav-item class="list-group-item list-group-item-action" to="/components/button-group">
+              <h5 class="justify-content-between d-flex align-items-center">
+                Buttons Group <mdb-icon icon="angle-right"/>
+              </h5>
+            </mdb-nav-item>
+            <mdb-nav-item class="list-group-item list-group-item-action" to="/components/card">
               <h5 class="justify-content-between d-flex align-items-center">
                 Cards <mdb-icon icon="angle-right"/>
               </h5>
             </mdb-nav-item>
-            <mdb-nav-item class="list-group-item list-group-item-action" router href="/components/dropdown">
+            <mdb-nav-item class="list-group-item list-group-item-action" to="/components/dropdown">
               <h5 class="justify-content-between d-flex align-items-center">
                 Dropdown <mdb-icon icon="angle-right"/>
               </h5>
             </mdb-nav-item>
-            <mdb-nav-item class="list-group-item list-group-item-action" router href="/components/edge-header">
+            <mdb-nav-item class="list-group-item list-group-item-action" to="/components/edge-header">
               <h5 class="justify-content-between d-flex align-items-center">
                 Edge Header <mdb-icon icon="angle-right"/>
               </h5>
             </mdb-nav-item>
-            <mdb-nav-item class="list-group-item list-group-item-action" router href="/components/listgroup">
+            <mdb-nav-item class="list-group-item list-group-item-action" to="/components/jumbotron">
+              <h5 class="justify-content-between d-flex align-items-center">
+               Jumbotron <mdb-icon icon="angle-right"/>
+              </h5>
+            </mdb-nav-item>
+            <mdb-nav-item class="list-group-item list-group-item-action" to="/components/listgroup">
               <h5 class="justify-content-between d-flex align-items-center">
                 List Group <mdb-icon icon="angle-right"/>
               </h5>
             </mdb-nav-item>
-            <mdb-nav-item class="list-group-item list-group-item-action" router href="/components/media">
+            <mdb-nav-item class="list-group-item list-group-item-action" to="/components/media">
               <h5 class="justify-content-between d-flex align-items-center">
                 Media <mdb-icon icon="angle-right"/>
               </h5>
             </mdb-nav-item>
-            <mdb-nav-item class="list-group-item list-group-item-action" router href="/components/pagination">
+            <mdb-nav-item class="list-group-item list-group-item-action" to="/components/pagination">
               <h5 class="justify-content-between d-flex align-items-center">
                 Pagination <mdb-icon icon="angle-right"/>
               </h5>
             </mdb-nav-item>
-            <mdb-nav-item class="list-group-item list-group-item-action" router href="/components/panel">
+            <mdb-nav-item class="list-group-item list-group-item-action" to="/components/panel">
               <h5 class="justify-content-between d-flex align-items-center">
                 Panels <mdb-icon icon="angle-right"/>
               </h5>
             </mdb-nav-item>
-            <mdb-nav-item class="list-group-item list-group-item-action" router href="/components/progress-bars">
+            <mdb-nav-item class="list-group-item list-group-item-action" to="/components/progress-bars">
               <h5 class="justify-content-between d-flex align-items-center">
                 Progress Bar <mdb-icon icon="angle-right"/>
               </h5>
             </mdb-nav-item>
-            <mdb-nav-item class="list-group-item list-group-item-action" router href="/components/slider">
+            <mdb-nav-item class="list-group-item list-group-item-action" to="/components/slider">
               <h5 class="justify-content-between d-flex align-items-center">
                 Slider <mdb-icon icon="angle-right"/>
               </h5>
             </mdb-nav-item>
-            <mdb-nav-item class="list-group-item list-group-item-action" router href="/components/tabs">
+            <mdb-nav-item class="list-group-item list-group-item-action" to="/components/tabs">
               <h5 class="justify-content-between d-flex align-items-center">
                 Tabs <mdb-icon icon="angle-right"/>
               </h5>

@@ -7,42 +7,42 @@
           <h6 class="my-3">FREE</h6>
           <mdb-list-group>
             <!-- FREE -->
-            <mdb-nav-item class="list-group-item list-group-item-action" router href="/advanced/accordion">
+            <mdb-nav-item class="list-group-item list-group-item-action" to="/advanced/accordion">
               <h5 class="justify-content-between d-flex align-items-center">
                 Accordion <mdb-icon icon="angle-right"/>
               </h5>
             </mdb-nav-item>
-            <mdb-nav-item class="list-group-item list-group-item-action" router href="/advanced/carousel">
+            <mdb-nav-item class="list-group-item list-group-item-action" to="/advanced/carousel">
               <h5 class="justify-content-between d-flex align-items-center">
                 Carousel<mdb-icon icon="angle-right"/>
               </h5>
             </mdb-nav-item>
-            <mdb-nav-item class="list-group-item list-group-item-action" router href="/advanced/chart">
+            <mdb-nav-item class="list-group-item list-group-item-action" to="/advanced/chart">
               <h5 class="justify-content-between d-flex align-items-center">
                 Charts<mdb-icon icon="angle-right"/>
               </h5>
             </mdb-nav-item>
-            <mdb-nav-item class="list-group-item list-group-item-action" router href="/advanced/collapse">
+            <mdb-nav-item class="list-group-item list-group-item-action" to="/advanced/collapse">
               <h5 class="justify-content-between d-flex align-items-center">
                 Collapse<mdb-icon icon="angle-right"/>
               </h5>
             </mdb-nav-item>
-            <mdb-nav-item class="list-group-item list-group-item-action" router href="/advanced/maps">
+            <mdb-nav-item class="list-group-item list-group-item-action" to="/advanced/maps">
               <h5 class="justify-content-between d-flex align-items-center">
                 Google Maps<mdb-icon icon="angle-right"/>
               </h5>
             </mdb-nav-item>
-            <mdb-nav-item class="list-group-item list-group-item-action" router href="/advanced/popover">
+            <mdb-nav-item class="list-group-item list-group-item-action" to="/advanced/popover">
               <h5 class="justify-content-between d-flex align-items-center">
                 Popover<mdb-icon icon="angle-right"/>
               </h5>
             </mdb-nav-item>
-            <mdb-nav-item class="list-group-item list-group-item-action" router href="/advanced/tooltip">
+            <mdb-nav-item class="list-group-item list-group-item-action" to="/advanced/tooltip">
               <h5 class="justify-content-between d-flex align-items-center">
                 Tooltip<mdb-icon icon="angle-right"/>
               </h5>
             </mdb-nav-item>
-            <mdb-nav-item class="list-group-item list-group-item-action" router href="/advanced/videocarousel">
+            <mdb-nav-item class="list-group-item list-group-item-action" to="/advanced/videocarousel">
               <h5 class="justify-content-between d-flex align-items-center">
                 Video Carousel<mdb-icon icon="angle-right"/>
               </h5>

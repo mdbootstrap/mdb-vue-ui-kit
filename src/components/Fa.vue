@@ -4,7 +4,7 @@
 
 <script>
 import classNames from 'classnames';
-import 'font-awesome/css/font-awesome.min.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const Fa = {
   props: {
@@ -55,11 +55,37 @@ const Fa = {
       type: String,
       default: ''
     },
+    far: {
+      type: Boolean,
+      default: false
+    },
+    regular: {
+      type: Boolean,
+      default: false
+    },
+    fal: {
+      type: Boolean,
+      default: false
+    },
+    light: {
+      type: Boolean,
+      default: false
+    },
+    fab: {
+      type: Boolean,
+      default: false
+    },
+    brands: {
+      type: Boolean,
+      default: false
+    }
   },
   computed: {
     className() {
       return classNames(
-        'fa',
+        this.far || this.regular ? 'far' :
+          this.fal || this.light ? 'fal' :
+            this.fab || this.brands ? 'fab' : 'fas',
         this.icon && 'fa-' + this.icon,
         this.size && 'fa-' + this.size,
         this.fixed && 'fa-fw',

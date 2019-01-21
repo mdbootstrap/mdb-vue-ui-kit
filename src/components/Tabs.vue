@@ -3,7 +3,7 @@
     <component :is="tag" :class="className" :style="'z-index:' + zIndex">
       <li v-for="(link, index) in links" class="nav-item" :key="index">
         <mdb-dropdown v-if="link.dropdown">
-          <mdb-dropdown-toggle slot="toggle" navLink>{{link.text}}</mdb-dropdown-toggle>
+          <mdb-dropdown-toggle tag="a" :color="color" slot="toggle" navLink>{{link.text}}</mdb-dropdown-toggle>
           <mdb-dropdown-menu :color="color">
             <div v-for="(item, index) in link.dropdownItems" :key="index">
               <div v-if="item.divider" class="dropdown-divider" />
@@ -93,6 +93,9 @@ const Tabs = {
     },
     default: {
       type: Boolean
+    },
+    fill: {
+      type: Boolean
     }
   },
   data() {
@@ -108,7 +111,8 @@ const Tabs = {
         this.default && 'nav-tabs',
         this.tabs && 'nav-tabs md-tabs',
         this.justify && 'nav-justified',
-        this.pills && 'md-pills',
+        this.pills && 'nav-pills md-pills',
+        this.fill && 'nav-fill',
         this.vertical && 'flex-column',
         this.pills && this.color ? 'pills-'+this.color : !this.pills && this.color ? 'tabs-'+this.color  : false,
         this.header && 'nav-pills card-header-pills',

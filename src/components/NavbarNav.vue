@@ -13,7 +13,23 @@ const NavbarNav = {
       type: String,
       default: "ul"
     },
+    nav: {
+      type: Boolean,
+      default: false
+    },
     right: {
+      type: Boolean,
+      default: false
+    },
+    center: {
+      type: Boolean,
+      default: false
+    },
+    vertical: {
+      type: Boolean,
+      default: false
+    },
+    justifyAround: {
       type: Boolean,
       default: false
     }
@@ -21,8 +37,11 @@ const NavbarNav = {
   computed: {
     className() {
       return classNames(
-        'navbar-nav',
-        this.right ? 'ml-auto' : 'mr-auto'
+        this.nav ? 'nav' : 'navbar-nav',
+        this.right ? 'ml-auto' : 
+          this.center ? 'justify-content-center w-100' : 
+            this.vertical ? 'flex-column' :
+              this.justifyAround ? 'justify-content-around w-100' : 'mr-auto'
       );
     }
   }

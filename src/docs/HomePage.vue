@@ -29,7 +29,7 @@
         <mdb-row>
           <mdb-col md="4" class="mb-5">
             <mdb-col col="2" md="2" class="float-left">
-              <mdb-icon icon="css3" size="2x" class="pink-text" />
+              <mdb-icon fab icon="css3" size="2x" class="pink-text" />
             </mdb-col>
             <mdb-col col="10" md="8" lg="10" class="float-right">
               <h4 class="font-weight-bold">CSS</h4>
@@ -105,7 +105,7 @@
           </mdb-col>
           <mdb-col md="4" class="mb-5">
             <mdb-col col="2" md="2" class="float-left">
-              <mdb-icon icon="arrows" size="2x" class="blue-text" />
+              <mdb-icon icon="plus-square" size="2x" class="blue-text" />
             </mdb-col>
             <mdb-col col="10" md="8" lg="10" class="float-right">
               <h4 class="font-weight-bold">PLUGINS & ADDONS</h4>

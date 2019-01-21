@@ -262,4 +262,8 @@ a.fix:not([href]):not([tabindex]):hover {
   -o-transform: rotate(-135deg);
   transform: rotate(-135deg);
 }
+
+.accordion .card {
+  overflow: visible;
+}
 </style>

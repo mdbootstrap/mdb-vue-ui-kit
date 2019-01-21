@@ -10,7 +10,7 @@
     <mdb-btn rounded color="default" @click.native="success=true">launch success modal <mdb-icon icon="eye" class="ml-1"/></mdb-btn>
     <mdb-modal v-if="success" @close="success = false" success>
       <mdb-modal-header>
-        <mdb-modal-title>Success mdbModal</mdb-modal-title>
+        <mdb-modal-title>Success Modal</mdb-modal-title>
         </mdb-modal-header>
         <mdb-modal-body  class="text-center">
           <mdb-icon icon="check" size="4x" class="mb-3 animated rotateIn"/>
@@ -28,10 +28,10 @@
     <hr class="my-5"/>
     <h4>Info</h4>
 
-    <mdb-btn rounded color="default" @click.native="info=true">launch info modal <mdb-icon icon="eye" class="ml-1"/></mdb-btn>
+    <mdb-btn rounded color="default" @click.native="info = true">launch info modal <mdb-icon icon="eye" class="ml-1"/></mdb-btn>
     <mdb-modal v-if="info" @close="info = false" info>
       <mdb-modal-header>
-        <mdb-modal-title>Info mdbModal</mdb-modal-title>
+        <mdb-modal-title>Info Modal</mdb-modal-title>
       </mdb-modal-header>
       <mdb-modal-body>
         <img src="https://mdbootstrap.com/wp-content/uploads/2016/11/admin-dashboard-bootstrap.jpg" alt="modal" class="img-fluid"/>
@@ -51,14 +51,14 @@
     <mdb-btn rounded color="default" @click.native="danger=true">launch danger modal <mdb-icon icon="eye" class="ml-1"/></mdb-btn>
     <mdb-modal v-if="danger" @close="danger = false" danger>
       <mdb-modal-header>
-        <mdb-modal-title>Danger mdbModal</mdb-modal-title>
+        <mdb-modal-title>Danger Modal</mdb-modal-title>
       </mdb-modal-header>
       <mdb-modal-body>
         <mdb-row>
           <mdb-col col="3" class="text-center"><mdb-icon icon="shopping-cart" size="4x"/></mdb-col>
           <mdb-col col="9">
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, molestiae provident temporibus sunt earum.</p>
-            <h2><badge>v52gs1</badge></h2>
+            <h2><mdb-badge>v52gs1</mdb-badge></h2>
           </mdb-col>
         </mdb-row>
       </mdb-modal-body>
@@ -74,14 +74,14 @@
     <mdb-btn rounded color="default" @click.native="warning = true">launch warning modal <mdb-icon icon="eye" class="ml-1"/></mdb-btn>
     <mdb-modal v-if="warning" @close="warning = false" warning>
       <mdb-modal-header>
-        <mdb-modal-title>Warning mdbModal</mdb-modal-title>
+        <mdb-modal-title>Warning Modal</mdb-modal-title>
       </mdb-modal-header>
       <mdb-modal-body>
         <mdb-row>
           <mdb-col col="3" class="text-center">
-            <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(1).jpg" alt="Michal Szymanski - founder of Material Design for Bootstrap" class="img-fluid z-depth-1-half rounded-circle mb-2">
-                  <p class="title mb-0">Jane</p>
-                  <p class="text-muted " style="font-size: 13px">Consultant</p>
+            <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(1).jpg" alt="Jane, Consultant" class="img-fluid z-depth-1-half rounded-circle mb-2">
+            <p class="title mb-0">Jane</p>
+            <p class="text-muted " style="font-size: 13px">Consultant</p>
           </mdb-col>
           <mdb-col col="9">
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, molestiae provident temporibus sunt earum.</p>

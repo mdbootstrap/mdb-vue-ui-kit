@@ -1,19 +1,19 @@
 <template>
   <component :is="tag" :class="btnClasses" :type="type" :role="role" @click="handleClick">
-    <fa v-if="(icon && !iconRight)" :icon="icon" :class="iconClasses" :color="iconColor"/>
+    <mdb-icon v-if="(icon && !iconRight)" :icon="icon" :far="far || regular" :fal="fal || light" :fab="fab || brands" :class="iconClasses" :color="iconColor"/>
     <slot></slot>
-    <fa v-if="(icon && iconRight)" :icon="icon" :class="iconClasses" :color="iconColor"/>
+    <mdb-icon v-if="(icon && iconRight)" :icon="icon" :far="far || regular" :fal="fal || light" :fab="fab || brands" :class="iconClasses" :color="iconColor"/>
   </component>
 </template>
 
 <script>
 import classNames from 'classnames';
 import waves from '../mixins/waves';
-import Fa from './Fa';
+import mdbIcon from './Fa';
 
 const Btn =  {
   components: {
-    Fa
+    mdbIcon
   },
   props: {
     tag: {
@@ -22,7 +22,6 @@ const Btn =  {
     },
     color: {
       type: String,
-      default: "default"
     },
     outline: {
       type: String,
@@ -100,6 +99,30 @@ const Btn =  {
     },
     iconColor: {
       type: String
+    },
+    far: {
+      type: Boolean,
+      default: false
+    },
+    regular: {
+      type: Boolean,
+      default: false
+    },
+    fal: {
+      type: Boolean,
+      default: false
+    },
+    light: {
+      type: Boolean,
+      default: false
+    },
+    fab: {
+      type: Boolean,
+      default: false
+    },
+    brands: {
+      type: Boolean,
+      default: false
     }
   },
   methods: {
@@ -113,19 +136,20 @@ const Btn =  {
       return classNames(
         this.floating ? 'btn-floating' : 'btn',
         this.outline ? 'btn-outline-' + this.outline : this.flat ? 'btn-flat' : this.transparent ? '' : 'btn-' + this.color,
-        this.size ? 'btn-' + this.size : '',
-        this.block ? 'btn-block' : '',
-        this.disabled ? 'disabled' : '',
-        this.gradient ? this.gradient + '-gradient' : '',
-        this.rounded ? 'btn-rounded' : '',
-        this.action ? 'btn-action' : '',
-        this.save ? 'btn-save' : '',
-        this.active ? 'active' : '',
-        this.waves ? 'ripple-parent' : ''
+        this.size && 'btn-' + this.size,
+        this.block && 'btn-block',
+        this.disabled && 'disabled',
+        this.gradient && this.gradient + '-gradient',
+        this.rounded && 'btn-rounded',
+        this.action && 'btn-action',
+        this.save && 'btn-save',
+        this.active && 'active',
+        this.waves && 'ripple-parent'
       );
     },
     iconClasses() {
       return classNames(
+        'px-1',
         this.iconClass
       );
     }

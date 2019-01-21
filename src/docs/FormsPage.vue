@@ -93,7 +93,7 @@
             <label for="defaultFormSubscriptionEmailEx" class="grey-text">Your email</label>
             <input type="email" id="defaultFormSubscriptionEmailEx" class="form-control"/>
             <div class="text-center mt-4">
-              <button class="btn btn-outline-purple" type="submit">Send<i class="fa fa-paper-plane-o ml-2"></i></button>
+              <button class="btn btn-outline-purple" type="submit">Send<i class="far fa-paper-plane ml-2"></i></button>
             </div>
           </form>
         </mdb-col>
@@ -107,7 +107,7 @@
               <mdb-input label="Your name" icon="user" group type="text" validate error="wrong" success="right"/>
               <mdb-input label="Your email" icon="envelope" group type="email" validate error="wrong" success="right"/>
               <mdb-input label="Subject" icon="tag" group type="text" validate error="wrong" success="right"/>
-              <mdb-textarea :rows="2" label="Your message" icon="pencil"/>
+              <mdb-textarea :rows="2" label="Your message" icon="pencil-alt"/>
             </div>
             <div class="text-center">
               <mdb-btn outline="secondary">Send <mdb-icon icon="paper-plane-o" class="ml-1"/></mdb-btn>
@@ -129,7 +129,7 @@
             <label for="defaultFormContactMessageEx" class="grey-text">Your message</label>
             <textarea type="text" id="defaultFormContactMessageEx" class="form-control" rows="3"></textarea>
             <div class="text-center mt-4">
-              <button class="btn btn-outline-warning" type="submit">Send<i class="fa fa-paper-plane-o ml-2"></i></button>
+              <button class="btn btn-outline-warning" type="submit">Send<i class="far fa-paper-plane ml-2"></i></button>
             </div>
           </form>
         </mdb-col>
@@ -165,7 +165,7 @@
                 <label htmlFor="defaultFormCardEmailEx" class="grey-text font-weight-light">Your email</label>
                 <input type="email" id="defaultFormCardEmailEx" class="form-control" />
                 <div class="text-center py-4 mt-3">
-                  <button class="btn btn-outline-purple" type="submit">Send<i class="fa fa-paper-plane-o ml-2"></i></button>
+                  <button class="btn btn-outline-purple" type="submit">Send<i class="far fa-paper-plane ml-2"></i></button>
                 </div>
               </form>
             </div>
@@ -178,13 +178,13 @@
           <mdb-btn @click.native="showModal = true" color="info">Launch modal contact form</mdb-btn>
           <mdb-modal v-if="showModal" @close="showModal = false" cascade class="text-left">
             <mdb-modal-header class="primary-color white-text">
-              <h4 class="title"><mdb-icon class="fa fa-pencil" /> Contact form</h4>
+              <h4 class="title"><mdb-icon icon="pencil-alt" /> Contact form</h4>
             </mdb-modal-header>
             <mdb-modal-body class="grey-text">
               <mdb-input size="sm" label="Your name" icon="user" group type="text" validate error="wrong" success="right"/>
               <mdb-input size="sm" label="Your email" icon="envelope" group type="email" validate error="wrong" success="right"/>
               <mdb-input size="sm" label="Subject" icon="tag" group type="text" validate error="wrong" success="right"/>
-              <mdb-textarea size="sm" :rows="2" label="Your message" icon="pencil"/>
+              <mdb-textarea size="sm" :rows="2" label="Your message" icon="pencil-alt"/>
             </mdb-modal-body>
             <mdb-modal-footer>
               <mdb-btn color="secondary" @click.native="showModal = false">Close</mdb-btn>

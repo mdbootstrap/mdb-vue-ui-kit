@@ -10,7 +10,7 @@
     <mdb-btn rounded color="default" @click.native="show=true">launch success modal <mdb-icon icon="eye" class="ml-1"/></mdb-btn>
     <mdb-modal v-if="show" @show="handleShow" @close="show = false" success>
       <mdb-modal-header>
-        <mdb-modal-title>Success mdbModal</mdb-modal-title>
+        <mdb-modal-title>Success Modal</mdb-modal-title>
         </mdb-modal-header>
         <mdb-modal-body  class="text-center">
           <mdb-icon icon="check" size="4x" class="mb-3 animated rotateIn"/>
@@ -31,7 +31,7 @@
     <mdb-btn rounded color="default" @click.native="shown=true">launch info modal <mdb-icon icon="eye" class="ml-1"/></mdb-btn>
     <mdb-modal v-if="shown" @shown="handleShown" @close="shown = false" info>
       <mdb-modal-header>
-        <mdb-modal-title>Info mdbModal</mdb-modal-title>
+        <mdb-modal-title>Info Modal</mdb-modal-title>
       </mdb-modal-header>
       <mdb-modal-body>
         <img src="https://mdbootstrap.com/wp-content/uploads/2016/11/admin-dashboard-bootstrap.jpg" alt="modal" class="img-fluid"/>
@@ -51,7 +51,7 @@
     <mdb-btn rounded color="default" @click.native="hide=true">launch danger modal <mdb-icon icon="eye" class="ml-1"/></mdb-btn>
     <mdb-modal v-if="hide" @hide="handleHide" @close="hide = false" danger>
       <mdb-modal-header>
-        <mdb-modal-title>Danger mdbModal</mdb-modal-title>
+        <mdb-modal-title>Danger Modal</mdb-modal-title>
       </mdb-modal-header>
       <mdb-modal-body>
         <mdb-row>
@@ -75,7 +75,7 @@
     <mdb-container @hidden="handleHidden">
       <mdb-modal v-if="hidden" @close="hidden = false" warning>
         <mdb-modal-header>
-          <mdb-modal-title>Warning mdbModal</mdb-modal-title>
+          <mdb-modal-title>Warning Modal</mdb-modal-title>
         </mdb-modal-header>
         <mdb-modal-body>
           <mdb-row>

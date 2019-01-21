@@ -1,10 +1,10 @@
 <template>
-  <component :class="navClass" :is="tag" :style="navStyles" @click="close">
+  <component :class="navClass" :is="tag" @click="close">
     <button :class="navTogglerClass" type="button" data-toggle="collapse" :data-target="target" aria-controls="navbarSupportedContent"
         aria-expanded="false" aria-label="Toggle navigation" @click.stop="onClick">
-      <div v-if="animated" ref="animatedIcon" :class="'animated-icon' + animation"><span></span><span></span><span></span><span v-if="animation === '3'"></span></div>
+      <div v-if="animation" ref="animatedIcon" :class="`animated-icon${animation}`"><span></span><span></span><span></span><span v-if="animation === '2'"></span></div>
       <span v-else :class="navTogglerIcon">
-        <i v-if="hamburger" class="fa fa-bars fa-1x"/>
+        <i v-if="hamburger" class="fas fa-bars fa-1x"/>
       </span>
     </button>
     <slot></slot>
@@ -20,13 +20,37 @@ const Navbar = {
       type: String,
       default: 'nav'
     },
-    expand: {
-      type: String,
-      default: 'large'
+    animation: {
+      type: [Number, String],
+      default: null
+    },
+    animated: {
+      type: Boolean
+    },
+    color: {
+      type: String
     },
     dark: {
       type: Boolean,
       default: false
+    },
+    light: {
+      type: Boolean,
+      default: false
+    },
+    double: {
+      type: Boolean,
+      default: false
+    },
+    expand: {
+      type: String,
+      default: 'large'
+    },
+    hamburger: {
+      type: Boolean
+    },
+    navIconClass: {
+      type: String
     },
     position: {
       type: String
@@ -35,36 +59,21 @@ const Navbar = {
       type: String,
       default: 'navbarSupportedContent'
     },
-    scrolling: {
-      type: Boolean,
-      default: false
-    },
-    color: {
+    togglerClass: {
       type: String
     },
     transparent: {
       type: Boolean
     },
-    navStyle: {
-      type: String
+    scrolling: {
+      type: Boolean,
+      default: false
     },
-    hamburger: {
-      type: Boolean
+    scrollingOffset: {
+      type: Number,
+      default: 100
     },
-    navIconClass: {
-      type: String
-    },
-    animated: {
-      type: Boolean
-    },
-    animation: {
-      type: String,
-      default: '1'
-    },
-    togglerClass: {
-      type: String
-    },
-    double: {
+    center: {
       type: Boolean,
       default: false
     }
@@ -79,26 +88,23 @@ const Navbar = {
     navClass() {
       return classNames(
         'navbar',
-        this.dark ? 'navbar-dark' : 'navbar-light',
+        this.dark && 'navbar-dark',
+        this.light && 'navbar-light',
         this.color && !this.transparent ? this.color + '-color' : '',
-        this.expand === 'small' ? 'navbar-expand-sm' :
-          this.expand === 'medium' ? 'navbar-expand-md' :
-            this.expand === 'large' ? 'navbar-expand-lg' : 'navbar-expand-lx',
+        this.expand === 'small' || this.expand === "sm" ? 'navbar-expand-sm' :
+          this.expand === 'medium' || this.expand === "md" ? 'navbar-expand-md' :
+            this.expand === 'large' || this.expand === "lg" ? 'navbar-expand-lg' : 'navbar-expand-lx',
         this.position === 'top' ? 'fixed-top' :
           this.position === 'bottom' ? 'fixed-bottom' : '',
         this.scrolling && 'scrolling-navbar',
-        this.double && 'double-nav'
+        this.double && 'double-nav',
+        this.center && 'justify-content-center'
       );
     },
     navTogglerIcon() {
       return classNames(
         this.hamburger ? '' : 'navbar-toggler-icon',
         this.navIconClass
-      );
-    },
-    navStyles() {
-      return (
-        this.navStyle
       );
     },
     navTogglerClass() {
@@ -118,7 +124,7 @@ const Navbar = {
         this.collapseOverflow = setTimeout(() => {
           this.collapse.style.overflow = 'initial';
         }, 300);
-        if (this.animated) {
+        if (this.animation) {
           this.$refs.animatedIcon.classList.add('open');
         }
         this.toggleClicked = false;
@@ -130,7 +136,7 @@ const Navbar = {
           this.collapse.classList.toggle('collapse');
           this.collapse.style.overflow = 'initial';
         }, 300);
-        if (this.animated) {
+        if (this.animation) {
           this.$refs.animatedIcon.classList.remove('open');
         }
         this.toggleClicked = true;
@@ -147,22 +153,24 @@ const Navbar = {
         this.collapse.classList.add('collapse');
         this.collapse.style.overflow = 'initial';
       }, 300);
-      if (this.animated) {
+      if (this.animation) {
         this.$refs.animatedIcon.classList.remove('open');
       }
       this.toggleClicked = true;
     },
     handleScroll() {
       if (this.scrolling) {
-        if (window.scrollY > 100 && this.scrolled === false) {
+        if (window.scrollY > this.scrollingOffset && this.scrolled === false) {
           this.$el.style.paddingTop = 5 + 'px';
           this.$el.style.paddingBottom = 5 + 'px';
           if (this.transparent) this.$el.classList.add(`${this.color}-color`);
+          this.$el.classList.add('top-nav-collapse');
           this.scrolled = true;
-        } else if (window.scrollY < 100 && this.scrolled === true) {
+        } else if (window.scrollY < this.scrollingOffset && this.scrolled === true) {
           this.$el.style.paddingTop = 12 + 'px';
           this.$el.style.paddingBottom = 12 + 'px';
           if (this.transparent) this.$el.classList.remove(`${this.color}-color`);
+          this.$el.classList.remove('top-nav-collapse');
           this.scrolled = false;
         }
       }
@@ -231,7 +239,7 @@ export { Navbar as mdbNavbar };
 
 /* Icon 1 */
 
-.animated-icon1, .animated-icon3, .animated-icon4 {
+.animated-icon1, .animated-icon2, .animated-icon3 {
   width: 30px;
   height: 20px;
   position: relative;
@@ -247,7 +255,7 @@ export { Navbar as mdbNavbar };
   cursor: pointer;
 }
 
-.animated-icon1 span, .animated-icon3 span, .animated-icon4 span {
+.animated-icon1 span, .animated-icon2 span, .animated-icon3 span {
   display: block;
   position: absolute;
   height: 3px;
@@ -270,11 +278,11 @@ export { Navbar as mdbNavbar };
     background: #e65100;
 }
 
-.animated-icon3 span {
+.animated-icon2 span {
     background: #e3f2fd;
 }
 
-.animated-icon4 span {
+.animated-icon3 span {
     background: #f3e5f5;
 }
 
@@ -313,39 +321,39 @@ export { Navbar as mdbNavbar };
 
 /* Icon 3*/
 
-.animated-icon3 span:nth-child(1) {
+.animated-icon2 span:nth-child(1) {
   top: 0px;
 }
 
-.animated-icon3 span:nth-child(2), .animated-icon3 span:nth-child(3) {
+.animated-icon2 span:nth-child(2), .animated-icon2 span:nth-child(3) {
   top: 10px;
 }
 
-.animated-icon3 span:nth-child(4) {
+.animated-icon2 span:nth-child(4) {
   top: 20px;
 }
 
-.animated-icon3.open span:nth-child(1) {
+.animated-icon2.open span:nth-child(1) {
   top: 11px;
   width: 0%;
   left: 50%;
 }
 
-.animated-icon3.open span:nth-child(2) {
+.animated-icon2.open span:nth-child(2) {
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);
   -o-transform: rotate(45deg);
   transform: rotate(45deg);
 }
 
-.animated-icon3.open span:nth-child(3) {
+.animated-icon2.open span:nth-child(3) {
   -webkit-transform: rotate(-45deg);
   -moz-transform: rotate(-45deg);
   -o-transform: rotate(-45deg);
   transform: rotate(-45deg);
 }
 
-.animated-icon3.open span:nth-child(4) {
+.animated-icon2.open span:nth-child(4) {
   top: 11px;
   width: 0%;
   left: 50%;
@@ -353,7 +361,7 @@ export { Navbar as mdbNavbar };
 
 /* Icon 4 */
 
-.animated-icon4 span:nth-child(1) {
+.animated-icon3 span:nth-child(1) {
   top: 0px;
   -webkit-transform-origin: left center;
   -moz-transform-origin: left center;
@@ -361,7 +369,7 @@ export { Navbar as mdbNavbar };
   transform-origin: left center;
 }
 
-.animated-icon4 span:nth-child(2) {
+.animated-icon3 span:nth-child(2) {
   top: 10px;
   -webkit-transform-origin: left center;
   -moz-transform-origin: left center;
@@ -369,7 +377,7 @@ export { Navbar as mdbNavbar };
   transform-origin: left center;
 }
 
-.animated-icon4 span:nth-child(3) {
+.animated-icon3 span:nth-child(3) {
   top: 20px;
   -webkit-transform-origin: left center;
   -moz-transform-origin: left center;
@@ -377,7 +385,7 @@ export { Navbar as mdbNavbar };
   transform-origin: left center;
 }
 
-.animated-icon4.open span:nth-child(1) {
+.animated-icon3.open span:nth-child(1) {
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);
   -o-transform: rotate(45deg);
@@ -386,17 +394,21 @@ export { Navbar as mdbNavbar };
   left: 8px;
 }
 
-.animated-icon4.open span:nth-child(2) {
+.animated-icon3.open span:nth-child(2) {
   width: 0%;
   opacity: 0;
 }
 
-.animated-icon4.open span:nth-child(3) {
+.animated-icon3.open span:nth-child(3) {
   -webkit-transform: rotate(-45deg);
   -moz-transform: rotate(-45deg);
   -o-transform: rotate(-45deg);
   transform: rotate(-45deg);
   top: 21px;
   left: 8px;
+}
+
+.navbar {
+  transition: 1s;
 }
 </style>

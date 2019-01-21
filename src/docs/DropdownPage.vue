@@ -8,7 +8,7 @@
     <mdb-container class="mt-5">
       <h4 class="pb-1">Basic example</h4>
       <mdb-dropdown>
-        <mdb-dropdown-toggle slot="toggle">Basic dropdown</mdb-dropdown-toggle>
+        <mdb-dropdown-toggle color="default" slot="toggle">Basic dropdown</mdb-dropdown-toggle>
         <mdb-dropdown-menu>
           <mdb-dropdown-item>Action</mdb-dropdown-item>
           <mdb-dropdown-item>Another action</mdb-dropdown-item>
