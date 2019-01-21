@@ -12,7 +12,7 @@
 </template>
 
 <script>
-  import classNames from 'classnames';
+import classNames from 'classnames';
 
 const ViewWrapper = {
   props: {
