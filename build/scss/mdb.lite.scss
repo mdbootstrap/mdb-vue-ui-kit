@@ -1,6 +1,6 @@
 /*!
  * Material Design for Bootstrap 4
- * Version: MDB Lite 4.5.16
+ * Version: MDB Lite 4.6.1
  *
  *
  * Copyright: Material Design for Bootstrap
@@ -21,7 +21,7 @@
  *
  * Contact: office@mdbootstrap.com
  *
- * Atribution: Animate CSS, Twitter Bootstrap, Materialize CSS, Normalize CSS, Waves JS, WOW JS, Toastr, Chart.js , Hammer.js
+ * Attribution: Animate CSS, Twitter Bootstrap, Materialize CSS, Normalize CSS, Waves JS, WOW JS, Toastr, Chart.js , Hammer.js
  *
  */
 
@@ -63,6 +63,9 @@
 @import "free/depreciated";
 @import "free/steppers";
 @import "free/loader";
+
+// Your custom skin
+@import "custom-skin";
 
 // Your custom styles
 @import "custom-styles";
