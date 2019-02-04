@@ -100,8 +100,4 @@ const ViewWrapper = {
 
 export default ViewWrapper;
 export { ViewWrapper as mdbView };
-
 </script>
-
-<style scoped>
-</style>

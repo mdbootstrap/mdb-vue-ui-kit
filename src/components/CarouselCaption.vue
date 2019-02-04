@@ -19,12 +19,17 @@ const CarouselCaption = {
     },
     text: {
       type: String
+    },
+    alignV: {
+      type: String,
+      default: 'bottom'
     }
   },
   computed: {
     className() {
       return classNames(
-        'carousel-caption'
+        'carousel-caption',
+        `caption-${this.alignV}`
       );
     }
   }
@@ -34,5 +39,16 @@ export default CarouselCaption;
 export { CarouselCaption as mdbCarouselCaption };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+  .carousel-caption {
+    &.caption-bottom {
+      bottom: 5% !important;
+    }
+     &.caption-center {
+      bottom: 35% !important;
+    }
+     &.caption-top {
+      bottom: 70% !important;
+    }
+  }
 </style>

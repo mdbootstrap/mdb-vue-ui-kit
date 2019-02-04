@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import {mdbMedia,mdbMediaImage,mdbMediaBody, mdbRow } from 'mdbvue';
+import {mdbMedia, mdbMediaImage, mdbMediaBody, mdbRow } from 'mdbvue';
 
 export default {
   name: 'MediaPage',

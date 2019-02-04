@@ -123,7 +123,11 @@ const Btn =  {
     brands: {
       type: Boolean,
       default: false
-    }
+    },
+    group: {
+      type: Boolean,
+      default: false
+    },
   },
   methods: {
     handleClick(e) {
@@ -144,7 +148,9 @@ const Btn =  {
         this.action && 'btn-action',
         this.save && 'btn-save',
         this.active && 'active',
-        this.waves && 'ripple-parent'
+        this.waves && 'ripple-parent',
+        this.group && 'm-0 px-3 py-2',
+        (this.group && this.outline) && 'z-depth-0'
       );
     },
     iconClasses() {

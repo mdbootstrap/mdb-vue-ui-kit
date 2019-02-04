@@ -5,11 +5,11 @@
       <a :class="btnFloating" @click.prevent="next"><i :class="'fas fa-' + rightIcon"></i></a>
     </div>
     <div v-else-if="testimonial">
-      <a class="carousel-control carousel-item-prev left" @click.prevent="prev">
+      <a class="carousel-control carousel-control-prev left" @click.prevent="prev">
         <span class="icon-prev" aria-hidden="true"></span>
         <span class="sr-only">Prev</span>
       </a>
-      <a class="carousel-control carousel-item-next right" @click.prevent="next">
+      <a class="carousel-control carousel-control-next right" @click.prevent="next">
         <span class="icon-next" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
       </a>

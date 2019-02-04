@@ -250,5 +250,5 @@ export {
   mdbTblHead,
   mdbTextarea,
   mdbTooltip,
-  mdbView,
+  mdbView
 };

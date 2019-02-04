@@ -7,6 +7,11 @@
           <h6 class="my-3">FREE</h6>
           <mdb-list-group>
             <!-- FREE -->
+            <mdb-nav-item class="list-group-item list-group-item-action" to="/plugins/blog-components">
+              <h5 class="justify-content-between d-flex align-items-center">
+                Blog components <mdb-icon icon="angle-right"/>
+              </h5>
+            </mdb-nav-item>
             <mdb-nav-item class="list-group-item list-group-item-action" to="/plugins/iframe">
               <h5 class="justify-content-between d-flex align-items-center">
                 iFrame<mdb-icon icon="angle-right"/>

@@ -13,10 +13,15 @@
               </h5>
             </mdb-nav-item>
             <mdb-nav-item class="list-group-item list-group-item-action" to="/forms/inputs">
-                <h5 class="justify-content-between d-flex align-items-center">
-                  Input <mdb-icon icon="angle-right"/>
-                </h5>
-              </mdb-nav-item>
+              <h5 class="justify-content-between d-flex align-items-center">
+                Input <mdb-icon icon="angle-right"/>
+              </h5>
+            </mdb-nav-item>
+            <mdb-nav-item class="list-group-item list-group-item-action" to="/forms/group">
+              <h5 class="justify-content-between d-flex align-items-center">
+                Input Group <mdb-icon icon="angle-right"/>
+              </h5>
+            </mdb-nav-item>
             <mdb-nav-item class="list-group-item list-group-item-action" to="/forms/search">
                 <h5 class="justify-content-between d-flex align-items-center">
                   Search <mdb-icon icon="angle-right"/>

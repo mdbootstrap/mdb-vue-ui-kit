@@ -1,6 +1,6 @@
 <template>
   <component :is="tag" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" :class="[className, {'ripple-parent': waves}]" @click.prevent="wave">
-    <span :if="srOnly" class="sr-only">Toggle Dropdown</span>
+    <span v-if="srOnly" class="sr-only">Toggle Dropdown</span>
     <slot></slot>
   </component>
 </template>
@@ -54,6 +54,10 @@ const DropdownToggle = {
     },
     transparent: {
       type: Boolean
+    },
+    group: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
@@ -65,6 +69,8 @@ const DropdownToggle = {
         this.block ? 'btn-block' : '',
         this.active ? 'active' : '',
         this.disabled ? 'disabled' : '',
+        this.group && 'm-0 px-3 py-2',
+        (this.group && this.outline) && 'z-depth-0',
         'dropdown-toggle'
       );
     }

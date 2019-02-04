@@ -43,10 +43,6 @@ const PageNav = {
     next: {
       type: Boolean,
       default: false
-    },
-    darkWaves: {
-      type: Boolean,
-      default: true
     }
   },
   computed: {
