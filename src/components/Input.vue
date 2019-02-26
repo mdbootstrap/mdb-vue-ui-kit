@@ -220,7 +220,7 @@ const Input = {
     maxlength: {
       type: [String, Number]
     },
-    onblur{
+    onblur: {
       type: String
     }
   },
