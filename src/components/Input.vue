@@ -14,6 +14,7 @@
     :value="innerValue"
     :rows="rows"
     :maxlength="maxlength"
+    :onblur="onblur"
     :aria-label="label || ariaLabel || placeholder"
     :aria-describedby="ariaDescribedBy"
     :aria-labelledby="ariaLabelledBy"
@@ -42,6 +43,7 @@
       :value="innerValue"
       :rows="rows"
       :maxlength="maxlength"
+      :onblur="onblur"
       :aria-label="label || ariaLabel || placeholder"
       :aria-describedby="ariaDescribedBy"
       :aria-labelledby="ariaLabelledBy"
@@ -217,6 +219,9 @@ const Input = {
     },
     maxlength: {
       type: [String, Number]
+    },
+    onblur{
+      type: String
     }
   },
   data() {
