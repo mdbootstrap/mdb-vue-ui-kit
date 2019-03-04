@@ -1,6 +1,6 @@
 /*!
  * Material Design for Bootstrap 4
- * Version: MDB FREE 4.7.0
+ * Version: MDB FREE 4.7.3
  *
  *
  * Copyright: Material Design for Bootstrap
@@ -21,7 +21,7 @@
  *
  * Contact: office@mdbootstrap.com
  *
- * Attribution: Animate CSS, Twitter Bootstrap, Materialize CSS, Normalize CSS, Waves JS, WOW JS, Toastr, Chart.js , Hammer.js
+ * Attribution: Animate CSS, Twitter Bootstrap, Materialize CSS, Normalize CSS, Waves JS, WOW JS, Toastr, Chart.js
  *
  */
 
@@ -35,13 +35,13 @@
 @import "core/mixins";
 // Your custom variables
 @import "custom-variables";
-@import "core/colors";
-@import "core/variables";
-@import "core/global";
-@import "core/helpers";
-@import "core/typography";
-@import "core/masks";
-@import "core/waves";
+@import "core/_colors";
+@import "core/_variables";
+@import "core/_global";
+@import "core/_helpers";
+@import "core/_typography";
+@import "core/_masks";
+@import "core/_waves";
 
 // FREE
 @import "free/animations-basic";
@@ -65,6 +65,8 @@
 @import "free/loader";
 // Free addons
 // @import "addons/datatables";
+// @import "addons/datatables-select";
+// @import "addons/directives";
 
 // Your custom styles
 @import "custom-styles";

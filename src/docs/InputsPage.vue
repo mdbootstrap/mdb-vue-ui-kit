@@ -6,70 +6,86 @@
     </mdb-row>
     <hr />
     <mdb-container class="mt-5">
-      <h4><strong>Material design inputs</strong></h4>
-      <div style="margin-top:3rem;max-width:20rem">
-        <mdb-input type="text" label="Basic example" :value="test" @input="handleInput" @change="handleInput" />
-        <mdb-btn color="default" @click="changeValue">Update value</mdb-btn>
-        <mdb-input size="sm" type="text" label="Small input"/>
-      </div>
-      <div style="margin-top:3rem;max-width:20rem">
-        <mdb-input type="text" label="Input with icon" icon="envelope" />
-      </div>
-      <div style="margin-top:3rem;max-width:20rem">
-        <mdb-input type="text" label="Example label" placeholder="Placeholder" />
-      </div>
-      <div style="margin-top:3rem;max-width:20rem">
-        <mdb-input type="text" label="Basic example" disabled />
-      </div>
-      <div style="margin-top:3rem;max-width:20rem">
-        <mdb-input type="email" label="Your e-mail" />
-      </div>
-      <div style="margin-top:3rem;max-width:20rem">
-        <mdb-input type="password" label="Password" />
-      </div>
-      <div style="margin-top:3rem;max-width:20rem">
-        <mdb-input type="number" label="Number" @input="handleInput" />
-      </div>
-      <div style="margin-top:3rem;max-width:20rem">
-        <mdb-textarea label="Textarea" />
-      </div>
-      <h4 class="mt-5 mb-3"><strong>Numeric inputs</strong></h4>
-      <div style="margin-top:3rem;max-width:20rem">
-        <mdb-numeric-input :max="10" :emptyValue="5" minus @input="handleInput" /><br/>
-        <mdb-numeric-input :min="0" :max="10" :precision="1" :emptyValue="5.3" /><br/>
-        <mdb-numeric-input :min="0" :max="10" placeholder="placeholder" />
-      </div>
-      <h4 class="mt-5 mb-3"><strong>Default inputs</strong></h4>
-      <div style="max-width:20rem">
-        <label for="exampleForm2">Default input</label>
-        <input type="text" id="exampleForm2" class="form-control">
-      </div>
-      <h5 class="mt-5 mb-3">Sizing</h5>
-      <div style="max-width:20rem">
-        <input class="form-control form-control-lg" type="text" placeholder="Large input"/>
-        <br/>
-        <input class="form-control" type="text" placeholder="Medium input"/>
-        <br/>
-        <input class="form-control form-control-sm" type="text" placeholder="Small input"/>
-      </div>
-      <h5 class="mt-5 mb-3">Disabled input</h5>
-      <div style="max-width:20rem">
-        <label for="inputDisabledEx2" class="disabled">Example label</label>
-        <input type="text" id="inputDisabledEx2" class="form-control" disabled>
-      </div>
-      <h5 class="mt-5 mb-3">Form layouts</h5>
-      <div style="max-width:20rem">
-        <form>
-          <div class="form-group">
-            <label for="formGroupExampleInput">Example label</label>
-            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+      <mdb-row>
+        <mdb-col col="6">
+          <h4><strong>Material design inputs</strong></h4>
+          <div style="margin-top:3rem;max-width:20rem">
+            <mdb-input type="text" label="Basic example" :value="test" @input="handleInput" @change="handleInput" />
+            <mdb-btn @click="changeValue" color="default">Update value</mdb-btn>
+            <mdb-input size="sm" type="text" label="Small input"/>
           </div>
-          <div class="form-group">
-            <label for="formGroupExampleInput2">Another label</label>
-            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+          <div style="margin-top:3rem;max-width:20rem">
+            <mdb-input type="text" label="Input with icon" icon="envelope" />
           </div>
-        </form>
-      </div>
+          <div style="margin-top:3rem;max-width:20rem">
+            <mdb-input type="text" label="Example label" placeholder="Placeholder" />
+          </div>
+          <div style="margin-top:3rem;max-width:20rem">
+            <mdb-input type="text" label="Basic example" disabled />
+          </div>
+          <div style="margin-top:3rem;max-width:20rem">
+            <mdb-input type="email" label="Your e-mail" />
+          </div>
+          <div style="margin-top:3rem;max-width:20rem">
+            <mdb-input type="password" label="Password" />
+          </div>
+          <div style="margin-top:3rem;max-width:20rem">
+            <mdb-input type="number" label="Number" @input="handleInput" />
+          </div>
+          <div style="margin-top:3rem;max-width:20rem">
+            <mdb-textarea label="Textarea" />
+          </div>
+        </mdb-col>
+        <mdb-col col="6">
+
+          <h4 class="mb-4"><strong>Default inputs</strong></h4>
+          <div style="max-width:20rem">
+            <label for="exampleForm2">Default input</label>
+            <input type="text" id="exampleForm2" class="form-control">
+          </div>
+          <h5 class="mt-5 mb-3">Sizing</h5>
+          <div style="max-width:20rem">
+            <input class="form-control form-control-lg" type="text" placeholder="Large input"/>
+            <br/>
+            <input class="form-control" type="text" placeholder="Medium input"/>
+            <br/>
+            <input class="form-control form-control-sm" type="text" placeholder="Small input"/>
+          </div>
+          <h5 class="mt-5 mb-3">Disabled input</h5>
+          <div style="max-width:20rem">
+            <label for="inputDisabledEx2" class="disabled">Example label</label>
+            <input type="text" id="inputDisabledEx2" class="form-control" disabled>
+          </div>
+          <h5 class="mt-5 mb-3">Form layouts</h5>
+          <div style="max-width:20rem">
+            <form>
+              <div class="form-group">
+                <label for="formGroupExampleInput">Example label</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+              </div>
+              <div class="form-group">
+                <label for="formGroupExampleInput2">Another label</label>
+                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+              </div>
+            </form>
+          </div>
+        </mdb-col>
+      </mdb-row>
+      <mdb-row>
+        <mdb-col col="6">
+          <h4 class="mt-5 mb-3"><strong>Material numeric inputs</strong></h4>
+            <mdb-numeric-input :max="10" :emptyValue="5" minus @input="handleInput" class="my-0"/><br/>
+            <mdb-numeric-input :min="0" :max="10" :precision="1" :emptyValue="5.3" class="my-0"/><br/>
+            <mdb-numeric-input :min="0" :max="10" placeholder="placeholder" class="my-0"/>
+        </mdb-col>
+        <mdb-col col="6">
+          <h4 class="mt-5 mb-3"><strong>Default numeric inputs</strong></h4>
+            <mdb-numeric-input :max="10" :emptyValue="5" minus @input="handleInput" basic/><br/>
+            <mdb-numeric-input :min="0" :max="10" :precision="1" :emptyValue="5.3" basic/><br/>
+            <mdb-numeric-input :min="0" :max="10" placeholder="placeholder" basic/>
+        </mdb-col>
+      </mdb-row>
+
       <h5 class="mt-5 mb-3">Form grid</h5>
       <div style="max-width:20rem">
         <form>
@@ -183,12 +199,7 @@
               </div>
               <input type="text" class="form-control py-0" id="inlineFormInputGroupUsername2" placeholder="Username">
           </div>
-          <div class="form-check mb-2 mr-sm-2">
-              <input class="form-check-input" type="checkbox" id="inlineFormCheck">
-              <label class="form-check-label" for="inlineFormCheck">
-                  Remember me
-              </label>
-          </div>
+
 
           <button type="submit" class="btn btn-primary btn-md mt-0">Submit</button>
       </form>

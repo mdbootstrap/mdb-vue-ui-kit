@@ -7,9 +7,9 @@
     <hr />
     <div class="mt-5 pt-5 d-flex justify-content-center">
       <mdb-tooltip trigger="hover" :options="{placement: 'top'}">
-        <div class="tooltip">
+        <span slot="tip">
           Who's there?
-        </div>
+        </span>
         <mdb-btn slot="reference" color="primary">
           Knock Knock
         </mdb-btn>

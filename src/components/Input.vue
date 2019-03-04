@@ -183,10 +183,6 @@ const Input = {
       type: Boolean,
       default: false
     },
-    md: {
-      type: Boolean,
-      default: true
-    },
     rows: {
       type: Number
     },
@@ -217,6 +213,10 @@ const Input = {
     },
     maxlength: {
       type: [String, Number]
+    },
+    outline: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -229,13 +229,13 @@ const Input = {
   },
   mounted() {
     if (this.type === "checkbox") {
-      this.$emit('change', this.innerChecked);
+      this.$emit('getDefaultValue', this.innerChecked);
     } else if (this.type === "radio") {
       if (this.checked) {
-        this.$emit('input', this.innerValue);
+        this.$emit('getDefaultValue', this.innerValue);
       }
     } else {
-      this.$emit('input', this.innerValue);
+      this.$emit('getDefaultValue', this.innerValue);
     }
   },
   computed: {
@@ -259,7 +259,7 @@ const Input = {
         (this.type === 'checkbox' || this.type === 'radio') && this.inline ?
           'form-check' : (this.type === 'checkbox' || this.type === 'radio') ? 'form-check my-3' : false,
         this.basic ? false : 'md-form',
-        // this.size && 'form-' + this.size,
+        this.outline && 'md-outline',
         this.waves && 'ripple-parent',
         this.doesItGetTheGroupClass && this.size ? `input-group input-group-${this.size}` :
           this.doesItGetTheGroupClass && !this.size ? 'input-group' :

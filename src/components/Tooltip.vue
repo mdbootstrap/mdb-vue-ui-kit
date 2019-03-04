@@ -2,6 +2,9 @@
   <span>
     <transition @after-leave="doDestroy">
       <span ref="popper" :class="{show:!disabled && showPopper}">
+        <div class="tooltip" v-if="$slots.tip" ref="tooltip">
+          <slot name="tip"></slot>
+        </div>
         <slot></slot>
       </span>
     </transition>
@@ -107,7 +110,7 @@
 
     mounted() {
       this.referenceElm = this.reference || this.$slots.reference[0].elm;
-      this.tooltip = this.$slots.default[0].elm;
+      this.tooltip =  this.$refs.tooltip || this.$slots.default[0].elm;
 
       switch (this.trigger) {
         case 'click':
@@ -276,7 +279,7 @@
     visibility: hidden;
   }
 
-  .show .tooltip {
+  .show > .tooltip {
     opacity: 1;
     visibility: visible;
   }

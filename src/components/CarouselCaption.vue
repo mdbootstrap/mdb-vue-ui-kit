@@ -39,16 +39,14 @@ export default CarouselCaption;
 export { CarouselCaption as mdbCarouselCaption };
 </script>
 
-<style lang="scss" scoped>
-  .carousel-caption {
-    &.caption-bottom {
-      bottom: 5% !important;
-    }
-     &.caption-center {
-      bottom: 35% !important;
-    }
-     &.caption-top {
-      bottom: 70% !important;
-    }
+<style scoped>
+  .carousel-caption.caption-bottom {
+    bottom: 5% !important;
+  }
+  .carousel-caption.caption-center {
+    bottom: 35% !important;
+  }
+  .carousel-caption.caption-top {
+    bottom: 70% !important;
   }
 </style>

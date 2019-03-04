@@ -1,5 +1,7 @@
 <template>
+  <div :class="wrapper">
   <vue-numeric :empty-value="emptyValue" :min="min" :max="max" :minus="minus" :precision="precision" :placeholder="placeholder" :class="className" type="number" v-model="number"></vue-numeric>
+  </div>
 </template>
 
 <script>
@@ -31,6 +33,10 @@ const NumericInput = {
     minus: {
       type: Boolean,
       default: false
+    },
+    basic: {
+      type: Boolean,
+      default: false
     }
   },
   components: {
@@ -40,6 +46,11 @@ const NumericInput = {
     className() {
       return classNames(
         'form-control'
+      );
+    },
+    wrapper() {
+      return classNames(
+        !this.basic && 'md-form'
       );
     }
   },
