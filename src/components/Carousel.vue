@@ -11,7 +11,10 @@
         <carousel-indicator :index="index" :active="active(index)" :indicatorClass="indicatorClass" @changeSlide="handleChangeSlide" :src="thumbnailsSrc[index]" :indicatorStyle="indicatorStyle"/>
       </div>
     </carousel-indicators>
-    <carousel-inner>
+    <carousel-inner v-if="touch" v-touch:swipe.left="slideLeft" v-touch:swipe.right="slideRight">
+      <slot></slot>
+    </carousel-inner>
+    <carousel-inner v-else>
       <slot></slot>
     </carousel-inner>
     <carousel-navigation :testimonial="testimonial" v-if="showControls && !multi" @changeSlide="handleChangeSlide"></carousel-navigation>
@@ -94,6 +97,10 @@ const Carousel ={
     },
     indicatorStyle: {
       type: [Object]
+    },
+    touch: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -161,6 +168,12 @@ const Carousel ={
     },
     active(index) {
       if (index == this.page) return true;
+    },
+    slideLeft() {
+      this.slidePage('next');
+    },
+    slideRight() {
+      this.slidePage('prev');
     }
   },
   mounted() {

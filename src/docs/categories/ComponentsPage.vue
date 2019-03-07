@@ -52,6 +52,11 @@
                 List Group <mdb-icon icon="angle-right"/>
               </h5>
             </mdb-nav-item>
+            <mdb-nav-item class="list-group-item list-group-item-action" to="/components/spinners">
+              <h5 class="justify-content-between d-flex align-items-center">
+                Loaders / Spinners <mdb-icon icon="angle-right"/>
+              </h5>
+            </mdb-nav-item>
             <mdb-nav-item class="list-group-item list-group-item-action" to="/components/media">
               <h5 class="justify-content-between d-flex align-items-center">
                 Media <mdb-icon icon="angle-right"/>
@@ -82,6 +87,7 @@
                 Tabs <mdb-icon icon="angle-right"/>
               </h5>
             </mdb-nav-item>
+
           </mdb-list-group>
         </mdb-jumbotron>
       </mdb-col>

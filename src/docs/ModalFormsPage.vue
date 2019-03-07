@@ -1,7 +1,7 @@
 <template>
   <mdb-container>
     <mdb-row class="mt-5 align-items-center justify-content-start">
-      <h4 style="margin: 0" class="grey-text"><strong>Modal forms</strong></h4>
+      <h4 class="demo-title"><strong>Modal forms</strong></h4>
       <a href="https://mdbootstrap.com/docs/vue/modals/basic/?utm_source=DemoApp&utm_medium=MDBVueFree" waves-fixed class="border grey-text px-2 border-light rounded ml-2" target="_blank"><mdb-icon icon="graduation-cap" class="mr-2"/>Docs</a>
     </mdb-row>
 
@@ -17,7 +17,7 @@
         <mdb-input label="Your password" icon="lock" type="password"/>
       </mdb-modal-body>
       <mdb-modal-footer center>
-        <mdb-btn @click.native="login = false">Login</mdb-btn>
+        <mdb-btn @click.native="login = false" color="default">Login</mdb-btn>
       </mdb-modal-footer>
     </mdb-modal>
 
@@ -52,7 +52,7 @@
         <mdb-input label="Your email" icon="envelope" type="email" class="mb-5"/>
       </mdb-modal-body>
       <mdb-modal-footer center>
-        <mdb-btn @click.native="subs = false" color="indigo">Send <mdb-icon icon="paper-plane-o" class="ml-1"/></mdb-btn>
+        <mdb-btn @click.native="subs = false" color="indigo">Send <mdb-icon far icon="paper-plane" class="ml-1"/></mdb-btn>
       </mdb-modal-footer>
     </mdb-modal>
 
@@ -71,7 +71,7 @@
             <mdb-textarea icon="pencil-alt" label="Your message"/>
           </mdb-modal-body>
           <mdb-modal-footer center>
-            <mdb-btn @click.native="contact = false" color="unique">Send <mdb-icon icon="paper-plane-o" class="ml-1"/></mdb-btn>
+            <mdb-btn @click.native="contact = false" color="unique">Send <mdb-icon far icon="paper-plane" class="ml-1"/></mdb-btn>
           </mdb-modal-footer>
         </mdb-modal>
 
@@ -88,7 +88,7 @@
             <mdb-input label="Your email" icon="envelope" type="email" class="mb-5" iconClass="grey-text"/>
           </mdb-modal-body>
           <mdb-modal-footer center>
-            <mdb-btn @click.native="header = false" outline="warning">Send <mdb-icon icon="paper-plane-o" class="ml-1"/></mdb-btn>
+            <mdb-btn @click.native="header = false" outline="warning">Send <mdb-icon far icon="paper-plane" class="ml-1"/></mdb-btn>
           </mdb-modal-footer>
         </mdb-modal>
 

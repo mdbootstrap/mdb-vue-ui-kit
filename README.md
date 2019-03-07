@@ -65,6 +65,7 @@ __________
 
 ``` 
 bash
+
 # install dependencies
 npm install / yarn
 
@@ -174,8 +175,6 @@ A big ❤️ **thank you to all our users** ❤️ who are working with us to im
 
  - [Material Design + Bootstrap Tutorial](https://mdbootstrap.com/education/bootstrap/)
 
- - [Material Design + WordPress Tutorial](https://mdbootstrap.com/education/wordpress/)
-
  - [Freebies](https://mdbootstrap.com/freebies/)
 
  - [Premium Templates](https://mdbootstrap.com/templates/)
@@ -205,3 +204,4 @@ A big ❤️ **thank you to all our users** ❤️ who are working with us to im
 # Contact
 
  - contact@mdbootstrap.com
+

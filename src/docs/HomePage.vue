@@ -93,7 +93,7 @@
         </mdb-row>
         <hr class="my-5">
         <mdb-row class="mb-4">
-          <mdb-col md="4" class="mb-5">
+          <mdb-col md="4" offset="2" class="mb-5">
             <mdb-col col="2" md="2" class="float-left">
               <mdb-icon icon="window-restore" size="2x" class="pink-text" />
             </mdb-col>
@@ -111,16 +111,6 @@
               <h4 class="font-weight-bold">PLUGINS & ADDONS</h4>
               <p class="grey-text">Find out more about our extended components.</p>
               <mdb-nav-item router href="/plugins" waves-fixed><mdb-btn size="sm" color="default">Learn more</mdb-btn></mdb-nav-item>
-            </mdb-col>
-          </mdb-col>
-          <mdb-col md="4" class="mb-5">
-            <mdb-col col="2" md="2" class="float-left">
-              <mdb-icon icon="th" size="2x" class="green-text" />
-            </mdb-col>
-            <mdb-col col="10" md="8" lg="10" class="float-right">
-              <h4 class="font-weight-bold">SECTIONS</h4>
-              <p class="grey-text">E-commerce, contact, blog and much more sections. All ready to use in seconds.</p>
-              <mdb-nav-item router href="/sections" waves-fixed><mdb-btn size="sm" color="teal darken-1">Learn more</mdb-btn></mdb-nav-item>
             </mdb-col>
           </mdb-col>
         </mdb-row>

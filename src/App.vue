@@ -71,5 +71,6 @@ export default {
   color: #9e9e9e;
   font-weight: 700;
   margin-bottom: 0;
+  padding-left: 15px;
 }
 </style>

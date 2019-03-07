@@ -1,27 +1,62 @@
 <template>
-  <div :class="wrapperClass">
+  <component
+    v-if="noWrapper"
+    ref="input"
+    :is="whatTagIsThis"
+    :id="id"
+    :class="inputClasses"
+    :type="type"
+    :placeholder="placeholder"
+    :disabled="disabled"
+    :name="name"
+    :required="required"
+    :checked="innerChecked"
+    :value="innerValue"
+    :rows="rows"
+    :maxlength="maxlength"
+    :aria-label="label || ariaLabel || placeholder"
+    :aria-describedby="ariaDescribedBy"
+    :aria-labelledby="ariaLabelledBy"
+    @focus="focus"
+    @blur="blur"
+    @click="wave"
+    @change="onChange"
+    @input="onInput"
+  >{{whatTagIsThis==='textarea' && value}}</component>
+  <div :class="wrapperClasses" v-else>
     <i v-if="icon" :class="iconClasses"/>
-    <label v-if="label && basic" :class="labelClasses" @click="focus" ref="label" :for="id">{{label}}</label>
+    <div class="input-group-prepend" v-if="$slots.prepend" :id="prependSlotID">
+      <slot name="prepend"></slot>
+    </div>
     <component
-      :is="tag"
+      ref="input"
+      :is="whatTagIsThis"
       :id="id"
-      :class="className"
+      :class="inputClasses"
       :type="type"
       :placeholder="placeholder"
       :disabled="disabled"
-      @focus="focus"
-      @blur="blur"
-      @click="wave"
-      @change="onChange"
-      ref="input"
-      @input="onInput"
       :name="name"
       :required="required"
       :checked="innerChecked"
       :value="innerValue"
-    />
-    <label v-if="label && !basic" :class="labelClasses" @click="focus" ref="label" :for="id">{{label}}</label>
+      :rows="rows"
+      :maxlength="maxlength"
+      :aria-label="label || ariaLabel || placeholder"
+      :aria-describedby="ariaDescribedBy"
+      :aria-labelledby="ariaLabelledBy"
+      @focus="focus"
+      @blur="blur"
+      @click="wave"
+      @change="onChange"
+      @input="onInput"
+    >{{whatTagIsThis==='textarea' && value}}</component>
+    <label v-if="label" :class="labelClasses" @click="focus" ref="label" :for="id">{{label}}</label>
+    <label v-if="isThisCheckboxLabeless" :class="labelClasses" @click="focus" ref="label" :for="id"/>
     <slot></slot>
+    <div class="input-group-append" v-if="$slots.append" :id="appendSlotID">
+      <slot name="append"></slot>
+    </div>
   </div>
 </template>
 
@@ -147,6 +182,41 @@ const Input = {
     brands: {
       type: Boolean,
       default: false
+    },
+    rows: {
+      type: Number
+    },
+    wrapperClass: {
+      type: [String, Array]
+    },
+    noWrapper: {
+      type: Boolean,
+      value: false
+    },
+    ariaLabel: {
+      type: String
+    },
+    ariaDescribedBy: {
+      type: String
+    },
+    ariaLabelledBy: {
+      type: String
+    },
+    prependSlotID: {
+      type: String
+    },
+    appendSlotID: {
+      type: String
+    },
+    inputClass: {
+      type: String
+    },
+    maxlength: {
+      type: [String, Number]
+    },
+    outline: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -159,17 +229,17 @@ const Input = {
   },
   mounted() {
     if (this.type === "checkbox") {
-      this.$emit('change', this.innerChecked);
+      this.$emit('getDefaultValue', this.innerChecked);
     } else if (this.type === "radio") {
       if (this.checked) {
-        this.$emit('input', this.innerValue);
+        this.$emit('getDefaultValue', this.innerValue);
       }
     } else {
-      this.$emit('input', this.innerValue);
+      this.$emit('getDefaultValue', this.innerValue);
     }
   },
   computed: {
-    className() {
+    inputClasses() {
       return classNames(
         'form-control',
         {
@@ -179,20 +249,23 @@ const Input = {
           'with-gap': this.gap
         },
         this.type === 'checkbox' ? this.gap ? false : 'form-check-input' : false,
-        this.type === 'radio' ? 'form-check-input' : false
+        this.type === 'radio' ? 'form-check-input' : false,
+        this.type === 'textarea' && !this.basic ? 'md-textarea' : false,
+        this.inputClass && this.inputClass
       );
     },
-    wrapperClass() {
-      if (!this.basic) {
-        return classNames(
-          (this.type === 'checkbox' || this.type === 'radio') && this.inline ?
-            'form-check' : (this.type === 'checkbox' || this.type === 'radio') ? 'form-check my-3' : 'md-form',
-          this.size && 'form-' + this.size,
-          this.waves && 'ripple-parent'
-        );
-      }
-
-      return null;
+    wrapperClasses() {
+      return classNames(
+        (this.type === 'checkbox' || this.type === 'radio') && this.inline ?
+          'form-check' : (this.type === 'checkbox' || this.type === 'radio') ? 'form-check my-3' : false,
+        this.basic ? false : 'md-form',
+        this.outline && 'md-outline',
+        this.waves && 'ripple-parent',
+        this.doesItGetTheGroupClass && this.size ? `input-group input-group-${this.size}` :
+          this.doesItGetTheGroupClass && !this.size ? 'input-group' :
+            !this.doesItGetTheGroupClass && this.size ? `form-${this.size}` : false,
+        this.wrapperClass
+      );
     },
     iconClasses(){
       return classNames(
@@ -207,13 +280,29 @@ const Input = {
     labelClasses() {
       return classNames(
         {
-          'active': (this.placeholder || this.isTouched || this.innerValue !==''),
+          'active': (this.placeholder || this.isTouched || this.innerValue !=='') && this.type!=='checkbox',
           'disabled': this.disabled,
-          'form-check-label mr-5': (this.type === 'checkbox' || this.type === 'radio')
+          'form-check-label': (this.type === 'checkbox' || this.type === 'radio'),
+          'mr-5': !this.isThisCheckboxLabeless
         },
         this.labelColor && 'text-' + this.labelColor,
         this.labelClass
       );
+    },
+    // tagname helper
+    whatTagIsThis() {
+      if (this.type==='textarea') {
+        return 'textarea';
+      }
+      return this.tag;
+    },
+    // classname helper
+    doesItGetTheGroupClass() {
+      return (this.$slots.prepend || this.$slots.append) || (this.basic && this.type==='textarea');
+    },
+    // checkbox with no label (say, has to fit vertically & horizontally) helper
+    isThisCheckboxLabeless() {
+      return this.type==='checkbox' && typeof this.label==="undefined";
     }
   },
   methods: {
@@ -338,7 +427,12 @@ export { Input as mdbInput };
 .form-dark [type="checkbox"] + label:before {
   top: 2px;
   width: 15px;
-  height: 15px; }
+  height: 15px;
+}
+
+.md-form textarea~label.active{
+	color: inherit;
+}
 
 
 </style>

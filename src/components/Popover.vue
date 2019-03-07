@@ -2,6 +2,14 @@
   <span>
     <transition @after-leave="doDestroy">
       <span ref="popper" :class="{show:!disabled && showPopper}">
+        <div class="popover" v-if="$slots.header || $slots.body" ref="popover">
+          <div class="popover-header" v-if="$slots.header">
+            <slot name="header"></slot>
+          </div>
+          <div class="popover-body" v-if="$slots.body">
+            <slot name="body"></slot>
+          </div>
+        </div>
         <slot></slot>
       </span>
     </transition>
@@ -107,7 +115,7 @@
 
     mounted() {
       this.referenceElm = this.reference || this.$slots.reference[0].elm;
-      this.popover = this.$slots.default[0].elm;
+      this.popover = this.$refs.popover || this.$slots.default[0].elm;
 
       switch (this.trigger) {
         case 'click':

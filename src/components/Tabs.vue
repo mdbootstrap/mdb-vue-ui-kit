@@ -101,7 +101,6 @@ const Tabs = {
   data() {
     return {
       activeTab: this.active,
-      waves: true
     };
   },
   computed: {

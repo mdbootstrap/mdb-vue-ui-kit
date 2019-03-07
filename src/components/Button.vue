@@ -1,7 +1,7 @@
 <template>
   <component :is="tag" :class="btnClasses" :type="type" :role="role" @click="handleClick">
     <mdb-icon v-if="(icon && !iconRight)" :icon="icon" :far="far || regular" :fal="fal || light" :fab="fab || brands" :class="iconClasses" :color="iconColor"/>
-    <slot></slot>
+      <slot></slot>
     <mdb-icon v-if="(icon && iconRight)" :icon="icon" :far="far || regular" :fal="fal || light" :fab="fab || brands" :class="iconClasses" :color="iconColor"/>
   </component>
 </template>
@@ -123,6 +123,13 @@ const Btn =  {
     brands: {
       type: Boolean,
       default: false
+    },
+    group: {
+      type: Boolean,
+      default: false
+    },
+    text: {
+      type: String
     }
   },
   methods: {
@@ -144,7 +151,10 @@ const Btn =  {
         this.action && 'btn-action',
         this.save && 'btn-save',
         this.active && 'active',
-        this.waves && 'ripple-parent'
+        this.waves && 'ripple-parent',
+        this.group && 'm-0 px-3 py-2',
+        (this.group && this.outline) && 'z-depth-0',
+        this.text && `${this.text}-text`
       );
     },
     iconClasses() {

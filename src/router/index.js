@@ -14,60 +14,65 @@ import AddonsPage from '../docs/categories/AddonsPage';
 // FREE
 import AlertPage from '../docs/AlertPage';
 import AccordionPage from '../docs/AccordionPage';
-import IframePage from '../docs/IframePage';
-import HomePage from '../docs/HomePage';
-import GridPage from '../docs/GridPage';
 import BadgePage from '../docs/BadgePage';
 import BackgroundImagePage from '../docs/BackgroundImagePage';
-import CardPage from '../docs/CardPage';
+import BlogComponentsPage from '../docs/BlogComponentsPage';
 import ButtonPage from '../docs/ButtonPage';
 import ButtonsGroupPage from '../docs/ButtonsGroupPage';
-import HamburgerMenuPage from '../docs/HamburgerMenuPage';
+import BreadcrumbPage from '../docs/BreadcrumbPage';
+import CardPage from '../docs/CardPage';
+import CarouselPage from '../docs/CarouselPage';
+import ChartPage from '../docs/ChartPage';
+import CollapsePage from '../docs/CollapsePage';
+import DataTablePage from '../docs/DataTablePage';
+import DropdownPage from '../docs/DropdownPage';
+import EdgeHeaderPage from '../docs/EdgeHeaderPage';
+import FaPage from '../docs/FaPage';
+import FooterPage from '../docs/FooterPage';
+import FormsPage from '../docs/FormsPage';
 import GradientPage from '../docs/GradientPage';
 import GoogleMapsPage from '../docs/GoogleMapsPage';
-import TablePage from '../docs/TablePage';
-import TableAdditionalPage from '../docs/TableAdditionalPage';
-import DataTablePage from '../docs/DataTablePage';
-import TableResponsivePage from '../docs/TableResponsivePage';
-import TablePaginationPage from '../docs/TablePaginationPage';
-import TableScrollPage from '../docs/TableScrollPage';
-import TableSearchPage from '../docs/TableSearchPage';
-import TableSortPage from '../docs/TableSortPage';
-import DropdownPage from '../docs/DropdownPage';
-import JumbotronPage from '../docs/JumbotronPage';
-import CarouselPage from '../docs/CarouselPage';
-import BreadcrumbPage from '../docs/BreadcrumbPage';
-import FaPage from '../docs/FaPage';
-import InputsPage from '../docs/InputsPage';
-import LiveDemoPage from '../docs/LiveDemoPage';
-import MediaPage from '../docs/MediaPage';
-import ListGroupPage from '../docs/ListGroupPage';
-import NavbarPage from '../docs/NavbarPage';
-import NavsPage from '../docs/NavsPage';
-import NavigationPage from '../docs/NavigationPage';
-import CollapsePage from '../docs/CollapsePage';
-import PaginationPage from '../docs/PaginationPage';
-import PanelPage from '../docs/PanelPage';
-import ChartPage from '../docs/ChartPage';
-import ProgressBarsPage from '../docs/ProgressBarsPage';
-import TooltipPage from '../docs/TooltipPage';
-import PopoverPage from '../docs/PopoverPage';
-import EdgeHeaderPage from '../docs/EdgeHeaderPage';
-import MasksPage from '../docs/MasksPage';
+import GridPage from '../docs/GridPage';
+import HamburgerMenuPage from '../docs/HamburgerMenuPage';
+import HomePage from '../docs/HomePage';
 import HoverPage from '../docs/HoverPage';
-import VideoCarouselPage from '../docs/VideoCarouselPage';
+import IframePage from '../docs/IframePage';
+import InputsPage from '../docs/InputsPage';
+import InputGroupPage from '../docs/InputGroupPage';
+import JumbotronPage from '../docs/JumbotronPage';
+import LiveDemoPage from '../docs/LiveDemoPage';
+import ListGroupPage from '../docs/ListGroupPage';
+import MasksPage from '../docs/MasksPage';
+import MediaPage from '../docs/MediaPage';
 import ModalPage from '../docs/ModalPage';
 import ModalEventsPage from '../docs/ModalEventsPage';
 import ModalExamplesPage from '../docs/ModalExamplesPage';
 import ModalFormsPage from '../docs/ModalFormsPage';
 import ModalStylesPage from '../docs/ModalStylesPage';
-import FormsPage from '../docs/FormsPage';
+import NavsPage from '../docs/NavsPage';
+import NavbarPage from '../docs/NavbarPage';
+import NavigationPage from '../docs/NavigationPage';
+import PaginationPage from '../docs/PaginationPage';
+import PanelPage from '../docs/PanelPage';
+import PopoverPage from '../docs/PopoverPage';
+import ProgressBarsPage from '../docs/ProgressBarsPage';
 import SearchPage from '../docs/SearchPage';
-import ValidationPage from '../docs/ValidationPage';
-import FooterPage from '../docs/FooterPage';
+import CustomColorsScrollbarPage from '../docs/CustomColorsScrollbarPage';
 import SliderPage from '../docs/SliderPage';
+import SpinnersPage from '../docs/SpinnersPage';
 import TabsPage from '../docs/TabsPage';
+import TablePage from '../docs/TablePage';
+import TableAdditionalPage from '../docs/TableAdditionalPage';
+import TableResponsivePage from '../docs/TableResponsivePage';
+import TablePaginationPage from '../docs/TablePaginationPage';
+import TableScrollPage from '../docs/TableScrollPage';
+import TableSearchPage from '../docs/TableSearchPage';
+import TableSortPage from '../docs/TableSortPage';
+import TooltipPage from '../docs/TooltipPage';
+import ValidationPage from '../docs/ValidationPage';
+import VideoCarouselPage from '../docs/VideoCarouselPage';
 import VideoPage from '../docs/VideoPage';
+import WavesPage from '../docs/WavesPage';
 
 Vue.use(Router);
 
@@ -222,9 +227,17 @@ export default new Router({
       name: 'FaPage',
       component: FaPage
     }, {
+      path: '/css/scrollbar',
+      name: 'CustomColorsScrollbarPage',
+      component: CustomColorsScrollbarPage
+    }, {
       path: '/forms/inputs',
       name: 'InputsPage',
       component: InputsPage
+    }, {
+      path: '/forms/group',
+      name: 'InputGroupPage',
+      component: InputGroupPage
     }, {
       path: '/components/liveDemo',
       name: 'LiveDemoPage',
@@ -341,6 +354,19 @@ export default new Router({
       path: '/plugins/video',
       name: 'VideoPage',
       component: VideoPage
-    },
+    }, {
+      path: '/components/spinners',
+      name: 'SpinnersPage',
+      component: SpinnersPage
+    }, {
+      path: '/plugins/blog-components',
+      name: 'BlogComponentsPage',
+      component: BlogComponentsPage
+    }, {
+      path: '/advanced/wave-effect',
+      name: 'WavesPage',
+      component: WavesPage
+    }
+
   ]
 });

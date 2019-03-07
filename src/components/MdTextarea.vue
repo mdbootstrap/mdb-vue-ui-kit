@@ -1,26 +1,33 @@
 <template>
-  <div :class="wrapperClass">
+  <div :class="wrapperClasses">
     <i v-if="icon" :class="iconClasses"/>
+    <div class="input-group-prepend" v-if="$slots.prepend">
+      <slot name="prepend"></slot>
+    </div>
     <textarea
               :is="tag"
               :class="textareaClass"
               :type="type"
               :placeholder="placeholder"
-              :disabled="disabled" @focus="focus"
-              @blur="blur"
+              :disabled="disabled"
               ref="input"
               :rows="rows"
-              @input="onChange"
-              v-model="innerValue" />
-    <label v-if="label" :class="labelClass" ref="label" @click="focus">{{label}}
-    </label><slot></slot>
+              :aria-label="label"
+              @focus="focus"
+              @blur="blur"
+              @input="onInput"
+              @change="onChange"
+              >{{innerValue}}</textarea>
+    <label v-if="label" :class="labelClass" ref="label" @click="focus" :for="id">{{label}}</label>
+    <slot></slot>
+    <div class="input-group-append" v-if="$slots.append">
+      <slot name="append"></slot>
+    </div>
   </div>
 </template>
 
 <script>
 import classNames from 'classnames';
-// import 'font-awesome/css/font-awesome.min.css';
-// import Fa from './Fa';
 
 const MdTextarea = {
   props: {
@@ -45,7 +52,7 @@ const MdTextarea = {
       default: false
     },
     rows: {
-      type: Number
+      type: [Number, String]
     },
     value: {
       type: String,
@@ -77,6 +84,16 @@ const MdTextarea = {
     brands: {
       type: Boolean,
       default: false
+    },
+    basic: {
+      type: Boolean,
+      default: false
+    },
+    id: {
+      type: String
+    },
+    wrapperClass: {
+      type: [String, Array]
     }
   },
 
@@ -89,12 +106,17 @@ const MdTextarea = {
   computed: {
     textareaClass() {
       return classNames(
-        'form-control md-textarea'
+        'form-control',
+        this.basic ? false : 'md-textarea'
       );
     },
-    wrapperClass() {
+    wrapperClasses() {
       return classNames(
-        'md-form'
+        this.basic ? 'form-group' : 'md-form',
+        this.doesItGetTheGroupClass && 'input-group',
+        this.size && this.doesItGetTheGroupClass ? `input-group-${this.size}` :
+          this.size && !this.doesItGetTheGroupClass ? `form-${this.size}` : false,
+        this.wrapperClass
       );
     },
     iconClasses() {
@@ -112,7 +134,14 @@ const MdTextarea = {
         (this.isTouched || this.placeholder || this.innerValue !== '') && 'active',
         this.disabled && 'disabled'
       );
+    },
+    // classname helper:
+    doesItGetTheGroupClass() {
+      return (this.$slots.prepend || this.$slots.append) || this.basic;
     }
+  },
+  mounted() {
+    this.$emit('input', this.innerValue);
   },
   methods: {
     focus(e) {
@@ -126,8 +155,20 @@ const MdTextarea = {
       this.$refs.input.blur();
     },
     onChange(e) {
+      this.$emit('change', e.target.value);
+      console.log('hahah. onChange z v-model z wnętrza textarea');
+      this.innerValue = e.target.value;
+    },
+    onInput(e) {
       this.$emit('input', e.target.value);
       this.innerValue = e.target.value;
+    }
+  },
+  watch: {
+    value(val) {
+      this.$refs.input.value = val;
+      this.innerValue = val;
+      this.$emit('change', this.innerValue);
     }
   }
 };
@@ -137,4 +178,7 @@ export { MdTextarea as mdbTextarea };
 </script>
 
 <style scoped>
+.md-form textarea~label.active{
+	color: inherit;
+}
 </style>

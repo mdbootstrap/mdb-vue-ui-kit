@@ -1,69 +1,54 @@
 <template>
-  <div style="background: #ededed; padding-bottom: 100px">
-  <!-- Purple Header -->
-    <mdb-edge-header color="indigo"></mdb-edge-header>
+  <section style="background: #ededed; padding-bottom: 100px">
+    <!-- Purple Header -->
+    <mdb-edge-header color="indigo"/>
 
-    <!-- MainmdbContainer -->
+    <!-- Card Container -->
     <mdb-container free-bird>
       <mdb-row>
         <mdb-col md="8" lg="7" class="mx-auto float-none white z-depth-1 py-2 px-2">
 
-          <!--Naked Form-->
           <mdb-card-body>
             <h2 class="h2-responsive"><strong>Material Design Edge Headers</strong></h2>
             <p class="pb-4">Example of Material Design Form</p>
 
             <!--Body-->
-            <form action="#">
-
+            <form>
               <h5 class="h5-responsive">Basic Textbox</h5>
               <!-- Basic textbox -->
-              <mdb-input type="text" label="Example label"/>
+              <mdb-input label="Example label"/>
               <!-- /.Basic textbox -->
 
               <h5 class="h5-responsive">Textbox with icon</h5>
-              <div class="md-form">
-                <mdb-input type="text" label="Your name" icon="user" />
-              </div>
+              <mdb-input label="Your name" icon="user" />
 
               <!--Email validation-->
               <h5 class="h5-responsive">E-mail validation</h5>
-              <div class="md-form">
-                <mdb-input type="email" label="Your email" icon="envelope" />
-              </div>
+              <mdb-input type="email" label="Your email" icon="envelope" />
 
               <!--Textarea with icon-->
               <h5 class="h5-responsive">Textarea</h5>
-              <div class="md-form">
-                <mdb-textarea type="text" label="Textarea" icon="pencil-alt"></mdb-textarea>
-              </div>
+              <mdb-input type="textarea" label="Textarea" icon="pencil-alt"></mdb-input>
 
               <h5 class="h5-responsive">Disabled field</h5>
-              <div class="md-form">
-                <mdb-input type="text" label="Example label" disabled/>
-              </div>
+              <mdb-input label="Example label" disabled/>
 
               <div class="text-xs-left">
-                <button class="btn btn-primary">Submit</button>
+                <mdb-btn color="primary" @click.native.prevent="handleSubmit()">Submit</mdb-btn>
               </div>
             </form>
 
-            <div class="my-2">
-                <p style="font-weight:300;font-size:0.75rem">Never submit your passwords here</p>
-            </div>
-
+            <p class="my-2"><small>Never submit your passwords here</small></p>
           </mdb-card-body>
-          <!--Naked Form-->
-
         </mdb-col>
       </mdb-row>
     </mdb-container>
-  <!-- /.MainmdbContainer -->
-  </div>
+    <!-- /.Card Container -->
+  </section>
 </template>
 
 <script>
-import { mdbEdgeHeader, mdbContainer, mdbRow, mdbCol, mdbCardBody, mdbInput, mdbTextarea } from 'mdbvue';
+import { mdbEdgeHeader, mdbContainer, mdbRow, mdbCol, mdbCardBody, mdbInput, mdbBtn } from 'mdbvue';
 
 export default {
   name: 'EdgeHeaderPage',
@@ -74,10 +59,18 @@ export default {
     mdbCol,
     mdbCardBody,
     mdbInput,
-    mdbTextarea
+    mdbBtn
+  },
+  methods: {
+    handleSubmit(e) {
+      console.log('Form submitted');
+    }
   }
 };
 </script>
 
-<style scoped>
+<style scroped>
+small {
+  font-weight: 300;
+}
 </style>

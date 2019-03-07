@@ -1,6 +1,16 @@
-import '../components/Waves.css';
+import './Waves.css';
 
 export default {
+  props: {
+    waves: {
+      type: Boolean,
+      default: true
+    },
+    darkWaves: {
+      type: Boolean,
+      default: false
+    }
+  },
   methods: {
     wave(e) {
       if (this.waves) {
