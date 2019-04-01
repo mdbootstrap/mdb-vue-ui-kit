@@ -8,7 +8,7 @@
     <hr />
     <h2>Simple login modal</h2>
     <mdb-btn rounded color="default" @click.native="login=true">launch login modal <mdb-icon icon="eye" class="ml-1"/></mdb-btn>
-    <mdb-modal v-if="login" @close="login = false">
+    <mdb-modal :show="login" @close="login = false">
       <mdb-modal-header class="text-center">
         <mdb-modal-title tag="h4" bold class="w-100">Sign in</mdb-modal-title>
       </mdb-modal-header>
@@ -25,7 +25,7 @@
         <h2>Simple register modal</h2>
 
     <mdb-btn rounded color="default" @click.native="register = true">launch register modal <mdb-icon icon="eye" class="ml-1"/></mdb-btn>
-      <mdb-modal v-if="register" @close="register = false">
+      <mdb-modal :show="register" @close="register = false">
       <mdb-modal-header class="text-center">
         <mdb-modal-title tag="h4" bold class="w-100">Sign up</mdb-modal-title>
       </mdb-modal-header>
@@ -43,7 +43,7 @@
         <h2>Simple subscription modal</h2>
 
     <mdb-btn rounded color="default" @click.native="subs = true">launch subscrition modal <mdb-icon icon="eye" class="ml-1"/></mdb-btn>
-      <mdb-modal v-if="subs" @close="subs = false">
+      <mdb-modal :show="subs" @close="subs = false">
       <mdb-modal-header class="text-center">
         <mdb-modal-title tag="h4" bold class="w-100">Subscribe</mdb-modal-title>
       </mdb-modal-header>
@@ -60,7 +60,7 @@
         <h2>Simple contact modal</h2>
 
         <mdb-btn rounded color="default" @click.native="contact = true">launch contact form modal <mdb-icon icon="eye" class="ml-1"/></mdb-btn>
-          <mdb-modal v-if="contact" @close="contact = false">
+          <mdb-modal :show="contact" @close="contact = false">
           <mdb-modal-header class="text-center">
             <mdb-modal-title tag="h4" bold class="w-100">Write to us</mdb-modal-title>
           </mdb-modal-header>
@@ -79,7 +79,7 @@
         <h2>Subscription modal with header</h2>
 
           <mdb-btn rounded color="default" @click.native="header = true">launch header form modal <mdb-icon icon="eye" class="ml-1"/></mdb-btn>
-          <mdb-modal v-if="header" @close="header = false" warning>
+          <mdb-modal :show="header" @close="header = false" warning>
           <mdb-modal-header class="text-center">
             <mdb-modal-title tag="h4" bold class="w-100">Subscribe</mdb-modal-title>
           </mdb-modal-header>

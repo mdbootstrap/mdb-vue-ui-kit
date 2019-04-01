@@ -156,7 +156,6 @@ const MdTextarea = {
     },
     onChange(e) {
       this.$emit('change', e.target.value);
-      console.log('hahah. onChange z v-model z wnętrza textarea');
       this.innerValue = e.target.value;
     },
     onInput(e) {

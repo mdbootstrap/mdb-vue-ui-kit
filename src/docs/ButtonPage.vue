@@ -12,7 +12,7 @@
       <mdb-btn color="success" size="lg">Success button</mdb-btn>
       <mdb-btn color="danger" size="lg">Danger button</mdb-btn>
       <mdb-btn color="warning" size="lg">Warning button</mdb-btn>
-      <mdb-btn size="lg">Default button</mdb-btn>
+      <mdb-btn color="default" size="lg">Default button</mdb-btn>
       <h4 class="pt-5 pb-2">Outline buttons</h4>
       <mdb-btn outline="primary" darkWaves size="lg">Primary button</mdb-btn>
       <mdb-btn outline="info" darkWaves size="lg">Info button</mdb-btn>
@@ -21,8 +21,8 @@
       <mdb-btn outline="warning" darkWaves size="lg">Warning button</mdb-btn>
       <mdb-btn outline="default" darkWaves size="lg">Default button</mdb-btn>
       <h4 class="pt-5 pb-2">Buttons with icons</h4>
-      <mdb-btn icon="user" icon-left>Left</mdb-btn>
-      <mdb-btn icon="user" icon-right>Right</mdb-btn>
+      <mdb-btn color="default" icon="user" icon-left>Left</mdb-btn>
+      <mdb-btn color="default" icon="user" icon-right>Right</mdb-btn>
     </div>
   </mdb-container>
 </template>

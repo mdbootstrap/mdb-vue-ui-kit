@@ -83,6 +83,7 @@ import TblHead, { mdbTblHead } from './components/TableHead';
 import Tooltip, { mdbTooltip } from './components/Tooltip';
 import ViewWrapper, { mdbView } from './components/ViewWrapper';
 import waves from './mixins/waves';
+import animateOnScroll from './directives/AnimateOnScroll';
 
 export {
   // FREE
@@ -168,6 +169,7 @@ export {
   Tooltip,
   ViewWrapper,
   waves,
+  animateOnScroll,
 
   // MDB FREE
   mdbAccordion,

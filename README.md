@@ -8,7 +8,7 @@
 <h1 align="center">Vue Bootstrap with Material Design</h1>
 
 <p align="center">
-  Based on the latest <b>Bootstrap 4</b> and Vue <b>2.5.21</b>.
+  Based on the latest <b>Bootstrap 4</b> and Vue <b>2.6.10</b>.
 </p>
 <p align="center">
 <b>400+</b> material UI elements, <b>600+</b> material icons, <b>74</b> CSS animations, SASS files, templates, tutorials and many more. <b>Free for personal and commercial use.</b>
@@ -58,8 +58,8 @@ __________
 
 # Version
 
-- MDBVue 5.0.0
-- Vue 2.5.21
+- MDBVue 5.1.2
+- Vue 2.6.10
 
 # Quick start
 
@@ -70,13 +70,13 @@ bash
 npm install / yarn
 
 # serve with hot reload at localhost:8080
-npm run dev /
+npm run dev / yarn start
 
 # build for production with minification
-npm run build
+npm run build / yarn build
 
 # build for production and view the bundle analyzer report
-npm run build --report
+npm run build --report / yarn build --report
 ```
 
 # Supported browsers

@@ -290,6 +290,12 @@ const Datatable = {
     mdbInput
   },
   computed: {
+    rows() {
+      return this.data.rows || [];
+    },
+    columns() {
+      return this.data.columns || [];
+    },
     // filter objects by parameters match
     filteredRows() {
       return this.rows.filter(row => {

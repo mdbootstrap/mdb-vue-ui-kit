@@ -9,7 +9,7 @@
     <mdb-row>
       <mdb-col col="3">
     <mdb-btn color="default" @click="cookies=true" class="mb-3">cookies</mdb-btn>
-    <mdb-modal v-if="cookies" removeBackdrop fullHeight position="bottom">
+    <mdb-modal :show="cookies" removeBackdrop fullHeight position="bottom">
       <mdb-modal-body>
         <mdb-row center class="align-items-center">
           <p class="pr-2 mb-0">We use cookies to improve your website experience</p>
@@ -20,7 +20,7 @@
     </mdb-modal>
 
     <mdb-btn color="default" class="mb-3" @click="coupon=true">Coupon</mdb-btn>
-    <mdb-modal v-if="coupon" @close="coupon = false" removeBackdrop fullHeight position="top" success>
+    <mdb-modal :show="coupon" @close="coupon = false" removeBackdrop fullHeight position="top" success>
       <mdb-modal-body>
         <mdb-row center class="align-items-center" >
           <h2><mdb-badge>v52gs1</mdb-badge></h2>
@@ -33,7 +33,7 @@
     </mdb-modal>
 
     <mdb-btn color="default" class="mb-3" @click="discount=true">Discount</mdb-btn>
-    <mdb-modal v-if="discount" @close="discount = false" removeBackdrop side position="bottom-right" danger>
+    <mdb-modal :show="discount" @close="discount = false" removeBackdrop side position="bottom-right" danger>
       <mdb-modal-header>
         <p class="heading">Discount offer:
           <strong>10% off</strong>
@@ -64,7 +64,7 @@
     </mdb-modal>
 
     <mdb-btn color="default" class="mb-3" @click="related=true">Related content</mdb-btn>
-    <mdb-modal v-if="related" @close="related = false" removeBackdrop side position="bottom-right" info>
+    <mdb-modal :show="related" @close="related = false" removeBackdrop side position="bottom-right" info>
       <mdb-modal-header>
         <p class="heading">Related article</p>
       </mdb-modal-header>
@@ -83,7 +83,7 @@
     </mdb-modal>
 
     <mdb-btn color="default" class="mb-3" @click="abandoned=true">Abandoned card</mdb-btn>
-    <mdb-modal v-if="abandoned" @close="abandoned = false" removeBackdrop side position="bottom-right" info>
+    <mdb-modal :show="abandoned" @close="abandoned = false" removeBackdrop side position="bottom-right" info>
       <mdb-modal-header>
         <p class="heading">Product in the cart</p>
       </mdb-modal-header>
@@ -106,7 +106,7 @@
 
 
     <mdb-btn color="default" class="mb-3" @click="confirm=true">Confirm delete</mdb-btn>
-    <mdb-modal v-if="confirm" @close="confirm = false" size="sm" class="text-center" danger>
+    <mdb-modal :show="confirm" @close="confirm = false" size="sm" class="text-center" danger>
       <mdb-modal-header center :close="false">
         <p class="heading">Are you sure?</p>
       </mdb-modal-header>
@@ -120,7 +120,7 @@
     </mdb-modal>
 
     <mdb-btn color="default" class="mb-3 mr-5" @click="poll=true">Poll</mdb-btn>
-    <mdb-modal v-if="poll" @close="poll = false" fullHeight info removeBackdrop>
+    <mdb-modal :show="poll" @close="poll = false" fullHeight info removeBackdrop>
       <mdb-modal-header center :close="false">
         <p class="heading lead">Feedback request</p>
       </mdb-modal-header>
@@ -178,7 +178,7 @@
     </mdb-modal>
 
     <mdb-btn color="default" class="mb-3 mr-5" @click="cart=true">Cart</mdb-btn>
-    <mdb-modal v-if="cart" @close="cart = false" class="text-center">
+    <mdb-modal :show="cart" @close="cart = false" class="text-center">
       <mdb-modal-header>
         <h4 class="modal-title" id="myModalLabel">Your cart</h4>
       </mdb-modal-header>
@@ -234,7 +234,7 @@
 
 
     <mdb-btn color="default" class="mb-3" @click="push=true">Push</mdb-btn>
-    <mdb-modal v-if="push" @close="push = false" class="text-center" info>
+    <mdb-modal :show="push" @close="push = false" class="text-center" info>
       <mdb-modal-header center :close="false">
         <p class="heading">Be always up to date</p>
       </mdb-modal-header>
@@ -247,9 +247,37 @@
         <mdb-btn color="primary" @click="push=false">No</mdb-btn>
       </mdb-modal-footer>
     </mdb-modal>
+
+    <mdb-btn color="default" class="mb-3" @click="share=true">Social Share</mdb-btn>
+    <mdb-modal :show="share" @close="share = false" cascade >
+      <mdb-modal-header color="light-blue darken-3 white-text">
+          <h4 class="title"><mdb-icon icon="users"/> Spreed the word!</h4>
+      </mdb-modal-header>
+      <mdb-modal-body class="text-center">
+        <mdb-btn floating tag="a" class="btn-fb" fab icon="facebook-f"/>
+        <mdb-btn floating tag="a" class="btn-tw" fab icon="twitter"/>
+        <mdb-btn floating tag="a" class="btn-gplus" fab icon="google-plus-g"/>
+        <mdb-btn floating tag="a" class="btn-li" fab icon="linkedin-in"/>
+        <mdb-btn floating tag="a" class="btn-ins" fab icon="instagram"/>
+        <mdb-btn floating tag="a" class="btn-pin" fab icon="pinterest"/>
+        <mdb-btn floating tag="a" class="btn-yt" fab icon="youtube"/>
+        <mdb-btn floating tag="a" class="btn-dribbble" fab icon="dribbble"/>
+        <mdb-btn floating tag="a" class="btn-vk" fab icon="vk"/>
+        <mdb-btn floating tag="a" class="btn-so" fab icon="stack-overflow"/>
+        <mdb-btn floating tag="a" class="btn-slack" fab icon="slack"/>
+        <mdb-btn floating tag="a" class="btn-git" fab icon="github"/>
+        <mdb-btn floating tag="a" class="btn-comm" icon="comments"/>
+        <mdb-btn floating tag="a" class="btn-email" icon="envelope"/>
+      </mdb-modal-body>
+    </mdb-modal>
       </mdb-col>
     </mdb-row>
 
+    <mdb-row>
+      <mdb-col>
+
+      </mdb-col>
+    </mdb-row>
   </mdb-container>
 </template>
 
@@ -280,7 +308,7 @@ export default {
     mdbCarouselIndicators,
     mdbCarouselIndicator,
     mdbAccordion,
-    mdbCardBody,
+    mdbCardBody
   },
   data() {
     return {
@@ -294,6 +322,31 @@ export default {
       cart: false,
       push: false,
       product: false,
+      panes: [
+        {
+          title: 'Description',
+          content: 'Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.'
+        }, {
+          title: 'Details',
+          content: 'Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.'
+        },
+        {
+          title: 'Shipping',
+          content: 'Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.'
+        }
+      ],
+      colors: [
+        {value: -1, text: 'Choose your color', disabled: true, selected: true },
+        {value: 'White', text: 'White'},
+        {value: 'Black', text: 'Black'},
+        {value: 'Pink', text: 'Pink'}
+      ],
+      sizes: [
+        {value: -1, text: 'Choose your size', disabled: true, selected: true },
+        {value: 'XS', text: 'XS'},
+        {value: 'S', text: 'S'},
+        {value: 'L', text: 'L'}
+      ],
       share: false
     };
   }

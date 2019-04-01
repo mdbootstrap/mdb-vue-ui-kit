@@ -5,7 +5,7 @@
     @before-leave="beforeLeave"
     @after-leave="afterLeave" 
   >
-    <component :is="tag" :class="wrapperClass" @click.self="away">
+    <component :is="tag" v-if="show" :class="wrapperClass" @click.self="away">
       <div :class="dialogClass" role="document" >
         <div :class="contentClass" :style="computedContentStyle">
           <slot></slot>
@@ -94,10 +94,13 @@ const Modal = {
     direction: {
       type: String,
       default:'top'
+    },
+    show: {
+      type: Boolean,
+      default: true
     }
   },
   beforeMount() {
-    this.$emit('show', this);
     if (this.direction === 'right') {
       this.dialogTransform = 'translate(25%,0)';
     } else if (this.direction === 'bottom') {
@@ -105,9 +108,6 @@ const Modal = {
     } else if (this.direction === 'left') {
       this.dialogTransform = 'translate(-25%,0)';
     }
-  },
-  beforeDestroy() {
-    this.$emit('hide', this);
   },
   data() {
     return {
@@ -124,13 +124,17 @@ const Modal = {
     enter(el) {
       el.style.opacity = 0;
       el.childNodes[0].style.transform = this.dialogTransform;
+      this.$emit('show', this);
     },
     afterEnter(el) {
-      this.$emit('shown', this);
       el.style.opacity = 1;
       el.childNodes[0].style.transform = 'translate(0,0)';
+      setTimeout(() => {
+        this.$emit('shown', this);
+      }, 400);
     },
     beforeLeave(el) {
+      this.$parent.$emit('hide', this);
       el.style.opacity = 0;
       el.childNodes[0].style.transform = this.dialogTransform;
     },

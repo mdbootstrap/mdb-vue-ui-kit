@@ -26,8 +26,7 @@
 </template>
 
 <script>
-import { mdbContainer, mdbRow, mdbCol, mdbIcon, mdbBtn, mdbView, mdbMask } from 'mdbvue';
-import waves from '../mixins/waves';
+import { mdbContainer, mdbRow, mdbCol, mdbIcon, mdbBtn, mdbView, mdbMask, waves } from 'mdbvue';
 
 export default {
   name: 'WavesPage',

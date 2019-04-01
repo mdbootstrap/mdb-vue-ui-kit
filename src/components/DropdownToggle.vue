@@ -1,48 +1,27 @@
 <template>
   <component :is="tag" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" :class="[className, {'ripple-parent': waves}]" @click.prevent="wave">
     <span v-if="srOnly" class="sr-only">Toggle Dropdown</span>
+    <mdb-icon v-if="(icon && !iconRight)" :icon="icon" :far="far || regular" :fal="fal || light" :fab="fab || brands" :class="iconClasses" :color="iconColor"/>
     <slot></slot>
+    <mdb-icon v-if="(icon && iconRight)" :icon="icon" :far="far || regular" :fal="fal || light" :fab="fab || brands" :class="iconClasses" :color="iconColor"/>
   </component>
 </template>
 
 <script>
 import classNames from 'classnames';
 import waves from '../mixins/waves';
+import mdbBtn from './Button';
+import mdbIcon from './Fa';
 
 const DropdownToggle = {
+  components: {
+    mdbBtn,
+    mdbIcon
+  },
   props: {
-    tag: {
-      type: String,
-      default: "button"
-    },
     navLink: {
       type: Boolean,
       default: false
-    },
-    color: {
-      type: String
-    },
-    outline: {
-      type: String,
-    },
-    size: {
-      type: String
-    },
-    block: {
-      type: Boolean,
-      default: false
-    },
-    active: {
-      type: Boolean,
-      default: false
-    },
-    disabled: {
-      type: Boolean,
-      default: false
-    },
-    waves: {
-      type: Boolean,
-      default: true
     },
     wavesFixed: {
       type: Boolean,
@@ -52,18 +31,23 @@ const DropdownToggle = {
       type: Boolean,
       default: false
     },
-    transparent: {
-      type: Boolean
-    },
-    group: {
-      type: Boolean,
-      default: false
+    ...mdbBtn.props,
+    color: {
+      type: String
     }
   },
   computed: {
     className() {
       return classNames(
         this.navLink ? 'nav-link' : 'btn',
+        this.rounded && 'btn-rounded',
+        this.floating && 'btn-floating',
+        this.flat ? 'btn-flat' : this.transparent ? '' : 'btn-' + this.color,
+        this.gradient && this.gradient + '-gradient',
+        this.action && 'btn-action',
+        this.save && 'btn-save',
+        this.waves && 'ripple-parent',
+        this.text && `${this.text}-text`,
         this.outline ? 'btn-outline-' + this.outline : this.transparent ? '' : 'btn-' + this.color,
         this.size ? 'btn-' + this.size : '',
         this.block ? 'btn-block' : '',
@@ -72,6 +56,12 @@ const DropdownToggle = {
         this.group && 'm-0 px-3 py-2',
         (this.group && this.outline) && 'z-depth-0',
         'dropdown-toggle'
+      );
+    },
+    iconClasses() {
+      return classNames(
+        'px-1',
+        this.iconClass
       );
     }
   },

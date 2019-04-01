@@ -198,12 +198,12 @@
     <mdb-row>
     <h2 class="mb-3 w-100">Map within modal</h2>
     <mdb-row class="w-100 mb-4" center>
-      <mdb-btn color="primary" @click.native="regular=true">Regular Map mdbModal</mdb-btn>
-      <mdb-btn color="default" @click.native="satellite=true">Satellite Map mdbModal</mdb-btn>
-      <mdb-btn color="secondary" @click.native="custom=true">Regular Map mdbModal</mdb-btn>
+      <mdb-btn color="primary" @click.native="regular=true">Regular Map Modal</mdb-btn>
+      <mdb-btn color="default" @click.native="satellite=true">Satellite Map Modal</mdb-btn>
+      <mdb-btn color="secondary" @click.native="custom=true">Regular Map Modal</mdb-btn>
     </mdb-row>
       <!-- Regular Map mdbModal -->
-      <mdb-modal v-if="regular" @close="regular=false" size="lg">
+      <mdb-modal :show="regular" @close="regular=false" size="lg">
         <mdb-modal-body class="p-0">
           <mdb-google-map
             name="modal-reg"
@@ -222,7 +222,7 @@
       </mdb-modal>
 
       <!-- Satellite Map mdbModal -->
-      <mdb-modal v-if="satellite" @close="satellite=false" size="lg">
+      <mdb-modal :show="satellite" @close="satellite=false" size="lg">
         <mdb-modal-body class="p-0">
           <mdb-google-map
             name="modal-sat"
@@ -242,7 +242,7 @@
       </mdb-modal>
 
       <!-- Custom Map mdbModal -->
-      <mdb-modal v-if="custom" @close="custom=false" size="lg">
+      <mdb-modal :show="custom" @close="custom=false" size="lg">
         <mdb-modal-body class="p-0">
           <mdb-google-map
             name="modal-custom"

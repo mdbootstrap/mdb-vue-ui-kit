@@ -23,9 +23,14 @@
               </h5>
             </mdb-nav-item>
             <mdb-nav-item class="list-group-item list-group-item-action" to="/forms/search">
-                <h5 class="justify-content-between d-flex align-items-center">
-                  Search <mdb-icon icon="angle-right"/>
-                </h5>
+              <h5 class="justify-content-between d-flex align-items-center">
+                Search <mdb-icon icon="angle-right"/>
+              </h5>
+            </mdb-nav-item>
+            <mdb-nav-item class="list-group-item list-group-item-action" to="/forms/select">
+              <h5 class="justify-content-between d-flex align-items-center">
+                Select <mdb-icon icon="angle-right"/>
+              </h5>
             </mdb-nav-item>
             <mdb-nav-item class="list-group-item list-group-item-action" to="/forms/validation">
               <h5 class="justify-content-between d-flex align-items-center">

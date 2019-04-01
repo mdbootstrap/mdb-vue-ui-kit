@@ -176,7 +176,7 @@
       <mdb-row>
         <mdb-col size="12" class="text-center mb-5">
           <mdb-btn @click.native="showModal = true" color="info">Launch modal contact form</mdb-btn>
-          <mdb-modal v-if="showModal" @close="showModal = false" cascade class="text-left">
+          <mdb-modal :show="showModal" @close="showModal = false" cascade class="text-left">
             <mdb-modal-header class="primary-color white-text">
               <h4 class="title"><mdb-icon icon="pencil-alt" /> Contact form</h4>
             </mdb-modal-header>

@@ -12,6 +12,7 @@ import ModalsPage from '../docs/categories/ModalsPage';
 import AddonsPage from '../docs/categories/AddonsPage';
 
 // FREE
+import AnimationsPage from '../docs/AnimationsPage';
 import AlertPage from '../docs/AlertPage';
 import AccordionPage from '../docs/AccordionPage';
 import BadgePage from '../docs/BadgePage';
@@ -49,6 +50,7 @@ import ModalEventsPage from '../docs/ModalEventsPage';
 import ModalExamplesPage from '../docs/ModalExamplesPage';
 import ModalFormsPage from '../docs/ModalFormsPage';
 import ModalStylesPage from '../docs/ModalStylesPage';
+import SelectPageFree from '../docs/SelectPage';
 import NavsPage from '../docs/NavsPage';
 import NavbarPage from '../docs/NavbarPage';
 import NavigationPage from '../docs/NavigationPage';
@@ -351,6 +353,10 @@ export default new Router({
       name: 'TabsPage',
       component: TabsPage
     }, {
+      path: '/forms/select',
+      name: 'SelectPageFree',
+      component: SelectPageFree
+    }, {
       path: '/plugins/video',
       name: 'VideoPage',
       component: VideoPage
@@ -366,7 +372,10 @@ export default new Router({
       path: '/advanced/wave-effect',
       name: 'WavesPage',
       component: WavesPage
+    }, {
+      path: '/css/animations',
+      name: 'AnimationsPage',
+      component: AnimationsPage
     }
-
   ]
 });

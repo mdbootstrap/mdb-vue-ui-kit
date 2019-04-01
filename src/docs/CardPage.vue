@@ -8,7 +8,12 @@
     <mdb-row class="mt-5">
       <mdb-col sm="4">
         <mdb-card>
-          <mdb-card-image src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" alt="Card image cap" waves></mdb-card-image>
+          <mdb-view hover>
+            <a href="#!">
+              <mdb-card-image src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" alt="Card image cap" ></mdb-card-image>
+              <mdb-mask flex-center waves overlay="white-slight"></mdb-mask>
+            </a>
+          </mdb-view>
           <mdb-card-body>
             <mdb-card-title>Card with waves effect</mdb-card-title>
             <mdb-card-text>Some quick example text to build on the card title and make up the bulk of the card's content.</mdb-card-text>
@@ -28,7 +33,12 @@
       </mdb-col>
       <mdb-col sm="4">
         <mdb-card>
-          <mdb-card-image src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%287%29.jpg" alt="Card image cap" waves></mdb-card-image>
+          <mdb-view hover>
+            <a href="#!">
+              <mdb-card-image src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%287%29.jpg" alt="Card image cap"></mdb-card-image>
+              <mdb-mask flex-center waves overlay="white-slight"></mdb-mask>
+            </a>
+          </mdb-view>
           <mdb-card-body>
             <mdb-card-title>Card with waves effect</mdb-card-title>
             <mdb-card-text>Some quick example text to build on the card title and make up the bulk of the card's content.</mdb-card-text>
@@ -43,8 +53,10 @@
       <mdb-card-group>
         <mdb-card>
           <mdb-view hover>
-            <mdb-card-image src="https://mdbootstrap.com/img/Photos/Others/images/49.jpg" alt="Card image cap"></mdb-card-image>
-            <mdb-mask flex-center waves overlay="white-slight"></mdb-mask>
+            <a href="#!">
+              <mdb-card-image src="https://mdbootstrap.com/img/Photos/Others/images/49.jpg" alt="Card image cap"></mdb-card-image>
+              <mdb-mask flex-center waves overlay="white-slight"></mdb-mask>
+            </a>
           </mdb-view>
           <mdb-card-body>
             <mdb-card-title>Card title</mdb-card-title>
@@ -54,8 +66,10 @@
         </mdb-card>
         <mdb-card>
           <mdb-view hover>
-            <mdb-card-image src="https://mdbootstrap.com/img/Photos/Others/images/48.jpg" alt="Card image cap"></mdb-card-image>
-            <mdb-mask flex-center waves overlay="white-slight"></mdb-mask>
+            <a href="#!">
+              <mdb-card-image src="https://mdbootstrap.com/img/Photos/Others/images/48.jpg" alt="Card image cap"></mdb-card-image>
+              <mdb-mask flex-center waves overlay="white-slight"></mdb-mask>
+            </a>
           </mdb-view>
           <mdb-card-body>
             <mdb-card-title>Card title</mdb-card-title>
@@ -65,8 +79,10 @@
         </mdb-card>
         <mdb-card>
           <mdb-view hover>
-            <mdb-card-image src="https://mdbootstrap.com/img/Photos/Others/images/77.jpg" alt="Card image cap"></mdb-card-image>
-            <mdb-mask flex-center waves overlay="white-slight"></mdb-mask>
+            <a href="#!">
+              <mdb-card-image src="https://mdbootstrap.com/img/Photos/Others/images/77.jpg" alt="Card image cap"></mdb-card-image>
+              <mdb-mask flex-center waves overlay="white-slight"></mdb-mask>
+            </a>
           </mdb-view>
           <mdb-card-body>
             <mdb-card-title>Card title</mdb-card-title>
@@ -82,8 +98,10 @@
       <mdb-card-group deck>
         <mdb-card>
           <mdb-view hover>
-            <mdb-card-image src="https://mdbootstrap.com/img/Photos/Others/images/16.jpg" alt="Card image cap"></mdb-card-image>
-            <mdb-mask flex-center waves overlay="white-slight"></mdb-mask>
+            <a href="#!">
+              <mdb-card-image src="https://mdbootstrap.com/img/Photos/Others/images/16.jpg" alt="Card image cap"></mdb-card-image>
+              <mdb-mask flex-center waves overlay="white-slight"></mdb-mask>
+            </a>
           </mdb-view>
           <mdb-card-body>
             <mdb-card-title>Card title</mdb-card-title>
@@ -93,8 +111,10 @@
         </mdb-card>
         <mdb-card>
           <mdb-view hover>
-            <mdb-card-image src="https://mdbootstrap.com/img/Photos/Others/images/14.jpg" alt="Card image cap"></mdb-card-image>
-            <mdb-mask flex-center waves overlay="white-slight"></mdb-mask>
+            <a href="#!">
+              <mdb-card-image src="https://mdbootstrap.com/img/Photos/Others/images/14.jpg" alt="Card image cap"></mdb-card-image>
+              <mdb-mask flex-center waves overlay="white-slight"></mdb-mask>
+            </a>
           </mdb-view>
           <mdb-card-body>
             <mdb-card-title>Card title</mdb-card-title>
@@ -104,8 +124,10 @@
         </mdb-card>
         <mdb-card>
           <mdb-view hover>
-            <mdb-card-image src="https://mdbootstrap.com/img/Photos/Others/images/15.jpg" alt="Card image cap"></mdb-card-image>
-            <mdb-mask flex-center waves overlay="white-slight"></mdb-mask>
+            <a href="#!">
+              <mdb-card-image src="https://mdbootstrap.com/img/Photos/Others/images/15.jpg" alt="Card image cap"></mdb-card-image>
+              <mdb-mask flex-center waves overlay="white-slight"></mdb-mask>
+            </a>
           </mdb-view>
           <mdb-card-body>
             <mdb-card-title>Card title</mdb-card-title>

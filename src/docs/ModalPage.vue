@@ -8,7 +8,7 @@
     <mdb-container class="mt-5">
       <h4>Basic example</h4>
       <mdb-btn color="primary" @click.native="showModal = true">Launch demo modal</mdb-btn>
-      <mdb-modal v-if="showModal" @close="showModal = false">
+      <mdb-modal :show="showModal" @close="showModal = false">
         <mdb-modal-header>
           <mdb-modal-title>Modal title</mdb-modal-title>
         </mdb-modal-header>
@@ -21,7 +21,7 @@
       </mdb-modal>
       <h4 class="mt-4">Sizes</h4>
       <mdb-btn color="primary" @click.native="showModal2 = true">Small modal</mdb-btn>
-      <mdb-modal size="sm" v-if="showModal2" @close="showModal2 = false">
+      <mdb-modal size="sm" :show="showModal2" @close="showModal2 = false">
         <mdb-modal-header>
           <mdb-modal-title>Modal title</mdb-modal-title>
         </mdb-modal-header>
@@ -32,7 +32,7 @@
         </mdb-modal-footer>
       </mdb-modal>
       <mdb-btn color="primary" @click.native="showModal3 = true">Large modal</mdb-btn>
-      <mdb-modal size="lg" v-if="showModal3" @close="showModal3 = false">
+      <mdb-modal size="lg" :show="showModal3" @close="showModal3 = false">
         <mdb-modal-header>
           <mdb-modal-title>Modal title</mdb-modal-title>
         </mdb-modal-header>
@@ -43,7 +43,7 @@
         </mdb-modal-footer>
       </mdb-modal>
       <mdb-btn color="primary" @click.native="showModal4 = true">Fluid modal</mdb-btn>
-      <mdb-modal size="fluid" v-if="showModal4" @close="showModal4 = false">
+      <mdb-modal size="fluid" :show="showModal4" @close="showModal4 = false">
         <mdb-modal-header>
           <mdb-modal-title>Modal title</mdb-modal-title>
         </mdb-modal-header>
@@ -56,7 +56,7 @@
 
       <h4 class="mt-4">Position</h4>
       <mdb-btn color="primary" @click.native="showModal5 = true">Top right</mdb-btn>
-      <mdb-modal side position="top-right" direction="right" v-if="showModal5" @close="showModal5 = false">
+      <mdb-modal side position="top-right" direction="right" :show="showModal5" @close="showModal5 = false">
         <mdb-modal-header>
           <mdb-modal-title>Modal title</mdb-modal-title>
         </mdb-modal-header>
@@ -67,7 +67,7 @@
         </mdb-modal-footer>
       </mdb-modal>
       <mdb-btn color="primary" @click.native="showModal6 = true">Bottom left</mdb-btn>
-      <mdb-modal side position="bottom-left" direction="left" v-if="showModal6" @close="showModal6 = false">
+      <mdb-modal side position="bottom-left" direction="left" :show="showModal6" @close="showModal6 = false">
         <mdb-modal-header>
           <mdb-modal-title>Modal title</mdb-modal-title>
         </mdb-modal-header>
@@ -79,7 +79,7 @@
       </mdb-modal>
       <h4 class="mt-4">Fluid modal</h4>
       <mdb-btn color="primary" @click.native="showModal7 = true">Right</mdb-btn>
-      <mdb-modal fullHeight position="right" direction="right" v-if="showModal7" @close="showModal7 = false">
+      <mdb-modal fullHeight position="right" direction="right" :show="showModal7" @close="showModal7 = false">
         <mdb-modal-header>
           <mdb-modal-title>Modal title</mdb-modal-title>
         </mdb-modal-header>
@@ -90,7 +90,7 @@
         </mdb-modal-footer>
       </mdb-modal>
       <mdb-btn color="primary" @click.native="showModal8 = true">Bottom</mdb-btn>
-      <mdb-modal fullHeight position="bottom" direction="bottom" v-if="showModal8" @close="showModal8 = false">
+      <mdb-modal fullHeight position="bottom" direction="bottom" :show="showModal8" @close="showModal8 = false">
         <mdb-modal-header>
           <mdb-modal-title>Modal title</mdb-modal-title>
         </mdb-modal-header>
@@ -103,7 +103,7 @@
 
       <h4 class="mt-4">Frame modal</h4>
       <mdb-btn color="primary" @click.native="showModal9 = true">Bottom</mdb-btn>
-      <mdb-modal frame position="bottom" direction="bottom" v-if="showModal9" @close="showModal9 = false">
+      <mdb-modal frame position="bottom" direction="bottom" :show="showModal9" @close="showModal9 = false">
         <mdb-modal-body class="text-center">
           <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit nisi quo provident fugiat reprehenderit nostrum quos...</span>
           <mdb-btn color="secondary" @click.native="showModal9 = false">Close</mdb-btn>
@@ -111,7 +111,7 @@
         </mdb-modal-body>
       </mdb-modal>
       <mdb-btn color="primary" @click.native="showModal10 = true">Top</mdb-btn>
-      <mdb-modal frame position="top" v-if="showModal10" @close="showModal10 = false">
+      <mdb-modal frame position="top" :show="showModal10" @close="showModal10 = false">
         <mdb-modal-body class="text-center">
           <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit nisi quo provident fugiat reprehenderit nostrum quos...</span>
           <mdb-btn color="secondary" @click.native="showModal10 = false">Close</mdb-btn>
@@ -121,7 +121,7 @@
 
       <h4 class="mt-4">Remove backdrop</h4>
       <mdb-btn color="primary" @click.native="showModal11 = true">Launch modal</mdb-btn>
-      <mdb-modal removeBackdrop side position="top-right" v-if="showModal11" @close="showModal11 = false">
+      <mdb-modal removeBackdrop side position="top-right" :show="showModal11" @close="showModal11 = false">
         <mdb-modal-header>
           <mdb-modal-title>Modal title</mdb-modal-title>
         </mdb-modal-header>
@@ -134,7 +134,7 @@
 
       <h4 class="mt-4">Scrolling </h4>
       <mdb-btn color="primary" @click.native="showModal12 = true">Launch modal</mdb-btn>
-      <mdb-modal v-if="showModal12" @close="showModal12 = false">
+      <mdb-modal :show="showModal12" @close="showModal12 = false">
         <mdb-modal-header>
           <mdb-modal-title>Modal title</mdb-modal-title>
         </mdb-modal-header>
@@ -163,7 +163,7 @@
 
       <h4 class="mt-4">Centered</h4>
       <mdb-btn color="primary" @click.native="showModal13 = true">Launch modal</mdb-btn>
-      <mdb-modal centered v-if="showModal13" @close="showModal13 = false">
+      <mdb-modal centered :show="showModal13" @close="showModal13 = false">
         <mdb-modal-header>
           <mdb-modal-title>Modal title</mdb-modal-title>
         </mdb-modal-header>
@@ -176,7 +176,7 @@
 
       <h4 class="mt-4">Tooltips and popovers</h4>
       <mdb-btn color="primary" @click.native="showModal14 = true">Launch modal</mdb-btn>
-      <mdb-modal v-if="showModal14" @close="showModal14 = false">
+      <mdb-modal :show="showModal14" @close="showModal14 = false">
         <mdb-modal-header>
           <mdb-modal-title>Modal title</mdb-modal-title>
         </mdb-modal-header>
@@ -227,7 +227,7 @@
 
       <h4 class="mt-4">Using the grid</h4>
       <mdb-btn color="primary" @click.native="showModal15 = true">Launch modal</mdb-btn>
-      <mdb-modal v-if="showModal15" @close="showModal15 = false">
+      <mdb-modal :show="showModal15" @close="showModal15 = false">
         <mdb-modal-header>
           <mdb-modal-title>Modal title</mdb-modal-title>
         </mdb-modal-header>
@@ -268,7 +268,7 @@
       </mdb-modal>
       <h4 class="mt-4">Varying modal content</h4>
       <mdb-btn color="primary" @click.native="showModal16 = true">Open modal for {{mailAddress}}</mdb-btn>
-      <mdb-modal v-if="showModal16" @close="showModal16 = false">
+      <mdb-modal :show="showModal16" @close="showModal16 = false">
         <mdb-modal-header>
           <mdb-modal-title>New message to {{mailAddress}}</mdb-modal-title>
         </mdb-modal-header>
@@ -286,7 +286,7 @@
 </template>
 
 <script>
-import { mdbBtn, mdbModal, mdbModalHeader, mdbModalTitle, mdbModalBody, mdbModalFooter, mdbTooltip, Popover, mdbInput, mdbTextarea, mdbContainer, mdbRow, mdbCol, mdbIcon } from 'mdbvue';
+import { mdbBtn, mdbModal, mdbModalHeader, mdbModalTitle, mdbModalBody, mdbModalFooter, mdbTooltip, mdbPopover, mdbInput, mdbTextarea, mdbContainer, mdbRow, mdbCol, mdbIcon } from 'mdbvue';
 
 export default {
   name: 'ModalPage',
@@ -319,7 +319,7 @@ export default {
     mdbModalBody,
     mdbModalFooter,
     mdbTooltip,
-    Popover,
+    mdbPopover,
     mdbInput,
     mdbTextarea,
     mdbContainer,

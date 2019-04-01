@@ -20,18 +20,18 @@
       <section>
         <mdb-btn-toolbar>
           <mdb-btn-group class="mr-2">
-            <mdb-btn>1</mdb-btn>
-            <mdb-btn>2</mdb-btn>
-            <mdb-btn>3</mdb-btn>
-            <mdb-btn>4</mdb-btn>
+            <mdb-btn color="default">1</mdb-btn>
+            <mdb-btn color="default">2</mdb-btn>
+            <mdb-btn color="default">3</mdb-btn>
+            <mdb-btn color="default">4</mdb-btn>
           </mdb-btn-group>
           <mdb-btn-group class="mr-2">
-            <mdb-btn>5</mdb-btn>
-            <mdb-btn>6</mdb-btn>
-            <mdb-btn>7</mdb-btn>
+            <mdb-btn color="default">5</mdb-btn>
+            <mdb-btn color="default">6</mdb-btn>
+            <mdb-btn color="default">7</mdb-btn>
           </mdb-btn-group>
           <mdb-btn-group>
-            <mdb-btn>8</mdb-btn>
+            <mdb-btn color="default">8</mdb-btn>
           </mdb-btn-group>
         </mdb-btn-toolbar>
       </section>

@@ -8,7 +8,7 @@
 
     <h4>Success</h4>
     <mdb-btn rounded color="default" @click.native="success=true">launch success modal <mdb-icon icon="eye" class="ml-1"/></mdb-btn>
-    <mdb-modal v-if="success" @close="success = false" success>
+    <mdb-modal :show="success" @close="success = false" success>
       <mdb-modal-header>
         <mdb-modal-title>Success Modal</mdb-modal-title>
         </mdb-modal-header>
@@ -29,7 +29,7 @@
     <h4>Info</h4>
 
     <mdb-btn rounded color="default" @click.native="info = true">launch info modal <mdb-icon icon="eye" class="ml-1"/></mdb-btn>
-    <mdb-modal v-if="info" @close="info = false" info>
+    <mdb-modal :show="info" @close="info = false" info>
       <mdb-modal-header>
         <mdb-modal-title>Info Modal</mdb-modal-title>
       </mdb-modal-header>
@@ -49,7 +49,7 @@
     <h4>Danger</h4>
 
     <mdb-btn rounded color="default" @click.native="danger=true">launch danger modal <mdb-icon icon="eye" class="ml-1"/></mdb-btn>
-    <mdb-modal v-if="danger" @close="danger = false" danger>
+    <mdb-modal :show="danger" @close="danger = false" danger>
       <mdb-modal-header>
         <mdb-modal-title>Danger Modal</mdb-modal-title>
       </mdb-modal-header>
@@ -72,7 +72,7 @@
     <h4>Warning</h4>
 
     <mdb-btn rounded color="default" @click.native="warning = true">launch warning modal <mdb-icon icon="eye" class="ml-1"/></mdb-btn>
-    <mdb-modal v-if="warning" @close="warning = false" warning>
+    <mdb-modal :show="warning" @close="warning = false" warning>
       <mdb-modal-header>
         <mdb-modal-title>Warning Modal</mdb-modal-title>
       </mdb-modal-header>

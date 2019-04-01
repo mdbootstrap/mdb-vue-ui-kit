@@ -39,11 +39,11 @@
     <h2 class="mb-3">IFrame in a modal</h2>
 
       <mdb-row center>
-        <mdb-btn color="primary" @click.native="ytmodal=true">YouTube mdbModal</mdb-btn>
-        <mdb-btn color="default" @click.native="vmmodal=true">Vimeo mdbModal</mdb-btn>
-        <mdb-btn color="secondary" @click.native="gmmodal=true">Google Maps mdbModal</mdb-btn>
+        <mdb-btn color="primary" @click.native="ytmodal=true">YouTube Modal</mdb-btn>
+        <mdb-btn color="default" @click.native="vmmodal=true">Vimeo Modal</mdb-btn>
+        <mdb-btn color="secondary" @click.native="gmmodal=true">Google Maps Modal</mdb-btn>
       </mdb-row>
-      <mdb-modal v-if="ytmodal" @close="ytmodal=false">
+      <mdb-modal :show="ytmodal" @close="ytmodal=false">
         <mdb-modal-body class="p-0">
           <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
             <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/A3PDXmYoF5U" allowfullscreen></iframe>
@@ -52,22 +52,22 @@
         <mdb-modal-footer center>
           <span class="mr-4">Spread the word!</span>
           <mdb-btn tag="a" floating size="sm" class="btn-fb">
-            <mdb-icon icon="facebook"/>
+            <mdb-icon fab icon="facebook"/>
           </mdb-btn>
           <mdb-btn tag="a" floating size="sm" class="btn-tw">
-            <mdb-icon icon="twitter"/>
+            <mdb-icon fab icon="twitter"/>
           </mdb-btn>
           <mdb-btn tag="a" floating size="sm" class="btn-gplus">
-            <mdb-icon icon="google-plus"/>
+            <mdb-icon fab icon="google-plus"/>
           </mdb-btn>
           <mdb-btn tag="a" floating size="sm" class="btn-ins">
-            <mdb-icon icon="linkedin"/>
+            <mdb-icon fab icon="linkedin"/>
           </mdb-btn>
           <mdb-btn outline="primary" rounded size="md" @click.native="ytmodal=false" class="ml-4">close</mdb-btn>
         </mdb-modal-footer>
       </mdb-modal>
 
-      <mdb-modal v-if="vmmodal" @close="vmmodal=false">
+      <mdb-modal :show="vmmodal" @close="vmmodal=false">
         <mdb-modal-body class="p-0">
           <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
             <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/115098447" allowfullscreen></iframe>
@@ -76,22 +76,22 @@
         <mdb-modal-footer center>
           <span class="mr-4">Spread the word!</span>
           <mdb-btn tag="a" floating size="sm" class="btn-fb">
-            <mdb-icon icon="facebook"/>
+            <mdb-icon fab icon="facebook"/>
           </mdb-btn>
           <mdb-btn tag="a" floating size="sm" class="btn-tw">
-            <mdb-icon icon="twitter"/>
+            <mdb-icon fab icon="twitter"/>
           </mdb-btn>
           <mdb-btn tag="a" floating size="sm" class="btn-gplus">
-            <mdb-icon icon="google-plus"/>
+            <mdb-icon fab icon="google-plus"/>
           </mdb-btn>
           <mdb-btn tag="a" floating size="sm" class="btn-ins">
-            <mdb-icon icon="linkedin"/>
+            <mdb-icon fab icon="linkedin"/>
           </mdb-btn>
           <mdb-btn outline="primary" rounded size="md" @click.native="vmmodal=false" class="ml-4">close</mdb-btn>
         </mdb-modal-footer>
       </mdb-modal>
 
-      <mdb-modal v-if="gmmodal" @close="gmmodal=false" size="lg">
+      <mdb-modal :show="gmmodal" @close="gmmodal=false" size="lg">
         <mdb-modal-body class="p-0">
           <mdb-google-map
             name="modal"
