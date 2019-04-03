@@ -13,7 +13,7 @@
     <h3 class="mt-5">Multiple targets</h3>
     <mdb-btn color="primary" @click.native.prevent="collapse2 === true ? collapse2 = false : collapse2 = true">Toggle first element</mdb-btn>
     <mdb-btn color="primary" @click.native.prevent="collapse3 === true ? collapse3 = false : collapse3 = true">Toggle second element</mdb-btn>
-    <mdb-btn color="primary" @click.native.prevent="[collapse2 === true ? collapse2 = false : collapse2 = true] && [collapse3 === true ? collapse3 = false : collapse3 = true]">Toggle both elements</mdb-btn>
+    <mdb-btn color="primary" @click.native.prevent="[collapse2 === true ? collapse2 = false : collapse2 = true] [collapse3 === true ? collapse3 = false : collapse3 = true]">Toggle both elements</mdb-btn>
     <mdb-row>
       <mdb-col sm="6">
         <transition @before-enter="beforeEnter" @enter="enter" @before-leave="beforeLeave">
