@@ -57,6 +57,13 @@
     <div class="input-group-append" v-if="$slots.append" :id="appendSlotID">
       <slot name="append"></slot>
     </div>
+    <div v-if="validFeedback" class="valid-feedback">
+      {{validFeedback}}
+    </div>
+    <div v-if="invalidFeedback" class="invalid-feedback">
+      {{invalidFeedback}}
+    </div>
+    <small v-if="small" class="form-text text-muted">{{small}}</small>
   </div>
 </template>
 
@@ -128,7 +135,7 @@ const Input = {
       default: false
     },
     value: {
-      type: [String, Number],
+      type: [String, Number, Boolean],
       default: ''
     },
     labelColor: {
@@ -146,10 +153,13 @@ const Input = {
     errorMsg: {
       type: String
     },
-    valid: {
+    validation: {
       type: Boolean
     },
-    invalid: {
+    customValidation: {
+      type: Boolean
+    },
+    isValid: {
       type: Boolean
     },
     active: {
@@ -217,6 +227,17 @@ const Input = {
     outline: {
       type: Boolean,
       default: false
+    },
+    validFeedback: {
+      type: [String, Boolean],
+      default: false
+    },
+    invalidFeedback: {
+      type: [String, Boolean],
+      default: false
+    },
+    small: {
+      type: String
     }
   },
   data() {
@@ -224,7 +245,7 @@ const Input = {
       innerValue: this.value,
       innerRadio: '',
       isTouched: this.active,
-      innerChecked: this.checked
+      innerChecked: this.checked || this.value
     };
   },
   mounted() {
@@ -242,9 +263,10 @@ const Input = {
     inputClasses() {
       return classNames(
         'form-control',
+        this.validation ? this.isValid ? 'is-valid' : 'is-invalid' : false,
+        this.customValidation ? this.isValid ? 'is-valid' : 'is-invalid' : false,
+        this.size && 'form-control-' + this.size,
         {
-          'validate valid': this.valid,
-          'validate invalid': this.invalid,
           'filled-in': this.filled,
           'with-gap': this.gap
         },
@@ -257,8 +279,8 @@ const Input = {
     wrapperClasses() {
       return classNames(
         (this.type === 'checkbox' || this.type === 'radio') && this.inline ?
-          'form-check' : (this.type === 'checkbox' || this.type === 'radio') ? 'form-check my-3' : false,
-        this.basic ? false : 'md-form',
+          'form-check' : (this.type === 'checkbox' || this.type === 'radio') ? 'form-check' : false,
+        this.basic || this.type === 'checkbox' || this.type === 'radio' ? false : 'md-form',
         this.outline && 'md-outline',
         this.waves && 'ripple-parent',
         this.doesItGetTheGroupClass && this.size ? `input-group input-group-${this.size}` :
@@ -280,7 +302,7 @@ const Input = {
     labelClasses() {
       return classNames(
         {
-          'active': (this.placeholder || this.isTouched || this.innerValue !=='') && this.type!=='checkbox',
+          'active': (this.placeholder || this.isTouched || this.innerValue !=='') && this.type!=='checkbox' && this.type!=='radio',
           'disabled': this.disabled,
           'form-check-label': (this.type === 'checkbox' || this.type === 'radio'),
           'mr-5': !this.isThisCheckboxLabeless
@@ -327,6 +349,7 @@ const Input = {
     onChange(e) {
       if (this.type === "checkbox") {
         this.$emit('change', e.target.checked);
+        this.$emit('input', e.target.checked);
         this.innerChecked = e.target.checked;
       }
       else {
@@ -371,7 +394,6 @@ export { Input as mdbInput };
   -webkit-transform: rotate(40deg);
   -ms-transform: rotate(40deg);
   transform: rotate(40deg);
-  -webkit-backface-visibility: hidden;
   -webkit-transform-origin: 100% 100%;
   -ms-transform-origin: 100% 100%;
   transform-origin: 100% 100%; }
@@ -407,7 +429,6 @@ export { Input as mdbInput };
   -webkit-transform: rotate(40deg);
   -ms-transform: rotate(40deg);
   transform: rotate(40deg);
-  -webkit-backface-visibility: hidden;
   -webkit-transform-origin: 100% 100%;
   -ms-transform-origin: 100% 100%;
   transform-origin: 100% 100%; }
@@ -434,5 +455,20 @@ export { Input as mdbInput };
 	color: inherit;
 }
 
+.form-control.is-valid {
+  border-color: #28a745;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%2328a745' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: center right calc(0.375em + 0.1875rem);
+  background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+
+.form-control.is-invalid {
+  border-color: #dc3545;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23dc3545' viewBox='-2 -2 7 7'%3e%3cpath stroke='%23dc3545' d='M0 0l3 3m0-3L0 3'/%3e%3ccircle r='.5'/%3e%3ccircle cx='3' r='.5'/%3e%3ccircle cy='3' r='.5'/%3e%3ccircle cx='3' cy='3' r='.5'/%3e%3c/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center right calc(0.375em + 0.1875rem);
+  background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
 
 </style>

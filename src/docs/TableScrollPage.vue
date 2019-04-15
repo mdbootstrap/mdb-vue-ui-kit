@@ -5,66 +5,67 @@
       <a href="https://mdbootstrap.com/docs/vue/tables/scroll/?utm_source=DemoApp&utm_medium=MDBVueFree" waves-fixed class="border grey-text px-2 border-light rounded ml-2" target="_blank"><mdb-icon icon="graduation-cap" class="mr-2"/>Docs</a>
     </mdb-row>
     <hr />
-    <div class="mt-5 pt-5 mx-3">
+    <div class="mt-5 pt-5 mx-3 ">
       <h1>Table Scroll</h1>
       <br />
       <h3>Static table vertical scroll</h3>
       <br />
-      <mdb-tbl scrollY :maxHeight="'100px'">
-        <mdb-tbl-head color="light">
-          <tr>
-            <th>#</th>
-            <th>thead col 1</th>
-            <th>thead col 2</th>
-            <th>thead col 3</th>
-          </tr>
-        </mdb-tbl-head>
-        <mdb-tbl-body>
-          <tr scope="row">
-            <td>1</td>
-            <td>tbody col 1</td>
-            <td>tbody col 2</td>
-            <td>tbody col 3</td>
-          </tr>
-          <tr scope="row">
-            <td>2</td>
-            <td>tbody col 1</td>
-            <td>tbody col 2</td>
-            <td>tbody col 3</td>
-          </tr>
-          <tr scope="row">
-            <td>3</td>
-            <td>tbody col 1</td>
-            <td>tbody col 2</td>
-            <td>tbody col 3</td>
-          </tr>
-          <tr scope="row">
-            <td>4</td>
-            <td>tbody col 1</td>
-            <td>tbody col 2</td>
-            <td>tbody col 3</td>
-          </tr>
-          <tr scope="row">
-            <td>5</td>
-            <td>tbody col 1</td>
-            <td>tbody col 2</td>
-            <td>tbody col 3</td>
-          </tr>
-          <tr scope="row">
-            <td>6</td>
-            <td>tbody col 1</td>
-            <td>tbody col 2</td>
-            <td>tbody col 3</td>
-          </tr>
-          <tr scope="row">
-            <td>7</td>
-            <td>tbody col 1</td>
-            <td>tbody col 2</td>
-            <td>tbody col 3</td>
-          </tr>
-        </mdb-tbl-body>
-      </mdb-tbl>
-
+      <mdb-scrollbar height="200px">
+        <mdb-tbl bordered>
+          <mdb-tbl-head color="light">
+            <tr>
+              <th>#</th>
+              <th>thead col 1</th>
+              <th>thead col 2</th>
+              <th>thead col 3</th>
+            </tr>
+          </mdb-tbl-head>
+          <mdb-tbl-body>
+            <tr scope="row">
+              <td>1</td>
+              <td>tbody col 1</td>
+              <td>tbody col 2</td>
+              <td>tbody col 3</td>
+            </tr>
+            <tr scope="row">
+              <td>2</td>
+              <td>tbody col 1</td>
+              <td>tbody col 2</td>
+              <td>tbody col 3</td>
+            </tr>
+            <tr scope="row">
+              <td>3</td>
+              <td>tbody col 1</td>
+              <td>tbody col 2</td>
+              <td>tbody col 3</td>
+            </tr>
+            <tr scope="row">
+              <td>4</td>
+              <td>tbody col 1</td>
+              <td>tbody col 2</td>
+              <td>tbody col 3</td>
+            </tr>
+            <tr scope="row">
+              <td>5</td>
+              <td>tbody col 1</td>
+              <td>tbody col 2</td>
+              <td>tbody col 3</td>
+            </tr>
+            <tr scope="row">
+              <td>6</td>
+              <td>tbody col 1</td>
+              <td>tbody col 2</td>
+              <td>tbody col 3</td>
+            </tr>
+            <tr scope="row">
+              <td>7</td>
+              <td>tbody col 1</td>
+              <td>tbody col 2</td>
+              <td>tbody col 3</td>
+            </tr>
+          </mdb-tbl-body>
+        </mdb-tbl>
+      </mdb-scrollbar>
     <br />
     <h3>Datatable vertical scroll</h3>
     <br />
@@ -101,7 +102,7 @@
 </template>
 
 <script>
-import { mdbTbl, mdbTblHead, mdbTblBody, mdbDatatable, mdbContainer, mdbRow, mdbIcon  } from 'mdbvue';
+import { mdbTbl, mdbTblHead, mdbTblBody, mdbDatatable, mdbContainer, mdbRow, mdbIcon, mdbScrollbar  } from 'mdbvue';
 
 export default {
   name: 'TableScrollPage',
@@ -112,7 +113,8 @@ export default {
     mdbDatatable,
     mdbContainer,
     mdbRow,
-    mdbIcon
+    mdbIcon,
+    mdbScrollbar
   },
   data() {
     return {

@@ -8,7 +8,7 @@
     <section class="demo-section">
       <h4>Basic example</h4>
       <section>
-        <mdb-navbar class="grey lighten-4 py-4">
+        <mdb-navbar color="grey" class="lighten-4 py-4">
           <mdb-navbar-nav nav>
             <mdb-nav-item href="#" active>Active</mdb-nav-item>
             <mdb-nav-item href="#">Link</mdb-nav-item>
@@ -21,7 +21,7 @@
     <section class="demo-section">
       <h4>Horizontal alignment</h4>
       <section>
-        <mdb-navbar class="grey lighten-4 py-4">
+        <mdb-navbar color="grey" class="lighten-4 py-4">
           <mdb-navbar-nav nav center>
             <mdb-nav-item href="#" active>Active</mdb-nav-item>
             <mdb-nav-item href="#">Link</mdb-nav-item>
@@ -30,7 +30,7 @@
           </mdb-navbar-nav>
         </mdb-navbar>
         <br>
-        <mdb-navbar class="grey lighten-4 py-4">
+        <mdb-navbar color="grey" class="lighten-4 py-4">
           <mdb-navbar-nav nav right>
             <mdb-nav-item href="#" active>Active</mdb-nav-item>
             <mdb-nav-item href="#">Link</mdb-nav-item>
@@ -43,7 +43,7 @@
     <section class="demo-section">
       <h4>Vertical alignment</h4>
       <section>
-        <mdb-navbar class="blue lighten-5 py-4">
+        <mdb-navbar color="blue" class="lighten-5 py-4">
           <mdb-navbar-nav nav vertical>
             <mdb-nav-item href="#" active>Active</mdb-nav-item>
             <mdb-nav-item href="#">Link</mdb-nav-item>
@@ -56,7 +56,7 @@
     <section class="demo-section">
       <h4>Navs with bold font</h4>
       <section>
-        <mdb-navbar class="grey lighten-4 py-4">
+        <mdb-navbar color="grey" class="lighten-4 py-4">
           <mdb-navbar-nav nav vertical class="font-weight-bold">
             <mdb-nav-item href="#" active>Active</mdb-nav-item>
             <mdb-nav-item href="#">Link</mdb-nav-item>
@@ -65,7 +65,7 @@
           </mdb-navbar-nav>
         </mdb-navbar>
         <br>
-        <mdb-navbar class="grey lighten-4 py-4">
+        <mdb-navbar color="grey" class="lighten-4 py-4">
           <mdb-navbar-nav nav class="font-weight-bold">
             <mdb-nav-item href="#" active>Active</mdb-nav-item>
             <mdb-nav-item href="#">Link</mdb-nav-item>
@@ -80,7 +80,7 @@
       <section>
         <mdb-row>
           <mdb-col md="4">
-            <mdb-navbar class="pink lighten-3 py-4">
+            <mdb-navbar color="pink" class="lighten-3 py-4">
               <mdb-navbar-nav nav vertical class="font-weight-bold">
                 <mdb-nav-item href="#" active anchorClass="white-text">Active</mdb-nav-item>
                 <mdb-nav-item href="#" anchorClass="white-text">Link</mdb-nav-item>
@@ -90,7 +90,7 @@
             </mdb-navbar>
           </mdb-col>
           <mdb-col md="4">
-            <mdb-navbar class="amber lighten-3 py-4">
+            <mdb-navbar color="amber" class="lighten-3 py-4">
               <mdb-navbar-nav nav vertical class="font-weight-bold">
                 <mdb-nav-item href="#" active anchorClass="dark-grey-text">Active</mdb-nav-item>
                 <mdb-nav-item href="#" anchorClass="dark-grey-text">Link</mdb-nav-item>
@@ -100,7 +100,7 @@
             </mdb-navbar>
           </mdb-col>
           <mdb-col md="4">
-            <mdb-navbar class="cyan lighten-3 py-4">
+            <mdb-navbar color="cyan" class="lighten-3 py-4">
               <mdb-navbar-nav nav vertical class="font-weight-bold">
                 <mdb-nav-item href="#" anchorClass="indigo-text" active>Active</mdb-nav-item>
                 <mdb-nav-item href="#" anchorClass="indigo-text">Link</mdb-nav-item>
@@ -117,7 +117,7 @@
       <section>
         <mdb-row>
           <mdb-col md="6">
-            <mdb-navbar class="peach-gradient lighten-3 py-4 mb-4">
+            <mdb-navbar color="peach-gradient" class="lighten-3 py-4 mb-4">
               <mdb-navbar-nav nav class="font-weight-bold">
                 <mdb-nav-item href="#" active anchorClass="white-text">Active</mdb-nav-item>
                 <mdb-nav-item href="#" anchorClass="white-text">Link</mdb-nav-item>
@@ -127,7 +127,7 @@
             </mdb-navbar>
           </mdb-col>
           <mdb-col md="6">
-            <mdb-navbar class="purple-gradient lighten-3 py-4 mb-4">
+            <mdb-navbar color="purple-gradient" class="lighten-3 py-4 mb-4">
               <mdb-navbar-nav nav class="font-weight-bold">
                 <mdb-nav-item href="#" active anchorClass="white-text">Active</mdb-nav-item>
                 <mdb-nav-item href="#" anchorClass="white-text">Link</mdb-nav-item>
@@ -137,7 +137,7 @@
             </mdb-navbar>
           </mdb-col>
           <mdb-col md="6">
-            <mdb-navbar class="aqua-gradient lighten-3 py-4 mb-4">
+            <mdb-navbar color="aqua-gradient" class="lighten-3 py-4 mb-4">
               <mdb-navbar-nav nav class="font-weight-bold">
                 <mdb-nav-item href="#" active anchorClass="white-text">Active</mdb-nav-item>
                 <mdb-nav-item href="#" anchorClass="white-text">Link</mdb-nav-item>
@@ -147,7 +147,7 @@
             </mdb-navbar>
           </mdb-col>
           <mdb-col md="6">
-            <mdb-navbar class="blue-gradient lighten-3 py-4 mb-4">
+            <mdb-navbar color="blue-gradient" class="lighten-3 py-4 mb-4">
               <mdb-navbar-nav nav class="font-weight-bold">
                 <mdb-nav-item href="#" active anchorClass="white-text">Active</mdb-nav-item>
                 <mdb-nav-item href="#" anchorClass="white-text">Link</mdb-nav-item>

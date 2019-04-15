@@ -54,8 +54,8 @@ export default {
     mdbIcon,
     mdbCarousel,
     mdbCarouselItem,
-    mdbCarouselCaption
-  }
+    mdbCarouselCaption,
+  },
 };
 </script>
 

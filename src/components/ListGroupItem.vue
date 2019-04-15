@@ -23,7 +23,7 @@ const ListGroupItem = {
     active: {
       type: Boolean,
       default: false
-    }
+    },
   },
   computed: {
     className(){

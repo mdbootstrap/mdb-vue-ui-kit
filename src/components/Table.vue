@@ -88,6 +88,10 @@ const Tbl = {
     },
     tableStyle: {
       type: String
+    },
+    mdbScroll: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
@@ -101,6 +105,7 @@ const Tbl = {
         this.responsiveLg && 'table-responsive-lg',
         this.responsiveXl && 'table-responsive-xl',
         this.scrollY && 'table-wrapper-scroll-y'
+        // this.mdbScroll ? 'ps ps--theme_default ps--active-y' : ""
       );
     },
     tableClasses() {

@@ -38,9 +38,7 @@ const NavbarItem = {
       type: Boolean,
       default: false
     },
-    to: {
-      type: String,
-    },
+    to: [String, Object],
     waves: {
       type: Boolean,
       default: true

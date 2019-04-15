@@ -19,7 +19,7 @@
           </mdb-navbar-nav>
         </mdb-navbar-toggler>
       </mdb-navbar>
-      <mdb-navbar class="mt-2 light-blue lighten-4" hamburger navIconClass="dark-blue-text">
+      <mdb-navbar color="light-blue" class="mt-2 lighten-4" hamburger navIconClass="dark-blue-text">
         <mdb-navbar-brand>
           Navbar
         </mdb-navbar-brand>
@@ -31,7 +31,7 @@
           </mdb-navbar-nav>
         </mdb-navbar-toggler>
       </mdb-navbar>
-      <mdb-navbar class="mt-2 pink lighten-4" hamburger navIconClass="dark-pink-text">
+      <mdb-navbar color="pink" class="mt-2 lighten-4" hamburger navIconClass="dark-pink-text">
         <mdb-navbar-brand>
           Navbar
         </mdb-navbar-brand>
@@ -43,7 +43,7 @@
           </mdb-navbar-nav>
         </mdb-navbar-toggler>
       </mdb-navbar>
-      <mdb-navbar class="mt-2 amber lighten-4" hamburger navIconClass="dark-amber-text">
+      <mdb-navbar color="amber" class="mt-2 lighten-4" hamburger navIconClass="dark-amber-text">
         <mdb-navbar-brand>
           Navbar
         </mdb-navbar-brand>
@@ -55,7 +55,7 @@
           </mdb-navbar-nav>
         </mdb-navbar-toggler>
       </mdb-navbar>
-      <mdb-navbar class="mt-2 teal lighten-4" hamburger navIconClass="dark-teal-text">
+      <mdb-navbar color="teal" class="mt-2 lighten-4" hamburger navIconClass="dark-teal-text">
         <mdb-navbar-brand>
           Navbar
         </mdb-navbar-brand>
@@ -106,7 +106,7 @@
           </mdb-navbar-nav>
         </mdb-navbar-toggler>
       </mdb-navbar>
-      <mdb-navbar class="mt-2 navbar-4 pink" dark>
+      <mdb-navbar color="pink" class="mt-2 navbar-4" dark>
         <mdb-navbar-brand class="text-white">
           Navbar
         </mdb-navbar-brand>
@@ -181,7 +181,7 @@
     </mdb-container>
     <h4 class="my-4">Hamburger menu icon animations</h4>
     <mdb-container>
-      <mdb-navbar class="mt-2 amber lighten-4" animated animation="1">
+      <mdb-navbar color="amber" class="mt-2 lighten-4" animated animation="1">
         <mdb-navbar-brand>
           Navbar
         </mdb-navbar-brand>
@@ -193,7 +193,7 @@
           </mdb-navbar-nav>
         </mdb-navbar-toggler>
       </mdb-navbar>
-      <mdb-navbar class="mt-2 red lighten-1" dark animated animation="3">
+      <mdb-navbar color="red" class="mt-2 lighten-1" dark animated animation="3">
         <mdb-navbar-brand class="text-white">
           Navbar
         </mdb-navbar-brand>
@@ -205,7 +205,7 @@
           </mdb-navbar-nav>
         </mdb-navbar-toggler>
       </mdb-navbar>
-      <mdb-navbar class="mt-2 indigo darken-2" dark animated animation="4">
+      <mdb-navbar color="indigo" class="mt-2 darken-2" dark animated animation="4">
         <mdb-navbar-brand class="text-white">
           Navbar
         </mdb-navbar-brand>

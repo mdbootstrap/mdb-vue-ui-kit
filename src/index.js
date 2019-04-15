@@ -31,6 +31,9 @@ import LineChart, { mdbLineChart } from './components/ChartLine';
 import PieChart, { mdbPieChart } from './components/ChartPie';
 import PolarChart, { mdbPolarChart } from './components/ChartPolar';
 import RadarChart, { mdbRadarChart } from './components/ChartRadar';
+import BubbleChart, { mdbBubbleChart } from './components/ChartBubble';
+import ScatterChart, { mdbScatterChart } from './components/ChartScatter';
+import HorizontalBarChart, { mdbHorizontalBarChart } from './components/ChartHorizontalBar';
 import Collapse, { mdbCollapse } from './components/Collapse';
 import Column, { mdbCol } from './components/Col';
 import Container, { mdbContainer } from './components/Container';
@@ -84,6 +87,7 @@ import Tooltip, { mdbTooltip } from './components/Tooltip';
 import ViewWrapper, { mdbView } from './components/ViewWrapper';
 import waves from './mixins/waves';
 import animateOnScroll from './directives/AnimateOnScroll';
+import Scrollbar, { mdbScrollbar } from './components/Scrollbar';
 
 export {
   // FREE
@@ -119,6 +123,9 @@ export {
   PieChart,
   PolarChart,
   RadarChart,
+  BubbleChart,
+  ScatterChart,
+  HorizontalBarChart,
   Container,
   Collapse,
   Column,
@@ -170,7 +177,7 @@ export {
   ViewWrapper,
   waves,
   animateOnScroll,
-
+  Scrollbar,
   // MDB FREE
   mdbAccordion,
   mdbAccordionPane,
@@ -204,6 +211,9 @@ export {
   mdbPieChart,
   mdbPolarChart,
   mdbRadarChart,
+  mdbBubbleChart,
+  mdbScatterChart,
+  mdbHorizontalBarChart,
   mdbCol,
   mdbCollapse,
   mdbContainer,
@@ -252,5 +262,6 @@ export {
   mdbTblHead,
   mdbTextarea,
   mdbTooltip,
-  mdbView
+  mdbView,
+  mdbScrollbar
 };

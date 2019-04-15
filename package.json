@@ -1,6 +1,6 @@
 {
   "name": "mdbvue",
-  "version": "5.1.2",
+  "version": "5.2.0",
   "description": "Vue Bootstrap with Material Design",
   "author": "MDBootstrap <support@mdbootstrap.com>",
   "license": "MIT",
@@ -23,14 +23,14 @@
     "chart.js": "^2.8.0",
     "classnames": "^2.2.6",
     "moment": "^2.24.0",
-    "popper.js": "^1.14.7",
+    "popper.js": "^1.15.0",
     "vue": "^2.6.10",
     "vue-chartjs": "^3.4.2",
     "vue-clickaway": "^2.2.2",
     "vue-numeric": "^2.3.0",
     "vue-perfect-scrollbar": "^0.1.0",
-    "vue-router": "^3.0.2",
-    "vue2-touch-events": "^1.1.1"
+    "vue-router": "^3.0.3",
+    "vue2-touch-events": "^2.0.0"
   },
   "devDependencies": {
     "@vue/cli-service": "^3.4.0",
@@ -80,7 +80,7 @@
     "vue-style-loader": "^4.1.0",
     "vue-template-compiler": "^2.6.10",
     "webpack": "^4.19.1",
-    "webpack-bundle-analyzer": "^3.0.2",
+    "webpack-bundle-analyzer": "^3.0.3",
     "webpack-dev-middleware": "^3.3.0",
     "webpack-hot-middleware": "^2.24.0",
     "webpack-merge": "^4.1.4"

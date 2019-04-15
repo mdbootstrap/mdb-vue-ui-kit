@@ -272,12 +272,6 @@
     </mdb-modal>
       </mdb-col>
     </mdb-row>
-
-    <mdb-row>
-      <mdb-col>
-
-      </mdb-col>
-    </mdb-row>
   </mdb-container>
 </template>
 
@@ -308,7 +302,7 @@ export default {
     mdbCarouselIndicators,
     mdbCarouselIndicator,
     mdbAccordion,
-    mdbCardBody
+    mdbCardBody,
   },
   data() {
     return {

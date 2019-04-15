@@ -265,7 +265,7 @@ export default new Router({
       name: 'NavigationPage',
       component: NavigationPage
     }, {
-      path: '/components/alert',
+      path: '/components/alerts',
       name: 'AlertPage',
       component: AlertPage
     }, {

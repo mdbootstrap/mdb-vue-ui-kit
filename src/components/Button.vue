@@ -22,6 +22,7 @@ const Btn =  {
     },
     color: {
       type: String,
+      default: 'default'
     },
     outline: {
       type: String,

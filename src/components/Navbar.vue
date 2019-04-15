@@ -86,11 +86,13 @@ const Navbar = {
   },
   computed: {
     navClass() {
+      let navColors = ["primary", "secondary", "danger", "warning", "success", "info", "default", "elegant", "stylish", "unique", "special"];
       return classNames(
         'navbar',
         this.dark && 'navbar-dark',
         this.light && 'navbar-light',
-        this.color && !this.transparent ? this.color + '-color' : '',
+        this.color && !this.transparent &&navColors.indexOf(this.color) !== -1 ? this.color + '-color' : '',
+        this.color && !this.transparent &&navColors.indexOf(this.color) === -1 ? this.color : '',
         this.expand === 'small' || this.expand === "sm" ? 'navbar-expand-sm' :
           this.expand === 'medium' || this.expand === "md" ? 'navbar-expand-md' :
             this.expand === 'large' || this.expand === "lg" ? 'navbar-expand-lg' : 'navbar-expand-lx',
@@ -210,7 +212,7 @@ const Navbar = {
   created() {
     window.addEventListener('scroll', this.handleScroll);
   },
-  destroyed() {
+  destroy() {
     document.removeEventListener('click', this.onClick);
     window.removeEventListener('scroll', this.handleScroll);
   }

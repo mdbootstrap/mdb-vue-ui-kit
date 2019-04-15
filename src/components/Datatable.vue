@@ -115,24 +115,42 @@
         <div class="dataTables_paginate float-right">
           <pagination id="pagination">
             <page-item
+              v-if="pages.length > display"
+              v-on:click.native="changePage(0)"
+              :disabled="activePage === 0 ? true : false"
+            >
+              <mdb-icon v-if="arrows"  icon="angle-double-left" />
+              <p v-else class="pagination">{{start}}</p>
+            </page-item>
+            <page-item
               v-on:click.native="changePage(activePage-1)"
               :disabled="activePage === 0 ? true : false"
             >
-              Previous
+              <mdb-icon v-if="arrows"  icon="angle-left" />
+              <p v-else class="pagination">{{previous}}</p>
             </page-item>
             <page-item
-              v-for="(page, index) in pages"
+              v-for="(page, index) in visiblePages"
               :key="index"
-              v-on:click.native="changePage(index)"
-              :active="activePage === index ? true : false"
+              v-on:click.native="changePage(pages.indexOf(visiblePages[index]))"
+              :active="activePage === pages.indexOf(visiblePages[index]) ? true : false"
             >
-              {{index+1}}
+              {{pages.indexOf(visiblePages[index])+1}}
             </page-item>
             <page-item
               v-on:click.native="changePage(activePage+1)"
               :disabled="activePage === pages.length-1 ? true : false"
             >
-              Next
+              <mdb-icon v-if="arrows"  icon="angle-right" />
+              <p v-else class="pagination">{{next}}</p>
+            </page-item>
+            <page-item
+              v-if="pages.length > display"
+              v-on:click.native="changePage(pages.length-1)"
+              :disabled="activePage === pages.length-1 ? true : false"
+            >
+              <mdb-icon v-if="arrows"  icon="angle-double-right" />
+              <p v-else class="pagination">{{end}}</p>
             </page-item>
           </pagination>
         </div>
@@ -152,6 +170,7 @@ import PageItem from './PageItem';
 import mdbInput from './Input';
 import DatatableSelect from './DatatableSelect';
 import DatatableSearch from './DatatableSearch';
+import mdbIcon from './Fa';
 
 const Datatable = {
   name: 'Datatable',
@@ -246,6 +265,30 @@ const Datatable = {
     striped: {
       type: Boolean,
       default: false
+    },
+    start: {
+      type: String,
+      default: 'Start'
+    },
+    end: {
+      type: String,
+      default: 'End'
+    },
+    next: {
+      type: String,
+      default: 'Next'
+    },
+    previous: {
+      type: String,
+      default: 'Previos'
+    },
+    arrows: {
+      type: Boolean,
+      default: false
+    },
+    display: {
+      type: Number,
+      default: 5
     }
   },
   data() {
@@ -287,15 +330,10 @@ const Datatable = {
     TblBody,
     Pagination,
     PageItem,
-    mdbInput
+    mdbInput,
+    mdbIcon
   },
   computed: {
-    rows() {
-      return this.data.rows || [];
-    },
-    columns() {
-      return this.data.columns || [];
-    },
     // filter objects by parameters match
     filteredRows() {
       return this.rows.filter(row => {
@@ -307,6 +345,15 @@ const Datatable = {
         }
         return false;
       });
+    },
+    visiblePages() {
+      let start = this.activePage - Math.floor(this.display/2) > 0 ? this.activePage - Math.floor(this.display/2) : 0;
+      let end = start + this.display;
+      if (end > this.pages.length) {
+        start -= (end - this.pages.length);
+        end = this.pages.length;
+      }
+      return this.pages.slice(start, end);
     }
   },
   methods: {
@@ -421,5 +468,8 @@ export { Datatable as mdbDatatable };
 .dataTables_wrapper input {
   display: inline-flex !important;
   width: auto;
+}
+.pagination {
+  margin-bottom: 0px;
 }
 </style>

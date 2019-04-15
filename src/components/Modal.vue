@@ -98,6 +98,10 @@ const Modal = {
     show: {
       type: Boolean,
       default: true
+    },
+    scrollable: {
+      type: Boolean,
+      default: false
     }
   },
   beforeMount() {
@@ -164,7 +168,8 @@ const Modal = {
         this.success && 'modal-notify modal-success',
         this.warning && 'modal-notify modal-warning',
         this.avatar && 'modal-avatar cascading-modal',
-        this.dark && 'form-dark'
+        this.dark && 'form-dark',
+        this.scrollable && 'modal-dialog-scrollable'
       );
     },
     contentClass() {

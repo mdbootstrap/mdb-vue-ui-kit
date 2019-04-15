@@ -7,7 +7,7 @@
           <h6 class="my-3">FREE</h6>
           <mdb-list-group>
             <!-- FREE -->
-            <mdb-nav-item class="list-group-item list-group-item-action" to="/components/alert">
+            <mdb-nav-item class="list-group-item list-group-item-action" to="/components/alerts">
               <h5 class="justify-content-between d-flex align-items-center">
                 Alerts<mdb-icon icon="angle-right"/>
               </h5>
@@ -87,7 +87,6 @@
                 Tabs <mdb-icon icon="angle-right"/>
               </h5>
             </mdb-nav-item>
-
           </mdb-list-group>
         </mdb-jumbotron>
       </mdb-col>

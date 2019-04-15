@@ -1,6 +1,6 @@
-import { PolarArea } from 'vue-chartjs';
-const PolarChart = {
-  extends: PolarArea,
+import { Bubble } from 'vue-chartjs';
+const BubbleChart = {
+  extends: Bubble,
   props: ['data', 'options'],
   mounted () {
     // Overwriting base render method with actual data.
@@ -16,5 +16,5 @@ const PolarChart = {
   }
 };
 
-export default PolarChart;
-export { PolarChart as mdbPolarChart };
+export default BubbleChart;
+export { BubbleChart as mdbBubbleChart };

@@ -1,5 +1,5 @@
 <template>
-  <component :is="tag" :href="href" :class="className"><slot></slot></component>
+  <component :is="to ? 'router-link' : tag" :to="to" :exact="exact" :href="to ? false : href" :class="className" :target="tab"><slot></slot></component>
 </template>
 
 <script>
@@ -11,6 +11,7 @@ const DropdownItem = {
       type: String,
       default: "a"
     },
+    to: [String, Object],
     href: {
       type: String,
       default: "#"
@@ -22,6 +23,14 @@ const DropdownItem = {
     active: {
       type: Boolean,
       default: false
+    },
+    exact: {
+      type: Boolean,
+      default: false
+    },
+    newTab: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
@@ -31,6 +40,11 @@ const DropdownItem = {
         this.disabled ? 'disabled' : '',
         this.active ? 'active' : ''
       );
+    },
+    tab() {
+      if (this.newTab) {
+        return "_blank";
+      } return false;
     }
   }
 };

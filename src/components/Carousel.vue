@@ -174,7 +174,7 @@ const Carousel ={
     },
     slideRight() {
       this.slidePage('prev');
-    }
+    },
   },
   mounted() {
     let items = [];

@@ -201,13 +201,16 @@
           </mdb-card-body>
         </mdb-card>
       </mdb-col>
-
     </mdb-row>
+    <h2 class="font-weight-bold mb-4">Perfect scroll for images</h2>
+      <mdb-scrollbar height="30vw" width="60vw">
+        <img src="https://mdbootstrap.com/img/Photos/Others/food3.jpg"/>
+      </mdb-scrollbar>
   </mdb-container>
 </template>
 
 <script>
-import { mdbContainer, mdbRow, mdbIcon, mdbCol, mdbCard, mdbCardBody } from 'mdbvue';
+import { mdbContainer, mdbRow, mdbIcon, mdbCol, mdbCard, mdbCardBody, mdbScrollbar } from 'mdbvue';
 export default {
   name: "SmoothScrollPage",
   components: {
@@ -216,12 +219,14 @@ export default {
     mdbIcon,
     mdbCol,
     mdbCard,
-    mdbCardBody
+    mdbCardBody,
+    mdbScrollbar
   }
 };
 </script>
 
 <style scoped>
+
 .force-overflow {
   min-height: 450px;
 }

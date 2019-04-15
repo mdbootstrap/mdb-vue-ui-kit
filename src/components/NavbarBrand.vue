@@ -18,9 +18,7 @@ const NavbarBrand = {
       type: String,
       default: 'div'
     },
-    to: {
-      type: String,
-    },
+    to: [String, Object],
     waves: {
       type: Boolean,
       default: false
