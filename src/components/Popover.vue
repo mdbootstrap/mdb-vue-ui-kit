@@ -289,7 +289,7 @@
     visibility: hidden;
   }
 
-  .show .popover {
+  .show > .popover {
     opacity: 1;
     visibility: visible;
   }
