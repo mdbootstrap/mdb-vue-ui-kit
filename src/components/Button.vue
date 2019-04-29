@@ -10,6 +10,7 @@
 import classNames from 'classnames';
 import waves from '../mixins/waves';
 import mdbIcon from './Fa';
+import mdbClassMixin from '../mixins/mdbClassMixin';
 
 const Btn =  {
   components: {
@@ -155,7 +156,8 @@ const Btn =  {
         this.waves && 'ripple-parent',
         this.group && 'm-0 px-3 py-2',
         (this.group && this.outline) && 'z-depth-0',
-        this.text && `${this.text}-text`
+        this.text && `${this.text}-text`,
+        this.mdbClass
       );
     },
     iconClasses() {
@@ -165,7 +167,7 @@ const Btn =  {
       );
     }
   },
-  mixins: [waves]
+  mixins: [waves, mdbClassMixin]
 };
 
 export default Btn;

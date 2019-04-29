@@ -32,6 +32,11 @@
                 Google Maps<mdb-icon icon="angle-right"/>
               </h5>
             </mdb-nav-item>
+            <mdb-nav-item class="list-group-item list-group-item-action" to="/advanced/notifications">
+              <h5 class="justify-content-between d-flex align-items-center">
+                Notifications<mdb-icon icon="angle-right"/>
+              </h5>
+            </mdb-nav-item>
             <mdb-nav-item class="list-group-item list-group-item-action" to="/advanced/popover">
               <h5 class="justify-content-between d-flex align-items-center">
                 Popover<mdb-icon icon="angle-right"/>

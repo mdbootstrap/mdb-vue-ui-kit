@@ -70,6 +70,7 @@
 <script>
 import classNames from 'classnames';
 import waves from '../mixins/waves';
+import mdbClassMixin from '../mixins/mdbClassMixin';
 
 const Input = {
   props: {
@@ -238,6 +239,9 @@ const Input = {
     },
     small: {
       type: String
+    },
+    bg: {
+      type: Boolean
     }
   },
   data() {
@@ -282,11 +286,13 @@ const Input = {
           'form-check' : (this.type === 'checkbox' || this.type === 'radio') ? 'form-check' : false,
         this.basic || this.type === 'checkbox' || this.type === 'radio' ? false : 'md-form',
         this.outline && 'md-outline',
+        this.bg && 'md-bg',
         this.waves && 'ripple-parent',
         this.doesItGetTheGroupClass && this.size ? `input-group input-group-${this.size}` :
           this.doesItGetTheGroupClass && !this.size ? 'input-group' :
             !this.doesItGetTheGroupClass && this.size ? `form-${this.size}` : false,
-        this.wrapperClass
+        this.wrapperClass,
+        this.mdbClass
       );
     },
     iconClasses(){
@@ -363,7 +369,7 @@ const Input = {
       }
     }
   },
-  mixins: [waves],
+  mixins: [waves, mdbClassMixin],
   watch: {
     value(val) {
       this.$refs.input.value = val;

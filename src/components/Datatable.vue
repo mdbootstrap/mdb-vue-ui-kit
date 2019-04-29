@@ -289,7 +289,16 @@ const Datatable = {
     display: {
       type: Number,
       default: 5
+    }, 
+    defaultRow: {
+      type: String,
+      default: '-'
+    },
+    defaultCol: {
+      type: String,
+      default: 'undefined'
     }
+    
   },
   data() {
     return {
@@ -334,25 +343,25 @@ const Datatable = {
     mdbIcon
   },
   computed: {
+    rowsDisplay(){
+      return this.formatRows();
+    },
     // filter objects by parameters match
     filteredRows() {
-      return this.rows.filter(row => {
-        for (let key in row) {
-          if (Object.prototype.hasOwnProperty.call(row, key)) {
-            const stringValue = row[key].toString();
-            if (stringValue.toLowerCase().match(this.search.toLowerCase())) return true;
-          }
-        }
-        return false;
+      return this.rowsDisplay.filter(row => {
+        return row.filter(value => value
+          .toString()
+          .toLowerCase()
+          .match(this.search.toLowerCase()))
+          .length > 0;
       });
     },
     visiblePages() {
       let start = this.activePage - Math.floor(this.display/2) > 0 ? this.activePage - Math.floor(this.display/2) : 0;
-      let end = start + this.display;
-      if (end > this.pages.length) {
-        start -= (end - this.pages.length);
-        end = this.pages.length;
-      }
+      let end = start + this.display < this.pages.length ? start + this.display : this.pages.length;
+      if (end - start < this.display && end - this.display >= 0) {
+        start = end - this.display;
+      };
       return this.pages.slice(start, end);
     }
   },
@@ -372,7 +381,35 @@ const Datatable = {
       this.entries = value;
     },
     updateSearch(value) {
-      this.search = value;
+      this.search = this.escapeRegExp(value);
+    },
+    escapeRegExp(string) {
+      return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    },
+    setDefaultColumns(){
+      this.columns.forEach((col, i) => {
+        if (!col){
+          this.columns[i] = {
+            label: this.defaultCol,
+            field: this.defaultCol.concat(i),
+            sort: 'asc'
+          };
+        }
+      });
+    },
+    formatRows(){
+      this.setDefaultColumns();
+      let arrRows = [];
+      let headers = this.columns.map(col => col.field);
+      this.rows.map(row => {
+        let newRow = [];
+        headers.forEach(header => {
+          let content = row[header] || this.defaultRow;
+          newRow.push(content);
+        });
+        arrRows.push(newRow);
+      });
+      return arrRows;
     }
   },
   mounted() {

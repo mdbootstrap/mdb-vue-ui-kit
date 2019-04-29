@@ -41,6 +41,8 @@ let Datatable = require('./components/Datatable').default;
 let mdbDatatable = require('./components/Datatable').default;
 let Dropdown = require('./components/Dropdown').default;
 let mdbDropdown = require('./components/Dropdown').default;
+let Input = require('./components/Input').default;
+let mdbInput = require('./components/Input').default;
 import DropdownItem, { mdbDropdownItem } from './components/DropdownItem';
 import DropdownMenu, { mdbDropdownMenu } from './components/DropdownMenu';
 import DropdownToggle, { mdbDropdownToggle } from './components/DropdownToggle';
@@ -49,7 +51,6 @@ import Fa, { mdbIcon } from './components/Fa';
 import Footer, { mdbFooter } from './components/Footer';
 import FormInline, { mdbFormInline } from './components/FormInline';
 import GoogleMap, { mdbGoogleMap } from './components/GoogleMap';
-import Input, { mdbInput } from './components/Input';
 import Jumbotron, { mdbJumbotron } from './components/Jumbotron';
 import ListGroup, { mdbListGroup } from './components/ListGroup';
 import ListGroupItem, { mdbListGroupItem } from './components/ListGroupItem';
@@ -86,8 +87,13 @@ import TblHead, { mdbTblHead } from './components/TableHead';
 import Tooltip, { mdbTooltip } from './components/Tooltip';
 import ViewWrapper, { mdbView } from './components/ViewWrapper';
 import waves from './mixins/waves';
+import mdbClassMixin from './mixins/mdbClassMixin';
 import animateOnScroll from './directives/AnimateOnScroll';
 import Scrollbar, { mdbScrollbar } from './components/Scrollbar';
+import StretchedLink, { mdbStretchedLink } from './components/StretchedLink';
+import ToastNotification, { mdbToastNotification } from './components/ToastNotification';
+import Masonry, { mdbMasonry } from './components/Masonry';
+import MasonryItem, { mdbMasonryItem } from './components/MasonryItem';
 
 export {
   // FREE
@@ -176,8 +182,14 @@ export {
   Tooltip,
   ViewWrapper,
   waves,
+  mdbClassMixin,
   animateOnScroll,
   Scrollbar,
+  StretchedLink,
+  ToastNotification,
+  Masonry,
+  MasonryItem,
+
   // MDB FREE
   mdbAccordion,
   mdbAccordionPane,
@@ -263,5 +275,9 @@ export {
   mdbTextarea,
   mdbTooltip,
   mdbView,
-  mdbScrollbar
+  mdbScrollbar,
+  mdbStretchedLink,
+  mdbToastNotification,
+  mdbMasonry,
+  mdbMasonryItem,
 };

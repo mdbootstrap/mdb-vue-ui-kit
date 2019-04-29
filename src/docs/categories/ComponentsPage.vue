@@ -87,6 +87,11 @@
                 Tabs <mdb-icon icon="angle-right"/>
               </h5>
             </mdb-nav-item>
+            <mdb-nav-item class="list-group-item list-group-item-action" to="/components/stretched-link">
+              <h5 class="justify-content-between d-flex align-items-center">
+                Stretched Link <mdb-icon icon="angle-right"/>
+              </h5>
+            </mdb-nav-item>
           </mdb-list-group>
         </mdb-jumbotron>
       </mdb-col>

@@ -4,6 +4,7 @@
 
 <script>
 import classNames from 'classnames';
+import mdbClassMixin from '../mixins/mdbClassMixin';
 
 const Card = {
   props: {
@@ -82,10 +83,12 @@ const Card = {
         this.pricing && 'pricing-card',
         (this.color && !this.textColor) ? this.color + ' white-text':
           this.textColor ? this.color + ' ' + this.textColor+'-text' : false,
-        this.border && 'border-'+this.border
+        this.border && 'border-'+this.border,
+        this.mdbClass
       );
     }
-  }
+  },
+  mixins: [mdbClassMixin]
 };
 
 export default Card;
@@ -93,11 +96,4 @@ export { Card as mdbCard };
 </script>
 
 <style scoped>
-.card-wrapper .card-rotating .front {
-  position: relative;
-}
-.card-wrapper .card-rotating .back {
-  position: relative;
-  margin-top: -100%;
-}
 </style>

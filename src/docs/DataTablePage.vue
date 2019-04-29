@@ -13,9 +13,11 @@
         striped
         bordered
         materialInputs
-        filter="office"
+        filter="position"
         next=">"
         previous="<"
+        responsive
+        defaultCol="not set"
       />
     </div>
     <hr />
@@ -29,15 +31,22 @@
         materialInputs
         responsive
         :display="3"
+        filter="office"
       />
     </div>
-    <mdb-datatable
-    :data="data2"
-    striped
-    bordered
-    arrows
-    :display="5"
-  />
+    <div class="mt-5 pt-5 mx-3">
+      <h2>Datable pagination</h2>
+      <hr>
+      <mdb-datatable
+      :data="data2"
+      striped
+      bordered
+      arrows
+      :display="5"
+      responsive
+      defaultRow="no data found"
+      />
+    </div>
   </mdb-container>
 
 </template>
@@ -96,13 +105,13 @@ export default {
             label: 'Salary',
             field: 'salary',
             sort: 'asc'
-          }
+          },
+          null
         ],
         rows: [
           {
             name: 'Tiger Nixon',
             position: 'System Architect',
-            office: 'Edinburgh',
             age: '61',
             date: '2011/04/25',
             salary: '$320'
@@ -596,7 +605,6 @@ export default {
             position: 'System Architect',
             office: 'Edinburgh',
             age: '61',
-            date: '2011/04/25',
             salary: '$320'
           },
           {
@@ -605,7 +613,6 @@ export default {
             office: 'Tokyo',
             age: '63',
             date: '2011/07/25',
-            salary: '$170'
           },
           {
             name: 'Ashton Cox',
@@ -618,7 +625,6 @@ export default {
           {
             name: 'Cedric Kelly',
             position: 'Senior Javascript Developer',
-            office: 'Edinburgh',
             age: '22',
             date: '2012/03/29',
             salary: '$433'

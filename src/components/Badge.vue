@@ -6,6 +6,7 @@
 
 <script>
 import classNames from 'classnames';
+import mdbClassMixin from '../mixins/mdbClassMixin';
 
 const Badge =  {
   props: {
@@ -26,10 +27,12 @@ const Badge =  {
       return classNames(
         'badge',
         this.color,
-        this.pill ? 'badge-pill' : false
+        this.pill ? 'badge-pill' : false,
+        this.mdbClass
       );
     }
-  }
+  },
+  mixins: [mdbClassMixin]
 };
 
 export default Badge;

@@ -4,6 +4,7 @@
 
 <script>
 import classNames from 'classnames';
+import mdbClassMixin from '../mixins/mdbClassMixin';
 
 const Container = {
   props: {
@@ -24,10 +25,12 @@ const Container = {
     className() {
       return classNames(
         this.fluid ? 'container-fluid' : 'container',
-        this.freeBird ? 'free-bird' : ''
+        this.freeBird ? 'free-bird' : '',
+        this.mdbClass
       );
     }
-  }
+  },
+  mixins: [mdbClassMixin]
 };
 
 export default Container;

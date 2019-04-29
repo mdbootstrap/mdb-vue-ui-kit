@@ -4,6 +4,7 @@
 
 <script>
 import classNames from 'classnames';
+import mdbClassMixin from '../mixins/mdbClassMixin';
 
 const Column = {
   props: {
@@ -55,10 +56,12 @@ const Column = {
         this.offsetSm ? 'offset-sm-' + this.offsetSm : '',
         this.offsetMd ? 'offset-md-' + this.offsetMd : '',
         this.offsetLg ? 'offset-lg-' + this.offsetLg : '',
-        this.offsetXl ? 'offset-xl-' + this.offsetXl : ''
+        this.offsetXl ? 'offset-xl-' + this.offsetXl : '',
+        this.mdbClass
       );
     }
-  }
+  },
+  mixins: [mdbClassMixin]
 };
 
 export default Column;

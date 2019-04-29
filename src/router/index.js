@@ -75,6 +75,10 @@ import ValidationPage from '../docs/ValidationPage';
 import VideoCarouselPage from '../docs/VideoCarouselPage';
 import VideoPage from '../docs/VideoPage';
 import WavesPage from '../docs/WavesPage';
+import StretchedLinkPage from '../docs/StretchedLinkPage';
+import NotificationsFreePage from '../docs/NotificationsPage';
+import MasonryPage from '../docs/MasonryPage';
+import SwitchPage from '../docs/SwitchPage';
 
 Vue.use(Router);
 
@@ -376,6 +380,22 @@ export default new Router({
       path: '/css/animations',
       name: 'AnimationsPage',
       component: AnimationsPage
-    }
+    }, {
+      path: '/components/stretched-link',
+      name: 'StretchedLinkPage',
+      component: StretchedLinkPage
+    }, {
+      path: '/advanced/notifications',
+      name: 'NotificationsFreePage',
+      component: NotificationsFreePage
+    },{
+      path: '/css/masonry',
+      name: 'MasonryPage',
+      component: MasonryPage
+    }, {
+      path: '/forms/switch',
+      name: 'SwitchPage',
+      component: SwitchPage
+    },
   ]
 });

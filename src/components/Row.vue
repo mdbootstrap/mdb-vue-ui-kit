@@ -6,6 +6,7 @@
 
 <script>
 import classNames from 'classnames';
+import mdbClassMixin from '../mixins/mdbClassMixin';
 
 const Row = {
   props: {
@@ -42,10 +43,12 @@ const Row = {
         this.end && "justify-content-end",
         this.center && "justify-content-center",
         this.between && "justify-content-between",
-        this.around && "justify-content-around"
+        this.around && "justify-content-around",
+        this.mdbClass
       );
     }
-  }
+  },
+  mixins: [mdbClassMixin]
 };
 
 export default Row;

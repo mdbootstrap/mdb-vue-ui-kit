@@ -32,14 +32,14 @@
                 Select <mdb-icon icon="angle-right"/>
               </h5>
             </mdb-nav-item>
+            <mdb-nav-item class="list-group-item list-group-item-action" to="/forms/switch">
+              <h5 class="justify-content-between d-flex align-items-center">
+                Switch <mdb-icon icon="angle-right"/>
+              </h5>
+            </mdb-nav-item>
             <mdb-nav-item class="list-group-item list-group-item-action" to="/forms/validation">
               <h5 class="justify-content-between d-flex align-items-center">
                 Validation<mdb-icon icon="angle-right"/>
-              </h5>
-            </mdb-nav-item>
-            <mdb-nav-item class="list-group-item list-group-item-action" to="/forms/pro/validation">
-              <h5 class="justify-content-between d-flex align-items-center">
-                Validation <mdb-icon icon="angle-right"/>
               </h5>
             </mdb-nav-item>
           </mdb-list-group>

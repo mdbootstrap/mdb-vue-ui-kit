@@ -1,6 +1,6 @@
 {
   "name": "mdbvue",
-  "version": "5.2.0",
+  "version": "5.3.0",
   "description": "Vue Bootstrap with Material Design",
   "author": "MDBootstrap <support@mdbootstrap.com>",
   "license": "MIT",
@@ -28,8 +28,9 @@
     "vue-chartjs": "^3.4.2",
     "vue-clickaway": "^2.2.2",
     "vue-numeric": "^2.3.0",
-    "vue-perfect-scrollbar": "^0.1.0",
+    "vue-plugin-load-script": "^1.2.0",
     "vue-router": "^3.0.3",
+    "vue2-perfect-scrollbar": "^1.2.0",
     "vue2-touch-events": "^2.0.0"
   },
   "devDependencies": {

@@ -1,16 +1,17 @@
 <template>
-  <VuePerfectScrollbar :class="className" @mouseenter.native="hover" @mouseleave.native="hoverOut" :settings="settings" :style="scrollStyles">
+  <perfect-scrollbar :class="className" :options="settings" :style="scrollStyles">
     <slot></slot>
-  </VuePerfectScrollbar>
+  </perfect-scrollbar>
 </template>
 
 <script>
 import classNames from 'classnames';
-import VuePerfectScrollbar from 'vue-perfect-scrollbar';
+import { PerfectScrollbar } from 'vue2-perfect-scrollbar';
+import 'vue2-perfect-scrollbar/dist/vue2-perfect-scrollbar.css';
 
 const Scrollbar = {
   components: {
-    VuePerfectScrollbar
+    PerfectScrollbar
   },
   props: {
     wheelSpeed: {
@@ -101,24 +102,15 @@ const Scrollbar = {
       return this.scrollStyle;
     }
   },
+  mounted() {
+    this.setStyle('width', this.width);
+    this.setStyle('height', this.height);
+  },
   methods: {
-    hover() {
-      this.yRail.style.opacity = 1;
-    },
-    hoverOut() {
-      this.yRail.style.opacity = 0;
-    },
     setStyle(prop, value){
       this.$el.style[prop] = value;
     }
   },
-  mounted() {
-    this.yRail = document.querySelector('.ps__scrollbar-y-rail');
-    this.yRail.classList.remove('ps__scrollbar-y-rail');
-    this.yRail.classList.add('ps-y-rail');
-    this.setStyle('width', this.width);
-    this.setStyle('height', this.height);
-  }
 };
 
 export default Scrollbar;
@@ -126,35 +118,4 @@ export { Scrollbar as mdbScrollbar };
 </script>
 
 <style>
-.ps-y-rail {
-  display: block;
-  position: absolute;
-  background: transparent;
-  opacity: 0;
-  transition: background-color .2s linear, opacity .2s linear;
-  right: 0;
-  width: 15px;
-  z-index: 999;
-}
-.ps-y-rail > .ps__scrollbar-y {
-  position: absolute;
-  background-color: #aaa;
-  border-radius: 6px;
-  transition: background-color .2s linear, height .2s linear, width .2s ease-in-out, border-radius .2s ease-in-out;
-  right: 2px;
-  width: 6px;
-}
-.ps-y-rail:hover {
-  background: #eee;
-}
-.ps-y-rail:hover > .ps__scrollbar-y {
-  width: 11px;
-}
-.ps-y-rail:active {
-  background: #eee;
-  opacity: 1 !important;
-}
-.ps-y-rail:active > .ps__scrollbar-y {
-  width: 11px;
-}
 </style>

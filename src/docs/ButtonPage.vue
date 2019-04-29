@@ -34,6 +34,15 @@
         <mdb-btn icon="user" icon-right>Right</mdb-btn>
       </section>
     </section>
+    <section class="demo-section">
+      <h4>Buttons with MDB shortened classes</h4>
+      <section>
+        <mdb-btn color="primary" m="b5 l3 r4" p="y3">Button</mdb-btn>
+        <mdb-btn color="primary" p="r3 b5 l2">Button</mdb-btn>
+        <mdb-btn color="primary" m="3">Button</mdb-btn>
+        <mdb-btn color="primary" m="l4">Button</mdb-btn>
+      </section>
+    </section>
   </mdb-container>
 </template>
 

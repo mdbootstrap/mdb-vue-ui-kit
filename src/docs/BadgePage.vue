@@ -6,52 +6,52 @@
     </mdb-row>
     <hr class="mb-5" />
     <mdb-row>
-      <mdb-badge color="default-color">Default</mdb-badge>
-      <mdb-badge color="primary-color">Primary</mdb-badge>
-      <mdb-badge color="success-color">Success</mdb-badge>
-      <mdb-badge color="info-color">Info</mdb-badge>
-      <mdb-badge color="warning-color">Warning</mdb-badge>
-      <mdb-badge color="danger-color">Danger</mdb-badge>
+      <mdb-badge color="default-color" m="r2">Default</mdb-badge>
+      <mdb-badge color="primary-color" m="r2">Primary</mdb-badge>
+      <mdb-badge color="success-color" m="r2">Success</mdb-badge>
+      <mdb-badge color="info-color" m="r2">Info</mdb-badge>
+      <mdb-badge color="warning-color" m="r2">Warning</mdb-badge>
+      <mdb-badge color="danger-color" m="r2">Danger</mdb-badge>
     </mdb-row>
     <mdb-row class="mt-5">
-      <mdb-badge tag="a" href="#" color="primary-color">Primary</mdb-badge>
-      <mdb-badge tag="a" href="#" color="secondary-color">Secondary</mdb-badge>
-      <mdb-badge tag="a" href="#" color="success-color">Success</mdb-badge>
-      <mdb-badge tag="a" href="#" color="danger-color">Danger</mdb-badge>
-      <mdb-badge tag="a" href="#" color="warning-color">Warning</mdb-badge>
-      <mdb-badge tag="a" href="#" color="info-color">Info</mdb-badge>
+      <mdb-badge tag="a" href="#" color="primary-color" m="r2">Primary</mdb-badge>
+      <mdb-badge tag="a" href="#" color="secondary-color" m="r2">Secondary</mdb-badge>
+      <mdb-badge tag="a" href="#" color="success-color" m="r2">Success</mdb-badge>
+      <mdb-badge tag="a" href="#" color="danger-color" m="r2">Danger</mdb-badge>
+      <mdb-badge tag="a" href="#" color="warning-color" m="r2">Warning</mdb-badge>
+      <mdb-badge tag="a" href="#" color="info-color" m="r2">Info</mdb-badge>
     </mdb-row>
     <mdb-row class="mt-5">
-      <mdb-badge pill color="pink">Pink</mdb-badge>
-      <mdb-badge pill color="light-blue">Light blue</mdb-badge>
-      <mdb-badge pill color="indigo">Indigo</mdb-badge>
-      <mdb-badge pill color="purple">Purple</mdb-badge>
-      <mdb-badge pill color="orange">Orange</mdb-badge>
-      <mdb-badge pill color="green">Green</mdb-badge>
+      <mdb-badge pill color="pink" m="r2">Pink</mdb-badge>
+      <mdb-badge pill color="light-blue" m="r2">Light blue</mdb-badge>
+      <mdb-badge pill color="indigo" m="r2">Indigo</mdb-badge>
+      <mdb-badge pill color="purple" m="r2">Purple</mdb-badge>
+      <mdb-badge pill color="orange" m="r2">Orange</mdb-badge>
+      <mdb-badge pill color="green" m="r2">Green</mdb-badge>
     </mdb-row>
     <mdb-row class="mt-5">
-      <mdb-badge color="default-color"><mdb-icon fab icon="facebook"/></mdb-badge>
-      <mdb-badge color="primary-color"><mdb-icon fab icon="instagram"/></mdb-badge>
-      <mdb-badge color="success-color"><mdb-icon fab icon="snapchat-ghost"/></mdb-badge>
-      <mdb-badge color="info-color"><mdb-icon icon="anchor"/></mdb-badge>
-      <mdb-badge color="warning-color"><mdb-icon icon="sun"/></mdb-badge>
-      <mdb-badge color="danger-color"><mdb-icon icon="battery-full"/></mdb-badge>
+      <mdb-badge color="default-color" m="r2"><mdb-icon fab icon="facebook"/></mdb-badge>
+      <mdb-badge color="primary-color" m="r2"><mdb-icon fab icon="instagram"/></mdb-badge>
+      <mdb-badge color="success-color" m="r2"><mdb-icon fab icon="snapchat-ghost"/></mdb-badge>
+      <mdb-badge color="info-color" m="r2"><mdb-icon icon="anchor"/></mdb-badge>
+      <mdb-badge color="warning-color" m="r2"><mdb-icon icon="sun"/></mdb-badge>
+      <mdb-badge color="danger-color" m="r2"><mdb-icon icon="battery-full"/></mdb-badge>
     </mdb-row>
     <mdb-row class="mt-5">
-      <mdb-badge pill color="pink"><mdb-icon icon="wheelchair"/></mdb-badge>
-      <mdb-badge pill color="light-blue"><mdb-icon icon="heart"/></mdb-badge>
-      <mdb-badge pill color="indigo"><mdb-icon icon="bullhorn"/></mdb-badge>
-      <mdb-badge pill color="purple"><mdb-icon icon="comments"/></mdb-badge>
-      <mdb-badge pill color="orange"><mdb-icon icon="coffee"/></mdb-badge>
-      <mdb-badge pill color="green"><mdb-icon icon="user"/></mdb-badge>
+      <mdb-badge pill color="pink" m="r2"><mdb-icon icon="wheelchair"/></mdb-badge>
+      <mdb-badge pill color="light-blue" m="r2"><mdb-icon icon="heart"/></mdb-badge>
+      <mdb-badge pill color="indigo" m="r2"><mdb-icon icon="bullhorn"/></mdb-badge>
+      <mdb-badge pill color="purple" m="r2"><mdb-icon icon="comments"/></mdb-badge>
+      <mdb-badge pill color="orange" m="r2"><mdb-icon icon="coffee"/></mdb-badge>
+      <mdb-badge pill color="green" m="r2"><mdb-icon icon="user"/></mdb-badge>
     </mdb-row>
     <mdb-row class="mt-5">
-      <mdb-badge color="indigo"><mdb-icon fab icon="android" size="2x"/></mdb-badge>
-      <mdb-badge color="cyan"><mdb-icon icon="cog" size="2x"/></mdb-badge>
-      <mdb-badge color="orange"><mdb-icon fab icon="btc" size="2x"/></mdb-badge>
-      <mdb-badge pill color="teal"><mdb-icon icon="heart" size="2x"/></mdb-badge>
-      <mdb-badge pill color="green"><mdb-icon fab icon="apple" size="2x"/></mdb-badge>
-      <mdb-badge pill color="purple"><mdb-icon icon="users" size="2x"/></mdb-badge>
+      <mdb-badge color="indigo" m="r2"><mdb-icon fab icon="android" size="2x"/></mdb-badge>
+      <mdb-badge color="cyan" m="r2"><mdb-icon icon="cog" size="2x"/></mdb-badge>
+      <mdb-badge color="orange" m="r2"><mdb-icon fab icon="btc" size="2x"/></mdb-badge>
+      <mdb-badge pill color="teal" m="r2"><mdb-icon icon="heart" size="2x"/></mdb-badge>
+      <mdb-badge pill color="green" m="r2"><mdb-icon fab icon="apple" size="2x"/></mdb-badge>
+      <mdb-badge pill color="purple" m="r2"><mdb-icon icon="users" size="2x"/></mdb-badge>
     </mdb-row>
   </mdb-container>
 </template>

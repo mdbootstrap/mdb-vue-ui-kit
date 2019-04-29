@@ -27,6 +27,8 @@
       <h2 class="mb-3">Google map</h2>
       <mdb-col md="12">
       <mdb-google-map
+        ref="map"
+        manualInit
         name="example"
         class="col-md-12"
         style="height: 500px; position: relative; overflow: hidden"
@@ -186,6 +188,11 @@ export default {
     mdbModalFooter,
     mdbCol,
     mdbGoogleMap
+  },
+  beforeMount() {
+    this.$loadScript(`https://maps.googleapis.com/maps/api/js`).then(() => {
+      this.$refs.map.initMap();
+    });
   },
   data() {
     return {

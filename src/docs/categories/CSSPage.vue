@@ -36,6 +36,11 @@
                 Masks <mdb-icon icon="angle-right"/>
               </h5>
             </mdb-nav-item>
+            <mdb-nav-item class="list-group-item list-group-item-action" to="/css/masonry">
+              <h5 class="justify-content-between d-flex align-items-center">
+                Masonry <mdb-icon icon="angle-right"/>
+              </h5>
+            </mdb-nav-item>
             <mdb-nav-item class="list-group-item list-group-item-action" to="/css/scrollbar">
               <h5 class="justify-content-between d-flex align-items-center">
                 Scrollbar <mdb-icon icon="angle-right"/>

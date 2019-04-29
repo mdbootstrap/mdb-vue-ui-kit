@@ -11,15 +11,15 @@
           <h4>Material design inputs</h4>
           <section>
             <mdb-input type="text" label="Basic example" />
-            <mdb-input class="mt-5" size="sm" type="text" label="Small input"/>
-            <mdb-input class="mt-5" size="lg" type="text" label="Large input"/>
-            <mdb-input class="mt-5" type="text" label="Input with icon" icon="envelope" />
-            <mdb-input class="mt-5" type="text" label="Example label" placeholder="Placeholder" />
-            <mdb-input class="mt-5" type="text" label="Disabled" disabled />
-            <mdb-input class="mt-5" type="email" label="Your e-mail" />
-            <mdb-input class="mt-5" type="password" label="Password" />
-            <mdb-input class="mt-5" type="number" label="Number" @input="handleInput" />
-            <mdb-input class="mt-5" type="text" label="Random example" :value="test" @input="handleInput" @change="handleInput" />
+            <mdb-input m="t5" size="sm" type="text" label="Small input"/>
+            <mdb-input m="t5" size="lg" type="text" label="Large input"/>
+            <mdb-input m="t5" type="text" label="Input with icon" icon="envelope" />
+            <mdb-input m="t5" type="text" label="Example label" placeholder="Placeholder" />
+            <mdb-input m="t5" type="text" label="Disabled" disabled />
+            <mdb-input m="t5" type="email" label="Your e-mail" />
+            <mdb-input m="t5" type="password" label="Password" />
+            <mdb-input m="t5" type="number" label="Number" @input="handleInput" />
+            <mdb-input m="t5" type="text" label="Random example" :value="test" @input="handleInput" @change="handleInput" />
             <mdb-btn @click="changeValue" size="sm" color="primary">Update value</mdb-btn>
             <mdb-textarea label="Textarea" />
           </section>
@@ -76,7 +76,18 @@
             <mdb-input type="text" label="Disabled input" outline disabled />
             <mdb-input type="textarea" label="Outline textarea" outline :rows="3" />
           </mdb-col>
+        </mdb-row>
+      </section>
+    </section>
+  
+    <section class="demo-section">
+      <h4>Inputs with background and animated border</h4>
+      <section>
+        <mdb-row>
           <mdb-col sm="6">
+            <mdb-input type="text" label="Example label" bg />
+            <mdb-input type="text" label="Large input" bg size="lg" />
+            <mdb-input type="text" label="Small input" bg size="sm" />
           </mdb-col>
         </mdb-row>
       </section>

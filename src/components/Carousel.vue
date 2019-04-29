@@ -212,7 +212,7 @@ const Carousel ={
         this.testimonial && 'testimonial-carousel'
       );
     }
-  },
+  }
 };
 
 export default Carousel;

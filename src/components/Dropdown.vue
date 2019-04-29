@@ -12,6 +12,7 @@
 <script>
 import classNames from 'classnames';
 import { mixin as clickaway } from 'vue-clickaway';
+import mdbClassMixin from '../mixins/mdbClassMixin';
 
 const Dropdown = {
   props: {
@@ -47,7 +48,7 @@ const Dropdown = {
       toggle: false
     };
   },
-  mixins: [clickaway],
+  mixins: [clickaway, mdbClassMixin],
   methods: {
     away() {
       this.toggle = false;
@@ -60,7 +61,8 @@ const Dropdown = {
         this.show && 'show',
         this.dropup && 'dropup',
         this.dropright && 'dropright',
-        this.dropleft && 'dropleft'
+        this.dropleft && 'dropleft',
+        this.mdbClass
       );
     },
     style() {

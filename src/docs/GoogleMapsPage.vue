@@ -9,6 +9,8 @@
       <h2 class="mb-3">Regular Map</h2>
       <mdb-col md="12">
         <mdb-google-map
+          ref="map"
+          manualInit
           name="reg"
           class="col-md-12"
           :markerCoordinates="coordinates"
@@ -23,6 +25,8 @@
       <mdb-col md="12">
 
       <mdb-google-map
+        ref="map2"
+        manualInit
         name="custom"
         class="col-md-12"
         :markerCoordinates="coordinates"
@@ -38,6 +42,8 @@
     <h2 class="mb-3">Satellite Map</h2>
       <mdb-col md="12">
       <mdb-google-map
+        ref="map3"
+        manualInit
         name="satellite-example"
         class="col-md-12"
         :markerCoordinates="coordinatesSat"
@@ -52,6 +58,8 @@
     <h2 class="mb-3">Full Page Map</h2>
       <mdb-col md="12" >
       <mdb-google-map
+        ref="map4"
+        manualInit
         name="full"
         class="col-md-12"
         :markerCoordinates="coordinatesSat"
@@ -71,6 +79,8 @@
           </view-wrapper>
           <mdb-card-body cascade>
             <mdb-google-map
+              ref="map5"
+              manualInit
               name="card"
               class="col-md-12"
               :markerCoordinates="coordinates"
@@ -87,6 +97,8 @@
           </view-wrapper>
           <mdb-card-body cascade>
             <mdb-google-map
+              ref="map6"
+              manualInit
                   name="card2"
                   class="col-md-12"
                   :markerCoordinates="coordinates"
@@ -129,6 +141,8 @@
 
         <mdb-col lg="7">
           <mdb-google-map
+            ref="map7"
+            manualInit
               name="form"
               class="col-md-12"
               :markerCoordinates="coordinates"
@@ -167,6 +181,8 @@
         <mdb-card>
           <mdb-card-body>
             <mdb-google-map
+              ref="map8"
+              manualInit
               name="form2"
               class="col-md-12"
               :markerCoordinates="coordinates"
@@ -203,9 +219,11 @@
       <mdb-btn color="secondary" @click.native="custom=true">Regular Map Modal</mdb-btn>
     </mdb-row>
       <!-- Regular Map mdbModal -->
-      <mdb-modal :show="regular" @close="regular=false" size="lg">
+      <mdb-modal :show="regular" @close="regular=false" size="lg" @shown="$refs.map9.initMap()">
         <mdb-modal-body class="p-0">
           <mdb-google-map
+            ref="map9"
+            manualInit
             name="modal-reg"
             class="col-md-12"
             style="height: 400px; position: relative; overflow: hidden"
@@ -222,9 +240,11 @@
       </mdb-modal>
 
       <!-- Satellite Map mdbModal -->
-      <mdb-modal :show="satellite" @close="satellite=false" size="lg">
+      <mdb-modal :show="satellite" @close="satellite=false" size="lg" @shown="$refs.map10.initMap()">
         <mdb-modal-body class="p-0">
           <mdb-google-map
+            ref="map10"
+            manualInit
             name="modal-sat"
             class="col-md-12"
             style="height: 400px; position: relative; overflow: hidden"
@@ -242,9 +262,11 @@
       </mdb-modal>
 
       <!-- Custom Map mdbModal -->
-      <mdb-modal :show="custom" @close="custom=false" size="lg">
+      <mdb-modal :show="custom" @close="custom=false" size="lg" @shown="$refs.map11.initMap()">
         <mdb-modal-body class="p-0">
           <mdb-google-map
+            ref="map11"
+            manualInit
             name="modal-custom"
             class="col-md-12"
             style="height: 400px; position: relative; overflow: hidden"
@@ -284,6 +306,18 @@ export default {
     mdbModal,
     mdbModalBody,
     mdbModalFooter
+  },
+  beforeMount() {
+    this.$loadScript(`https://maps.googleapis.com/maps/api/js`).then(() => {
+      this.$refs.map.initMap();
+      this.$refs.map2.initMap();
+      this.$refs.map3.initMap();
+      this.$refs.map4.initMap();
+      this.$refs.map5.initMap();
+      this.$refs.map6.initMap();
+      this.$refs.map7.initMap();
+      this.$refs.map8.initMap();
+    });
   },
   data() {
     return {

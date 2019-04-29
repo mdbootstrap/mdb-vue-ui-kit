@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="flyout">
-    <mdb-navbar dark position="top" class="default-color" scrolling :scrollingOffset="20">
+    <mdb-navbar id="main-navbar" dark position="top" class="default-color" scrolling :scrollingOffset="20">
       <mdb-navbar-brand to="/" waves style="font-weight: bolder;">
         MDB Vue
       </mdb-navbar-brand>
