@@ -10,7 +10,7 @@
     :disabled="disabled"
     :name="name"
     :required="required"
-    :checked="innerChecked"
+    :checked="inputChecked"
     :value="innerValue"
     :rows="rows"
     :maxlength="maxlength"
@@ -38,7 +38,7 @@
       :disabled="disabled"
       :name="name"
       :required="required"
-      :checked="innerChecked"
+      :checked="inputChecked"
       :value="innerValue"
       :rows="rows"
       :maxlength="maxlength"
@@ -242,28 +242,41 @@ const Input = {
     },
     bg: {
       type: Boolean
+    },
+    radioValue: {
+      type: String
     }
   },
   data() {
     return {
       innerValue: this.value,
-      innerRadio: '',
-      isTouched: this.active,
-      innerChecked: this.checked || this.value
+      innerChecked: this.checked,
+      isTouched: this.active
     };
   },
   mounted() {
-    if (this.type === "checkbox") {
-      this.$emit('getDefaultValue', this.innerChecked);
-    } else if (this.type === "radio") {
-      if (this.checked) {
-        this.$emit('getDefaultValue', this.innerValue);
-      }
+    if (this.type === "checkbox" || this.type === "radio") {
+      this.$emit('getDefaultValue', this.inputChecked);
     } else {
       this.$emit('getDefaultValue', this.innerValue);
     }
   },
   computed: {
+    inputChecked() {
+      if (this.type === "checkbox") {
+        if (this.value === true || this.innerChecked === true) {
+          return true;
+        }
+        return false;
+      }
+      if (this.type === "radio") {
+        if (this.value === this.radioValue || this.innerChecked) {
+          return true;
+        }
+        return false;
+      }
+      return this.value;
+    },
     inputClasses() {
       return classNames(
         'form-control',
@@ -357,6 +370,11 @@ const Input = {
         this.$emit('change', e.target.checked);
         this.$emit('input', e.target.checked);
         this.innerChecked = e.target.checked;
+      } else if (this.type === "radio") {
+        this.innerChecked = e.target.checked;
+        if (this.radioValue) {
+          this.$emit('input', this.radioValue);
+        }
       }
       else {
         this.$emit('change', e.target.value);

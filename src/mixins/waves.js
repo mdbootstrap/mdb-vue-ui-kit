@@ -18,7 +18,7 @@ export default {
         this.getOffsets(e);
         this.waveData = { 'top' : e.pageY - this.offsetTop, 'left': e.pageX - this.offsetLeft, 'height': this.$el.offsetHeight, 'width': this.$el.offsetWidth };
         // for fixed elements
-        if (this.wavesFixed) {
+        if (this.wavesFixed || this.isNavFixed) {
           this.waveData.top = e.clientY - this.offsetTop;
         }
         this.createRipple();

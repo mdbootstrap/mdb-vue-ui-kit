@@ -1,20 +1,20 @@
 <template>
   <div id="app" class="flyout">
-    <mdb-navbar id="main-navbar" dark position="top" class="default-color" scrolling :scrollingOffset="20">
+    <mdb-navbar id="main-navbar" dark position="top" color="default" scrolling :scrollingOffset="20">
       <mdb-navbar-brand to="/" waves style="font-weight: bolder;">
         MDB Vue
       </mdb-navbar-brand>
       <mdb-navbar-toggler>
         <mdb-navbar-nav right>
-          <mdb-nav-item exact to="/" waves-fixed>Home</mdb-nav-item>
-          <mdb-nav-item to="/css" waves-fixed>CSS</mdb-nav-item>
-          <mdb-nav-item to="/components" waves-fixed>Components</mdb-nav-item>
-          <mdb-nav-item to="/advanced" waves-fixed>Advanced</mdb-nav-item>
-          <mdb-nav-item to="/navigation" waves-fixed>Navigation</mdb-nav-item>
-          <mdb-nav-item to="/forms" waves-fixed>Forms</mdb-nav-item>
-          <mdb-nav-item to="/tables" waves-fixed>Tables</mdb-nav-item>
-          <mdb-nav-item to="/modals" waves-fixed>Modals</mdb-nav-item>
-          <mdb-nav-item to="/plugins" waves-fixed>Plugins & addons</mdb-nav-item>
+          <mdb-nav-item exact to="/">Home</mdb-nav-item>
+          <mdb-nav-item to="/css">CSS</mdb-nav-item>
+          <mdb-nav-item to="/components">Components</mdb-nav-item>
+          <mdb-nav-item to="/advanced">Advanced</mdb-nav-item>
+          <mdb-nav-item to="/navigation">Navigation</mdb-nav-item>
+          <mdb-nav-item to="/forms">Forms</mdb-nav-item>
+          <mdb-nav-item to="/tables">Tables</mdb-nav-item>
+          <mdb-nav-item to="/modals">Modals</mdb-nav-item>
+          <mdb-nav-item to="/plugins">Plugins & addons</mdb-nav-item>
         </mdb-navbar-nav>
       </mdb-navbar-toggler>
     </mdb-navbar>

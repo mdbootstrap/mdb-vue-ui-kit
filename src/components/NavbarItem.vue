@@ -1,5 +1,5 @@
 <template>
-  <component :is="tag" :class="className" @click="wave">
+  <component :is="tag" :class="className" @click="wave" ref="navItem">
     <router-link tag="a" v-if="to" :exact="exact" active-class='active' exact-active-class='active' :class='anchorClassName' :to="to" :target="tab">
       <slot></slot>
     </router-link>
@@ -51,6 +51,11 @@ const NavbarItem = {
       type: String
     }
   },
+  data() {
+    return {
+      isNavFixed: false
+    };
+  },
   computed: {
     className() {
       return classNames(
@@ -73,6 +78,16 @@ const NavbarItem = {
         return "_blank";
       } return false;
     }
+  },
+  mounted() {
+    let el = this.$refs.navItem;
+    while (el.parentNode) {
+      if (el.className.includes('fixed')) {
+        this.isNavFixed = true;
+        break;
+      }
+      el = el.parentNode;
+    };
   },
   mixins: [waves]
 };

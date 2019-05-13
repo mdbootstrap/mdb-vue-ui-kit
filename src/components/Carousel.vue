@@ -2,14 +2,7 @@
   <component :is="tag" :class="className">
     <carousel-navigation v-if="showControls && multi" :top="multi" :testimonial="testimonial" :leftIcon="leftIcon" :rightIcon="rightIcon" :floating="floating" :navClass="navClass" @changeSlide="handleChangeSlide"></carousel-navigation>
     <carousel-indicators v-if="showIndicators && !thumbnails">
-      <div v-for="(item, index) in items" :key="index">
-        <carousel-indicator :index="index" :active="active(index)" :indicatorClass="indicatorClass" @changeSlide="handleChangeSlide"/>
-      </div>
-    </carousel-indicators>
-    <carousel-indicators v-if="showIndicators && thumbnails">
-      <div v-for="(item, index) in items" :key="index">
-        <carousel-indicator :index="index" :active="active(index)" :indicatorClass="indicatorClass" @changeSlide="handleChangeSlide" :src="thumbnailsSrc[index]" :indicatorStyle="indicatorStyle"/>
-      </div>
+      <carousel-indicator v-for="(item, index) in items" :key="index" :index="index" :active="active(index)" :indicatorClass="indicatorClass" @changeSlide="handleChangeSlide"/>
     </carousel-indicators>
     <carousel-inner v-if="touch" v-touch:swipe.left="slideLeft" v-touch:swipe.right="slideRight">
       <slot></slot>
@@ -17,6 +10,9 @@
     <carousel-inner v-else>
       <slot></slot>
     </carousel-inner>
+    <carousel-indicators v-if="showIndicators && thumbnails">
+      <carousel-indicator  v-for="(item, index) in items" :key="index" :index="index" :active="active(index)" :indicatorClass="indicatorClass" @changeSlide="handleChangeSlide" :src="thumbnailsSrc[index]" :indicatorStyle="indicatorStyle"/>
+    </carousel-indicators>
     <carousel-navigation :testimonial="testimonial" v-if="showControls && !multi" @changeSlide="handleChangeSlide"></carousel-navigation>
   </component>
 </template>
@@ -136,6 +132,7 @@ const Carousel ={
         this.page = index;
         this.items[this.page].classList.add('active');
       }
+     
     },
     slidePage(target) {
       if (target === "next") {
@@ -220,40 +217,6 @@ export { Carousel as mdbCarousel };
 </script>
 
 <style>
-.carousel-inner {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
-}
-
-.carousel-fade .carousel-item {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  display: block !important;
-  opacity: 0;
-  z-index: 0;
-  transition: transform 0ms ease-in-out, opacity 0.8s ease-out;
-}
-
-.carousel-fade .carousel-item.active {
-  position: relative;
-  z-index: 1;
-  opacity: 1;
-}
-
-.carousel-control-prev, .carousel-control-next, .carousel-item-prev, .carousel-item-next {
-  position: absolute;
-  z-index: 2;
-}
-
-.carousel-multi-item .carousel-slide-item {
-  transition: left 0.5s;
-  top: 0;
-}
 
 </style>
 

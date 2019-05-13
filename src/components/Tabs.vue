@@ -1,7 +1,7 @@
 <template>
   <div>
     <component :is="tag" :class="className" :style="'z-index:' + zIndex">
-      <li v-for="(link, index) in links" class="nav-item" :key="index">
+      <li v-for="(link, index) in tabLinks" class="nav-item" :key="index">
         <mdb-dropdown v-if="link.dropdown">
           <mdb-dropdown-toggle tag="a" :color="color" slot="toggle" navLink>{{link.text}}</mdb-dropdown-toggle>
           <mdb-dropdown-menu :color="color">
@@ -20,8 +20,9 @@
     </component>
     <div :class="contentClass" :style="'z-index:' + (zIndex - 1)">
       <transition @before-enter="beforeEnter" @enter="enter" @before-leave="beforeLeave" @leave="leave">
-        <div class="tab-pane" v-for="(pane, index) in content" :key="index" v-if="index === activeTab">
-          <p class="p-0 m-0" v-html="pane" ref="pane" />
+        <div class="tab-pane" v-for="link in filteredLinks" :key="link.index">
+          <p v-if="content" class="p-0 m-0" v-html="content[link.index]" ref="pane" />
+          <slot v-else :name="links[link.index].text"></slot>
         </div>
       </transition>
     </div>
@@ -96,14 +97,35 @@ const Tabs = {
     },
     fill: {
       type: Boolean
+    },
+    transitionDuration: {
+      type: Number,
+      default: 0.3
+    },
+    transitionStyle: {
+      type: String,
+      default: "ease-out"
     }
   },
   data() {
     return {
       activeTab: this.active,
+      tabLinks: []
     };
   },
   computed: {
+    filteredLinks() {
+      if (typeof this.links === 'string'){
+        this.tabLinks.push({text: this.links});
+      }
+      else {
+        this.tabLinks = [...this.links];
+      }
+      return this.tabLinks.map((link, index) => {
+        link.index = index;
+        return link;
+      }).filter(link => link.index === this.activeTab);
+    },
     className() {
       return classNames(
         'nav',
@@ -139,6 +161,7 @@ const Tabs = {
     enter(el) {
       el.style.height = el.scrollHeight + 'px';
       el.style.opacity = '1';
+      el.style.transition = `${this.transitionDuration}s ${this.transitionStyle}`;
     },
     beforeLeave(el) {
       el.style.height = el.scrollHeight + 'px';
@@ -147,6 +170,8 @@ const Tabs = {
     leave(el) {
       el.style.height = '0';
       el.style.opacity = '0';
+      el.style.transition = `${this.transitionDuration}s ${this.transitionStyle}`;
+      
     }
   },
   mixins: [waves]
@@ -160,6 +185,6 @@ export { Tabs as mdbTabs };
 .tab-content>.tab-pane {
   display: block;
   top: 0;
-  transition: 0.3s ease-out;
+  /* transition: 0.3s ease-out; */
 }
 </style>

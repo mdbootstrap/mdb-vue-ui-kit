@@ -396,6 +396,6 @@ export default new Router({
       path: '/forms/switch',
       name: 'SwitchPage',
       component: SwitchPage
-    },
+    }
   ]
 });

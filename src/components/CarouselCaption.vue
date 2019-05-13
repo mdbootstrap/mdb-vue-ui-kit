@@ -23,16 +23,19 @@ const CarouselCaption = {
     alignV: {
       type: String,
       default: 'bottom'
-    }
+    },
+    animation: String,
   },
   computed: {
     className() {
       return classNames(
         'carousel-caption',
-        `caption-${this.alignV}`
+        `caption-${this.alignV}`,
+        this.animation ? `animated ${this.animation}` : ''
       );
     }
   }
+  
 };
 
 export default CarouselCaption;

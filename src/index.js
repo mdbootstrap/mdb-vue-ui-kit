@@ -43,6 +43,8 @@ let Dropdown = require('./components/Dropdown').default;
 let mdbDropdown = require('./components/Dropdown').default;
 let Input = require('./components/Input').default;
 let mdbInput = require('./components/Input').default;
+let Tooltip = require('./components/Tooltip').default;
+let mdbTooltip = require('./components/Tooltip').default;
 import DropdownItem, { mdbDropdownItem } from './components/DropdownItem';
 import DropdownMenu, { mdbDropdownMenu } from './components/DropdownMenu';
 import DropdownToggle, { mdbDropdownToggle } from './components/DropdownToggle';
@@ -84,7 +86,6 @@ import TabPane, { mdbTabPane } from './components/TabPane';
 import Tbl, { mdbTbl } from './components/Table';
 import TblBody, { mdbTblBody } from './components/TableBody';
 import TblHead, { mdbTblHead } from './components/TableHead';
-import Tooltip, { mdbTooltip } from './components/Tooltip';
 import ViewWrapper, { mdbView } from './components/ViewWrapper';
 import waves from './mixins/waves';
 import mdbClassMixin from './mixins/mdbClassMixin';
@@ -279,5 +280,5 @@ export {
   mdbStretchedLink,
   mdbToastNotification,
   mdbMasonry,
-  mdbMasonryItem,
+  mdbMasonryItem
 };

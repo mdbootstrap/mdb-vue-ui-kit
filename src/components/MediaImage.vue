@@ -1,6 +1,6 @@
 <template>
   <component :is="tag" :href="href" :class="className">
-    <img :src="src" :alt="alt">
+    <img :class="this.circle ? 'rounded-circle' : ''" :src="src" :alt="alt">
   </component>
 </template>
 
@@ -31,6 +31,10 @@ const MediaImage = {
     href: {
       type: String,
       default: "#"
+    },
+    circle: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {

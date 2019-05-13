@@ -68,7 +68,7 @@
         default() {
           return {};
         }
-      }
+      },
     },
 
     data() {

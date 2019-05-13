@@ -16,6 +16,7 @@ const Badge =  {
     },
     color: {
       type: String,
+      default: 'default'
     },
     pill: {
       type: Boolean,
@@ -24,9 +25,10 @@ const Badge =  {
   },
   computed: {
     className() {
+      const mdbColors = ['danger', 'warning', 'success', 'info', 'default', 'primary', 'secondary', 'elegant', 'stylish', 'unique', 'special'];
       return classNames(
         'badge',
-        this.color,
+        mdbColors.includes(this.color) ? `${this.color}-color` : this.color,
         this.pill ? 'badge-pill' : false,
         this.mdbClass
       );

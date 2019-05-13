@@ -5,24 +5,39 @@
       <a href="https://mdbootstrap.com/docs/vue/tables/pagination/?utm_source=DemoApp&utm_medium=MDBVueFree" waves-fixed class="border grey-text px-2 border-light rounded ml-2" target="_blank"><mdb-icon icon="graduation-cap" class="mr-2"/>Docs</a>
     </mdb-row>
     <hr />
-    <div class="mt-5 pt-5 mx-3">
-      <h3>Basic example</h3>
-      <br />
-      <mdb-datatable
-        :data="data"
-        striped
-        bordered
-      />
-
-      <h3>Disabled pagination</h3>
-      <br />
-      <mdb-datatable
-        :data="data"
-        striped
-        bordered
-        :pagination="false"
-      />
-    </div>
+    <section class="demo-section">
+      <h4>Basic example</h4>
+        <section>
+        <mdb-datatable
+          :data="data"
+          striped
+          bordered
+        />
+        </section>
+    </section>
+    <section class="demo-section">
+      <h4>Arrows example</h4>
+      <section>
+        <mdb-datatable
+          :data="data"
+          striped
+          bordered
+          arrows
+          :display="3"
+        />
+      </section>
+    </section>
+    <section class="demo-section">
+      <h4>Disabled pagination</h4>
+      <section>
+        <mdb-datatable
+          :data="data"
+          striped
+          bordered
+          :pagination="false"
+        />
+      </section>
+    </section>
   </mdb-container>
 </template>
 

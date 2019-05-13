@@ -41,7 +41,7 @@ const Dropdown = {
     split: {
       type: Boolean,
       default: false
-    }
+    },
   },
   data() {
     return {

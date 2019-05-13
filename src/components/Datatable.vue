@@ -1,17 +1,23 @@
 <template>
   <div class="dataTables_wrapper" :style="wrapperStyle">
     <!-- Entries input and search -->
-    <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <div v-if="pagination">
-          <datatable-select @getValue="updateEntries" :options="options" />
-        </div>
-      </div>
-
-      <div v-if="searching" class="col-sm-12 col-md-6">
+    <mdb-row>
+      <mdb-col sm="6" md="8">
+        <mdb-row>
+          <mdb-col sm="12" md="4">
+            <datatable-select v-if="pagination" @getValue="updateEntries" :options="options"/>
+          </mdb-col>
+          <mdb-col>
+            <mdb-btn @click="updateData" v-if="refresh" size="sm" class="mt-0" outline="primary" >
+              <mdb-icon  icon="sync" />
+            </mdb-btn>
+          </mdb-col>
+        </mdb-row>
+      </mdb-col>
+      <mdb-col sm="6" md="4" v-if="searching">
         <datatable-search @getValue="updateSearch" />
-      </div>
-    </div>
+      </mdb-col>
+    </mdb-row>
     <!-- Entries input and search -->
 
     <!-- Main table -->
@@ -31,14 +37,14 @@
       <tbl-body>
         <tr v-for="row in pages[activePage]" :key="row.id">
           <td v-for="(value, key) in row" :key="key">
-            {{value}}
+            <div v-html="value"></div>
           </td>
         </tr>
         <tr v-if="!pages.length">
           <td :colspan="columns.length">No matching records found</td>
         </tr>
       </tbl-body>
-      <tbl-head tag="tfoot">
+      <tbl-head v-if="tfoot" tag="tfoot">
         <tr>
           <th
             v-for="column in columns"
@@ -76,7 +82,7 @@
         <tbl-body>
           <tr v-for="row in pages[activePage]" :key="row.id">
             <td v-for="(value, key) in row" :key="key">
-              {{value}}
+              <div v-html="value"></div>
             </td>
           </tr>
           <tr v-if="!pages.length">
@@ -87,7 +93,7 @@
       <div class="dataTables_scrollFoot" style="padding-right: 15px">
         <div class="dataTables_scrollFootInner">
           <tbl v-bind="tableProps" sm datatable>
-            <tbl-head tag="tfoot">
+            <tbl-head v-if="tfoot" tag="tfoot">
               <tr>
                 <th
                   v-for="column in columns"
@@ -171,6 +177,9 @@ import mdbInput from './Input';
 import DatatableSelect from './DatatableSelect';
 import DatatableSearch from './DatatableSearch';
 import mdbIcon from './Fa';
+import mdbRow from './Row';
+import mdbCol from './Col';
+import mdbBtn from './Button';
 
 const Datatable = {
   name: 'Datatable',
@@ -297,11 +306,30 @@ const Datatable = {
     defaultCol: {
       type: String,
       default: 'undefined'
+    },
+    tfoot: {
+      type: Boolean,
+      default: true
+    },
+    reactive: {
+      type: Boolean,
+      default: false
+    },
+    refresh: {
+      type: Boolean,
+      default: false
+    },
+    time: {
+      type: Number,
+      default: 5000
     }
-    
   },
   data() {
     return {
+      updatedKey: null,
+      reactiveFlag: false,
+      recentSort: null,
+      interval: null,
       rows: this.data.rows || [],
       columns: this.data.columns || [],
       options: [10, 25, 50, 100],
@@ -340,7 +368,10 @@ const Datatable = {
     Pagination,
     PageItem,
     mdbInput,
-    mdbIcon
+    mdbIcon,
+    mdbRow,
+    mdbCol,
+    mdbBtn
   },
   computed: {
     rowsDisplay(){
@@ -363,6 +394,9 @@ const Datatable = {
         start = end - this.display;
       };
       return this.pages.slice(start, end);
+    },
+    componentKey(){
+      return this.updatedKey;
     }
   },
   methods: {
@@ -370,6 +404,7 @@ const Datatable = {
       this.activePage = index;
     },
     sort(field, sort) {
+      this.recentSort = {field, sort};
       if (this.sorting) {
         sort === 'asc' ?
           this.rows.sort((a, b) => (a[field] > b[field] ? 1 : -1)) :
@@ -382,6 +417,7 @@ const Datatable = {
     },
     updateSearch(value) {
       this.search = this.escapeRegExp(value);
+      this.activePage = 0;
     },
     escapeRegExp(string) {
       return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -410,11 +446,8 @@ const Datatable = {
         arrRows.push(newRow);
       });
       return arrRows;
-    }
-  },
-  mounted() {
-    // bind data or download form API
-    if (typeof this.data === 'string') {
+    },
+    fetchData(){
       fetch(this.data)
         .then(res => res.json())
         .then(json => {
@@ -422,9 +455,28 @@ const Datatable = {
           this.rows = json.rows;
           this.$emit('fields', this.columns);
         })
+        .then(data => {
+          if (this.recentSort){
+            this.sort(this.recentSort.field, this.recentSort.sort);
+          }
+        })
         .catch(err => console.log(err));
+    },
+    updateData(){
+      this.fetchData();
+      this.reactiveFlag = true;
+      this.updatedKey = Math.floor(Math.random()*100000000);
     }
-
+  },
+  mounted() {
+    // bind data or download form API
+    if (typeof this.data === 'string') {
+      this.fetchData();
+    }
+    //reactivness in data table
+    if (this.reactive){
+      this.interval = setInterval(this.updateData, this.time);
+    }
     // findout rows amount, and slice it into array (split into pages)
     const pagesAmount = Math.ceil(this.filteredRows.length / this.entries);
     this.pages = [];
@@ -473,7 +525,9 @@ const Datatable = {
       else {
         this.pages.push(this.filteredRows);
       }
-      this.activePage = 0;
+      if (this.reactiveFlag === false){
+        this.activePage = 0;
+      }
 
       this.$emit('pages', this.pages);
     }

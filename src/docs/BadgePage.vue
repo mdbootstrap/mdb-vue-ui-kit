@@ -6,12 +6,12 @@
     </mdb-row>
     <hr class="mb-5" />
     <mdb-row>
-      <mdb-badge color="default-color" m="r2">Default</mdb-badge>
-      <mdb-badge color="primary-color" m="r2">Primary</mdb-badge>
-      <mdb-badge color="success-color" m="r2">Success</mdb-badge>
-      <mdb-badge color="info-color" m="r2">Info</mdb-badge>
-      <mdb-badge color="warning-color" m="r2">Warning</mdb-badge>
-      <mdb-badge color="danger-color" m="r2">Danger</mdb-badge>
+      <mdb-badge m="r2">Default</mdb-badge>
+      <mdb-badge color="primary" m="r2">Primary</mdb-badge>
+      <mdb-badge color="success" m="r2">Success</mdb-badge>
+      <mdb-badge color="info" m="r2">Info</mdb-badge>
+      <mdb-badge color="warning" m="r2">Warning</mdb-badge>
+      <mdb-badge color="danger" m="r2">Danger</mdb-badge>
     </mdb-row>
     <mdb-row class="mt-5">
       <mdb-badge tag="a" href="#" color="primary-color" m="r2">Primary</mdb-badge>
@@ -30,12 +30,12 @@
       <mdb-badge pill color="green" m="r2">Green</mdb-badge>
     </mdb-row>
     <mdb-row class="mt-5">
-      <mdb-badge color="default-color" m="r2"><mdb-icon fab icon="facebook"/></mdb-badge>
-      <mdb-badge color="primary-color" m="r2"><mdb-icon fab icon="instagram"/></mdb-badge>
-      <mdb-badge color="success-color" m="r2"><mdb-icon fab icon="snapchat-ghost"/></mdb-badge>
-      <mdb-badge color="info-color" m="r2"><mdb-icon icon="anchor"/></mdb-badge>
-      <mdb-badge color="warning-color" m="r2"><mdb-icon icon="sun"/></mdb-badge>
-      <mdb-badge color="danger-color" m="r2"><mdb-icon icon="battery-full"/></mdb-badge>
+      <mdb-badge color="default" m="r2"><mdb-icon fab icon="facebook"/></mdb-badge>
+      <mdb-badge color="primary" m="r2"><mdb-icon fab icon="instagram"/></mdb-badge>
+      <mdb-badge color="success" m="r2"><mdb-icon fab icon="snapchat-ghost"/></mdb-badge>
+      <mdb-badge color="info" m="r2"><mdb-icon icon="anchor"/></mdb-badge>
+      <mdb-badge color="warning" m="r2"><mdb-icon icon="sun"/></mdb-badge>
+      <mdb-badge color="danger" m="r2"><mdb-icon icon="battery-full"/></mdb-badge>
     </mdb-row>
     <mdb-row class="mt-5">
       <mdb-badge pill color="pink" m="r2"><mdb-icon icon="wheelchair"/></mdb-badge>

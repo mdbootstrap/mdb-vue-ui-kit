@@ -191,6 +191,7 @@ const Navbar = {
     }
   },
   mounted() {
+    window.addEventListener('scroll', this.handleScroll);
     this.$slots.default.forEach(child => {
       if (child.elm.id === this.target) {
         this.collapse = child.elm;
@@ -208,9 +209,6 @@ const Navbar = {
         });
       }
     });
-  },
-  created() {
-    window.addEventListener('scroll', this.handleScroll);
   },
   destroy() {
     document.removeEventListener('click', this.onClick);

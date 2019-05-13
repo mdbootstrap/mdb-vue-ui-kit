@@ -4,12 +4,15 @@
       <h4 class="demo-title"><strong>Video Carousel</strong></h4>
       <a href="https://mdbootstrap.com/docs/vue/advanced/carousel/#video/?utm_source=DemoApp&utm_medium=MDBVueFree" waves-fixed class="border grey-text px-2 border-light rounded ml-2" target="_blank"><mdb-icon icon="graduation-cap" class="mr-2"/>Docs</a>
     </mdb-row>
-    <hr class="mb-4" />
-    <mdb-carousel :interval="8000" showControls showIndicators full>
-      <mdb-carousel-item video src="https://mdbootstrap.com/img/video/Tropical.mp4" alt="First slide" auto loop/>
-      <mdb-carousel-item video src="https://mdbootstrap.com/img/video/forest.mp4" alt="Second slide" auto loop/>
-      <mdb-carousel-item video src="https://mdbootstrap.com/img/video/Agua-natural.mp4" alt="Third slide" auto loop/>
-    </mdb-carousel>
+    <section class="demo-section">
+      <section>
+        <mdb-carousel :interval="8000" showControls showIndicators full>
+          <mdb-carousel-item video src="https://mdbootstrap.com/img/video/Tropical.mp4" alt="First slide" auto loop/>
+          <mdb-carousel-item video src="https://mdbootstrap.com/img/video/forest.mp4" alt="Second slide" auto loop/>
+          <mdb-carousel-item video src="https://mdbootstrap.com/img/video/Agua-natural.mp4" alt="Third slide" auto loop/>
+        </mdb-carousel>
+      </section>
+    </section>
   </mdb-container>
 </template>
 
