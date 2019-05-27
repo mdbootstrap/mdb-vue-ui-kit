@@ -6,7 +6,6 @@
           <h1 class="pb-2"><mdb-icon icon="table" class="grey-text mr-2" />Tables</h1>
           <h6 class="my-3">FREE</h6>
           <mdb-list-group>
-            <!-- FREE -->
             <mdb-nav-item class="list-group-item list-group-item-action" to="/tables/datatable">
               <h5 class="justify-content-between d-flex align-items-center">
                 Datatable<mdb-icon icon="angle-right"/>
@@ -32,6 +31,7 @@
                 Table Sort<mdb-icon icon="angle-right"/>
               </h5>
             </mdb-nav-item>
+
           </mdb-list-group>
         </mdb-jumbotron>
       </mdb-col>

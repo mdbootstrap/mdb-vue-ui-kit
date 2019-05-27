@@ -58,7 +58,7 @@ __________
 
 # Version
 
-- MDBVue 5.4.0
+- MDBVue 5.4.1
 - Vue 2.6.10
 
 # Quick start

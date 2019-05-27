@@ -6,7 +6,6 @@
           <h1 class="pb-2"><mdb-icon icon="bars" class="grey-text mr-2" />Navigation</h1>
           <h6 class="my-3">FREE</h6>
           <mdb-list-group>
-            <!-- FREE -->
             <mdb-nav-item class="list-group-item list-group-item-action" to="/navigation/breadcrumb">
               <h5 class="justify-content-between d-flex align-items-center">
                 Breadcrumb <mdb-icon icon="angle-right"/>
@@ -45,7 +44,7 @@
 </template>
 
 <script>
-import { mdbContainer, mdbRow, mdbCol, mdbIcon, mdbJumbotron, mdbNavItem, mdbListGroup } from 'mdbvue';
+import { mdbContainer, mdbRow, mdbCol, mdbIcon, mdbJumbotron, mdbNavItem, mdbListGroup, mdbCollapse } from 'mdbvue';
 
 export default {
   name: 'ComponentsPage',
@@ -56,7 +55,24 @@ export default {
     mdbIcon,
     mdbJumbotron,
     mdbNavItem,
-    mdbListGroup
+    mdbListGroup,
+    mdbCollapse
+  },
+  data() {
+    return {
+      slideDown: false
+    };
+  },
+  methods: {
+    beforeEnter(el) {
+      el.style.height = 0;
+    },
+    enter(el) {
+      el.style.height = (el.scrollHeight * 2.5) + 'px';
+    },
+    beforeLeave(el) {
+      el.style.height = 0;
+    }
   }
 };
 </script>
@@ -87,7 +103,21 @@ export default {
   padding-top: 3px;
 }
 
-.nav-link.navbar-link h5 {
+.nav-link.navbar-link h5, .nav-link.navbar-link h6 {
   color: #212529;
+}
+
+.animate-icon {
+  transition: transform 0.2s;
+}
+.rotate-90 {
+  transform: rotate(90deg);
+}
+
+.collapse-item {
+  overflow: hidden;
+  height: 0;
+  padding: 0;
+  transition: height .5s;
 }
 </style>

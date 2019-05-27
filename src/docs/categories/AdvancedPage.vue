@@ -6,7 +6,6 @@
           <h1 class="pb-2"><mdb-icon icon="code" class="grey-text mr-2" />Advanced</h1>
           <h6 class="my-3">FREE</h6>
           <mdb-list-group>
-            <!-- FREE -->
             <mdb-nav-item class="list-group-item list-group-item-action" to="/advanced/accordion">
               <h5 class="justify-content-between d-flex align-items-center">
                 Accordion <mdb-icon icon="angle-right"/>
