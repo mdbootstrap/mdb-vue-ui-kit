@@ -135,7 +135,7 @@ Up-to-date with the latest standards of Bootstrap 4 and all the best it has to o
 Intuitive and user-friendly documentation, created with a copy-paste approach.
 
 **No jQuery**
-Writing you code with pure React is now quicker, easier, and cleaner.
+Writing your code with pure Vue is now quicker, easier, and cleaner.
 
 **Cross-browser compatibility**
 Works perfectly with Chrome, Firefox, Safari, Opera and Microsoft Edge.
