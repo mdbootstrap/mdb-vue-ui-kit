@@ -500,6 +500,12 @@ const Datatable = {
     this.$emit('fields', this.columns);
   },
   watch: {
+    data(newVal) {
+      this.columns = newVal.columns;
+    },
+    rows(){
+      this.filterArray();
+    },
     entries() {
       // do the split every entry change (changing entries amount)
       const pagesAmount = Math.ceil(this.filteredRows.length / this.entries);

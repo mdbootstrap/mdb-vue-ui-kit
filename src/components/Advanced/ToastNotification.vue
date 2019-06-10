@@ -16,7 +16,8 @@
 
 
 <script>
-import { mdbBtn, mdbIcon } from 'mdbvue';
+import mdbBtn from '../Components/Button';
+import mdbIcon from '../Content/Fa';
 const ToastNotification = {
   name: 'Notification',
   components: {

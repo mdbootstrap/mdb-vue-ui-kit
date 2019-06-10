@@ -1,5 +1,5 @@
 <template>
-  <component :is="to ? 'router-link' : tag" :to="to" :exact="exact" :href="to ? false : href" :class="className" :target="tab"><slot></slot></component>
+  <component @keyup.native.stop.enter="handleKeypress" @click="$emit('click', $event)" :tabindex="0" :is="to ? 'router-link' : tag" :to="to" :exact="exact" :href="to ? false : href" :class="className" :target="tab"><slot></slot></component>
 </template>
 
 <script>
@@ -45,6 +45,11 @@ const DropdownItem = {
       if (this.newTab) {
         return "_blank";
       } return false;
+    }
+  },
+  methods: {
+    handleKeypress(e){
+      e.target.click();
     }
   }
 };

@@ -54,11 +54,11 @@ __________
 
 # Demo
 
- - [Main demo](https://mdbootstrap.com/docs/vue/components/demo/)
+ - [Main demo](https://mdbootstrap.com/previews/templates/vue/)
 
 # Version
 
-- MDBVue 5.4.1
+- MDBVue 5.5.0
 - Vue 2.6.10
 
 # Quick start

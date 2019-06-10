@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /*!
  * Material Design for Bootstrap 4
- * Version: MDB Lite 4.8.1
+ * Version: MDB Lite 4.8.2
  *
  *
  * Copyright: Material Design for Bootstrap
@@ -4899,6 +4899,7 @@ body.scrollable {
   .md-form label {
     position: absolute;
     top: 0;
+    left: 0;
     font-size: 1rem;
     transition: transform .2s ease-out, color .2s ease-out;
     transform-origin: 0% 100%;

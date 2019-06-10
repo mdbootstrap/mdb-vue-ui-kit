@@ -1,6 +1,6 @@
 {
   "name": "mdbvue",
-  "version": "5.4.1",
+  "version": "5.5.0",
   "description": "Vue Bootstrap with Material Design",
   "author": "MDBootstrap <support@mdbootstrap.com>",
   "license": "MIT",
@@ -11,7 +11,7 @@
     "start": "yarn run dev",
     "start-npm": "npm run dev",
     "build": "node build/build.js",
-    "build-lib": "vue-cli-service build --target lib --name mdbvue ./src/index.js",
+    "build-lib": "vue-cli-service build --target lib --dest lib --name mdbvue ./src/index.js",
     "lint": "eslint --ext .js,.vue src",
     "remove-pro-dirs": "del-cli src/components/pro src/docs/pro build/scss build/css",
     "remove-pro-code": "gulp index-remove-pro router-remove-pro",
@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.8.2",
+    "axios": "^0.18.0",
     "bootstrap-css-only": "^4.3.1",
     "chart.js": "^2.8.0",
     "classnames": "^2.2.6",
@@ -68,7 +69,7 @@
     "html-webpack-plugin": "^3.2.0",
     "http-proxy-middleware": "^0.18.0",
     "node-sass": "^4.11.0",
-    "opn": "^5.3.0",
+    "opn": "^6.0.0",
     "ora": "^2.0.0",
     "portfinder": "^1.0.13",
     "rimraf": "^2.6.0",

@@ -1,27 +1,29 @@
 <template>
   <div id="app" class="flyout">
-    <mdb-navbar id="main-navbar" dark position="top" color="default" scrolling :scrollingOffset="20">
-      <mdb-navbar-brand to="/" waves style="font-weight: bolder;">
+    <mdb-navbar id="main-navbar" dark position="top" color="stylish" scrolling :scrollingOffset="20">
+      <mdb-navbar-brand to="/" waves class="font-weight-bold">
         MDB Vue
       </mdb-navbar-brand>
       <mdb-navbar-toggler>
         <mdb-navbar-nav right>
-          <mdb-nav-item exact to="/">Home</mdb-nav-item>
-          <mdb-nav-item to="/css">CSS</mdb-nav-item>
-          <mdb-nav-item to="/components">Components</mdb-nav-item>
-          <mdb-nav-item to="/advanced">Advanced</mdb-nav-item>
-          <mdb-nav-item to="/navigation">Navigation</mdb-nav-item>
-          <mdb-nav-item to="/forms">Forms</mdb-nav-item>
-          <mdb-nav-item to="/tables">Tables</mdb-nav-item>
-          <mdb-nav-item to="/modals">Modals</mdb-nav-item>
-          <mdb-nav-item to="/plugins">Plugins & addons</mdb-nav-item>
+          <mdb-nav-item exact to="/"><strong>Home</strong></mdb-nav-item>
+          <mdb-nav-item to="/css"><strong>CSS</strong></mdb-nav-item>
+          <mdb-nav-item to="/components"><strong>Components</strong></mdb-nav-item>
+          <mdb-nav-item to="/advanced"><strong>Advanced</strong></mdb-nav-item>
+          <mdb-nav-item to="/navigation"><strong>Navigation</strong></mdb-nav-item>
+          <mdb-nav-item to="/forms"><strong>Forms</strong></mdb-nav-item>
+          <mdb-nav-item to="/tables"><strong>Tables</strong></mdb-nav-item>
+          <mdb-nav-item to="/modals"><strong>Modals</strong></mdb-nav-item>
+          <mdb-nav-item to="/plugins"><strong>Plugins & addons</strong></mdb-nav-item>
         </mdb-navbar-nav>
       </mdb-navbar-toggler>
     </mdb-navbar>
     <main :style="{marginTop: '60px'}">
-      <router-view></router-view>
+      <transition name="fade" mode="out-in">
+        <router-view></router-view>
+      </transition>
     </main>
-    <mdb-footer color="default-color">
+    <mdb-footer color="stylish-color">
       <p class="footer-copyright mb-0 py-3 text-center">
         &copy; {{new Date().getFullYear()}} Copyright: <a href="https://mdbootstrap.com/docs/vue/?utm_source=DemoApp&utm_medium=MDBVue"> MDBootstrap.com</a>
       </p>
@@ -72,5 +74,17 @@ export default {
   font-weight: 700;
   margin-bottom: 0;
   padding-left: 15px;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition-duration: 0.3s;
+  transition-property: opacity;
+  transition-timing-function: ease-out;
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
 }
 </style>

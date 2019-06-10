@@ -241,6 +241,11 @@ export default {
     mdbInput,
     mdbRow,
     mdbIcon
+  },
+  methods: {
+    checkClick(e){
+      console.log(e.target);
+    }
   }
 };
 </script>

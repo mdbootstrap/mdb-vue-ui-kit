@@ -26,6 +26,7 @@ import CarouselPage from '../docs/Advanced/CarouselPage';
 import ChartPage from '../docs/Advanced/ChartPage';
 import CollapsePage from '../docs/Advanced/CollapsePage';
 import DataTablePage from '../docs/Tables/DataTablePage';
+import DataTableJSONPage from '../docs/Tables/DataTableJSONPage';
 import DropdownPage from '../docs/Components/DropdownPage';
 import EdgeHeaderPage from '../docs/Components/EdgeHeaderPage';
 import FaPage from '../docs/CSS/FaPage';
@@ -53,7 +54,10 @@ import ModalStylesPage from '../docs/Modals/ModalStylesPage';
 import SelectPageFree from '../docs/Forms/SelectPage';
 import NavsPage from '../docs/Navigation/NavsPage';
 import NavbarPage from '../docs/Navigation/NavbarPage';
-import NavigationPage from '../docs/Navigation/NavigationPage';
+import NavigationPagev1 from '../docs/Navigation/NavigationPagev1';
+import NavigationPagev2 from '../docs/Navigation/NavigationPagev2';
+import NavigationPagev3 from '../docs/Navigation/NavigationPagev3';
+import NavigationPagev4 from '../docs/Navigation/NavigationPagev4';
 import PaginationPage from '../docs/Components/PaginationPage';
 import PanelPage from '../docs/Components/PanelPage';
 import PopoverPage from '../docs/Advanced/PopoverPage';
@@ -79,11 +83,9 @@ import StretchedLinkPage from '../docs/Components/StretchedLinkPage';
 import NotificationsFreePage from '../docs/Advanced/NotificationsPage';
 import MasonryPage from '../docs/CSS/MasonryPage';
 import SwitchPage from '../docs/Forms/SwitchPage';
-
 Vue.use(Router);
 
 export default new Router({
-  mode: 'history',
   routes: [
     {
       path: '/',
@@ -181,6 +183,10 @@ export default new Router({
       name: 'DataTablePage',
       component: DataTablePage
     }, {
+      path: '/tables/datatableJSON',
+      name: 'DataTableJSONPage',
+      component: DataTableJSONPage
+    }, {
       path: '/plugins/iframe',
       name: 'IframePage',
       component: IframePage
@@ -265,9 +271,21 @@ export default new Router({
       name: 'NavsPage',
       component: NavsPage
     }, {
-      path: '/navigation/navigation',
-      name: 'NavigationPage',
-      component: NavigationPage
+      path: '/navigation/navigation-v1',
+      name: 'NavigationPagev1',
+      component: NavigationPagev1
+    }, {
+      path: '/navigation/navigation-v2',
+      name: 'NavigationPagev2',
+      component: NavigationPagev2
+    }, {
+      path: '/navigation/navigation-v3',
+      name: 'NavigationPagev3',
+      component: NavigationPagev3
+    }, {
+      path: '/navigation/navigation-v4',
+      name: 'NavigationPagev4',
+      component: NavigationPagev4
     }, {
       path: '/components/alerts',
       name: 'AlertPage',
@@ -397,5 +415,6 @@ export default new Router({
       name: 'SwitchPage',
       component: SwitchPage
     },
+    
   ]
 });
