@@ -59,4 +59,7 @@ export { DropdownItem as mdbDropdownItem };
 </script>
 
 <style scoped>
+.dropdown-item {
+  outline-color: rgba(0, 0, 0, 0.1);
+}
 </style>

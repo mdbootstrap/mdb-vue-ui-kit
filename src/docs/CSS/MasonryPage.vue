@@ -52,7 +52,7 @@
     <section class="demo-section">
       <h4>Flexbox option</h4>
       <section>
-        <mdb-masonry flexbox :maxHeight="1000">
+        <mdb-masonry class="flexbox-display" flexbox :maxHeight="1000">
           <mdb-masonry-item :itemStyle="{'height': '222px'}">1</mdb-masonry-item>
           <mdb-masonry-item :itemStyle="{'height': '102px'}">2</mdb-masonry-item>
           <mdb-masonry-item :itemStyle="{'height': '155px'}">3</mdb-masonry-item>
@@ -71,11 +71,108 @@
         </mdb-masonry>
       </section>
     </section>
+    <section class="demo-section">
+      <h4>Repsonsive images option</h4>
+      <section>
+        <mdb-masonry flexbox responsive :maxHeight="1200">
+          <mdb-masonry-item src="https://mdbootstrap.com/img/Photos/Others/food3.jpg" :itemStyle="{'width': '33.4%'}"/>
+          <mdb-masonry-item src="https://mdbootstrap.com/img/Photos/Others/image06.jpg" :itemStyle="{'width': '33.4%'}"/>
+          <mdb-masonry-item src="https://mdbootstrap.com/img/Photos/Others/image17.jpg" :itemStyle="{'width': '33.4%'}"/>
+          <mdb-masonry-item src="https://mdbootstrap.com/img/Photos/Others/image02.jpg" :itemStyle="{'width': '33.3%' }"/>
+          <mdb-masonry-item src="https://mdbootstrap.com/img/Photos/Others/image008.jpg" :itemStyle="{'width': '33.3%'}"/>
+          <mdb-masonry-item src="https://mdbootstrap.com/img/Photos/Others/image010.jpg" :itemStyle="{'width': '33.3%'}"/>
+          <mdb-masonry-item src="https://mdbootstrap.com/img/Photos/Others/image002.jpg" :itemStyle="{'width': '33.3%'}"/>
+          <mdb-masonry-item src="https://mdbootstrap.com/img/Photos/Others/image005.jpg" :itemStyle="{'width': '33.3%'}"/>
+          <mdb-masonry-item src="https://mdbootstrap.com/img/Photos/Others/image18.jpg" :itemStyle="{'width': '33.3%'}"/>
+        </mdb-masonry>
+      </section>
+    </section>
+    <section class="demo-section">
+      <h4>Grid option</h4>
+      <section>
+        <mdb-masonry flexbox responsive :maxHeight="650">
+          <mdb-masonry-item :itemStyle="{'width': '45%', 'padding': '10px'}">
+            <mdb-card>
+              <mdb-card-body>
+                <mdb-card-title>Panel title</mdb-card-title>
+                <mdb-card-text>Some quick example text to build on the panel title and make up the bulk of the panel's content</mdb-card-text>
+                <a class="card-link">Card link</a>
+                <a class="card-link">Another link</a>
+              </mdb-card-body>
+            </mdb-card>
+          </mdb-masonry-item >
+          <mdb-masonry-item :itemStyle="{'width': '45%', 'padding': '10px'}">
+            <mdb-card>
+              <mdb-card-header>Quote</mdb-card-header>
+              <mdb-card-body>
+                <blockquote class="blockquote mb-0">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                  <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+                </blockquote>
+              </mdb-card-body>
+            </mdb-card>
+          </mdb-masonry-item>
+          <mdb-masonry-item :itemStyle="{'width': '45%', 'padding': '10px'}">
+            <mdb-card>
+              <mdb-card-body>
+               This is some text within a panel body.
+              </mdb-card-body>
+            </mdb-card>
+          </mdb-masonry-item>
+          <mdb-masonry-item :itemStyle="{'width': '25%', 'padding': '10px'}">
+            <mdb-card>
+              <mdb-list-group>
+                <mdb-list-group-item>Cras justo odio</mdb-list-group-item>
+                <mdb-list-group-item>Dapibus ac facilisis in</mdb-list-group-item>
+                <mdb-list-group-item>Vestibulum at eros</mdb-list-group-item>
+              </mdb-list-group>
+            </mdb-card>
+          </mdb-masonry-item>
+          <mdb-masonry-item :itemStyle="{'width': '25%', 'padding': '10px'}">
+            <mdb-card>
+              <mdb-card-header>Featured</mdb-card-header>
+              <mdb-card-body>
+                <mdb-card-title>Special title treatment</mdb-card-title>
+                <mdb-card-text>With supporting text below as a natural lead-in to additional content.</mdb-card-text>
+                <mdb-btn color="primary">Button</mdb-btn>
+              </mdb-card-body>
+            </mdb-card>
+          </mdb-masonry-item>
+          <mdb-masonry-item :itemStyle="{'width': '25%', 'padding': '10px'}">
+            <mdb-card>
+              <mdb-card-body>
+                <mdb-card-title>Panel title</mdb-card-title>
+                <mdb-card-text>Some quick example text to build on the panel title and make up the bulk of the panel's content</mdb-card-text>
+                <a class="card-link">Card link</a>
+                <a class="card-link">Another link</a>
+              </mdb-card-body>
+            </mdb-card>
+          </mdb-masonry-item>
+          <mdb-masonry-item :itemStyle="{'width': '25%', 'padding': '10px'}">
+            <mdb-card>
+              <mdb-card-body>
+                <mdb-card-title>Panel title</mdb-card-title>
+                <mdb-card-text>Some quick example text to build on the panel title and make up the bulk of the panel's content</mdb-card-text>
+              </mdb-card-body>
+              <mdb-list-group>
+                <mdb-list-group-item>Cras justo odio</mdb-list-group-item>
+                <mdb-list-group-item>Dapibus ac facilisis in</mdb-list-group-item>
+                <mdb-list-group-item>Vestibulum at eros</mdb-list-group-item>
+              </mdb-list-group>
+              <mdb-card-footer>
+                <a class="card-link">Card link</a>
+                <a class="card-link">Another link</a>
+              </mdb-card-footer>
+            </mdb-card>
+          </mdb-masonry-item>
+        </mdb-masonry>
+      </section>
+    </section>
   </mdb-container>
 </template>
 
 <script>
-import { mdbMasonry, mdbMasonryItem, mdbContainer, mdbRow, mdbIcon } from 'mdbvue';
+import { mdbMasonry, mdbMasonryItem, mdbContainer, mdbRow, mdbIcon, mdbCard, mdbCardBody, mdbCardTitle, mdbCardText, mdbBtn, mdbCardHeader, mdbCardFooter, mdbListGroup, mdbListGroupItem } from 'mdbvue';
 export default {
   name: 'MansonryPage',
   components: {
@@ -83,7 +180,16 @@ export default {
     mdbMasonryItem,
     mdbContainer,
     mdbRow,
-    mdbIcon
+    mdbIcon,
+    mdbCard,
+    mdbCardBody,
+    mdbCardTitle,
+    mdbCardText,
+    mdbBtn,
+    mdbCardHeader,
+    mdbCardFooter,
+    mdbListGroup,
+    mdbListGroupItem
   }
 };
 </script>
@@ -110,15 +216,16 @@ export default {
   font-weight: 900;
   font-size: 2rem;
 }
-.masonry-with-flex div {
+
+.flexbox-display div {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: auto;
+  margin: 0.5rem;
   background: #975A58;
   color: white;
-  margin: 0.5rem;
   font-weight: 900;
   font-size: 2rem;
+  max-width: 100%;
 }
 </style>

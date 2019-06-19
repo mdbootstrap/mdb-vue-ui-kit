@@ -52,7 +52,11 @@
         <mdb-input label="Your email" icon="envelope" type="email" class="mb-5"/>
       </mdb-modal-body>
       <mdb-modal-footer center>
+<<<<<<< HEAD
         <mdb-btn @click.native="subs = false" color="indigo">Send <mdb-icon far icon="paper-plane" class="ml-1"/></mdb-btn>
+=======
+        <mdb-btn @click.native="subs = false" color="indigo">Send <mdb-icon icon="paper-plane" class="ml-1"/></mdb-btn>
+>>>>>>> 179feab76b22272ec93161a219609477d32413e4
       </mdb-modal-footer>
     </mdb-modal>
 
@@ -71,7 +75,11 @@
             <mdb-textarea icon="pencil-alt" label="Your message"/>
           </mdb-modal-body>
           <mdb-modal-footer center>
+<<<<<<< HEAD
             <mdb-btn @click.native="contact = false" color="unique">Send <mdb-icon far icon="paper-plane" class="ml-1"/></mdb-btn>
+=======
+            <mdb-btn @click.native="contact = false" color="unique">Send <mdb-icon icon="paper-plane" class="ml-1"/></mdb-btn>
+>>>>>>> 179feab76b22272ec93161a219609477d32413e4
           </mdb-modal-footer>
         </mdb-modal>
 
@@ -88,7 +96,11 @@
             <mdb-input label="Your email" icon="envelope" type="email" class="mb-5" iconClass="grey-text"/>
           </mdb-modal-body>
           <mdb-modal-footer center>
+<<<<<<< HEAD
             <mdb-btn @click.native="header = false" outline="warning">Send <mdb-icon far icon="paper-plane" class="ml-1"/></mdb-btn>
+=======
+            <mdb-btn @click.native="header = false" outline="warning">Send <mdb-icon icon="paper-plane" class="ml-1"/></mdb-btn>
+>>>>>>> 179feab76b22272ec93161a219609477d32413e4
           </mdb-modal-footer>
         </mdb-modal>
 
