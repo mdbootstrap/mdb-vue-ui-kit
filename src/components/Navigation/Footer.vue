@@ -20,7 +20,7 @@ const Footer = {
   computed: {
     className() {
       return classNames(
-        'page-footer mt-4',
+        'page-footer',
         this.color ? this.color : ''
       );
     }
