@@ -20,6 +20,16 @@
                   iFrame<mdb-icon icon="angle-right"/>
                 </h5>
               </mdb-nav-item>
+              <mdb-nav-item class="list-group-item list-group-item-action" to="/plugins/rating">
+                <h5 class="justify-content-between d-flex align-items-center">
+                  Rating<mdb-icon icon="angle-right"/>
+                </h5>
+              </mdb-nav-item>
+              <mdb-nav-item class="list-group-item list-group-item-action" to="/plugins/treeview">
+                <h5 class="justify-content-between d-flex align-items-center">
+                  Treeview<mdb-icon icon="angle-right"/>
+                </h5>
+              </mdb-nav-item>
               <mdb-nav-item class="list-group-item list-group-item-action" to="/plugins/video">
                 <h5 class="justify-content-between d-flex align-items-center">
                   Video<mdb-icon icon="angle-right"/>

@@ -95,6 +95,9 @@ import StretchedLink, { mdbStretchedLink } from './components/Utilities/Stretche
 import ToastNotification, { mdbToastNotification } from './components/Advanced/ToastNotification';
 import Masonry, { mdbMasonry } from './components/Layout/Masonry';
 import MasonryItem, { mdbMasonryItem } from './components/Layout/MasonryItem';
+import Treeview, { mdbTreeview } from './components/Plugins/Treeview';
+import TreeviewItem, { mdbTreeviewItem } from './components/Plugins/TreeviewItem';
+import Rating, { mdbRating } from './components/Plugins/Rating';
 
 export {
   // FREE
@@ -190,7 +193,10 @@ export {
   ToastNotification,
   Masonry,
   MasonryItem,
- 
+  Treeview,
+  TreeviewItem,
+  Rating,
+  
   // MDB FREE
   mdbAccordion,
   mdbAccordionPane,
@@ -281,5 +287,8 @@ export {
   mdbToastNotification,
   mdbMasonry,
   mdbMasonryItem,
+  mdbTreeview,
+  mdbTreeviewItem,
+  mdbRating,
   
 };

@@ -56,6 +56,7 @@
         type: Boolean,
         default: false
       },
+      close: Boolean,
       appendToBody: {
         type: Boolean,
         default: false
@@ -98,7 +99,9 @@
           this.$emit('hide');
         }
       },
-
+      close(value) {
+        if (value) this.doClose();
+      },
       forceShow: {
         handler(value) {
           this[value ? 'doShow' : 'doClose']();

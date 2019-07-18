@@ -52,7 +52,8 @@ const Tabs = {
       default: 'ul'
     },
     links: {
-      type: [String, Array]
+      type: [String, Array],
+      default: () => []
     },
     active: {
       type: Number,
@@ -110,10 +111,11 @@ const Tabs = {
   data() {
     return {
       activeTab: this.active,
-      tabLinks: []
+      tabLinks: this.links
     };
   },
   computed: {
+
     filteredLinks() {
       if (typeof this.links === 'string'){
         this.tabLinks.push({text: this.links});

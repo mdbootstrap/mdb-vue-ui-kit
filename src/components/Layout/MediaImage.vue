@@ -1,6 +1,6 @@
 <template>
-  <component :is="tag" :href="href" :class="className">
-    <img :class="this.circle ? 'rounded-circle' : ''" :src="src" :alt="alt">
+  <component :is="tag" :href="href" :class="className" :style="style">
+    <img :class="this.circle ? 'rounded-circle' : ''" class="media-image" :src="src" :alt="alt">
   </component>
 </template>
 
@@ -35,7 +35,8 @@ const MediaImage = {
     circle: {
       type: Boolean,
       default: false
-    }
+    },
+    width: Number
   },
   computed: {
     className() {
@@ -44,6 +45,9 @@ const MediaImage = {
         this.side === 'right'? 'ml-3' : 'mr-3',
         this.align === 'center' ? 'align-self-center' : this.align === 'bottom' ? 'align-self-end' : 'align-self-start'
       );
+    },
+    style() {
+      return this.width ? `width: ${this.width}px` : '';
     }
   }
 };
@@ -53,5 +57,7 @@ export { MediaImage as mdbMediaImage };
 </script>
 
 <style scoped>
-
+  .media-image {
+    max-width: 100%;
+  }
 </style>

@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /*!
  * Material Design for Bootstrap 4
- * Version: MDB Lite 4.8.3
+ * Version: MDB Lite 4.8.5
  *
  *
  * Copyright: Material Design for Bootstrap
@@ -4982,8 +4982,6 @@ body.scrollable {
   .md-form textarea.md-textarea-auto {
     padding: 0;
     padding-top: 1.5rem; }
-  .md-form textarea ~ label.active {
-    color: #4285f4; }
   .md-form.md-outline {
     position: relative;
     margin-top: 1.5rem;
@@ -5340,8 +5338,8 @@ body.scrollable {
     border-top-right-radius: .3rem;
     background: #f5f5f5 no-repeat;
     background-image: linear-gradient(to bottom, #4285f4, #4285f4), linear-gradient(to bottom, #ced4da, #ced4da);
-    background-size: 0 2px, 100% 1px;
-    background-position: 50% 100%, 50% 100%;
+    background-size: 0 2px, 100% 1px;
+    background-position: 50% 100%, 50% 100%;
     transition: background-size 0.3s cubic-bezier(0.64, 0.09, 0.08, 1); }
     .md-form.md-bg input[type=text]:focus:not([readonly]),
     .md-form.md-bg input[type=password]:focus:not([readonly]),

@@ -83,6 +83,9 @@ import StretchedLinkPage from '../docs/Components/StretchedLinkPage';
 import NotificationsFreePage from '../docs/Advanced/NotificationsPage';
 import MasonryPage from '../docs/CSS/MasonryPage';
 import SwitchPage from '../docs/Forms/SwitchPage';
+import TreeviewPage from '../docs/Plugins/TreeviewPage';
+import RatingPage from '../docs/Plugins/RatingPage';
+
 Vue.use(Router);
 
 export default new Router({
@@ -383,6 +386,10 @@ export default new Router({
       name: 'VideoPage',
       component: VideoPage
     }, {
+      path: '/plugins/treeview',
+      name: 'TreeviewPage',
+      component: TreeviewPage
+    },{
       path: '/components/spinners',
       name: 'SpinnersPage',
       component: SpinnersPage
@@ -414,6 +421,10 @@ export default new Router({
       path: '/forms/switch',
       name: 'SwitchPage',
       component: SwitchPage
+    },{
+      path: '/plugins/rating',
+      name: 'RatingPage',
+      component: RatingPage
     },
     
   ]

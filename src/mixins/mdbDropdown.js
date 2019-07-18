@@ -30,6 +30,10 @@ export const mdbDropdown = {
       type: Boolean,
       default: false
     },
+    multiLevel: {
+      type: Boolean,
+      default: false
+    }
   },
   data() {
     return {
@@ -40,7 +44,7 @@ export const mdbDropdown = {
   methods: {
     away() {
       this.toggle = false;
-    }
+    },
   },
   computed: {
     className() {
@@ -50,7 +54,8 @@ export const mdbDropdown = {
         this.dropup && 'dropup',
         this.dropright && 'dropright',
         this.dropleft && 'dropleft',
-        this.mdbClass
+        this.mdbClass,
+        this.multiLevel && "multi-level-dropdown"
       );
     },
     style() {
@@ -58,5 +63,11 @@ export const mdbDropdown = {
         'margin-left' : this.split && '-0.3rem'
       };
     }
+  },
+  mounted() {
+    window.addEventListener('hashchange', this.away);
+  },
+  beforeDestroy() {
+    window.removeEventListener('hashchange', this.away);
   }
 };

@@ -1,11 +1,15 @@
 <template>
-  <component @keyup.native.stop.enter="handleKeypress" @click="$emit('click', $event)" :tabindex="0" :is="to ? 'router-link' : tag" :to="to" :exact="exact" :href="to ? false : href" :class="className" :target="tab"><slot></slot></component>
+  <component @keyup.native.stop.enter="handleKeypress" @click="$emit('click', $event)" :tabindex="0" :is="to ? 'router-link' : tag" :to="to" :exact="exact" :href="to ? false : href" :class="className" :target="tab"><slot></slot><mdb-icon v-if="submenuIcon" class="pl-2" :icon="submenuIcon"/></component>
 </template>
 
 <script>
 import classNames from 'classnames';
+import mdbIcon from '../Content/Fa';
 
 const DropdownItem = {
+  components: {
+    mdbIcon
+  },
   props: {
     tag: {
       type: String,
@@ -13,8 +17,7 @@ const DropdownItem = {
     },
     to: [String, Object],
     href: {
-      type: String,
-      default: "#"
+      type: String
     },
     disabled: {
       type: Boolean,
@@ -31,14 +34,20 @@ const DropdownItem = {
     newTab: {
       type: Boolean,
       default: false
-    }
+    },
+    submenu: {
+      type: Boolean,
+      default: false
+    },
+    submenuIcon: String
   },
   computed: {
     className() {
       return classNames(
         'dropdown-item',
         this.disabled ? 'disabled' : '',
-        this.active ? 'active' : ''
+        this.active ? 'active' : '',
+        this.submenu && 'dropdown-submenu'
       );
     },
     tab() {

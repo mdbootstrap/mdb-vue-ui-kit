@@ -1,6 +1,6 @@
 <template>
   <component :class="navClass" :is="tag" @click="close">
-    <button :class="navTogglerClass" type="button" data-toggle="collapse" :data-target="target" aria-controls="navbarSupportedContent"
+    <button v-if="toggler" :class="navTogglerClass" type="button" data-toggle="collapse" :data-target="target" aria-controls="navbarSupportedContent"
         aria-expanded="false" aria-label="Toggle navigation" @click.stop="onClick">
       <div v-if="animation" ref="animatedIcon" :class="`animated-icon${animation}`"><span></span><span></span><span></span><span v-if="animation === '2'"></span></div>
       <span v-else :class="navTogglerIcon">
@@ -76,6 +76,10 @@ const Navbar = {
     center: {
       type: Boolean,
       default: false
+    },
+    toggler: {
+      type: Boolean,
+      default: true
     }
   },
   data() {
@@ -145,7 +149,7 @@ const Navbar = {
       }
     },
     close(e) {
-      if (window.innerWidth > 990) return;
+      if (window.innerWidth > 990 || !this.toggler) return;
       if (e.target.classList.contains('dropdown-toggle')) return;
       if (e.target.tagName === 'INPUT') return;
       this.collapse.classList.add('hide-navbar');
