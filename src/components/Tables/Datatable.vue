@@ -5,17 +5,17 @@
       <mdb-col sm="6" md="8">
         <mdb-row>
           <mdb-col sm="12" md="4">
-            <datatable-select v-if="pagination" @getValue="updateEntries" :options="options"/>
+            <datatable-select :title="entriesTitle" v-if="pagination" @getValue="updateEntries" :options="options"/>
           </mdb-col>
-          <mdb-col>
-            <mdb-btn @click="updateData" v-if="refresh" size="sm" class="mt-0" outline="primary" >
+          <mdb-col class="pt-2">
+            <mdb-btn @click="updateData" v-if="refresh" size="sm" class="mt-4" outline="primary" >
               <mdb-icon  icon="sync" />
             </mdb-btn>
           </mdb-col>
         </mdb-row>
       </mdb-col>
       <mdb-col sm="6" md="4" v-if="searching">
-        <datatable-search @getValue="updateSearch" />
+        <datatable-search class="mt-4 pt-2" :placeholder="searchPlaceholder" @getValue="updateSearch" />
       </mdb-col>
     </mdb-row>
     <!-- Entries input and search -->
@@ -41,7 +41,7 @@
           </td>
         </tr>
         <tr v-if="!pages.length">
-          <td :colspan="columns.length">No matching records found</td>
+          <td :colspan="columns.length">{{noFoundMessage}}</td>
         </tr>
       </tbl-body>
       <tbl-head v-if="tfoot" tag="tfoot">
@@ -86,7 +86,7 @@
             </td>
           </tr>
           <tr v-if="!pages.length">
-            <td :colspan="columns.length">No matching records found</td>
+            <td :colspan="columns.length">{{noFoundMessage}}</td>
           </tr>
         </tbl-body>
       </tbl>
@@ -114,7 +114,7 @@
     <div v-if="pagination" class="row">
       <div class="col-sm-12 col-md-5">
         <div class="dataTables_info" role="status" aria-live="polite">
-          Showing {{activePage > 0 ? activePage*entries : activePage+1}} to {{pages.length-1 > activePage ? pages[activePage].length*(activePage+1) : filteredRows.length}} of {{filteredRows.length}} entries
+          {{showingText}}: {{activePage > 0 ? activePage*entries : activePage+1}} - {{pages.length-1 > activePage ? pages[activePage].length*(activePage+1) : filteredRows.length}} ({{filteredRows.length}})
         </div>
       </div>
       <div class="col-sm-12 col-md-7">
@@ -222,10 +222,6 @@ const Datatable = {
       type: Boolean,
       default: false
     },
-    materialInputs: {
-      type: Boolean,
-      default: false
-    },
     maxWidth: {
       type: String
     },
@@ -322,6 +318,20 @@ const Datatable = {
     time: {
       type: Number,
       default: 5000
+    },
+    searchPlaceholder: {
+      type: String
+    },
+    entriesTitle: {
+      type: String
+    },
+    noFoundMessage: {
+      type: String,
+      default: 'No matching records found'
+    },
+    showingText: {
+      type: String,
+      default: "Showing"
     }
   },
   data() {
@@ -418,6 +428,26 @@ const Datatable = {
     updateSearch(value) {
       this.search = this.escapeRegExp(value);
       this.activePage = 0;
+    },
+    filterArray(){
+      if (this.filter) {
+        this.rows.map(row => {
+          if (this.filteredArray.indexOf(row[this.filter]) === -1){
+            this.filteredArray.push(row[this.filter]);
+          }
+        });
+        this.filteredArray.sort();
+        this.filteredArray = this.filteredArray.filter((elem, index, self) => {
+          return index == self.indexOf(elem);
+        });
+
+        const existingOptions = this.filterOptions.map(option => option.value);
+        this.filteredArray.forEach(option => {
+          if (existingOptions.indexOf(option) === -1){
+            this.filterOptions.push({value: option, text: option});
+          }
+        });
+      }
     },
     escapeRegExp(string) {
       return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');

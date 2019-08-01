@@ -24,7 +24,7 @@
           :icon="(i <= active) || i <= rateValue ? ratings[active].icon : icon"
           :class="(i <= active) || i <= rateValue ? ratings[active].iconActiveClass : iconClass"
           class="p-1 rating-icon"
-          :fas="(i <= active) || i <= rateValue ? ratings[active].fas : fas"
+          :fal="(i <= active) || i <= rateValue ? ratings[active].fal : fal"
           :far="(i <= active) || i <= rateValue ? ratings[active].far : far"
           :fab="(i <= active) || i <= rateValue ? ratings[active].fab : fab"
           :ref="i"
@@ -77,10 +77,10 @@ const Rating = {
     value: Number,
     far: Boolean,
     fab: Boolean,
-    fas: Boolean,
+    fal: Boolean,
     activeFar: Boolean,
     activeFab: Boolean,
-    activeFas: Boolean,
+    activeFal: Boolean,
     options: {
       type: Array,
       default: () => {
@@ -145,9 +145,9 @@ const Rating = {
       let iconActiveClass = rating.iconActiveClass || this.iconActiveClass;
       let far = rating.far || this.activeFar;
       let fab = rating.fab || this.activeFab;
-      let fas = rating.fas || this.activeFas;
+      let fal = rating.fal || this.activeFal;
       let feedback = rating.feedback || "";
-      return { icon, iconActiveClass, far, fab, fas, feedback };
+      return { icon, iconActiveClass, far, fab, fal, feedback };
     });
     
     if (this.value) {

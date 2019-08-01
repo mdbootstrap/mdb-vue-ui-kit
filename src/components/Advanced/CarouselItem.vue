@@ -54,6 +54,9 @@ const CarouselItem = {
     }
   },
   computed: {
+    active(){
+      return this.isActive;
+    },
     className() {
       return classNames(
         'carousel-item',
@@ -75,9 +78,6 @@ const CarouselItem = {
         });
       };
       return check(videoFormats, this.src);
-    },
-    active(){
-      return this.isActive;
     }
   }
 };

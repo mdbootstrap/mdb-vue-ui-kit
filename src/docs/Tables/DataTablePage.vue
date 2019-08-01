@@ -62,6 +62,25 @@
         />
       </section>
     </section>
+    <section class="demo-section">
+      <h4>Translated text</h4>
+      <section>
+        <mdb-datatable
+          :data="translatedData"
+          striped
+          bordered
+          materialInputs
+          responsive
+          entriesTitle="Synlige sider"
+          searchPlaceholder="Søk"
+          next="Nest"
+          previous="Forrige"
+          end="Slutt"
+          noFoundMessage="Data var ikke funnet"
+          showingText="Viser"
+        />
+      </section>
+    </section>
   </mdb-container>
 
 </template>
@@ -1435,6 +1454,116 @@ export default {
             sort: 'asc'
           }
         ],
+      },
+      translatedData: {
+        columns: [
+          {
+            label: 'Navn',
+            field: 'navn',
+            sort: 'asc'
+          },
+          {
+            label: 'Posisjon',
+            field: 'posisjon',
+            sort: 'asc'
+          },
+          {
+            label: 'Kontor',
+            field: 'kontor',
+            sort: 'asc'
+          },
+          {
+            label: 'Lønn',
+            field: 'lønn',
+            sort: 'asc'
+          },
+        ],
+        rows: [
+          {
+            navn: 'Tiger Nixon',
+            posisjon: 'System Architect',
+            kontor: 'Oslo',
+            lønn: 'KR320'
+          },
+          {
+            navn: 'Garrett Winters',
+            posisjon: 'Accountant',
+            kontor: 'Tokyo',
+            lønn: 'KR170'
+          },
+          {
+            navn: 'Ashton Cox',
+            posisjon: 'Junior Technical Author',
+            kontor: 'San Francisco',
+            lønn: 'KR86'
+          },
+          {
+            navn: 'Cedric Kelly',
+            posisjon: 'Senior Javascript Developer',
+            kontor: 'Edinburgh',
+            lønn: 'KR433'
+          },
+          {
+            navn: 'Airi Satou',
+            posisjon: 'Accountant',
+            kontor: 'Tokyo',
+            lønn: 'KR162'
+          },
+          {
+            navn: 'Brielle Williamson',
+            posisjon: 'Integration Specialist',
+            kontor: 'New York',
+            lønn: 'KR372'
+          },
+          {
+            navn: 'Herrod Chandler',
+            posisjon: 'Sales Assistant',
+            kontor: 'San Francisco',
+            lønn: 'KR137'
+          },
+          {
+            navn: 'Rhona Davidson',
+            posisjon: 'Integration Specialist',
+            kontor: 'Tokyo',
+            lønn: 'KR327'
+          },
+          {
+            navn: 'Colleen Hurst',
+            posisjon: 'Javascript Developer',
+            kontor: 'San Francisco',
+            lønn: 'KR205'
+          },
+          {
+            navn: 'Sonya Frost',
+            posisjon: 'Software Engineer',
+            kontor: 'Edinburgh',
+            lønn: 'KR103'
+          },
+          {
+            navn: 'Jena Gaines',
+            posisjon: 'Office Manager',
+            kontor: 'London',
+            lønn: 'KR90'
+          },
+          {
+            navn: 'Quinn Flynn',
+            posisjon: 'Support Lead',
+            kontor: 'Edinburgh',
+            lønn: 'KR342'
+          },
+          {
+            navn: 'Charde Marshall',
+            posisjon: 'Regional Director',
+            kontor: 'San Francisco',
+            lønn: 'KR470'
+          },
+          {
+            navn: 'Haley Kennedy',
+            posisjon: 'Senior Marketing Designer',
+            kontor: 'London',
+            lønn: 'KR313'
+          }
+        ]
       },
     };
   },

@@ -59,7 +59,8 @@ const ToastNotification = {
     return {
       currentTime: '',
       startTime: '',
-      showNotification: this.show
+      showNotification: this.show,
+      interval: null
     };
   },
   computed: {
@@ -82,26 +83,17 @@ const ToastNotification = {
     },
     formatTime(time){
       switch (true) {
-        case (time === 0):
+        case time < 60:
           return `now`;
-        case (time < 60):
-          let second = Math.floor(time);
-          return `${second} seconds ago`;
-        case (time < 120):
-          return `1 minute ago`;
-        case (time < 3600):
-          let minutes = Math.floor(time/60);
-          return `${minutes} minutes ago`;
-        case (time === 3600):
-          return `1 hour ago`;
-        case (time > 3600 && time < 86400):
-          let hours = Math.floor(time/3600);
-          return `${hours} hours ago`;
-        case (time === 86400):
-          return `a day ago`;
-        case (time > 86400):
-          let days = Math.floor(time/86400);
-          return `${days} days ago`;
+        case time < 3600:
+          let minutes = Math.floor(time / 60);
+          return `${minutes} min ago`;
+        case time >= 3600 && time < 86400:
+          let hours = Math.floor(time / 3600);
+          return `${hours} h ago`;
+        case time >= 86400:
+          let days = Math.floor(time / 86400);
+          return `${days} d ago`;
       }
     },
     closeToast(){
@@ -112,10 +104,10 @@ const ToastNotification = {
     let timeReceived = this.received || new Date();
     this.startTime = timeReceived.getTime();
     this.currentTime = new Date().getTime();
-    window.setInterval(this.updateTime, 60000);
+    this.interval = window.setInterval(this.updateTime, 60000);
   },
   beforeDestroy(){
-    window.clearInterval(this.updateTime);
+    window.clearInterval(this.interval);
   }
 };
 

@@ -129,9 +129,9 @@ const Carousel ={
         this.slideEffect();
       } 
       else {
-        // this.items[this.page].classList.remove('active');
+        this.items[this.page].classList.remove('active');
         this.page = index;
-        // this.items[this.page].classList.add('active');
+        this.items[this.page].classList.add('active');
       }
      
     },

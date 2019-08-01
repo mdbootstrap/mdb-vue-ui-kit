@@ -66,7 +66,7 @@ export const mdbInput = {
       default: false
     },
     value: {
-      type: [String, Number, Boolean],
+      type: [String, Number, Boolean, Array],
       default: ''
     },
     labelColor: {
@@ -175,6 +175,16 @@ export const mdbInput = {
     },
     radioValue: {
       type: String
+    },
+    min: {
+      type: Number
+    },
+    max: {
+      type: Number
+    },
+    step: {
+      type: Number,
+      default: 1
     }
   },
   data() {
@@ -277,7 +287,8 @@ export const mdbInput = {
     }
   },
   methods: {
-    focus() {
+    focus(e) {
+      this.$emit('focus', e);
       this.isTouched = true;
       if (!this.disabled) {
         this.$refs.input.focus();
@@ -288,7 +299,19 @@ export const mdbInput = {
         this.$el.firstElementChild.style.boxShadow = "none";
       }
     },
-    blur() {
+    blur(e) {
+      if (this.type === 'number') {
+        if (typeof this.min === 'number' && this.innerValue < this.min){
+          this.innerValue = this.min;
+        }
+        else if (typeof this.max === 'number' && this.innerValue > this.max){
+          this.innerValue = this.max;
+        }
+      
+        this.$refs.input.value = this.innerValue;
+        this.$emit('change', this.innerValue);
+      }
+      this.$emit('blur', e);
       this.isTouched = false;
       // styles for navbar input
       if (this.navInput) {
@@ -315,6 +338,10 @@ export const mdbInput = {
         this.$emit('input', e.target.value);
         this.innerValue = e.target.value;
       }
+    },
+    onClick(e) {
+      this.wave();
+      this.$emit('click', e);
     }
   },
   mixins: [waves, mdbClassMixin],

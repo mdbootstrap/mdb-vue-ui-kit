@@ -1,13 +1,13 @@
 <template>
   <component :is="tag" :class="className">
-    <div class="p-1" :class="headerClass">
+    <div class="p-1" :class="headerClass" @click="opened = !opened">
       <mdb-btn v-if="nested" flat class="p-0 m-0 z-depth-0" @click="show = !show">
-        <mdb-icon class="ic-w mx-1" :icon="arrow" />
+        <mdb-icon class="ic-w mx-1" :class="nestedIconClasses" :icon="arrow" />
       </mdb-btn>
-      <mdb-icon :fab="fab" :far="far" class="ic-w mr-1" :icon="icon" />
+      <mdb-icon :fab="fab" :far="far" :fal="fal" :class="iconClass" class="pl-1 ic-w mr-1" :icon="icon" />
       <span>{{title}}</span>
     </div>
-    <transition v-if="animated && nested" name="slide" >
+    <transition v-if="(animated || colorful) && nested" name="slide" >
       <ul v-if="show" class="nested list-unstyled pl-4">
         <slot></slot>
       </ul>
@@ -52,6 +52,10 @@ const TreeviewItem = {
       type: Boolean,
       default: false
     },
+    fal: {
+      type: Boolean,
+      default: false
+    },
     animated: {
       type: Boolean,
       default: false
@@ -59,28 +63,58 @@ const TreeviewItem = {
   },
   data() {
     return {
-      show: false
+      show: false,
+      opened: false
     };
   },
   computed: {
     className() {
-      return classNames(this.animated && "treeview-animated-items ");
+      return classNames(
+        this.animated && "treeview-animated-items ",
+        this.nestedItems && this.colorful && "treeview-colorful-items"
+      );
     },
     animatedParent(){
       return this.$parent.animated;
     },
+    colorful() {
+      return this.$parent.colorful;
+    },
+    nestedItems() {
+      return this.$parent.nested;
+    },
+    nestedIcon() {
+      return this.colorful ? 'plus-circle' : "angle-right";
+    },
+    nestedActiveIcon() {
+      return this.colorful ? 'minus-circle' : "angle-down";
+    },
     arrow() {
       if (this.show) {
-        return "angle-down";
+        return this.nestedActiveIcon;
       }
-      return "angle-right";
+      return this.nestedIcon;
     },
     headerClass() {
       return classNames(
-        this.animated && this.show && "active",
-        (this.animated || this.animatedParent) && "treeview-header"
+        this.colorful ? this.nested ? 'treeview-colorful-items-header' : 'treeview-colorful-element' : '',
+        this.opened && 'opened',
+        this.show && 'open',
+        this.animatedParent && (!this.nested) && 'treeview-animated-element',
+        this.animated && this.show && "opened"
       );
-    }
+    },
+    nestedIconClasses() {
+      return classNames(
+        this.show && this.animated && 'white-text'
+      );
+    },
+    iconClass() {
+      return classNames(
+        this.animated && this.show && 'white-text',
+        this.colorful && this.show && 'amber-text'
+      );
+    },
   }
 };
 
@@ -89,7 +123,7 @@ export { TreeviewItem as mdbTreeviewItem };
 </script>
 
 <style scoped>
-.active {
+/* .active {
   background-color: #32a0ff;
   border-radius: 3px;
   color: white;
@@ -101,7 +135,7 @@ export { TreeviewItem as mdbTreeviewItem };
 .treeview-header:hover {
   background-color: #8cb9ff;
   border-radius: 3px;
-}
+} */
 
 .slide-enter-active {
   -moz-transition-duration: 0.3s;

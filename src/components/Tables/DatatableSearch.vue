@@ -1,9 +1,6 @@
 <template>
-  <div class="dataTables_filter float-right">
-    <label>
-      Search 
-    </label>
-    <input v-model="search" type="search" class="form-control form-control-sm" placeholder="Search" />
+  <div class="dataTables_filter float-right pb-2">
+    <input v-model="search" type="search" class="form-control form-control-sm" :placeholder="placeholder" />
   </div>
 </template>
 
@@ -14,6 +11,12 @@ const DatatableSearch = {
     return {
       search: ''
     };
+  },
+  props: {
+    placeholder: {
+      type: String,
+      default: 'Search'
+    }
   },
   watch: {
     search() {

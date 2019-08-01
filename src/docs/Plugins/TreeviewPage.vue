@@ -81,6 +81,40 @@
         </mdb-treeview>
       </section>
     </section>
+    <section class="demo-section">
+      <h4>Colorful Treeview</h4>
+      <section>
+        <mdb-treeview style="width: 25%" header="Folders" colorful>
+          <mdb-treeview-item nested far icon="envelope-open" title="Mail">
+            <mdb-treeview-item far icon="address-book" title="Contact"/>
+            <mdb-treeview-item far icon="bell" title="Offers"/>
+            <mdb-treeview-item nested far icon="calendar" title="Calendar">
+              <mdb-treeview-item far icon="clock" title="Deadlines"/>
+              <mdb-treeview-item icon="users" title="Meetings"/>
+              <mdb-treeview-item icon="basketball-ball" title="Workouts"/>
+              <mdb-treeview-item icon="mug-hot" title="Events"/>
+            </mdb-treeview-item>
+          </mdb-treeview-item>
+          <mdb-treeview-item far nested title="Inbox">
+            <mdb-treeview-item far title="Admin"/>
+            <mdb-treeview-item far title="Corporate"/>
+            <mdb-treeview-item far title="Finance"/>
+            <mdb-treeview-item far title="Other"/>
+          </mdb-treeview-item>
+          <mdb-treeview-item nested far icon="gem" title="Favourites">
+            <mdb-treeview-item icon="pepper-hot" title="Restaurants"/>
+            <mdb-treeview-item icon="eye" title="Places"/>
+            <mdb-treeview-item icon="gamepad" title="Games"/>
+            <mdb-treeview-item icon="cocktail" title="Cocktails"/>
+            <mdb-treeview-item icon="pizza-slice" title="Food"/>
+          </mdb-treeview-item>
+          <mdb-treeview-item far icon="comment" title="Notes"/>
+          <mdb-treeview-item icon="cog" title="Settings"/>
+          <mdb-treeview-item icon="desktop" title="Devices"/>
+          <mdb-treeview-item icon="trash-alt" title="Deleted items"/>
+        </mdb-treeview>
+      </section>
+    </section>
   </mdb-container>
 </template>
 

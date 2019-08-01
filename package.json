@@ -1,6 +1,6 @@
 {
   "name": "mdbvue",
-  "version": "5.7.0",
+  "version": "5.8.0",
   "description": "Vue Bootstrap with Material Design",
   "author": "MDBootstrap <support@mdbootstrap.com>",
   "license": "MIT",
@@ -13,6 +13,7 @@
     "build": "node build/build.js",
     "build-lib": "vue-cli-service build --target lib --dest lib --name mdbvue ./src/index.js",
     "lint": "eslint --ext .js,.vue src",
+    "test:unit": "vue-cli-service test:unit",
     "remove-pro-dirs": "del-cli src/components/pro src/docs/pro build/scss build/css",
     "remove-pro-code": "gulp index-remove-pro router-remove-pro",
     "free": "yarn run remove-pro-dirs && yarn run remove-pro-code"
@@ -36,7 +37,9 @@
     "vue2-touch-events": "^2.0.0"
   },
   "devDependencies": {
+    "@vue/cli-plugin-unit-jest": "^3.9.0",
     "@vue/cli-service": "^3.4.0",
+    "@vue/test-utils": "^1.0.0-beta.29",
     "autoprefixer": "^8.3.0",
     "babel-core": "^6.22.1",
     "babel-eslint": "^8.2.3",

@@ -21,18 +21,24 @@ const Treeview = {
     animated: {
       type: Boolean,
       default: false
+    },
+    colorful: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
     className() {
       return classNames(
-        this.animated && 'treeview-animated'
+        this.animated && 'treeview-animated',
+        this.colorful && 'treeview-colorful'
       );
     },
     listClass() {
       return classNames(
         'list-unstyled',
-        this.animated ? 'treeview-animated-list mb-3 pl-3 pb-2' : 'mb-1 pl-3 pb-2 '
+        this.animated ? 'treeview-animated-list mb-3 pl-3 pb-2' : '',
+        this.colorful ? 'treeview-colorful-list' : 'mb-1 pl-3 pb-2 '
       );
     }
   }

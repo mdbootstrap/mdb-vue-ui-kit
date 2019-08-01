@@ -4,7 +4,7 @@
         aria-expanded="false" aria-label="Toggle navigation" @click.stop="onClick">
       <div v-if="animation" ref="animatedIcon" :class="`animated-icon${animation}`"><span></span><span></span><span></span><span v-if="animation === '2'"></span></div>
       <span v-else :class="navTogglerIcon">
-        <i v-if="hamburger" class="fas fa-bars fa-1x"/>
+        <mdb-icon v-if="hamburger" :icon="togglerIcon" :class="togglerIconClass" :size="togglerSize" :far="far" :fal="fal" :fab="fab"/>
       </span>
     </button>
     <slot></slot>
@@ -13,8 +13,12 @@
 
 <script>
 import classNames from 'classnames';
+import mdbIcon from '../Content/Fa';
 
 const Navbar = {
+  components: {
+    mdbIcon
+  },
   props: {
     tag: {
       type: String,
@@ -80,7 +84,28 @@ const Navbar = {
     toggler: {
       type: Boolean,
       default: true
-    }
+    },
+    togglerIcon: {
+      type: String,
+      default: 'bars'
+    },
+    togglerSize: {
+      type: String,
+      default: '1x'
+    },
+    far: {
+      type: Boolean,
+      default: false
+    },
+    fal: {
+      type: Boolean,
+      default: false
+    },
+    fab: {
+      type: Boolean,
+      default: false
+    },
+    togglerIconClass: String
   },
   data() {
     return {

@@ -5,19 +5,19 @@
       <slot name="prepend"></slot>
     </div>
     <textarea
-              :is="tag"
-              :class="textareaClass"
-              :type="type"
-              :placeholder="placeholder"
-              :disabled="disabled"
-              ref="input"
-              :rows="rows"
-              :aria-label="label"
-              @focus="focus"
-              @blur="blur"
-              @input="onInput"
-              @change="onChange"
-              >{{innerValue}}</textarea>
+      :is="tag"
+      :class="textareaClass"
+      :type="type"
+      :placeholder="placeholder"
+      :disabled="disabled"
+      ref="input"
+      :rows="rows"
+      :aria-label="label"
+      @focus="focus"
+      @blur="blur"
+      @input="onInput"
+      @change="onChange"
+      >{{innerValue}}</textarea>
     <label v-if="label" :class="labelClass" ref="label" @click="focus" :for="id">{{label}}</label>
     <slot></slot>
     <div class="input-group-append" v-if="$slots.append">
@@ -52,7 +52,8 @@ const MdTextarea = {
       default: false
     },
     rows: {
-      type: [Number, String]
+      type: [Number, String],
+      default: 1
     },
     value: {
       type: String,
@@ -78,6 +79,10 @@ const MdTextarea = {
       default: false
     },
     fab: {
+      type: Boolean,
+      default: false
+    },
+    outline: {
       type: Boolean,
       default: false
     },
@@ -113,6 +118,7 @@ const MdTextarea = {
     wrapperClasses() {
       return classNames(
         this.basic ? 'form-group' : 'md-form',
+        this.outline && 'md-outline',
         this.doesItGetTheGroupClass && 'input-group',
         this.size && this.doesItGetTheGroupClass ? `input-group-${this.size}` :
           this.size && !this.doesItGetTheGroupClass ? `form-${this.size}` : false,
@@ -145,12 +151,14 @@ const MdTextarea = {
   },
   methods: {
     focus(e) {
+      this.$emit('focus', e);
       if (this.label && !this.disabled) {
         this.isTouched = true;
         this.$refs.input.focus();
       }
     },
     blur(e) {
+      this.$emit('blur', e);
       this.isTouched = false;
       this.$refs.input.blur();
     },
@@ -177,7 +185,5 @@ export { MdTextarea as mdbTextarea };
 </script>
 
 <style scoped>
-.md-form textarea~label.active{
-	color: inherit;
-}
+
 </style>
