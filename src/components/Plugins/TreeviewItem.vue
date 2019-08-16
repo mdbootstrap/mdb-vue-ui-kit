@@ -1,9 +1,9 @@
 <template>
   <component :is="tag" :class="className">
-    <div class="p-1" :class="headerClass" @click="opened = !opened">
-      <mdb-btn v-if="nested" flat class="p-0 m-0 z-depth-0" @click="show = !show">
+    <div class="p-1" :class="headerClass" @click="opened = !opened" style="position: relative">
+      <a v-if="nested" class="p-0 m-0 z-depth-0 stretched-link" @click="show = !show">
         <mdb-icon class="ic-w mx-1" :class="nestedIconClasses" :icon="arrow" />
-      </mdb-btn>
+      </a>
       <mdb-icon :fab="fab" :far="far" :fal="fal" :class="iconClass" class="pl-1 ic-w mr-1" :icon="icon" />
       <span>{{title}}</span>
     </div>

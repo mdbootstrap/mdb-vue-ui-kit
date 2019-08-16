@@ -185,7 +185,10 @@ export const mdbInput = {
     step: {
       type: Number,
       default: 1
-    }
+    },
+    readOnly: {
+      type: Boolean
+    },
   },
   data() {
     return {
