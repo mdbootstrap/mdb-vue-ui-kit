@@ -285,7 +285,7 @@ const Datatable = {
     },
     previous: {
       type: String,
-      default: 'Previos'
+      default: 'Previous'
     },
     arrows: {
       type: Boolean,
