@@ -1,14 +1,18 @@
-import Popper from 'popper.js';
+import Popper from "popper.js";
 
 const on = function(element, event, handler) {
   if (element && event && handler) {
-    document.addEventListener ? element.addEventListener(event, handler, false) : element.attachEvent('on' + event, handler);
+    document.addEventListener ?
+      element.addEventListener(event, handler, false) :
+      element.attachEvent("on" + event, handler);
   }
 };
 
 const off = function(element, event, handler) {
   if (element && event) {
-    document.removeEventListener ? element.removeEventListener(event, handler, false) : element.detachEvent('on' + event, handler);
+    document.removeEventListener ?
+      element.removeEventListener(event, handler, false) :
+      element.detachEvent("on" + event, handler);
   }
 };
 
@@ -16,12 +20,12 @@ export const mdbTooltip = {
   props: {
     trigger: {
       type: String,
-      default: 'hover',
-      validator: value => ['click', 'hover'].indexOf(value) > -1
+      default: "hover",
+      validator: value => ["click", "hover"].indexOf(value) > -1
     },
     delayOnMouseOut: {
       type: Number,
-      default: 10,
+      default: 10
     },
     disabled: {
       type: Boolean,
@@ -46,7 +50,7 @@ export const mdbTooltip = {
     },
     transition: {
       type: String,
-      default: ''
+      default: ""
     },
     options: {
       type: Object,
@@ -54,6 +58,10 @@ export const mdbTooltip = {
         return {};
       }
     },
+    maxWidth: {
+      type: Number,
+      default: 276
+    }
   },
 
   data() {
@@ -61,9 +69,9 @@ export const mdbTooltip = {
       referenceElm: null,
       popperJS: null,
       showPopper: false,
-      currentPlacement: '',
+      currentPlacement: "",
       popperOptions: {
-        placement: 'bottom',
+        placement: "bottom",
         gpuAcceleration: false
       }
     };
@@ -72,16 +80,16 @@ export const mdbTooltip = {
   watch: {
     showPopper(value) {
       if (value) {
-        this.$emit('show');
+        this.$emit("show");
         this.updatePopper();
       } else {
-        this.$emit('hide');
+        this.$emit("hide");
       }
     },
 
     forceShow: {
       handler(value) {
-        this[value ? 'doShow' : 'doClose']();
+        this[value ? "doShow" : "doClose"]();
       },
       immediate: true
     }
@@ -95,18 +103,18 @@ export const mdbTooltip = {
 
   mounted() {
     this.referenceElm = this.reference || this.$slots.reference[0].elm;
-    this.tooltip =  this.$refs.tooltip || this.$slots.default[0].elm;
+    this.tooltip = this.$refs.tooltip || this.$slots.default[0].elm;
 
     switch (this.trigger) {
-      case 'click':
-        on(this.referenceElm, 'click', this.doToggle);
-        on(document, 'click', this.handleDocumentClick);
+      case "click":
+        on(this.referenceElm, "click", this.doToggle);
+        on(document, "click", this.handleDocumentClick);
         break;
-      case 'hover':
-        on(this.referenceElm, 'mouseover', this.onMouseOver);
-        on(this.tooltip, 'mouseover', this.onMouseOver);
-        on(this.referenceElm, 'mouseout', this.onMouseOut);
-        on(this.tooltip, 'mouseout', this.onMouseOut);
+      case "hover":
+        on(this.referenceElm, "mouseover", this.onMouseOver);
+        on(this.tooltip, "mouseover", this.onMouseOver);
+        on(this.referenceElm, "mouseout", this.onMouseOut);
+        on(this.tooltip, "mouseout", this.onMouseOut);
         break;
     }
   },
@@ -158,33 +166,45 @@ export const mdbTooltip = {
         }
 
         if (this.boundariesSelector) {
-          const boundariesElement = document.querySelector(this.boundariesSelector);
+          const boundariesElement = document.querySelector(
+            this.boundariesSelector
+          );
 
           if (boundariesElement) {
-            this.popperOptions.modifiers = Object.assign({}, this.popperOptions.modifiers);
-            this.popperOptions.modifiers.preventOverflow = Object.assign({}, this.popperOptions.modifiers.preventOverflow);
+            this.popperOptions.modifiers = Object.assign(
+              {},
+              this.popperOptions.modifiers
+            );
+            this.popperOptions.modifiers.preventOverflow = Object.assign(
+              {},
+              this.popperOptions.modifiers.preventOverflow
+            );
             this.popperOptions.modifiers.preventOverflow.boundariesElement = boundariesElement;
           }
         }
 
         this.popperOptions.onCreate = () => {
-          this.$emit('created', this);
+          this.$emit("created", this);
           this.$nextTick(this.updatePopper);
         };
 
-        this.popperJS = new Popper(this.referenceElm, this.tooltip, this.popperOptions);
+        this.popperJS = new Popper(
+          this.referenceElm,
+          this.tooltip,
+          this.popperOptions
+        );
       });
     },
 
     destroyPopper() {
-      off(this.referenceElm, 'click', this.doToggle);
-      off(this.referenceElm, 'mouseup', this.doClose);
-      off(this.referenceElm, 'mousedown', this.doShow);
-      off(this.referenceElm, 'focus', this.doShow);
-      off(this.referenceElm, 'blur', this.doClose);
-      off(this.referenceElm, 'mouseout', this.onMouseOut);
-      off(this.referenceElm, 'mouseover', this.onMouseOver);
-      off(document, 'click', this.handleDocumentClick);
+      off(this.referenceElm, "click", this.doToggle);
+      off(this.referenceElm, "mouseup", this.doClose);
+      off(this.referenceElm, "mousedown", this.doShow);
+      off(this.referenceElm, "focus", this.doShow);
+      off(this.referenceElm, "blur", this.doClose);
+      off(this.referenceElm, "mouseout", this.onMouseOut);
+      off(this.referenceElm, "mouseover", this.onMouseOver);
+      off(document, "click", this.handleDocumentClick);
 
       this.showPopper = false;
       this.doDestroy();
@@ -197,9 +217,9 @@ export const mdbTooltip = {
 
       this.appendedArrow = true;
 
-      const arrow = document.createElement('div');
-      arrow.setAttribute('x-arrow', '');
-      arrow.className = 'tooltip_arrow';
+      const arrow = document.createElement("div");
+      arrow.setAttribute("x-arrow", "");
+      arrow.className = "tooltip_arrow";
       element.appendChild(arrow);
     },
 
@@ -219,15 +239,18 @@ export const mdbTooltip = {
     },
 
     handleDocumentClick(e) {
-      if (!this.$el || !this.referenceElm ||
+      if (
+        !this.$el ||
+        !this.referenceElm ||
         this.$el.contains(e.target) ||
         this.referenceElm.contains(e.target) ||
-        !this.tooltip || this.tooltip.contains(e.target)
+        !this.tooltip ||
+        this.tooltip.contains(e.target)
       ) {
         return;
       }
 
-      this.$emit('documentClick');
+      this.$emit("documentClick");
 
       if (this.forceShow) {
         return;

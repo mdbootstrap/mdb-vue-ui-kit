@@ -4,7 +4,7 @@
       <a v-if="nested" class="p-0 m-0 z-depth-0 stretched-link" @click="show = !show">
         <mdb-icon class="ic-w mx-1" :class="nestedIconClasses" :icon="arrow" />
       </a>
-      <mdb-icon :fab="fab" :far="far" :fal="fal" :class="iconClass" class="pl-1 ic-w mr-1" :icon="icon" />
+      <mdb-icon :fab="fab" :far="far" :fad="fad" :fal="fal" :class="iconClass" class="pl-1 ic-w mr-1" :icon="icon" />
       <span>{{title}}</span>
     </div>
     <transition v-if="(animated || colorful) && nested" name="slide" >
@@ -53,6 +53,10 @@ const TreeviewItem = {
       default: false
     },
     fal: {
+      type: Boolean,
+      default: false
+    },
+    fad: {
       type: Boolean,
       default: false
     },

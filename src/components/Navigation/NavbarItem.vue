@@ -10,18 +10,18 @@
       :to="to"
       :target="tab"
     >
-      <mdb-icon v-if="icon" :far="far" :fab="fab" :icon="icon" />
+      <mdb-icon v-if="icon" :far="far" :fab="fab" :fad="fad" :fal="fal" :icon="icon" />
       <span v-if="icon" class="clearfix d-none d-sm-inline-block">
         <slot></slot>
       </span>
       <slot v-else></slot>
     </router-link>
     <a v-else :href="href" :class="anchorClassName" :target="tab">
-      <mdb-icon v-if="icon" :far="far" :fab="fab" :icon="icon" />
+      <mdb-icon v-if="icon" :far="far" :fab="fab" :fad="fad" :fal="fal" :icon="icon" />
       <span v-if="icon" class="clearfix d-none d-sm-inline-block">
         <slot></slot>
       </span>
-      <slot></slot>
+      <slot v-else></slot>
     </a>
   </component>
 </template>
@@ -78,6 +78,14 @@ const NavbarItem = {
       default: false
     },
     fab: {
+      type: Boolean,
+      default: false
+    },
+    fad: {
+      type: Boolean,
+      default: false
+    },
+    fal: {
       type: Boolean,
       default: false
     },

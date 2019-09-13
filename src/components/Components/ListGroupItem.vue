@@ -24,14 +24,22 @@ const ListGroupItem = {
       type: Boolean,
       default: false
     },
+    justifyContentBetween: {
+      type: Boolean,
+      default: true
+    },
+    alignItemsCenter: {
+      type: Boolean,
+      default: true
+    }
   },
   computed: {
     className(){
       return classNames(
         'list-group-item',
-        'justify-content-between',
         'd-flex',
-        'align-items-center',
+        this.justifyContentBetween ? 'justify-content-between' : '',
+        this.alignItemsCenter ? 'align-items-center' : '',
         this.action ? 'list-group-item-action' : '',
         this.disabled ? 'disabled' : '',
         this.active ? 'active' : ''

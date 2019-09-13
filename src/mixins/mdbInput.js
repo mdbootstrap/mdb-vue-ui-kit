@@ -189,6 +189,9 @@ export const mdbInput = {
     readOnly: {
       type: Boolean
     },
+    autocomplete: {
+      type: String
+    }
   },
   data() {
     return {

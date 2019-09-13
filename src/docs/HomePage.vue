@@ -18,7 +18,9 @@
                 </mdb-col>
               </mdb-row>
               <mdb-row class="d-flex flex-row justify-content-center">
-                <a href="https://mdbootstrap.com/docs/vue/?utm_source=DemoApp&utm_medium=MDBVue" class="nav-link border font-weight-bold rounded" target="_blank"><mdb-icon icon="graduation-cap" class="mr-2"/>Official documentation</a>
+                <a href="https://mdbootstrap.com/docs/vue/?utm_source=DemoApp&utm_medium=MDBVue" class="nav-link border m-2 font-weight-bold rounded" target="_blank"><mdb-icon icon="graduation-cap" class="mr-2"/>Official documentation</a>
+                <a href="https://mdbootstrap.com/products/vue-ui-kit/" class="nav-link border m-2 indigo-text font-weight-bold rounded" target="_blank"><mdb-icon icon="gem" far class="mr-2"/>PRO</a>
+                <a href="https://mdbootstrap.com/docs/vue/getting-started/download/" class="nav-link border indigo-text m-2 font-weight-bold rounded" target="_blank"><mdb-icon icon="download" class="mr-2"/>FREE</a>
               </mdb-row>
             </mdb-card-body>
           </mdb-col>

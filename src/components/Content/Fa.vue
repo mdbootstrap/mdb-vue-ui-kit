@@ -75,6 +75,10 @@ const Fa = {
       type: Boolean,
       default: false
     },
+    fad: {
+      type: Boolean,
+      default: false
+    },
     brands: {
       type: Boolean,
       default: false
@@ -85,7 +89,8 @@ const Fa = {
       return classNames(
         this.far || this.regular ? 'far' :
           this.fal || this.light ? 'fal' :
-            this.fab || this.brands ? 'fab' : 'fas',
+            this.fab || this.brands ? 'fab' :
+              this.fad ? 'fad' : 'fas',
         this.icon && 'fa-' + this.icon,
         this.size && 'fa-' + this.size,
         this.fixed && 'fa-fw',

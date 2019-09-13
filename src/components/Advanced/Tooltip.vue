@@ -2,7 +2,7 @@
   <span>
     <transition @after-leave="doDestroy">
       <span ref="popper" :class="{show:!disabled && showPopper}">
-        <div class="tooltip" v-if="$slots.tip" ref="tooltip">
+        <div class="tooltip" v-if="$slots.tip" ref="tooltip" :style="`max-width: ${maxWidth}px`">
           <slot name="tip"></slot>
         </div>
         <slot></slot>

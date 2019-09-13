@@ -55,7 +55,7 @@
       <h4>Custom HTML content </h4>
       <section>
         <mdb-row center>
-          <mdb-popover trigger="click" :options="{placement: 'bottom'}">
+          <mdb-popover trigger="click" :options="{placement: 'bottom'}" :maxWidth="350">
             <div slot="body">
               <mdb-jumbotron class="mb-0 p-3 pt-1 text-center">
                 <mdb-view class="my-4" src="https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg" alt="">
@@ -70,7 +70,7 @@
               Click me
             </mdb-btn>
           </mdb-popover>
-          <mdb-popover trigger="hover" :options="{placement: 'right'}">
+          <mdb-popover trigger="hover" :options="{placement: 'right'}" :maxWidth="450">
             <div slot="body">
               <mdb-jumbotron class="mb-0 text-center">
                 <mdb-card-title class="pb-2 h4"><strong>My adventure</strong></mdb-card-title>

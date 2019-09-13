@@ -1,20 +1,62 @@
 <template>
   <div id="app" class="flyout">
-    <mdb-navbar id="main-navbar" dark position="top" color="stylish" scrolling :scrollingOffset="20">
-      <mdb-navbar-brand to="/" waves class="font-weight-bold">
-        MDB Vue
-      </mdb-navbar-brand>
+    <mdb-navbar
+      id="main-navbar"
+      dark
+      position="top"
+      color="stylish"
+      scrolling
+      :scrollingOffset="20"
+    >
+      <mdb-navbar-brand to="/" waves class="font-weight-bold">MDB Vue</mdb-navbar-brand>
       <mdb-navbar-toggler>
         <mdb-navbar-nav right>
-          <mdb-nav-item exact to="/"><strong>Home</strong></mdb-nav-item>
-          <mdb-nav-item to="/css"><strong>CSS</strong></mdb-nav-item>
-          <mdb-nav-item to="/components"><strong>Components</strong></mdb-nav-item>
-          <mdb-nav-item to="/advanced"><strong>Advanced</strong></mdb-nav-item>
-          <mdb-nav-item to="/navigation"><strong>Navigation</strong></mdb-nav-item>
-          <mdb-nav-item to="/forms"><strong>Forms</strong></mdb-nav-item>
-          <mdb-nav-item to="/tables"><strong>Tables</strong></mdb-nav-item>
-          <mdb-nav-item to="/modals"><strong>Modals</strong></mdb-nav-item>
-          <mdb-nav-item to="/plugins"><strong>Plugins & addons</strong></mdb-nav-item>
+          <mdb-nav-item exact to="/">
+            <strong>Home</strong>
+          </mdb-nav-item>
+          <mdb-nav-item to="/css">
+            <strong>CSS</strong>
+          </mdb-nav-item>
+          <mdb-nav-item to="/components">
+            <strong>Components</strong>
+          </mdb-nav-item>
+          <mdb-nav-item to="/advanced">
+            <strong>Advanced</strong>
+          </mdb-nav-item>
+          <mdb-nav-item to="/navigation">
+            <strong>Navigation</strong>
+          </mdb-nav-item>
+          <mdb-nav-item to="/forms">
+            <strong>Forms</strong>
+          </mdb-nav-item>
+          <mdb-nav-item to="/tables">
+            <strong>Tables</strong>
+          </mdb-nav-item>
+          <mdb-nav-item to="/modals">
+            <strong>Modals</strong>
+          </mdb-nav-item>
+          <mdb-nav-item to="/plugins">
+            <strong>Plugins</strong>
+          </mdb-nav-item>
+          <mdb-tooltip>
+            <span slot="tip">PRO</span>
+            <mdb-nav-item
+              slot="reference"
+              href="https://mdbootstrap.com/products/vue-ui-kit/"
+              newTab
+              far
+              icon="gem"
+            ></mdb-nav-item>
+          </mdb-tooltip>
+          <mdb-tooltip>
+            <span slot="tip">FREE</span>
+            <mdb-nav-item
+              slot="reference"
+              href="https://mdbootstrap.com/docs/vue/getting-started/download/"
+              newTab
+              icon="download"
+            ></mdb-nav-item>
+          </mdb-tooltip>
         </mdb-navbar-nav>
       </mdb-navbar-toggler>
     </mdb-navbar>
@@ -25,37 +67,50 @@
     </main>
     <mdb-footer color="stylish-color">
       <p class="footer-copyright mb-0 py-3 text-center">
-        &copy; {{new Date().getFullYear()}} Copyright: <a href="https://mdbootstrap.com/docs/vue/?utm_source=DemoApp&utm_medium=MDBVue"> MDBootstrap.com</a>
+        &copy; {{new Date().getFullYear()}} Copyright:
+        <a
+          href="https://mdbootstrap.com/docs/vue/?utm_source=DemoApp&utm_medium=MDBVue"
+        >MDBootstrap.com</a>
       </p>
     </mdb-footer>
   </div>
 </template>
 
 <script>
-import { mdbNavbar, mdbNavItem, mdbNavbarNav, mdbNavbarToggler, mdbNavbarBrand, mdbFooter } from 'mdbvue';
+import {
+  mdbNavbar,
+  mdbNavItem,
+  mdbNavbarNav,
+  mdbNavbarToggler,
+  mdbNavbarBrand,
+  mdbFooter,
+  mdbBtn,
+  mdbTooltip
+} from "mdbvue";
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
     mdbNavbar,
     mdbNavItem,
     mdbNavbarNav,
     mdbNavbarToggler,
     mdbNavbarBrand,
-    mdbFooter
+    mdbFooter,
+    mdbBtn,
+    mdbTooltip
   }
 };
-
 </script>
 
 <style>
 .flyout {
-	display:flex;
-	flex-direction: column;
-	min-height:100vh;
-	justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: space-between;
 }
-.active{
+.active {
   background-color: rgba(255, 255, 255, 0.1);
 }
 .demo-section {

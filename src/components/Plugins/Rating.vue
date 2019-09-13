@@ -27,6 +27,7 @@
           :fal="(i <= active) || i <= rateValue ? ratings[active].fal : fal"
           :far="(i <= active) || i <= rateValue ? ratings[active].far : far"
           :fab="(i <= active) || i <= rateValue ? ratings[active].fab : fab"
+          :fad="(i <= active) || i <= rateValue ? ratings[active].fad : fad"
           :ref="i"
           @mouseover.native="updateRating(i)"
           @click.native="rate(i)"
@@ -78,9 +79,11 @@ const Rating = {
     far: Boolean,
     fab: Boolean,
     fal: Boolean,
+    fad: Boolean,
     activeFar: Boolean,
     activeFab: Boolean,
     activeFal: Boolean,
+    activeFad: Boolean,
     options: {
       type: Array,
       default: () => {
@@ -146,8 +149,9 @@ const Rating = {
       let far = rating.far || this.activeFar;
       let fab = rating.fab || this.activeFab;
       let fal = rating.fal || this.activeFal;
+      let fad = rating.fad || this.activeFad;
       let feedback = rating.feedback || "";
-      return { icon, iconActiveClass, far, fab, fal, feedback };
+      return { icon, iconActiveClass, far, fab, fal, fad, feedback };
     });
     
     if (this.value) {

@@ -2,7 +2,7 @@
   <span>
     <transition @after-leave="doDestroy">
       <span ref="popper" :class="{show:!disabled && showPopper}">
-        <div class="popover" v-if="$slots.header || $slots.body" ref="popover">
+        <div class="popover" v-if="$slots.header || $slots.body" ref="popover" :style="`max-width: ${maxWidth}px;`">
           <div class="popover-header" v-if="$slots.header">
             <slot name="header"></slot>
           </div>
@@ -75,6 +75,10 @@
           return {};
         }
       },
+      maxWidth: {
+        type: Number,
+        default: 276
+      },
     },
 
     data() {
@@ -89,7 +93,11 @@
         }
       };
     },
-
+    computed: {
+      popoverStyle() {
+        return `max-width: ${this.maxWidth} px!important`;
+      }
+    },
     watch: {
       showPopper(value) {
         if (value) {
@@ -282,7 +290,7 @@
     font-weight: normal;
     border: 1px rgb(0, 0, 0) solid;
     z-index: 200000;
-    max-width: 276px;
+    max-width: initial;
     text-align: start;
     background-color: #fff;
     border: 1px solid rgba(0, 0, 0, .2);

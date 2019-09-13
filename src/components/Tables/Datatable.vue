@@ -35,7 +35,7 @@
         </tr>
       </tbl-head>
       <tbl-body>
-        <tr v-for="row in pages[activePage]" :key="row.id">
+        <tr v-for="(row, i) in pages[activePage]" :key="i" :tabindex="focus &&'1'" @focus="selectRow(i)" :class="focus && 'selectable-row'">
           <td v-for="(value, key) in row" :key="key">
             <div v-html="value"></div>
           </td>
@@ -80,7 +80,7 @@
       </div>
       <tbl v-bind="tableProps" sm datatable>
         <tbl-body>
-          <tr v-for="row in pages[activePage]" :key="row.id">
+          <tr v-for="(row, i) in pages[activePage]" :key="i" :tabindex="focus &&'1'" @focus="selectRow(i)" :class="focus && 'selectable-row'">
             <td v-for="(value, key) in row" :key="key">
               <div v-html="value"></div>
             </td>
@@ -332,6 +332,10 @@ const Datatable = {
     showingText: {
       type: String,
       default: "Showing"
+    },
+    focus: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -496,6 +500,15 @@ const Datatable = {
       this.fetchData();
       this.reactiveFlag = true;
       this.updatedKey = Math.floor(Math.random()*100000000);
+    },
+    selectRow(index) {
+      let generalIndex = index;
+      this.pages.forEach((page, i) => {
+        if (i < this.activePage) {
+          generalIndex += page.length;
+        }
+      });
+      this.$emit('selectRow', generalIndex);
     }
   },
   mounted() {
@@ -549,6 +562,7 @@ const Datatable = {
       this.$emit('pages', this.pages);
     },
     filteredRows() {
+      const active = this.activePage;
       // do the split on every change in rows (searching)
       const pagesAmount = Math.ceil(this.filteredRows.length / this.entries);
       this.pages = [];
@@ -564,7 +578,7 @@ const Datatable = {
       if (this.reactiveFlag === false){
         this.activePage = 0;
       }
-
+      this.activePage = active;
       this.$emit('pages', this.pages);
     }
   }
@@ -575,7 +589,19 @@ export { Datatable as mdbDatatable };
 </script>
 
 <style scoped>
+.selectable-row {
+  cursor: pointer;
+  transition: all 0.4s ease-out;
+}
 
+.selectable-row:hover {
+  background-color: rgba(66, 133, 244, 0.1);
+}
+
+.selectable-row:focus {
+  outline: 1px solid #4285f4;
+  background-color: rgba(66, 133, 244, 0.1);
+}
 </style>
 
 <style>

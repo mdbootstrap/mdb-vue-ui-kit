@@ -4,7 +4,7 @@
         aria-expanded="false" aria-label="Toggle navigation" @click.stop="onClick">
       <div v-if="animation" ref="animatedIcon" :class="`animated-icon${animation}`"><span></span><span></span><span></span><span v-if="animation === '2'"></span></div>
       <span v-else :class="navTogglerIcon">
-        <mdb-icon v-if="hamburger" :icon="togglerIcon" :class="togglerIconClass" :size="togglerSize" :far="far" :fal="fal" :fab="fab"/>
+        <mdb-icon v-if="hamburger" :icon="togglerIcon" :class="togglerIconClass" :size="togglerSize" :far="far" :fal="fal" :fab="fab" :fad="fad"/>
       </span>
     </button>
     <slot></slot>
@@ -102,6 +102,10 @@ const Navbar = {
       default: false
     },
     fab: {
+      type: Boolean,
+      default: false
+    },
+    fad: {
       type: Boolean,
       default: false
     },
