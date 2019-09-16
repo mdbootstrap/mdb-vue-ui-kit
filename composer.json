@@ -1,6 +1,7 @@
 {
-    "name": "mdbootstrap/Vue-Bootstrap-with-Material-Design",
+    "name": "mdbootstrap/vue-bootstrap-with-material-design",
     "description": "Vue Bootstrap with Material Design - Powerful and free UI KIT",
+    "license": "MIT",
     "require": {
         "php": "^7.2",
         "another-vendor/package": "1.*"
