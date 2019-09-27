@@ -15,12 +15,17 @@ const Footer = {
     },
     color: {
       type: String
+    },
+    marginTop: {
+      type: Boolean,
+      default: true
     }
   },
   computed: {
     className() {
       return classNames(
-        'page-footer mt-4',
+        'page-footer',
+        this.marginTop && 'mt-4',
         this.color ? this.color : ''
       );
     }

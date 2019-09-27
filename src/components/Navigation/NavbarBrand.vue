@@ -1,9 +1,9 @@
 <template>
   <div :class="wrapperClass" @click="wave">
-    <router-link v-if="to" :to="to" class="navbar-brand" >
+    <router-link v-if="to" :to="to" v-bind="$attrs" class="navbar-brand" >
       <slot></slot>
     </router-link>
-    <component v-else :is="tag" class="navbar-brand" @click="wave">
+    <component v-else :is="tag" class="navbar-brand" @click="wave" v-bind="$attrs">
       <slot></slot>
     </component>
   </div>

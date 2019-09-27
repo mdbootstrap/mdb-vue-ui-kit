@@ -19,7 +19,7 @@
       <section>
         <mdb-navbar dark color="primary" scrolling>
           <!-- mdbNavbar brand -->
-          <mdb-navbar-brand href="https://mdbootstrap.com/">
+          <mdb-navbar-brand tag="a" target="_blank" href="https://mdbootstrap.com/">
             <img src="https://mdbootstrap.com/img/logo/mdb-transparent.png" height="30" alt />
           </mdb-navbar-brand>
           <mdb-navbar-toggler>

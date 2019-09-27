@@ -64,10 +64,6 @@ const Btn =  {
       type: Boolean,
       default: true
     },
-    darkWaves: {
-      type: Boolean,
-      default: false
-    },
     gradient: {
       type: String
     },

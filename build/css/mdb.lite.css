@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /*!
  * Material Design for Bootstrap 4
- * Version: MDB Lite 4.8.9
+ * Version: MDB Lite 4.8.10
  *
  *
  * Copyright: Material Design for Bootstrap
@@ -2035,6 +2035,8 @@ a.waves-effect, a.waves-light {
   .btn:hover, .btn:focus, .btn:active {
     outline: 0;
     box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15); }
+  .btn .btn-block {
+    margin: 0; }
   .btn .fas.right,
   .btn .fab.right,
   .btn .far.right {
@@ -4993,8 +4995,7 @@ body.scrollable {
       margin-left: 2rem; }
   .md-form textarea.md-textarea {
     overflow-y: hidden;
-    padding: 1.5rem 0;
-    resize: none; }
+    padding: 1.5rem 0; }
   .md-form textarea.md-textarea-auto {
     padding: 0;
     padding-top: 1.5rem; }
@@ -5200,7 +5201,7 @@ body.scrollable {
       .md-form.md-outline input[type=search].form-control:focus.valid + label:after,
       .md-form.md-outline textarea.md-textarea.form-control.valid + label:after,
       .md-form.md-outline textarea.md-textarea.form-control:focus.valid + label:after {
-        top: 2.75rem;
+        top: 4rem;
         left: 0;
         position: absolute; }
       .md-form.md-outline input[type=text].form-control.invalid + label:after,
@@ -5227,7 +5228,7 @@ body.scrollable {
       .md-form.md-outline input[type=search].form-control:focus.invalid + label:after,
       .md-form.md-outline textarea.md-textarea.form-control.invalid + label:after,
       .md-form.md-outline textarea.md-textarea.form-control:focus.invalid + label:after {
-        top: 2.75rem;
+        top: 4rem;
         left: 0;
         position: absolute; }
     .md-form.md-outline > input[type]:-webkit-autofill:not(.browser-default):not([type="search"]) + label,
@@ -5354,8 +5355,8 @@ body.scrollable {
     border-top-right-radius: .3rem;
     background: #f5f5f5 no-repeat;
     background-image: linear-gradient(to bottom, #4285f4, #4285f4), linear-gradient(to bottom, #ced4da, #ced4da);
-    background-size: 0 2px, 100% 1px;
-    background-position: 50% 100%, 50% 100%;
+    background-size: 0 2px, 100% 1px;
+    background-position: 50% 100%, 50% 100%;
     transition: background-size 0.3s cubic-bezier(0.64, 0.09, 0.08, 1); }
     .md-form.md-bg input[type=text]:focus:not([readonly]),
     .md-form.md-bg input[type=password]:focus:not([readonly]),

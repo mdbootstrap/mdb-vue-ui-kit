@@ -41,6 +41,12 @@
         <mdb-rating feedback @submit="submitFeedback"/>
       </section>
     </section>
+    <section class="demo-section">
+      <h4>Disabled</h4>
+      <section>
+        <mdb-rating disabled :value="3"/>
+      </section>
+    </section>
   </mdb-container>
 </template>
 

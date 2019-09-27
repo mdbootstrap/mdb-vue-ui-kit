@@ -5,19 +5,22 @@
       :key="i"
       trigger="click"
       :options="{placement: 'top'}"
-      :disabled="!feedback"
+      :disabled="!feedback || disabled"
       :close="closePopover"
     >
       <span slot="header">{{rating.feedback}}</span>
-      <span
-        slot="body"
-      >
-        <mdb-textarea v-model="feedbackMessage" :rows="1"/>
+      <span slot="body">
+        <mdb-textarea v-model="feedbackMessage" :rows="1" />
         <mdb-btn size="sm" color="primary" @click="submitFeedback">Submit!</mdb-btn>
         <mdb-btn size="sm" flat @click="forceClosePopover">Close</mdb-btn>
-      </span> 
+      </span>
 
-      <mdb-tooltip slot="reference" trigger="hover" :options="{placement: 'top'}">
+      <mdb-tooltip
+        slot="reference"
+        trigger="hover"
+        :options="{placement: 'top'}"
+        :disabled="disabled"
+      >
         <span slot="tip">{{rating.feedback}}</span>
         <mdb-icon
           slot="reference"
@@ -84,6 +87,10 @@ const Rating = {
     activeFab: Boolean,
     activeFal: Boolean,
     activeFad: Boolean,
+    disabled: {
+      type: Boolean,
+      default: false
+    },
     options: {
       type: Array,
       default: () => {
@@ -114,19 +121,22 @@ const Rating = {
       rateValue: -1,
       showModal: false,
       closePopover: null,
-      feedbackMessage: ''
+      feedbackMessage: ""
     };
   },
   methods: {
     updateRating(i) {
-      this.active = i;
+      if (!this.disabled) this.active = i;
     },
     clearRating() {
-      this.active = this.rateValue > -1 ? this.rateValue : -1;
+      if (!this.disabled)
+        this.active = this.rateValue > -1 ? this.rateValue : -1;
     },
     rate(index) {
-      this.$emit("input", index + 1);
-      this.rateValue = index;
+      if (!this.disabled) {
+        this.$emit("input", index + 1);
+        this.rateValue = index;
+      }
     },
     forceClosePopover() {
       this.closePopover = true;
@@ -135,11 +145,11 @@ const Rating = {
       });
     },
     submitFeedback() {
-      if (this.feedbackMessage !== '') {
-        this.$emit('submit', this.feedbackMessage);
+      if (this.feedbackMessage !== "") {
+        this.$emit("submit", this.feedbackMessage);
         this.forceClosePopover();
       }
-      this.feedbackMessage = '';
+      this.feedbackMessage = "";
     }
   },
   mounted() {
@@ -153,14 +163,14 @@ const Rating = {
       let feedback = rating.feedback || "";
       return { icon, iconActiveClass, far, fab, fal, fad, feedback };
     });
-    
+
     if (this.value) {
       this.rateValue = this.value - 1;
       this.active = this.value - 1;
     }
   },
   watch: {
-    value (val) {
+    value(val) {
       this.rateValue = val - 1;
       this.active = val - 1;
     }

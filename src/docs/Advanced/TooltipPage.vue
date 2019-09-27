@@ -43,7 +43,7 @@
                   </a>
                 </mdb-view>
                 <mdb-card-body>
-                  <mdb-card-title>Card with waves effect</mdb-card-title>
+                  <mdb-card-title>Custom content</mdb-card-title>
                   <mdb-card-text>Some quick example text to build on the card title and make up the bulk of the card's content.</mdb-card-text>
                   <mdb-btn color="primary">Button</mdb-btn>
                 </mdb-card-body>
