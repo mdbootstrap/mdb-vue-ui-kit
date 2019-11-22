@@ -58,7 +58,7 @@ __________
 
 # Version
 
-- MDBVue 6.0.1
+- MDBVue 6.1.0
 - Vue 2.6.10
 
 # Quick start
@@ -195,7 +195,7 @@ A big ❤️ **thank you to all our users** ❤️ who are working with us to im
 
  - [Pinterest](https://pl.pinterest.com/mdbootstrap)
 
- - [Google+](https://plus.google.com/u/0/b/10786.0.1883699620484/+Mdbootstrap/posts)
+ - [Google+](https://plus.google.com/u/0/b/10786.1.0883699620484/+Mdbootstrap/posts)
 
  - [Dribbble](https://dribbble.com/mdbootstrap)
 
