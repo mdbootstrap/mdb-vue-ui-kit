@@ -20,7 +20,7 @@ export const mdbDatatable = {
     mdbIcon,
     mdbRow,
     mdbCol,
-    mdbBtn
+    mdbBtn,
   },
   props: {
     data: {
@@ -180,9 +180,21 @@ export const mdbDatatable = {
       type: String,
       default: "primary"
     },
+    selectColor: {
+      type: String,
+      default: 'blue lighten-4'
+    },
+    hoverColor: {
+      type: String,
+      default: 'blue lighten-5'
+    },
     paginationColor: {
       type: String,
       default: "blue"
+    },
+    checkbox: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -191,6 +203,8 @@ export const mdbDatatable = {
       reactiveFlag: false,
       recentSort: null,
       interval: null,
+      selected: -1,
+      hovered: -1,
       rows: this.data.rows || [],
       columns: this.data.columns || [],
       entries: 10,
@@ -246,15 +260,21 @@ export const mdbDatatable = {
       this.activePage = index;
     },
     sort(field, sort) {
-      this.recentSort = { field, sort };
-      if (this.sorting) {
-        sort === "asc"
-          ? this.rows.sort((a, b) => (a[field] > b[field] ? 1 : -1))
-          : this.rows.sort((a, b) => (a[field] > b[field] ? -1 : 1));
-        this.columns[
-          this.columns.findIndex(column => column.field === field)
-        ].sort = sort === "asc" ? "desc" : "asc";
+      const selected = this.rows[this.selected];
+
+      if (sort, field) {
+        this.recentSort = { field, sort };
+        if (this.sorting) {
+          sort === "asc"
+            ? this.rows.sort((a, b) => (a[field] > b[field] ? 1 : -1))
+            : this.rows.sort((a, b) => (a[field] > b[field] ? -1 : 1));
+          this.columns[
+            this.columns.findIndex(column => column.field === field)
+          ].sort = sort === "asc" ? "desc" : sort === "desc" ? "asc" : null;
+        }
       }
+
+      this.selected = this.rows.indexOf(selected);
     },
     escapeRegExp(string) {
       return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -287,9 +307,12 @@ export const mdbDatatable = {
       this.updatedKey = Math.floor(Math.random() * 100000000);
     },
     selectRow(row) {
-      let generalIndex = this.rowsDisplay.indexOf(row);
-
-      this.$emit("selectRow", generalIndex);
+      let index = this.rowsDisplay.indexOf(row);
+      if (this.selected === index) {
+        index = -1;
+      }
+      this.selected = index;
+      this.$emit("selectRow", index);
     },
     formatRows() {
       this.setDefaultColumns();

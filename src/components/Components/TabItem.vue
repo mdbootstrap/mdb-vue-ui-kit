@@ -24,6 +24,9 @@ const TabItem = {
     icon: {
       type: String
     },
+    iconClass: {
+      type: String
+    },
     disabled: {
       type: Boolean
     }

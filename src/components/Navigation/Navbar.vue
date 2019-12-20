@@ -27,9 +27,9 @@ const Navbar = {
       type: [Number, String],
       default: null
     },
-    animated: {
-      type: Boolean
-    },
+    // animated: {
+    //   type: Boolean
+    // },
     color: {
       type: String
     },
@@ -242,7 +242,7 @@ const Navbar = {
       }
     });
   },
-  destroy() {
+  beforeDestroy() {
     document.removeEventListener('click', this.onClick);
     window.removeEventListener('scroll', this.handleScroll);
   }

@@ -1,25 +1,40 @@
 <template>
-  <component v-if="multiLevel" @keyup.native.enter="$event.target.click()" :is="tag" :class="className">
-    <span tabindex="0" class="dropdown-toggler" @click="toggle = !toggle" @keyup.stop.enter="toggle = !toggle">
+  <component
+    ref="popper"
+    :is="tag"
+    :class="className"
+    :style="style"
+    v-on-clickaway="multiAway"
+  >
+    <span
+      tabindex="0"
+      class="dropdown-toggler"
+      @click="toggle = !toggle"
+      v-on-clickaway="away"
+      @keyup.stop.enter="toggle = !toggle"
+    >
       <slot name="toggle"></slot>
     </span>
-    <div v-if="toggle" :style="style" v-on-clickaway="away">
-      <slot></slot>
-    </div>
-  </component>
 
-  <component v-else :is="tag" :class="className" :style="style">
-    <span tabindex="0" class="dropdown-toggler" @click="toggle = !toggle" v-on-clickaway="away" @keyup.stop.enter="toggle = !toggle">
-      <slot name="toggle"></slot>
-    </span>
-    <div v-if="toggle">
-      <slot></slot>
-    </div>
+    <transition
+      @enter="enter"
+      @after-enter="afterEnter"
+      @before-leave="beforeLeave"
+    >
+      <ul
+        class="list-unstyled mb-0"
+        style="z-index: 1000; transition: opacity .2s linear"
+        ref="options"
+        v-show="toggle"
+      >
+        <slot></slot>
+      </ul>
+    </transition>
   </component>
 </template>
 
 <script>
-import { mdbDropdown } from '../../mixins/mdbDropdown';
+import { mdbDropdown } from "../../mixins/mdbDropdown";
 
 const Dropdown = {
   mixins: [mdbDropdown]
@@ -33,10 +48,25 @@ export { Dropdown as mdbDropdown };
 .dropdown {
   display: inline-block;
 }
+.collapse-item {
+  position: relative;
+  z-index: 1000;
+  transition: opacity 0.2s;
+}
 </style>
 
 <style>
 .navbar .dropdown-menu a:hover {
   color: inherit !important;
 }
+
+.dropdown-menu {
+  top: 0 !important;
+  position: relative !important;
+}
+
+.dropdown-toggler:focus {
+  outline: none;
+}
+
 </style>

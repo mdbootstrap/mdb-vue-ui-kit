@@ -8,12 +8,16 @@ const Breadcrumb =  {
     tag: {
       type: String,
       default: "ol"
+    },
+    color: {
+      type: String
     }
   },
   computed: {
     className() {
       return [
-        'breadcrumb'
+        'breadcrumb',
+        this.color && `${this.color}-color`
       ];
     }
   }
@@ -24,6 +28,8 @@ export { Breadcrumb as mdbBreadcrumb };
 
 </script>
 
-<style scoped>
-
+<style>
+.breadcrumb .breadcrumb-item.active {
+  background-color: transparent;
+}
 </style>

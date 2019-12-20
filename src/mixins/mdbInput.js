@@ -299,9 +299,9 @@ export const mdbInput = {
       this.$emit('focus', e);
       this.isTouched = true;
       
-      // if (!this.disabled) {
-      //   this.$refs.input.focus();
-      // }
+      if (!this.disabled) {
+        this.$refs.input.focus();
+      }
 
       // styles for navbar input
       if (this.navInput) {

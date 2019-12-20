@@ -39,6 +39,7 @@
     <mdb-tbl v-if="!scrollY" v-bind="tableProps" sm datatable>
       <mdb-tbl-head :color="headerColor" :textWhite="headerWhite">
         <tr>
+          <th v-if="checkbox && focus"></th>
           <th
             v-for="column in columns"
             :key="column.field"
@@ -46,7 +47,10 @@
             v-on:click="sort(column.field, column.sort)"
           >
             {{ column.label }}
-            <i v-if="sorting" class="fas fa-sort float-right"></i>
+            <i
+              v-if="sorting && column.sort"
+              class="fas fa-sort float-right"
+            ></i>
           </th>
         </tr>
       </mdb-tbl-head>
@@ -56,9 +60,22 @@
           v-for="(row, i) in pages[activePage]"
           :key="i"
           :tabindex="focus && '1'"
-          @focus="selectRow(row)"
-          :class="focus && 'selectable-row'"
+          @mouseenter="hovered = rowsDisplay.indexOf(row)"
+          @mouseleave="hovered = -1"
+          @click="selectRow(row)"
+          :class="`${focus && 'selectable-row'} ${focus && rowsDisplay.indexOf(row) === hovered ? hoverColor: ''} ${focus && rowsDisplay.indexOf(row) === selected ? selectColor: ''}`"
         >
+          <td v-if="checkbox && focus" class="text-center">
+            <mdb-icon
+              class="px-3"
+              :icon="
+                rowsDisplay.indexOf(row) === selected
+                  ? 'check-square'
+                  : 'square'
+              "
+              far
+            ></mdb-icon>
+          </td>
           <td v-for="(value, key) in row" :key="key">
             <div v-html="value"></div>
           </td>
@@ -70,6 +87,7 @@
 
       <mdb-tbl-head v-if="tfoot" tag="tfoot">
         <tr>
+          <th v-if="checkbox && focus"></th>
           <th
             v-for="column in columns"
             :key="column.field + '_foot'"
@@ -84,21 +102,23 @@
 
     <!-- ScrollY table -->
     <div v-if="scrollY" class="dataTables_scroll" :key="componentKey">
-      <div
-        class="dataTables_scrollHead"
-        style="padding-right: 15px"
-      >
+      <div class="dataTables_scrollHead" style="padding-right: 15px">
         <div class="dataTables_scrollHeadInner">
           <mdb-tbl v-bind="tableProps" sm datatable>
             <mdb-tbl-head :color="headerColor" :textWhite="headerWhite">
               <tr>
+                <th v-if="checkbox && focus"></th>
                 <th
                   v-for="column in columns"
                   :key="column.field"
                   class="th-sm sorting"
                   v-on:click="sort(column.field, column.sort)"
                 >
-                  {{ column.label }} <i class="fas fa-sort float-right"></i>
+                  {{ column.label }}
+                  <i
+                    v-if="sorting && column.sort"
+                    class="fas fa-sort float-right"
+                  ></i>
                 </th>
               </tr>
             </mdb-tbl-head>
@@ -111,9 +131,22 @@
             v-for="(row, i) in pages[activePage]"
             :key="i"
             :tabindex="focus && '1'"
-            @focus="selectRow(i)"
-            :class="focus && 'selectable-row'"
+            @mouseenter="hovered = rowsDisplay.indexOf(row)"
+            @mouseleave="hovered = -1"
+            @click="selectRow(row)"
+            :class="`${focus && 'selectable-row'} ${focus && rowsDisplay.indexOf(row) === hovered ? hoverColor: ''} ${focus && rowsDisplay.indexOf(row) === selected ? selectColor: ''}`"
           >
+            <td v-if="checkbox && focus" class="text-center">
+              <mdb-icon
+                class="px-3"
+                :icon="
+                  rowsDisplay.indexOf(row) === selected
+                    ? 'check-square'
+                    : 'square'
+                "
+                far
+              ></mdb-icon>
+            </td>
             <td v-for="(value, key) in row" :key="key">
               <div v-html="value"></div>
             </td>
@@ -128,6 +161,7 @@
           <mdb-tbl v-bind="tableProps" sm datatable>
             <mdb-tbl-head v-if="tfoot" tag="tfoot">
               <tr>
+                <th v-if="checkbox && focus"></th>
                 <th
                   v-for="column in columns"
                   :key="column.field + '_foot'"
@@ -268,13 +302,8 @@ export { Datatable as mdbDatatable };
   transition: all 0.4s ease-out;
 }
 
-.selectable-row:hover {
-  background-color: rgba(66, 133, 244, 0.1);
-}
-
 .selectable-row:focus {
-  outline: 1px solid #4285f4;
-  background-color: rgba(66, 133, 244, 0.1);
+  outline: none;
 }
 </style>
 

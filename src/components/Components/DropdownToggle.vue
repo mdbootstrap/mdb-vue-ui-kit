@@ -21,10 +21,6 @@ const DropdownToggle = {
       type: Boolean,
       default: false
     },
-    wavesFixed: {
-      type: Boolean,
-      default: false
-    },
     srOnly: {
       type: Boolean,
       default: false

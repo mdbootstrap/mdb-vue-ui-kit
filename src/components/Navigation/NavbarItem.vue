@@ -62,10 +62,6 @@ const NavbarItem = {
       type: Boolean,
       default: true
     },
-    wavesFixed: {
-      type: Boolean,
-      default: false
-    },
     anchorClass: {
       type: String
     },

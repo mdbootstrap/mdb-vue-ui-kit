@@ -30,13 +30,28 @@ const ListGroup = {
     xl: {
       type: Boolean,
       default: false
+    },
+    flush: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
-    className(){
+    className() {
       return [
-        'list-group',
-        this.horizontal ? this.sm ? 'list-group-horizontal-sm' : this.md ? 'list-group-horizontal-md' : this.lg ? 'list-group-horizontal-lg' : this.xl ? 'list-group-horizontal-xl' : 'list-group-horizontal' : ''
+        "list-group",
+        this.horizontal
+          ? this.sm
+            ? "list-group-horizontal-sm"
+            : this.md
+            ? "list-group-horizontal-md"
+            : this.lg
+            ? "list-group-horizontal-lg"
+            : this.xl
+            ? "list-group-horizontal-xl"
+            : "list-group-horizontal"
+          : "",
+        this.flush && 'list-group-flush'
       ];
     }
   }
@@ -46,6 +61,4 @@ export default ListGroup;
 export { ListGroup as mdbListGroup };
 </script>
 
-<style scoped>
-  
-</style>
+<style scoped></style>

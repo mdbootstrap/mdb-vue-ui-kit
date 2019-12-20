@@ -1,7 +1,9 @@
 <template>
   <component :is="tag" :class="className">
     <transition @before-enter="beforeEnter" @enter="enter" @before-leave="beforeLeave" @leave="leave">
-      <slot class="fade"></slot>
+      <keep-alive>
+        <slot class="fade"></slot>
+      </keep-alive>
     </transition>
   </component>
 </template>
