@@ -73,12 +73,11 @@ const ListGroupItem = {
     fad: Boolean,
     duotone: Boolean,
     fab: Boolean,
-    brands: Boolean,
+    brands: Boolean
   },
   computed: {
     iconClass() {
       return [
-        
         this.social ? 'fa-2x list-item-btn mr-4 white-text' : "pr-4",
         this.circle && 'rounded-circle',
         this.social && this.iconColor

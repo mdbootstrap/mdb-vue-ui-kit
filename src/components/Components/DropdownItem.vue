@@ -1,5 +1,5 @@
 <template>
-  <component @keyup.native.stop.enter="handleKeypress" @click="$emit('click', $event)" :tabindex="0" :is="to ? 'router-link' : tag" :to="to" :exact="exact" :href="to ? false : href" :class="className" :target="tab"><slot></slot><mdb-icon v-if="submenuIcon" class="pl-2" :icon="submenuIcon"/></component>
+  <component @keyup.stop.enter="handleKeypress" @click="$emit('click', $event)" :tabindex="0" :is="to ? 'router-link' : tag" :to="to" :exact="exact" :href="to ? false : href" :class="className" :target="tab"><slot></slot><mdb-icon v-if="submenuIcon" class="pl-2" :icon="submenuIcon"/></component>
 </template>
 
 <script>

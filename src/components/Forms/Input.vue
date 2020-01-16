@@ -202,4 +202,12 @@ export { Input as mdbInput };
   background-position: center right calc(0.375em + 0.1875rem);
   background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
 }
+
+.md-form .is-invalid .md-bg input {
+  border-bottom: 1px solid red!important;
+}
+
+.md-form .is-valid .md-bg input {
+  border-bottom: 1px solid #28a745!important;
+}
 </style>

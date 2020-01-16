@@ -1,6 +1,6 @@
 <template>
   <component :is="tag" :class="className">
-    <a :class="anchorClass" href="#" role="tab">
+    <a :class="anchorClass" :href="href" role="tab">
       <i v-if="icon" :class="iconClass" />
       <slot></slot>
     </a>
@@ -29,6 +29,10 @@ const TabItem = {
     },
     disabled: {
       type: Boolean
+    },
+    href: {
+      type: String,
+      default: '#'
     }
   },
   computed: {

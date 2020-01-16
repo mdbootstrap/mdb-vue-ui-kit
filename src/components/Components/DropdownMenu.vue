@@ -1,5 +1,7 @@
 <template>
-  <component :is="tag" data-toggle="dropdown-menu" :class="className"><slot></slot></component>
+  <component :is="tag" data-toggle="dropdown-menu" :class="className"
+    ><slot></slot
+  ></component>
 </template>
 
 <script>
@@ -32,9 +34,9 @@ const DropdownMenu = {
   computed: {
     className() {
       return [
-        'dropdown-menu',
-        'show',
-        this.color ? 'dropdown-' + this.color : '',
+        "dropdown-menu",
+        "show",
+        this.color ? "dropdown-" + this.color : ""
       ];
     }
   }
@@ -43,3 +45,12 @@ const DropdownMenu = {
 export default DropdownMenu;
 export { DropdownMenu as mdbDropdownMenu };
 </script>
+<style>
+.navbar .dropdown-menu {
+  position: relative !important;
+}
+
+.navbar .mega-menu {
+  position: absolute !important;
+}
+</style>

@@ -130,7 +130,6 @@ export const mdbDropdown = {
 
     window.addEventListener('hashchange', this.away);
 
-    this.toggle = this.show;
   },
   beforeDestroy() {
     window.removeEventListener('hashchange', this.away);
@@ -140,9 +139,6 @@ export const mdbDropdown = {
       if (value && !this.megaMenu) {
         this.updatePopper();
       }
-    },
-    show(value) {
-      this.toggle = value;
     }
   }
 };

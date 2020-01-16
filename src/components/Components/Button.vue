@@ -1,8 +1,8 @@
 <template>
   <component :is="tag" :class="btnClasses" :type="type" :role="role" @click="handleClick">
-    <mdb-icon v-if="(icon && !iconRight)" :icon="icon" :far="far || regular" :fal="fal || light" :fab="fab || brands" :fad="fad" :class="iconClasses" :color="iconColor"/>
+    <mdb-icon v-if="(icon && !iconRight)" :icon="icon" :far="far || regular" :fal="fal || light" :fab="fab || brands" :fad="fad || duotone" :class="iconClasses" :color="iconColor"/>
       <slot></slot>
-    <mdb-icon v-if="(icon && iconRight)" :icon="icon" :far="far || regular" :fal="fal || light" :fab="fab || brands" :fad="fad" :class="iconClasses" :color="iconColor"/>
+    <mdb-icon v-if="(icon && iconRight)" :icon="icon" :far="far || regular" :fal="fal || light" :fab="fab || brands" :fad="fad || duotone" :class="iconClasses" :color="iconColor"/>
   </component>
 </template>
 
@@ -125,6 +125,10 @@ const Btn =  {
       type: Boolean,
       default: false
     },
+    duotone: {
+      type: Boolean,
+      default: false
+    },
     group: {
       type: Boolean,
       default: false
@@ -176,7 +180,7 @@ export { Btn as mdbBtn };
 
 <style scoped>
 .modal-dialog .form-elegant .btn .fa {
-    color: #2196f3!important; }
+  color: #2196f3!important; }
 
 .form-elegant .z-depth-1-half,
 .form-elegant .btn:hover {
