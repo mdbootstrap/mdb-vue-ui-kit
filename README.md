@@ -8,7 +8,7 @@
 <h1 align="center">Vue Bootstrap with Material Design</h1>
 
 <p align="center">
-  Based on the latest <b>Bootstrap 4</b> and Vue <b>2.6.10</b>.
+  Based on the latest <b>Bootstrap 4</b> and Vue <b>2.6.11</b>.
 </p>
 <p align="center">
 <b>400+</b> material UI elements, <b>600+</b> material icons, <b>74</b> CSS animations, SASS files, templates, tutorials and many more. <b>Free for personal and commercial use.</b>
@@ -59,7 +59,7 @@ __________
 # Version
 
 - MDBVue 6.3.0
-- Vue 2.6.10
+- Vue 2.6.11
 
 # Quick start
 
