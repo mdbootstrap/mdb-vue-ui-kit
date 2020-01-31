@@ -127,7 +127,7 @@ const Navbar = {
         this.color && !this.transparent &&navColors.indexOf(this.color) === -1 ? this.color : '',
         this.expand === 'small' || this.expand === "sm" ? 'navbar-expand-sm' :
           this.expand === 'medium' || this.expand === "md" ? 'navbar-expand-md' :
-            this.expand === 'large' || this.expand === "lg" ? 'navbar-expand-lg' : 'navbar-expand-lx',
+            this.expand === 'large' || this.expand === "lg" ? 'navbar-expand-lg' : 'navbar-expand-xl',
         this.position === 'top' ? 'fixed-top' :
           this.position === 'bottom' ? 'fixed-bottom' : '',
         this.scrolling && 'scrolling-navbar',

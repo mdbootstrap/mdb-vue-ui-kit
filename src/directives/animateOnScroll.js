@@ -1,5 +1,4 @@
-export default {
-  name: "animateOnScroll",
+const animateOnScroll = {
   inserted(el, binding) {
     let hideAfterFirstScroll = false;
 
@@ -46,3 +45,7 @@ export default {
     window.removeEventListener("scroll", el.animate);
   }
 };
+
+export default animateOnScroll;
+export { animateOnScroll as mdbAnimateOnScroll, animateOnScroll };
+

@@ -16,6 +16,9 @@ const GoogleMap = {
       type: Number,
       default: 14
     },
+    center: {
+      type: Array
+    },
     modal: {
       type: Boolean
     },
@@ -55,8 +58,16 @@ const GoogleMap = {
     },
     initMap() {
       this.bounds = new google.maps.LatLngBounds();
-      const mapCentre = this.markerCoordinates[0];
+      let mapCentre = {
+        latitude: 40.725118,
+        longitude: -73.997699
+      };
 
+      if (this.center) {
+        mapCentre = this.center[0];
+      } else if (this.markerCoordinates) {
+        mapCentre = this.markerCoordinates[0];
+      }
       const element = document.getElementById(this.mapName);
       const options = {
         center: new google.maps.LatLng(mapCentre.latitude, mapCentre.longitude),
@@ -65,17 +76,20 @@ const GoogleMap = {
         mapTypeId: this.type
       };
       this.map = new google.maps.Map(element, options);
-      this.markerCoordinates.forEach(coord => {
-        const position = new google.maps.LatLng(coord.latitude, coord.longitude);
-        const marker = new google.maps.Marker({
-          position,
-          map: this.map,
-          title: coord.title
+
+      if (this.markerCoordinates) {
+        this.markerCoordinates.forEach(coord => {
+          const position = new google.maps.LatLng(coord.latitude, coord.longitude);
+          const marker = new google.maps.Marker({
+            position,
+            map: this.map,
+            title: coord.title
+          });
+          this.markers.push(marker);
+          if (this.zoom) {return;}
+          this.map.fitBounds(this.bounds.extend(position));
         });
-        this.markers.push(marker);
-        if (this.zoom) {return;}
-        this.map.fitBounds(this.bounds.extend(position));
-      });
+      }
     }
   },
   watch: {

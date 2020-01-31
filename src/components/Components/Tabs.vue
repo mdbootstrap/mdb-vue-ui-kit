@@ -243,6 +243,11 @@ const Tabs = {
   mounted() {
     this.activeTab = this.active;
   },
+  watch: {
+    active(value) {
+      this.activeTab = value;
+    }
+  },
   mixins: [waves]
 };
 

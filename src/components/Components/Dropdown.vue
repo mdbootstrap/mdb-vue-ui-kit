@@ -4,13 +4,13 @@
     :is="tag"
     :class="className"
     :style="style"
-    v-on-clickaway="multiAway"
+    v-mdb-click-outside="multiAway"
   >
     <span
       tabindex="0"
       class="dropdown-toggler"
       @click="toggle = !toggle"
-      v-on-clickaway="away"
+      v-mdb-click-outside="away"
       @keyup.stop.enter="toggle = !toggle"
     >
       <slot name="toggle"></slot>

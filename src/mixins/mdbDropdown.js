@@ -1,6 +1,6 @@
-import { mixin as clickaway } from 'vue-clickaway';
 import mdbClassMixin from './mdbClassMixin';
-import Popper from "popper.js";
+import Popper from 'popper.js';
+import mdbClickOutside from '../directives/clickOutside';
 
 export const mdbDropdown = {
   props: {
@@ -55,7 +55,8 @@ export const mdbDropdown = {
       }
     };
   },
-  mixins: [clickaway, mdbClassMixin],
+  mixins: [mdbClassMixin],
+  directives: {mdbClickOutside},
   methods: {
     away() {
       if (this.multiLevel) return;

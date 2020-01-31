@@ -16,8 +16,6 @@
 </template>
 
 <script>
-import { mixin as clickaway } from 'vue-clickaway';
-
 const Modal = {
   props: {
     tag: {
@@ -182,8 +180,7 @@ const Modal = {
     computedContentStyle() {
       return this.bgSrc ? {'background-image': `url("${this.bgSrc}")`} : false;
     }
-  },
-  mixins: [clickaway]
+  }
 };
 
 export default Modal;
