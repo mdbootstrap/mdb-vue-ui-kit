@@ -71,12 +71,6 @@ module.exports = function nuxtMDBVue(moduleOptions = {}) {
     )
 
     // plugins
-    if (plugins) {
-      this.addPlugin({
-        src: resolve(__dirname, 'touchEvents.js'),
-        fileName: 'touchEvents.js'
-      })
-    }
 
     // tree-shaking
     this.options.build.transpile.push('mdbvue/lib/components')
