@@ -32,6 +32,9 @@ export default {
       type: Boolean,
       default: false
     },
+    controllIcons: {
+      type: Array
+    },
     indicators: {
       type: Boolean,
       default: false

@@ -6,7 +6,7 @@
 const Fa = {
   props: {
     icon: {
-      type: String,
+      type: String
     },
     size: {
       type: [Boolean, String],
@@ -50,7 +50,7 @@ const Fa = {
     },
     color: {
       type: String,
-      default: ''
+      default: ""
     },
     far: {
       type: Boolean,
@@ -87,23 +87,53 @@ const Fa = {
   },
   computed: {
     className() {
+      const textColors = [
+        "red",
+        "pink",
+        "purple",
+        "deep-purple",
+        "indigo",
+        "blue",
+        "light-blue",
+        "cyan",
+        "teal",
+        "green",
+        "light-green",
+        "lime",
+        "yellow",
+        "amber",
+        "orange",
+        "deep-orange",
+        "brown",
+        "grey",
+        "blue-grey",
+        "white"
+      ];
+
       return [
-        this.far || this.regular ? 'far' :
-          this.fal || this.light ? 'fal' :
-            this.fab || this.brands ? 'fab' :
-              this.fad || this.duotone ? 'fad' : 'fas',
-        this.icon && 'fa-' + this.icon,
-        this.size && 'fa-' + this.size,
-        this.fixed && 'fa-fw',
-        this.pull && 'fa-pull-' + this.pull,
-        this.border && 'fa-border',
-        this.spin && 'fa-spin',
-        this.pulse && 'fa-pulse',
-        this.rotate && 'fa-rotate-' + this.rotate,
-        this.flip && 'fa-flip-' + this.flip,
-        this.inverse && 'fa-inverse',
-        this.stack && 'fa-' + this.stack,
-        this.color && 'text-' + this.color
+        this.far || this.regular
+          ? "far"
+          : this.fal || this.light
+          ? "fal"
+          : this.fab || this.brands
+          ? "fab"
+          : this.fad || this.duotone
+          ? "fad"
+          : "fas",
+        this.icon && "fa-" + this.icon,
+        this.size && "fa-" + this.size,
+        this.fixed && "fa-fw",
+        this.pull && "fa-pull-" + this.pull,
+        this.border && "fa-border",
+        this.spin && "fa-spin",
+        this.pulse && "fa-pulse",
+        this.rotate && "fa-rotate-" + this.rotate,
+        this.flip && "fa-flip-" + this.flip,
+        this.inverse && "fa-inverse",
+        this.stack && "fa-" + this.stack,
+        textColors.indexOf(this.color) === -1
+          ? "text-" + this.color
+          : this.color + "-text"
       ];
     }
   }
@@ -113,6 +143,4 @@ export default Fa;
 export { Fa as mdbIcon };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

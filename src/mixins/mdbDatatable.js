@@ -20,7 +20,7 @@ export const mdbDatatable = {
     mdbIcon,
     mdbRow,
     mdbCol,
-    mdbBtn,
+    mdbBtn
   },
   props: {
     data: {
@@ -182,11 +182,11 @@ export const mdbDatatable = {
     },
     selectColor: {
       type: String,
-      default: 'blue lighten-4'
+      default: "blue lighten-4"
     },
     hoverColor: {
       type: String,
-      default: 'blue lighten-5'
+      default: "blue lighten-5"
     },
     paginationColor: {
       type: String,
@@ -262,7 +262,7 @@ export const mdbDatatable = {
     sort(field, sort) {
       const selected = this.rows[this.selected];
 
-      if (sort, field) {
+      if ((sort, field)) {
         this.recentSort = { field, sort };
         if (this.sorting) {
           sort === "asc"
@@ -317,11 +317,12 @@ export const mdbDatatable = {
     formatRows() {
       this.setDefaultColumns();
       let arrRows = [];
-      let headers = this.columns.map(col => col.field);
       this.rows.map(row => {
         let newRow = [];
-        headers.forEach(header => {
-          let content = row[header] || this.defaultRow;
+        this.columns.forEach(column => {
+          let content = row[column.field] || this.defaultRow;
+          content = column.format ? column.format(content) : content;
+
           newRow.push(content);
         });
         arrRows.push(newRow);
@@ -338,7 +339,7 @@ export const mdbDatatable = {
           };
         }
       });
-    }
+    },
   },
 
   mounted() {

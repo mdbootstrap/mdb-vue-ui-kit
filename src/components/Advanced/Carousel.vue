@@ -66,17 +66,17 @@
         <a
           class="carousel-control-prev"
           @click="changeActiveItem(activeItem - 1)"
-           style="z-index: 1000"
         >
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <i v-if="controllIcons && controllIcons.length > 0" :class="controllIcons[0]"></i>
+          <span v-else class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="sr-only">Prev</span>
         </a>
         <a
           class="carousel-control-next"
           @click="changeActiveItem(activeItem + 1)"
-           style="z-index: 1000"
         >
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <i v-if="controllIcons && controllIcons.length > 0" :class="controllIcons[1]"></i>
+          <span v-else class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="sr-only">Next</span>
         </a>
       </div>
@@ -121,5 +121,9 @@ export { Carousel as mdbCarousel };
 .carousel {
   height: max-content;
   transition: height 0.25s linear;
+}
+
+.carousel-control-prev, .carousel-control-next {
+  z-index: 1000;
 }
 </style>

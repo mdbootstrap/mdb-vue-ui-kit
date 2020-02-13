@@ -8,15 +8,21 @@ const ScrollSpy = {
       links: [],
       container: window,
       scrollPosition: null,
-      visible: 0.5
+      visible: 0.5,
+      async: false
     };
 
     if (binding.value) {
-      el.scrollSpy.container = document.getElementById(binding.value.container) || window;
+      el.scrollSpy.container =
+        document.getElementById(binding.value.container) || window;
       el.scrollSpy.visible = binding.value.visible || 0.5;
+      el.scrollSpy.async = binding.value.async || false;
     }
 
-    el.scrollSpy.scrollPosition = el.scrollSpy.container === window ? el.scrollSpy.container.scrollY : el.scrollSpy.container.scrollTop;
+    el.scrollSpy.scrollPosition =
+      el.scrollSpy.container === window
+        ? el.scrollSpy.container.scrollY
+        : el.scrollSpy.container.scrollTop;
 
     el.scrollSpy.findHrefs = node => {
       if (node.attributes && node.attributes.href) {
@@ -50,13 +56,15 @@ const ScrollSpy = {
 
       el.scrollSpy.links.forEach(link => {
         const element = document.querySelector(link.hash);
+        if (!element) return;
         const rect = element.getBoundingClientRect();
 
         let condition;
 
         if (container === window) {
           condition =
-            window.innerHeight > rect.top + rect.height * el.scrollSpy.visible &&
+            window.innerHeight >
+              rect.top + rect.height * el.scrollSpy.visible &&
             rect.top + rect.height * (1 - el.scrollSpy.visible) >= 0;
         } else {
           const containerRect = container.getBoundingClientRect();
@@ -64,7 +72,8 @@ const ScrollSpy = {
           condition =
             rect.top + rect.height * el.scrollSpy.visible <=
               containerRect.top + containerRect.height &&
-            rect.top + rect.height * (1 - el.scrollSpy.visible) >= containerRect.top;
+            rect.top + rect.height * (1 - el.scrollSpy.visible) >=
+              containerRect.top;
         }
 
         link.isLinkActive = condition;
@@ -83,8 +92,6 @@ const ScrollSpy = {
         el.scrollSpy.setActive(activeLink);
       } else el.scrollSpy.setActive(-1);
     };
-
-
 
     el.scrollSpy.clickHandler = (e, link) => {
       const container = el.scrollSpy.container;
@@ -131,6 +138,26 @@ const ScrollSpy = {
     el.scrollSpy.spy();
 
     el.scrollSpy.container.addEventListener("scroll", el.scrollSpy.spy);
+  },
+  update(el, binding) {
+    if (
+      binding.modifiers.async &&
+      !binding.value.loading &&
+      binding.oldValue.loading
+    ) {
+      setTimeout(() => {
+        el.scrollSpy.links = [];
+        el.scrollSpy.findHrefs(el);
+        el.scrollSpy.links.forEach((link, i) => {
+          link.scrollspyIndex = i;
+          link.addEventListener("click", e =>
+            el.scrollSpy.clickHandler(e, link)
+          );
+        });
+
+        el.scrollSpy.spy();
+      }, 0);
+    }
   },
   unbind(el) {
     window.removeEventListener("scroll", el.scrollSpy.spy);

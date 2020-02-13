@@ -38,7 +38,8 @@ const Btn =  {
       type: String
     },
     type: {
-      type: String
+      type: String,
+      default: "button"
     },
     active: {
       type: Boolean,
