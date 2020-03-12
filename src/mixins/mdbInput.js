@@ -133,6 +133,9 @@ export const mdbInput = {
     ariaLabelledBy: {
       type: String
     },
+    ariaOwns: {
+      type: String
+    },
     ariaMultiselectable: Boolean,
     ariaDisabled: Boolean,
     ariaRequired: Boolean,
