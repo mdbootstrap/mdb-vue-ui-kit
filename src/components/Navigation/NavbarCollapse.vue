@@ -41,12 +41,12 @@ export { NavbarCollapse as mdbNavbarToggler };
     max-height: 0;
   }
   100% {
-    max-height: 500px;
+    max-height: 550px;
   }
 }
 @keyframes slideUp {
   0% {
-    max-height: 500px;
+    max-height: 550px;
   }
   100% {
     max-height: 0;

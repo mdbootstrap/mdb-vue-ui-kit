@@ -1,5 +1,5 @@
 <template>
-  <component :is="tag" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" :class="[className, {'ripple-parent': waves}]" @click.prevent="wave">
+  <component :is="tag" aria-haspopup="true" aria-expanded="false" :class="[className, {'ripple-parent': waves}]" @click.prevent="wave">
     <span v-if="srOnly" class="sr-only">Toggle Dropdown</span>
     <mdb-icon v-if="(icon && !iconRight)" :icon="icon" :far="far || regular" :fal="fal || light" :fab="fab || brands" :class="iconClasses" :color="iconColor"/>
     <slot></slot>

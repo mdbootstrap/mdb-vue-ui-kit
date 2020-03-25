@@ -267,4 +267,8 @@ export { Tabs as mdbTabs };
   transition: all 0.4 linear !important;
   box-sizing: content-box;
 }
+
+.dropdown {
+  display: block;
+}
 </style>

@@ -11,14 +11,18 @@ export default {
     }
     el.clickOutside = handler;
 
-    document.addEventListener('click', el.clickOutside);
+    const event = binding.modifiers.mousedown ? 'mousedown' : 'click';
+
+    document.addEventListener(event, el.clickOutside);
     document.addEventListener('touchstart', el.clickOutside);
   },
 
-  unbind(el) {
+  unbind(el, binding) {
     if (!el.clickOutside) return;
 
-    document.removeEventListener('click', el.clickOutside);
+    const event = binding.modifiers.mousedown ? 'mousedown' : 'click';
+
+    document.removeEventListener(event, el.clickOutside);
     document.removeEventListener('touchstart', el.clickOutside);
     delete el.clickOutside;
   }
