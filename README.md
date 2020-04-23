@@ -58,7 +58,7 @@ __________
 
 # Version
 
-- MDBVue 6.7.0
+- MDBVue 6.7.1
 - Vue 2.6.11
 
 # Quick start

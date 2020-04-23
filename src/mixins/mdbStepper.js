@@ -43,6 +43,13 @@ export default {
     },
     leave(el) {
       el.style.height = '0';
+    },
+    setStepHeight() {
+      if (!this.$refs.stepContent) return;
+
+      this.$refs.stepContent.forEach(step => {
+        step.style.height = step.scrollHeight + 'px';
+      })
     }
   },
   beforeMount() {
@@ -50,9 +57,7 @@ export default {
   },
   mounted() {
     if(this.simpleV) {
-      this.$refs.stepContent.forEach(step => {
-        step.style.height = step.scrollHeight + 'px';
-      })
+      this.setStepHeight();
     }
   },
   watch: {
@@ -61,6 +66,9 @@ export default {
     },
     value(value) {
       this.changeActiveStep(value);
+    },
+    steps() {
+      this.setStepHeight();
     }
   },
 }
