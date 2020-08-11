@@ -1,83 +1,225 @@
+<a href="http://mdbootstrap.com/docs/vue/getting-started/download/"><img src="https://mdbootstrap.com/img/Marketing/general/logo/medium/mdb-vue2.png"></a>
+# Vue Bootstrap with Material Design
 
-<p align="center">
-  <a href="http://mdbootstrap.com/docs/vue/">
-    <img width="500" src="https://mdbootstrap.com/img/Marketing/general/logo/huge/mdb-vue.png">
-  </a>
-</p>
-
-<h1 align="center">Vue Bootstrap with Material Design</h1>
-
-<p align="center">
-  Based on the latest <b>Bootstrap 4</b> and Vue <b>2.6.11</b>.
-</p>
-<p align="center">
-<b>400+</b> material UI elements, <b>600+</b> material icons, <b>74</b> CSS animations, SASS files, templates, tutorials and many more. <b>Free for personal and commercial use.</b>
-</p>
-
-<p align="center">
   <a href="https://npmcharts.com/compare/mdbvue?minimal=true"><img src="https://img.shields.io/npm/dm/mdbvue.svg" alt="Downloads"></a>
   <a href="https://github.com/mdbootstrap/bootstrap-material-design/blob/master/License.pdf"><img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License"></a>
   <a href="https://badge.fury.io/js/mdbvue"><img src="https://badge.fury.io/js/mdbvue.svg" alt="npm"></a>
   <a href="https://twitter.com/intent/tweet/?text=Thanks+@mdbootstrap+for+creating+amazing+and+free+Material+Design+for+Bootstrap+4+UI+KIT%20https://mdbootstrap.com/docs/vue/&hashtags=vuejs,code,webdesign,bootstrap"><img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social"></a>
-</p>
 
-<p align="center">
-  <a href="https://mdbootstrap.com/docs/vue/" target="_blank">
-    <img width="700" src="https://mdbootstrap.com/img/Marketing/products/vue/mdb-free.jpg" alt="logo">
-  </a>
-</p>
+Based on the latest <b>Bootstrap 4</b> and Vue. <b>400+</b> material UI elemens, <b>600+</b> material icons, <b>74</b> CSS animations, SASS files, templates, tutorials and many more. <b>Free for personal and commercial use.</b>
+
+**Please read [contribution rules](https://github.com/mdbootstrap/Vue-Bootstrap-with-Material-Design/blob/master/CONTRIBUTING.md) before starting your improvements in order to help us make the cooperation and reviewing experience as pleasant and effective as possible**
+
+Trusted by <b>2 000 000+</b> developers & designers. Used by companies like
+<table>
+  <tbody>
+    <tr>
+      <td><img src="https://mdbootstrap.com/img/logo/brands/nike.png" style="width: 10px;"></td>
+      <td><img src="https://mdbootstrap.com/img/logo/brands/amazon.png" style="width: 10px;"></td>
+      <td><img src="https://mdbootstrap.com/img/logo/brands/sony.png" style="width: 10px;"></td>
+      <td><img src="https://mdbootstrap.com/img/logo/brands/samsung.png"  style="height: 40px">
+      <td><img src="https://mdbootstrap.com/img/logo/brands/airbus.png" style="height: 40px">
+      <td><img src="https://mdbootstrap.com/img/logo/brands/yahoo.png"  style="height: 40px">
+      <td><img src="https://mdbootstrap.com/img/logo/brands/deloitte.png" style="height: 40px"></div>
+      <td><img src="https://mdbootstrap.com/img/logo/brands/ge.png" style="height: 40px">
+      <td><img src="https://mdbootstrap.com/img/logo/brands/kpmg.png" style="height: 40px">
+      <td><img src="https://mdbootstrap.com/img/logo/brands/unity.png" style="height: 40px">
+      <td><img src="https://mdbootstrap.com/img/logo/brands/ikea.png" style="max-height: 40px">
+      <td><img src="https://mdbootstrap.com/img/logo/brands/aegon.png" style="height: 40px">
+    </tr>
+   </tbody>
+</table>
+
+---
+
+# More Web Development Technologies
+
+|⠀ MDBootstrap Angular⠀ |⠀    MDBootstrap jQuery ⠀­  |⠀ ­   MDBootstrap React⠀  ­ | ­­ MDBootstrap 5   ­­|
+| --------------- | ------------------ | ------------- | ------------- |
+| ­­­ ­­­ ­­­ ­­­ ­­­ ­­­ ­­­ ­­­ ­­­­   [![MDB Angular](https://mdbootstrap.com/img/Marketing/general/logo/small/angular.png")](https://mdbootstrap.com/docs/angular/) ­­ ­­­­ ­­­ |⠀   ­­ ­­­ ­­­ ­­­ ­­­ ­­­   [![MDB jQuery](https://mdbootstrap.com/img/Marketing/general/logo/small/jquery.png)](https://mdbootstrap.com/docs/jquery/)  ⠀­­ ­­­ ­­­ ­­­ ­­­ ­­­  |⠀ ­­ ­­­ ­­­ ­­­ ­­­ ­­­   [![MDB Vue](https://mdbootstrap.com/img/Marketing/general/logo/small/react.png)](https://mdbootstrap.com/docs/react/)    ­­ ­­­ ­­­ ­­­ ­­­ ­­­   |    ­­­ ­­­ ­­­ ­­­ ­­­ ­­­      [![MDB 5](https://mdbootstrap.com/wp-content/uploads/2020/08/bootstrap5-logo.png)](https://mdbootstrap.com/docs/standard/)   ⠀   ­­ ­­­ ­­­ ­­­ ­­­ ­­­
 
 
-__________
+# Quick Start 
 
+ <a href="https://youtu.be/s6ox3b9Xedc"><img src="https://mdbootstrap.com/wp-content/uploads/2020/08/vue-play-yt.png"></a>
 
-## Table of Contents
+According to your preference, you can follow a [video](https://youtu.be/s6ox3b9Xedc) or [written version](https://mdbootstrap.com/docs/vue/getting-started/quick-start/)
 
-* [Other Technologies](#other-technologies)
-* [Demo](#demo)
-* [Version](#version)
-* [Quick start](#quick-start)
-* [Supported Browsers](#supported-browsers)
-* [Contributing](#contributing)
-* [Additional tutorials](#additional-tutorials)
-* [PRO verion](#pro-version)
-* [Documentation](#documentation)
-* [Highlights](#highlights)
-* [Useful Links](#useful-links)
-* [Social Media](#social-media)
-* [Contact](#contact)
+Also, you can install MDB Free using NPM [installation guide](https://mdbootstrap.com/docs/vue/getting-started/quick-start/)
 
+# MDB CLI - the fastest way to create and host MDB projects
 
-# Other Technologies
-
-[<img src="https://mdbootstrap.com/img/Marketing/general/logo/small/angular.png"/>](https://mdbootstrap.com/docs/angular/)[<img src="https://mdbootstrap.com/img/Marketing/general/logo/small/react.png"/>](https://mdbootstrap.com/docs/react/)[<img src="https://mdbootstrap.com/img/Marketing/general/logo/small/jquery.png"/>](https://mdbootstrap.com/docs/vue/)
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="middle">
+        <a href="https://mdbootstrap.com/cli/">
+          <img
+            src="https://mdbootstrap.com/img/Marketing/products/cli/cli-free.jpg"
+            style="width: 60px;">
+        </a>
+      </td>
+      <td align="left" valign="top">
+        <b>Initiate</b>
+        <br />
+        With MDB CLI you can start a new project within seconds! Use <b><code>mdb init</code></b> command and start with a pre-set configuration!
+      </td>
+      <td align="left" valign="top">
+        <b>Publish and host</b>
+        <br />
+        Make your project visible with <b><code>mdb publish</code></b>, no need to store your code, simply get the link and share it with the world!
+      </td>
+        <td align="center">
+          <b><a href="https://mdbootstrap.com/cli/">Get started</a> </p>
+        </td>
+    </tr>
+  </tbody>
+</table>
 
 # Demo
 
- - [Main demo](https://vue.mdbootstrap.com/)
+### Carousel
 
-# Version
+<p>Vue Bootstrap carousel is responsive and interactive slideshow which is created for presenting content, especially images and videos.</p>
 
-- MDBVue 6.7.1
-- Vue 2.6.11
+<a href="https://mdbootstrap.com/docs/vue/advanced/carousel/" alt="Bootstrap 5" rel="dofollow">
+  <p align="center">
+    <img src="https://mdbootstrap.com/img/Marketing/campaigns/demo4-carousel-mask.gif">
+  </p>
+</a>
 
-# Quick start
+### Loader / Spinner
 
-``` 
-bash
+<p>Vue Bootstrap loader is animation that is used to keep visitors entertained while the page is still loading, which helps to increase the user experience.</p>
 
-# install dependencies
-npm install / yarn
+<a href="https://mdbootstrap.com/docs/vue/components/spinners/" alt="Bootstrap 5" rel="dofollow">
+  <p align="center">
+    <img src="https://mdbootstrap.com/img/Marketing/campaigns/demo-loader.gif">
+  </p>
+</a>
 
-# serve with hot reload at localhost:8080
-npm run dev / yarn start
+<a href="https://mdbootstrap.com/docs/vue/components/spinners/" alt="Bootstrap 5" rel="dofollow">
+  <p align="center">
+    <img src="https://mdbootstrap.com/img/Marketing/campaigns/demo-color-spinners.gif">
+  </p>
+</a>
 
-# build for production with minification
-npm run build / yarn build
+<a href="https://mdbootstrap.com/docs/vue/components/spinners/" alt="Bootstrap 5" rel="dofollow">
+  <p align="center">
+    <img src="https://mdbootstrap.com/img/Marketing/campaigns/demo4-multicolor.gif">
+  </p>
+</a>
 
-# build for production and view the bundle analyzer report
-npm run build --report / yarn build --report
-```
+<a href="https://mdbootstrap.com/docs/vue/components/spinners/" alt="Bootstrap 5" rel="dofollow">
+  <p align="center">
+    <img src="https://mdbootstrap.com/img/Marketing/campaigns/demo4-crazyloader.gif">
+  </p>
+</a>
+
+### Buttons
+
+<p>Vue Bootstrap buttons are components which are triggering a desirable user interaction. Easy to customize in terms of size, shape, and color.</p>
+
+<a href="https://mdbootstrap.com/docs/vue/components/buttons/" alt="Bootstrap 5" rel="dofollow">
+  <p align="center">
+    <img src="https://mdbootstrap.com/img/Marketing/campaigns/demo4-buttons.gif">
+  </p>
+</a>
+
+<a href="https://mdbootstrap.com/docs/vue/components/buttons/" alt="Bootstrap 5" rel="dofollow">
+  <p align="center">
+    <img src="https://mdbootstrap.com/img/Marketing/campaigns/demo4-social-buttons.png">
+  </p>
+</a>
+
+### Cards
+
+<p>Vue Bootstrap cards are components which display content build of different elements with characteristic shadows, depth and hover effects.</p>
+
+<a href="https://mdbootstrap.com/docs/vue/components/cards/" alt="Bootstrap 5" rel="dofollow">
+  <p align="center">
+    <img src="https://mdbootstrap.com/img/Marketing/campaigns/demo4-cards-cascading.png">
+  </p>
+</a>
+
+<a href="https://mdbootstrap.com/docs/vue/components/cards/" alt="Bootstrap 5" rel="dofollow">
+  <p align="center">
+    <img src="https://mdbootstrap.com/img/Marketing/campaigns/demo4-fancy-cards.gif">
+  </p>
+</a>
+
+
+<a href="https://mdbootstrap.com/docs/vue/components/cards/" alt="Bootstrap 5" rel="dofollow">
+  <p align="center">
+    <img src="https://mdbootstrap.com/img/Marketing/campaigns/demo4-cards-overlay.png">
+  </p>
+</a>
+
+### Alerts 
+
+<p>Vue Bootstrap alerts are feedback messages which are displayed after specific actions preceded by the user. Length of the text is not limited.</p>
+
+<a href="https://mdbootstrap.com/docs/vue/components/cards/" alt="Bootstrap 5" rel="dofollow">
+  <p align="center">
+    <img src="https://mdbootstrap.com/img/Marketing/campaigns/demo4-alerts.png">
+  </p>
+</a>
+
+### Chart
+
+<p>Vue Bootstrap charts are graphical representations of data. Charts come in different sizes and shapes: bar, line, pie, radar, polar and more.</p>
+
+<a href="https://mdbootstrap.com/docs/vue/advanced/charts/" alt="Bootstrap 5" rel="dofollow">
+  <p align="center">
+    <img src="https://mdbootstrap.com/img/Marketing/campaigns/demo4-charts.gif">
+  </p>
+</a>
+
+<a href="https://mdbootstrap.com/docs/vue/advanced/charts/" alt="Bootstrap 5" rel="dofollow">
+  <p align="center">
+    <img src="https://mdbootstrap.com/img/Marketing/campaigns/demo4-charts-bar.gif">
+  </p>
+</a>
+
+### Hamburger Menu
+
+<p>Vue Bootstrap Hamburger menu is a navigation with additional hamburger looks-like icon which activates hidden menu elements in Navbar or Sidenav.</p>
+
+<a href="https://mdbootstrap.com/docs/vue/navigation/hamburger-menu/" alt="Bootstrap 5" rel="dofollow">
+  <p align="center">
+    <img src="https://mdbootstrap.com/img/Marketing/campaigns/demo4-hamburgermenu.gif">
+  </p>
+</a>
+
+### Footer
+
+<p>A footer is an additional navigation component. It can hold links, buttons, company info, copyrights, forms, and many other elements.</p>
+
+<a href="https://mdbootstrap.com/docs/vue/navigation/footer/" alt="Bootstrap 5" rel="dofollow">
+  <p align="center">
+    <img src="https://mdbootstrap.com/img/Marketing/campaigns/demo-footer.png">
+  </p>
+</a>
+
+### Sidenav
+
+<p>Vue Bootstrap sidenav is a vertical navigation component which apart from traditional, text links, might embed icons, dropdowns, avatars or search forms.</p>
+
+<a href="https://mdbootstrap.com/docs/vue/navigation/sidenav/" alt="Bootstrap 5" rel="dofollow">
+  <p align="center">
+    <img src="https://mdbootstrap.com/img/Marketing/campaigns/demo4-sidenav.gif">
+  </p>
+</a>
+
+### Modal
+
+<p>Vue Bootstrap modal is lightweight, but powerful & multipurpose popup. Learn how to manipulate size, styles & position. Multiple examples and detailed tutorial.</p>
+
+<a href="https://mdbootstrap.com/docs/vue/modals/basic/" alt="Bootstrap 5" rel="dofollow">
+  <p align="center">
+    <img src="https://mdbootstrap.com/img/Marketing/campaigns/demo-modal.gif">
+  </p>
+</a>
 
 # Supported browsers
 
@@ -89,119 +231,39 @@ Alternative browsers which use the latest version of WebKit, Blink, or Gecko, wh
 
 Generally speaking, MDBootstrap supports the latest versions of each major platform’s default browsers. Note that proxy browsers (such as Opera Mini, Opera Mobile’s Turbo mode, UC Browser Mini, Amazon Silk) are not supported.
 
-|  | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Chrome  | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Firefox  |  [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Safari   | Android Browser & WebView  |                  [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="IE / Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br> Miscrosoft Edge                      |
-|:--------------------:|:---------------------------:|:----------------------------:|:----------------------------:|:----------------------------:|:-------------------------------------------------------------------------:|
-| Android | Supported | Supported | N/A | Android v5.0+ supported | Supported |
-| iOS | Supported | Supported | Supported | N/A | Supported |
-| Windows 10 Mobile | N/A | N/A | N/A | N/A | Supported |
+|                   | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Safari | Android Browser & WebView | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="IE / Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br> Miscrosoft Edge |
+| :---------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+|      Android      |                                                                                                   Supported                                                                                                   |                                                                                                     Supported                                                                                                     |                                                                                                      N/A                                                                                                      |  Android v5.0+ supported  |                                                                                                       Supported                                                                                                        |
+|        iOS        |                                                                                                   Supported                                                                                                   |                                                                                                     Supported                                                                                                     |                                                                                                   Supported                                                                                                   |            N/A            |                                                                                                       Supported                                                                                                        |
+| Windows 10 Mobile |                                                                                                      N/A                                                                                                      |                                                                                                        N/A                                                                                                        |                                                                                                      N/A                                                                                                      |            N/A            |                                                                                                       Supported                                                                                                        |
 
 ### Desktop browsers
 
 Similarly, the latest versions of most desktop browsers are supported.
 
-|  | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Chrome  |  [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Firefox  | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="IE / Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br> Internet Explorer  |  [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="Internet Explorer / Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br> Edge  | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png" alt="Opera" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Opera                  |       [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Safari       |
-|:--------------------:|:-----------------------------:|:------------------------------:|:------------------------------:|:----------------------------:|:-------------------------------------------------------------------------:|:------------------------------:|
-| Mac | Supported | Supported | N/A | N/A | Supported | Supported |
-| Windows  | Supported | Supported | N/A | Supported | Supported | Not supported |
+|         | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="IE / Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br> Internet Explorer | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="Internet Explorer / Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br> Edge | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png" alt="Opera" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Opera | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Safari |
+| :-----: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+|   Mac   |                                                                                                   Supported                                                                                                   |                                                                                                     Supported                                                                                                     |                                                                                                           N/A                                                                                                            |                                                                                                            N/A                                                                                                             |                                                                                                 Supported                                                                                                 |                                                                                                   Supported                                                                                                   |
+| Windows |                                                                                                   Supported                                                                                                   |                                                                                                     Supported                                                                                                     |                                                                                                           N/A                                                                                                            |                                                                                                         Supported                                                                                                          |                                                                                                 Supported                                                                                                 |                                                                                                 Not supported                                                                                                 |
 
-# Contributing
 
-Please read [CONTRIBUTING.md](https://github.com/mdbootstrap/Vue-Bootstrap-with-Material-Design/blob/master/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
+## Useful resources
 
-# Getting started
+Here you'll find more useful resources, like [Getting Started](https://mdbootstrap.com/docs/vue/getting-started/download/), [Freebies](https://mdbootstrap.com/freebies/), [Premium Templates](https://mdbootstrap.com/templates/) & [snippet editor](https://mdbootstrap.com/snippets/)
 
- - [5min Quick Start](https://mdbootstrap.com/docs/vue/getting-started/quick-start/)
+## Connect with us on
 
-# Additional tutorials
+[Twitter](https://twitter.com/MDBootstrap) | [Facebook](https://www.facebook.com/mdbootstrap) | [Pinterest](https://pl.pinterest.com/mdbootstrap) | [Dribbble](https://dribbble.com/mdbootstrap) | [LinkedIn](https://www.linkedin.com/company/material-design-for-bootstrap) | [YouTube](https://www.youtube.com/channel/UC5CF7mLQZhvx8O5GODZAhdA)
 
- - [MDB - Bootstrap tutorial](https://mdbootstrap.com/education/bootstrap/)
-
- - [MDB - Wordpress tutorial](https://mdbootstrap.com/education/wordpress/)
-
-# PRO version
-
- - [Vue Bootstrap with Material Design PRO](https://mdbootstrap.com/products/vue-ui-kit/)
-
-# Documentation
-
-[Huge, detailed documentation avilable online](https://mdbootstrap.com/docs/vue/)
-
-# Highlights:
-
-**Bootstrap 4**
-Up-to-date with the latest standards of Bootstrap 4 and all the best it has to offer.
-
-**Detailed documentation**
-Intuitive and user-friendly documentation, created with a copy-paste approach.
-
-**No jQuery**
-Writing your code with pure Vue is now quicker, easier, and cleaner.
-
-**Cross-browser compatibility**
-Works perfectly with Chrome, Firefox, Safari, Opera and Microsoft Edge.
-
-**Frequent updates**
-Expect any bugs being fixed in a matter of days.
-
-**Active community**
-MDB is broadly used by professionals on multiple levels, who are ready to aid you.
-
-**Useful helpers**
-Reduce the frequency of highly repetitive declarations in your CSS.
-
-**Technical support**
-Every day we help our users with their issues and problems.
-
-**SASS files**
-Thought-out .scss files come in a compile-ready form.
-
-**Flexbox**
-Full support of Flexbox layout system lets you forget about alignment issues.
-
-### Support MDB developers
+## Support MDB developers
 
 - Star our GitHub repo
 - Create pull requests, submit bugs, suggest new features or documentation updates
 - Follow us on [Twitter](https://twitter.com/mdbootstrap)
 - Like our page on [Facebook](https://www.facebook.com/mdbootstrap)
 
-A big ❤️ **thank you to all our users** ❤️ who are working with us to improve the software. We wouldn't be where we are without you.
+A BIG ❤️ **thank you to all our users** ❤️ who are working with us to improve the software. We wouldn't be where we are without you.
 
-# Useful Links
+## PRO version:
 
- - [Getting started](https://mdbootstrap.com/docs/vue/getting-started/download/)
-
- - [5 min quick start](https://mdbootstrap.com/docs/vue/getting-started/quick-start/)
-
- - [Material Design + Bootstrap Tutorial](https://mdbootstrap.com/education/bootstrap/)
-
- - [Freebies](https://mdbootstrap.com/freebies/)
-
- - [Premium Templates](https://mdbootstrap.com/templates/)
-
- - [Changelog](https://mdbootstrap.com/vue/changelog/)
- 
- - [MDB jQuery repo](https://github.com/mdbootstrap/bootstrap-material-design)
-
- - [MDB React repo](https://github.com/mdbootstrap/React-Bootstrap-with-Material-Design)
-
- - [MDB Angular repo](https://github.com/mdbootstrap/Angular-Bootstrap-with-Material-Design)
-
-# Social Media
-
- - [Twitter](https://twitter.com/MDBootstrap)
-
- - [Facebook](https://www.facebook.com/mdbootstrap) 
-
- - [Pinterest](https://pl.pinterest.com/mdbootstrap)
-
- - [Google+](https://plus.google.com/u/0/b/10786.1.0883699620484/+Mdbootstrap/posts)
-
- - [Dribbble](https://dribbble.com/mdbootstrap)
-
- - [LinkedIn](https://www.linkedin.com/company/material-design-for-bootstrap)
-
-# Contact
-
- - contact@mdbootstrap.com
-
+[Vue Bootstrap with Material Design PRO](https://mdbootstrap.com/pricing/vue/pro/)
