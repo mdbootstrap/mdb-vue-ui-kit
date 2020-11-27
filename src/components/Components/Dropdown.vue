@@ -69,4 +69,7 @@ export { Dropdown as mdbDropdown };
   outline: none;
 }
 
+.dropdown-toggle > * {
+  pointer-events: none;
+}
 </style>

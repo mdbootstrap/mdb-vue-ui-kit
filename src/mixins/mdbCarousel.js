@@ -38,6 +38,10 @@ export default {
     indicators: {
       type: Boolean,
       default: false
+    },
+    loader: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -49,7 +53,8 @@ export default {
       queue: 0,
       leaveClass: "fadeOut",
       enterClass: "fadeIn",
-      transition: false
+      transition: false,
+      isLoading: this.loader
     };
   },
   computed: {

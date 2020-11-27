@@ -29,6 +29,7 @@
                 :src="items[i].src"
                 :alt="items[i].alt"
                 class="d-block w-100"
+                @load="onFileLoad"
               />
               <video
                 v-if="items[i].video"
@@ -80,6 +81,22 @@
           <span class="sr-only">Next</span>
         </a>
       </div>
+      
+      <!-- loader  -->
+      <transition name="fade">
+        <div class="carousel-loader" v-if="isLoading">
+          <div class="spinner-grow mx-3" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+          <div class="spinner-grow mx-3" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+          <div class="spinner-grow mx-3" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+      </transition>
+      <!-- loader  -->
     </div>
   </component>
 </template>
@@ -88,6 +105,11 @@
 import mdbCarousel from "../../mixins/mdbCarousel";
 
 const Carousel = {
+  data() {
+    return {
+      filesLoaded: 0
+    };
+  },
   computed: {
     className() {
       return ["carousel", "carousel-fade"];
@@ -95,6 +117,19 @@ const Carousel = {
     numOfItems() {
       if (typeof this.items === "number") return this.items;
       return this.items.length;
+    }
+  },
+  methods: {
+    onFileLoad() {
+      if (!this.loader) return;
+  
+      this.filesLoaded++;
+
+      if (this.filesLoaded === this.items.length) {
+        setTimeout(() => {
+          this.isLoading = false;
+        }, 300);
+      }
     }
   },
   mixins: [mdbCarousel]
@@ -125,5 +160,25 @@ export { Carousel as mdbCarousel };
 
 .carousel-control-prev, .carousel-control-next {
   z-index: 1000;
+}
+
+.carousel-loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+  z-index: 10000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>

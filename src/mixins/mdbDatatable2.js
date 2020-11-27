@@ -352,6 +352,9 @@ export const mdbDatatable2 = {
         .then(json => {
           this.columns = json.columns;
           this.rows = json.rows;
+
+          this.setupIDColumn();
+
           this.$emit("fields", this.columns);
         })
         .then(() => {
@@ -364,7 +367,8 @@ export const mdbDatatable2 = {
     updateData() {
       this.fetchData();
       this.reactiveFlag = true;
-      this.updatedKey = Math.floor(Math.random() * 100000000);
+      
+      this.forceUpdate();
     },
     selectRow(row) {
       if (this.multiselectable) {
@@ -440,57 +444,66 @@ export const mdbDatatable2 = {
           if (this.searching.field === col.field) this.searchField = key;
         })
       }
+    },
+    setupIDColumn() {
+      if (this.columns[0] && this.columns[0].field !== 'mdbID') {
+        let key = 0;
+  
+        // add id field
+        this.columns.unshift({
+          label: 'mdbID',
+          field: 'mdbID',
+          sort: 'asc'
+        });
+  
+        this.rows.forEach((row, index) => {
+          key++;
+          this.rows[index].mdbID = key;
+        })
+      }
+    },
+    setup() {
+      // bind data or download form API
+      if (typeof this.value === "string") {
+        this.fetchData();
+      }
+      //reactivness in data table
+      if (this.reactive) {
+        this.interval = setInterval(this.updateData, this.time);
+      }
+
+      // findout rows amount, and slice it into array (split into pages)
+      const pagesAmount = Math.ceil(this.filteredRows.length / this.entries);
+      this.pages = [];
+      if (this.pagination) {
+        for (let i = 1; i <= pagesAmount; i++) {
+          const pageEndIndex = i * this.entries;
+          this.pages.push(
+            this.filteredRows.slice(pageEndIndex - this.entries, pageEndIndex)
+          );
+        }
+      } else {
+        this.pages.push(this.filteredRows);
+      }
+      this.activePage = 0;
+
+      // initial sorting
+      if (this.order) {
+        this.sort(this.columns[this.order[0]].field, this.order[1]);
+      }
+
+      this.$emit("pages", this.pages);
+      this.$emit("fields", this.columns);
+    },
+    forceUpdate() {
+      this.updatedKey =  Math.floor(Math.random() * 100000000);
     }
   },
   beforeMount() {
-    if (this.columns[0].field !== 'mdbID') {
-      let key = 0;
-
-      // add id field
-      this.columns.unshift({
-        label: 'mdbID',
-        field: 'mdbID',
-        sort: 'asc'
-      });
-
-      this.rows.forEach((row, index) => {
-        key++;
-        this.rows[index].mdbID = key;
-      })
-    }
+    this.setupIDColumn();
   },
   mounted() {
-    // bind data or download form API
-    if (typeof this.value === "string") {
-      this.fetchData();
-    }
-    //reactivness in data table
-    if (this.reactive) {
-      this.interval = setInterval(this.updateData, this.time);
-    }
-
-    // findout rows amount, and slice it into array (split into pages)
-    const pagesAmount = Math.ceil(this.filteredRows.length / this.entries);
-    this.pages = [];
-    if (this.pagination) {
-      for (let i = 1; i <= pagesAmount; i++) {
-        const pageEndIndex = i * this.entries;
-        this.pages.push(
-          this.filteredRows.slice(pageEndIndex - this.entries, pageEndIndex)
-        );
-      }
-    } else {
-      this.pages.push(this.filteredRows);
-    }
-    this.activePage = 0;
-
-    // initial sorting
-    if (this.order) {
-      this.sort(this.columns[this.order[0]].field, this.order[1]);
-    }
-
-    this.$emit("pages", this.pages);
-    this.$emit("fields", this.columns);
+    this.setup();
   },
   beforeDestroy() {
     if (this.reactive) {
@@ -498,6 +511,14 @@ export const mdbDatatable2 = {
     }
   },
   watch: {
+    value(value) {
+      this.rows = value.rows || [];
+      this.columns = value.columns || [];
+
+      this.setup();
+
+      this.setupIDColumn();
+    },
     data(newVal) {
       this.columns = newVal.columns;
     },

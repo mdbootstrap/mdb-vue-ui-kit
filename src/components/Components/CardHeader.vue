@@ -41,4 +41,15 @@ export { CardHeader as mdbCardHeader };
 </script>
 
 <style scoped>
+.card-dark p,
+.card-dark i,
+.card-dark h4,
+.card-dark a,
+.card-dark a:hover {
+  color: white;
+}
+
+.card-dark hr {
+  border-top: 1px solid rgba(255,255,255,.1);
+}
 </style>

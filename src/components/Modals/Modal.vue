@@ -3,10 +3,10 @@
     @enter="enter"
     @after-enter="afterEnter"
     @before-leave="beforeLeave"
-    @after-leave="afterLeave" 
+    @after-leave="afterLeave"
   >
     <component :is="tag" v-if="show" :class="wrapperClass" @click.self="away">
-      <div :class="dialogClass" role="document" >
+      <div :class="dialogClass" role="document">
         <div :class="contentClass" :style="computedContentStyle">
           <slot></slot>
         </div>
@@ -141,7 +141,19 @@ const Modal = {
     },
     afterLeave() {
       this.$parent.$emit('hidden', this);
+    },
+    handleEscKeyUp(e) {
+      if (e.key === "Escape" && this.show === true) {
+        this.away();
+      }
     }
+  },
+  mounted() {
+    window.addEventListener("keyup", this.handleEscKeyUp);
+  },
+ 
+  beforeDestroy() {
+    window.removeEventListener("keyup", this.handleEscKeyUp);
   },
   computed: {
     wrapperClass() {
