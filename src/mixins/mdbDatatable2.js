@@ -64,7 +64,7 @@ export const mdbDatatable2 = {
     },
     fixedColsBg: {
       type: String,
-      default: 'white'
+      default: "white"
     },
     headerColor: {
       type: String
@@ -75,7 +75,7 @@ export const mdbDatatable2 = {
     },
     headerBg: {
       type: String,
-      default: 'white'
+      default: "white"
     },
     hover: {
       type: Boolean,
@@ -120,7 +120,7 @@ export const mdbDatatable2 = {
     },
     searching: {
       type: [String, Object],
-      default: ''
+      default: ""
     },
     sorting: {
       type: Boolean,
@@ -238,8 +238,11 @@ export const mdbDatatable2 = {
       entries: 10,
       pages: [],
       activePage: 0,
-      search: typeof this.searching === 'object' ? this.escapeRegExp(this.searching.value) : this.escapeRegExp(this.searching),
-      searchField: 'all',
+      search:
+        typeof this.searching === "object"
+          ? this.escapeRegExp(this.searching.value)
+          : this.escapeRegExp(this.searching),
+      searchField: "all",
       sortIndex: 0,
       lastFieldSorted: null,
       tableProps: {
@@ -291,31 +294,29 @@ export const mdbDatatable2 = {
       this.activePage = index;
     },
     sort(field, sort) {
-      let selected = '';
+      let selected = "";
       if (Array.isArray(this.selected)) {
         selected = [];
         this.selected.forEach(row => {
           selected.push(this.rows[row]);
-        })
-      } else if (this.selected === 'all') {
-        selected = 'all';
+        });
+      } else if (this.selected === "all") {
+        selected = "all";
       } else {
         selected = this.rows[this.selected];
       }
 
       if ((sort, field)) {
-
-        if (this.recentSort && this.recentSort.field === field){
+        if (this.recentSort && this.recentSort.field === field) {
           this.sortIndex++;
         } else {
           this.sortIndex = 0;
-          sort = 'asc';
+          sort = "asc";
         }
-  
-        if(this.sortIndex === 2) {
+
+        if (this.sortIndex === 2) {
           this.lastFieldSorted = field;
-          field = 'mdbID',
-          sort = 'asc'
+          (field = "mdbID"), (sort = "asc");
         }
 
         this.recentSort = { field, sort };
@@ -333,9 +334,9 @@ export const mdbDatatable2 = {
         this.selected = [];
         selected.forEach(row => {
           this.selected.push(this.rows.indexOf(row));
-        })
-      } else if (this.selected === 'all') {
-        this.selected = 'all';
+        });
+      } else if (this.selected === "all") {
+        this.selected = "all";
       } else {
         this.selected = this.rows.indexOf(selected);
       }
@@ -367,32 +368,32 @@ export const mdbDatatable2 = {
     updateData() {
       this.fetchData();
       this.reactiveFlag = true;
-      
+
       this.forceUpdate();
     },
     selectRow(row) {
       if (this.multiselectable) {
         let index = this.rowsDisplay.indexOf(row);
 
-        if (this.selected === 'all') {
+        if (this.selected === "all") {
           this.selected = [];
           this.value.rows.forEach((row, key) => {
             this.selected.push(key);
-          })
+          });
         } else if (!Array.isArray(this.selected)) {
           this.selected = [];
         }
-        
+
         if (this.selected.includes(index)) {
           this.selected.splice(this.selected.indexOf(index), 1);
         } else {
           this.selected.push(index);
         }
-        
+
         let selectedRows = [];
         this.selected.forEach(row => {
-          selectedRows.push(this.value.rows[row])
-        })
+          selectedRows.push(this.value.rows[row]);
+        });
 
         this.$emit("selected", selectedRows);
       } else {
@@ -405,12 +406,12 @@ export const mdbDatatable2 = {
       }
     },
     toggleSelectAll() {
-      if (this.selected === 'all') {
+      if (this.selected === "all") {
         this.$emit("selected", []);
         this.selected = -1;
       } else {
         this.$emit("selected", this.value.rows);
-        this.selected = 'all';
+        this.selected = "all";
       }
     },
     formatRows() {
@@ -428,7 +429,7 @@ export const mdbDatatable2 = {
       });
       return arrRows;
     },
-    setDefaultColumns() {      
+    setDefaultColumns() {
       this.columns.forEach((col, i) => {
         if (!col) {
           this.columns[i + 1] = {
@@ -442,24 +443,24 @@ export const mdbDatatable2 = {
       if (this.searching.field) {
         this.columns.forEach((col, key) => {
           if (this.searching.field === col.field) this.searchField = key;
-        })
+        });
       }
     },
     setupIDColumn() {
-      if (this.columns[0] && this.columns[0].field !== 'mdbID') {
+      if (this.columns[0] && this.columns[0].field !== "mdbID") {
         let key = 0;
-  
+
         // add id field
         this.columns.unshift({
-          label: 'mdbID',
-          field: 'mdbID',
-          sort: 'asc'
+          label: "mdbID",
+          field: "mdbID",
+          sort: "asc"
         });
-  
+
         this.rows.forEach((row, index) => {
           key++;
           this.rows[index].mdbID = key;
-        })
+        });
       }
     },
     setup() {
@@ -496,7 +497,7 @@ export const mdbDatatable2 = {
       this.$emit("fields", this.columns);
     },
     forceUpdate() {
-      this.updatedKey =  Math.floor(Math.random() * 100000000);
+      this.updatedKey = Math.floor(Math.random() * 100000000);
     }
   },
   beforeMount() {
@@ -522,10 +523,18 @@ export const mdbDatatable2 = {
     data(newVal) {
       this.columns = newVal.columns;
     },
-    searching(newVal) {
-      if (typeof newVal === 'object') {
+    searching(newVal, oldVal) {
+      if (typeof newVal === "object") {
+        if (newVal.value === oldVal.value) {
+          return;
+        }
+
         this.search = this.escapeRegExp(newVal.value);
       } else {
+        if (newVal === oldVal) {
+          return;
+        }
+
         this.search = this.escapeRegExp(newVal);
       }
       this.activePage = 0;

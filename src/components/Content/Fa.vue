@@ -6,84 +6,84 @@
 const Fa = {
   props: {
     icon: {
-      type: String
+      type: String,
     },
     size: {
       type: [Boolean, String],
-      default: false
+      default: false,
     },
     fixed: {
       type: Boolean,
-      default: false
+      default: false,
     },
     pull: {
       type: [Boolean, String],
-      default: false
+      default: false,
     },
     border: {
       type: Boolean,
-      default: false
+      default: false,
     },
     spin: {
       type: Boolean,
-      default: false
+      default: false,
     },
     pulse: {
       type: Boolean,
-      default: false
+      default: false,
     },
     rotate: {
       type: [Boolean, String],
-      default: false
+      default: false,
     },
     flip: {
       type: [Boolean, String],
-      default: false
+      default: false,
     },
     inverse: {
       type: [Boolean, String],
-      default: false
+      default: false,
     },
     stack: {
       type: [Boolean, String],
-      default: false
+      default: false,
     },
     color: {
       type: String,
-      default: ""
+      default: "",
     },
     far: {
       type: Boolean,
-      default: false
+      default: false,
     },
     regular: {
       type: Boolean,
-      default: false
+      default: false,
     },
     fal: {
       type: Boolean,
-      default: false
+      default: false,
     },
     light: {
       type: Boolean,
-      default: false
+      default: false,
     },
     fab: {
       type: Boolean,
-      default: false
+      default: false,
     },
     fad: {
       type: Boolean,
-      default: false
+      default: false,
     },
     duotone: {
       type: Boolean,
-      default: false
+      default: false,
     },
     brands: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   computed: {
     className() {
@@ -107,7 +107,7 @@ const Fa = {
         "brown",
         "grey",
         "blue-grey",
-        "white"
+        "white",
       ];
 
       return [
@@ -131,12 +131,14 @@ const Fa = {
         this.flip && "fa-flip-" + this.flip,
         this.inverse && "fa-inverse",
         this.stack && "fa-" + this.stack,
-        textColors.indexOf(this.color) === -1
-          ? "text-" + this.color
-          : this.color + "-text"
+        this.color
+          ? textColors.indexOf(this.color) === -1
+            ? "text-" + this.color
+            : this.color + "-text"
+          : "",
       ];
-    }
-  }
+    },
+  },
 };
 
 export default Fa;
