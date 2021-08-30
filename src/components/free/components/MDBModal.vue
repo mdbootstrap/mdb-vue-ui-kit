@@ -10,7 +10,7 @@
       v-if="isActive"
       :is="tag"
       :class="wrapperClass"
-      :style="backdropStyle"
+      :style="[backdropStyle, backdropOverflowStyle]"
       :aria-hidden="!isActive"
       :aria-modal="isActive ? true : null"
       :aria-labelledby="labelledby"
@@ -30,7 +30,6 @@
 <script>
 import {
   computed,
-  onBeforeMount,
   onBeforeUnmount,
   onMounted,
   provide,
@@ -52,17 +51,6 @@ export default {
       type: String,
       validator: value => ["sm", "lg", "xl"].indexOf(value.toLowerCase()) > -1
     },
-    side: {
-      type: Boolean,
-      default: false
-    },
-    position: {
-      type: String
-    },
-    frame: {
-      type: Boolean,
-      default: false
-    },
     removeBackdrop: {
       type: Boolean,
       default: false
@@ -78,10 +66,6 @@ export default {
     bgSrc: {
       type: String,
       default: ""
-    },
-    direction: {
-      type: String,
-      default: "top"
     },
     scrollable: {
       type: Boolean,
@@ -99,14 +83,21 @@ export default {
     animation: {
       type: Boolean,
       default: true
-    }
+    },
+    dialogClasses: {
+      type: String
+    },
+    transform: String
   },
   emits: ["show", "shown", "hide", "hidden", "update:modelValue"],
   setup(props, { attrs, emit }) {
     const root = ref("root");
     const dialog = ref("dialog");
-    const dialogTransform = ref("translate(0, -25%)");
+    const dialogTransform = ref("");
+
     const isActive = ref(props.modelValue);
+
+    const thisElement = ref(null);
 
     watchEffect(() => {
       isActive.value = props.modelValue;
@@ -128,12 +119,10 @@ export default {
       return [
         "modal-dialog",
         props.size && "modal-" + props.size,
-        props.side && "modal-side",
-        props.frame && "modal-frame",
-        props.position ? "modal-" + props.position : "",
         props.centered && "modal-dialog-centered",
         props.scrollable && "modal-dialog-scrollable",
-        props.fullscreen && fullscreenClass.value
+        props.fullscreen && fullscreenClass.value,
+        props.dialogClasses
       ];
     });
 
@@ -141,6 +130,17 @@ export default {
       return props.removeBackdrop
         ? false
         : { "background-color": `rgba(0,0,0, 0.5)` };
+    });
+
+    // shouldOverflow with backdropOverflowStyle prevents bottom modal create additional scrollbar on show
+    const shouldOverflow = ref(
+      props.transform === "translate(0,25%)" ? false : true
+    );
+    const backdropOverflowStyle = computed(() => {
+      if (shouldOverflow.value) {
+        return;
+      }
+      return "overflow: hidden";
     });
 
     const computedContentStyle = computed(() => {
@@ -206,48 +206,47 @@ export default {
     };
 
     const enter = el => {
+      shouldOverflow.value =
+        props.transform === "translate(0,25%)" ? false : true;
+
+      dialogTransform.value = props.transform || "translate(0, -25%)";
+
       el.childNodes[0].style.transform = dialogTransform.value;
       el.style.opacity = 0;
       el.style.display = "block";
 
       setScrollbar();
-
-      el.style.paddingRight = `${scrollbarWidth.value}px`;
       document.body.style.paddingRight = `${scrollbarWidth.value}px`;
+      el.style.paddingRight = `${scrollbarWidth.value}px`;
       document.body.classList.add("modal-open");
 
       emit("show", root.value);
     };
     const afterEnter = el => {
-      el.style.opacity = 1;
       el.childNodes[0].style.transform = "translate(0,0)";
+      el.style.opacity = 1;
 
       setTimeout(() => {
+        shouldOverflow.value = true;
         emit("shown", root.value);
       }, 400);
+      thisElement.value = root.value;
     };
     const beforeLeave = el => {
       el.childNodes[0].style.transform = dialogTransform.value;
       el.style.opacity = 0;
-      el.style.paddingRight = null;
-      document.body.style.paddingRight = null;
-      document.body.classList.remove("modal-open");
+      setTimeout(() => {
+        el.style.paddingRight = null;
+        document.body.style.paddingRight = null;
+        document.body.classList.remove("modal-open");
+      }, 200);
 
-      emit("hide", root.value);
+      emit("hide", thisElement.value);
     };
     const afterLeave = () => {
-      emit("hidden", root.value);
+      emit("hidden", thisElement.value);
+      shouldOverflow.value = false;
     };
-
-    onBeforeMount(() => {
-      if (props.direction === "right") {
-        dialogTransform.value = "translate(25%,0)";
-      } else if (props.direction === "bottom") {
-        dialogTransform.value = "translate(0,25%)";
-      } else if (props.direction === "left") {
-        dialogTransform.value = "translate(-25%,0)";
-      }
-    });
 
     onMounted(() => {
       on(window, "keyup", handleEscKeyUp);
@@ -261,6 +260,7 @@ export default {
       wrapperClass,
       dialogClass,
       backdropStyle,
+      backdropOverflowStyle,
       computedContentStyle,
       root,
       dialog,
