@@ -48,7 +48,8 @@ export default {
         props.outline || props.color === "light" || props.color === "link"
           ? { color: "dark" }
           : true
-    }
+    },
+    picker: Boolean
   },
   directives: { mdbRipple },
   inheritAttrs: false,
@@ -58,7 +59,7 @@ export default {
 
     const className = computed(() => {
       return [
-        "btn",
+        !props.picker && "btn",
         props.color && `btn-${props.color}`,
         props.size && `btn-${props.size}`,
         props.outline && `btn-outline-${props.outline}`,

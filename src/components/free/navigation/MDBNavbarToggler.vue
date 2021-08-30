@@ -3,8 +3,6 @@
     :is="tag"
     :class="navTogglerClass"
     type="button"
-    data-mdb-toggle="collapse"
-    :data-mdb-target="target"
     :aria-controls="target"
     :aria-expanded="isExpanded"
     aria-label="Toggle navigation"

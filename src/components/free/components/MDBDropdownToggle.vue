@@ -3,7 +3,6 @@
     :is="tag"
     type="button"
     :class="className"
-    data-mdb-toggle="dropdown"
     :aria-expanded="expanded"
     aria-haspopup="true"
     v-bind="attrs"

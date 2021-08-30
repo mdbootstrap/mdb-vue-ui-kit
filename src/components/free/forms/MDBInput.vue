@@ -23,6 +23,17 @@
   <div v-if="!wrap && customInvalidFeedback" :class="invalidFeedbackClassName">
     {{ customInvalidFeedback }}
   </div>
+  <div v-if="!wrap && formOutline" class="form-notch">
+    <div
+      class="form-notch-leading"
+      :style="{ width: `${notchLeadingWidth}px` }"
+    ></div>
+    <div
+      class="form-notch-middle"
+      :style="{ width: `${notchMiddleWidth}px` }"
+    ></div>
+    <div class="form-notch-trailing"></div>
+  </div>
   <component
     v-if="wrap"
     :is="tag"
@@ -82,7 +93,7 @@ export default {
     id: String,
     label: String,
     labelClass: String,
-    modelValue: [String, Number],
+    modelValue: [String, Number, Date],
     size: String,
     formOutline: {
       type: Boolean,
@@ -233,7 +244,9 @@ export default {
       off(inputRef.value, props.validationEvent, handleValidation);
     });
 
-    watchEffect(() => (inputValue.value = props.modelValue));
+    watchEffect(() => {
+      inputValue.value = props.modelValue;
+    });
 
     watch(
       () => props.isValidated,
