@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { provide, onMounted, onUnmounted, ref } from "vue";
+import { provide, onMounted, onUnmounted, ref, watch } from "vue";
 import { handleBreakpoints } from "../../utils/MDBBreakpointHandler";
 import { on, off } from "../../utils/MDBEventHandlers";
 
@@ -32,7 +32,20 @@ export default {
     const activeTab = ref(null);
     const activeTabId = ref(props.modelValue);
 
+    watch(
+      () => props.modelValue,
+      cur => {
+        if (cur !== activeTabId.value) {
+          activeTabId.value = cur;
+          updateActiveTab(null, cur);
+        }
+      }
+    );
+
     const updateActiveTab = (element, tabId) => {
+      if (!element) {
+        element = document.body.querySelector(`#tab-${tabId}`);
+      }
       if (prevTab.value) {
         emit("hide", { target: prevTab.value, relatedTarget: element });
       }

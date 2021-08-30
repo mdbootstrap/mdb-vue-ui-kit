@@ -7,6 +7,7 @@
     :value="inputValue"
     @input="handleInput"
     ref="inputRef"
+    v-mdb-click-outside="clickOutside"
   />
   <label
     v-if="label && !wrap"
@@ -39,6 +40,7 @@
     :is="tag"
     :class="wrapperClassName"
     :style="validationStyle"
+    v-mdb-click-outside="clickOutside"
   >
     <slot name="prepend" />
     <input
@@ -86,6 +88,7 @@ import {
 } from "vue";
 import { on, off } from "../../utils/MDBEventHandlers";
 import { getUID } from "../../utils/getUID";
+import mdbClickOutside from "@/directives/free/mdbClickOutside.js";
 
 export default {
   name: "MDBInput",
@@ -124,7 +127,8 @@ export default {
       default: "div"
     }
   },
-  emits: ["update:modelValue"],
+  directives: { mdbClickOutside },
+  emits: ["update:modelValue", "click-outside"],
   setup(props, { attrs, emit }) {
     const inputRef = ref("inputRef");
     const inputValue = ref(props.modelValue);
@@ -226,6 +230,10 @@ export default {
       emit("update:modelValue", inputValue.value);
     }
 
+    function clickOutside() {
+      emit("click-outside");
+    }
+
     onMounted(() => {
       calcNotch();
       setPlaceholder();
@@ -273,6 +281,7 @@ export default {
       customInvalidFeedback,
       notchLeadingWidth,
       notchMiddleWidth,
+      clickOutside,
       attrs,
       props
     };

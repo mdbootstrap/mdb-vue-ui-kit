@@ -35,7 +35,6 @@ function MDBPopper() {
     if (isPopperActive.value) {
       return;
     }
-
     isPopperActive.value = true;
     nextTick(() => (popper.value = setupPopper()));
   }

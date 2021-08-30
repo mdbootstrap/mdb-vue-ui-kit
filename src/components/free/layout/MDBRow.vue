@@ -8,7 +8,7 @@
 import { computed } from "vue";
 
 export default {
-  name: "MDBContainer",
+  name: "MDBRow",
   props: {
     tag: {
       type: String,
