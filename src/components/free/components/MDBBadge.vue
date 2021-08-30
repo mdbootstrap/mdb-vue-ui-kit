@@ -16,8 +16,8 @@ export default {
     notification: Boolean,
     tag: {
       type: String,
-      default: "span"
-    }
+      default: "span",
+    },
   },
   setup(props, { attrs }) {
     const className = computed(() => {
@@ -26,15 +26,15 @@ export default {
         props.color && `bg-${props.color}`,
         props.pill && "rounded-pill",
         props.dot && "badge-dot",
-        props.notification && "badge-notification"
+        props.notification && "badge-notification",
       ];
     });
 
     return {
       className,
       attrs,
-      props
+      props,
     };
-  }
+  },
 };
 </script>

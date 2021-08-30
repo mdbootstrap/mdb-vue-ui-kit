@@ -15,7 +15,7 @@
       :class="{
         tooltip: true,
         fade: true,
-        'tooltip-inner': true
+        'tooltip-inner': true,
       }"
       :style="[widthStyle]"
     >
@@ -34,7 +34,7 @@ export default {
   props: {
     tag: {
       type: String,
-      default: "span"
+      default: "span",
     },
     modelValue: Boolean,
     reference: String,
@@ -43,27 +43,27 @@ export default {
       type: Object,
       default() {
         return {};
-      }
+      },
     },
     offset: {
       type: String,
-      default: "0, 5"
+      default: "0, 5",
     },
     direction: {
       type: String,
       default: "top",
-      validator: value =>
-        ["top", "right", "bottom", "left"].indexOf(value.toLowerCase()) > -1
+      validator: (value) =>
+        ["top", "right", "bottom", "left"].indexOf(value.toLowerCase()) > -1,
     },
     maxWidth: {
       type: Number,
-      default: 276
+      default: 276,
     },
     arrow: {
       type: Boolean,
-      default: false
+      default: false,
     },
-    disabled: Boolean
+    disabled: Boolean,
   },
   setup(props, { attrs, emit }) {
     const {
@@ -71,7 +71,7 @@ export default {
       isPopperActive,
       openPopper,
       closePopper,
-      destroyPopper
+      destroyPopper,
     } = MDBPopper();
     const triggerEl = ref("triggerEl");
     const popperEl = ref("popperEl");
@@ -95,11 +95,11 @@ export default {
         eventsEnabled: props.updatePosition,
         modifiers: {
           offset: {
-            offset: props.arrow ? "0" : props.offset
-          }
+            offset: props.arrow ? "0" : props.offset,
+          },
         },
         gpuAcceleration: false,
-        ...props.options
+        ...props.options,
       };
 
       setPopper(triggerEl.value, popperEl.value, config);
@@ -145,6 +145,8 @@ export default {
       } else if (!props.modelValue && !isPopperActive.value) {
         return false;
       }
+
+      return false;
     });
 
     const onMouseOver = () => {
@@ -166,8 +168,8 @@ export default {
       onMouseOver,
       onMouseOut,
       attrs,
-      props
+      props,
     };
-  }
+  },
 };
 </script>

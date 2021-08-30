@@ -21,53 +21,53 @@ export default {
   props: {
     tag: {
       type: String,
-      default: "nav"
+      default: "nav",
     },
     bg: {
-      type: String
+      type: String,
     },
     dark: {
       type: Boolean,
-      default: false
+      default: false,
     },
     light: {
       type: Boolean,
-      default: false
+      default: false,
     },
     double: {
       type: Boolean,
-      default: false
+      default: false,
     },
     expand: {
-      type: String
+      type: String,
     },
     position: {
-      type: String
+      type: String,
     },
     transparent: {
       type: Boolean,
-      default: false
+      default: false,
     },
     scrolling: {
       type: Boolean,
-      default: false
+      default: false,
     },
     scrollingOffset: {
       type: Number,
-      default: 100
+      default: 100,
     },
     center: {
       type: Boolean,
-      default: false
+      default: false,
     },
     container: {
       type: [Boolean, String],
-      default: false
+      default: false,
     },
     classContainer: {
-      type: String
+      type: String,
     },
-    classNavbar: String
+    classNavbar: String,
   },
   setup(props, { attrs }) {
     const navClass = computed(() => {
@@ -95,7 +95,7 @@ export default {
         props.scrolling && scrollingClass.value,
         props.double && "double-nav",
         props.center && "justify-content-center",
-        props.classNavbar
+        props.classNavbar,
       ];
     });
 
@@ -107,7 +107,7 @@ export default {
         props.container !== true
           ? `container-${props.container}`
           : "container-fluid",
-        props.classContainer && props.classContainer
+        props.classContainer && props.classContainer,
       ];
     });
 
@@ -161,8 +161,8 @@ export default {
       navClass,
       containerClass,
       props,
-      attrs
+      attrs,
     };
-  }
+  },
 };
 </script>

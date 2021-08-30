@@ -138,5 +138,5 @@ export {
   MDBRange,
   MDBSwitch,
   mdbRipple,
-  mdbScrollspy
+  mdbScrollspy,
 };

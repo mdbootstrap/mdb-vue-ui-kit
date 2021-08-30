@@ -32,7 +32,7 @@ import {
   watchEffect,
   onMounted,
   provide,
-  onUnmounted
+  onUnmounted,
 } from "vue";
 import { getUID } from "../../utils/getUID";
 import { on, off } from "@/components/utils/MDBEventHandlers";
@@ -42,19 +42,19 @@ export default {
   props: {
     tag: {
       type: String,
-      default: "div"
+      default: "div",
     },
     modelValue: Boolean,
     id: String,
     collapseClass: String,
     duration: {
       type: Number,
-      default: 300
+      default: 300,
     },
     sidenav: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   emits: ["update:modelValue"],
   setup(props, { attrs, emit }) {
@@ -65,7 +65,7 @@ export default {
         collapseClass.value,
         props.collapseClass,
         navbarFlexWrapValue.value ? "navbar-collapse" : "",
-        showClass.value
+        showClass.value,
       ];
     });
 
@@ -139,8 +139,10 @@ export default {
       ) {
         return "show";
       } else if (navbarFlexWrapValue === "nowrap" && isActive.value) {
-        return;
+        return false;
       }
+
+      return false;
     });
 
     const checkWrapCollapseValue = (cur, prev) => {
@@ -173,29 +175,29 @@ export default {
       return props.id ? props.id : getUID("collapsibleContent-");
     });
 
-    const beforeEnter = el => {
+    const beforeEnter = (el) => {
       el.style.height = "0";
     };
-    const enter = el => {
+    const enter = (el) => {
       el.style.height = `${getContentHeight()}px`;
     };
 
-    const afterEnter = el => {
+    const afterEnter = (el) => {
       if (!el.classList.contains("show")) {
         el.classList.add("show");
       }
     };
 
-    const beforeLeave = el => {
+    const beforeLeave = (el) => {
       if (!el.style.height) {
         el.style.height = `${el.offsetHeight}px`;
       }
     };
-    const leave = el => {
+    const leave = (el) => {
       el.style.height = "0";
     };
 
-    const afterLeave = el => {
+    const afterLeave = (el) => {
       el.classList.add("collapse");
     };
 
@@ -204,14 +206,14 @@ export default {
 
     const getContentHeight = () => {
       const contentNodes = [
-        ...document.getElementById(uid.value).childNodes
-      ].filter(el => el.textContent.trim() != "");
+        ...document.getElementById(uid.value).childNodes,
+      ].filter((el) => el.textContent.trim() != "");
       return contentNodes.reduce((acc, cur) => {
         return acc + nodeOuterHeight(cur);
       }, 0);
     };
 
-    const nodeOuterHeight = node => {
+    const nodeOuterHeight = (node) => {
       const height = node.offsetHeight;
 
       if (!height) {
@@ -232,7 +234,7 @@ export default {
       const style = window.getComputedStyle(node);
 
       return ["top", "bottom"]
-        .map(side => parseInt(style[`margin-${side}`]))
+        .map((side) => parseInt(style[`margin-${side}`]))
         .reduce((accHeight, margin) => accHeight + margin, height);
     };
 
@@ -273,8 +275,8 @@ export default {
       leave,
       afterLeave,
       attrs,
-      props
+      props,
     };
-  }
+  },
 };
 </script>

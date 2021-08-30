@@ -29,16 +29,16 @@ export default {
     ...MDBBtn.props,
     tag: {
       type: String,
-      default: "button"
+      default: "button",
     },
     href: [String, null],
     split: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   directives: {
-    mdbClickOutside
+    mdbClickOutside,
   },
   setup(props, { attrs }) {
     const className = computed(() => {
@@ -47,7 +47,7 @@ export default {
         "dropdown-toggle",
         props.split && "dropdown-toggle-split",
         props.size && `btn-${props.size}`,
-        props.outline && `btn-outline-${props.outline}`
+        props.outline && `btn-outline-${props.outline}`,
       ];
     });
 
@@ -74,7 +74,7 @@ export default {
 
     const handleEscAndOutsideClick = inject("handleEscAndOutsideClick", false);
 
-    const handleClickOutside = e => {
+    const handleClickOutside = (e) => {
       if (isPopperActive && !e.target.closest(".dropdown-menu")) {
         handleEscAndOutsideClick();
       }
@@ -86,8 +86,8 @@ export default {
       toggle,
       handleClickOutside,
       attrs,
-      props
+      props,
     };
-  }
+  },
 };
 </script>

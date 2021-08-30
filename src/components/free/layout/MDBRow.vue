@@ -12,31 +12,31 @@ export default {
   props: {
     tag: {
       type: String,
-      default: "div"
+      default: "div",
     },
     start: {
       type: Boolean,
-      default: false
+      default: false,
     },
     end: {
       type: Boolean,
-      default: false
+      default: false,
     },
     center: {
       type: Boolean,
-      default: false
+      default: false,
     },
     between: {
       type: Boolean,
-      default: false
+      default: false,
     },
     around: {
       type: Boolean,
-      default: false
+      default: false,
     },
     cols: {
-      type: [String, Array]
-    }
+      type: [String, Array],
+    },
   },
   setup(props, { attrs }) {
     const className = computed(() => {
@@ -47,22 +47,22 @@ export default {
         props.end && "justify-content-end",
         props.center && "justify-content-center",
         props.between && "justify-content-between",
-        props.around && "justify-content-around"
+        props.around && "justify-content-around",
       ];
     });
 
-    const spreadProps = props => {
+    const spreadProps = (props) => {
       if (typeof props === "string") {
         return `row-cols-${props}`;
       }
-      return props.map(prop => `row-cols-${prop}`.trim()).join(" ");
+      return props.map((prop) => `row-cols-${prop}`.trim()).join(" ");
     };
 
     return {
       className,
       props,
-      attrs
+      attrs,
     };
-  }
+  },
 };
 </script>

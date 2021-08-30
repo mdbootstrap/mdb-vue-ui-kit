@@ -12,12 +12,12 @@ export default {
   props: {
     tag: {
       type: String,
-      default: "div"
+      default: "div",
     },
     modelValue: String,
     stayOpen: Boolean,
     flush: Boolean,
-    classes: String
+    classes: String,
   },
   setup(props, { emit }) {
     const accordionRef = ref(null);
@@ -26,7 +26,7 @@ export default {
     });
 
     const activeItem = ref(props.modelValue);
-    const setActiveItem = item => {
+    const setActiveItem = (item) => {
       activeItem.value = item;
       emit("update:modelValue", item);
     };
@@ -40,8 +40,8 @@ export default {
     return {
       accordionRef,
       setActiveItem,
-      className
+      className,
     };
-  }
+  },
 };
 </script>

@@ -50,5 +50,5 @@ export default {
     if (binding.value === false) return;
 
     window.removeEventListener("scroll", el.animate);
-  }
+  },
 };

@@ -16,10 +16,10 @@ function MDBPopper() {
       eventsEnabled: false,
       modifiers: {
         offset: {
-          offset: "0"
-        }
+          offset: "0",
+        },
       },
-      ...config
+      ...config,
     };
   }
 
@@ -85,7 +85,7 @@ function MDBPopper() {
     openPopper,
     closePopper,
     updatePopper,
-    destroyPopper
+    destroyPopper,
   };
 }
 

@@ -12,9 +12,9 @@ export default {
   props: {
     tag: {
       type: String,
-      default: "div"
+      default: "div",
     },
-    height: Number
+    height: Number,
   },
   setup(props, { attrs }) {
     const className = computed(() => {
@@ -28,8 +28,8 @@ export default {
       className,
       style,
       props,
-      attrs
+      attrs,
     };
-  }
+  },
 };
 </script>

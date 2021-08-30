@@ -34,13 +34,13 @@ export default {
   props: {
     tag: {
       type: String,
-      default: "a"
+      default: "a",
     },
     tabId: {
       type: String,
-      required: true
+      required: true,
     },
-    href: String
+    href: String,
   },
   setup(props, { attrs }) {
     const item = ref("item");
@@ -89,8 +89,8 @@ export default {
       className,
       handleClick,
       props,
-      attrs
+      attrs,
     };
-  }
+  },
 };
 </script>

@@ -12,29 +12,29 @@ export default {
   props: {
     tag: {
       type: String,
-      default: "div"
+      default: "div",
     },
     text: {
-      type: [String, Array]
-    }
+      type: [String, Array],
+    },
   },
   setup(props, { attrs }) {
     const className = computed(() => {
       return ["card-body", props.text && spreadProps(props.text)];
     });
 
-    const spreadProps = props => {
+    const spreadProps = (props) => {
       if (typeof props === "string") {
         return `text-${props}`;
       }
-      return props.map(prop => `text-${prop}`.trim()).join(" ");
+      return props.map((prop) => `text-${prop}`.trim()).join(" ");
     };
 
     return {
       className,
       props,
-      attrs
+      attrs,
     };
-  }
+  },
 };
 </script>

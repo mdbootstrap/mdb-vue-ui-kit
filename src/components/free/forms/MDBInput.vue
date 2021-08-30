@@ -84,7 +84,7 @@ import {
   onUpdated,
   watchEffect,
   onUnmounted,
-  watch
+  watch,
 } from "vue";
 import { on, off } from "../../utils/MDBEventHandlers";
 import { getUID } from "../../utils/getUID";
@@ -100,16 +100,16 @@ export default {
     size: String,
     formOutline: {
       type: Boolean,
-      default: true
+      default: true,
     },
     wrapperClass: String,
     inputGroup: {
       type: [Boolean, String],
-      default: false
+      default: false,
     },
     wrap: {
       type: Boolean,
-      default: true
+      default: true,
     },
     formText: String,
     white: Boolean,
@@ -120,12 +120,12 @@ export default {
     invalidFeedback: String,
     tooltipFeedback: {
       type: Boolean,
-      default: false
+      default: false,
     },
     tag: {
       type: String,
-      default: "div"
-    }
+      default: "div",
+    },
   },
   directives: { mdbClickOutside },
   emits: ["update:modelValue", "click-outside"],
@@ -143,7 +143,7 @@ export default {
         props.formOutline && "form-outline",
         inputGroupClassName.value,
         props.white && "form-white",
-        props.wrapperClass
+        props.wrapperClass,
       ];
     });
     const inputClassName = computed(() => {
@@ -153,7 +153,7 @@ export default {
         inputValue.value && "active",
         showPlaceholder.value && "placeholder-active",
         isInputValidated.value && isInputValid.value && "is-valid",
-        isInputValidated.value && !isInputValid.value && "is-invalid"
+        isInputValidated.value && !isInputValid.value && "is-invalid",
       ];
     });
     const labelClassName = computed(() => {
@@ -198,7 +198,7 @@ export default {
       return props.invalidFeedback;
     });
 
-    const handleValidation = e => {
+    const handleValidation = (e) => {
       isInputValid.value = e.target.checkValidity();
       if (!isInputValid.value) {
         defaultValidatorInvalidFeedback.value = e.target.validationMessage;
@@ -258,12 +258,12 @@ export default {
 
     watch(
       () => props.isValidated,
-      value => (isInputValidated.value = value)
+      (value) => (isInputValidated.value = value)
     );
 
     watch(
       () => props.isValid,
-      value => (isInputValid.value = value)
+      (value) => (isInputValid.value = value)
     );
 
     return {
@@ -283,8 +283,8 @@ export default {
       notchMiddleWidth,
       clickOutside,
       attrs,
-      props
+      props,
     };
-  }
+  },
 };
 </script>

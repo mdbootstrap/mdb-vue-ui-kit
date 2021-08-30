@@ -24,33 +24,33 @@ export default {
   props: {
     tag: {
       type: String,
-      default: "li"
+      default: "li",
     },
     active: {
       type: Boolean,
-      default: false
+      default: false,
     },
     disabled: {
       type: Boolean,
-      default: false
+      default: false,
     },
     href: {
-      type: String
+      type: String,
     },
     icon: {
       type: Boolean,
-      defaul: false
+      defaul: false,
     },
     label: {
-      type: String
-    }
+      type: String,
+    },
   },
   setup(props, { attrs }) {
     const className = computed(() => {
       return [
         "page-item",
         props.active && "active",
-        props.disabled && "disabled"
+        props.disabled && "disabled",
       ];
     });
 
@@ -67,8 +67,8 @@ export default {
       labelValue,
       disabledTabindex,
       props,
-      attrs
+      attrs,
     };
-  }
+  },
 };
 </script>

@@ -19,29 +19,29 @@ export default {
   props: {
     tag: {
       type: String,
-      default: "img"
+      default: "img",
     },
     src: {
       type: String,
-      required: true
+      required: true,
     },
     alt: String,
     top: {
       type: Boolean,
-      default: false
+      default: false,
     },
     bottom: {
       type: Boolean,
-      default: false
+      default: false,
     },
     fluid: {
       type: Boolean,
-      default: false
+      default: false,
     },
     overlay: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   setup(props, { attrs }) {
     const className = computed(() => {
@@ -54,15 +54,15 @@ export default {
           !props.bottom &&
           !props.fluid &&
           !props.overlay &&
-          `card-img`
+          `card-img`,
       ];
     });
 
     return {
       className,
       props,
-      attrs
+      attrs,
     };
-  }
+  },
 };
 </script>

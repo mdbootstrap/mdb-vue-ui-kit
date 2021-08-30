@@ -12,12 +12,12 @@ export default {
   props: {
     tag: {
       type: String,
-      default: "h5"
+      default: "h5",
     },
     bold: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   setup(props, { attrs }) {
     const className = computed(() => {
@@ -27,8 +27,8 @@ export default {
     return {
       className,
       attrs,
-      props
+      props,
     };
-  }
+  },
 };
 </script>

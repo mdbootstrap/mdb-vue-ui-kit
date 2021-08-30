@@ -28,28 +28,28 @@ export default {
     toggle: Boolean,
     role: {
       type: String,
-      default: "button"
+      default: "button",
     },
     type: {
       type: String,
-      default: "button"
+      default: "button",
     },
     tag: {
       type: String,
-      default: "button"
+      default: "button",
     },
     block: {
       type: Boolean,
-      default: false
+      default: false,
     },
     ripple: {
       type: [Object, Boolean],
-      default: props =>
+      default: (props) =>
         props.outline || props.color === "light" || props.color === "link"
           ? { color: "dark" }
-          : true
+          : true,
     },
-    picker: Boolean
+    picker: Boolean,
   },
   directives: { mdbRipple },
   inheritAttrs: false,
@@ -66,7 +66,7 @@ export default {
         props.rounded && "btn-rounded",
         props.floating && "btn-floating",
         props.block && "btn-block",
-        toggle.value && "active"
+        toggle.value && "active",
       ];
     });
 
@@ -81,8 +81,8 @@ export default {
       className,
       attrs,
       props,
-      handleClick
+      handleClick,
     };
-  }
+  },
 };
 </script>

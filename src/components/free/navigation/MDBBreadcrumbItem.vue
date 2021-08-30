@@ -16,16 +16,16 @@ export default {
   props: {
     tag: {
       type: String,
-      default: "li"
+      default: "li",
     },
     active: {
       type: Boolean,
-      default: false
+      default: false,
     },
     current: {
       type: String,
-      default: "page"
-    }
+      default: "page",
+    },
   },
   setup(props, { attrs }) {
     const className = computed(() => {
@@ -40,8 +40,8 @@ export default {
       className,
       currentName,
       props,
-      attrs
+      attrs,
     };
-  }
+  },
 };
 </script>

@@ -12,8 +12,8 @@ export default {
   props: {
     tag: {
       type: String,
-      default: "ol"
-    }
+      default: "ol",
+    },
   },
 
   setup(props, { attrs }) {
@@ -24,8 +24,8 @@ export default {
     return {
       className,
       props,
-      attrs
+      attrs,
     };
-  }
+  },
 };
 </script>

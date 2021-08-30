@@ -33,28 +33,28 @@ export default {
   props: {
     tag: {
       type: String,
-      default: "li"
+      default: "li",
     },
     disabled: {
       type: Boolean,
-      default: false
+      default: false,
     },
     href: {
       type: String,
-      default: "#"
+      default: "#",
     },
     prev: {
       type: Boolean,
-      default: false
+      default: false,
     },
     next: {
       type: Boolean,
-      default: false
+      default: false,
     },
     icon: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   setup(props, { attrs }) {
     const className = computed(() => {
@@ -79,8 +79,8 @@ export default {
       nextValue,
       disabledTabindex,
       props,
-      attrs
+      attrs,
     };
-  }
+  },
 };
 </script>

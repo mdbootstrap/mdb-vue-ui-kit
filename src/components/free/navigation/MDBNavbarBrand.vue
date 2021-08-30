@@ -12,8 +12,8 @@ export default {
   props: {
     tag: {
       type: String,
-      default: "div"
-    }
+      default: "div",
+    },
   },
   setup(props, { attrs }) {
     const isLink = computed(() => {
@@ -23,8 +23,8 @@ export default {
     return {
       isLink,
       props,
-      attrs
+      attrs,
     };
-  }
+  },
 };
 </script>

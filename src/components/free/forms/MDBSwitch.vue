@@ -25,13 +25,13 @@ export default {
     labelClass: String,
     modelValue: {
       type: Boolean,
-      default: false
+      default: false,
     },
     tag: {
       type: String,
-      default: "div"
+      default: "div",
     },
-    wrapperClass: String
+    wrapperClass: String,
   },
   emits: ["update:modelValue"],
   setup(props, { attrs, emit }) {
@@ -55,7 +55,7 @@ export default {
 
     watch(
       () => props.modelValue,
-      value => (inputValue.value = value)
+      (value) => (inputValue.value = value)
     );
 
     return {
@@ -65,8 +65,8 @@ export default {
       inputClassName,
       labelClassName,
       handleChange,
-      attrs
+      attrs,
     };
-  }
+  },
 };
 </script>

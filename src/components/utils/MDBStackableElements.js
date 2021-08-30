@@ -1,6 +1,6 @@
 import { ref, reactive } from "vue";
 
-const isVisible = element => {
+const isVisible = (element) => {
   if (!element) {
     return false;
   }
@@ -36,7 +36,7 @@ function MDBStackable() {
     config.refresh = options.refresh || 1000;
     config.filter =
       options.filter ||
-      function(el) {
+      function (el) {
         return el;
       };
 
@@ -48,7 +48,7 @@ function MDBStackable() {
   function stackableElements() {
     return [...document.querySelectorAll(stackableSelector.value)]
       .filter((el, i) => config.filter(el, i))
-      .map(el => ({ el, rect: el.getBoundingClientRect() }))
+      .map((el) => ({ el, rect: el.getBoundingClientRect() }))
       .filter(({ el, rect }) => {
         const basicCondition =
           el.id !== stackableElement.value.id && isVisible(el);
@@ -65,9 +65,9 @@ function MDBStackable() {
 
   function nextStackElements() {
     return [...document.querySelectorAll(stackableSelector.value)]
-      .filter(el => el.id !== stackableElement.value.id && isVisible(el))
+      .filter((el) => el.id !== stackableElement.value.id && isVisible(el))
       .filter((el, i) => config.filter(el, i))
-      .filter(el => {
+      .filter((el) => {
         return getBoundryOffset(el.getBoundingClientRect()) > offset.value;
       });
   }
@@ -110,7 +110,7 @@ function MDBStackable() {
     setStack,
     nextStackElements,
     calculateStackingOffset,
-    resetStackingOffset
+    resetStackingOffset,
   };
 }
 

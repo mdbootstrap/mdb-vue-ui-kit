@@ -15,16 +15,16 @@ export default {
   props: {
     tag: {
       type: String,
-      default: "div"
+      default: "div",
     },
     modelValue: {
       type: String,
-      required: true
+      required: true,
     },
     vertical: {
       type: [Boolean, String],
-      default: false
-    }
+      default: false,
+    },
   },
   emits: ["update:modelValue", "hide", "hidden", "show", "shown"],
   setup(props, { emit, attrs }) {
@@ -34,7 +34,7 @@ export default {
 
     watch(
       () => props.modelValue,
-      cur => {
+      (cur) => {
         if (cur !== activeTabId.value) {
           activeTabId.value = cur;
           updateActiveTab(null, cur);
@@ -64,7 +64,7 @@ export default {
     const emitHidden = () => {
       emit("hidden", {
         target: prevTab.value,
-        relatedTarget: activeTab.value
+        relatedTarget: activeTab.value,
       });
     };
 
@@ -84,7 +84,7 @@ export default {
 
       const breakpointValue = handleBreakpoints(windowWidth.value, [
         "column",
-        props.vertical
+        props.vertical,
       ]);
 
       if (breakpointValue === activeBrakpointValue.value) return;
@@ -111,8 +111,8 @@ export default {
     return {
       isVertical,
       props,
-      attrs
+      attrs,
     };
-  }
+  },
 };
 </script>

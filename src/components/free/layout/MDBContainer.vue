@@ -12,32 +12,32 @@ export default {
   props: {
     tag: {
       type: String,
-      default: "div"
+      default: "div",
     },
     sm: {
       type: Boolean,
-      default: false
+      default: false,
     },
     md: {
       type: Boolean,
-      default: false
+      default: false,
     },
     lg: {
       type: Boolean,
-      default: false
+      default: false,
     },
     xl: {
       type: Boolean,
-      default: false
+      default: false,
     },
     xxl: {
       type: Boolean,
-      default: false
+      default: false,
     },
     fluid: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   setup(props, { attrs }) {
     const className = computed(() => {
@@ -55,15 +55,15 @@ export default {
         !props.xl &&
         !props.xxl
           ? "container"
-          : ""
+          : "",
       ];
     });
 
     return {
       className,
       props,
-      attrs
+      attrs,
     };
-  }
+  },
 };
 </script>

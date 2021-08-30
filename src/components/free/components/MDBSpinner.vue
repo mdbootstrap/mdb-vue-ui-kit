@@ -13,14 +13,14 @@ export default {
   props: {
     tag: {
       type: String,
-      default: "div"
+      default: "div",
     },
     grow: {
       type: Boolean,
-      default: false
+      default: false,
     },
     color: String,
-    size: String
+    size: String,
   },
   setup(props, { attrs }) {
     const className = computed(() => {
@@ -33,15 +33,15 @@ export default {
               ? "spinner-grow-" + props.size
               : "spinner-border-" + props.size
             : ""
-        }`
+        }`,
       ];
     });
 
     return {
       className,
       props,
-      attrs
+      attrs,
     };
-  }
+  },
 };
 </script>

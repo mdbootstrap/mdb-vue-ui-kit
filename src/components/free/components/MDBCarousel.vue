@@ -62,50 +62,50 @@ export default {
   props: {
     captionsClass: {
       type: String,
-      default: "carousel-caption d-none d-md-block"
+      default: "carousel-caption d-none d-md-block",
     },
     controls: {
       type: Boolean,
-      default: true
+      default: true,
     },
     dark: Boolean,
     fade: Boolean,
     indicators: {
       type: Boolean,
-      default: true
+      default: true,
     },
     interval: {
       type: [Number, Boolean],
-      default: 5000
+      default: 5000,
     },
     items: {
       type: Array,
-      reguired: true
+      reguired: true,
     },
     itemsClass: {
       type: String,
-      default: "d-block w-100"
+      default: "d-block w-100",
     },
     keyboard: {
       type: Boolean,
-      default: true
+      default: true,
     },
     modelValue: {
       type: Number,
-      default: 0
+      default: 0,
     },
     pause: {
       type: [String, Boolean],
-      default: "hover"
+      default: "hover",
     },
     tag: {
       type: String,
-      default: "div"
+      default: "div",
     },
     touch: {
       type: Boolean,
-      default: true
-    }
+      default: true,
+    },
   },
   emits: ["update:modelValue"],
   setup(props, { emit }) {
@@ -114,7 +114,7 @@ export default {
         "carousel",
         "slide",
         props.fade && "carousel-fade",
-        props.dark && "carousel-dark"
+        props.dark && "carousel-dark",
       ];
     });
 
@@ -131,7 +131,7 @@ export default {
     const next = () => {
       slideTo("next");
     };
-    const slideTo = target => {
+    const slideTo = (target) => {
       if (isSliding.value) {
         return;
       }
@@ -144,7 +144,7 @@ export default {
       isPaused = isPausedState;
     };
 
-    const slide = target => {
+    const slide = (target) => {
       if (isPaused || !carouselInnerRef.value) {
         return;
       }
@@ -180,7 +180,7 @@ export default {
       }, 600);
     };
 
-    const getTargetKey = target => {
+    const getTargetKey = (target) => {
       if (target === "prev" && activeItemKey.value <= 0) {
         return props.items.length - 1;
       } else if (target === "prev") {
@@ -196,18 +196,18 @@ export default {
         return target;
       }
     };
-    const getTargetSlideOrder = target => {
+    const getTargetSlideOrder = (target) => {
       if (target === "next" || target > activeItemKey.value) {
         return true;
       } else {
         return false;
       }
     };
-    const getDirectionalClassName = isNext =>
+    const getDirectionalClassName = (isNext) =>
       isNext ? "carousel-item-start" : "carousel-item-end";
-    const getOrderClassName = isNext =>
+    const getOrderClassName = (isNext) =>
       isNext ? "carousel-item-next" : "carousel-item-prev";
-    const getItem = key =>
+    const getItem = (key) =>
       carouselInnerRef.value.querySelectorAll(".carousel-item")[key];
 
     const reloadInterval = () => {
@@ -250,7 +250,7 @@ export default {
     const pointerEvent = Boolean(window.PointerEvent);
     const touchStartX = ref(0);
     const touchDeltaX = ref(0);
-    const handleTouchstart = event => {
+    const handleTouchstart = (event) => {
       if (!props.touch) {
         return;
       }
@@ -264,7 +264,7 @@ export default {
         touchStartX.value = event.touches[0].clientX;
       }
     };
-    const handleTouchmove = event => {
+    const handleTouchmove = (event) => {
       if (!props.touch) {
         return;
       }
@@ -274,7 +274,7 @@ export default {
           ? 0
           : event.touches[0].clientX - touchStartX.value;
     };
-    const handleTouchend = event => {
+    const handleTouchend = (event) => {
       if (!props.touch) {
         return;
       }
@@ -310,9 +310,10 @@ export default {
     };
 
     onMounted(() => {
-      const currentActiveItem = carouselInnerRef.value.querySelectorAll(
-        ".carousel-item"
-      )[activeItemKey.value];
+      const currentActiveItem =
+        carouselInnerRef.value.querySelectorAll(".carousel-item")[
+          activeItemKey.value
+        ];
       currentActiveItem.classList.add("active");
 
       if (props.interval) {
@@ -329,7 +330,7 @@ export default {
 
     watch(
       () => props.modelValue,
-      targetItemKey => slideTo(targetItemKey)
+      (targetItemKey) => slideTo(targetItemKey)
     );
 
     return {
@@ -345,8 +346,8 @@ export default {
       handleTouchend,
       slideTo,
       next,
-      prev
+      prev,
     };
-  }
+  },
 };
 </script>

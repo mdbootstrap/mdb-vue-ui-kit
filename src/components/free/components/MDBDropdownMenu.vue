@@ -38,28 +38,28 @@ export default {
   props: {
     tag: {
       type: String,
-      default: "ul"
+      default: "ul",
     },
     fadeIn: {
       type: String,
-      default: "fade-in"
+      default: "fade-in",
     },
     fadeOut: {
       type: String,
-      default: "fade-out"
+      default: "fade-out",
     },
     animation: {
       type: Boolean,
-      default: true
+      default: true,
     },
     dark: {
       type: Boolean,
-      default: false
+      default: false,
     },
     static: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   setup(props, { attrs }) {
     const className = computed(() => {
@@ -68,7 +68,7 @@ export default {
         menuAlignClasses.value,
         fadeClass.value,
         showClass.value && "show",
-        props.dark && "dropdown-menu-dark"
+        props.dark && "dropdown-menu-dark",
       ];
     });
     const menuAlignClasses = inject("menuAlignClasses", "dropdown-menu-start");
@@ -98,7 +98,7 @@ export default {
     const isActive = inject("isActive", false);
     watch(
       () => isActive.value,
-      cur => {
+      (cur) => {
         if (cur) {
           setTimeout(() => {
             setMenuMountedState(true, root.value);
@@ -132,10 +132,14 @@ export default {
       } else if (isActive.value || (!isActive.value && isPopperActive.value)) {
         return true;
       } else if (!isActive.value && !isPopperActive.value) {
+        /* eslint-disable */
         setTimeout(() => {
           return false;
         }, 300);
+        /* eslint-enable */
       }
+
+      return false;
     });
 
     const externalTarget = inject("externalTarget", false);
@@ -184,7 +188,7 @@ export default {
       () => false
     );
 
-    const handleDown = e => {
+    const handleDown = (e) => {
       const key = e.key;
       if (key === "ArrowUp" || key === "ArrowDown") {
         e.preventDefault();
@@ -194,7 +198,7 @@ export default {
         return;
       }
 
-      items.value.forEach(item => {
+      items.value.forEach((item) => {
         item.classList.remove("active");
       });
 
@@ -236,8 +240,8 @@ export default {
       externalTarget,
       root,
       attrs,
-      props
+      props,
     };
-  }
+  },
 };
 </script>

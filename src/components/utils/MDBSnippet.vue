@@ -63,7 +63,7 @@ import "prismjs/themes/prism-tomorrow.css";
 export default {
   components: {
     MDBBtn,
-    PrismEditor
+    PrismEditor,
   },
   setup(_, { slots }) {
     /*---- Tab functionality  ----*/
@@ -78,7 +78,7 @@ export default {
     const isStyleActive = computed(() => {
       return activeTab.value === "style";
     });
-    const setCurrentTab = tab => {
+    const setCurrentTab = (tab) => {
       activeTab.value = tab;
     };
     /*---- Tab functionality  ----*/
@@ -87,7 +87,7 @@ export default {
     const components = reactive({
       template: null,
       script: null,
-      style: null
+      style: null,
     });
 
     const componentRefs = toRefs(components);
@@ -96,15 +96,15 @@ export default {
     const content = reactive({
       template: "",
       script: "",
-      style: ""
+      style: "",
     });
 
-    const highlighter = code => {
+    const highlighter = (code) => {
       return highlight(code, languages.js); //returns html
     };
 
     const setContent = () => {
-      Object.keys(content).map(key => {
+      Object.keys(content).map((key) => {
         if (componentRefs[key].value) {
           const componentRefInnerContent = wrapTag(
             componentRefs[key].value,
@@ -116,10 +116,10 @@ export default {
       });
     };
 
-    const removeVueData = elements => {
-      elements.forEach(el => {
+    const removeVueData = (elements) => {
+      elements.forEach((el) => {
         if (el.dataset) {
-          Object.keys(el.dataset).forEach(data => {
+          Object.keys(el.dataset).forEach((data) => {
             if (data.startsWith("v-")) {
               el.removeAttribute(
                 `data-${data
@@ -169,9 +169,9 @@ export default {
       script,
       style,
       content,
-      highlighter
+      highlighter,
     };
-  }
+  },
 };
 </script>
 

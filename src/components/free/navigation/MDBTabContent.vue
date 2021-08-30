@@ -18,13 +18,13 @@ export default {
   props: {
     tag: {
       type: String,
-      default: "div"
+      default: "div",
     },
     col: {
       type: String,
-      default: "9"
+      default: "9",
     },
-    contentClasses: String
+    contentClasses: String,
   },
   setup(props, { attrs }) {
     const className = computed(() => {
@@ -42,8 +42,8 @@ export default {
       className,
       columnClassName,
       props,
-      attrs
+      attrs,
     };
-  }
+  },
 };
 </script>

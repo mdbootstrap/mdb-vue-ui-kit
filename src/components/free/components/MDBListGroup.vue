@@ -12,23 +12,23 @@ export default {
   props: {
     tag: {
       type: String,
-      default: "ul"
+      default: "ul",
     },
     horizontal: {
       type: [Boolean, String],
-      default: false
+      default: false,
     },
     flush: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   setup(props, { attrs }) {
     const className = computed(() => {
       return [
         "list-group",
         props.horizontal && horizontalClass.value,
-        props.flush && "list-group-flush"
+        props.flush && "list-group-flush",
       ];
     });
 
@@ -44,8 +44,8 @@ export default {
     return {
       className,
       props,
-      attrs
+      attrs,
     };
-  }
+  },
 };
 </script>

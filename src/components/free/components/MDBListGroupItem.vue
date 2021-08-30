@@ -18,21 +18,21 @@ export default {
   props: {
     tag: {
       type: String,
-      default: "li"
+      default: "li",
     },
     active: {
       type: Boolean,
-      default: false
+      default: false,
     },
     disabled: {
       type: Boolean,
-      default: false
+      default: false,
     },
     action: {
       type: Boolean,
-      default: false
+      default: false,
     },
-    color: String
+    color: String,
   },
   setup(props, { attrs }) {
     const className = computed(() => {
@@ -41,15 +41,15 @@ export default {
         props.active && "active",
         props.disabled && "disabled",
         props.action && "list-group-item-action",
-        props.color && `list-group-item-${props.color}`
+        props.color && `list-group-item-${props.color}`,
       ];
     });
 
     return {
       className,
       props,
-      attrs
+      attrs,
     };
-  }
+  },
 };
 </script>

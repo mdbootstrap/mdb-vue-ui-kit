@@ -4,7 +4,7 @@ export default {
   },
 
   mounted(el, binding) {
-    const handler = e => {
+    const handler = (e) => {
       if (!el.contains(e.target) && el !== e.target) {
         binding.value(e);
       }
@@ -25,5 +25,5 @@ export default {
     document.removeEventListener(event, el.clickOutside);
     document.removeEventListener("touchstart", el.clickOutside);
     delete el.clickOutside;
-  }
+  },
 };

@@ -34,7 +34,7 @@ import {
   onMounted,
   provide,
   ref,
-  watchEffect
+  watchEffect,
 } from "vue";
 
 import { on, off } from "../../utils/MDBEventHandlers";
@@ -44,50 +44,51 @@ export default {
   props: {
     tag: {
       type: String,
-      default: "div"
+      default: "div",
     },
     modelValue: Boolean,
     size: {
       type: String,
-      validator: value => ["sm", "lg", "xl"].indexOf(value.toLowerCase()) > -1
+      validator: (value) =>
+        ["sm", "lg", "xl"].indexOf(value.toLowerCase()) > -1,
     },
     removeBackdrop: {
       type: Boolean,
-      default: false
+      default: false,
     },
     staticBackdrop: {
       type: Boolean,
-      default: false
+      default: false,
     },
     centered: {
       type: Boolean,
-      default: false
+      default: false,
     },
     bgSrc: {
       type: String,
-      default: ""
+      default: "",
     },
     scrollable: {
       type: Boolean,
-      default: false
+      default: false,
     },
     duration: {
       type: Number,
-      default: 400
+      default: 400,
     },
     labelledby: String,
     fullscreen: {
       type: [Boolean, String],
-      default: false
+      default: false,
     },
     animation: {
       type: Boolean,
-      default: true
+      default: true,
     },
     dialogClasses: {
-      type: String
+      type: String,
     },
-    transform: String
+    transform: String,
   },
   emits: ["show", "shown", "hide", "hidden", "update:modelValue"],
   setup(props, { attrs, emit }) {
@@ -111,7 +112,7 @@ export default {
         "modal",
         props.animation && "fade",
         isActive.value && "show",
-        props.staticBackdrop && "modal-static"
+        props.staticBackdrop && "modal-static",
       ];
     });
 
@@ -122,7 +123,7 @@ export default {
         props.centered && "modal-dialog-centered",
         props.scrollable && "modal-dialog-scrollable",
         props.fullscreen && fullscreenClass.value,
-        props.dialogClasses
+        props.dialogClasses,
       ];
     });
 
@@ -156,7 +157,7 @@ export default {
       return [
         props.fullscreen !== true
           ? `modal-fullscreen-${props.fullscreen}`
-          : "modal-fullscreen"
+          : "modal-fullscreen",
       ];
     });
 
@@ -171,12 +172,12 @@ export default {
 
     provide("closeModal", closeModal);
 
-    const animateStaticModal = el => {
+    const animateStaticModal = (el) => {
       el.style.transform = `scale(1.02)`;
       setTimeout(() => (el.style.transform = `scale(1.0)`), 300);
     };
 
-    const handleEscKeyUp = e => {
+    const handleEscKeyUp = (e) => {
       if (e.key === "Escape" && isActive.value) {
         closeModal();
       }
@@ -205,7 +206,7 @@ export default {
         : 0;
     };
 
-    const enter = el => {
+    const enter = (el) => {
       shouldOverflow.value =
         props.transform === "translate(0,25%)" ? false : true;
 
@@ -222,7 +223,7 @@ export default {
 
       emit("show", root.value);
     };
-    const afterEnter = el => {
+    const afterEnter = (el) => {
       el.childNodes[0].style.transform = "translate(0,0)";
       el.style.opacity = 1;
 
@@ -232,7 +233,7 @@ export default {
       }, 400);
       thisElement.value = root.value;
     };
-    const beforeLeave = el => {
+    const beforeLeave = (el) => {
       el.childNodes[0].style.transform = dialogTransform.value;
       el.style.opacity = 0;
       setTimeout(() => {
@@ -271,8 +272,8 @@ export default {
       beforeLeave,
       afterLeave,
       attrs,
-      props
+      props,
     };
-  }
+  },
 };
 </script>

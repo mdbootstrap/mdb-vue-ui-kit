@@ -12,25 +12,25 @@ export default {
   props: {
     tag: {
       type: String,
-      default: "div"
+      default: "div",
     },
     bg: String,
-    border: String
+    border: String,
   },
   setup(props, { attrs }) {
     const className = computed(() => {
       return [
         "card-footer",
         props.border && `border-${props.border}`,
-        props.bg && `bg-${props.bg}`
+        props.bg && `bg-${props.bg}`,
       ];
     });
 
     return {
       className,
       props,
-      attrs
+      attrs,
     };
-  }
+  },
 };
 </script>

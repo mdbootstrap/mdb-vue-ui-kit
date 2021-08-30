@@ -5,7 +5,7 @@ const mdbScrollspy = {
       container: window,
       scrollPosition: null,
       async: false,
-      offset: 0
+      offset: 0,
     };
 
     if (binding.value) {
@@ -17,25 +17,36 @@ const mdbScrollspy = {
 
     el.scrollspy.scrollPosition = getScrollPostion(el.scrollspy.container);
 
-    el.scrollspy.findHrefs = node => {
+    el.scrollspy.findHrefs = (node) => {
       if (node.attributes && node.attributes.href) {
         el.scrollspy.links.push(node);
+        if (node.classList.contains("collapsible-scrollspy")) {
+          const list = node.parentNode.querySelector("ul");
+          list.dataset.mdbCollapsibleScrollspyHeight = list.clientHeight;
+
+          list.style.overflow = "hidden";
+          list.style.height = "0";
+        }
       } else if (node.childNodes) {
-        node.childNodes.forEach(child => el.scrollspy.findHrefs(child));
+        node.childNodes.forEach((child) => el.scrollspy.findHrefs(child));
       }
     };
 
-    el.scrollspy.setActive = index => {
+    el.scrollspy.setActive = (index) => {
       if (binding.value && binding.value.callback) {
         binding.instance[binding.value.callback](index);
         return;
       }
       el.scrollspy.links.forEach((link, i) => {
-        if (index === i) link.classList.add("active");
-        else link.classList.remove("active");
+        if (index === i) {
+          link.classList.add("active");
+        } else {
+          link.classList.remove("active");
+        }
       });
 
       setNestedActive(el.scrollspy.links, index, el.scrollspy.container);
+      setCollapsibleActive(el.scrollspy.links);
     };
 
     el.scrollspy.spy = () => {
@@ -45,7 +56,7 @@ const mdbScrollspy = {
 
       el.scrollspy.scrollPosition = getScrollPostion(container);
 
-      el.scrollspy.links.forEach(link => {
+      el.scrollspy.links.forEach((link) => {
         const element = document.querySelector(link.hash);
         if (!element) {
           return;
@@ -69,14 +80,18 @@ const mdbScrollspy = {
         link.isLinkActive = condition;
       });
 
-      const activeLinks = el.scrollspy.links.filter(link => link.isLinkActive);
+      const activeLinks = el.scrollspy.links.filter(
+        (link) => link.isLinkActive
+      );
 
       if (activeLinks.length > 0) {
         const activeElement = activeLinks[0];
         const activeLink = activeElement.scrollspyIndex;
 
         el.scrollspy.setActive(activeLink);
-      } else el.scrollspy.setActive(-1);
+      } else {
+        el.scrollspy.setActive(-1);
+      }
     };
 
     el.scrollspy.clickHandler = (e, link) => {
@@ -96,7 +111,6 @@ const mdbScrollspy = {
       if (container === window) {
         window.scrollTo({
           top: window.scrollY + rect.y - el.scrollspy.offset,
-          behavior: "smooth"
         });
       } else {
         const containerRect = container.getBoundingClientRect();
@@ -107,6 +121,7 @@ const mdbScrollspy = {
 
       el.scrollspy.setActive(link.scrollspyIndex);
       setParentsActive(el.scrollspy.links[link.scrollspyIndex], el);
+      setCollapsibleActive(el.scrollspy.links);
 
       el.disableScrollTimeout = setTimeout(() => {
         el.disableScroll = false;
@@ -117,7 +132,7 @@ const mdbScrollspy = {
 
     el.scrollspy.links.forEach((link, i) => {
       link.scrollspyIndex = i;
-      link.addEventListener("click", e => el.scrollspy.clickHandler(e, link));
+      link.addEventListener("click", (e) => el.scrollspy.clickHandler(e, link));
     });
 
     el.scrollspy.spy();
@@ -137,7 +152,7 @@ const mdbScrollspy = {
         el.scrollspy.findHrefs(el);
         el.scrollspy.links.forEach((link, i) => {
           link.scrollspyIndex = i;
-          link.addEventListener("click", e =>
+          link.addEventListener("click", (e) =>
             el.scrollspy.clickHandler(e, link)
           );
         });
@@ -150,18 +165,19 @@ const mdbScrollspy = {
   unmounted(el) {
     window.removeEventListener("scroll", el.scrollspy.spy);
     window.removeEventListener("resize", el.scrollspy.spy);
-  }
+  },
 };
 
 const setNestedActive = (links, index, container) => {
   const allLinks = links[index];
+
   if (!allLinks) {
     return;
   }
 
   const allNestedLinks = [...allLinks.parentNode.querySelectorAll("a")];
   allNestedLinks.shift();
-  allNestedLinks.forEach(link => {
+  allNestedLinks.forEach((link) => {
     const element = document.querySelector(link.hash);
     if (!element) {
       return;
@@ -184,7 +200,7 @@ const setNestedActive = (links, index, container) => {
     link.isActive = condition;
   });
 
-  const activeLinks = allNestedLinks.filter(link => link.isLinkActive);
+  const activeLinks = allNestedLinks.filter((link) => link.isLinkActive);
   if (activeLinks.length > 0) {
     activeLinks[0].classList.add("active");
   }
@@ -205,8 +221,27 @@ const setParentsActive = (link, el) => {
   }
 };
 
-const getScrollPostion = container => {
+const getScrollPostion = (container) => {
   return container === window ? container.scrollY : container.scrollTop;
+};
+
+const setCollapsibleActive = (links) => {
+  links.forEach((link) => {
+    if (
+      link.classList.contains("collapsible-scrollspy") &&
+      link.classList.contains("active")
+    ) {
+      const list = link.parentNode.querySelector("ul");
+
+      list.style.overflow = "hidden";
+      list.style.height = `${list.dataset.mdbCollapsibleScrollspyHeight}px`;
+    } else if (link.classList.contains("collapsible-scrollspy")) {
+      const list = link.parentNode.querySelector("ul");
+
+      list.style.overflow = "hidden";
+      list.style.height = "0";
+    }
+  });
 };
 
 export default mdbScrollspy;

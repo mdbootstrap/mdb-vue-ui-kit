@@ -10,8 +10,8 @@ export default {
   props: {
     white: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   setup(props, { attrs }) {
     const className = computed(() => {
@@ -20,8 +20,8 @@ export default {
 
     return {
       className,
-      attrs
+      attrs,
     };
-  }
+  },
 };
 </script>

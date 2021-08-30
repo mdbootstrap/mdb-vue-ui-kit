@@ -21,32 +21,32 @@ export default {
   name: "MDBNavbarToggler",
   inheritAttrs: false,
   components: {
-    MDBIcon
+    MDBIcon,
   },
   props: {
     tag: {
       type: String,
-      default: "button"
+      default: "button",
     },
     target: {
       type: String,
-      default: "#navbarSupportedContent"
+      default: "#navbarSupportedContent",
     },
     togglerClass: {
-      type: String
+      type: String,
     },
     togglerIcon: {
       type: String,
-      default: "bars"
+      default: "bars",
     },
     togglerSize: {
       type: String,
-      default: "1x"
+      default: "1x",
     },
     iconStyle: {
       type: String,
-      default: "fas"
-    }
+      default: "fas",
+    },
   },
   setup(props, { attrs }) {
     const navTogglerClass = computed(() => {
@@ -64,8 +64,8 @@ export default {
       handleClick,
       isExpanded,
       props,
-      attrs
+      attrs,
     };
-  }
+  },
 };
 </script>

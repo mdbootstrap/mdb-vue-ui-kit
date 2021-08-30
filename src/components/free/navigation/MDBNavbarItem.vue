@@ -24,30 +24,30 @@ export default {
   props: {
     tag: {
       type: String,
-      default: "li"
+      default: "li",
     },
     active: {
       type: Boolean,
-      default: false
+      default: false,
     },
     disabled: {
-      type: Boolean
+      type: Boolean,
     },
     exact: {
       type: Boolean,
-      default: false
+      default: false,
     },
     newTab: {
       type: Boolean,
-      default: false
+      default: false,
     },
     to: [Object, String],
     href: {
-      type: String
+      type: String,
     },
     linkClass: {
-      type: String
-    }
+      type: String,
+    },
   },
   setup(props, { attrs }) {
     const className = computed(() => {
@@ -59,13 +59,15 @@ export default {
         "nav-link",
         props.disabled && "disabled",
         props.active && "active",
-        props.linkClass
+        props.linkClass,
       ];
     });
     const tab = computed(() => {
       if (props.newTab) {
         return "_blank";
       }
+
+      return false;
     });
 
     return {
@@ -73,8 +75,8 @@ export default {
       attrs,
       className,
       linkClassName,
-      tab
+      tab,
     };
-  }
+  },
 };
 </script>

@@ -26,21 +26,21 @@ import MDBCollapse from "./MDBCollapse.vue";
 export default {
   name: "MDBAccordionItem",
   components: {
-    MDBCollapse
+    MDBCollapse,
   },
   props: {
     tag: {
       type: String,
-      default: "div"
+      default: "div",
     },
     collapseId: {
       type: String,
-      required: true
+      required: true,
     },
     headerTitle: String,
     headerClasses: String,
     bodyClasses: String,
-    itemClasses: String
+    itemClasses: String,
   },
   setup(props) {
     const itemRef = ref(null);
@@ -85,8 +85,8 @@ export default {
       bodyClassName,
       buttonClassName,
       toggleAccordion,
-      isActive
+      isActive,
     };
-  }
+  },
 };
 </script>

@@ -12,20 +12,20 @@ export default {
   props: {
     tag: {
       type: String,
-      default: "ul"
+      default: "ul",
     },
     circle: {
       type: Boolean,
-      default: false
+      default: false,
     },
     lg: {
       type: Boolean,
-      default: false
+      default: false,
     },
     sm: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   setup(props, { attrs }) {
     const className = computed(() => {
@@ -33,15 +33,15 @@ export default {
         "pagination",
         props.sm && "pagination-sm",
         props.lg && "pagination-lg",
-        props.circle && "pagination-circle"
+        props.circle && "pagination-circle",
       ];
     });
 
     return {
       className,
       props,
-      attrs
+      attrs,
     };
-  }
+  },
 };
 </script>

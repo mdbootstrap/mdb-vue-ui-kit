@@ -29,12 +29,12 @@ export default {
   props: {
     tag: {
       type: String,
-      default: "div"
+      default: "div",
     },
     tabId: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   setup(props, { attrs }) {
     const className = computed(() => {
@@ -71,18 +71,18 @@ export default {
       }
     });
 
-    const afterEnter = el => {
+    const afterEnter = (el) => {
       el.style.opacity = "1";
     };
-    const enter = el => {
+    const enter = (el) => {
       el.style.opacity = "0";
       emitShown(props.tabId);
     };
-    const beforeLeave = el => {
+    const beforeLeave = (el) => {
       el.style.opacity = "1";
       emitHidden(props.tabId);
     };
-    const afterLeave = el => {
+    const afterLeave = (el) => {
       el.style.opacity = "0";
     };
 
@@ -97,8 +97,8 @@ export default {
       afterLeave,
       className,
       props,
-      attrs
+      attrs,
     };
-  }
+  },
 };
 </script>

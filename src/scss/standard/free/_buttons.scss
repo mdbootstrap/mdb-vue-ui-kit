@@ -68,7 +68,7 @@
 // Outline option
 //
 
-[class*='btn-outline-'] {
+[class*="btn-outline-"] {
   border-width: $btn-border-width;
   border-style: solid;
   box-shadow: none;
@@ -222,7 +222,7 @@
 //
 
 .btn-floating,
-[class*='btn-outline-'].btn-floating {
+[class*="btn-outline-"].btn-floating {
   border-radius: $btn-floating-border-radius;
   padding: 0;
   position: relative;
@@ -264,7 +264,7 @@
   }
 }
 
-[class*='btn-outline-'].btn-floating {
+[class*="btn-outline-"].btn-floating {
   .fas,
   .far,
   .fab {
@@ -335,7 +335,7 @@
       margin-bottom: $fixed-action-btn-li-margin-bottom;
       margin-left: auto;
       &:first-of-type {
-        margin-top: $fixed-action-btn-li-margin-bottom / 2;
+        margin-top: $fixed-action-btn-li-margin-bottom * 0.5;
       }
     }
     a {

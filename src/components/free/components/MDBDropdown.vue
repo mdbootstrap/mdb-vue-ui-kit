@@ -15,35 +15,35 @@ export default {
   props: {
     tag: {
       type: String,
-      default: "div"
+      default: "div",
     },
     btnGroup: {
       type: Boolean,
-      default: false
+      default: false,
     },
     dropup: {
       type: Boolean,
-      default: false
+      default: false,
     },
     dropend: {
       type: Boolean,
-      default: false
+      default: false,
     },
     dropstart: {
       type: Boolean,
-      default: false
+      default: false,
     },
     align: {
       type: [String, Array],
-      default: "start"
+      default: "start",
     },
     updatePosition: {
       type: Boolean,
-      default: true
+      default: true,
     },
     offset: String,
     target: String,
-    modelValue: Boolean
+    modelValue: Boolean,
   },
   emits: ["update:modelValue"],
   setup(props, { attrs, emit }) {
@@ -52,17 +52,12 @@ export default {
         props.btnGroup ? "btn-group" : "dropdown",
         props.dropup && "dropup",
         props.dropend && "dropend",
-        props.dropstart && "dropstart"
+        props.dropstart && "dropstart",
       ];
     });
 
-    const {
-      setPopper,
-      isPopperActive,
-      closePopper,
-      openPopper,
-      updatePopper
-    } = MDBPopper();
+    const { setPopper, isPopperActive, closePopper, openPopper, updatePopper } =
+      MDBPopper();
 
     const root = ref("root");
     const triggerEl = ref(null);
@@ -93,7 +88,7 @@ export default {
     };
     provide("setMenuMountedState", setMenuMountedState);
 
-    const handleMenuMountedState = mountedValue => {
+    const handleMenuMountedState = (mountedValue) => {
       if (mountedValue) {
         popperSetup();
 
@@ -105,7 +100,7 @@ export default {
 
     watch(
       () => isMenuMounted.value,
-      cur => handleMenuMountedState(cur),
+      (cur) => handleMenuMountedState(cur),
       { immediate: true }
     );
 
@@ -119,7 +114,7 @@ export default {
     watchEffect(() => {
       if (isPopperActive.value && props.dropup) {
         const dropdowns = document.querySelectorAll(".dropup .dropdown-menu");
-        dropdowns.forEach(dropdown => {
+        dropdowns.forEach((dropdown) => {
           dropdown.style.bottom = "auto";
         });
       }
@@ -155,7 +150,7 @@ export default {
       if (typeof props.align === "string") {
         menuAlignClasses.value = `dropdown-menu-${props.align}`;
       } else {
-        menuAlignClasses.value = props.align.map(prop =>
+        menuAlignClasses.value = props.align.map((prop) =>
           `dropdown-menu-${prop}`.trim()
         );
       }
@@ -176,11 +171,11 @@ export default {
         eventsEnabled: props.updatePosition,
         modifiers: {
           offset: {
-            offset: props.offset || "0"
+            offset: props.offset || "0",
           },
           preventOverflow: { enabled: true },
-          flip: { enabled: true }
-        }
+          flip: { enabled: true },
+        },
       };
 
       setPopper(triggerEl.value, popperEl.value, config);
@@ -219,8 +214,8 @@ export default {
       className,
       root,
       attrs,
-      props
+      props,
     };
-  }
+  },
 };
 </script>

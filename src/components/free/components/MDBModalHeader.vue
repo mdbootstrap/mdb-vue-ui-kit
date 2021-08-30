@@ -12,22 +12,22 @@ import MDBBtnClose from "./MDBBtnClose";
 export default {
   name: "MDBModalHeader",
   components: {
-    MDBBtnClose
+    MDBBtnClose,
   },
   props: {
     tag: {
       type: String,
-      default: "div"
+      default: "div",
     },
     close: {
       type: Boolean,
-      default: true
+      default: true,
     },
     closeWhite: {
       type: Boolean,
-      default: false
+      default: false,
     },
-    color: String
+    color: String,
   },
   setup(props, context) {
     const closeModal = inject("closeModal", false);
@@ -40,8 +40,8 @@ export default {
       className,
       closeModal,
       context,
-      props
+      props,
     };
-  }
+  },
 };
 </script>

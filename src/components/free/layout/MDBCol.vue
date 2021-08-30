@@ -12,42 +12,42 @@ export default {
   props: {
     tag: {
       type: String,
-      default: "div"
+      default: "div",
     },
     col: {
-      type: String
+      type: String,
     },
     sm: {
-      type: String
+      type: String,
     },
     md: {
-      type: String
+      type: String,
     },
     lg: {
-      type: String
+      type: String,
     },
     xl: {
-      type: String
+      type: String,
     },
     offset: {
-      type: String
+      type: String,
     },
     offsetSm: {
-      type: String
+      type: String,
     },
     offsetMd: {
-      type: String
+      type: String,
     },
     offsetLg: {
-      type: String
+      type: String,
     },
     offsetXl: {
-      type: String
+      type: String,
     },
     auto: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   setup(props, { attrs }) {
     const className = computed(() => {
@@ -65,15 +65,15 @@ export default {
         props.offsetMd ? "offset-md-" + props.offsetMd : "",
         props.offsetLg ? "offset-lg-" + props.offsetLg : "",
         props.offsetXl ? "offset-xl-" + props.offsetXl : "",
-        props.auto ? "col-auto" : ""
+        props.auto ? "col-auto" : "",
       ];
     });
 
     return {
       className,
       props,
-      attrs
+      attrs,
     };
-  }
+  },
 };
 </script>

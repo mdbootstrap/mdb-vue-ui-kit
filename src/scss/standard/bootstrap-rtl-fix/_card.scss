@@ -55,7 +55,7 @@
 }
 
 .card-subtitle {
-  margin-top: -$card-title-spacer-y / 2;
+  margin-top: -$card-title-spacer-y * 0.5;
   margin-bottom: 0;
 }
 
@@ -85,7 +85,9 @@
   border-bottom: $card-border-width solid $card-border-color;
 
   &:first-child {
-    @include border-radius($card-inner-border-radius $card-inner-border-radius 0 0);
+    @include border-radius(
+      $card-inner-border-radius $card-inner-border-radius 0 0
+    );
   }
 }
 
@@ -96,7 +98,9 @@
   border-top: $card-border-width solid $card-border-color;
 
   &:last-child {
-    @include border-radius(0 0 $card-inner-border-radius $card-inner-border-radius);
+    @include border-radius(
+      0 0 $card-inner-border-radius $card-inner-border-radius
+    );
   }
 }
 
@@ -105,9 +109,9 @@
 //
 
 .card-header-tabs {
-  margin-right: -$card-cap-padding-x / 2;
+  margin-right: -$card-cap-padding-x * 0.5;
   margin-bottom: -$card-cap-padding-y;
-  margin-left: -$card-cap-padding-x / 2;
+  margin-left: -$card-cap-padding-x * 0.5;
   border-bottom: 0;
 
   @if $nav-tabs-link-active-bg != $card-bg {
@@ -119,8 +123,8 @@
 }
 
 .card-header-pills {
-  margin-right: -$card-cap-padding-x / 2;
-  margin-left: -$card-cap-padding-x / 2;
+  margin-right: -$card-cap-padding-x * 0.5;
+  margin-left: -$card-cap-padding-x * 0.5;
 }
 
 // Card image

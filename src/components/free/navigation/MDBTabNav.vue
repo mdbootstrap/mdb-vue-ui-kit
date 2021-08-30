@@ -17,22 +17,22 @@ export default {
   props: {
     tag: {
       type: String,
-      default: "ul"
+      default: "ul",
     },
     pills: {
-      type: Boolean
+      type: Boolean,
     },
     justify: {
-      type: Boolean
+      type: Boolean,
     },
     fill: {
-      type: Boolean
+      type: Boolean,
     },
     col: {
       type: String,
-      default: "3"
+      default: "3",
     },
-    tabsClasses: String
+    tabsClasses: String,
   },
   setup(props, { attrs }) {
     const className = computed(() => {
@@ -42,7 +42,7 @@ export default {
         props.justify && "nav-justified",
         props.fill && "nav-fill",
         isVertical.value && "flex-column",
-        props.tabsClasses && props.tabsClasses
+        props.tabsClasses && props.tabsClasses,
       ];
     });
 
@@ -57,8 +57,8 @@ export default {
       columnClassName,
       isVertical,
       props,
-      attrs
+      attrs,
     };
-  }
+  },
 };
 </script>

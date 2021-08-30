@@ -6,17 +6,17 @@ const bsColors = [
   "warning",
   "info",
   "light",
-  "dark"
+  "dark",
 ];
 const gradient =
   "rgba({{color}}, 0.2) 0, rgba({{color}}, 0.3) 40%, rgba({{color}}, 0.4) 50%, rgba({{color}}, 0.5) 60%, rgba({{color}}, 0) 70%";
 const defaultColor = [0, 0, 0];
 const transitionBreakOpacity = 0.5;
 
-const isBSColor = propColor => bsColors.includes(propColor.toLowerCase());
+const isBSColor = (propColor) => bsColors.includes(propColor.toLowerCase());
 
 const colorToRGB = (color, defaultColor) => {
-  const hexToRgb = color => {
+  const hexToRgb = (color) => {
     const HEX_COLOR_LENGTH = 7;
     const IS_SHORT_HEX = color.length < HEX_COLOR_LENGTH;
     if (IS_SHORT_HEX) {
@@ -25,11 +25,11 @@ const colorToRGB = (color, defaultColor) => {
     return [
       parseInt(color.substr(1, 2), 16),
       parseInt(color.substr(3, 2), 16),
-      parseInt(color.substr(5, 2), 16)
+      parseInt(color.substr(5, 2), 16),
     ];
   };
 
-  const namedColorsToRgba = color => {
+  const namedColorsToRgba = (color) => {
     const tempElem = document.body.appendChild(
       document.createElement("fictum")
     );
@@ -50,8 +50,8 @@ const colorToRGB = (color, defaultColor) => {
     return color;
   };
 
-  const rgbaToRgb = color => {
-    color = color.match(/[.\d]+/g).map(a => +Number(a));
+  const rgbaToRgb = (color) => {
+    color = color.match(/[.\d]+/g).map((a) => +Number(a));
     color.length = 3;
     return color;
   };
@@ -82,14 +82,14 @@ const getDiameter = ({ offsetX, offsetY, height, width }) => {
     first: top === true && left === false,
     second: top === true && left === true,
     third: top === false && left === true,
-    fourth: top === false && left === false
+    fourth: top === false && left === false,
   };
 
   const getCorner = {
     topLeft: pythagorean(offsetX, offsetY),
     topRight: pythagorean(width - offsetX, offsetY),
     bottomLeft: pythagorean(offsetX, height - offsetY),
-    bottomRight: pythagorean(width - offsetX, height - offsetY)
+    bottomRight: pythagorean(width - offsetX, height - offsetY),
   };
 
   let diameter = 0;
@@ -112,7 +112,7 @@ const setStyles = (el, styles) => {
   }
 };
 
-const getBackgroundImage = color => {
+const getBackgroundImage = (color) => {
   if (color !== "") {
     const rgbValue = colorToRGB(color, defaultColor).join(",");
     const gradientImage = gradient.split("{{color}}").join(`${rgbValue}`);
@@ -128,13 +128,13 @@ const runRipple = (el, waveConfig, options) => {
     offsetX: options.centered ? waveConfig.height / 2 : waveConfig.left,
     offsetY: options.centered ? waveConfig.width / 2 : waveConfig.top,
     height: waveConfig.height,
-    width: waveConfig.width
+    width: waveConfig.width,
   };
   const diameter = getDiameter(diameterConfig);
   const radiusValue = options.radius || diameter / 2;
   const opacity = {
     delay: options.duration * transitionBreakOpacity,
-    duration: options.duration - options.duration * transitionBreakOpacity
+    duration: options.duration - options.duration * transitionBreakOpacity,
   };
 
   const styles = {
@@ -147,7 +147,7 @@ const runRipple = (el, waveConfig, options) => {
     height: `${Math.round(options.radius * 2 || diameter)}px`,
     width: `${Math.round(options.radius * 2 || diameter)}px`,
     transitionDelay: `0s, ${opacity.delay}ms`,
-    transitionDuration: `${options.duration}ms, ${opacity.duration}ms`
+    transitionDuration: `${options.duration}ms, ${opacity.duration}ms`,
   };
 
   if (options.unbound) {
@@ -183,16 +183,16 @@ export default {
       color: (binding.value && binding.value.color) || "",
       duration: (binding.value && binding.value.duration) || 500,
       radius: (binding.value && binding.value.radius) || 0,
-      unbound: (binding.value && binding.value.unbound) || false
+      unbound: (binding.value && binding.value.unbound) || false,
     };
 
     el.classList.add("ripple-surface");
-    el.waves = e => {
+    el.waves = (e) => {
       const waveConfig = {
         top: e.layerY,
         left: e.layerX,
         height: el.offsetHeight,
-        width: el.offsetWidth
+        width: el.offsetWidth,
       };
       runRipple(el, waveConfig, options);
     };
@@ -208,5 +208,5 @@ export default {
 
   unmounted(el) {
     el.removeEventListener("click", el.waves);
-  }
+  },
 };

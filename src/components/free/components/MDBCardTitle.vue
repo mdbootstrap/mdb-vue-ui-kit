@@ -12,12 +12,12 @@ export default {
   props: {
     tag: {
       type: String,
-      default: "h5"
+      default: "h5",
     },
     subtitle: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   setup(props, { attrs }) {
     const tagName = computed(() => {
@@ -35,8 +35,8 @@ export default {
       className,
       tagName,
       props,
-      attrs
+      attrs,
     };
-  }
+  },
 };
 </script>

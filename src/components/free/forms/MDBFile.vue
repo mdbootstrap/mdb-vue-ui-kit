@@ -32,12 +32,12 @@ export default {
     labelClass: String,
     modelValue: {
       type: [FileList, Array],
-      default: () => []
+      default: () => [],
     },
     size: String,
     tooltipFeedback: Boolean,
     validFeedback: String,
-    validateOnChange: Boolean
+    validateOnChange: Boolean,
   },
   emits: ["update:modelValue"],
   setup(props, { attrs, emit }) {
@@ -50,7 +50,7 @@ export default {
         props.size && `form-control-${props.size}`,
         isInputValidated.value && isInputValid.value && "is-valid",
         isInputValidated.value && !isInputValid.value && "is-invalid",
-        props.inputClass
+        props.inputClass,
       ];
     });
     const labelClassName = computed(() => {
@@ -67,12 +67,12 @@ export default {
     const isInputValidated = ref(props.isValidated);
     const isInputValid = ref(props.isValid);
 
-    const handleValidation = event => {
+    const handleValidation = (event) => {
       isInputValid.value = event.target.files.length > 0;
       isInputValidated.value = true;
     };
 
-    const handleChange = event => {
+    const handleChange = (event) => {
       inputValue.value = event.target.files;
       emit("update:modelValue", inputValue.value);
 
@@ -83,17 +83,17 @@ export default {
 
     watch(
       () => props.modelValue,
-      value => (inputValue.value = value)
+      (value) => (inputValue.value = value)
     );
 
     watch(
       () => props.isValidated,
-      value => (isInputValidated.value = value)
+      (value) => (isInputValidated.value = value)
     );
 
     watch(
       () => props.isValid,
-      value => {
+      (value) => {
         isInputValid.value = value;
       }
     );
@@ -105,8 +105,8 @@ export default {
       labelClassName,
       validFeedbackClassName,
       invalidFeedbackClassName,
-      handleChange
+      handleChange,
     };
-  }
+  },
 };
 </script>

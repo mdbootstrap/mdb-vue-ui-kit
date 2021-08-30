@@ -15,31 +15,31 @@ export default {
   props: {
     tag: {
       type: String,
-      default: "ul"
+      default: "ul",
     },
     right: {
       type: Boolean,
-      default: false
+      default: false,
     },
     center: {
       type: Boolean,
-      default: false
+      default: false,
     },
     vertical: {
       type: Boolean,
-      default: false
+      default: false,
     },
     justifyAround: {
       type: Boolean,
-      default: false
+      default: false,
     },
     class: {
-      type: String
+      type: String,
     },
     nav: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   setup(props, { attrs }) {
     const className = computed(() => {
@@ -54,16 +54,16 @@ export default {
           : props.justifyAround
           ? "justify-content-around w-100"
           : "me-auto",
-        props.class && `${props.class}`
+        props.class && `${props.class}`,
       ];
     });
 
     return {
       props,
       className,
-      attrs
+      attrs,
     };
-  }
+  },
 };
 </script>
 

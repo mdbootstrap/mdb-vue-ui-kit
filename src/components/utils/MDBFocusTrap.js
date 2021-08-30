@@ -21,7 +21,7 @@ function MDBFocusTrap() {
       trapElement.value.querySelectorAll(
         'button, a, input, select, textarea, [tabindex]:not([tabindex="-1"])'
       )
-    ).filter(el => {
+    ).filter((el) => {
       return (
         !el.classList.contains("ps__thumb-x") &&
         !el.classList.contains("ps__thumb-y") &&
@@ -34,7 +34,7 @@ function MDBFocusTrap() {
     firstFocusableElement.value = focusable[0];
 
     lastFocusableElement.value = focusable[focusable.length - 1];
-    on(lastFocusableElement.value, "keydown", e =>
+    on(lastFocusableElement.value, "keydown", (e) =>
       handleLastElementKeydown(e, true)
     );
   }
@@ -67,7 +67,7 @@ function MDBFocusTrap() {
 
   return {
     initFocusTrap,
-    removeFocusTrap
+    removeFocusTrap,
   };
 }
 

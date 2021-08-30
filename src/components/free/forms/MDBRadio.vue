@@ -67,20 +67,20 @@ export default {
     invalidFeedback: String,
     tooltipFeedback: {
       type: Boolean,
-      default: false
+      default: false,
     },
     wrap: {
       type: Boolean,
-      default: true
+      default: true,
     },
     formCheck: {
       type: Boolean,
-      default: true
+      default: true,
     },
     tag: {
       type: String,
-      default: "div"
-    }
+      default: "div",
+    },
   },
   emits: ["update:modelValue"],
   setup(props, { attrs, emit }) {
@@ -92,14 +92,14 @@ export default {
       return [
         props.formCheck && !props.btnCheck ? "form-check" : "",
         props.inline && "form-check-inline",
-        props.wrapperClass
+        props.wrapperClass,
       ];
     });
     const inputClassName = computed(() => {
       return [
         props.btnCheck ? "btn-check" : "form-check-input",
         isInputValidated.value && isInputValid.value && "is-valid",
-        isInputValidated.value && !isInputValid.value && "is-invalid"
+        isInputValidated.value && !isInputValid.value && "is-invalid",
       ];
     });
     const labelClassName = computed(() => {
@@ -118,7 +118,7 @@ export default {
     const isInputValidated = ref(props.isValidated);
     const isInputValid = ref(props.isValid);
 
-    const handleValidation = e => {
+    const handleValidation = (e) => {
       isInputValid.value = e.target.checkValidity();
       isInputValidated.value = true;
     };
@@ -145,12 +145,12 @@ export default {
 
     watch(
       () => props.isValidated,
-      value => (isInputValidated.value = value)
+      (value) => (isInputValidated.value = value)
     );
 
     watch(
       () => props.isValid,
-      value => (isInputValid.value = value)
+      (value) => (isInputValid.value = value)
     );
 
     return {
@@ -164,8 +164,8 @@ export default {
       invalidFeedbackClassName,
       uid,
       attrs,
-      props
+      props,
     };
-  }
+  },
 };
 </script>

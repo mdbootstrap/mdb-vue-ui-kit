@@ -12,8 +12,8 @@ export default {
   props: {
     tag: {
       type: String,
-      default: "p"
-    }
+      default: "p",
+    },
   },
   setup(props, { attrs }) {
     const className = computed(() => {
@@ -23,8 +23,8 @@ export default {
     return {
       className,
       props,
-      attrs
+      attrs,
     };
-  }
+  },
 };
 </script>

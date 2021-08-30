@@ -10,25 +10,25 @@ export default {
   props: {
     iconStyle: {
       type: String,
-      default: "fas"
+      default: "fas",
     },
     icon: String,
     flag: String,
-    size: String
+    size: String,
   },
   setup(props, { attrs }) {
     const className = computed(() => {
       return [
         !props.flag && props.iconStyle,
         props.flag ? `flag flag-${props.flag}` : `fa-${props.icon}`,
-        props.size && `fa-${props.size}`
+        props.size && `fa-${props.size}`,
       ];
     });
 
     return {
       className,
-      attrs
+      attrs,
     };
-  }
+  },
 };
 </script>

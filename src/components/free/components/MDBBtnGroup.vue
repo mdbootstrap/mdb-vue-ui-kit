@@ -14,26 +14,26 @@ export default {
     vertical: Boolean,
     role: {
       type: String,
-      default: "group"
+      default: "group",
     },
     tag: {
       type: String,
-      default: "div"
-    }
+      default: "div",
+    },
   },
   setup(props, { attrs }) {
     const className = computed(() => {
       return [
         props.size && `btn-group-${props.size}`,
-        props.vertical ? "btn-group-vertical" : "btn-group"
+        props.vertical ? "btn-group-vertical" : "btn-group",
       ];
     });
 
     return {
       className,
       attrs,
-      props
+      props,
     };
-  }
+  },
 };
 </script>

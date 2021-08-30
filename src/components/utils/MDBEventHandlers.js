@@ -1,7 +1,7 @@
 const stripNameRegex = /\..*/;
 const customEvents = {
   mouseenter: "mouseover",
-  mouseleave: "mouseout"
+  mouseleave: "mouseout",
 };
 const nativeEvents = [
   "click",
@@ -49,7 +49,7 @@ const nativeEvents = [
   "readystatechange",
   "error",
   "abort",
-  "scroll"
+  "scroll",
 ];
 
 function normalizeParams(originalTypeEvent, handler, delegationFn) {
@@ -95,11 +95,11 @@ function removeHandler(element, typeEvent, handler, delegationSelector) {
   element.removeEventListener(typeEvent, handler, !!delegationSelector);
 }
 
-export const on = function(element, event, handler, delegationFn) {
+export const on = function (element, event, handler, delegationFn) {
   addHandler(element, event, handler, delegationFn);
 };
 
-export const off = function(element, event, handler, delegationFn) {
+export const off = function (element, event, handler, delegationFn) {
   if (typeof event !== "string" || !element) {
     return;
   }
@@ -118,7 +118,7 @@ export const off = function(element, event, handler, delegationFn) {
   );
 };
 
-export const onMulti = function(element, eventArray, handler, delegationFn) {
+export const onMulti = function (element, eventArray, handler, delegationFn) {
   const events = eventArray.split(" ");
 
   for (let i = 0; i < events.length; i++) {
@@ -126,7 +126,7 @@ export const onMulti = function(element, eventArray, handler, delegationFn) {
   }
 };
 
-export const offMulti = function(element, eventArray, handler, delegationFn) {
+export const offMulti = function (element, eventArray, handler, delegationFn) {
   const events = eventArray.split(" ");
 
   for (let i = 0; i < events.length; i++) {

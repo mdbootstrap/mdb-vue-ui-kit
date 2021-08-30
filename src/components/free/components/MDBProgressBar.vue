@@ -8,8 +8,8 @@
     :aria-valuemax="max"
     :style="[
       {
-        width: ((value - min) / (max - min)) * 100 + '%'
-      }
+        width: ((value - min) / (max - min)) * 100 + '%',
+      },
     ]"
     v-bind="attrs"
     ><slot></slot
@@ -24,29 +24,29 @@ export default {
   props: {
     tag: {
       type: String,
-      default: "div"
+      default: "div",
     },
     bg: String,
     striped: {
       type: Boolean,
-      default: false
+      default: false,
     },
     animated: {
       type: Boolean,
-      default: false
+      default: false,
     },
     value: {
       type: Number,
-      default: 0
+      default: 0,
     },
     min: {
       type: Number,
-      default: 0
+      default: 0,
     },
     max: {
       type: Number,
-      default: 100
-    }
+      default: 100,
+    },
   },
   setup(props, { attrs }) {
     const className = computed(() => {
@@ -54,15 +54,15 @@ export default {
         "progress-bar",
         props.bg && `bg-${props.bg}`,
         props.striped && "progress-bar-striped",
-        props.animated && "progress-bar-animated"
+        props.animated && "progress-bar-animated",
       ];
     });
 
     return {
       className,
       props,
-      attrs
+      attrs,
     };
-  }
+  },
 };
 </script>

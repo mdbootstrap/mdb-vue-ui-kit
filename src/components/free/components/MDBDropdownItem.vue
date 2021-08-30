@@ -1,9 +1,5 @@
 <template>
-  <li
-    @keyup.stop.enter="handleKeypress"
-    @click="$emit('click', $event)"
-    :tabindex="divider ? null : 0"
-  >
+  <li @keyup.stop.enter="handleKeypress" :tabindex="divider ? null : 0">
     <component
       v-if="hasLinkOrTag"
       :is="tagName"
@@ -32,45 +28,45 @@ export default {
   props: {
     tag: {
       type: String,
-      default: "a"
+      default: "a",
     },
     to: [String, Object],
     href: {
-      type: String
+      type: String,
     },
     disabled: {
       type: Boolean,
-      default: false
+      default: false,
     },
     active: {
       type: Boolean,
-      default: false
+      default: false,
     },
     exact: {
       type: Boolean,
-      default: false
+      default: false,
     },
     newTab: {
       type: Boolean,
-      default: false
+      default: false,
     },
     submenu: {
       type: Boolean,
-      default: false
+      default: false,
     },
     submenuIcon: String,
     divider: {
       type: Boolean,
-      default: false
+      default: false,
     },
     text: {
       type: Boolean,
-      default: false
+      default: false,
     },
     header: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   setup(props, { attrs }) {
     const className = computed(() => {
@@ -78,7 +74,7 @@ export default {
         dropdownClass.value,
         props.disabled ? "disabled" : "",
         props.active ? "active" : "",
-        props.submenu && "dropdown-submenu"
+        props.submenu && "dropdown-submenu",
       ];
     });
 
@@ -125,8 +121,8 @@ export default {
       tagName,
       tab,
       attrs,
-      props
+      props,
     };
-  }
+  },
 };
 </script>

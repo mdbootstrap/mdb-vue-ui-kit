@@ -38,26 +38,26 @@ export default {
     labelClass: String,
     max: {
       type: Number,
-      default: 100
+      default: 100,
     },
     min: {
       type: Number,
-      default: 0
+      default: 0,
     },
     modelValue: {
       type: Number,
-      default: 50
+      default: 50,
     },
     tag: {
       type: String,
-      default: "div"
+      default: "div",
     },
     thumb: {
       type: Boolean,
-      default: true
+      default: true,
     },
     thumbClass: String,
-    wrapperClass: String
+    wrapperClass: String,
   },
   emits: ["update:modelValue"],
   setup(props, { attrs, emit }) {
@@ -81,14 +81,14 @@ export default {
     });
     const thumbLeftPosition = ref(0);
 
-    const handleInput = e => {
+    const handleInput = (e) => {
       inputValue.value = parseFloat(e.target.value);
       emit("update:modelValue", inputValue.value);
 
       setThumbPosition();
     };
 
-    const toggleThumb = isActive => {
+    const toggleThumb = (isActive) => {
       isThumbActive.value = isActive;
     };
 
@@ -107,7 +107,7 @@ export default {
 
     watch(
       () => props.modelValue,
-      value => {
+      (value) => {
         inputValue.value = value;
         setThumbPosition();
       }
@@ -126,8 +126,8 @@ export default {
       attrs,
       props,
       handleInput,
-      toggleThumb
+      toggleThumb,
     };
-  }
+  },
 };
 </script>

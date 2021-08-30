@@ -29,53 +29,53 @@ export default {
   props: {
     tag: {
       type: String,
-      default: "table"
+      default: "table",
     },
     variant: {
-      type: String
+      type: String,
     },
     dark: {
       type: Boolean,
-      default: false
+      default: false,
     },
     light: {
       type: Boolean,
-      default: false
+      default: false,
     },
     border: {
       type: [Boolean, String],
-      default: false
+      default: false,
     },
     borderless: {
       type: Boolean,
-      default: false
+      default: false,
     },
     striped: {
       type: Boolean,
-      default: false
+      default: false,
     },
     hover: {
       type: Boolean,
-      default: false
+      default: false,
     },
     responsive: {
       type: [Boolean, String],
-      default: false
+      default: false,
     },
     align: {
-      type: String
+      type: String,
     },
     sm: {
       type: Boolean,
-      default: false
+      default: false,
     },
     tableStyle: {
-      type: String
+      type: String,
     },
     captionTop: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   setup(props, { attrs }) {
     const wrapperClasses = computed(() => {
@@ -115,7 +115,7 @@ export default {
           ? "align-middle"
           : "",
         props.captionTop && "caption-top",
-        props.tableStyle
+        props.tableStyle,
       ];
     });
 
@@ -123,8 +123,8 @@ export default {
       wrapperClasses,
       tableClasses,
       props,
-      attrs
+      attrs,
     };
-  }
+  },
 };
 </script>
