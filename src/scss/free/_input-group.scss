@@ -23,3 +23,24 @@
     }
   }
 }
+
+.input-group-text {
+  min-height: $input-group-min-height;
+  height: $input-group-height;
+}
+
+.input-group-lg {
+  .input-group-text {
+    height: $input-group-lg-height;
+    font-size: $input-group-lg-text-font-size;
+  }
+}
+
+.input-group-sm {
+  .input-group-text {
+    min-height: $input-group-sm-min-height;
+    height: $input-group-sm-height;
+    font-size: $input-group-sm-text-font-size;
+    line-height: $input-group-sm-text-line-height;
+  }
+}

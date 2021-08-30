@@ -1,8 +1,9 @@
 {
   "name": "mdb-vue-ui-kit",
-  "version": "1.0.0-beta5",
+  "version": "1.0.0-beta6",
   "main": "js/mdb.umd.min.js",
   "repository": "https://github.com/mdbootstrap/mdb-vue-ui-kit.git",
   "author": "MDBootstrap",
-  "license": "MIT"
+  "license": "MIT",
+  "types":"src/types/main.d.ts"
 }

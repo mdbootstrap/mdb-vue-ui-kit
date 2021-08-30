@@ -62,7 +62,8 @@ export default {
     arrow: {
       type: Boolean,
       default: false
-    }
+    },
+    disabled: Boolean
   },
   setup(props, { attrs, emit }) {
     const {
@@ -147,10 +148,10 @@ export default {
     });
 
     const onMouseOver = () => {
-      emit("update:modelValue", true);
+      !props.disabled && emit("update:modelValue", true);
     };
     const onMouseOut = () => {
-      emit("update:modelValue", false);
+      !props.disabled && emit("update:modelValue", false);
     };
 
     onUnmounted(() => {

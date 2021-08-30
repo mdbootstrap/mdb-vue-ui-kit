@@ -10366,14 +10366,14 @@ function MDBDropdownItemvue_type_template_id_5b763505_render(_ctx, _cache, $prop
 MDBDropdownItemvue_type_script_lang_js.render = MDBDropdownItemvue_type_template_id_5b763505_render
 
 /* harmony default export */ var MDBDropdownItem = (MDBDropdownItemvue_type_script_lang_js);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBTooltip.vue?vue&type=template&id=3c56cf20
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBTooltip.vue?vue&type=template&id=e3061790
 
-var MDBTooltipvue_type_template_id_3c56cf20_hoisted_1 = {
+var MDBTooltipvue_type_template_id_e3061790_hoisted_1 = {
   key: 0,
   "x-arrow": "",
   class: "tooltip_arrow"
 };
-function MDBTooltipvue_type_template_id_3c56cf20_render(_ctx, _cache, $props, $setup, $data, $options) {
+function MDBTooltipvue_type_template_id_e3061790_render(_ctx, _cache, $props, $setup, $data, $options) {
   return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(external_commonjs_vue_commonjs2_vue_root_Vue_["Fragment"], null, [(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveDynamicComponent"])($props.tag), {
     ref: "triggerEl",
     style: {
@@ -10399,14 +10399,14 @@ function MDBTooltipvue_type_template_id_3c56cf20_render(_ctx, _cache, $props, $s
           'tooltip-inner': true
         },
         style: [$setup.widthStyle]
-      }, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["renderSlot"])(_ctx.$slots, "tip"), $props.arrow ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])("div", MDBTooltipvue_type_template_id_3c56cf20_hoisted_1)) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true)], 4)) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true)];
+      }, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["renderSlot"])(_ctx.$slots, "tip"), $props.arrow ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])("div", MDBTooltipvue_type_template_id_e3061790_hoisted_1)) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true)], 4)) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true)];
     }),
     _: 1
   })], 64
   /* STABLE_FRAGMENT */
   );
 }
-// CONCATENATED MODULE: ./src/components/free/components/MDBTooltip.vue?vue&type=template&id=3c56cf20
+// CONCATENATED MODULE: ./src/components/free/components/MDBTooltip.vue?vue&type=template&id=e3061790
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBTooltip.vue?vue&type=script&lang=js
 
@@ -10448,7 +10448,8 @@ function MDBTooltipvue_type_template_id_3c56cf20_render(_ctx, _cache, $props, $s
     arrow: {
       type: Boolean,
       default: false
-    }
+    },
+    disabled: Boolean
   },
   setup: function setup(props, _ref) {
     var attrs = _ref.attrs,
@@ -10525,11 +10526,11 @@ function MDBTooltipvue_type_template_id_3c56cf20_render(_ctx, _cache, $props, $s
     });
 
     var onMouseOver = function onMouseOver() {
-      emit("update:modelValue", true);
+      !props.disabled && emit("update:modelValue", true);
     };
 
     var onMouseOut = function onMouseOut() {
-      emit("update:modelValue", false);
+      !props.disabled && emit("update:modelValue", false);
     };
 
     Object(external_commonjs_vue_commonjs2_vue_root_Vue_["onUnmounted"])(function () {
@@ -10553,7 +10554,7 @@ function MDBTooltipvue_type_template_id_3c56cf20_render(_ctx, _cache, $props, $s
 
 
 
-MDBTooltipvue_type_script_lang_js.render = MDBTooltipvue_type_template_id_3c56cf20_render
+MDBTooltipvue_type_script_lang_js.render = MDBTooltipvue_type_template_id_e3061790_render
 
 /* harmony default export */ var MDBTooltip = (MDBTooltipvue_type_script_lang_js);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBPopover.vue?vue&type=template&id=40d4df56
