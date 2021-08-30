@@ -30,6 +30,8 @@ import MDBModalHeader from "@/components/free/components/MDBModalHeader";
 import MDBModalTitle from "@/components/free/components/MDBModalTitle";
 import MDBModalBody from "@/components/free/components/MDBModalBody";
 import MDBModalFooter from "@/components/free/components/MDBModalFooter";
+import MDBAccordion from "@/components/free/components/MDBAccordion";
+import MDBAccordionItem from "@/components/free/components/MDBAccordionItem";
 
 /* ------------- Content-styles ------------- */
 import MDBIcon from "@/components/free/content-styles/MDBIcon";
@@ -105,6 +107,8 @@ export {
   MDBModalTitle,
   MDBModalBody,
   MDBModalFooter,
+  MDBAccordion,
+  MDBAccordionItem,
   MDBTabs,
   MDBTabNav,
   MDBTabItem,

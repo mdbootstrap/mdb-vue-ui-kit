@@ -66,7 +66,8 @@ export default {
     },
     classContainer: {
       type: String
-    }
+    },
+    classNavbar: String
   },
   setup(props, { attrs }) {
     const navClass = computed(() => {
@@ -93,7 +94,8 @@ export default {
           : "",
         props.scrolling && scrollingClass.value,
         props.double && "double-nav",
-        props.center && "justify-content-center"
+        props.center && "justify-content-center",
+        props.classNavbar
       ];
     });
 
