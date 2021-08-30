@@ -38,7 +38,6 @@ export default {
       type: [String, Array]
     }
   },
-
   setup(props, { attrs }) {
     const className = computed(() => {
       return [

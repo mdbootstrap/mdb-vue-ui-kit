@@ -86,8 +86,10 @@ export default {
     // controls if DropdownMenu has been mounted into DOM and its element
     // can be targeted by the Popper setup function
     const isMenuMounted = ref(false);
-    const setMenuMountedState = boolean => {
+    const dropdownMenu = ref(null);
+    const setMenuMountedState = (boolean, menuRef) => {
       isMenuMounted.value = boolean;
+      dropdownMenu.value = menuRef;
     };
     provide("setMenuMountedState", setMenuMountedState);
 
@@ -124,6 +126,7 @@ export default {
     });
 
     provide("isPopperActive", isPopperActive);
+    provide("externalTarget", props.target);
 
     // ------------------- handleEscAndOutsideClick -------------------
     // mimics toggling modelValue when user click outside the toggle button
@@ -147,7 +150,7 @@ export default {
       triggerEl.value = props.target
         ? document.querySelector(props.target)
         : root.value.querySelector("[data-trigger]");
-      popperEl.value = root.value.querySelector("[data-popper]");
+      popperEl.value = dropdownMenu.value;
 
       if (typeof props.align === "string") {
         menuAlignClasses.value = `dropdown-menu-${props.align}`;
@@ -174,7 +177,9 @@ export default {
         modifiers: {
           offset: {
             offset: props.offset || "0"
-          }
+          },
+          preventOverflow: { enabled: true },
+          flip: { enabled: true }
         }
       };
 

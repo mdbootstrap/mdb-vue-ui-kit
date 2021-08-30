@@ -2,43 +2,43 @@ export const handleBreakpoints = (windowWidth, breakpointValues) => {
   const breakpoints = {
     none: {
       width: 0,
-      align: null
+      attr: null
     },
     sm: {
       width: 576,
-      align: null
+      attr: null
     },
     md: {
       width: 768,
-      align: null
+      attr: null
     },
     lg: {
       width: 992,
-      align: null
+      attr: null
     },
     xl: {
       width: 1200,
-      align: null
+      attr: null
     },
     xxl: {
       width: 1400,
-      align: null
+      attr: null
     },
     mega: {
       width: 10000,
-      align: null
+      attr: null
     }
   };
 
-  // replace breakpoints align values with corresponding props values
+  // replace breakpoints attr values with corresponding props values
   breakpointValues.forEach(value => {
     const match = Object.keys(breakpoints).filter(breakpoint =>
       value.includes(breakpoint) ? breakpoint : false
     )[0];
     if (match) {
-      breakpoints[match].align = value;
+      breakpoints[match].attr = value;
     } else {
-      breakpoints.none.align = value;
+      breakpoints.none.attr = value;
     }
   });
 
@@ -62,17 +62,17 @@ export const handleBreakpoints = (windowWidth, breakpointValues) => {
   const ranges = {};
   Object.keys(breakpoints).reduce((acc, cur, index) => {
     if (
-      (breakpoints[acc].align && breakpoints[cur].align) ||
-      (breakpoints[acc].align && !cur)
+      (breakpoints[acc].attr && breakpoints[cur].attr) ||
+      (breakpoints[acc].attr && !cur)
     ) {
-      ranges[breakpoints[acc].align] = {
+      ranges[breakpoints[acc].attr] = {
         min: breakpoints[acc].width,
         max: breakpoints[cur].width
       };
       return cur;
-    } else if (breakpoints[acc].align && !breakpoints[cur].align) {
+    } else if (breakpoints[acc].attr && !breakpoints[cur].attr) {
       if (index === Object.keys(breakpoints).length - 1) {
-        ranges[breakpoints[acc].align] = {
+        ranges[breakpoints[acc].attr] = {
           min: breakpoints[acc].width,
           max: breakpoints[cur].width
         };

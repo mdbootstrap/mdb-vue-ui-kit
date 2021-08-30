@@ -1,5 +1,35 @@
 <template>
-  <component :is="tag" :class="wrapperClassName">
+  <input
+    v-if="!wrap"
+    :class="inputClassName"
+    v-bind="attrs"
+    :id="uid"
+    :value="inputValue"
+    @input="handleInput"
+    ref="inputRef"
+  />
+  <label
+    v-if="label && !wrap"
+    ref="labelRef"
+    :class="labelClassName"
+    :for="uid"
+  >
+    {{ label }}
+  </label>
+  <slot v-if="!wrap" />
+  <div v-if="!wrap && validFeedback" :class="validFeedbackClassName">
+    {{ validFeedback }}
+  </div>
+  <div v-if="!wrap && customInvalidFeedback" :class="invalidFeedbackClassName">
+    {{ customInvalidFeedback }}
+  </div>
+  <component
+    v-if="wrap"
+    :is="tag"
+    :class="wrapperClassName"
+    :style="validationStyle"
+  >
+    <slot name="prepend" />
     <input
       :class="inputClassName"
       v-bind="attrs"
@@ -12,13 +42,13 @@
       {{ label }}
     </label>
     <slot></slot>
-    <div :class="validFeedbackClassName">
+    <div v-if="validFeedback" :class="validFeedbackClassName">
       {{ validFeedback }}
     </div>
-    <div :class="invalidFeedbackClassName">
+    <div v-if="customInvalidFeedback" :class="invalidFeedbackClassName">
       {{ customInvalidFeedback }}
     </div>
-    <div class="form-notch">
+    <div v-if="formOutline" class="form-notch">
       <div
         class="form-notch-leading"
         :style="{ width: `${notchLeadingWidth}px` }"
@@ -59,12 +89,19 @@ export default {
       default: true
     },
     wrapperClass: String,
+    inputGroup: {
+      type: [Boolean, String],
+      default: false
+    },
+    wrap: {
+      type: Boolean,
+      default: true
+    },
     formText: String,
     white: Boolean,
     validationEvent: String,
     isValidated: Boolean,
     isValid: Boolean,
-    isInvalid: Boolean,
     validFeedback: String,
     invalidFeedback: String,
     tooltipFeedback: {
@@ -89,6 +126,7 @@ export default {
     const wrapperClassName = computed(() => {
       return [
         props.formOutline && "form-outline",
+        inputGroupClassName.value,
         props.white && "form-white",
         props.wrapperClass
       ];
@@ -99,14 +137,27 @@ export default {
         props.size && `form-control-${props.size}`,
         inputValue.value && "active",
         showPlaceholder.value && "placeholder-active",
-        ((isInputValidated.value && isInputValid.value) || props.isValid) &&
-          "is-valid",
-        ((isInputValidated.value && !isInputValid.value) || props.isInvalid) &&
-          "is-invalid"
+        isInputValidated.value && isInputValid.value && "is-valid",
+        isInputValidated.value && !isInputValid.value && "is-invalid"
       ];
     });
     const labelClassName = computed(() => {
       return ["form-label", props.labelClass];
+    });
+
+    const inputGroupClassName = computed(() => {
+      if (!props.inputGroup) {
+        return;
+      }
+      return props.inputGroup !== true
+        ? `input-group input-group-${props.inputGroup}`
+        : "input-group";
+    });
+
+    const validationStyle = computed(() => {
+      return props.inputGroup && isInputValidated.value
+        ? { marginBottom: "1rem" }
+        : "";
     });
 
     const validFeedbackClassName = computed(() => {
@@ -205,6 +256,7 @@ export default {
       labelClassName,
       validFeedbackClassName,
       invalidFeedbackClassName,
+      validationStyle,
       customInvalidFeedback,
       notchLeadingWidth,
       notchMiddleWidth,

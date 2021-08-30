@@ -1,5 +1,31 @@
 <template>
-  <component :is="tag" :class="wrapperClassName">
+  <textarea
+    v-if="!wrap"
+    :class="textareaClassName"
+    v-bind="attrs"
+    :id="uid"
+    :value="textareaValue"
+    @input="handleInput"
+    :rows="rows"
+    ref="textareaRef"
+  />
+  <label v-if="label && !wrap" ref="labelRef" class="form-label" :for="uid">
+    {{ label }}
+  </label>
+  <slot v-if="!wrap" />
+  <div v-if="!wrap && validFeedback" :class="validFeedbackClassName">
+    {{ validFeedback }}
+  </div>
+  <div v-if="!wrap && customInvalidFeedback" :class="invalidFeedbackClassName">
+    {{ customInvalidFeedback }}
+  </div>
+  <component
+    v-if="wrap"
+    :is="tag"
+    :class="wrapperClassName"
+    :style="validationStyle"
+  >
+    <slot name="prepend" />
     <textarea
       :class="textareaClassName"
       v-bind="attrs"
@@ -12,13 +38,13 @@
     <label v-if="label" ref="labelRef" class="form-label" :for="uid">
       {{ label }}
     </label>
-    <div :class="validFeedbackClassName">
+    <div v-if="validFeedback" :class="validFeedbackClassName">
       {{ validFeedback }}
     </div>
-    <div :class="invalidFeedbackClassName">
+    <div v-if="customInvalidFeedback" :class="invalidFeedbackClassName">
       {{ customInvalidFeedback }}
     </div>
-    <div class="form-notch">
+    <div v-if="formOutline" class="form-notch">
       <div
         class="form-notch-leading"
         :style="{ width: `${notchLeadingWidth}px` }"
@@ -56,13 +82,24 @@ export default {
     label: String,
     modelValue: [String, Number],
     size: String,
+    formOutline: {
+      type: Boolean,
+      default: true
+    },
     wrapperClass: String,
+    inputGroup: {
+      type: [Boolean, String],
+      default: false
+    },
+    wrap: {
+      type: Boolean,
+      default: true
+    },
     formText: String,
     white: Boolean,
     validationEvent: String,
     isValidated: Boolean,
     isValid: Boolean,
-    isInvalid: Boolean,
     validFeedback: String,
     invalidFeedback: String,
     tooltipFeedback: {
@@ -85,7 +122,12 @@ export default {
     const uid = props.id || getUID("MDBTextarea-");
 
     const wrapperClassName = computed(() => {
-      return ["form-outline", props.white && "form-white", props.wrapperClass];
+      return [
+        props.formOutline && "form-outline",
+        inputGroupClassName.value,
+        props.white && "form-white",
+        props.wrapperClass
+      ];
     });
     const textareaClassName = computed(() => {
       return [
@@ -93,11 +135,24 @@ export default {
         props.size && `form-control-${props.size}`,
         textareaValue.value && "active",
         showPlaceholder.value && "placeholder-active",
-        ((isInputValidated.value && isInputValid.value) || props.isValid) &&
-          "is-valid",
-        ((isInputValidated.value && !isInputValid.value) || props.isInvalid) &&
-          "is-invalid"
+        isInputValidated.value && isInputValid.value && "is-valid",
+        isInputValidated.value && !isInputValid.value && "is-invalid"
       ];
+    });
+
+    const inputGroupClassName = computed(() => {
+      if (!props.inputGroup) {
+        return;
+      }
+      return props.inputGroup !== true
+        ? `input-group input-group-${props.inputGroup}`
+        : "input-group";
+    });
+
+    const validationStyle = computed(() => {
+      return props.inputGroup && isInputValidated.value
+        ? { marginBottom: "1rem" }
+        : "";
     });
 
     const validFeedbackClassName = computed(() => {
@@ -185,6 +240,7 @@ export default {
       textareaClassName,
       validFeedbackClassName,
       invalidFeedbackClassName,
+      validationStyle,
       customInvalidFeedback,
       notchLeadingWidth,
       notchMiddleWidth,

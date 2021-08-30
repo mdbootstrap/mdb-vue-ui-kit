@@ -1,5 +1,5 @@
 <template>
-  <transition>
+  <transition v-if="!shouldTeleport">
     <component
       v-if="isMounted"
       :is="tag"
@@ -12,10 +12,25 @@
       <slot />
     </component>
   </transition>
+  <teleport v-else :to="externalTarget">
+    <transition>
+      <component
+        v-if="isMounted"
+        :is="tag"
+        :class="className"
+        :style="staticStyle"
+        v-bind="attrs"
+        :data-popper="externalTarget"
+        ref="root"
+      >
+        <slot />
+      </component>
+    </transition>
+  </teleport>
 </template>
 
 <script>
-import { computed, inject, ref, watch } from "vue";
+import { computed, inject, onMounted, ref, watch } from "vue";
 import { on, off } from "../../utils/MDBEventHandlers.js";
 
 export default {
@@ -86,8 +101,8 @@ export default {
       cur => {
         if (cur) {
           setTimeout(() => {
-            setMenuMountedState(true);
-          }, 10);
+            setMenuMountedState(true, root.value);
+          }, 100);
         } else if (!cur && isPopperActive) {
           setInactive();
 
@@ -120,6 +135,18 @@ export default {
         setTimeout(() => {
           return false;
         }, 300);
+      }
+    });
+
+    const externalTarget = inject("externalTarget", false);
+    const shouldTeleport = ref(false);
+
+    onMounted(() => {
+      if (externalTarget) {
+        const target = document.body.querySelector(externalTarget);
+        if (target) {
+          shouldTeleport.value = true;
+        }
       }
     });
 
@@ -205,6 +232,8 @@ export default {
       showClass,
       className,
       isMounted,
+      shouldTeleport,
+      externalTarget,
       root,
       attrs,
       props

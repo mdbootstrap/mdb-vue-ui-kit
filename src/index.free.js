@@ -45,6 +45,11 @@ import MDBPageItem from "@/components/free/navigation/MDBPageItem";
 import MDBBreadcrumb from "@/components/free/navigation/MDBBreadcrumb";
 import MDBBreadcrumbItem from "@/components/free/navigation/MDBBreadcrumbItem";
 import MDBFooter from "@/components/free/navigation/MDBFooter";
+import MDBTabs from "@/components/free/navigation/MDBTabs";
+import MDBTabNav from "@/components/free/navigation/MDBTabNav";
+import MDBTabItem from "@/components/free/navigation/MDBTabItem";
+import MDBTabPane from "@/components/free/navigation/MDBTabPane";
+import MDBTabContent from "@/components/free/navigation/MDBTabContent";
 
 /* ------------- Layout ------------- */
 import MDBCol from "@/components/free/layout/MDBCol";
@@ -59,6 +64,9 @@ import MDBInput from "@/components/free/forms/MDBInput";
 import MDBTextarea from "@/components/free/forms/MDBTextarea";
 import MDBCheckbox from "@/components/free/forms/MDBCheckbox";
 import MDBRadio from "@/components/free/forms/MDBRadio";
+import MDBFile from "@/components/free/forms/MDBFile";
+import MDBRange from "@/components/free/forms/MDBRange";
+import MDBSwitch from "@/components/free/forms/MDBSwitch";
 
 /* ------------- Directives ------------- */
 import mdbRipple from "@/directives/free/mdbRipple";
@@ -95,6 +103,11 @@ export {
   MDBModalTitle,
   MDBModalBody,
   MDBModalFooter,
+  MDBTabs,
+  MDBTabNav,
+  MDBTabItem,
+  MDBTabPane,
+  MDBTabContent,
   MDBIcon,
   MDBNavbar,
   MDBNavbarToggler,
@@ -115,6 +128,9 @@ export {
   MDBTextarea,
   MDBCheckbox,
   MDBRadio,
+  MDBFile,
+  MDBRange,
+  MDBSwitch,
   mdbRipple,
   mdbScrollspy
 };

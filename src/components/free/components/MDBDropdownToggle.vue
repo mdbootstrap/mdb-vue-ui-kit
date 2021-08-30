@@ -23,7 +23,6 @@ import mdbClickOutside from "@/directives/free/mdbClickOutside.js";
 
 export default {
   name: "MDBDropdownToggle",
-
   components: { MDBBtn },
   inheritAttrs: false,
   emits: ["toggle-dropdown"],
@@ -32,10 +31,6 @@ export default {
     tag: {
       type: String,
       default: "button"
-    },
-    color: {
-      type: String,
-      default: "primary"
     },
     href: [String, null],
     split: {
@@ -52,15 +47,20 @@ export default {
         btnClass.value,
         "dropdown-toggle",
         props.split && "dropdown-toggle-split",
-        props.size && `btn-${props.size}`
+        props.size && `btn-${props.size}`,
+        props.outline && `btn-outline-${props.outline}`
       ];
     });
 
     const btnClass = computed(() => {
-      if (props.tag === "button") {
-        const color = props.color ? `btn-${props.color}` : "";
-        return `btn ${color}`;
-      }
+      if (props.tag !== "button") return;
+      const color =
+        props.color && !props.outline
+          ? `btn-${props.color}`
+          : props.outline
+          ? ""
+          : "btn-primary";
+      return `btn ${color}`;
     });
 
     const expanded = ref(false);

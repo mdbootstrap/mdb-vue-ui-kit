@@ -14,10 +14,10 @@
     <label v-if="label" :class="labelClassName" :for="uid">
       {{ label }}
     </label>
-    <div :class="validFeedbackClassName">
+    <div v-if="validFeedback" :class="validFeedbackClassName">
       {{ validFeedback }}
     </div>
-    <div :class="invalidFeedbackClassName">
+    <div v-if="invalidFeedback" :class="invalidFeedbackClassName">
       {{ invalidFeedback }}
     </div>
   </component>
@@ -36,10 +36,10 @@
   <label v-if="!wrap && label" :class="labelClassName" :for="uid">
     {{ label }}
   </label>
-  <div v-if="!wrap" :class="validFeedbackClassName">
+  <div v-if="!wrap && validFeedback" :class="validFeedbackClassName">
     {{ validFeedback }}
   </div>
-  <div v-if="!wrap" :class="invalidFeedbackClassName">
+  <div v-if="!wrap && invalidFeedback" :class="invalidFeedbackClassName">
     {{ invalidFeedback }}
   </div>
 </template>
@@ -63,7 +63,6 @@ export default {
     validateOnChange: Boolean,
     isValidated: Boolean,
     isValid: Boolean,
-    isInvalid: Boolean,
     validFeedback: String,
     invalidFeedback: String,
     tooltipFeedback: {
@@ -87,7 +86,7 @@ export default {
   setup(props, { attrs, emit }) {
     const inputRef = ref("inputRef");
     const inputValue = ref(props.modelValue || false);
-    const uid = props.id || getUID("MDBCheckbox-");
+    const uid = props.id || getUID("MDBRadio-");
 
     const wrapperClassName = computed(() => {
       return [
@@ -99,10 +98,8 @@ export default {
     const inputClassName = computed(() => {
       return [
         props.btnCheck ? "btn-check" : "form-check-input",
-        ((isInputValidated.value && isInputValid.value) || props.isValid) &&
-          "is-valid",
-        ((isInputValidated.value && !isInputValid.value) || props.isInvalid) &&
-          "is-invalid"
+        isInputValidated.value && isInputValid.value && "is-valid",
+        isInputValidated.value && !isInputValid.value && "is-invalid"
       ];
     });
     const labelClassName = computed(() => {
