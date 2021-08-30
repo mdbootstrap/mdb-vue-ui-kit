@@ -2,10 +2,12 @@
   <transition
     @before-enter="beforeEnter"
     @enter="enter"
+    @after-enter="afterEnter"
     @before-leave="beforeLeave"
     @leave="leave"
+    @after-leave="afterLeave"
     enter-active-class="collapsing"
-    leave-active-class="collapsing"
+    leave-active-class="collapsing show"
     :duration="duration"
   >
     <component
@@ -29,9 +31,11 @@ import {
   watch,
   watchEffect,
   onMounted,
-  provide
+  provide,
+  onUnmounted
 } from "vue";
 import { getUID } from "../../utils/getUID";
+import { on, off } from "@/components/utils/MDBEventHandlers";
 
 export default {
   name: "MDBCollapse",
@@ -54,13 +58,23 @@ export default {
   },
   emits: ["update:modelValue"],
   setup(props, { attrs, emit }) {
+    const collapse = ref(null);
+
     const className = computed(() => {
       return [
-        props.sidenav ? "sidenav-collapse" : "collapse",
+        collapseClass.value,
         props.collapseClass,
         navbarFlexWrapValue.value ? "navbar-collapse" : "",
         showClass.value
       ];
+    });
+
+    const collapseClass = computed(() => {
+      return props.sidenav
+        ? "sidenav-collapse"
+        : isActive.value
+        ? "collapse"
+        : null;
     });
 
     const accordionState = inject("accordionState", null);
@@ -105,7 +119,6 @@ export default {
     const isActive = ref(props.modelValue);
     watchEffect(() => {
       isActive.value = props.modelValue;
-
       if (accordionState) {
         manageAccordion();
       }
@@ -156,8 +169,6 @@ export default {
       { immediate: true }
     );
 
-    const collapse = ref("collapse");
-
     const uid = computed(() => {
       return props.id ? props.id : getUID("collapsibleContent-");
     });
@@ -166,14 +177,89 @@ export default {
       el.style.height = "0";
     };
     const enter = el => {
-      el.style.height = el.scrollHeight + "px";
+      el.style.height = `${getContentHeight()}px`;
     };
+
+    const afterEnter = el => {
+      if (!el.classList.contains("show")) {
+        el.classList.add("show");
+      }
+    };
+
     const beforeLeave = el => {
-      el.style.height = el.scrollHeight + "px";
+      if (!el.style.height) {
+        el.style.height = `${el.offsetHeight}px`;
+      }
     };
     const leave = el => {
       el.style.height = "0";
     };
+
+    const afterLeave = el => {
+      el.classList.add("collapse");
+    };
+
+    const previousWindowWidth = ref(null);
+    const isThrottled = ref(false);
+
+    const getContentHeight = () => {
+      const contentNodes = [
+        ...document.getElementById(uid.value).childNodes
+      ].filter(el => el.textContent.trim() != "");
+      return contentNodes.reduce((acc, cur) => {
+        return acc + nodeOuterHeight(cur);
+      }, 0);
+    };
+
+    const nodeOuterHeight = node => {
+      const height = node.offsetHeight;
+
+      if (!height) {
+        // if there is no height it means this node is an inline node without any tag, eg: text node
+        if (document.createRange) {
+          const range = document.createRange();
+          range.selectNodeContents(node);
+          if (range.getBoundingClientRect) {
+            const rect = range.getBoundingClientRect();
+            if (rect) {
+              return rect.bottom - rect.top;
+            }
+          }
+        }
+        return;
+      }
+
+      const style = window.getComputedStyle(node);
+
+      return ["top", "bottom"]
+        .map(side => parseInt(style[`margin-${side}`]))
+        .reduce((accHeight, margin) => accHeight + margin, height);
+    };
+
+    const handleResize = () => {
+      if (!isActive.value || isThrottled.value) return;
+
+      isThrottled.value = true;
+
+      const windowWidth = window.innerWidth;
+      const contentHeight = getContentHeight();
+
+      collapse.value.style.height = `${contentHeight}px`;
+
+      previousWindowWidth.value = windowWidth;
+      setTimeout(() => {
+        isThrottled.value = false;
+      }, 100);
+    };
+
+    onMounted(() => {
+      previousWindowWidth.value = window.innerWidth;
+      on(window, "resize", handleResize);
+    });
+
+    onUnmounted(() => {
+      off(window, "resize", handleResize);
+    });
 
     return {
       collapse,
@@ -182,8 +268,10 @@ export default {
       uid,
       beforeEnter,
       enter,
+      afterEnter,
       beforeLeave,
       leave,
+      afterLeave,
       attrs,
       props
     };

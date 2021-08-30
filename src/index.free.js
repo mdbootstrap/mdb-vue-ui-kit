@@ -12,6 +12,7 @@ import MDBCardHeader from "@/components/free/components/MDBCardHeader";
 import MDBCardFooter from "@/components/free/components/MDBCardFooter";
 import MDBCardLink from "@/components/free/components/MDBCardLink";
 import MDBCardGroup from "@/components/free/components/MDBCardGroup";
+import MDBCarousel from "@/components/free/components/MDBCarousel";
 import MDBListGroup from "@/components/free/components/MDBListGroup";
 import MDBListGroupItem from "@/components/free/components/MDBListGroupItem";
 import MDBProgress from "@/components/free/components/MDBProgress";
@@ -83,6 +84,7 @@ export {
   MDBCardFooter,
   MDBCardLink,
   MDBCardGroup,
+  MDBCarousel,
   MDBBtnGroup,
   MDBBtnClose,
   MDBCard,

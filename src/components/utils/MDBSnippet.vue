@@ -106,7 +106,6 @@ export default {
     const setContent = () => {
       Object.keys(content).map(key => {
         if (componentRefs[key].value) {
-          console.log(componentRefs[key].value, key);
           const componentRefInnerContent = wrapTag(
             componentRefs[key].value,
             key
@@ -135,7 +134,6 @@ export default {
     };
 
     const wrapTag = (data, tag) => {
-      console.log(data);
       const elements = data.querySelectorAll("pre > *");
 
       removeVueData(elements);
@@ -143,7 +141,6 @@ export default {
       const innerContent = data.querySelector("pre").innerHTML;
 
       const wrapper = document.createElement(`${tag}`);
-      console.log(wrapper);
       wrapper.innerHTML = innerContent;
 
       return wrapper.outerHTML;
