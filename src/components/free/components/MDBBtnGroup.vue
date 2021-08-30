@@ -1,10 +1,5 @@
 <template>
-  <component
-    :is="props.tag"
-    :class="className"
-    v-bind="attrs"
-    :role="props.role"
-  >
+  <component :is="tag" :class="className" v-bind="attrs" :role="role">
     <slot></slot>
   </component>
 </template>

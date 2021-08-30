@@ -1,8 +1,8 @@
 <template>
   <component
-    :is="props.tag"
-    :type="props.type"
-    :role="props.role"
+    :is="tag"
+    :type="type"
+    :role="role"
     :class="className"
     v-bind="attrs"
     @click="handleClick"

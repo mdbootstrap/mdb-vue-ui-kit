@@ -1,6 +1,6 @@
 <template v-slot:default="slotProps">
   <component
-    :is="props.tag"
+    :is="tag"
     type="button"
     :class="className"
     data-mdb-toggle="dropdown"
@@ -11,27 +11,28 @@
     v-click-outside="handleClickOutside"
     data-trigger
   >
-    <slot v-if="!props.split"></slot>
+    <slot v-if="!split"></slot>
     <span v-else class="visually-hidden">Toggle Dropdown</span>
   </component>
 </template>
 
 <script>
-import { computed, inject, ref } from "vue";
+import { computed, inject, ref, watchEffect } from "vue";
 import MDBBtn from "./MDBBtn.vue";
 import mdbClickOutside from "@/directives/clickOutside.js";
 
 export default {
   name: "MDBDropdownToggle",
-  tag: {
-    type: String,
-    default: "button"
-  },
+
   components: { MDBBtn },
   inheritAttrs: false,
   emits: ["toggle-dropdown"],
   props: {
     ...MDBBtn.props,
+    tag: {
+      type: String,
+      default: "button"
+    },
     color: {
       type: String,
       default: "primary"
@@ -67,9 +68,17 @@ export default {
       expanded.value = !expanded.value;
     };
 
-    const close = inject("closePopper", () => false);
-    const handleClickOutside = () => {
-      close();
+    const isPopperActive = inject("isPopperActive", false);
+    watchEffect(() => {
+      expanded.value = isPopperActive.value;
+    });
+
+    const handleEscAndOutsideClick = inject("handleEscAndOutsideClick", false);
+
+    const handleClickOutside = e => {
+      if (isPopperActive && !e.target.closest(".dropdown-menu")) {
+        handleEscAndOutsideClick();
+      }
     };
 
     return {

@@ -1,9 +1,9 @@
 <template>
-  <div v-if="props.responsive" :class="wrapperClasses">
+  <div v-if="responsive" :class="wrapperClasses">
     <component
       :class="tableClasses"
-      :style="props.tableStyle"
-      :is="props.tag"
+      :style="tableStyle"
+      :is="tag"
       v-bind="attrs"
     >
       <slot></slot>
@@ -13,8 +13,8 @@
   <component
     v-else
     :class="tableClasses"
-    :style="props.tableStyle"
-    :is="props.tag"
+    :style="tableStyle"
+    :is="tag"
     v-bind="attrs"
   >
     <slot></slot>

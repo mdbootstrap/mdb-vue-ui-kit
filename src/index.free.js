@@ -24,6 +24,11 @@ import MDBDropdownMenu from "@/components/free/components/MDBDropdownMenu";
 import MDBDropdownItem from "@/components/free/components/MDBDropdownItem";
 import MDBTooltip from "@/components/free/components/MDBTooltip";
 import MDBPopover from "@/components/free/components/MDBPopover";
+import MDBModal from "@/components/free/components/MDBModal";
+import MDBModalHeader from "@/components/free/components/MDBModalHeader";
+import MDBModalTitle from "@/components/free/components/MDBModalTitle";
+import MDBModalBody from "@/components/free/components/MDBModalBody";
+import MDBModalFooter from "@/components/free/components/MDBModalFooter";
 
 /* ------------- Content-styles ------------- */
 import MDBIcon from "@/components/free/content-styles/MDBIcon";
@@ -81,6 +86,11 @@ export {
   MDBDropdownItem,
   MDBTooltip,
   MDBPopover,
+  MDBModal,
+  MDBModalHeader,
+  MDBModalTitle,
+  MDBModalBody,
+  MDBModalFooter,
   MDBIcon,
   MDBNavbar,
   MDBNavbarToggler,

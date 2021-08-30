@@ -1,5 +1,5 @@
 <template>
-  <component :is="props.tag" :class="wrapperClassName">
+  <component :is="tag" :class="wrapperClassName">
     <input
       :class="inputClassName"
       v-bind="attrs"
@@ -7,9 +7,10 @@
       :value="inputValue"
       @input="handleInput"
     />
-    <label v-if="props.label" ref="labelRef" class="form-label" :for="uid">
-      {{ props.label }}
+    <label v-if="label" ref="labelRef" :class="labelClassName" :for="uid">
+      {{ label }}
     </label>
+    <slot></slot>
     <div class="form-notch">
       <div
         class="form-notch-leading"
@@ -22,7 +23,7 @@
       <div class="form-notch-trailing"></div>
     </div>
   </component>
-  <div v-if="props.formText" class="form-text">{{ props.formText }}</div>
+  <div v-if="formText" class="form-text">{{ formText }}</div>
 </template>
 
 <script>
@@ -34,6 +35,7 @@ export default {
   props: {
     id: String,
     label: String,
+    labelClass: String,
     modelValue: [String, Number],
     size: String,
     wrapperClass: String,
@@ -63,6 +65,9 @@ export default {
         inputValue.value && "active",
         showPlaceholder.value && "placeholder-active"
       ];
+    });
+    const labelClassName = computed(() => {
+      return ["form-label", props.labelClass];
     });
 
     function calcNotch() {
@@ -103,6 +108,7 @@ export default {
       handleInput,
       wrapperClassName,
       inputClassName,
+      labelClassName,
       notchLeadingWidth,
       notchMiddleWidth,
       attrs,

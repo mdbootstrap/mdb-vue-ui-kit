@@ -1,10 +1,10 @@
 <template>
   <component
-    :is="props.tag"
+    :is="tag"
     :class="className"
-    :aria-current="props.active ? true : null"
-    :aria-disabled="props.disabled ? true : null"
-    :disabled="props.disabled ? true : null"
+    :aria-current="active ? true : null"
+    :aria-disabled="disabled ? true : null"
+    :disabled="disabled ? true : null"
     v-bind="attrs"
     ><slot></slot
   ></component>

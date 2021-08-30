@@ -1,25 +1,18 @@
 <template>
-  <component :is="props.tag" :class="className">
+  <component :is="props.tag" :class="className" v-bind="attrs">
     <router-link
-      v-if="props.to"
+      v-if="to"
       :class="linkClassName"
-      :exact="props.exact"
-      :to="props.to"
+      :exact="exact"
+      :to="to"
       :target="tab"
-      v-bind="attrs"
     >
       <slot></slot>
     </router-link>
-    <a
-      v-else-if="props.href"
-      :href="props.href"
-      :class="linkClassName"
-      :target="tab"
-      v-bind="attrs"
-    >
+    <a v-else-if="href" :href="href" :class="linkClassName" :target="tab">
       <slot></slot>
     </a>
-    <slot v-else v-bind="attrs"> </slot>
+    <slot v-else> </slot>
   </component>
 </template>
 

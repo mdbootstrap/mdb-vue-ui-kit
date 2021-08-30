@@ -39,6 +39,7 @@ export default {
     inline: Boolean,
     wrapperClass: String,
     labelClass: String,
+    inputClass: String,
     btnCheck: Boolean,
     wrap: {
       type: Boolean,
@@ -61,11 +62,15 @@ export default {
     const wrapperClassName = computed(() => {
       return [
         props.formCheck && !props.btnCheck ? "form-check" : "",
-        props.inline && "form-check-inline"
+        props.inline && "form-check-inline",
+        props.wrapperClass
       ];
     });
     const inputClassName = computed(() => {
-      return [props.btnCheck ? "btn-check" : "form-check-input"];
+      return [
+        props.btnCheck ? "btn-check" : "form-check-input",
+        props.inputClass && props.inputClass
+      ];
     });
     const labelClassName = computed(() => {
       return [props.labelClass || "form-check-label"];

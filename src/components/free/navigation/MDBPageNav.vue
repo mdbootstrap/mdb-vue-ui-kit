@@ -1,22 +1,22 @@
 <template>
-  <component :is="props.tag" :class="className" v-bind="attrs">
+  <component :is="tag" :class="className" v-bind="attrs">
     <a
-      v-if="props.prev"
+      v-if="prev"
       class="page-link"
-      :href="props.href"
+      :href="href"
       :tabindex="disabledTabindex"
-      :aria-disabled="props.disabled"
+      :aria-disabled="disabled"
       aria-label="Previous"
     >
       <span aria-hidden="true">{{ prevValue }}</span>
       <span class="sr-only">Previous</span>
     </a>
     <a
-      v-if="props.next"
+      v-if="next"
       class="page-link"
-      :href="props.href"
+      :href="href"
       :tabindex="disabledTabindex"
-      :aria-disabled="props.disabled"
+      :aria-disabled="disabled"
       aria-label="Next"
     >
       <span aria-hidden="true">{{ nextValue }}</span>

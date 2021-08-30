@@ -2,24 +2,24 @@
   <li
     @keyup.stop.enter="handleKeypress"
     @click="$emit('click', $event)"
-    :tabindex="props.divider ? null : 0"
+    :tabindex="divider ? null : 0"
   >
     <component
       v-if="hasLinkOrTag"
       :is="tagName"
-      :to="props.to"
-      :exact="props.to ? props.exact : null"
-      :href="props.to ? null : props.href"
+      :to="to"
+      :exact="to ? exact : null"
+      :href="to ? null : href"
       :class="className"
       :target="tab"
-      :type="props.tag === 'button' ? 'button' : null"
-      :aria-current="props.active ? true : null"
-      :aria-disabled="props.disabled ? true : null"
-      :disabled="props.disabled ? true : null"
+      :type="tag === 'button' ? 'button' : null"
+      :aria-current="active ? true : null"
+      :aria-disabled="disabled ? true : null"
+      :disabled="disabled ? true : null"
     >
       <slot
     /></component>
-    <hr v-else-if="props.divider" class="dropdown-divider" />
+    <hr v-else-if="divider" class="dropdown-divider" />
     <slot v-else />
   </li>
 </template>
@@ -96,7 +96,7 @@ export default {
 
     const dropdownClass = computed(() => {
       if (props.text) {
-        return " dropdown-item-text";
+        return "dropdown-item-text";
       } else if (props.header) {
         return "dropdown-header";
       }

@@ -1,6 +1,6 @@
 <template>
   <component
-    :is="props.tag"
+    :is="tag"
     :class="className"
     :aria-current="currentName"
     v-bind="attrs"

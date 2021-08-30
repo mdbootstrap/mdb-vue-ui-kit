@@ -1,5 +1,5 @@
 <template>
-  <component :is="props.tag" :class="className" role="status" v-bind="attrs">
+  <component :is="tag" :class="className" role="status" v-bind="attrs">
     <span class="visually-hidden">Loading...</span>
     <slot></slot>
   </component>

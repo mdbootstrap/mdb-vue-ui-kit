@@ -1,17 +1,18 @@
 <template>
   <component
-    :is="props.tag"
+    :is="tag"
     ref="triggerEl"
     style="display: inline-block"
     v-click-outside="handleClickOutside"
+    :tabindex="dismissible ? 0 : null"
   >
     <slot name="reference" />
   </component>
   <transition>
     <div
       ref="popperEl"
-      :class="{ popover: true, fade: true, show: !disabled && isActive }"
-      v-show="isActive && ($slots.header || $slots.body)"
+      :class="{ popover: true, fade: true }"
+      v-if="isActive && ($slots.header || $slots.body)"
       :style="[widthStyle, marginStyle]"
     >
       <div class="popover-header" v-if="$slots.header">
@@ -27,8 +28,15 @@
 </template>
 
 <script>
-import { computed, onMounted, onUnmounted, ref, watchEffect } from "vue";
-import MDBUsePopper from "../../utils/MDBUsePopper.js";
+import {
+  computed,
+  nextTick,
+  onMounted,
+  onUnmounted,
+  ref,
+  watchEffect
+} from "vue";
+import MDBPopper from "../../utils/MDBPopper.js";
 import mdbClickOutside from "@/directives/clickOutside.js";
 import { on, off } from "../../utils/MDBEventHandlers";
 
@@ -40,10 +48,6 @@ export default {
       default: "span"
     },
     modelValue: Boolean,
-    disabled: {
-      type: Boolean,
-      default: false
-    },
     reference: String,
     popover: String,
     options: {
@@ -87,7 +91,13 @@ export default {
     "click-outside": mdbClickOutside
   },
   setup(props, { attrs, emit }) {
-    const { setInitial, isActive, open, close, destroy } = MDBUsePopper();
+    const {
+      setPopper,
+      isPopperActive,
+      openPopper,
+      closePopper,
+      destroyPopper
+    } = MDBPopper();
     const triggerEl = ref("triggerEl");
     const popperEl = ref("popperEl");
 
@@ -121,7 +131,7 @@ export default {
       return margin;
     });
 
-    onMounted(() => {
+    const popperSetup = () => {
       triggerEl.value = props.reference
         ? document.querySelector(props.reference)
         : triggerEl.value;
@@ -143,17 +153,46 @@ export default {
         ...props.options
       };
 
-      setInitial(triggerEl.value, popperEl.value, config);
+      setPopper(triggerEl.value, popperEl.value, config);
+    };
 
-      if (props.hover) {
-        on(triggerEl.value, "mouseover", onMouseOver);
-        on(popperEl.value, "mouseover", onMouseOver);
-        on(triggerEl.value, "mouseout", onMouseOut);
-        on(popperEl.value, "mouseout", onMouseOut);
+    watchEffect(() => {
+      if (props.modelValue) {
+        nextTick(() => {
+          popperSetup();
+
+          setTimeout(openPopper, 0);
+          setTimeout(() => {
+            popperEl.value.classList.add("show");
+
+            if (props.hover) {
+              on(popperEl.value, "mouseover", onMouseOver);
+              on(popperEl.value, "mouseout", onMouseOut);
+            }
+          }, 0);
+        });
+      } else {
+        if (!isPopperActive.value) {
+          return;
+        }
+        setTimeout(() => {
+          off(popperEl.value, "mouseover", onMouseOver);
+          off(popperEl.value, "mouseout", onMouseOut);
+
+          popperEl.value.classList.remove("show");
+        }, 0);
+        setTimeout(closePopper, 0);
+        destroyPopper();
       }
     });
 
-    watchEffect(() => (props.modelValue ? open() : close()));
+    const isActive = computed(() => {
+      if (props.modelValue || (!props.modelValue && isPopperActive.value)) {
+        return true;
+      } else if (!props.modelValue && !isPopperActive.value) {
+        return false;
+      }
+    });
 
     const onMouseOver = () => {
       emit("update:modelValue", true);
@@ -169,17 +208,22 @@ export default {
       emit("update:modelValue", false);
     };
 
-    const destroyPopper = () => {
+    const destroy = () => {
       off(triggerEl.value, "mouseover", onMouseOver);
-      off(popperEl.value, "mouseover", onMouseOver);
       off(triggerEl.value, "mouseout", onMouseOut);
-      off(popperEl.value, "mouseout", onMouseOut);
 
-      destroy();
+      destroyPopper();
     };
 
+    onMounted(() => {
+      if (props.hover) {
+        on(triggerEl.value, "mouseover", onMouseOver);
+        on(triggerEl.value, "mouseout", onMouseOut);
+      }
+    });
+
     onUnmounted(() => {
-      destroyPopper();
+      destroy();
     });
 
     return {
@@ -189,7 +233,6 @@ export default {
       widthStyle,
       marginStyle,
       handleClickOutside,
-      destroyPopper,
       attrs,
       props
     };

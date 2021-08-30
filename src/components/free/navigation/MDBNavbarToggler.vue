@@ -1,22 +1,17 @@
 <template>
   <component
-    :is="props.tag"
+    :is="tag"
     :class="navTogglerClass"
     type="button"
     data-mdb-toggle="collapse"
-    :data-mdb-target="props.target"
-    :aria-controls="props.target"
+    :data-mdb-target="target"
+    :aria-controls="target"
     :aria-expanded="isExpanded"
     aria-label="Toggle navigation"
     @click="handleClick"
     v-bind="attrs"
   >
-    <MDBIcon
-      :icon="props.togglerIcon"
-      :class="props.togglerIconClass"
-      :size="props.togglerSize"
-      :iconStyle="props.iconStyle"
-    />
+    <MDBIcon :icon="togglerIcon" :size="togglerSize" :iconStyle="iconStyle" />
   </component>
 </template>
 

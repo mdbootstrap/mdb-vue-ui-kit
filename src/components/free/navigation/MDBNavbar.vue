@@ -1,12 +1,12 @@
 <template>
   <component
     :class="navClass"
-    :is="props.tag"
+    :is="tag"
     role="navigation"
     v-bind="attrs"
     ref="navbar"
   >
-    <div v-if="props.container" :class="containerClass">
+    <div v-if="container" :class="containerClass">
       <slot></slot>
     </div>
     <slot v-if="!container"></slot>
@@ -120,8 +120,8 @@ export default {
     };
 
     const navbar = ref(null);
-    const navbarWrap = ref("nowrap");
-    provide("isWrap", navbarWrap);
+    const navbarFlexWrapValue = ref("nowrap");
+    provide("navbarFlexWrapValue", navbarFlexWrapValue);
 
     const handleResize = () => {
       if (!navbar.value) return;
@@ -129,9 +129,9 @@ export default {
       const wrap = getComputedStyle(navbar.value).flexWrap;
 
       if (wrap === "nowrap") {
-        navbarWrap.value = "nowrap";
+        navbarFlexWrapValue.value = "nowrap";
       } else if (wrap === "wrap") {
-        navbarWrap.value = "wrap";
+        navbarFlexWrapValue.value = "wrap";
       }
     };
 
@@ -140,9 +140,9 @@ export default {
         getComputedStyle(navbar.value) &&
         getComputedStyle(navbar.value).flexWrap === "wrap"
       ) {
-        navbarWrap.value = "wrap";
+        navbarFlexWrapValue.value = "wrap";
       } else {
-        navbarWrap.value = "nowrap";
+        navbarFlexWrapValue.value = "nowrap";
       }
       window.addEventListener("resize", () => handleResize());
 

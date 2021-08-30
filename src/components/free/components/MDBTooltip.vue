@@ -11,10 +11,10 @@
   <transition name="fade">
     <div
       ref="popperEl"
-      v-show="isActive"
+      v-if="isActive"
       :class="{
         tooltip: true,
-        show: showClass,
+        fade: true,
         'tooltip-inner': true
       }"
       :style="[widthStyle]"
@@ -26,8 +26,8 @@
 </template>
 
 <script>
-import { computed, onMounted, onUnmounted, ref, watchEffect } from "vue";
-import MDBUsePopper from "../../utils/MDBUsePopper.js";
+import { computed, nextTick, onUnmounted, ref, watchEffect } from "vue";
+import MDBPopper from "../../utils/MDBPopper.js";
 
 export default {
   name: "MDBTooltip",
@@ -37,10 +37,6 @@ export default {
       default: "span"
     },
     modelValue: Boolean,
-    disabled: {
-      type: Boolean,
-      default: false
-    },
     reference: String,
     popover: String,
     options: {
@@ -69,7 +65,13 @@ export default {
     }
   },
   setup(props, { attrs, emit }) {
-    const { setInitial, isActive, open, close, destroy } = MDBUsePopper();
+    const {
+      setPopper,
+      isPopperActive,
+      openPopper,
+      closePopper,
+      destroyPopper
+    } = MDBPopper();
     const triggerEl = ref("triggerEl");
     const popperEl = ref("popperEl");
 
@@ -77,7 +79,7 @@ export default {
       () => `max-width: ${props.maxWidth}px!important`
     );
 
-    onMounted(() => {
+    const popperSetup = () => {
       triggerEl.value = props.reference
         ? document.querySelector(props.reference)
         : triggerEl.value;
@@ -99,26 +101,60 @@ export default {
         ...props.options
       };
 
-      setInitial(triggerEl.value, popperEl.value, config);
+      setPopper(triggerEl.value, popperEl.value, config);
+    };
+
+    const isThrottled = ref(false);
+
+    watchEffect(() => {
+      if (props.modelValue) {
+        if (isThrottled.value) {
+          return;
+        }
+
+        nextTick(() => {
+          popperSetup();
+
+          setTimeout(openPopper, 0);
+          setTimeout(() => {
+            popperEl.value.classList.add("show");
+          }, 0);
+        });
+      } else {
+        if (!isPopperActive.value) {
+          return;
+        }
+        setTimeout(() => {
+          popperEl.value.classList.remove("show");
+        }, 10);
+
+        isThrottled.value = true;
+
+        setTimeout(() => {
+          closePopper();
+          isThrottled.value = false;
+        }, 150);
+        destroyPopper();
+      }
     });
 
-    watchEffect(() => (props.modelValue ? open() : close()));
-
-    const showClass = ref(0);
+    const isActive = computed(() => {
+      if (props.modelValue || (!props.modelValue && isPopperActive.value)) {
+        return true;
+      } else if (!props.modelValue && !isPopperActive.value) {
+        return false;
+      }
+    });
 
     const onMouseOver = () => {
       emit("update:modelValue", true);
-      setTimeout(() => {
-        showClass.value = true;
-      }, 150);
     };
     const onMouseOut = () => {
-      showClass.value = false;
       emit("update:modelValue", false);
     };
 
     onUnmounted(() => {
-      destroy();
+      destroyPopper();
     });
 
     return {
@@ -128,7 +164,6 @@ export default {
       widthStyle,
       onMouseOver,
       onMouseOut,
-      showClass,
       attrs,
       props
     };

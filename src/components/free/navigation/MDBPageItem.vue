@@ -1,16 +1,16 @@
 <template>
-  <component :is="props.tag" :class="className" v-bind="attrs">
+  <component :is="tag" :class="className" v-bind="attrs">
     <a
       class="page-link"
-      :href="props.href"
+      :href="href"
       :aria-label="labelValue"
-      :aria-disabled="props.disabled"
+      :aria-disabled="disabled"
       :tabindex="disabledTabindex"
     >
-      <span v-if="props.icon" aria-hidden="true">
+      <span v-if="icon" aria-hidden="true">
         <slot></slot>
       </span>
-      <span v-if="props.icon" class="sr-only">{{ labelValue }}</span>
+      <span v-if="icon" class="sr-only">{{ labelValue }}</span>
       <slot v-else></slot>
     </a>
   </component>

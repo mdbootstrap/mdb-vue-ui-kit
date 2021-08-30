@@ -1,12 +1,12 @@
 <template>
   <component
-    :is="props.tag"
-    :src="props.src"
-    :alt="props.alt"
+    :is="tag"
+    :src="src"
+    :alt="alt"
     :class="className"
     v-bind="attrs"
   ></component>
-  <div class="card-img-overlay" v-if="props.overlay">
+  <div class="card-img-overlay" v-if="overlay">
     <slot></slot>
   </div>
 </template>

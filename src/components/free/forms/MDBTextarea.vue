@@ -1,15 +1,15 @@
 <template>
-  <component :is="props.tag" :class="wrapperClassName">
+  <component :is="tag" :class="wrapperClassName">
     <textarea
       :class="textareaClassName"
       v-bind="attrs"
       :id="uid"
       :value="textareaValue"
       @input="handleInput"
-      :rows="props.rows"
+      :rows="rows"
     />
-    <label v-if="props.label" ref="labelRef" class="form-label" :for="uid">
-      {{ props.label }}
+    <label v-if="label" ref="labelRef" class="form-label" :for="uid">
+      {{ label }}
     </label>
     <div class="form-notch">
       <div
@@ -23,7 +23,7 @@
       <div class="form-notch-trailing"></div>
     </div>
   </component>
-  <div v-if="props.formText" class="form-text">{{ props.formText }}</div>
+  <div v-if="formText" class="form-text">{{ formText }}</div>
 </template>
 
 <script>

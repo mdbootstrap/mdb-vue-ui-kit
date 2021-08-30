@@ -8,32 +8,26 @@
 import { computed } from "vue";
 
 export default {
-  name: "MDBCardBody",
+  name: "MDBModalTitle",
   props: {
     tag: {
       type: String,
-      default: "div"
+      default: "h5"
     },
-    text: {
-      type: [String, Array]
+    bold: {
+      type: Boolean,
+      default: false
     }
   },
   setup(props, { attrs }) {
     const className = computed(() => {
-      return ["card-body", props.text && spreadProps(props.text)];
+      return ["modal-title", props.bold && "font-weight-bold"];
     });
-
-    const spreadProps = props => {
-      if (typeof props === "string") {
-        return `text-${props}`;
-      }
-      return props.map(prop => `text-${prop}`.trim()).join(" ");
-    };
 
     return {
       className,
-      props,
-      attrs
+      attrs,
+      props
     };
   }
 };

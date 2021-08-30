@@ -1,14 +1,14 @@
 <template>
   <component
-    :is="props.tag"
+    :is="tag"
     :class="className"
     role="progressbar"
-    :aria-valuenow="props.value"
-    :aria-valuemin="props.min"
-    :aria-valuemax="props.max"
+    :aria-valuenow="value"
+    :aria-valuemin="min"
+    :aria-valuemax="max"
     :style="[
       {
-        width: ((props.value - props.min) / (props.max - props.min)) * 100 + '%'
+        width: ((value - min) / (max - min)) * 100 + '%'
       }
     ]"
     v-bind="attrs"
