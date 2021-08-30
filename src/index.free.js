@@ -60,6 +60,10 @@ import MDBTextarea from "@/components/free/forms/MDBTextarea";
 import MDBCheckbox from "@/components/free/forms/MDBCheckbox";
 import MDBRadio from "@/components/free/forms/MDBRadio";
 
+/* ------------- Directives ------------- */
+import mdbRipple from "@/directives/free/mdbRipple";
+import mdbScrollspy from "@/directives/free/mdbScrollspy";
+
 export {
   MDBBadge,
   MDBBtn,
@@ -110,5 +114,7 @@ export {
   MDBInput,
   MDBTextarea,
   MDBCheckbox,
-  MDBRadio
+  MDBRadio,
+  mdbRipple,
+  mdbScrollspy
 };

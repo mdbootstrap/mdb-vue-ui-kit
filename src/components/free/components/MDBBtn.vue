@@ -6,6 +6,7 @@
     :class="className"
     v-bind="attrs"
     @click="handleClick"
+    v-mdb-ripple="ripple"
   >
     <slot></slot
   ></component>
@@ -13,6 +14,7 @@
 
 <script>
 import { computed, ref } from "vue";
+import mdbRipple from "@/directives/free/mdbRipple";
 
 export default {
   name: "MDBBtn",
@@ -39,8 +41,16 @@ export default {
     block: {
       type: Boolean,
       default: false
+    },
+    ripple: {
+      type: [Object, Boolean],
+      default: props =>
+        props.outline || props.color === "light" || props.color === "link"
+          ? { color: "dark" }
+          : true
     }
   },
+  directives: { mdbRipple },
   inheritAttrs: false,
   emits: ["update:toggle"],
   setup(props, { attrs, emit }) {

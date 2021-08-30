@@ -200,7 +200,9 @@ export default {
       const rect = document.body.getBoundingClientRect();
       isBodyOverflowing.value =
         Math.round(rect.left + rect.right) < window.innerWidth;
-      scrollbarWidth.value = getScrollbarWidth().toFixed(2);
+      scrollbarWidth.value = isBodyOverflowing.value
+        ? getScrollbarWidth().toFixed(2)
+        : 0;
     };
 
     const enter = el => {

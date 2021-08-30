@@ -87,6 +87,21 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
+/***/ "00ee":
+/***/ (function(module, exports, __webpack_require__) {
+
+var wellKnownSymbol = __webpack_require__("b622");
+
+var TO_STRING_TAG = wellKnownSymbol('toStringTag');
+var test = {};
+
+test[TO_STRING_TAG] = 'z';
+
+module.exports = String(test) === '[object z]';
+
+
+/***/ }),
+
 /***/ "0366":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -478,6 +493,51 @@ module.exports = function (it) {
 
 /***/ }),
 
+/***/ "1c7e":
+/***/ (function(module, exports, __webpack_require__) {
+
+var wellKnownSymbol = __webpack_require__("b622");
+
+var ITERATOR = wellKnownSymbol('iterator');
+var SAFE_CLOSING = false;
+
+try {
+  var called = 0;
+  var iteratorWithReturn = {
+    next: function () {
+      return { done: !!called++ };
+    },
+    'return': function () {
+      SAFE_CLOSING = true;
+    }
+  };
+  iteratorWithReturn[ITERATOR] = function () {
+    return this;
+  };
+  // eslint-disable-next-line no-throw-literal
+  Array.from(iteratorWithReturn, function () { throw 2; });
+} catch (error) { /* empty */ }
+
+module.exports = function (exec, SKIP_CLOSING) {
+  if (!SKIP_CLOSING && !SAFE_CLOSING) return false;
+  var ITERATION_SUPPORT = false;
+  try {
+    var object = {};
+    object[ITERATOR] = function () {
+      return {
+        next: function () {
+          return { done: ITERATION_SUPPORT = true };
+        }
+      };
+    };
+    exec(object);
+  } catch (error) { /* empty */ }
+  return ITERATION_SUPPORT;
+};
+
+
+/***/ }),
+
 /***/ "1d80":
 /***/ (function(module, exports) {
 
@@ -636,6 +696,54 @@ $({ target: 'String', proto: true, forced: !correctIsRegExpLogic('includes') }, 
 
 /***/ }),
 
+/***/ "25f0":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var redefine = __webpack_require__("6eeb");
+var anObject = __webpack_require__("825a");
+var fails = __webpack_require__("d039");
+var flags = __webpack_require__("ad6d");
+
+var TO_STRING = 'toString';
+var RegExpPrototype = RegExp.prototype;
+var nativeToString = RegExpPrototype[TO_STRING];
+
+var NOT_GENERIC = fails(function () { return nativeToString.call({ source: 'a', flags: 'b' }) != '/a/b'; });
+// FF44- RegExp#toString has a wrong name
+var INCORRECT_NAME = nativeToString.name != TO_STRING;
+
+// `RegExp.prototype.toString` method
+// https://tc39.github.io/ecma262/#sec-regexp.prototype.tostring
+if (NOT_GENERIC || INCORRECT_NAME) {
+  redefine(RegExp.prototype, TO_STRING, function toString() {
+    var R = anObject(this);
+    var p = String(R.source);
+    var rf = R.flags;
+    var f = String(rf === undefined && R instanceof RegExp && !('flags' in RegExpPrototype) ? flags.call(R) : rf);
+    return '/' + p + '/' + f;
+  }, { unsafe: true });
+}
+
+
+/***/ }),
+
+/***/ "2a62":
+/***/ (function(module, exports, __webpack_require__) {
+
+var anObject = __webpack_require__("825a");
+
+module.exports = function (iterator) {
+  var returnMethod = iterator['return'];
+  if (returnMethod !== undefined) {
+    return anObject(returnMethod.call(iterator)).value;
+  }
+};
+
+
+/***/ }),
+
 /***/ "2d00":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -673,6 +781,24 @@ module.exports = getBuiltIn('navigator', 'userAgent') || '';
 
 /***/ }),
 
+/***/ "35a1":
+/***/ (function(module, exports, __webpack_require__) {
+
+var classof = __webpack_require__("f5df");
+var Iterators = __webpack_require__("3f8c");
+var wellKnownSymbol = __webpack_require__("b622");
+
+var ITERATOR = wellKnownSymbol('iterator');
+
+module.exports = function (it) {
+  if (it != undefined) return it[ITERATOR]
+    || it['@@iterator']
+    || Iterators[classof(it)];
+};
+
+
+/***/ }),
+
 /***/ "37e8":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -706,6 +832,51 @@ module.exports = function (it) {
     throw TypeError("Can't set " + String(it) + ' as a prototype');
   } return it;
 };
+
+
+/***/ }),
+
+/***/ "3ca3":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var charAt = __webpack_require__("6547").charAt;
+var InternalStateModule = __webpack_require__("69f3");
+var defineIterator = __webpack_require__("7dd0");
+
+var STRING_ITERATOR = 'String Iterator';
+var setInternalState = InternalStateModule.set;
+var getInternalState = InternalStateModule.getterFor(STRING_ITERATOR);
+
+// `String.prototype[@@iterator]` method
+// https://tc39.github.io/ecma262/#sec-string.prototype-@@iterator
+defineIterator(String, 'String', function (iterated) {
+  setInternalState(this, {
+    type: STRING_ITERATOR,
+    string: String(iterated),
+    index: 0
+  });
+// `%StringIteratorPrototype%.next` method
+// https://tc39.github.io/ecma262/#sec-%stringiteratorprototype%.next
+}, function next() {
+  var state = getInternalState(this);
+  var string = state.string;
+  var index = state.index;
+  var point;
+  if (index >= string.length) return { value: undefined, done: true };
+  point = charAt(string, index);
+  state.index += point.length;
+  return { value: point, done: false };
+});
+
+
+/***/ }),
+
+/***/ "3f8c":
+/***/ (function(module, exports) {
+
+module.exports = {};
 
 
 /***/ }),
@@ -816,6 +987,58 @@ module.exports = function (it) {
   var isRegExp;
   return isObject(it) && ((isRegExp = it[MATCH]) !== undefined ? !!isRegExp : classof(it) == 'RegExp');
 };
+
+
+/***/ }),
+
+/***/ "466d":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var fixRegExpWellKnownSymbolLogic = __webpack_require__("d784");
+var anObject = __webpack_require__("825a");
+var toLength = __webpack_require__("50c4");
+var requireObjectCoercible = __webpack_require__("1d80");
+var advanceStringIndex = __webpack_require__("8aa5");
+var regExpExec = __webpack_require__("14c3");
+
+// @@match logic
+fixRegExpWellKnownSymbolLogic('match', 1, function (MATCH, nativeMatch, maybeCallNative) {
+  return [
+    // `String.prototype.match` method
+    // https://tc39.github.io/ecma262/#sec-string.prototype.match
+    function match(regexp) {
+      var O = requireObjectCoercible(this);
+      var matcher = regexp == undefined ? undefined : regexp[MATCH];
+      return matcher !== undefined ? matcher.call(regexp, O) : new RegExp(regexp)[MATCH](String(O));
+    },
+    // `RegExp.prototype[@@match]` method
+    // https://tc39.github.io/ecma262/#sec-regexp.prototype-@@match
+    function (regexp) {
+      var res = maybeCallNative(nativeMatch, regexp, this);
+      if (res.done) return res.value;
+
+      var rx = anObject(regexp);
+      var S = String(this);
+
+      if (!rx.global) return regExpExec(rx, S);
+
+      var fullUnicode = rx.unicode;
+      rx.lastIndex = 0;
+      var A = [];
+      var n = 0;
+      var result;
+      while ((result = regExpExec(rx, S)) !== null) {
+        var matchStr = String(result[0]);
+        A[n] = matchStr;
+        if (matchStr === '') rx.lastIndex = advanceStringIndex(S, toLength(rx.lastIndex), fullUnicode);
+        n++;
+      }
+      return n === 0 ? null : A;
+    }
+  ];
+});
 
 
 /***/ }),
@@ -935,6 +1158,55 @@ $({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT || !USES_TO_LENGT
     return $filter(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
   }
 });
+
+
+/***/ }),
+
+/***/ "4df4":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var bind = __webpack_require__("0366");
+var toObject = __webpack_require__("7b0b");
+var callWithSafeIterationClosing = __webpack_require__("9bdd");
+var isArrayIteratorMethod = __webpack_require__("e95a");
+var toLength = __webpack_require__("50c4");
+var createProperty = __webpack_require__("8418");
+var getIteratorMethod = __webpack_require__("35a1");
+
+// `Array.from` method implementation
+// https://tc39.github.io/ecma262/#sec-array.from
+module.exports = function from(arrayLike /* , mapfn = undefined, thisArg = undefined */) {
+  var O = toObject(arrayLike);
+  var C = typeof this == 'function' ? this : Array;
+  var argumentsLength = arguments.length;
+  var mapfn = argumentsLength > 1 ? arguments[1] : undefined;
+  var mapping = mapfn !== undefined;
+  var iteratorMethod = getIteratorMethod(O);
+  var index = 0;
+  var length, result, step, iterator, next, value;
+  if (mapping) mapfn = bind(mapfn, argumentsLength > 2 ? arguments[2] : undefined, 2);
+  // if the target is not iterable or it's an array with the default iterator - use a simple case
+  if (iteratorMethod != undefined && !(C == Array && isArrayIteratorMethod(iteratorMethod))) {
+    iterator = iteratorMethod.call(O);
+    next = iterator.next;
+    result = new C();
+    for (;!(step = next.call(iterator)).done; index++) {
+      value = mapping ? callWithSafeIterationClosing(iterator, mapfn, [step.value, index], true) : step.value;
+      createProperty(result, index, value);
+    }
+  } else {
+    length = toLength(O.length);
+    result = new C(length);
+    for (;length > index; index++) {
+      value = mapping ? mapfn(O[index], index) : O[index];
+      createProperty(result, index, value);
+    }
+  }
+  result.length = index;
+  return result;
+};
 
 
 /***/ }),
@@ -1432,6 +1704,104 @@ module.exports = Object.create || function create(O, Properties) {
 
 /***/ }),
 
+/***/ "7dd0":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var $ = __webpack_require__("23e7");
+var createIteratorConstructor = __webpack_require__("9ed3");
+var getPrototypeOf = __webpack_require__("e163");
+var setPrototypeOf = __webpack_require__("d2bb");
+var setToStringTag = __webpack_require__("d44e");
+var createNonEnumerableProperty = __webpack_require__("9112");
+var redefine = __webpack_require__("6eeb");
+var wellKnownSymbol = __webpack_require__("b622");
+var IS_PURE = __webpack_require__("c430");
+var Iterators = __webpack_require__("3f8c");
+var IteratorsCore = __webpack_require__("ae93");
+
+var IteratorPrototype = IteratorsCore.IteratorPrototype;
+var BUGGY_SAFARI_ITERATORS = IteratorsCore.BUGGY_SAFARI_ITERATORS;
+var ITERATOR = wellKnownSymbol('iterator');
+var KEYS = 'keys';
+var VALUES = 'values';
+var ENTRIES = 'entries';
+
+var returnThis = function () { return this; };
+
+module.exports = function (Iterable, NAME, IteratorConstructor, next, DEFAULT, IS_SET, FORCED) {
+  createIteratorConstructor(IteratorConstructor, NAME, next);
+
+  var getIterationMethod = function (KIND) {
+    if (KIND === DEFAULT && defaultIterator) return defaultIterator;
+    if (!BUGGY_SAFARI_ITERATORS && KIND in IterablePrototype) return IterablePrototype[KIND];
+    switch (KIND) {
+      case KEYS: return function keys() { return new IteratorConstructor(this, KIND); };
+      case VALUES: return function values() { return new IteratorConstructor(this, KIND); };
+      case ENTRIES: return function entries() { return new IteratorConstructor(this, KIND); };
+    } return function () { return new IteratorConstructor(this); };
+  };
+
+  var TO_STRING_TAG = NAME + ' Iterator';
+  var INCORRECT_VALUES_NAME = false;
+  var IterablePrototype = Iterable.prototype;
+  var nativeIterator = IterablePrototype[ITERATOR]
+    || IterablePrototype['@@iterator']
+    || DEFAULT && IterablePrototype[DEFAULT];
+  var defaultIterator = !BUGGY_SAFARI_ITERATORS && nativeIterator || getIterationMethod(DEFAULT);
+  var anyNativeIterator = NAME == 'Array' ? IterablePrototype.entries || nativeIterator : nativeIterator;
+  var CurrentIteratorPrototype, methods, KEY;
+
+  // fix native
+  if (anyNativeIterator) {
+    CurrentIteratorPrototype = getPrototypeOf(anyNativeIterator.call(new Iterable()));
+    if (IteratorPrototype !== Object.prototype && CurrentIteratorPrototype.next) {
+      if (!IS_PURE && getPrototypeOf(CurrentIteratorPrototype) !== IteratorPrototype) {
+        if (setPrototypeOf) {
+          setPrototypeOf(CurrentIteratorPrototype, IteratorPrototype);
+        } else if (typeof CurrentIteratorPrototype[ITERATOR] != 'function') {
+          createNonEnumerableProperty(CurrentIteratorPrototype, ITERATOR, returnThis);
+        }
+      }
+      // Set @@toStringTag to native iterators
+      setToStringTag(CurrentIteratorPrototype, TO_STRING_TAG, true, true);
+      if (IS_PURE) Iterators[TO_STRING_TAG] = returnThis;
+    }
+  }
+
+  // fix Array#{values, @@iterator}.name in V8 / FF
+  if (DEFAULT == VALUES && nativeIterator && nativeIterator.name !== VALUES) {
+    INCORRECT_VALUES_NAME = true;
+    defaultIterator = function values() { return nativeIterator.call(this); };
+  }
+
+  // define iterator
+  if ((!IS_PURE || FORCED) && IterablePrototype[ITERATOR] !== defaultIterator) {
+    createNonEnumerableProperty(IterablePrototype, ITERATOR, defaultIterator);
+  }
+  Iterators[NAME] = defaultIterator;
+
+  // export additional methods
+  if (DEFAULT) {
+    methods = {
+      values: getIterationMethod(VALUES),
+      keys: IS_SET ? defaultIterator : getIterationMethod(KEYS),
+      entries: getIterationMethod(ENTRIES)
+    };
+    if (FORCED) for (KEY in methods) {
+      if (BUGGY_SAFARI_ITERATORS || INCORRECT_VALUES_NAME || !(KEY in IterablePrototype)) {
+        redefine(IterablePrototype, KEY, methods[KEY]);
+      }
+    } else $({ target: NAME, proto: true, forced: BUGGY_SAFARI_ITERATORS || INCORRECT_VALUES_NAME }, methods);
+  }
+
+  return methods;
+};
+
+
+/***/ }),
+
 /***/ "7f9a":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1867,6 +2237,26 @@ $({ target: 'Array', proto: true, forced: FORCED }, {
 
 /***/ }),
 
+/***/ "9bdd":
+/***/ (function(module, exports, __webpack_require__) {
+
+var anObject = __webpack_require__("825a");
+var iteratorClose = __webpack_require__("2a62");
+
+// call something on iterator step with safe closing on error
+module.exports = function (iterator, fn, value, ENTRIES) {
+  try {
+    return ENTRIES ? fn(anObject(value)[0], value[1]) : fn(value);
+  // 7.4.6 IteratorClose(iterator, completion)
+  } catch (error) {
+    iteratorClose(iterator);
+    throw error;
+  }
+};
+
+
+/***/ }),
+
 /***/ "9bf2":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1889,6 +2279,30 @@ exports.f = DESCRIPTORS ? nativeDefineProperty : function defineProperty(O, P, A
   if ('get' in Attributes || 'set' in Attributes) throw TypeError('Accessors not supported');
   if ('value' in Attributes) O[P] = Attributes.value;
   return O;
+};
+
+
+/***/ }),
+
+/***/ "9ed3":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var IteratorPrototype = __webpack_require__("ae93").IteratorPrototype;
+var create = __webpack_require__("7c73");
+var createPropertyDescriptor = __webpack_require__("5c6c");
+var setToStringTag = __webpack_require__("d44e");
+var Iterators = __webpack_require__("3f8c");
+
+var returnThis = function () { return this; };
+
+module.exports = function (IteratorConstructor, NAME, next) {
+  var TO_STRING_TAG = NAME + ' Iterator';
+  IteratorConstructor.prototype = create(IteratorPrototype, { next: createPropertyDescriptor(1, next) });
+  setToStringTag(IteratorConstructor, TO_STRING_TAG, false, true);
+  Iterators[TO_STRING_TAG] = returnThis;
+  return IteratorConstructor;
 };
 
 
@@ -2270,6 +2684,26 @@ hiddenKeys[HIDDEN] = true;
 
 /***/ }),
 
+/***/ "a630":
+/***/ (function(module, exports, __webpack_require__) {
+
+var $ = __webpack_require__("23e7");
+var from = __webpack_require__("4df4");
+var checkCorrectnessOfIteration = __webpack_require__("1c7e");
+
+var INCORRECT_ITERATION = !checkCorrectnessOfIteration(function (iterable) {
+  Array.from(iterable);
+});
+
+// `Array.from` method
+// https://tc39.github.io/ecma262/#sec-array.from
+$({ target: 'Array', stat: true, forced: INCORRECT_ITERATION }, {
+  from: from
+});
+
+
+/***/ }),
+
 /***/ "a640":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2484,6 +2918,51 @@ module.exports = function (METHOD_NAME, options) {
 
 /***/ }),
 
+/***/ "ae93":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var getPrototypeOf = __webpack_require__("e163");
+var createNonEnumerableProperty = __webpack_require__("9112");
+var has = __webpack_require__("5135");
+var wellKnownSymbol = __webpack_require__("b622");
+var IS_PURE = __webpack_require__("c430");
+
+var ITERATOR = wellKnownSymbol('iterator');
+var BUGGY_SAFARI_ITERATORS = false;
+
+var returnThis = function () { return this; };
+
+// `%IteratorPrototype%` object
+// https://tc39.github.io/ecma262/#sec-%iteratorprototype%-object
+var IteratorPrototype, PrototypeOfArrayIteratorPrototype, arrayIterator;
+
+if ([].keys) {
+  arrayIterator = [].keys();
+  // Safari 8 has buggy iterators w/o `next`
+  if (!('next' in arrayIterator)) BUGGY_SAFARI_ITERATORS = true;
+  else {
+    PrototypeOfArrayIteratorPrototype = getPrototypeOf(getPrototypeOf(arrayIterator));
+    if (PrototypeOfArrayIteratorPrototype !== Object.prototype) IteratorPrototype = PrototypeOfArrayIteratorPrototype;
+  }
+}
+
+if (IteratorPrototype == undefined) IteratorPrototype = {};
+
+// 25.1.2.1.1 %IteratorPrototype%[@@iterator]()
+if (!IS_PURE && !has(IteratorPrototype, ITERATOR)) {
+  createNonEnumerableProperty(IteratorPrototype, ITERATOR, returnThis);
+}
+
+module.exports = {
+  IteratorPrototype: IteratorPrototype,
+  BUGGY_SAFARI_ITERATORS: BUGGY_SAFARI_ITERATORS
+};
+
+
+/***/ }),
+
 /***/ "af03":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2497,6 +2976,52 @@ module.exports = function (METHOD_NAME) {
     return test !== test.toLowerCase() || test.split('"').length > 3;
   });
 };
+
+
+/***/ }),
+
+/***/ "b041":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var TO_STRING_TAG_SUPPORT = __webpack_require__("00ee");
+var classof = __webpack_require__("f5df");
+
+// `Object.prototype.toString` method implementation
+// https://tc39.github.io/ecma262/#sec-object.prototype.tostring
+module.exports = TO_STRING_TAG_SUPPORT ? {}.toString : function toString() {
+  return '[object ' + classof(this) + ']';
+};
+
+
+/***/ }),
+
+/***/ "b0c0":
+/***/ (function(module, exports, __webpack_require__) {
+
+var DESCRIPTORS = __webpack_require__("83ab");
+var defineProperty = __webpack_require__("9bf2").f;
+
+var FunctionPrototype = Function.prototype;
+var FunctionPrototypeToString = FunctionPrototype.toString;
+var nameRE = /^\s*function ([^ (]*)/;
+var NAME = 'name';
+
+// Function instances `.name` property
+// https://tc39.github.io/ecma262/#sec-function-instances-name
+if (DESCRIPTORS && !(NAME in FunctionPrototype)) {
+  defineProperty(FunctionPrototype, NAME, {
+    configurable: true,
+    get: function () {
+      try {
+        return FunctionPrototypeToString.call(this).match(nameRE)[1];
+      } catch (error) {
+        return '';
+      }
+    }
+  });
+}
 
 
 /***/ }),
@@ -3055,6 +3580,18 @@ exports.f = NASHORN_BUG ? function propertyIsEnumerable(V) {
 
 /***/ }),
 
+/***/ "d28b":
+/***/ (function(module, exports, __webpack_require__) {
+
+var defineWellKnownSymbol = __webpack_require__("746f");
+
+// `Symbol.iterator` well-known symbol
+// https://tc39.github.io/ecma262/#sec-symbol.iterator
+defineWellKnownSymbol('iterator');
+
+
+/***/ }),
+
 /***/ "d2bb":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3082,6 +3619,22 @@ module.exports = Object.setPrototypeOf || ('__proto__' in {} ? function () {
     return O;
   };
 }() : undefined);
+
+
+/***/ }),
+
+/***/ "d3b7":
+/***/ (function(module, exports, __webpack_require__) {
+
+var TO_STRING_TAG_SUPPORT = __webpack_require__("00ee");
+var redefine = __webpack_require__("6eeb");
+var toString = __webpack_require__("b041");
+
+// `Object.prototype.toString` method
+// https://tc39.github.io/ecma262/#sec-object.prototype.tostring
+if (!TO_STRING_TAG_SUPPORT) {
+  redefine(Object.prototype, 'toString', toString, { unsafe: true });
+}
 
 
 /***/ }),
@@ -3362,6 +3915,46 @@ $({ target: 'Object', stat: true, sham: !DESCRIPTORS }, {
 
 /***/ }),
 
+/***/ "ddb0":
+/***/ (function(module, exports, __webpack_require__) {
+
+var global = __webpack_require__("da84");
+var DOMIterables = __webpack_require__("fdbc");
+var ArrayIteratorMethods = __webpack_require__("e260");
+var createNonEnumerableProperty = __webpack_require__("9112");
+var wellKnownSymbol = __webpack_require__("b622");
+
+var ITERATOR = wellKnownSymbol('iterator');
+var TO_STRING_TAG = wellKnownSymbol('toStringTag');
+var ArrayValues = ArrayIteratorMethods.values;
+
+for (var COLLECTION_NAME in DOMIterables) {
+  var Collection = global[COLLECTION_NAME];
+  var CollectionPrototype = Collection && Collection.prototype;
+  if (CollectionPrototype) {
+    // some Chrome versions have non-configurable methods on DOMTokenList
+    if (CollectionPrototype[ITERATOR] !== ArrayValues) try {
+      createNonEnumerableProperty(CollectionPrototype, ITERATOR, ArrayValues);
+    } catch (error) {
+      CollectionPrototype[ITERATOR] = ArrayValues;
+    }
+    if (!CollectionPrototype[TO_STRING_TAG]) {
+      createNonEnumerableProperty(CollectionPrototype, TO_STRING_TAG, COLLECTION_NAME);
+    }
+    if (DOMIterables[COLLECTION_NAME]) for (var METHOD_NAME in ArrayIteratorMethods) {
+      // some Chrome versions have non-configurable methods on DOMTokenList
+      if (CollectionPrototype[METHOD_NAME] !== ArrayIteratorMethods[METHOD_NAME]) try {
+        createNonEnumerableProperty(CollectionPrototype, METHOD_NAME, ArrayIteratorMethods[METHOD_NAME]);
+      } catch (error) {
+        CollectionPrototype[METHOD_NAME] = ArrayIteratorMethods[METHOD_NAME];
+      }
+    }
+  }
+}
+
+
+/***/ }),
+
 /***/ "df75":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3373,6 +3966,163 @@ var enumBugKeys = __webpack_require__("7839");
 module.exports = Object.keys || function keys(O) {
   return internalObjectKeys(O, enumBugKeys);
 };
+
+
+/***/ }),
+
+/***/ "e01a":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+// `Symbol.prototype.description` getter
+// https://tc39.github.io/ecma262/#sec-symbol.prototype.description
+
+var $ = __webpack_require__("23e7");
+var DESCRIPTORS = __webpack_require__("83ab");
+var global = __webpack_require__("da84");
+var has = __webpack_require__("5135");
+var isObject = __webpack_require__("861d");
+var defineProperty = __webpack_require__("9bf2").f;
+var copyConstructorProperties = __webpack_require__("e893");
+
+var NativeSymbol = global.Symbol;
+
+if (DESCRIPTORS && typeof NativeSymbol == 'function' && (!('description' in NativeSymbol.prototype) ||
+  // Safari 12 bug
+  NativeSymbol().description !== undefined
+)) {
+  var EmptyStringDescriptionStore = {};
+  // wrap Symbol constructor for correct work with undefined description
+  var SymbolWrapper = function Symbol() {
+    var description = arguments.length < 1 || arguments[0] === undefined ? undefined : String(arguments[0]);
+    var result = this instanceof SymbolWrapper
+      ? new NativeSymbol(description)
+      // in Edge 13, String(Symbol(undefined)) === 'Symbol(undefined)'
+      : description === undefined ? NativeSymbol() : NativeSymbol(description);
+    if (description === '') EmptyStringDescriptionStore[result] = true;
+    return result;
+  };
+  copyConstructorProperties(SymbolWrapper, NativeSymbol);
+  var symbolPrototype = SymbolWrapper.prototype = NativeSymbol.prototype;
+  symbolPrototype.constructor = SymbolWrapper;
+
+  var symbolToString = symbolPrototype.toString;
+  var native = String(NativeSymbol('test')) == 'Symbol(test)';
+  var regexp = /^Symbol\((.*)\)[^)]+$/;
+  defineProperty(symbolPrototype, 'description', {
+    configurable: true,
+    get: function description() {
+      var symbol = isObject(this) ? this.valueOf() : this;
+      var string = symbolToString.call(symbol);
+      if (has(EmptyStringDescriptionStore, symbol)) return '';
+      var desc = native ? string.slice(7, -1) : string.replace(regexp, '$1');
+      return desc === '' ? undefined : desc;
+    }
+  });
+
+  $({ global: true, forced: true }, {
+    Symbol: SymbolWrapper
+  });
+}
+
+
+/***/ }),
+
+/***/ "e163":
+/***/ (function(module, exports, __webpack_require__) {
+
+var has = __webpack_require__("5135");
+var toObject = __webpack_require__("7b0b");
+var sharedKey = __webpack_require__("f772");
+var CORRECT_PROTOTYPE_GETTER = __webpack_require__("e177");
+
+var IE_PROTO = sharedKey('IE_PROTO');
+var ObjectPrototype = Object.prototype;
+
+// `Object.getPrototypeOf` method
+// https://tc39.github.io/ecma262/#sec-object.getprototypeof
+module.exports = CORRECT_PROTOTYPE_GETTER ? Object.getPrototypeOf : function (O) {
+  O = toObject(O);
+  if (has(O, IE_PROTO)) return O[IE_PROTO];
+  if (typeof O.constructor == 'function' && O instanceof O.constructor) {
+    return O.constructor.prototype;
+  } return O instanceof Object ? ObjectPrototype : null;
+};
+
+
+/***/ }),
+
+/***/ "e177":
+/***/ (function(module, exports, __webpack_require__) {
+
+var fails = __webpack_require__("d039");
+
+module.exports = !fails(function () {
+  function F() { /* empty */ }
+  F.prototype.constructor = null;
+  return Object.getPrototypeOf(new F()) !== F.prototype;
+});
+
+
+/***/ }),
+
+/***/ "e260":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var toIndexedObject = __webpack_require__("fc6a");
+var addToUnscopables = __webpack_require__("44d2");
+var Iterators = __webpack_require__("3f8c");
+var InternalStateModule = __webpack_require__("69f3");
+var defineIterator = __webpack_require__("7dd0");
+
+var ARRAY_ITERATOR = 'Array Iterator';
+var setInternalState = InternalStateModule.set;
+var getInternalState = InternalStateModule.getterFor(ARRAY_ITERATOR);
+
+// `Array.prototype.entries` method
+// https://tc39.github.io/ecma262/#sec-array.prototype.entries
+// `Array.prototype.keys` method
+// https://tc39.github.io/ecma262/#sec-array.prototype.keys
+// `Array.prototype.values` method
+// https://tc39.github.io/ecma262/#sec-array.prototype.values
+// `Array.prototype[@@iterator]` method
+// https://tc39.github.io/ecma262/#sec-array.prototype-@@iterator
+// `CreateArrayIterator` internal method
+// https://tc39.github.io/ecma262/#sec-createarrayiterator
+module.exports = defineIterator(Array, 'Array', function (iterated, kind) {
+  setInternalState(this, {
+    type: ARRAY_ITERATOR,
+    target: toIndexedObject(iterated), // target
+    index: 0,                          // next index
+    kind: kind                         // kind
+  });
+// `%ArrayIteratorPrototype%.next` method
+// https://tc39.github.io/ecma262/#sec-%arrayiteratorprototype%.next
+}, function () {
+  var state = getInternalState(this);
+  var target = state.target;
+  var kind = state.kind;
+  var index = state.index++;
+  if (!target || index >= target.length) {
+    state.target = undefined;
+    return { value: undefined, done: true };
+  }
+  if (kind == 'keys') return { value: index, done: false };
+  if (kind == 'values') return { value: target[index], done: false };
+  return { value: [index, target[index]], done: false };
+}, 'values');
+
+// argumentsList[@@iterator] is %ArrayProto_values%
+// https://tc39.github.io/ecma262/#sec-createunmappedargumentsobject
+// https://tc39.github.io/ecma262/#sec-createmappedargumentsobject
+Iterators.Arguments = Iterators.Array;
+
+// https://tc39.github.io/ecma262/#sec-array.prototype-@@unscopables
+addToUnscopables('keys');
+addToUnscopables('values');
+addToUnscopables('entries');
 
 
 /***/ }),
@@ -3440,6 +4190,23 @@ var classof = __webpack_require__("c6b6");
 // https://tc39.github.io/ecma262/#sec-isarray
 module.exports = Array.isArray || function isArray(arg) {
   return classof(arg) == 'Array';
+};
+
+
+/***/ }),
+
+/***/ "e95a":
+/***/ (function(module, exports, __webpack_require__) {
+
+var wellKnownSymbol = __webpack_require__("b622");
+var Iterators = __webpack_require__("3f8c");
+
+var ITERATOR = wellKnownSymbol('iterator');
+var ArrayPrototype = Array.prototype;
+
+// check on default Array iterator
+module.exports = function (it) {
+  return it !== undefined && (Iterators.Array === it || ArrayPrototype[ITERATOR] === it);
 };
 
 
@@ -6070,6 +6837,39 @@ Popper.Defaults = Defaults;
 
 /***/ }),
 
+/***/ "f5df":
+/***/ (function(module, exports, __webpack_require__) {
+
+var TO_STRING_TAG_SUPPORT = __webpack_require__("00ee");
+var classofRaw = __webpack_require__("c6b6");
+var wellKnownSymbol = __webpack_require__("b622");
+
+var TO_STRING_TAG = wellKnownSymbol('toStringTag');
+// ES3 wrong here
+var CORRECT_ARGUMENTS = classofRaw(function () { return arguments; }()) == 'Arguments';
+
+// fallback for IE11 Script Access Denied error
+var tryGet = function (it, key) {
+  try {
+    return it[key];
+  } catch (error) { /* empty */ }
+};
+
+// getting tag from ES6+ `Object.prototype.toString`
+module.exports = TO_STRING_TAG_SUPPORT ? classofRaw : function (it) {
+  var O, tag, result;
+  return it === undefined ? 'Undefined' : it === null ? 'Null'
+    // @@toStringTag case
+    : typeof (tag = tryGet(O = Object(it), TO_STRING_TAG)) == 'string' ? tag
+    // builtinTag case
+    : CORRECT_ARGUMENTS ? classofRaw(O)
+    // ES3 arguments fallback
+    : (result = classofRaw(O)) == 'Object' && typeof O.callee == 'function' ? 'Arguments' : result;
+};
+
+
+/***/ }),
+
 /***/ "f772":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -6143,6 +6943,8 @@ __webpack_require__.d(__webpack_exports__, "MDBInput", function() { return /* re
 __webpack_require__.d(__webpack_exports__, "MDBTextarea", function() { return /* reexport */ MDBTextarea; });
 __webpack_require__.d(__webpack_exports__, "MDBCheckbox", function() { return /* reexport */ MDBCheckbox; });
 __webpack_require__.d(__webpack_exports__, "MDBRadio", function() { return /* reexport */ MDBRadio; });
+__webpack_require__.d(__webpack_exports__, "mdbRipple", function() { return /* reexport */ mdbRipple; });
+__webpack_require__.d(__webpack_exports__, "mdbScrollspy", function() { return /* reexport */ free_mdbScrollspy; });
 
 // CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/setPublicPath.js
 // This file is imported into lib/wc client bundles.
@@ -6171,7 +6973,7 @@ if (typeof window !== 'undefined') {
 // EXTERNAL MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBBadge.vue?vue&type=template&id=5d0bf26a
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBBadge.vue?vue&type=template&id=5d0bf26a
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveDynamicComponent"])($props.tag), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["mergeProps"])({
@@ -6185,7 +6987,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 }
 // CONCATENATED MODULE: ./src/components/free/components/MDBBadge.vue?vue&type=template&id=5d0bf26a
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBBadge.vue?vue&type=script&lang=js
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBBadge.vue?vue&type=script&lang=js
 
 /* harmony default export */ var MDBBadgevue_type_script_lang_js = ({
   name: "MDBBadge",
@@ -6220,10 +7022,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 MDBBadgevue_type_script_lang_js.render = render
 
 /* harmony default export */ var MDBBadge = (MDBBadgevue_type_script_lang_js);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBBtn.vue?vue&type=template&id=accf55cc
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBBtn.vue?vue&type=template&id=a39a7e12
 
-function MDBBtnvue_type_template_id_accf55cc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveDynamicComponent"])($props.tag), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["mergeProps"])({
+function MDBBtnvue_type_template_id_a39a7e12_render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _directive_mdb_ripple = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveDirective"])("mdb-ripple");
+
+  return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["withDirectives"])((Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveDynamicComponent"])($props.tag), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["mergeProps"])({
     type: $props.type,
     role: $props.role,
     class: $setup.className
@@ -6234,11 +7038,251 @@ function MDBBtnvue_type_template_id_accf55cc_render(_ctx, _cache, $props, $setup
       return [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["renderSlot"])(_ctx.$slots, "default")];
     }),
     _: 3
-  }, 16, ["type", "role", "class", "onClick"]);
+  }, 16, ["type", "role", "class", "onClick"])), [[_directive_mdb_ripple, $props.ripple]]);
 }
-// CONCATENATED MODULE: ./src/components/free/components/MDBBtn.vue?vue&type=template&id=accf55cc
+// CONCATENATED MODULE: ./src/components/free/components/MDBBtn.vue?vue&type=template&id=a39a7e12
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBBtn.vue?vue&type=script&lang=js
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.concat.js
+var es_array_concat = __webpack_require__("99af");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.includes.js
+var es_array_includes = __webpack_require__("caad");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.index-of.js
+var es_array_index_of = __webpack_require__("c975");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.join.js
+var es_array_join = __webpack_require__("a15b");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.map.js
+var es_array_map = __webpack_require__("d81d");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.number.constructor.js
+var es_number_constructor = __webpack_require__("a9e3");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.regexp.exec.js
+var es_regexp_exec = __webpack_require__("ac1f");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.match.js
+var es_string_match = __webpack_require__("466d");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.split.js
+var es_string_split = __webpack_require__("1276");
+
+// CONCATENATED MODULE: ./src/directives/free/mdbRipple.js
+
+
+
+
+
+
+
+
+
+var bsColors = ["primary", "secondary", "success", "danger", "warning", "info", "light", "dark"];
+var gradient = "rgba({{color}}, 0.2) 0, rgba({{color}}, 0.3) 40%, rgba({{color}}, 0.4) 50%, rgba({{color}}, 0.5) 60%, rgba({{color}}, 0) 70%";
+var defaultColor = [0, 0, 0];
+var transitionBreakOpacity = 0.5;
+
+var isBSColor = function isBSColor(propColor) {
+  return bsColors.includes(propColor.toLowerCase());
+};
+
+var colorToRGB = function colorToRGB(color, defaultColor) {
+  var hexToRgb = function hexToRgb(color) {
+    var HEX_COLOR_LENGTH = 7;
+    var IS_SHORT_HEX = color.length < HEX_COLOR_LENGTH;
+
+    if (IS_SHORT_HEX) {
+      color = "#".concat(color[1]).concat(color[1]).concat(color[2]).concat(color[2]).concat(color[3]).concat(color[3]);
+    }
+
+    return [parseInt(color.substr(1, 2), 16), parseInt(color.substr(3, 2), 16), parseInt(color.substr(5, 2), 16)];
+  };
+
+  var namedColorsToRgba = function namedColorsToRgba(color) {
+    var tempElem = document.body.appendChild(document.createElement("fictum"));
+    var flag = "rgb(1, 2, 3)";
+    tempElem.style.color = flag;
+
+    if (tempElem.style.color !== flag) {
+      return defaultColor;
+    }
+
+    tempElem.style.color = color;
+
+    if (tempElem.style.color === flag || tempElem.style.color === "") {
+      return defaultColor;
+    }
+
+    color = getComputedStyle(tempElem).color;
+    document.body.removeChild(tempElem);
+    return color;
+  };
+
+  var rgbaToRgb = function rgbaToRgb(color) {
+    color = color.match(/[.\d]+/g).map(function (a) {
+      return +Number(a);
+    });
+    color.length = 3;
+    return color;
+  };
+
+  if (color.toLowerCase() === "transparent") {
+    return defaultColor;
+  }
+
+  if (color[0] === "#") {
+    return hexToRgb(color);
+  }
+
+  if (color.indexOf("rgb") === -1) {
+    color = namedColorsToRgba(color);
+  }
+
+  if (color.indexOf("rgb") === 0) {
+    return rgbaToRgb(color);
+  }
+
+  return defaultColor;
+};
+
+var getDiameter = function getDiameter(_ref) {
+  var offsetX = _ref.offsetX,
+      offsetY = _ref.offsetY,
+      height = _ref.height,
+      width = _ref.width;
+  var top = offsetY <= height / 2;
+  var left = offsetX <= width / 2;
+
+  var pythagorean = function pythagorean(sideA, sideB) {
+    return Math.sqrt(Math.pow(sideA, 2) + Math.pow(sideB, 2));
+  };
+
+  var positionCenter = offsetY === height / 2 && offsetX === width / 2;
+  var quadrant = {
+    first: top === true && left === false,
+    second: top === true && left === true,
+    third: top === false && left === true,
+    fourth: top === false && left === false
+  };
+  var getCorner = {
+    topLeft: pythagorean(offsetX, offsetY),
+    topRight: pythagorean(width - offsetX, offsetY),
+    bottomLeft: pythagorean(offsetX, height - offsetY),
+    bottomRight: pythagorean(width - offsetX, height - offsetY)
+  };
+  var diameter = 0;
+
+  if (positionCenter || quadrant.fourth) {
+    diameter = getCorner.topLeft;
+  } else if (quadrant.third) {
+    diameter = getCorner.topRight;
+  } else if (quadrant.second) {
+    diameter = getCorner.bottomRight;
+  } else if (quadrant.first) {
+    diameter = getCorner.bottomLeft;
+  }
+
+  return diameter * 2;
+};
+
+var setStyles = function setStyles(el, styles) {
+  for (var property in styles) {
+    el.style[property] = styles[property];
+  }
+};
+
+var getBackgroundImage = function getBackgroundImage(color) {
+  if (color !== "") {
+    var rgbValue = colorToRGB(color, defaultColor).join(",");
+    var gradientImage = gradient.split("{{color}}").join("".concat(rgbValue));
+    return "radial-gradient(circle, ".concat(gradientImage, ")");
+  }
+};
+
+var runRipple = function runRipple(el, waveConfig, options) {
+  var rippleElement = document.createElement("div");
+  rippleElement.classList.add("ripple-wave");
+  var diameterConfig = {
+    offsetX: options.centered ? waveConfig.height / 2 : waveConfig.left,
+    offsetY: options.centered ? waveConfig.width / 2 : waveConfig.top,
+    height: waveConfig.height,
+    width: waveConfig.width
+  };
+  var diameter = getDiameter(diameterConfig);
+  var radiusValue = options.radius || diameter / 2;
+  var opacity = {
+    delay: options.duration * transitionBreakOpacity,
+    duration: options.duration - options.duration * transitionBreakOpacity
+  };
+  var styles = {
+    left: options.centered ? "".concat(Math.round(waveConfig.width / 2 - radiusValue), "px") : "".concat(Math.round(waveConfig.left - radiusValue), "px"),
+    top: options.centered ? "".concat(Math.round(waveConfig.height / 2 - radiusValue), "px") : "".concat(Math.round(waveConfig.top - radiusValue), "px"),
+    height: "".concat(Math.round(options.radius * 2 || diameter), "px"),
+    width: "".concat(Math.round(options.radius * 2 || diameter), "px"),
+    transitionDelay: "0s, ".concat(opacity.delay, "ms"),
+    transitionDuration: "".concat(options.duration, "ms, ").concat(opacity.duration, "ms")
+  };
+
+  if (options.unbound) {
+    el.classList.add("ripple-surface-unbound");
+  }
+
+  if (isBSColor(options.color)) {
+    el.classList.add("ripple-surface-".concat(options.color));
+  } else {
+    styles.backgroundImage = getBackgroundImage(options.color);
+  }
+
+  setStyles(rippleElement, styles);
+  el.appendChild(rippleElement);
+  setTimeout(function () {
+    rippleElement.classList.add("active");
+  }, 50);
+  setTimeout(function () {
+    el.removeChild(rippleElement);
+  }, options.duration + 1000);
+};
+
+/* harmony default export */ var mdbRipple = ({
+  mounted: function mounted(el, binding) {
+    if (binding.value === false) {
+      return;
+    }
+
+    var options = {
+      centered: binding.value && binding.value.centered || false,
+      color: binding.value && binding.value.color || "",
+      duration: binding.value && binding.value.duration || 500,
+      radius: binding.value && binding.value.radius || 0,
+      unbound: binding.value && binding.value.unbound || false
+    };
+    el.classList.add("ripple-surface");
+
+    el.waves = function (e) {
+      var waveConfig = {
+        top: e.layerY,
+        left: e.layerX,
+        height: el.offsetHeight,
+        width: el.offsetWidth
+      };
+      runRipple(el, waveConfig, options);
+    };
+
+    el.addEventListener("click", el.waves);
+  },
+  updated: function updated(el) {
+    if (!el.classList.contains("ripple-surface")) {
+      el.classList.add("ripple-surface");
+    }
+  },
+  unmounted: function unmounted(el) {
+    el.removeEventListener("click", el.waves);
+  }
+});
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBBtn.vue?vue&type=script&lang=js
+
 
 /* harmony default export */ var MDBBtnvue_type_script_lang_js = ({
   name: "MDBBtn",
@@ -6265,7 +7309,18 @@ function MDBBtnvue_type_template_id_accf55cc_render(_ctx, _cache, $props, $setup
     block: {
       type: Boolean,
       default: false
+    },
+    ripple: {
+      type: [Object, Boolean],
+      default: function _default(props) {
+        return props.outline || props.color === "light" || props.color === "link" ? {
+          color: "dark"
+        } : true;
+      }
     }
+  },
+  directives: {
+    mdbRipple: mdbRipple
   },
   inheritAttrs: false,
   emits: ["update:toggle"],
@@ -6298,10 +7353,10 @@ function MDBBtnvue_type_template_id_accf55cc_render(_ctx, _cache, $props, $setup
 
 
 
-MDBBtnvue_type_script_lang_js.render = MDBBtnvue_type_template_id_accf55cc_render
+MDBBtnvue_type_script_lang_js.render = MDBBtnvue_type_template_id_a39a7e12_render
 
 /* harmony default export */ var MDBBtn = (MDBBtnvue_type_script_lang_js);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBBtnGroup.vue?vue&type=template&id=9cf64422
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBBtnGroup.vue?vue&type=template&id=9cf64422
 
 function MDBBtnGroupvue_type_template_id_9cf64422_render(_ctx, _cache, $props, $setup, $data, $options) {
   return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveDynamicComponent"])($props.tag), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["mergeProps"])({
@@ -6317,7 +7372,7 @@ function MDBBtnGroupvue_type_template_id_9cf64422_render(_ctx, _cache, $props, $
 }
 // CONCATENATED MODULE: ./src/components/free/components/MDBBtnGroup.vue?vue&type=template&id=9cf64422
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBBtnGroup.vue?vue&type=script&lang=js
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBBtnGroup.vue?vue&type=script&lang=js
 
 /* harmony default export */ var MDBBtnGroupvue_type_script_lang_js = ({
   name: "MDBBtnGroup",
@@ -6354,7 +7409,7 @@ function MDBBtnGroupvue_type_template_id_9cf64422_render(_ctx, _cache, $props, $
 MDBBtnGroupvue_type_script_lang_js.render = MDBBtnGroupvue_type_template_id_9cf64422_render
 
 /* harmony default export */ var MDBBtnGroup = (MDBBtnGroupvue_type_script_lang_js);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBBtnClose.vue?vue&type=template&id=59591014
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBBtnClose.vue?vue&type=template&id=59591014
 
 function MDBBtnClosevue_type_template_id_59591014_render(_ctx, _cache, $props, $setup, $data, $options) {
   return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])("button", Object(external_commonjs_vue_commonjs2_vue_root_Vue_["mergeProps"])({
@@ -6364,7 +7419,7 @@ function MDBBtnClosevue_type_template_id_59591014_render(_ctx, _cache, $props, $
 }
 // CONCATENATED MODULE: ./src/components/free/components/MDBBtnClose.vue?vue&type=template&id=59591014
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBBtnClose.vue?vue&type=script&lang=js
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBBtnClose.vue?vue&type=script&lang=js
 
 /* harmony default export */ var MDBBtnClosevue_type_script_lang_js = ({
   name: "MDBBtnClose",
@@ -6394,7 +7449,7 @@ function MDBBtnClosevue_type_template_id_59591014_render(_ctx, _cache, $props, $
 MDBBtnClosevue_type_script_lang_js.render = MDBBtnClosevue_type_template_id_59591014_render
 
 /* harmony default export */ var MDBBtnClose = (MDBBtnClosevue_type_script_lang_js);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCard.vue?vue&type=template&id=62b07fb3
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCard.vue?vue&type=template&id=62b07fb3
 
 function MDBCardvue_type_template_id_62b07fb3_render(_ctx, _cache, $props, $setup, $data, $options) {
   return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveDynamicComponent"])($props.tag), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["mergeProps"])({
@@ -6408,16 +7463,10 @@ function MDBCardvue_type_template_id_62b07fb3_render(_ctx, _cache, $props, $setu
 }
 // CONCATENATED MODULE: ./src/components/free/components/MDBCard.vue?vue&type=template&id=62b07fb3
 
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.join.js
-var es_array_join = __webpack_require__("a15b");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.map.js
-var es_array_map = __webpack_require__("d81d");
-
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.trim.js
 var es_string_trim = __webpack_require__("498a");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCard.vue?vue&type=script&lang=js
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCard.vue?vue&type=script&lang=js
 
 
 
@@ -6474,7 +7523,7 @@ var es_string_trim = __webpack_require__("498a");
 MDBCardvue_type_script_lang_js.render = MDBCardvue_type_template_id_62b07fb3_render
 
 /* harmony default export */ var MDBCard = (MDBCardvue_type_script_lang_js);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCardBody.vue?vue&type=template&id=01228878
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCardBody.vue?vue&type=template&id=01228878
 
 function MDBCardBodyvue_type_template_id_01228878_render(_ctx, _cache, $props, $setup, $data, $options) {
   return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveDynamicComponent"])($props.tag), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["mergeProps"])({
@@ -6488,7 +7537,7 @@ function MDBCardBodyvue_type_template_id_01228878_render(_ctx, _cache, $props, $
 }
 // CONCATENATED MODULE: ./src/components/free/components/MDBCardBody.vue?vue&type=template&id=01228878
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCardBody.vue?vue&type=script&lang=js
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCardBody.vue?vue&type=script&lang=js
 
 
 
@@ -6536,7 +7585,7 @@ function MDBCardBodyvue_type_template_id_01228878_render(_ctx, _cache, $props, $
 MDBCardBodyvue_type_script_lang_js.render = MDBCardBodyvue_type_template_id_01228878_render
 
 /* harmony default export */ var MDBCardBody = (MDBCardBodyvue_type_script_lang_js);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCardTitle.vue?vue&type=template&id=91de7786
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCardTitle.vue?vue&type=template&id=91de7786
 
 function MDBCardTitlevue_type_template_id_91de7786_render(_ctx, _cache, $props, $setup, $data, $options) {
   return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveDynamicComponent"])($setup.tagName), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["mergeProps"])({
@@ -6550,7 +7599,7 @@ function MDBCardTitlevue_type_template_id_91de7786_render(_ctx, _cache, $props, 
 }
 // CONCATENATED MODULE: ./src/components/free/components/MDBCardTitle.vue?vue&type=template&id=91de7786
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCardTitle.vue?vue&type=script&lang=js
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCardTitle.vue?vue&type=script&lang=js
 
 /* harmony default export */ var MDBCardTitlevue_type_script_lang_js = ({
   name: "MDBCardTitle",
@@ -6593,7 +7642,7 @@ function MDBCardTitlevue_type_template_id_91de7786_render(_ctx, _cache, $props, 
 MDBCardTitlevue_type_script_lang_js.render = MDBCardTitlevue_type_template_id_91de7786_render
 
 /* harmony default export */ var MDBCardTitle = (MDBCardTitlevue_type_script_lang_js);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCardText.vue?vue&type=template&id=d641f992
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCardText.vue?vue&type=template&id=d641f992
 
 function MDBCardTextvue_type_template_id_d641f992_render(_ctx, _cache, $props, $setup, $data, $options) {
   return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveDynamicComponent"])($props.tag), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["mergeProps"])({
@@ -6607,7 +7656,7 @@ function MDBCardTextvue_type_template_id_d641f992_render(_ctx, _cache, $props, $
 }
 // CONCATENATED MODULE: ./src/components/free/components/MDBCardText.vue?vue&type=template&id=d641f992
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCardText.vue?vue&type=script&lang=js
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCardText.vue?vue&type=script&lang=js
 
 /* harmony default export */ var MDBCardTextvue_type_script_lang_js = ({
   name: "MDBCardText",
@@ -6638,7 +7687,7 @@ function MDBCardTextvue_type_template_id_d641f992_render(_ctx, _cache, $props, $
 MDBCardTextvue_type_script_lang_js.render = MDBCardTextvue_type_template_id_d641f992_render
 
 /* harmony default export */ var MDBCardText = (MDBCardTextvue_type_script_lang_js);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCardImg.vue?vue&type=template&id=16e07006
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCardImg.vue?vue&type=template&id=16e07006
 
 var _hoisted_1 = {
   key: 0,
@@ -6655,7 +7704,7 @@ function MDBCardImgvue_type_template_id_16e07006_render(_ctx, _cache, $props, $s
 }
 // CONCATENATED MODULE: ./src/components/free/components/MDBCardImg.vue?vue&type=template&id=16e07006
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCardImg.vue?vue&type=script&lang=js
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCardImg.vue?vue&type=script&lang=js
 
 /* harmony default export */ var MDBCardImgvue_type_script_lang_js = ({
   name: "MDBCardImg",
@@ -6707,7 +7756,7 @@ function MDBCardImgvue_type_template_id_16e07006_render(_ctx, _cache, $props, $s
 MDBCardImgvue_type_script_lang_js.render = MDBCardImgvue_type_template_id_16e07006_render
 
 /* harmony default export */ var MDBCardImg = (MDBCardImgvue_type_script_lang_js);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCardHeader.vue?vue&type=template&id=5d057320
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCardHeader.vue?vue&type=template&id=5d057320
 
 function MDBCardHeadervue_type_template_id_5d057320_render(_ctx, _cache, $props, $setup, $data, $options) {
   return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveDynamicComponent"])($props.tag), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["mergeProps"])({
@@ -6721,7 +7770,7 @@ function MDBCardHeadervue_type_template_id_5d057320_render(_ctx, _cache, $props,
 }
 // CONCATENATED MODULE: ./src/components/free/components/MDBCardHeader.vue?vue&type=template&id=5d057320
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCardHeader.vue?vue&type=script&lang=js
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCardHeader.vue?vue&type=script&lang=js
 
 /* harmony default export */ var MDBCardHeadervue_type_script_lang_js = ({
   name: "MDBCardHeader",
@@ -6754,7 +7803,7 @@ function MDBCardHeadervue_type_template_id_5d057320_render(_ctx, _cache, $props,
 MDBCardHeadervue_type_script_lang_js.render = MDBCardHeadervue_type_template_id_5d057320_render
 
 /* harmony default export */ var MDBCardHeader = (MDBCardHeadervue_type_script_lang_js);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCardFooter.vue?vue&type=template&id=4d350262
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCardFooter.vue?vue&type=template&id=4d350262
 
 function MDBCardFootervue_type_template_id_4d350262_render(_ctx, _cache, $props, $setup, $data, $options) {
   return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveDynamicComponent"])($props.tag), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["mergeProps"])({
@@ -6768,7 +7817,7 @@ function MDBCardFootervue_type_template_id_4d350262_render(_ctx, _cache, $props,
 }
 // CONCATENATED MODULE: ./src/components/free/components/MDBCardFooter.vue?vue&type=template&id=4d350262
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCardFooter.vue?vue&type=script&lang=js
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCardFooter.vue?vue&type=script&lang=js
 
 /* harmony default export */ var MDBCardFootervue_type_script_lang_js = ({
   name: "MDBCardFooter",
@@ -6801,7 +7850,7 @@ function MDBCardFootervue_type_template_id_4d350262_render(_ctx, _cache, $props,
 MDBCardFootervue_type_script_lang_js.render = MDBCardFootervue_type_template_id_4d350262_render
 
 /* harmony default export */ var MDBCardFooter = (MDBCardFootervue_type_script_lang_js);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCardLink.vue?vue&type=template&id=98b5d156
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCardLink.vue?vue&type=template&id=98b5d156
 
 function MDBCardLinkvue_type_template_id_98b5d156_render(_ctx, _cache, $props, $setup, $data, $options) {
   return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveDynamicComponent"])($props.tag), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["mergeProps"])({
@@ -6815,7 +7864,7 @@ function MDBCardLinkvue_type_template_id_98b5d156_render(_ctx, _cache, $props, $
 }
 // CONCATENATED MODULE: ./src/components/free/components/MDBCardLink.vue?vue&type=template&id=98b5d156
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCardLink.vue?vue&type=script&lang=js
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCardLink.vue?vue&type=script&lang=js
 
 /* harmony default export */ var MDBCardLinkvue_type_script_lang_js = ({
   name: "MDBCardLink",
@@ -6846,7 +7895,7 @@ function MDBCardLinkvue_type_template_id_98b5d156_render(_ctx, _cache, $props, $
 MDBCardLinkvue_type_script_lang_js.render = MDBCardLinkvue_type_template_id_98b5d156_render
 
 /* harmony default export */ var MDBCardLink = (MDBCardLinkvue_type_script_lang_js);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCardGroup.vue?vue&type=template&id=6be72b20
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCardGroup.vue?vue&type=template&id=6be72b20
 
 function MDBCardGroupvue_type_template_id_6be72b20_render(_ctx, _cache, $props, $setup, $data, $options) {
   return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveDynamicComponent"])($props.tag), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["mergeProps"])({
@@ -6860,7 +7909,7 @@ function MDBCardGroupvue_type_template_id_6be72b20_render(_ctx, _cache, $props, 
 }
 // CONCATENATED MODULE: ./src/components/free/components/MDBCardGroup.vue?vue&type=template&id=6be72b20
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCardGroup.vue?vue&type=script&lang=js
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCardGroup.vue?vue&type=script&lang=js
 
 /* harmony default export */ var MDBCardGroupvue_type_script_lang_js = ({
   name: "MDBCardGroup",
@@ -6891,7 +7940,7 @@ function MDBCardGroupvue_type_template_id_6be72b20_render(_ctx, _cache, $props, 
 MDBCardGroupvue_type_script_lang_js.render = MDBCardGroupvue_type_template_id_6be72b20_render
 
 /* harmony default export */ var MDBCardGroup = (MDBCardGroupvue_type_script_lang_js);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBListGroup.vue?vue&type=template&id=3f58a71c
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBListGroup.vue?vue&type=template&id=3f58a71c
 
 function MDBListGroupvue_type_template_id_3f58a71c_render(_ctx, _cache, $props, $setup, $data, $options) {
   return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveDynamicComponent"])($props.tag), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["mergeProps"])({
@@ -6905,7 +7954,7 @@ function MDBListGroupvue_type_template_id_3f58a71c_render(_ctx, _cache, $props, 
 }
 // CONCATENATED MODULE: ./src/components/free/components/MDBListGroup.vue?vue&type=template&id=3f58a71c
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBListGroup.vue?vue&type=script&lang=js
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBListGroup.vue?vue&type=script&lang=js
 
 /* harmony default export */ var MDBListGroupvue_type_script_lang_js = ({
   name: "MDBListGroup",
@@ -6951,7 +8000,7 @@ function MDBListGroupvue_type_template_id_3f58a71c_render(_ctx, _cache, $props, 
 MDBListGroupvue_type_script_lang_js.render = MDBListGroupvue_type_template_id_3f58a71c_render
 
 /* harmony default export */ var MDBListGroup = (MDBListGroupvue_type_script_lang_js);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBListGroupItem.vue?vue&type=template&id=4c452e94
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBListGroupItem.vue?vue&type=template&id=4c452e94
 
 function MDBListGroupItemvue_type_template_id_4c452e94_render(_ctx, _cache, $props, $setup, $data, $options) {
   return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveDynamicComponent"])($props.tag), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["mergeProps"])({
@@ -6968,7 +8017,7 @@ function MDBListGroupItemvue_type_template_id_4c452e94_render(_ctx, _cache, $pro
 }
 // CONCATENATED MODULE: ./src/components/free/components/MDBListGroupItem.vue?vue&type=template&id=4c452e94
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBListGroupItem.vue?vue&type=script&lang=js
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBListGroupItem.vue?vue&type=script&lang=js
 
 /* harmony default export */ var MDBListGroupItemvue_type_script_lang_js = ({
   name: "MDBListGroupItem",
@@ -7012,7 +8061,7 @@ function MDBListGroupItemvue_type_template_id_4c452e94_render(_ctx, _cache, $pro
 MDBListGroupItemvue_type_script_lang_js.render = MDBListGroupItemvue_type_template_id_4c452e94_render
 
 /* harmony default export */ var MDBListGroupItem = (MDBListGroupItemvue_type_script_lang_js);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBProgress.vue?vue&type=template&id=38a03e30
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBProgress.vue?vue&type=template&id=38a03e30
 
 function MDBProgressvue_type_template_id_38a03e30_render(_ctx, _cache, $props, $setup, $data, $options) {
   return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveDynamicComponent"])($props.tag), {
@@ -7027,10 +8076,7 @@ function MDBProgressvue_type_template_id_38a03e30_render(_ctx, _cache, $props, $
 }
 // CONCATENATED MODULE: ./src/components/free/components/MDBProgress.vue?vue&type=template&id=38a03e30
 
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.number.constructor.js
-var es_number_constructor = __webpack_require__("a9e3");
-
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBProgress.vue?vue&type=script&lang=js
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBProgress.vue?vue&type=script&lang=js
 
 
 /* harmony default export */ var MDBProgressvue_type_script_lang_js = ({
@@ -7069,7 +8115,7 @@ var es_number_constructor = __webpack_require__("a9e3");
 MDBProgressvue_type_script_lang_js.render = MDBProgressvue_type_template_id_38a03e30_render
 
 /* harmony default export */ var MDBProgress = (MDBProgressvue_type_script_lang_js);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBProgressBar.vue?vue&type=template&id=e36f6672
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBProgressBar.vue?vue&type=template&id=e36f6672
 
 function MDBProgressBarvue_type_template_id_e36f6672_render(_ctx, _cache, $props, $setup, $data, $options) {
   return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveDynamicComponent"])($props.tag), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["mergeProps"])({
@@ -7090,7 +8136,7 @@ function MDBProgressBarvue_type_template_id_e36f6672_render(_ctx, _cache, $props
 }
 // CONCATENATED MODULE: ./src/components/free/components/MDBProgressBar.vue?vue&type=template&id=e36f6672
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBProgressBar.vue?vue&type=script&lang=js
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBProgressBar.vue?vue&type=script&lang=js
 
 
 /* harmony default export */ var MDBProgressBarvue_type_script_lang_js = ({
@@ -7143,7 +8189,7 @@ function MDBProgressBarvue_type_template_id_e36f6672_render(_ctx, _cache, $props
 MDBProgressBarvue_type_script_lang_js.render = MDBProgressBarvue_type_template_id_e36f6672_render
 
 /* harmony default export */ var MDBProgressBar = (MDBProgressBarvue_type_script_lang_js);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBSpinner.vue?vue&type=template&id=628e7642
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBSpinner.vue?vue&type=template&id=628e7642
 
 
 var MDBSpinnervue_type_template_id_628e7642_hoisted_1 = /*#__PURE__*/Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createVNode"])("span", {
@@ -7163,7 +8209,7 @@ function MDBSpinnervue_type_template_id_628e7642_render(_ctx, _cache, $props, $s
 }
 // CONCATENATED MODULE: ./src/components/free/components/MDBSpinner.vue?vue&type=template&id=628e7642
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBSpinner.vue?vue&type=script&lang=js
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBSpinner.vue?vue&type=script&lang=js
 
 /* harmony default export */ var MDBSpinnervue_type_script_lang_js = ({
   name: "MDBSpinner",
@@ -7200,7 +8246,7 @@ function MDBSpinnervue_type_template_id_628e7642_render(_ctx, _cache, $props, $s
 MDBSpinnervue_type_script_lang_js.render = MDBSpinnervue_type_template_id_628e7642_render
 
 /* harmony default export */ var MDBSpinner = (MDBSpinnervue_type_script_lang_js);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCollapse.vue?vue&type=template&id=4cfa8a15
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCollapse.vue?vue&type=template&id=4cfa8a15
 
 function MDBCollapsevue_type_template_id_4cfa8a15_render(_ctx, _cache, $props, $setup, $data, $options) {
   return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(external_commonjs_vue_commonjs2_vue_root_Vue_["Transition"], {
@@ -7239,7 +8285,7 @@ var getUID = function getUID(prefix) {
 
   return prefix;
 };
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCollapse.vue?vue&type=script&lang=js
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCollapse.vue?vue&type=script&lang=js
 
 
 
@@ -7395,7 +8441,7 @@ var getUID = function getUID(prefix) {
 MDBCollapsevue_type_script_lang_js.render = MDBCollapsevue_type_template_id_4cfa8a15_render
 
 /* harmony default export */ var MDBCollapse = (MDBCollapsevue_type_script_lang_js);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBDropdown.vue?vue&type=template&id=59829a24
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBDropdown.vue?vue&type=template&id=59829a24
 
 function MDBDropdownvue_type_template_id_59829a24_render(_ctx, _cache, $props, $setup, $data, $options) {
   return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveDynamicComponent"])($props.tag), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["mergeProps"])({
@@ -7411,14 +8457,8 @@ function MDBDropdownvue_type_template_id_59829a24_render(_ctx, _cache, $props, $
 }
 // CONCATENATED MODULE: ./src/components/free/components/MDBDropdown.vue?vue&type=template&id=59829a24
 
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.concat.js
-var es_array_concat = __webpack_require__("99af");
-
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.for-each.js
 var es_array_for_each = __webpack_require__("4160");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.includes.js
-var es_array_includes = __webpack_require__("caad");
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.includes.js
 var es_string_includes = __webpack_require__("2532");
@@ -7699,7 +8739,7 @@ var handleBreakpoints = function handleBreakpoints(windowWidth, breakpointValues
   })[0];
   return value;
 };
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBDropdown.vue?vue&type=script&lang=js
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBDropdown.vue?vue&type=script&lang=js
 
 
 
@@ -7903,22 +8943,16 @@ var handleBreakpoints = function handleBreakpoints(windowWidth, breakpointValues
 MDBDropdownvue_type_script_lang_js.render = MDBDropdownvue_type_template_id_59829a24_render
 
 /* harmony default export */ var MDBDropdown = (MDBDropdownvue_type_script_lang_js);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.regexp.exec.js
-var es_regexp_exec = __webpack_require__("ac1f");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.split.js
-var es_string_split = __webpack_require__("1276");
-
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBDropdownToggle.vue?vue&type=template&id=2fe16b89
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBDropdownToggle.vue?vue&type=template&id=32d444fa
 
 
 
-var MDBDropdownTogglevue_type_template_id_2fe16b89_hoisted_1 = {
+var MDBDropdownTogglevue_type_template_id_32d444fa_hoisted_1 = {
   key: 1,
   class: "visually-hidden"
 };
-function MDBDropdownTogglevue_type_template_id_2fe16b89_render(_ctx, _cache, $props, $setup, $data, $options) {
-  var _directive_click_outside = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveDirective"])("click-outside");
+function MDBDropdownTogglevue_type_template_id_32d444fa_render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _directive_mdb_click_outside = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveDirective"])("mdb-click-outside");
 
   return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["withDirectives"])((Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveDynamicComponent"])($props.tag), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["mergeProps"])({
     type: "button",
@@ -7933,15 +8967,15 @@ function MDBDropdownTogglevue_type_template_id_2fe16b89_render(_ctx, _cache, $pr
     default: Object(external_commonjs_vue_commonjs2_vue_root_Vue_["withCtx"])(function () {
       return [!$props.split ? Object(external_commonjs_vue_commonjs2_vue_root_Vue_["renderSlot"])(_ctx.$slots, "default", {
         key: 0
-      }) : (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])("span", MDBDropdownTogglevue_type_template_id_2fe16b89_hoisted_1, "Toggle Dropdown"))];
+      }) : (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])("span", MDBDropdownTogglevue_type_template_id_32d444fa_hoisted_1, "Toggle Dropdown"))];
     }),
     _: 1
-  }, 16, ["class", "aria-expanded", "onClick"])), [[_directive_click_outside, $setup.handleClickOutside]]);
+  }, 16, ["class", "aria-expanded", "onClick"])), [[_directive_mdb_click_outside, $setup.handleClickOutside]]);
 }
-// CONCATENATED MODULE: ./src/components/free/components/MDBDropdownToggle.vue?vue&type=template&id=2fe16b89
+// CONCATENATED MODULE: ./src/components/free/components/MDBDropdownToggle.vue?vue&type=template&id=32d444fa
 
-// CONCATENATED MODULE: ./src/directives/clickOutside.js
-/* harmony default export */ var clickOutside = ({
+// CONCATENATED MODULE: ./src/directives/free/mdbClickOutside.js
+/* harmony default export */ var mdbClickOutside = ({
   stopProp: function stopProp(e) {
     e.stopPropagation();
   },
@@ -7957,7 +8991,7 @@ function MDBDropdownTogglevue_type_template_id_2fe16b89_render(_ctx, _cache, $pr
     document.addEventListener(event, el.clickOutside);
     document.addEventListener("touchstart", el.clickOutside);
   },
-  unbind: function unbind(el, binding) {
+  unmounted: function unmounted(el, binding) {
     if (!el.clickOutside) return;
     var event = binding.modifiers.mousedown ? "mousedown" : "click";
     document.removeEventListener(event, el.clickOutside);
@@ -7965,7 +8999,7 @@ function MDBDropdownTogglevue_type_template_id_2fe16b89_render(_ctx, _cache, $pr
     delete el.clickOutside;
   }
 });
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBDropdownToggle.vue?vue&type=script&lang=js
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBDropdownToggle.vue?vue&type=script&lang=js
 
 
 
@@ -7995,7 +9029,7 @@ function MDBDropdownTogglevue_type_template_id_2fe16b89_render(_ctx, _cache, $pr
     }
   }),
   directives: {
-    "click-outside": clickOutside
+    mdbClickOutside: mdbClickOutside
   },
   setup: function setup(props, _ref) {
     var attrs = _ref.attrs;
@@ -8042,10 +9076,10 @@ function MDBDropdownTogglevue_type_template_id_2fe16b89_render(_ctx, _cache, $pr
 
 
 
-MDBDropdownTogglevue_type_script_lang_js.render = MDBDropdownTogglevue_type_template_id_2fe16b89_render
+MDBDropdownTogglevue_type_script_lang_js.render = MDBDropdownTogglevue_type_template_id_32d444fa_render
 
 /* harmony default export */ var MDBDropdownToggle = (MDBDropdownTogglevue_type_script_lang_js);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBDropdownMenu.vue?vue&type=template&id=48b5116b
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBDropdownMenu.vue?vue&type=template&id=48b5116b
 
 function MDBDropdownMenuvue_type_template_id_48b5116b_render(_ctx, _cache, $props, $setup, $data, $options) {
   return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(external_commonjs_vue_commonjs2_vue_root_Vue_["Transition"], null, {
@@ -8069,7 +9103,7 @@ function MDBDropdownMenuvue_type_template_id_48b5116b_render(_ctx, _cache, $prop
 }
 // CONCATENATED MODULE: ./src/components/free/components/MDBDropdownMenu.vue?vue&type=template&id=48b5116b
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBDropdownMenu.vue?vue&type=script&lang=js
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBDropdownMenu.vue?vue&type=script&lang=js
 
 
 
@@ -8271,7 +9305,7 @@ function MDBDropdownMenuvue_type_template_id_48b5116b_render(_ctx, _cache, $prop
 MDBDropdownMenuvue_type_script_lang_js.render = MDBDropdownMenuvue_type_template_id_48b5116b_render
 
 /* harmony default export */ var MDBDropdownMenu = (MDBDropdownMenuvue_type_script_lang_js);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBDropdownItem.vue?vue&type=template&id=5b763505
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBDropdownItem.vue?vue&type=template&id=5b763505
 
 var MDBDropdownItemvue_type_template_id_5b763505_hoisted_1 = {
   key: 1,
@@ -8308,7 +9342,7 @@ function MDBDropdownItemvue_type_template_id_5b763505_render(_ctx, _cache, $prop
 }
 // CONCATENATED MODULE: ./src/components/free/components/MDBDropdownItem.vue?vue&type=template&id=5b763505
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBDropdownItem.vue?vue&type=script&lang=js
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBDropdownItem.vue?vue&type=script&lang=js
 
 /* harmony default export */ var MDBDropdownItemvue_type_script_lang_js = ({
   name: "MDBDropdownItem",
@@ -8411,7 +9445,7 @@ function MDBDropdownItemvue_type_template_id_5b763505_render(_ctx, _cache, $prop
 MDBDropdownItemvue_type_script_lang_js.render = MDBDropdownItemvue_type_template_id_5b763505_render
 
 /* harmony default export */ var MDBDropdownItem = (MDBDropdownItemvue_type_script_lang_js);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBTooltip.vue?vue&type=template&id=3c56cf20
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBTooltip.vue?vue&type=template&id=3c56cf20
 
 var MDBTooltipvue_type_template_id_3c56cf20_hoisted_1 = {
   key: 0,
@@ -8453,10 +9487,7 @@ function MDBTooltipvue_type_template_id_3c56cf20_render(_ctx, _cache, $props, $s
 }
 // CONCATENATED MODULE: ./src/components/free/components/MDBTooltip.vue?vue&type=template&id=3c56cf20
 
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.index-of.js
-var es_array_index_of = __webpack_require__("c975");
-
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBTooltip.vue?vue&type=script&lang=js
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBTooltip.vue?vue&type=script&lang=js
 
 
 
@@ -8604,9 +9635,9 @@ var es_array_index_of = __webpack_require__("c975");
 MDBTooltipvue_type_script_lang_js.render = MDBTooltipvue_type_template_id_3c56cf20_render
 
 /* harmony default export */ var MDBTooltip = (MDBTooltipvue_type_script_lang_js);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBPopover.vue?vue&type=template&id=d6ae115e
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBPopover.vue?vue&type=template&id=40d4df56
 
-var MDBPopovervue_type_template_id_d6ae115e_hoisted_1 = {
+var MDBPopovervue_type_template_id_40d4df56_hoisted_1 = {
   key: 0,
   class: "popover-header"
 };
@@ -8619,8 +9650,8 @@ var _hoisted_3 = {
   "x-arrow": "",
   class: "popover_arrow"
 };
-function MDBPopovervue_type_template_id_d6ae115e_render(_ctx, _cache, $props, $setup, $data, $options) {
-  var _directive_click_outside = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveDirective"])("click-outside");
+function MDBPopovervue_type_template_id_40d4df56_render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _directive_mdb_click_outside = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveDirective"])("mdb-click-outside");
 
   return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(external_commonjs_vue_commonjs2_vue_root_Vue_["Fragment"], null, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["withDirectives"])((Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveDynamicComponent"])($props.tag), {
     ref: "triggerEl",
@@ -8633,7 +9664,7 @@ function MDBPopovervue_type_template_id_d6ae115e_render(_ctx, _cache, $props, $s
       return [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["renderSlot"])(_ctx.$slots, "reference")];
     }),
     _: 3
-  }, 8, ["tabindex"])), [[_directive_click_outside, $setup.handleClickOutside]]), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createVNode"])(external_commonjs_vue_commonjs2_vue_root_Vue_["Transition"], null, {
+  }, 8, ["tabindex"])), [[_directive_mdb_click_outside, $setup.handleClickOutside]]), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createVNode"])(external_commonjs_vue_commonjs2_vue_root_Vue_["Transition"], null, {
     default: Object(external_commonjs_vue_commonjs2_vue_root_Vue_["withCtx"])(function () {
       return [$setup.isActive && (_ctx.$slots.header || _ctx.$slots.body) ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])("div", {
         key: 0,
@@ -8643,16 +9674,16 @@ function MDBPopovervue_type_template_id_d6ae115e_render(_ctx, _cache, $props, $s
           fade: true
         },
         style: [$setup.widthStyle, $setup.marginStyle]
-      }, [_ctx.$slots.header ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])("div", MDBPopovervue_type_template_id_d6ae115e_hoisted_1, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["renderSlot"])(_ctx.$slots, "header")])) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), _ctx.$slots.body ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])("div", _hoisted_2, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["renderSlot"])(_ctx.$slots, "body")])) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["renderSlot"])(_ctx.$slots, "default"), $props.arrow ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])("div", _hoisted_3)) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true)], 4)) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true)];
+      }, [_ctx.$slots.header ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])("div", MDBPopovervue_type_template_id_40d4df56_hoisted_1, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["renderSlot"])(_ctx.$slots, "header")])) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), _ctx.$slots.body ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])("div", _hoisted_2, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["renderSlot"])(_ctx.$slots, "body")])) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["renderSlot"])(_ctx.$slots, "default"), $props.arrow ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])("div", _hoisted_3)) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true)], 4)) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true)];
     }),
     _: 1
   })], 64
   /* STABLE_FRAGMENT */
   );
 }
-// CONCATENATED MODULE: ./src/components/free/components/MDBPopover.vue?vue&type=template&id=d6ae115e
+// CONCATENATED MODULE: ./src/components/free/components/MDBPopover.vue?vue&type=template&id=40d4df56
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBPopover.vue?vue&type=script&lang=js
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBPopover.vue?vue&type=script&lang=js
 
 
 
@@ -8709,7 +9740,7 @@ function MDBPopovervue_type_template_id_d6ae115e_render(_ctx, _cache, $props, $s
     }
   },
   directives: {
-    "click-outside": clickOutside
+    mdbClickOutside: mdbClickOutside
   },
   setup: function setup(props, _ref) {
     var attrs = _ref.attrs,
@@ -8862,12 +9893,12 @@ function MDBPopovervue_type_template_id_d6ae115e_render(_ctx, _cache, $props, $s
 
 
 
-MDBPopovervue_type_script_lang_js.render = MDBPopovervue_type_template_id_d6ae115e_render
+MDBPopovervue_type_script_lang_js.render = MDBPopovervue_type_template_id_40d4df56_render
 
 /* harmony default export */ var MDBPopover = (MDBPopovervue_type_script_lang_js);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBModal.vue?vue&type=template&id=e15095a2
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBModal.vue?vue&type=template&id=a9e4fcca
 
-function MDBModalvue_type_template_id_e15095a2_render(_ctx, _cache, $props, $setup, $data, $options) {
+function MDBModalvue_type_template_id_a9e4fcca_render(_ctx, _cache, $props, $setup, $data, $options) {
   return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(external_commonjs_vue_commonjs2_vue_root_Vue_["Transition"], {
     onEnter: $setup.enter,
     onAfterEnter: $setup.afterEnter,
@@ -8902,12 +9933,12 @@ function MDBModalvue_type_template_id_e15095a2_render(_ctx, _cache, $props, $set
     _: 1
   }, 8, ["onEnter", "onAfterEnter", "onBeforeLeave", "onAfterLeave"]);
 }
-// CONCATENATED MODULE: ./src/components/free/components/MDBModal.vue?vue&type=template&id=e15095a2
+// CONCATENATED MODULE: ./src/components/free/components/MDBModal.vue?vue&type=template&id=a9e4fcca
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.number.to-fixed.js
 var es_number_to_fixed = __webpack_require__("b680");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBModal.vue?vue&type=script&lang=js
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBModal.vue?vue&type=script&lang=js
 
 
 
@@ -9054,7 +10085,7 @@ var es_number_to_fixed = __webpack_require__("b680");
     var setScrollbar = function setScrollbar() {
       var rect = document.body.getBoundingClientRect();
       isBodyOverflowing.value = Math.round(rect.left + rect.right) < window.innerWidth;
-      scrollbarWidth.value = getScrollbarWidth().toFixed(2);
+      scrollbarWidth.value = isBodyOverflowing.value ? getScrollbarWidth().toFixed(2) : 0;
     };
 
     var enter = function enter(el) {
@@ -9128,10 +10159,10 @@ var es_number_to_fixed = __webpack_require__("b680");
 
 
 
-MDBModalvue_type_script_lang_js.render = MDBModalvue_type_template_id_e15095a2_render
+MDBModalvue_type_script_lang_js.render = MDBModalvue_type_template_id_a9e4fcca_render
 
 /* harmony default export */ var MDBModal = (MDBModalvue_type_script_lang_js);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBModalHeader.vue?vue&type=template&id=a0d84214
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBModalHeader.vue?vue&type=template&id=a0d84214
 
 function MDBModalHeadervue_type_template_id_a0d84214_render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_MDBBtnClose = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveComponent"])("MDBBtnClose");
@@ -9151,7 +10182,7 @@ function MDBModalHeadervue_type_template_id_a0d84214_render(_ctx, _cache, $props
 }
 // CONCATENATED MODULE: ./src/components/free/components/MDBModalHeader.vue?vue&type=template&id=a0d84214
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBModalHeader.vue?vue&type=script&lang=js
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBModalHeader.vue?vue&type=script&lang=js
 
 
 /* harmony default export */ var MDBModalHeadervue_type_script_lang_js = ({
@@ -9196,7 +10227,7 @@ function MDBModalHeadervue_type_template_id_a0d84214_render(_ctx, _cache, $props
 MDBModalHeadervue_type_script_lang_js.render = MDBModalHeadervue_type_template_id_a0d84214_render
 
 /* harmony default export */ var MDBModalHeader = (MDBModalHeadervue_type_script_lang_js);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBModalTitle.vue?vue&type=template&id=d219cb24
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBModalTitle.vue?vue&type=template&id=d219cb24
 
 function MDBModalTitlevue_type_template_id_d219cb24_render(_ctx, _cache, $props, $setup, $data, $options) {
   return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveDynamicComponent"])($props.tag), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["mergeProps"])({
@@ -9213,7 +10244,7 @@ function MDBModalTitlevue_type_template_id_d219cb24_render(_ctx, _cache, $props,
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.bold.js
 var es_string_bold = __webpack_require__("cc71");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBModalTitle.vue?vue&type=script&lang=js
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBModalTitle.vue?vue&type=script&lang=js
 
 
 /* harmony default export */ var MDBModalTitlevue_type_script_lang_js = ({
@@ -9249,7 +10280,7 @@ var es_string_bold = __webpack_require__("cc71");
 MDBModalTitlevue_type_script_lang_js.render = MDBModalTitlevue_type_template_id_d219cb24_render
 
 /* harmony default export */ var MDBModalTitle = (MDBModalTitlevue_type_script_lang_js);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBModalBody.vue?vue&type=template&id=05ffefd8
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBModalBody.vue?vue&type=template&id=05ffefd8
 
 function MDBModalBodyvue_type_template_id_05ffefd8_render(_ctx, _cache, $props, $setup, $data, $options) {
   return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveDynamicComponent"])($props.tag), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["mergeProps"])({
@@ -9263,7 +10294,7 @@ function MDBModalBodyvue_type_template_id_05ffefd8_render(_ctx, _cache, $props, 
 }
 // CONCATENATED MODULE: ./src/components/free/components/MDBModalBody.vue?vue&type=template&id=05ffefd8
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBModalBody.vue?vue&type=script&lang=js
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBModalBody.vue?vue&type=script&lang=js
 
 /* harmony default export */ var MDBModalBodyvue_type_script_lang_js = ({
   name: "MDBModalBody",
@@ -9294,7 +10325,7 @@ function MDBModalBodyvue_type_template_id_05ffefd8_render(_ctx, _cache, $props, 
 MDBModalBodyvue_type_script_lang_js.render = MDBModalBodyvue_type_template_id_05ffefd8_render
 
 /* harmony default export */ var MDBModalBody = (MDBModalBodyvue_type_script_lang_js);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBModalFooter.vue?vue&type=template&id=26c6bc9b
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBModalFooter.vue?vue&type=template&id=26c6bc9b
 
 function MDBModalFootervue_type_template_id_26c6bc9b_render(_ctx, _cache, $props, $setup, $data, $options) {
   return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveDynamicComponent"])($props.tag), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["mergeProps"])({
@@ -9308,7 +10339,7 @@ function MDBModalFootervue_type_template_id_26c6bc9b_render(_ctx, _cache, $props
 }
 // CONCATENATED MODULE: ./src/components/free/components/MDBModalFooter.vue?vue&type=template&id=26c6bc9b
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBModalFooter.vue?vue&type=script&lang=js
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBModalFooter.vue?vue&type=script&lang=js
 
 /* harmony default export */ var MDBModalFootervue_type_script_lang_js = ({
   name: "MDBModalFooter",
@@ -9339,7 +10370,7 @@ function MDBModalFootervue_type_template_id_26c6bc9b_render(_ctx, _cache, $props
 MDBModalFootervue_type_script_lang_js.render = MDBModalFootervue_type_template_id_26c6bc9b_render
 
 /* harmony default export */ var MDBModalFooter = (MDBModalFootervue_type_script_lang_js);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/content-styles/MDBIcon.vue?vue&type=template&id=0c27ae09
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/content-styles/MDBIcon.vue?vue&type=template&id=0c27ae09
 
 function MDBIconvue_type_template_id_0c27ae09_render(_ctx, _cache, $props, $setup, $data, $options) {
   return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])("i", Object(external_commonjs_vue_commonjs2_vue_root_Vue_["mergeProps"])({
@@ -9348,7 +10379,7 @@ function MDBIconvue_type_template_id_0c27ae09_render(_ctx, _cache, $props, $setu
 }
 // CONCATENATED MODULE: ./src/components/free/content-styles/MDBIcon.vue?vue&type=template&id=0c27ae09
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/content-styles/MDBIcon.vue?vue&type=script&lang=js
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/content-styles/MDBIcon.vue?vue&type=script&lang=js
 
 /* harmony default export */ var MDBIconvue_type_script_lang_js = ({
   name: "MDBIcon",
@@ -9381,7 +10412,7 @@ function MDBIconvue_type_template_id_0c27ae09_render(_ctx, _cache, $props, $setu
 MDBIconvue_type_script_lang_js.render = MDBIconvue_type_template_id_0c27ae09_render
 
 /* harmony default export */ var MDBIcon = (MDBIconvue_type_script_lang_js);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBNavbar.vue?vue&type=template&id=680eeb7f
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBNavbar.vue?vue&type=template&id=680eeb7f
 
 function MDBNavbarvue_type_template_id_680eeb7f_render(_ctx, _cache, $props, $setup, $data, $options) {
   return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveDynamicComponent"])($props.tag), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["mergeProps"])({
@@ -9403,7 +10434,7 @@ function MDBNavbarvue_type_template_id_680eeb7f_render(_ctx, _cache, $props, $se
 }
 // CONCATENATED MODULE: ./src/components/free/navigation/MDBNavbar.vue?vue&type=template&id=680eeb7f
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBNavbar.vue?vue&type=script&lang=js
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBNavbar.vue?vue&type=script&lang=js
 
 
 /* harmony default export */ var MDBNavbarvue_type_script_lang_js = ({
@@ -9532,7 +10563,7 @@ function MDBNavbarvue_type_template_id_680eeb7f_render(_ctx, _cache, $props, $se
 MDBNavbarvue_type_script_lang_js.render = MDBNavbarvue_type_template_id_680eeb7f_render
 
 /* harmony default export */ var MDBNavbar = (MDBNavbarvue_type_script_lang_js);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBNavbarToggler.vue?vue&type=template&id=25703bbe
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBNavbarToggler.vue?vue&type=template&id=25703bbe
 
 function MDBNavbarTogglervue_type_template_id_25703bbe_render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_MDBIcon = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveComponent"])("MDBIcon");
@@ -9559,7 +10590,7 @@ function MDBNavbarTogglervue_type_template_id_25703bbe_render(_ctx, _cache, $pro
 }
 // CONCATENATED MODULE: ./src/components/free/navigation/MDBNavbarToggler.vue?vue&type=template&id=25703bbe
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBNavbarToggler.vue?vue&type=script&lang=js
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBNavbarToggler.vue?vue&type=script&lang=js
 
 
 /* harmony default export */ var MDBNavbarTogglervue_type_script_lang_js = ({
@@ -9622,7 +10653,7 @@ function MDBNavbarTogglervue_type_template_id_25703bbe_render(_ctx, _cache, $pro
 MDBNavbarTogglervue_type_script_lang_js.render = MDBNavbarTogglervue_type_template_id_25703bbe_render
 
 /* harmony default export */ var MDBNavbarToggler = (MDBNavbarTogglervue_type_script_lang_js);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBNavbarBrand.vue?vue&type=template&id=62b884f0
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBNavbarBrand.vue?vue&type=template&id=62b884f0
 
 function MDBNavbarBrandvue_type_template_id_62b884f0_render(_ctx, _cache, $props, $setup, $data, $options) {
   return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveDynamicComponent"])($setup.isLink), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["mergeProps"])({
@@ -9636,7 +10667,7 @@ function MDBNavbarBrandvue_type_template_id_62b884f0_render(_ctx, _cache, $props
 }
 // CONCATENATED MODULE: ./src/components/free/navigation/MDBNavbarBrand.vue?vue&type=template&id=62b884f0
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBNavbarBrand.vue?vue&type=script&lang=js
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBNavbarBrand.vue?vue&type=script&lang=js
 
 /* harmony default export */ var MDBNavbarBrandvue_type_script_lang_js = ({
   name: "MDBNavbarBrand",
@@ -9667,7 +10698,7 @@ function MDBNavbarBrandvue_type_template_id_62b884f0_render(_ctx, _cache, $props
 MDBNavbarBrandvue_type_script_lang_js.render = MDBNavbarBrandvue_type_template_id_62b884f0_render
 
 /* harmony default export */ var MDBNavbarBrand = (MDBNavbarBrandvue_type_script_lang_js);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBNavbarNav.vue?vue&type=template&id=6f36c6ea
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBNavbarNav.vue?vue&type=template&id=6f36c6ea
 
 function MDBNavbarNavvue_type_template_id_6f36c6ea_render(_ctx, _cache, $props, $setup, $data, $options) {
   return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveDynamicComponent"])($props.tag), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["mergeProps"])({
@@ -9681,7 +10712,7 @@ function MDBNavbarNavvue_type_template_id_6f36c6ea_render(_ctx, _cache, $props, 
 }
 // CONCATENATED MODULE: ./src/components/free/navigation/MDBNavbarNav.vue?vue&type=template&id=6f36c6ea
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBNavbarNav.vue?vue&type=script&lang=js
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBNavbarNav.vue?vue&type=script&lang=js
 
 
 /* harmony default export */ var MDBNavbarNavvue_type_script_lang_js = ({
@@ -9740,7 +10771,7 @@ function MDBNavbarNavvue_type_template_id_6f36c6ea_render(_ctx, _cache, $props, 
 MDBNavbarNavvue_type_script_lang_js.render = MDBNavbarNavvue_type_template_id_6f36c6ea_render
 
 /* harmony default export */ var MDBNavbarNav = (MDBNavbarNavvue_type_script_lang_js);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBNavbarItem.vue?vue&type=template&id=5c962e30
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBNavbarItem.vue?vue&type=template&id=5c962e30
 
 function MDBNavbarItemvue_type_template_id_5c962e30_render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_router_link = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveComponent"])("router-link");
@@ -9774,7 +10805,7 @@ function MDBNavbarItemvue_type_template_id_5c962e30_render(_ctx, _cache, $props,
 }
 // CONCATENATED MODULE: ./src/components/free/navigation/MDBNavbarItem.vue?vue&type=template&id=5c962e30
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBNavbarItem.vue?vue&type=script&lang=js
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBNavbarItem.vue?vue&type=script&lang=js
 
 /* harmony default export */ var MDBNavbarItemvue_type_script_lang_js = ({
   name: "MDBNavbarItem",
@@ -9837,7 +10868,7 @@ function MDBNavbarItemvue_type_template_id_5c962e30_render(_ctx, _cache, $props,
 MDBNavbarItemvue_type_script_lang_js.render = MDBNavbarItemvue_type_template_id_5c962e30_render
 
 /* harmony default export */ var MDBNavbarItem = (MDBNavbarItemvue_type_script_lang_js);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBPagination.vue?vue&type=template&id=e7670980
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBPagination.vue?vue&type=template&id=e7670980
 
 function MDBPaginationvue_type_template_id_e7670980_render(_ctx, _cache, $props, $setup, $data, $options) {
   return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveDynamicComponent"])($props.tag), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["mergeProps"])({
@@ -9851,7 +10882,7 @@ function MDBPaginationvue_type_template_id_e7670980_render(_ctx, _cache, $props,
 }
 // CONCATENATED MODULE: ./src/components/free/navigation/MDBPagination.vue?vue&type=template&id=e7670980
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBPagination.vue?vue&type=script&lang=js
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBPagination.vue?vue&type=script&lang=js
 
 /* harmony default export */ var MDBPaginationvue_type_script_lang_js = ({
   name: "MDBPagination",
@@ -9894,7 +10925,7 @@ function MDBPaginationvue_type_template_id_e7670980_render(_ctx, _cache, $props,
 MDBPaginationvue_type_script_lang_js.render = MDBPaginationvue_type_template_id_e7670980_render
 
 /* harmony default export */ var MDBPagination = (MDBPaginationvue_type_script_lang_js);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBPageNav.vue?vue&type=template&id=a8774d2e
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBPageNav.vue?vue&type=template&id=a8774d2e
 
 var MDBPageNavvue_type_template_id_a8774d2e_hoisted_1 = {
   "aria-hidden": "true"
@@ -9938,7 +10969,7 @@ function MDBPageNavvue_type_template_id_a8774d2e_render(_ctx, _cache, $props, $s
 }
 // CONCATENATED MODULE: ./src/components/free/navigation/MDBPageNav.vue?vue&type=template&id=a8774d2e
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBPageNav.vue?vue&type=script&lang=js
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBPageNav.vue?vue&type=script&lang=js
 
 /* harmony default export */ var MDBPageNavvue_type_script_lang_js = ({
   name: "MDBPageNav",
@@ -10001,7 +11032,7 @@ function MDBPageNavvue_type_template_id_a8774d2e_render(_ctx, _cache, $props, $s
 MDBPageNavvue_type_script_lang_js.render = MDBPageNavvue_type_template_id_a8774d2e_render
 
 /* harmony default export */ var MDBPageNav = (MDBPageNavvue_type_script_lang_js);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBPageItem.vue?vue&type=template&id=105d9ca3
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBPageItem.vue?vue&type=template&id=105d9ca3
 
 var MDBPageItemvue_type_template_id_105d9ca3_hoisted_1 = {
   key: 0,
@@ -10031,7 +11062,7 @@ function MDBPageItemvue_type_template_id_105d9ca3_render(_ctx, _cache, $props, $
 }
 // CONCATENATED MODULE: ./src/components/free/navigation/MDBPageItem.vue?vue&type=template&id=105d9ca3
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBPageItem.vue?vue&type=script&lang=js
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBPageItem.vue?vue&type=script&lang=js
 
 /* harmony default export */ var MDBPageItemvue_type_script_lang_js = ({
   name: "MDBPageItem",
@@ -10088,7 +11119,7 @@ function MDBPageItemvue_type_template_id_105d9ca3_render(_ctx, _cache, $props, $
 MDBPageItemvue_type_script_lang_js.render = MDBPageItemvue_type_template_id_105d9ca3_render
 
 /* harmony default export */ var MDBPageItem = (MDBPageItemvue_type_script_lang_js);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBBreadcrumb.vue?vue&type=template&id=a9115ed2
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBBreadcrumb.vue?vue&type=template&id=a9115ed2
 
 function MDBBreadcrumbvue_type_template_id_a9115ed2_render(_ctx, _cache, $props, $setup, $data, $options) {
   return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveDynamicComponent"])($props.tag), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["mergeProps"])({
@@ -10102,7 +11133,7 @@ function MDBBreadcrumbvue_type_template_id_a9115ed2_render(_ctx, _cache, $props,
 }
 // CONCATENATED MODULE: ./src/components/free/navigation/MDBBreadcrumb.vue?vue&type=template&id=a9115ed2
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBBreadcrumb.vue?vue&type=script&lang=js
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBBreadcrumb.vue?vue&type=script&lang=js
 
 /* harmony default export */ var MDBBreadcrumbvue_type_script_lang_js = ({
   name: "MDBBreadcrumb",
@@ -10133,7 +11164,7 @@ function MDBBreadcrumbvue_type_template_id_a9115ed2_render(_ctx, _cache, $props,
 MDBBreadcrumbvue_type_script_lang_js.render = MDBBreadcrumbvue_type_template_id_a9115ed2_render
 
 /* harmony default export */ var MDBBreadcrumb = (MDBBreadcrumbvue_type_script_lang_js);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBBreadcrumbItem.vue?vue&type=template&id=3f8b4a24
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBBreadcrumbItem.vue?vue&type=template&id=3f8b4a24
 
 function MDBBreadcrumbItemvue_type_template_id_3f8b4a24_render(_ctx, _cache, $props, $setup, $data, $options) {
   return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveDynamicComponent"])($props.tag), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["mergeProps"])({
@@ -10148,7 +11179,7 @@ function MDBBreadcrumbItemvue_type_template_id_3f8b4a24_render(_ctx, _cache, $pr
 }
 // CONCATENATED MODULE: ./src/components/free/navigation/MDBBreadcrumbItem.vue?vue&type=template&id=3f8b4a24
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBBreadcrumbItem.vue?vue&type=script&lang=js
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBBreadcrumbItem.vue?vue&type=script&lang=js
 
 /* harmony default export */ var MDBBreadcrumbItemvue_type_script_lang_js = ({
   name: "MDBBreadcrumbItem",
@@ -10191,7 +11222,7 @@ function MDBBreadcrumbItemvue_type_template_id_3f8b4a24_render(_ctx, _cache, $pr
 MDBBreadcrumbItemvue_type_script_lang_js.render = MDBBreadcrumbItemvue_type_template_id_3f8b4a24_render
 
 /* harmony default export */ var MDBBreadcrumbItem = (MDBBreadcrumbItemvue_type_script_lang_js);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBFooter.vue?vue&type=template&id=24576378
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBFooter.vue?vue&type=template&id=24576378
 
 function MDBFootervue_type_template_id_24576378_render(_ctx, _cache, $props, $setup, $data, $options) {
   return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveDynamicComponent"])($props.tag), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["mergeProps"])({
@@ -10205,7 +11236,7 @@ function MDBFootervue_type_template_id_24576378_render(_ctx, _cache, $props, $se
 }
 // CONCATENATED MODULE: ./src/components/free/navigation/MDBFooter.vue?vue&type=template&id=24576378
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBFooter.vue?vue&type=script&lang=js
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBFooter.vue?vue&type=script&lang=js
 
 
 
@@ -10257,7 +11288,7 @@ function MDBFootervue_type_template_id_24576378_render(_ctx, _cache, $props, $se
 MDBFootervue_type_script_lang_js.render = MDBFootervue_type_template_id_24576378_render
 
 /* harmony default export */ var MDBFooter = (MDBFootervue_type_script_lang_js);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/layout/MDBCol.vue?vue&type=template&id=412a62db
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/layout/MDBCol.vue?vue&type=template&id=412a62db
 
 function MDBColvue_type_template_id_412a62db_render(_ctx, _cache, $props, $setup, $data, $options) {
   return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveDynamicComponent"])($props.tag), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["mergeProps"])({
@@ -10271,7 +11302,7 @@ function MDBColvue_type_template_id_412a62db_render(_ctx, _cache, $props, $setup
 }
 // CONCATENATED MODULE: ./src/components/free/layout/MDBCol.vue?vue&type=template&id=412a62db
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/layout/MDBCol.vue?vue&type=script&lang=js
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/layout/MDBCol.vue?vue&type=script&lang=js
 
 /* harmony default export */ var MDBColvue_type_script_lang_js = ({
   name: "MDBCol",
@@ -10336,7 +11367,7 @@ function MDBColvue_type_template_id_412a62db_render(_ctx, _cache, $props, $setup
 MDBColvue_type_script_lang_js.render = MDBColvue_type_template_id_412a62db_render
 
 /* harmony default export */ var MDBCol = (MDBColvue_type_script_lang_js);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/layout/MDBRow.vue?vue&type=template&id=cc4cf47e
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/layout/MDBRow.vue?vue&type=template&id=cc4cf47e
 
 function MDBRowvue_type_template_id_cc4cf47e_render(_ctx, _cache, $props, $setup, $data, $options) {
   return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveDynamicComponent"])($props.tag), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["mergeProps"])({
@@ -10350,7 +11381,7 @@ function MDBRowvue_type_template_id_cc4cf47e_render(_ctx, _cache, $props, $setup
 }
 // CONCATENATED MODULE: ./src/components/free/layout/MDBRow.vue?vue&type=template&id=cc4cf47e
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/layout/MDBRow.vue?vue&type=script&lang=js
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/layout/MDBRow.vue?vue&type=script&lang=js
 
 
 
@@ -10418,7 +11449,7 @@ function MDBRowvue_type_template_id_cc4cf47e_render(_ctx, _cache, $props, $setup
 MDBRowvue_type_script_lang_js.render = MDBRowvue_type_template_id_cc4cf47e_render
 
 /* harmony default export */ var MDBRow = (MDBRowvue_type_script_lang_js);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/layout/MDBContainer.vue?vue&type=template&id=e331e3c0
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/layout/MDBContainer.vue?vue&type=template&id=e331e3c0
 
 function MDBContainervue_type_template_id_e331e3c0_render(_ctx, _cache, $props, $setup, $data, $options) {
   return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveDynamicComponent"])($props.tag), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["mergeProps"])({
@@ -10432,7 +11463,7 @@ function MDBContainervue_type_template_id_e331e3c0_render(_ctx, _cache, $props, 
 }
 // CONCATENATED MODULE: ./src/components/free/layout/MDBContainer.vue?vue&type=template&id=e331e3c0
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/layout/MDBContainer.vue?vue&type=script&lang=js
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/layout/MDBContainer.vue?vue&type=script&lang=js
 
 /* harmony default export */ var MDBContainervue_type_script_lang_js = ({
   name: "MDBContainer",
@@ -10487,7 +11518,7 @@ function MDBContainervue_type_template_id_e331e3c0_render(_ctx, _cache, $props, 
 MDBContainervue_type_script_lang_js.render = MDBContainervue_type_template_id_e331e3c0_render
 
 /* harmony default export */ var MDBContainer = (MDBContainervue_type_script_lang_js);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/data/MDBTable.vue?vue&type=template&id=23b635ea
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/data/MDBTable.vue?vue&type=template&id=23b635ea
 
 function MDBTablevue_type_template_id_23b635ea_render(_ctx, _cache, $props, $setup, $data, $options) {
   return $props.responsive ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])("div", {
@@ -10514,7 +11545,7 @@ function MDBTablevue_type_template_id_23b635ea_render(_ctx, _cache, $props, $set
 }
 // CONCATENATED MODULE: ./src/components/free/data/MDBTable.vue?vue&type=template&id=23b635ea
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/data/MDBTable.vue?vue&type=script&lang=js
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/data/MDBTable.vue?vue&type=script&lang=js
 
 /* harmony default export */ var MDBTablevue_type_script_lang_js = ({
   name: "MDBTable",
@@ -10605,21 +11636,21 @@ function MDBTablevue_type_template_id_23b635ea_render(_ctx, _cache, $props, $set
 MDBTablevue_type_script_lang_js.render = MDBTablevue_type_template_id_23b635ea_render
 
 /* harmony default export */ var MDBTable = (MDBTablevue_type_script_lang_js);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/forms/MDBInput.vue?vue&type=template&id=1af784f0
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/forms/MDBInput.vue?vue&type=template&id=3f56ba07
 
-var MDBInputvue_type_template_id_1af784f0_hoisted_1 = {
+var MDBInputvue_type_template_id_3f56ba07_hoisted_1 = {
   class: "form-notch"
 };
 
-var MDBInputvue_type_template_id_1af784f0_hoisted_2 = /*#__PURE__*/Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createVNode"])("div", {
+var MDBInputvue_type_template_id_3f56ba07_hoisted_2 = /*#__PURE__*/Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createVNode"])("div", {
   class: "form-notch-trailing"
 }, null, -1);
 
-var MDBInputvue_type_template_id_1af784f0_hoisted_3 = {
+var MDBInputvue_type_template_id_3f56ba07_hoisted_3 = {
   key: 0,
   class: "form-text"
 };
-function MDBInputvue_type_template_id_1af784f0_render(_ctx, _cache, $props, $setup, $data, $options) {
+function MDBInputvue_type_template_id_3f56ba07_render(_ctx, _cache, $props, $setup, $data, $options) {
   return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(external_commonjs_vue_commonjs2_vue_root_Vue_["Fragment"], null, [(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveDynamicComponent"])($props.tag), {
     class: $setup.wrapperClassName
   }, {
@@ -10631,13 +11662,18 @@ function MDBInputvue_type_template_id_1af784f0_render(_ctx, _cache, $props, $set
         value: $setup.inputValue,
         onInput: _cache[1] || (_cache[1] = function () {
           return $setup.handleInput.apply($setup, arguments);
-        })
+        }),
+        ref: "inputRef"
       }), null, 16, ["id", "value"]), $props.label ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])("label", {
         key: 0,
         ref: "labelRef",
         class: $setup.labelClassName,
         for: $setup.uid
-      }, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])($props.label), 11, ["for"])) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["renderSlot"])(_ctx.$slots, "default"), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createVNode"])("div", MDBInputvue_type_template_id_1af784f0_hoisted_1, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createVNode"])("div", {
+      }, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])($props.label), 11, ["for"])) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["renderSlot"])(_ctx.$slots, "default"), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createVNode"])("div", {
+        class: $setup.validFeedbackClassName
+      }, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])($props.validFeedback), 3), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createVNode"])("div", {
+        class: $setup.invalidFeedbackClassName
+      }, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])($setup.customInvalidFeedback), 3), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createVNode"])("div", MDBInputvue_type_template_id_3f56ba07_hoisted_1, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createVNode"])("div", {
         class: "form-notch-leading",
         style: {
           width: "".concat($setup.notchLeadingWidth, "px")
@@ -10647,16 +11683,17 @@ function MDBInputvue_type_template_id_1af784f0_render(_ctx, _cache, $props, $set
         style: {
           width: "".concat($setup.notchMiddleWidth, "px")
         }
-      }, null, 4), MDBInputvue_type_template_id_1af784f0_hoisted_2])];
+      }, null, 4), MDBInputvue_type_template_id_3f56ba07_hoisted_2])];
     }),
     _: 3
-  }, 8, ["class"])), $props.formText ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])("div", MDBInputvue_type_template_id_1af784f0_hoisted_3, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])($props.formText), 1)) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true)], 64
+  }, 8, ["class"])), $props.formText ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])("div", MDBInputvue_type_template_id_3f56ba07_hoisted_3, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])($props.formText), 1)) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true)], 64
   /* STABLE_FRAGMENT */
   );
 }
-// CONCATENATED MODULE: ./src/components/free/forms/MDBInput.vue?vue&type=template&id=1af784f0
+// CONCATENATED MODULE: ./src/components/free/forms/MDBInput.vue?vue&type=template&id=3f56ba07
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/forms/MDBInput.vue?vue&type=script&lang=js
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/forms/MDBInput.vue?vue&type=script&lang=js
+
 
 
 
@@ -10668,9 +11705,23 @@ function MDBInputvue_type_template_id_1af784f0_render(_ctx, _cache, $props, $set
     labelClass: String,
     modelValue: [String, Number],
     size: String,
+    formOutline: {
+      type: Boolean,
+      default: true
+    },
     wrapperClass: String,
     formText: String,
     white: Boolean,
+    validationEvent: String,
+    isValidated: Boolean,
+    isValid: Boolean,
+    isInvalid: Boolean,
+    validFeedback: String,
+    invalidFeedback: String,
+    tooltipFeedback: {
+      type: Boolean,
+      default: false
+    },
     tag: {
       type: String,
       default: "div"
@@ -10680,6 +11731,7 @@ function MDBInputvue_type_template_id_1af784f0_render(_ctx, _cache, $props, $set
   setup: function setup(props, _ref) {
     var attrs = _ref.attrs,
         emit = _ref.emit;
+    var inputRef = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["ref"])("inputRef");
     var inputValue = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["ref"])(props.modelValue);
     var labelRef = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["ref"])(null);
     var showPlaceholder = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["ref"])(false);
@@ -10687,14 +11739,46 @@ function MDBInputvue_type_template_id_1af784f0_render(_ctx, _cache, $props, $set
     var notchMiddleWidth = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["ref"])(0);
     var uid = props.id || getUID("MDBInput-");
     var wrapperClassName = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["computed"])(function () {
-      return ["form-outline", props.white && "form-white", props.wrapperClass];
+      return [props.formOutline && "form-outline", props.white && "form-white", props.wrapperClass];
     });
     var inputClassName = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["computed"])(function () {
-      return ["form-control", props.size && "form-control-".concat(props.size), inputValue.value && "active", showPlaceholder.value && "placeholder-active"];
+      return ["form-control", props.size && "form-control-".concat(props.size), inputValue.value && "active", showPlaceholder.value && "placeholder-active", (isInputValidated.value && isInputValid.value || props.isValid) && "is-valid", (isInputValidated.value && !isInputValid.value || props.isInvalid) && "is-invalid"];
     });
     var labelClassName = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["computed"])(function () {
       return ["form-label", props.labelClass];
     });
+    var validFeedbackClassName = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["computed"])(function () {
+      return props.tooltipFeedback ? "valid-tooltip" : "valid-feedback";
+    });
+    var invalidFeedbackClassName = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["computed"])(function () {
+      return props.tooltipFeedback ? "invalid-tooltip" : "invalid-feedback";
+    }); // Validation ------------------------
+
+    var isInputValidated = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["ref"])(props.isValidated);
+    var isInputValid = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["ref"])(props.isValid);
+    var defaultValidatorInvalidFeedback = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["ref"])("");
+    var customInvalidFeedback = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["computed"])(function () {
+      if (isInputValidated.value && !isInputValid.value && props.validationEvent) {
+        return defaultValidatorInvalidFeedback.value;
+      }
+
+      return props.invalidFeedback;
+    });
+
+    var handleValidation = function handleValidation(e) {
+      isInputValid.value = e.target.checkValidity();
+
+      if (!isInputValid.value) {
+        defaultValidatorInvalidFeedback.value = e.target.validationMessage;
+      }
+
+      isInputValidated.value = true;
+    };
+
+    var bindValidationEvents = function bindValidationEvents() {
+      if (props.validationEvent === "submit") return;
+      on(inputRef.value, props.validationEvent, handleValidation);
+    };
 
     function calcNotch() {
       if (labelRef.value) {
@@ -10718,15 +11802,33 @@ function MDBInputvue_type_template_id_1af784f0_render(_ctx, _cache, $props, $set
     Object(external_commonjs_vue_commonjs2_vue_root_Vue_["onMounted"])(function () {
       calcNotch();
       setPlaceholder();
+
+      if (props.validationEvent) {
+        bindValidationEvents();
+      }
     });
     Object(external_commonjs_vue_commonjs2_vue_root_Vue_["onUpdated"])(function () {
       calcNotch();
       setPlaceholder();
     });
+    Object(external_commonjs_vue_commonjs2_vue_root_Vue_["onUnmounted"])(function () {
+      off(inputRef.value, props.validationEvent, handleValidation);
+    });
     Object(external_commonjs_vue_commonjs2_vue_root_Vue_["watchEffect"])(function () {
       return inputValue.value = props.modelValue;
     });
+    Object(external_commonjs_vue_commonjs2_vue_root_Vue_["watch"])(function () {
+      return props.isValidated;
+    }, function (value) {
+      return isInputValidated.value = value;
+    });
+    Object(external_commonjs_vue_commonjs2_vue_root_Vue_["watch"])(function () {
+      return props.isValid;
+    }, function (value) {
+      return isInputValid.value = value;
+    });
     return {
+      inputRef: inputRef,
       uid: uid,
       inputValue: inputValue,
       labelRef: labelRef,
@@ -10734,6 +11836,9 @@ function MDBInputvue_type_template_id_1af784f0_render(_ctx, _cache, $props, $set
       wrapperClassName: wrapperClassName,
       inputClassName: inputClassName,
       labelClassName: labelClassName,
+      validFeedbackClassName: validFeedbackClassName,
+      invalidFeedbackClassName: invalidFeedbackClassName,
+      customInvalidFeedback: customInvalidFeedback,
       notchLeadingWidth: notchLeadingWidth,
       notchMiddleWidth: notchMiddleWidth,
       attrs: attrs,
@@ -10747,24 +11852,24 @@ function MDBInputvue_type_template_id_1af784f0_render(_ctx, _cache, $props, $set
 
 
 
-MDBInputvue_type_script_lang_js.render = MDBInputvue_type_template_id_1af784f0_render
+MDBInputvue_type_script_lang_js.render = MDBInputvue_type_template_id_3f56ba07_render
 
 /* harmony default export */ var MDBInput = (MDBInputvue_type_script_lang_js);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/forms/MDBTextarea.vue?vue&type=template&id=2241f340
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/forms/MDBTextarea.vue?vue&type=template&id=47ad3fea
 
-var MDBTextareavue_type_template_id_2241f340_hoisted_1 = {
+var MDBTextareavue_type_template_id_47ad3fea_hoisted_1 = {
   class: "form-notch"
 };
 
-var MDBTextareavue_type_template_id_2241f340_hoisted_2 = /*#__PURE__*/Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createVNode"])("div", {
+var MDBTextareavue_type_template_id_47ad3fea_hoisted_2 = /*#__PURE__*/Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createVNode"])("div", {
   class: "form-notch-trailing"
 }, null, -1);
 
-var MDBTextareavue_type_template_id_2241f340_hoisted_3 = {
+var MDBTextareavue_type_template_id_47ad3fea_hoisted_3 = {
   key: 0,
   class: "form-text"
 };
-function MDBTextareavue_type_template_id_2241f340_render(_ctx, _cache, $props, $setup, $data, $options) {
+function MDBTextareavue_type_template_id_47ad3fea_render(_ctx, _cache, $props, $setup, $data, $options) {
   return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(external_commonjs_vue_commonjs2_vue_root_Vue_["Fragment"], null, [(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveDynamicComponent"])($props.tag), {
     class: $setup.wrapperClassName
   }, {
@@ -10777,13 +11882,18 @@ function MDBTextareavue_type_template_id_2241f340_render(_ctx, _cache, $props, $
         onInput: _cache[1] || (_cache[1] = function () {
           return $setup.handleInput.apply($setup, arguments);
         }),
-        rows: $props.rows
+        rows: $props.rows,
+        ref: "textareaRef"
       }), null, 16, ["id", "value", "rows"]), $props.label ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])("label", {
         key: 0,
         ref: "labelRef",
         class: "form-label",
         for: $setup.uid
-      }, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])($props.label), 9, ["for"])) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createVNode"])("div", MDBTextareavue_type_template_id_2241f340_hoisted_1, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createVNode"])("div", {
+      }, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])($props.label), 9, ["for"])) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createVNode"])("div", {
+        class: $setup.validFeedbackClassName
+      }, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])($props.validFeedback), 3), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createVNode"])("div", {
+        class: $setup.invalidFeedbackClassName
+      }, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])($setup.customInvalidFeedback), 3), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createVNode"])("div", MDBTextareavue_type_template_id_47ad3fea_hoisted_1, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createVNode"])("div", {
         class: "form-notch-leading",
         style: {
           width: "".concat($setup.notchLeadingWidth, "px")
@@ -10793,16 +11903,17 @@ function MDBTextareavue_type_template_id_2241f340_render(_ctx, _cache, $props, $
         style: {
           width: "".concat($setup.notchMiddleWidth, "px")
         }
-      }, null, 4), MDBTextareavue_type_template_id_2241f340_hoisted_2])];
+      }, null, 4), MDBTextareavue_type_template_id_47ad3fea_hoisted_2])];
     }),
     _: 1
-  }, 8, ["class"])), $props.formText ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])("div", MDBTextareavue_type_template_id_2241f340_hoisted_3, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])($props.formText), 1)) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true)], 64
+  }, 8, ["class"])), $props.formText ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])("div", MDBTextareavue_type_template_id_47ad3fea_hoisted_3, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])($props.formText), 1)) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true)], 64
   /* STABLE_FRAGMENT */
   );
 }
-// CONCATENATED MODULE: ./src/components/free/forms/MDBTextarea.vue?vue&type=template&id=2241f340
+// CONCATENATED MODULE: ./src/components/free/forms/MDBTextarea.vue?vue&type=template&id=47ad3fea
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/forms/MDBTextarea.vue?vue&type=script&lang=js
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/forms/MDBTextarea.vue?vue&type=script&lang=js
+
 
 
 
@@ -10820,6 +11931,16 @@ function MDBTextareavue_type_template_id_2241f340_render(_ctx, _cache, $props, $
     wrapperClass: String,
     formText: String,
     white: Boolean,
+    validationEvent: String,
+    isValidated: Boolean,
+    isValid: Boolean,
+    isInvalid: Boolean,
+    validFeedback: String,
+    invalidFeedback: String,
+    tooltipFeedback: {
+      type: Boolean,
+      default: false
+    },
     tag: {
       type: String,
       default: "div"
@@ -10829,6 +11950,7 @@ function MDBTextareavue_type_template_id_2241f340_render(_ctx, _cache, $props, $
   setup: function setup(props, _ref) {
     var attrs = _ref.attrs,
         emit = _ref.emit;
+    var textareaRef = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["ref"])("textareaRef");
     var textareaValue = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["ref"])(props.modelValue);
     var labelRef = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["ref"])(null);
     var showPlaceholder = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["ref"])(false);
@@ -10839,8 +11961,40 @@ function MDBTextareavue_type_template_id_2241f340_render(_ctx, _cache, $props, $
       return ["form-outline", props.white && "form-white", props.wrapperClass];
     });
     var textareaClassName = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["computed"])(function () {
-      return ["form-control", props.size && "form-control-".concat(props.size), textareaValue.value && "active", showPlaceholder.value && "placeholder-active"];
+      return ["form-control", props.size && "form-control-".concat(props.size), textareaValue.value && "active", showPlaceholder.value && "placeholder-active", (isInputValidated.value && isInputValid.value || props.isValid) && "is-valid", (isInputValidated.value && !isInputValid.value || props.isInvalid) && "is-invalid"];
     });
+    var validFeedbackClassName = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["computed"])(function () {
+      return props.tooltipFeedback ? "valid-tooltip" : "valid-feedback";
+    });
+    var invalidFeedbackClassName = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["computed"])(function () {
+      return props.tooltipFeedback ? "invalid-tooltip" : "invalid-feedback";
+    }); // Validation ------------------------
+
+    var isInputValidated = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["ref"])(props.isValidated);
+    var isInputValid = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["ref"])(props.isValid);
+    var defaultValidatorInvalidFeedback = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["ref"])("");
+    var customInvalidFeedback = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["computed"])(function () {
+      if (isInputValidated.value && !isInputValid.value && props.validationEvent) {
+        return defaultValidatorInvalidFeedback.value;
+      }
+
+      return props.invalidFeedback;
+    });
+
+    var handleValidation = function handleValidation(e) {
+      isInputValid.value = e.target.checkValidity();
+
+      if (!isInputValid.value) {
+        defaultValidatorInvalidFeedback.value = e.target.validationMessage;
+      }
+
+      isInputValidated.value = true;
+    };
+
+    var bindValidationEvents = function bindValidationEvents() {
+      if (props.validationEvent === "submit") return;
+      on(textareaRef.value, props.validationEvent, handleValidation);
+    };
 
     function calcNotch() {
       if (labelRef.value) {
@@ -10864,21 +12018,32 @@ function MDBTextareavue_type_template_id_2241f340_render(_ctx, _cache, $props, $
     Object(external_commonjs_vue_commonjs2_vue_root_Vue_["onMounted"])(function () {
       calcNotch();
       setPlaceholder();
+
+      if (props.validationEvent) {
+        bindValidationEvents();
+      }
     });
     Object(external_commonjs_vue_commonjs2_vue_root_Vue_["onUpdated"])(function () {
       calcNotch();
       setPlaceholder();
     });
+    Object(external_commonjs_vue_commonjs2_vue_root_Vue_["onUnmounted"])(function () {
+      off(textareaRef.value, props.validationEvent, handleValidation);
+    });
     Object(external_commonjs_vue_commonjs2_vue_root_Vue_["watchEffect"])(function () {
       return textareaValue.value = props.modelValue;
     });
     return {
+      textareaRef: textareaRef,
       uid: uid,
       textareaValue: textareaValue,
       labelRef: labelRef,
       handleInput: handleInput,
       wrapperClassName: wrapperClassName,
       textareaClassName: textareaClassName,
+      validFeedbackClassName: validFeedbackClassName,
+      invalidFeedbackClassName: invalidFeedbackClassName,
+      customInvalidFeedback: customInvalidFeedback,
       notchLeadingWidth: notchLeadingWidth,
       notchMiddleWidth: notchMiddleWidth,
       attrs: attrs,
@@ -10892,12 +12057,12 @@ function MDBTextareavue_type_template_id_2241f340_render(_ctx, _cache, $props, $
 
 
 
-MDBTextareavue_type_script_lang_js.render = MDBTextareavue_type_template_id_2241f340_render
+MDBTextareavue_type_script_lang_js.render = MDBTextareavue_type_template_id_47ad3fea_render
 
 /* harmony default export */ var MDBTextarea = (MDBTextareavue_type_script_lang_js);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/forms/MDBCheckbox.vue?vue&type=template&id=5bbd1068
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/forms/MDBCheckbox.vue?vue&type=template&id=fc178224
 
-function MDBCheckboxvue_type_template_id_5bbd1068_render(_ctx, _cache, $props, $setup, $data, $options) {
+function MDBCheckboxvue_type_template_id_fc178224_render(_ctx, _cache, $props, $setup, $data, $options) {
   return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(external_commonjs_vue_commonjs2_vue_root_Vue_["Fragment"], null, [$props.wrap ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveDynamicComponent"])($props.tag), {
     key: 0,
     class: $setup.wrapperClassName
@@ -10911,12 +12076,19 @@ function MDBCheckboxvue_type_template_id_5bbd1068_render(_ctx, _cache, $props, $
         checked: $setup.inputValue,
         onChange: _cache[1] || (_cache[1] = function () {
           return $setup.handleChange.apply($setup, arguments);
-        })
-      }), null, 16, ["id", "checked"]), $props.label ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])("label", {
+        }),
+        required: $props.required ? true : null,
+        "aria-required": $props.required,
+        ref: "inputRef"
+      }), null, 16, ["id", "checked", "required", "aria-required"]), $props.label ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])("label", {
         key: 0,
         class: $setup.labelClassName,
         for: $setup.uid
-      }, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])($props.label), 11, ["for"])) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true)];
+      }, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])($props.label), 11, ["for"])) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createVNode"])("div", {
+        class: $setup.validFeedbackClassName
+      }, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])($props.validFeedback), 3), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createVNode"])("div", {
+        class: $setup.invalidFeedbackClassName
+      }, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])($props.invalidFeedback), 3)];
     }),
     _: 1
   }, 8, ["class"])) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), !$props.wrap ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])("input", Object(external_commonjs_vue_commonjs2_vue_root_Vue_["mergeProps"])({
@@ -10928,18 +12100,28 @@ function MDBCheckboxvue_type_template_id_5bbd1068_render(_ctx, _cache, $props, $
     checked: $setup.inputValue,
     onChange: _cache[2] || (_cache[2] = function () {
       return $setup.handleChange.apply($setup, arguments);
-    })
-  }), null, 16, ["id", "checked"])) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), !$props.wrap && $props.label ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])("label", {
+    }),
+    required: $props.required ? true : null,
+    "aria-required": $props.required,
+    ref: "inputRef"
+  }), null, 16, ["id", "checked", "required", "aria-required"])) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), !$props.wrap && $props.label ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])("label", {
     key: 2,
     class: $setup.labelClassName,
     for: $setup.uid
-  }, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])($props.label), 11, ["for"])) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true)], 64
+  }, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])($props.label), 11, ["for"])) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), !$props.wrap ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])("div", {
+    key: 3,
+    class: $setup.validFeedbackClassName
+  }, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])($props.validFeedback), 3)) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), !$props.wrap ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])("div", {
+    key: 4,
+    class: $setup.invalidFeedbackClassName
+  }, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])($props.invalidFeedback), 3)) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true)], 64
   /* STABLE_FRAGMENT */
   );
 }
-// CONCATENATED MODULE: ./src/components/free/forms/MDBCheckbox.vue?vue&type=template&id=5bbd1068
+// CONCATENATED MODULE: ./src/components/free/forms/MDBCheckbox.vue?vue&type=template&id=fc178224
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/forms/MDBCheckbox.vue?vue&type=script&lang=js
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/forms/MDBCheckbox.vue?vue&type=script&lang=js
+
 
 
 /* harmony default export */ var MDBCheckboxvue_type_script_lang_js = ({
@@ -10953,6 +12135,17 @@ function MDBCheckboxvue_type_template_id_5bbd1068_render(_ctx, _cache, $props, $
     labelClass: String,
     inputClass: String,
     btnCheck: Boolean,
+    required: Boolean,
+    validateOnChange: Boolean,
+    isValidated: Boolean,
+    isValid: Boolean,
+    isInvalid: Boolean,
+    validFeedback: String,
+    invalidFeedback: String,
+    tooltipFeedback: {
+      type: Boolean,
+      default: false
+    },
     wrap: {
       type: Boolean,
       default: true
@@ -10970,30 +12163,70 @@ function MDBCheckboxvue_type_template_id_5bbd1068_render(_ctx, _cache, $props, $
   setup: function setup(props, _ref) {
     var attrs = _ref.attrs,
         emit = _ref.emit;
+    var inputRef = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["ref"])("inputRef");
     var inputValue = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["ref"])(props.modelValue);
     var uid = props.id || getUID("MDBCheckbox-");
     var wrapperClassName = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["computed"])(function () {
       return [props.formCheck && !props.btnCheck ? "form-check" : "", props.inline && "form-check-inline", props.wrapperClass];
     });
     var inputClassName = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["computed"])(function () {
-      return [props.btnCheck ? "btn-check" : "form-check-input", props.inputClass && props.inputClass];
+      return [props.btnCheck ? "btn-check" : "form-check-input", props.inputClass && props.inputClass, (isInputValidated.value && isInputValid.value || props.isValid) && "is-valid", (isInputValidated.value && !isInputValid.value || props.isInvalid) && "is-invalid"];
     });
     var labelClassName = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["computed"])(function () {
       return [props.labelClass || "form-check-label"];
     });
+    var validFeedbackClassName = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["computed"])(function () {
+      return props.tooltipFeedback ? "valid-tooltip" : "valid-feedback";
+    });
+    var invalidFeedbackClassName = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["computed"])(function () {
+      return props.tooltipFeedback ? "invalid-tooltip" : "invalid-feedback";
+    }); // Validation ------------------------
+
+    var isInputValidated = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["ref"])(props.isValidated);
+    var isInputValid = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["ref"])(props.isValid);
+
+    var handleValidation = function handleValidation(e) {
+      isInputValid.value = e.target.checkValidity();
+      isInputValidated.value = true;
+    };
+
+    var bindValidationEvent = function bindValidationEvent() {
+      on(inputRef.value, "change", handleValidation);
+    };
 
     function handleChange() {
       inputValue.value = !inputValue.value;
       emit("update:modelValue", inputValue.value);
     }
 
+    Object(external_commonjs_vue_commonjs2_vue_root_Vue_["onMounted"])(function () {
+      if (props.validateOnChange) {
+        bindValidationEvent();
+      }
+    });
+    Object(external_commonjs_vue_commonjs2_vue_root_Vue_["onUnmounted"])(function () {
+      off(inputRef.value, "change", handleValidation);
+    });
     Object(external_commonjs_vue_commonjs2_vue_root_Vue_["watchEffect"])(function () {
       return inputValue.value = props.modelValue;
     });
+    Object(external_commonjs_vue_commonjs2_vue_root_Vue_["watch"])(function () {
+      return props.isValidated;
+    }, function (value) {
+      return isInputValidated.value = value;
+    });
+    Object(external_commonjs_vue_commonjs2_vue_root_Vue_["watch"])(function () {
+      return props.isValid;
+    }, function (value) {
+      return isInputValid.value = value;
+    });
     return {
+      inputRef: inputRef,
       wrapperClassName: wrapperClassName,
       inputClassName: inputClassName,
       labelClassName: labelClassName,
+      validFeedbackClassName: validFeedbackClassName,
+      invalidFeedbackClassName: invalidFeedbackClassName,
       inputValue: inputValue,
       handleChange: handleChange,
       uid: uid,
@@ -11008,12 +12241,12 @@ function MDBCheckboxvue_type_template_id_5bbd1068_render(_ctx, _cache, $props, $
 
 
 
-MDBCheckboxvue_type_script_lang_js.render = MDBCheckboxvue_type_template_id_5bbd1068_render
+MDBCheckboxvue_type_script_lang_js.render = MDBCheckboxvue_type_template_id_fc178224_render
 
 /* harmony default export */ var MDBCheckbox = (MDBCheckboxvue_type_script_lang_js);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/forms/MDBRadio.vue?vue&type=template&id=7f3b899f
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/forms/MDBRadio.vue?vue&type=template&id=4f824a40
 
-function MDBRadiovue_type_template_id_7f3b899f_render(_ctx, _cache, $props, $setup, $data, $options) {
+function MDBRadiovue_type_template_id_4f824a40_render(_ctx, _cache, $props, $setup, $data, $options) {
   return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(external_commonjs_vue_commonjs2_vue_root_Vue_["Fragment"], null, [$props.wrap ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveDynamicComponent"])($props.tag), {
     key: 0,
     class: $setup.wrapperClassName
@@ -11029,12 +12262,19 @@ function MDBRadiovue_type_template_id_7f3b899f_render(_ctx, _cache, $props, $set
         }),
         "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
           return $setup.inputValue = $event;
-        })
-      }), null, 16, ["id"]), [[external_commonjs_vue_commonjs2_vue_root_Vue_["vModelRadio"], $setup.inputValue]]), $props.label ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])("label", {
+        }),
+        required: $props.required ? true : null,
+        "aria-required": $props.required,
+        ref: "inputRef"
+      }), null, 16, ["id", "required", "aria-required"]), [[external_commonjs_vue_commonjs2_vue_root_Vue_["vModelRadio"], $setup.inputValue]]), $props.label ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])("label", {
         key: 0,
         class: $setup.labelClassName,
         for: $setup.uid
-      }, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])($props.label), 11, ["for"])) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true)];
+      }, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])($props.label), 11, ["for"])) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createVNode"])("div", {
+        class: $setup.validFeedbackClassName
+      }, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])($props.validFeedback), 3), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createVNode"])("div", {
+        class: $setup.invalidFeedbackClassName
+      }, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])($props.invalidFeedback), 3)];
     }),
     _: 1
   }, 8, ["class"])) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), !$props.wrap ? Object(external_commonjs_vue_commonjs2_vue_root_Vue_["withDirectives"])((Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])("input", Object(external_commonjs_vue_commonjs2_vue_root_Vue_["mergeProps"])({
@@ -11048,18 +12288,28 @@ function MDBRadiovue_type_template_id_7f3b899f_render(_ctx, _cache, $props, $set
     }),
     "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
       return $setup.inputValue = $event;
-    })
-  }), null, 16, ["id"])), [[external_commonjs_vue_commonjs2_vue_root_Vue_["vModelRadio"], $setup.inputValue]]) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), !$props.wrap && $props.label ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])("label", {
+    }),
+    required: $props.required ? true : null,
+    "aria-required": $props.required,
+    ref: "inputRef"
+  }), null, 16, ["id", "required", "aria-required"])), [[external_commonjs_vue_commonjs2_vue_root_Vue_["vModelRadio"], $setup.inputValue]]) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), !$props.wrap && $props.label ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])("label", {
     key: 2,
     class: $setup.labelClassName,
     for: $setup.uid
-  }, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])($props.label), 11, ["for"])) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true)], 64
+  }, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])($props.label), 11, ["for"])) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), !$props.wrap ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])("div", {
+    key: 3,
+    class: $setup.validFeedbackClassName
+  }, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])($props.validFeedback), 3)) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), !$props.wrap ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])("div", {
+    key: 4,
+    class: $setup.invalidFeedbackClassName
+  }, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])($props.invalidFeedback), 3)) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true)], 64
   /* STABLE_FRAGMENT */
   );
 }
-// CONCATENATED MODULE: ./src/components/free/forms/MDBRadio.vue?vue&type=template&id=7f3b899f
+// CONCATENATED MODULE: ./src/components/free/forms/MDBRadio.vue?vue&type=template&id=4f824a40
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/forms/MDBRadio.vue?vue&type=script&lang=js
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/forms/MDBRadio.vue?vue&type=script&lang=js
+
 
 
 /* harmony default export */ var MDBRadiovue_type_script_lang_js = ({
@@ -11072,6 +12322,17 @@ function MDBRadiovue_type_template_id_7f3b899f_render(_ctx, _cache, $props, $set
     wrapperClass: String,
     labelClass: String,
     btnCheck: Boolean,
+    required: Boolean,
+    validateOnChange: Boolean,
+    isValidated: Boolean,
+    isValid: Boolean,
+    isInvalid: Boolean,
+    validFeedback: String,
+    invalidFeedback: String,
+    tooltipFeedback: {
+      type: Boolean,
+      default: false
+    },
     wrap: {
       type: Boolean,
       default: true
@@ -11089,31 +12350,71 @@ function MDBRadiovue_type_template_id_7f3b899f_render(_ctx, _cache, $props, $set
   setup: function setup(props, _ref) {
     var attrs = _ref.attrs,
         emit = _ref.emit;
+    var inputRef = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["ref"])("inputRef");
     var inputValue = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["ref"])(props.modelValue || false);
     var uid = props.id || getUID("MDBCheckbox-");
     var wrapperClassName = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["computed"])(function () {
-      return [props.formCheck && !props.btnCheck ? "form-check" : "", props.inline && "form-check-inline"];
+      return [props.formCheck && !props.btnCheck ? "form-check" : "", props.inline && "form-check-inline", props.wrapperClass];
     });
     var inputClassName = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["computed"])(function () {
-      return [props.btnCheck ? "btn-check" : "form-check-input"];
+      return [props.btnCheck ? "btn-check" : "form-check-input", (isInputValidated.value && isInputValid.value || props.isValid) && "is-valid", (isInputValidated.value && !isInputValid.value || props.isInvalid) && "is-invalid"];
     });
     var labelClassName = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["computed"])(function () {
       return [props.labelClass || "form-check-label"];
     });
+    var validFeedbackClassName = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["computed"])(function () {
+      return props.tooltipFeedback ? "valid-tooltip" : "valid-feedback";
+    });
+    var invalidFeedbackClassName = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["computed"])(function () {
+      return props.tooltipFeedback ? "invalid-tooltip" : "invalid-feedback";
+    }); // Validation ------------------------
+
+    var isInputValidated = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["ref"])(props.isValidated);
+    var isInputValid = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["ref"])(props.isValid);
+
+    var handleValidation = function handleValidation(e) {
+      isInputValid.value = e.target.checkValidity();
+      isInputValidated.value = true;
+    };
+
+    var bindValidationEvent = function bindValidationEvent() {
+      on(inputRef.value, "change", handleValidation);
+    };
 
     function handleChange(e) {
       emit("update:modelValue", e.target.value);
     }
 
+    Object(external_commonjs_vue_commonjs2_vue_root_Vue_["onMounted"])(function () {
+      if (props.validateOnChange) {
+        bindValidationEvent();
+      }
+    });
+    Object(external_commonjs_vue_commonjs2_vue_root_Vue_["onUnmounted"])(function () {
+      off(inputRef.value, "change", handleValidation);
+    });
     Object(external_commonjs_vue_commonjs2_vue_root_Vue_["watchEffect"])(function () {
       return inputValue.value = props.modelValue;
     });
+    Object(external_commonjs_vue_commonjs2_vue_root_Vue_["watch"])(function () {
+      return props.isValidated;
+    }, function (value) {
+      return isInputValidated.value = value;
+    });
+    Object(external_commonjs_vue_commonjs2_vue_root_Vue_["watch"])(function () {
+      return props.isValid;
+    }, function (value) {
+      return isInputValid.value = value;
+    });
     return {
+      inputRef: inputRef,
       inputValue: inputValue,
       handleChange: handleChange,
       wrapperClassName: wrapperClassName,
       inputClassName: inputClassName,
       labelClassName: labelClassName,
+      validFeedbackClassName: validFeedbackClassName,
+      invalidFeedbackClassName: invalidFeedbackClassName,
       uid: uid,
       attrs: attrs,
       props: props
@@ -11126,9 +12427,295 @@ function MDBRadiovue_type_template_id_7f3b899f_render(_ctx, _cache, $props, $set
 
 
 
-MDBRadiovue_type_script_lang_js.render = MDBRadiovue_type_template_id_7f3b899f_render
+MDBRadiovue_type_script_lang_js.render = MDBRadiovue_type_template_id_4f824a40_render
 
 /* harmony default export */ var MDBRadio = (MDBRadiovue_type_script_lang_js);
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/arrayLikeToArray.js
+function _arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
+
+  for (var i = 0, arr2 = new Array(len); i < len; i++) {
+    arr2[i] = arr[i];
+  }
+
+  return arr2;
+}
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/arrayWithoutHoles.js
+
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) return _arrayLikeToArray(arr);
+}
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.symbol.description.js
+var es_symbol_description = __webpack_require__("e01a");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.symbol.iterator.js
+var es_symbol_iterator = __webpack_require__("d28b");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.from.js
+var es_array_from = __webpack_require__("a630");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.iterator.js
+var es_array_iterator = __webpack_require__("e260");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.to-string.js
+var es_object_to_string = __webpack_require__("d3b7");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.iterator.js
+var es_string_iterator = __webpack_require__("3ca3");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom-collections.iterator.js
+var web_dom_collections_iterator = __webpack_require__("ddb0");
+
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/iterableToArray.js
+
+
+
+
+
+
+
+
+function _iterableToArray(iter) {
+  if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);
+}
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.slice.js
+var es_array_slice = __webpack_require__("fb6a");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.function.name.js
+var es_function_name = __webpack_require__("b0c0");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.regexp.to-string.js
+var es_regexp_to_string = __webpack_require__("25f0");
+
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/unsupportedIterableToArray.js
+
+
+
+
+
+
+
+function _unsupportedIterableToArray(o, minLen) {
+  if (!o) return;
+  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
+  var n = Object.prototype.toString.call(o).slice(8, -1);
+  if (n === "Object" && o.constructor) n = o.constructor.name;
+  if (n === "Map" || n === "Set") return Array.from(o);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
+}
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/nonIterableSpread.js
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js
+
+
+
+
+function _toConsumableArray(arr) {
+  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
+}
+// CONCATENATED MODULE: ./src/directives/free/mdbScrollspy.js
+
+
+
+
+var mdbScrollspy = {
+  mounted: function mounted(el, binding) {
+    el.scrollspy = {
+      links: [],
+      container: window,
+      scrollPosition: null,
+      async: false,
+      offset: 0
+    };
+
+    if (binding.value) {
+      el.scrollspy.container = document.getElementById(binding.value.container) || window;
+      el.scrollspy.async = binding.value.async || false;
+      el.scrollspy.offset = binding.value.offset || 0;
+    }
+
+    el.scrollspy.scrollPosition = getScrollPostion(el.scrollspy.container);
+
+    el.scrollspy.findHrefs = function (node) {
+      if (node.attributes && node.attributes.href) {
+        el.scrollspy.links.push(node);
+      } else if (node.childNodes) {
+        node.childNodes.forEach(function (child) {
+          return el.scrollspy.findHrefs(child);
+        });
+      }
+    };
+
+    el.scrollspy.setActive = function (index) {
+      if (binding.value && binding.value.callback) {
+        binding.instance[binding.value.callback](index);
+        return;
+      }
+
+      el.scrollspy.links.forEach(function (link, i) {
+        if (index === i) link.classList.add("active");else link.classList.remove("active");
+      });
+      mdbScrollspy_setNestedActive(el.scrollspy.links, index, el.scrollspy.container);
+    };
+
+    el.scrollspy.spy = function () {
+      if (el.disableScroll) return;
+      var container = el.scrollspy.container;
+      el.scrollspy.scrollPosition = getScrollPostion(container);
+      el.scrollspy.links.forEach(function (link) {
+        var element = document.querySelector(link.hash);
+
+        if (!element) {
+          return;
+        }
+
+        var rect = element.getBoundingClientRect();
+        var condition;
+
+        if (container === window) {
+          condition = window.innerHeight > rect.top && rect.top + rect.height >= 0;
+        } else {
+          var containerRect = container.getBoundingClientRect();
+          condition = rect.top <= containerRect.top + containerRect.height && rect.top + rect.height >= containerRect.top;
+        }
+
+        link.isLinkActive = condition;
+      });
+      var activeLinks = el.scrollspy.links.filter(function (link) {
+        return link.isLinkActive;
+      });
+
+      if (activeLinks.length > 0) {
+        var activeElement = activeLinks[0];
+        var activeLink = activeElement.scrollspyIndex;
+        el.scrollspy.setActive(activeLink);
+      } else el.scrollspy.setActive(-1);
+    };
+
+    el.scrollspy.clickHandler = function (e, link) {
+      var container = el.scrollspy.container;
+      window.clearTimeout(el.disableScrollTimeout);
+      el.disableScroll = true;
+      e.preventDefault();
+      var element = document.querySelector(link.hash);
+
+      if (!element) {
+        return;
+      }
+
+      var rect = element.getBoundingClientRect();
+
+      if (container === window) {
+        window.scrollTo({
+          top: window.scrollY + rect.y - el.scrollspy.offset,
+          behavior: "smooth"
+        });
+      } else {
+        var containerRect = container.getBoundingClientRect();
+        container.style.scrollBehavior = "smooth";
+        container.scrollTop = container.scrollTop + rect.y - containerRect.y - el.scrollspy.offset;
+      }
+
+      el.scrollspy.setActive(link.scrollspyIndex);
+      setParentsActive(el.scrollspy.links[link.scrollspyIndex], el);
+      el.disableScrollTimeout = setTimeout(function () {
+        el.disableScroll = false;
+      }, 800);
+    };
+
+    el.scrollspy.findHrefs(el);
+    el.scrollspy.links.forEach(function (link, i) {
+      link.scrollspyIndex = i;
+      link.addEventListener("click", function (e) {
+        return el.scrollspy.clickHandler(e, link);
+      });
+    });
+    el.scrollspy.spy();
+    el.scrollspy.container.addEventListener("scroll", el.scrollspy.spy);
+    window.addEventListener("resize", el.scrollspy.spy);
+  },
+  updated: function updated(el, binding) {
+    if (binding.modifiers.async && !binding.value.loading && binding.oldValue.loading) {
+      setTimeout(function () {
+        el.scrollspy.links = [];
+        el.scrollspy.findHrefs(el);
+        el.scrollspy.links.forEach(function (link, i) {
+          link.scrollspyIndex = i;
+          link.addEventListener("click", function (e) {
+            return el.scrollspy.clickHandler(e, link);
+          });
+        });
+        el.scrollspy.spy();
+      }, 0);
+    }
+  },
+  unmounted: function unmounted(el) {
+    window.removeEventListener("scroll", el.scrollspy.spy);
+    window.removeEventListener("resize", el.scrollspy.spy);
+  }
+};
+
+var mdbScrollspy_setNestedActive = function setNestedActive(links, index, container) {
+  var allLinks = links[index];
+
+  if (!allLinks) {
+    return;
+  }
+
+  var allNestedLinks = _toConsumableArray(allLinks.parentNode.querySelectorAll("a"));
+
+  allNestedLinks.shift();
+  allNestedLinks.forEach(function (link) {
+    var element = document.querySelector(link.hash);
+
+    if (!element) {
+      return;
+    }
+
+    var rect = element.getBoundingClientRect();
+    var condition;
+
+    if (container === window) {
+      condition = window.innerHeight > rect.top && rect.top + rect.height >= 0;
+    } else {
+      var containerRect = container.getBoundingClientRect();
+      condition = rect.top < containerRect.top && rect.top + rect.height > containerRect.top;
+    }
+
+    link.isActive = condition;
+  });
+  var activeLinks = allNestedLinks.filter(function (link) {
+    return link.isLinkActive;
+  });
+
+  if (activeLinks.length > 0) {
+    activeLinks[0].classList.add("active");
+  }
+};
+
+var setParentsActive = function setParentsActive(link, el) {
+  var parent = link.parentNode;
+
+  if (!parent) {
+    return;
+  }
+
+  while (parent !== el) {
+    if (parent.classList.contains("nav-item")) {
+      parent.querySelector("a").classList.add("active");
+    }
+
+    parent = parent.parentNode;
+  }
+};
+
+var getScrollPostion = function getScrollPostion(container) {
+  return container === window ? container.scrollY : container.scrollTop;
+};
+
+/* harmony default export */ var free_mdbScrollspy = (mdbScrollspy);
 // CONCATENATED MODULE: ./src/index.free.js
 /* ------------- Components ------------- */
 
@@ -11191,10 +12778,71 @@ MDBRadiovue_type_script_lang_js.render = MDBRadiovue_type_template_id_7f3b899f_r
 
 
 
+/* ------------- Directives ------------- */
+
+
+
 
 // CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/entry-lib-no-default.js
 
 
+
+
+/***/ }),
+
+/***/ "fb6a":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var $ = __webpack_require__("23e7");
+var isObject = __webpack_require__("861d");
+var isArray = __webpack_require__("e8b5");
+var toAbsoluteIndex = __webpack_require__("23cb");
+var toLength = __webpack_require__("50c4");
+var toIndexedObject = __webpack_require__("fc6a");
+var createProperty = __webpack_require__("8418");
+var wellKnownSymbol = __webpack_require__("b622");
+var arrayMethodHasSpeciesSupport = __webpack_require__("1dde");
+var arrayMethodUsesToLength = __webpack_require__("ae40");
+
+var HAS_SPECIES_SUPPORT = arrayMethodHasSpeciesSupport('slice');
+var USES_TO_LENGTH = arrayMethodUsesToLength('slice', { ACCESSORS: true, 0: 0, 1: 2 });
+
+var SPECIES = wellKnownSymbol('species');
+var nativeSlice = [].slice;
+var max = Math.max;
+
+// `Array.prototype.slice` method
+// https://tc39.github.io/ecma262/#sec-array.prototype.slice
+// fallback for not array-like ES3 strings and DOM objects
+$({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT || !USES_TO_LENGTH }, {
+  slice: function slice(start, end) {
+    var O = toIndexedObject(this);
+    var length = toLength(O.length);
+    var k = toAbsoluteIndex(start, length);
+    var fin = toAbsoluteIndex(end === undefined ? length : end, length);
+    // inline `ArraySpeciesCreate` for usage native `Array#slice` where it's possible
+    var Constructor, result, n;
+    if (isArray(O)) {
+      Constructor = O.constructor;
+      // cross-realm fallback
+      if (typeof Constructor == 'function' && (Constructor === Array || isArray(Constructor.prototype))) {
+        Constructor = undefined;
+      } else if (isObject(Constructor)) {
+        Constructor = Constructor[SPECIES];
+        if (Constructor === null) Constructor = undefined;
+      }
+      if (Constructor === Array || Constructor === undefined) {
+        return nativeSlice.call(O, k, fin);
+      }
+    }
+    result = new (Constructor === undefined ? Array : Constructor)(max(fin - k, 0));
+    for (n = 0; k < fin; k++, n++) if (k in O) createProperty(result, n, O[k]);
+    result.length = n;
+    return result;
+  }
+});
 
 
 /***/ }),

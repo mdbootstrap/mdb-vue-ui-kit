@@ -3,7 +3,7 @@
     :is="tag"
     ref="triggerEl"
     style="display: inline-block"
-    v-click-outside="handleClickOutside"
+    v-mdb-click-outside="handleClickOutside"
     :tabindex="dismissible ? 0 : null"
   >
     <slot name="reference" />
@@ -37,7 +37,7 @@ import {
   watchEffect
 } from "vue";
 import MDBPopper from "../../utils/MDBPopper.js";
-import mdbClickOutside from "@/directives/clickOutside.js";
+import mdbClickOutside from "@/directives/free/mdbClickOutside.js";
 import { on, off } from "../../utils/MDBEventHandlers";
 
 export default {
@@ -88,7 +88,7 @@ export default {
     }
   },
   directives: {
-    "click-outside": mdbClickOutside
+    mdbClickOutside
   },
   setup(props, { attrs, emit }) {
     const {

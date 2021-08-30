@@ -8,7 +8,7 @@
     aria-haspopup="true"
     v-bind="attrs"
     @click="toggle"
-    v-click-outside="handleClickOutside"
+    v-mdb-click-outside="handleClickOutside"
     data-trigger
   >
     <slot v-if="!split"></slot>
@@ -19,7 +19,7 @@
 <script>
 import { computed, inject, ref, watchEffect } from "vue";
 import MDBBtn from "./MDBBtn.vue";
-import mdbClickOutside from "@/directives/clickOutside.js";
+import mdbClickOutside from "@/directives/free/mdbClickOutside.js";
 
 export default {
   name: "MDBDropdownToggle",
@@ -44,7 +44,7 @@ export default {
     }
   },
   directives: {
-    "click-outside": mdbClickOutside
+    mdbClickOutside
   },
   setup(props, { attrs }) {
     const className = computed(() => {
