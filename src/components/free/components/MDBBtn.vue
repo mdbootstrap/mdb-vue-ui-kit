@@ -35,6 +35,10 @@ export default {
     tag: {
       type: String,
       default: "button"
+    },
+    block: {
+      type: Boolean,
+      default: false
     }
   },
   inheritAttrs: false,
@@ -50,6 +54,7 @@ export default {
         props.outline && `btn-outline-${props.outline}`,
         props.rounded && "btn-rounded",
         props.floating && "btn-floating",
+        props.block && "btn-block",
         toggle.value && "active"
       ];
     });

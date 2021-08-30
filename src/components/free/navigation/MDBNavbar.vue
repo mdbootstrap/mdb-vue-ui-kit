@@ -1,5 +1,11 @@
 <template>
-  <component :class="navClass" :is="props.tag" role="navigation" v-bind="attrs">
+  <component
+    :class="navClass"
+    :is="props.tag"
+    role="navigation"
+    v-bind="attrs"
+    ref="navbar"
+  >
     <div v-if="props.container" :class="containerClass">
       <slot></slot>
     </div>
@@ -8,7 +14,7 @@
 </template>
 
 <script>
-import { computed, provide, ref, onMounted } from "vue";
+import { computed, ref, provide, onMounted } from "vue";
 
 export default {
   name: "MDBNavbar",
@@ -62,7 +68,7 @@ export default {
       type: String
     }
   },
-  setup(props, { attrs, slots }) {
+  setup(props, { attrs }) {
     const navClass = computed(() => {
       return [
         "navbar",
@@ -85,7 +91,7 @@ export default {
           : props.position === "sticky"
           ? "sticky-top"
           : "",
-        props.scrolling && "scrolling-navbar",
+        props.scrolling && scrollingClass.value,
         props.double && "double-nav",
         props.center && "justify-content-center"
       ];
@@ -103,34 +109,42 @@ export default {
       ];
     });
 
-    const isCollapsed = ref(true);
-    provide("isCollapsed", isCollapsed);
-
-    const handleCollapse = () => {
-      isCollapsed.value = !isCollapsed.value;
-    };
-
-    const checkSlots = ref([]);
-    // check if Navbar has NavbarNav child element
-    const hasNav = checkSlots.value.filter(
-      slot => slot.type.name === "MDBNavbarNav"
-    );
-
-    provide("toggleCollapse", hasNav.length ? handleCollapse : false);
+    const scrollingClass = ref("navbar-scroll");
 
     const handleScroll = () => {
       if (window.pageYOffset > props.scrollingOffset) {
-        isCollapsed.value = true;
+        scrollingClass.value = "navbar-scroll navbar-scrolled";
       } else {
-        isCollapsed.value = false;
+        scrollingClass.value = "navbar-scroll";
+      }
+    };
+
+    const navbar = ref(null);
+    const navbarWrap = ref("nowrap");
+    provide("isWrap", navbarWrap);
+
+    const handleResize = () => {
+      if (!navbar.value) return;
+
+      const wrap = getComputedStyle(navbar.value).flexWrap;
+
+      if (wrap === "nowrap") {
+        navbarWrap.value = "nowrap";
+      } else if (wrap === "wrap") {
+        navbarWrap.value = "wrap";
       }
     };
 
     onMounted(() => {
-      // needed in case slots.default cant be reached on tests
-      if (slots.default) {
-        checkSlots.value = slots.default() || [];
+      if (
+        getComputedStyle(navbar.value) &&
+        getComputedStyle(navbar.value).flexWrap === "wrap"
+      ) {
+        navbarWrap.value = "wrap";
+      } else {
+        navbarWrap.value = "nowrap";
       }
+      window.addEventListener("resize", () => handleResize());
 
       if (props.scrolling) {
         window.addEventListener("scroll", handleScroll);
@@ -141,6 +155,7 @@ export default {
     });
 
     return {
+      navbar,
       navClass,
       containerClass,
       props,

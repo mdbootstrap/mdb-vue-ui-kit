@@ -21,11 +21,12 @@
 </template>
 
 <script>
-import { computed, inject, ref } from "vue";
+import { computed, ref } from "vue";
 import { MDBIcon } from "@/index.free.js";
 
 export default {
   name: "MDBNavbarToggler",
+  inheritAttrs: false,
   components: {
     MDBIcon
   },
@@ -54,7 +55,6 @@ export default {
       default: "fas"
     }
   },
-  emits: ["update:toggle"],
   setup(props, { attrs }) {
     const navTogglerClass = computed(() => {
       return ["navbar-toggler", props.togglerClass];
@@ -62,24 +62,8 @@ export default {
 
     const isExpanded = ref(false);
 
-    const toggleCollapse = inject("toggleCollapse", false);
-
     const handleClick = () => {
       isExpanded.value = !isExpanded.value;
-
-      if (toggleCollapse) {
-        toggleCollapse();
-      } else {
-        const collapsibleTarget = document.querySelector(`${props.target}`);
-
-        if (!collapsibleTarget) {
-          return;
-        }
-
-        collapsibleTarget.classList.contains("show")
-          ? collapsibleTarget.classList.remove("show")
-          : collapsibleTarget.classList.add("show");
-      }
     };
 
     return {

@@ -1,25 +1,17 @@
 <template>
-  <component
-    :is="props.tag"
-    v-if="!collapseId"
-    :class="className"
-    v-bind="attrs"
-    ><slot></slot
-  ></component>
-  <div v-if="collapseId" :class="collapseClass" :id="collapseId">
-    <component :is="props.tag" :class="className" v-bind="attrs">
-      <slot></slot>
-    </component>
-    <slot name="contentRight"></slot>
-  </div>
+  <component :is="props.tag" :class="className" v-bind="attrs">
+    <slot></slot>
+  </component>
 </template>
 
 <script>
-import { computed, inject, ref } from "vue";
+import { computed } from "vue";
+import MDBCollapse from "../components/MDBCollapse";
 
 export default {
   inheritAttrs: true,
   name: "MDBNavbarNav",
+  components: { MDBCollapse },
   props: {
     tag: {
       type: String,
@@ -41,18 +33,18 @@ export default {
       type: Boolean,
       default: false
     },
-    collapse: {
-      type: [Boolean, String],
-      default: false
-    },
     class: {
       type: String
+    },
+    nav: {
+      type: Boolean,
+      default: false
     }
   },
   setup(props, { attrs }) {
     const className = computed(() => {
       return [
-        "navbar-nav",
+        props.nav ? "nav" : "navbar-nav",
         props.right
           ? "ms-auto"
           : props.center
@@ -66,29 +58,13 @@ export default {
       ];
     });
 
-    const injectIsCollapsed = inject("isCollapsed", true);
-    const isCollapsed = ref(injectIsCollapsed);
-
-    const collapseClass = computed(() => {
-      return ["collapse", "navbar-collapse", isCollapsed.value ? "" : "show"];
-    });
-
-    const collapseId = computed(() => {
-      if (!props.collapse) {
-        return false;
-      }
-      return props.collapse !== true
-        ? props.collapse
-        : "navbarSupportedContent";
-    });
-
     return {
       props,
       className,
-      collapseId,
-      collapseClass,
       attrs
     };
   }
 };
 </script>
+
+<style lang="scss"></style>

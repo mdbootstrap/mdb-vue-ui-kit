@@ -1,0 +1,29 @@
+.navbar-expand {
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    $next: breakpoint-next($breakpoint, $grid-breakpoints);
+    $infix: breakpoint-infix($next, $grid-breakpoints);
+
+    // stylelint-disable-next-line scss/selector-no-union-class-name
+    &#{$infix} {
+      @include media-breakpoint-down($next) {
+        .navbar-collapse {
+          display: none !important; // stylelint-disable-line declaration-no-important
+        }
+
+        .navbar-collapse.show {
+          display: block !important; // stylelint-disable-line declaration-no-important
+        }
+      }
+    }
+    &#{$infix} {
+      @include media-breakpoint-up($next) {
+        .collapse.navbar-collapse {
+          &:not(.show) {
+            display: flex !important;
+            height: auto !important;
+          }
+        }
+      }
+    }
+  }
+}

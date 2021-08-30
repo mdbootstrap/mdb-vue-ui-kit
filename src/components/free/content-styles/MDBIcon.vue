@@ -19,8 +19,8 @@ export default {
   setup(props, { attrs }) {
     const className = computed(() => {
       return [
-        props.iconStyle,
-        props.flag ? `flag ${props.flag}` : `fa-${props.icon}`,
+        !props.flag && props.iconStyle,
+        props.flag ? `flag flag-${props.flag}` : `fa-${props.icon}`,
         props.size && `fa-${props.size}`
       ];
     });
