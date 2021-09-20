@@ -15,7 +15,6 @@
       :is="tag"
       :class="className"
       :id="uid"
-      v-bind="attrs"
       ref="collapse"
     >
       <slot></slot>
@@ -57,7 +56,7 @@ export default {
     },
   },
   emits: ["update:modelValue"],
-  setup(props, { attrs, emit }) {
+  setup(props, { emit }) {
     const collapse = ref(null);
 
     const className = computed(() => {
@@ -274,7 +273,6 @@ export default {
       beforeLeave,
       leave,
       afterLeave,
-      attrs,
       props,
     };
   },

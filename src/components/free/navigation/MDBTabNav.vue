@@ -34,7 +34,7 @@ export default {
     },
     tabsClasses: String,
   },
-  setup(props, { attrs }) {
+  setup(props) {
     const className = computed(() => {
       return [
         "nav",
@@ -57,7 +57,6 @@ export default {
       columnClassName,
       isVertical,
       props,
-      attrs,
     };
   },
 };

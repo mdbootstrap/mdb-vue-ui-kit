@@ -1,11 +1,11 @@
 <template>
   <keep-alive>
     <div v-if="isVertical" :class="columnClassName">
-      <component :is="tag" :class="className" v-bind="attrs">
+      <component :is="tag" :class="className" v-bind="$attrs">
         <slot />
       </component>
     </div>
-    <component v-else :is="tag" :class="className" v-bind="attrs">
+    <component v-else :is="tag" :class="className" v-bind="$attrs">
       <slot />
     </component>
   </keep-alive>
@@ -15,6 +15,7 @@
 import { computed, inject } from "vue";
 export default {
   name: "MDBTabContent",
+  inheritAttrs: false,
   props: {
     tag: {
       type: String,
@@ -26,7 +27,7 @@ export default {
     },
     contentClasses: String,
   },
-  setup(props, { attrs }) {
+  setup(props) {
     const className = computed(() => {
       return ["tab-content", props.contentClasses && props.contentClasses];
     });
@@ -42,7 +43,6 @@ export default {
       className,
       columnClassName,
       props,
-      attrs,
     };
   },
 };

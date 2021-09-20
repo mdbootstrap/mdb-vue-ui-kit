@@ -1,5 +1,5 @@
 <template>
-  <component :is="tag" :class="className" v-bind="attrs" :role="role">
+  <component :is="tag" :class="className" :role="role">
     <slot></slot>
   </component>
 </template>
@@ -21,7 +21,7 @@ export default {
       default: "div",
     },
   },
-  setup(props, { attrs }) {
+  setup(props) {
     const className = computed(() => {
       return [
         props.size && `btn-group-${props.size}`,
@@ -31,7 +31,6 @@ export default {
 
     return {
       className,
-      attrs,
       props,
     };
   },

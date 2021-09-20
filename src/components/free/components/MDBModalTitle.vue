@@ -1,5 +1,5 @@
 <template>
-  <component :is="tag" :class="className" v-bind="attrs">
+  <component :is="tag" :class="className">
     <slot></slot>
   </component>
 </template>
@@ -19,14 +19,13 @@ export default {
       default: false,
     },
   },
-  setup(props, { attrs }) {
+  setup(props) {
     const className = computed(() => {
       return ["modal-title", props.bold && "font-weight-bold"];
     });
 
     return {
       className,
-      attrs,
       props,
     };
   },

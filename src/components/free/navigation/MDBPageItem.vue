@@ -1,5 +1,5 @@
 <template>
-  <component :is="tag" :class="className" v-bind="attrs">
+  <component :is="tag" :class="className">
     <a
       class="page-link"
       :href="href"
@@ -45,7 +45,7 @@ export default {
       type: String,
     },
   },
-  setup(props, { attrs }) {
+  setup(props) {
     const className = computed(() => {
       return [
         "page-item",
@@ -67,7 +67,6 @@ export default {
       labelValue,
       disabledTabindex,
       props,
-      attrs,
     };
   },
 };

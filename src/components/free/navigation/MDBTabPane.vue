@@ -10,7 +10,6 @@
       v-show="isActive"
       :is="tag"
       :class="className"
-      v-bind="attrs"
       ref="item"
       role="tabpanel"
       :aria-labelledby="labelledby"
@@ -36,7 +35,7 @@ export default {
       required: true,
     },
   },
-  setup(props, { attrs }) {
+  setup(props) {
     const className = computed(() => {
       return ["tab-pane fade", isActive.value && "show active"];
     });
@@ -97,7 +96,6 @@ export default {
       afterLeave,
       className,
       props,
-      attrs,
     };
   },
 };

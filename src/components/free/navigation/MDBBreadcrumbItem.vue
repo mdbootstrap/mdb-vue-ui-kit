@@ -1,9 +1,5 @@
 <template>
-  <component
-    :is="tag"
-    :class="className"
-    :aria-current="currentName"
-    v-bind="attrs"
+  <component :is="tag" :class="className" :aria-current="currentName"
     ><slot></slot
   ></component>
 </template>
@@ -27,7 +23,7 @@ export default {
       default: "page",
     },
   },
-  setup(props, { attrs }) {
+  setup(props) {
     const className = computed(() => {
       return ["breadcrumb-item", props.active && "active"];
     });
@@ -40,7 +36,6 @@ export default {
       className,
       currentName,
       props,
-      attrs,
     };
   },
 };

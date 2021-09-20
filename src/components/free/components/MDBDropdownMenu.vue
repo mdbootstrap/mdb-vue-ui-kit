@@ -5,7 +5,7 @@
       :is="tag"
       :class="className"
       :style="staticStyle"
-      v-bind="attrs"
+      v-bind="$attrs"
       data-popper
       ref="root"
     >
@@ -19,7 +19,7 @@
         :is="tag"
         :class="className"
         :style="staticStyle"
-        v-bind="attrs"
+        v-bind="$attrs"
         :data-popper="externalTarget"
         ref="root"
       >
@@ -35,6 +35,7 @@ import { on, off } from "../../utils/MDBEventHandlers.js";
 
 export default {
   name: "MDBDropdownMenu",
+  inheritAttrs: false,
   props: {
     tag: {
       type: String,
@@ -61,7 +62,7 @@ export default {
       default: false,
     },
   },
-  setup(props, { attrs }) {
+  setup(props) {
     const className = computed(() => {
       return [
         "dropdown-menu",
@@ -239,7 +240,6 @@ export default {
       shouldTeleport,
       externalTarget,
       root,
-      attrs,
       props,
     };
   },

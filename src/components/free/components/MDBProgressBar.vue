@@ -11,7 +11,6 @@
         width: ((value - min) / (max - min)) * 100 + '%',
       },
     ]"
-    v-bind="attrs"
     ><slot></slot
   ></component>
 </template>
@@ -48,7 +47,7 @@ export default {
       default: 100,
     },
   },
-  setup(props, { attrs }) {
+  setup(props) {
     const className = computed(() => {
       return [
         "progress-bar",
@@ -61,7 +60,6 @@ export default {
     return {
       className,
       props,
-      attrs,
     };
   },
 };

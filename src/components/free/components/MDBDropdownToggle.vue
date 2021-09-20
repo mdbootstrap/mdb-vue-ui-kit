@@ -5,7 +5,6 @@
     :class="className"
     :aria-expanded="expanded"
     aria-haspopup="true"
-    v-bind="attrs"
     @click="toggle"
     v-mdb-click-outside="handleClickOutside"
     data-trigger
@@ -23,7 +22,6 @@ import mdbClickOutside from "@/directives/free/mdbClickOutside.js";
 export default {
   name: "MDBDropdownToggle",
   components: { MDBBtn },
-  inheritAttrs: false,
   emits: ["toggle-dropdown"],
   props: {
     ...MDBBtn.props,
@@ -40,7 +38,7 @@ export default {
   directives: {
     mdbClickOutside,
   },
-  setup(props, { attrs }) {
+  setup(props) {
     const className = computed(() => {
       return [
         btnClass.value,
@@ -85,7 +83,6 @@ export default {
       expanded,
       toggle,
       handleClickOutside,
-      attrs,
       props,
     };
   },

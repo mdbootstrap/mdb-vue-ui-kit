@@ -2,6 +2,7 @@
   <li @keyup.stop.enter="handleKeypress" :tabindex="divider ? null : 0">
     <component
       v-if="hasLinkOrTag"
+      v-bind="$attrs"
       :is="tagName"
       :to="to"
       :exact="to ? exact : null"
@@ -25,6 +26,7 @@ import { computed } from "vue";
 
 export default {
   name: "MDBDropdownItem",
+  inheritAttrs: false,
   props: {
     tag: {
       type: String,
@@ -68,7 +70,7 @@ export default {
       default: false,
     },
   },
-  setup(props, { attrs }) {
+  setup(props) {
     const className = computed(() => {
       return [
         dropdownClass.value,
@@ -120,7 +122,6 @@ export default {
       hasLinkOrTag,
       tagName,
       tab,
-      attrs,
       props,
     };
   },

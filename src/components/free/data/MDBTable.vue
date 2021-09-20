@@ -4,7 +4,7 @@
       :class="tableClasses"
       :style="tableStyle"
       :is="tag"
-      v-bind="attrs"
+      v-bind="$attrs"
     >
       <slot></slot>
     </component>
@@ -15,7 +15,7 @@
     :class="tableClasses"
     :style="tableStyle"
     :is="tag"
-    v-bind="attrs"
+    v-bind="$attrs"
   >
     <slot></slot>
   </component>
@@ -26,6 +26,7 @@ import { computed } from "vue";
 
 export default {
   name: "MDBTable",
+  inheritAttrs: false,
   props: {
     tag: {
       type: String,
@@ -77,7 +78,7 @@ export default {
       default: false,
     },
   },
-  setup(props, { attrs }) {
+  setup(props) {
     const wrapperClasses = computed(() => {
       if (!props.responsive) {
         return false;
@@ -123,7 +124,6 @@ export default {
       wrapperClasses,
       tableClasses,
       props,
-      attrs,
     };
   },
 };

@@ -8,7 +8,7 @@
       :value="inputValue"
       :min="minValue"
       :max="maxValue"
-      v-bind="attrs"
+      v-bind="$attrs"
       @input="handleInput"
       @mousedown="toggleThumb(true)"
       @touchstart="toggleThumb(true)"
@@ -31,6 +31,7 @@ import { getUID } from "@/components/utils/getUID";
 
 export default {
   name: "MDBRange",
+  inheritAttrs: false,
   props: {
     id: String,
     inputClass: String,
@@ -60,7 +61,7 @@ export default {
     wrapperClass: String,
   },
   emits: ["update:modelValue"],
-  setup(props, { attrs, emit }) {
+  setup(props, { emit }) {
     const inputValue = ref(props.modelValue);
     const minValue = ref(props.min);
     const maxValue = ref(props.max);
@@ -123,7 +124,6 @@ export default {
       labelClassName,
       thumbClassName,
       thumbLeftPosition,
-      attrs,
       props,
       handleInput,
       toggleThumb,

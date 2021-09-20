@@ -1,5 +1,5 @@
 <template>
-  <component :is="tag" :class="className" v-bind="attrs">
+  <component :is="tag" :class="className">
     <a
       v-if="prev"
       class="page-link"
@@ -56,7 +56,7 @@ export default {
       default: false,
     },
   },
-  setup(props, { attrs }) {
+  setup(props) {
     const className = computed(() => {
       return ["page-item", props.disabled && "disabled"];
     });
@@ -79,7 +79,6 @@ export default {
       nextValue,
       disabledTabindex,
       props,
-      attrs,
     };
   },
 };

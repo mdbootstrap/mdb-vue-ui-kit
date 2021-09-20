@@ -1,5 +1,5 @@
 <template>
-  <component :is="tag" :class="className" v-bind="context.attrs">
+  <component :is="tag" :class="className">
     <slot></slot>
     <MDBBtnClose v-if="close" :white="closeWhite" @click.prevent="closeModal" />
   </component>
@@ -29,7 +29,7 @@ export default {
     },
     color: String,
   },
-  setup(props, context) {
+  setup(props) {
     const closeModal = inject("closeModal", false);
 
     const className = computed(() => {
@@ -39,7 +39,6 @@ export default {
     return {
       className,
       closeModal,
-      context,
       props,
     };
   },

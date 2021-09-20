@@ -2,9 +2,9 @@
   <input
     v-if="!wrap"
     :class="inputClassName"
-    v-bind="attrs"
     :id="uid"
     :value="inputValue"
+    v-bind="$attrs"
     @input="handleInput"
     ref="inputRef"
     v-mdb-click-outside="clickOutside"
@@ -45,7 +45,7 @@
     <slot name="prepend" />
     <input
       :class="inputClassName"
-      v-bind="attrs"
+      v-bind="$attrs"
       :id="uid"
       :value="inputValue"
       @input="handleInput"
@@ -92,6 +92,7 @@ import mdbClickOutside from "@/directives/free/mdbClickOutside.js";
 
 export default {
   name: "MDBInput",
+  inheritAttrs: false,
   props: {
     id: String,
     label: String,
@@ -282,7 +283,6 @@ export default {
       notchLeadingWidth,
       notchMiddleWidth,
       clickOutside,
-      attrs,
       props,
     };
   },

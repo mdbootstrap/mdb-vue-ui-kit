@@ -2,7 +2,7 @@
   <textarea
     v-if="!wrap"
     :class="textareaClassName"
-    v-bind="attrs"
+    v-bind="$attrs"
     :id="uid"
     :value="textareaValue"
     @input="handleInput"
@@ -28,7 +28,7 @@
     <slot name="prepend" />
     <textarea
       :class="textareaClassName"
-      v-bind="attrs"
+      v-bind="$attrs"
       :id="uid"
       :value="textareaValue"
       @input="handleInput"
@@ -73,6 +73,7 @@ import { getUID } from "../../utils/getUID";
 
 export default {
   name: "MDBTextarea",
+  inheritAttrs: false,
   props: {
     id: String,
     rows: {
@@ -244,7 +245,6 @@ export default {
       customInvalidFeedback,
       notchLeadingWidth,
       notchMiddleWidth,
-      attrs,
       props,
     };
   },

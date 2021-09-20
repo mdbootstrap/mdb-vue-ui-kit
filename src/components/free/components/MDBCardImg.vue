@@ -1,11 +1,5 @@
 <template>
-  <component
-    :is="tag"
-    :src="src"
-    :alt="alt"
-    :class="className"
-    v-bind="attrs"
-  ></component>
+  <component :is="tag" :src="src" :alt="alt" :class="className"></component>
   <div class="card-img-overlay" v-if="overlay">
     <slot></slot>
   </div>
@@ -43,7 +37,7 @@ export default {
       default: false,
     },
   },
-  setup(props, { attrs }) {
+  setup(props) {
     const className = computed(() => {
       return [
         props.top && `card-img-top`,
@@ -61,7 +55,6 @@ export default {
     return {
       className,
       props,
-      attrs,
     };
   },
 };

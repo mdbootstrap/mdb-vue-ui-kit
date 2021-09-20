@@ -1,0 +1,3982 @@
+{
+  "framework": "vue",
+  "name": "mdb-vue-ui-kit",
+  "version": "1.3.0",
+  "contributions": {
+    "html": {
+      "description-markup": "markdown",
+      "types-syntax": "typescript",
+      "tags": [
+        {
+          "name": "MDBAccordion",
+          "description": "",
+          "attributes": [
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"div\""
+            },
+            {
+              "name": "modelValue",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "stayOpen",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "flush",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "classes",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            }
+          ],
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/components/MDBAccordion.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBAccordionItem",
+          "description": "",
+          "attributes": [
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"div\""
+            },
+            {
+              "name": "collapseId",
+              "required": true,
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "headerTitle",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "headerClasses",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "bodyClasses",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "itemClasses",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            }
+          ],
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/components/MDBAccordionItem.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBBadge",
+          "description": "",
+          "attributes": [
+            {
+              "name": "color",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "pill",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "dot",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "notification",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"span\""
+            }
+          ],
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/components/MDBBadge.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBBreadcrumb",
+          "description": "",
+          "attributes": [
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"ol\""
+            }
+          ],
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/navigation/MDBBreadcrumb.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBBreadcrumbItem",
+          "description": "",
+          "attributes": [
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"li\""
+            },
+            {
+              "name": "active",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "current",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"page\""
+            }
+          ],
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/navigation/MDBBreadcrumbItem.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBBtn",
+          "description": "",
+          "attributes": [
+            {
+              "name": "color",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "size",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "outline",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "rounded",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "floating",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "toggler",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "toggle",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "role",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"button\""
+            },
+            {
+              "name": "type",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"button\""
+            },
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"button\""
+            },
+            {
+              "name": "block",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "ripple",
+              "value": {
+                "kind": "expression",
+                "type": "object|boolean"
+              },
+              "default": "(props) =>\n  props.outline || props.color === \"light\" || props.color === \"link\"\n    ? { color: \"dark\" }\n    : true"
+            },
+            {
+              "name": "picker",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "update:toggle"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/components/MDBBtn.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBBtnClose",
+          "description": "",
+          "attributes": [
+            {
+              "name": "white",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/components/MDBBtnClose.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBBtnGroup",
+          "description": "",
+          "attributes": [
+            {
+              "name": "size",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "vertical",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "role",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"group\""
+            },
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"div\""
+            }
+          ],
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/components/MDBBtnGroup.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBCard",
+          "description": "",
+          "attributes": [
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"div\""
+            },
+            {
+              "name": "border",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "bg",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "text",
+              "value": {
+                "kind": "expression",
+                "type": "string|array"
+              }
+            },
+            {
+              "name": "shadow",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            }
+          ],
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/components/MDBCard.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBCardBody",
+          "description": "",
+          "attributes": [
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"div\""
+            },
+            {
+              "name": "text",
+              "value": {
+                "kind": "expression",
+                "type": "string|array"
+              }
+            }
+          ],
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/components/MDBCardBody.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBCardFooter",
+          "description": "",
+          "attributes": [
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"div\""
+            },
+            {
+              "name": "bg",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "border",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            }
+          ],
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/components/MDBCardFooter.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBCardGroup",
+          "description": "",
+          "attributes": [
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"div\""
+            }
+          ],
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/components/MDBCardGroup.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBCardHeader",
+          "description": "",
+          "attributes": [
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"div\""
+            },
+            {
+              "name": "bg",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "border",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            }
+          ],
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/components/MDBCardHeader.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBCardImg",
+          "description": "",
+          "attributes": [
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"img\""
+            },
+            {
+              "name": "src",
+              "required": true,
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "alt",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "top",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "bottom",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "fluid",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "overlay",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/components/MDBCardImg.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBCardLink",
+          "description": "",
+          "attributes": [
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"a\""
+            }
+          ],
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/components/MDBCardLink.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBCardText",
+          "description": "",
+          "attributes": [
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"p\""
+            }
+          ],
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/components/MDBCardText.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBCardTitle",
+          "description": "",
+          "attributes": [
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"h5\""
+            },
+            {
+              "name": "subtitle",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/components/MDBCardTitle.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBCarousel",
+          "description": "",
+          "attributes": [
+            {
+              "name": "captionsClass",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"carousel-caption d-none d-md-block\""
+            },
+            {
+              "name": "controls",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "name": "dark",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "fade",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "indicators",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "name": "interval",
+              "value": {
+                "kind": "expression",
+                "type": "number|boolean"
+              },
+              "default": "5000"
+            },
+            {
+              "name": "items",
+              "value": {
+                "kind": "expression",
+                "type": "array"
+              }
+            },
+            {
+              "name": "itemsClass",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"d-block w-100\""
+            },
+            {
+              "name": "keyboard",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "name": "modelValue",
+              "value": {
+                "kind": "expression",
+                "type": "number"
+              },
+              "default": "0"
+            },
+            {
+              "name": "pause",
+              "value": {
+                "kind": "expression",
+                "type": "string|boolean"
+              },
+              "default": "\"hover\""
+            },
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"div\""
+            },
+            {
+              "name": "touch",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "true"
+            }
+          ],
+          "events": [
+            {
+              "name": "update:modelValue"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/components/MDBCarousel.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBCheckbox",
+          "description": "",
+          "attributes": [
+            {
+              "name": "id",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "label",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "modelValue",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "inline",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "wrapperClass",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "labelClass",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "inputClass",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "btnCheck",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "required",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "validateOnChange",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "isValidated",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "isValid",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "validFeedback",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "invalidFeedback",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "tooltipFeedback",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "wrap",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "name": "formCheck",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"div\""
+            }
+          ],
+          "events": [
+            {
+              "name": "update:modelValue"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/forms/MDBCheckbox.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBCol",
+          "description": "",
+          "attributes": [
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"div\""
+            },
+            {
+              "name": "col",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "sm",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "md",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "lg",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "xl",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "offset",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "offsetSm",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "offsetMd",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "offsetLg",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "offsetXl",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "auto",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/layout/MDBCol.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBCollapse",
+          "description": "",
+          "attributes": [
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"div\""
+            },
+            {
+              "name": "modelValue",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "id",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "collapseClass",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "duration",
+              "value": {
+                "kind": "expression",
+                "type": "number"
+              },
+              "default": "300"
+            },
+            {
+              "name": "sidenav",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            }
+          ],
+          "events": [
+            {
+              "name": "update:modelValue"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/components/MDBCollapse.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBContainer",
+          "description": "",
+          "attributes": [
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"div\""
+            },
+            {
+              "name": "sm",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "md",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "lg",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "xl",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "xxl",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "fluid",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/layout/MDBContainer.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBDropdown",
+          "description": "",
+          "attributes": [
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"div\""
+            },
+            {
+              "name": "btnGroup",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "dropup",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "dropend",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "dropstart",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "align",
+              "value": {
+                "kind": "expression",
+                "type": "string|array"
+              },
+              "default": "\"start\""
+            },
+            {
+              "name": "updatePosition",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "name": "offset",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "target",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "modelValue",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "update:modelValue"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/components/MDBDropdown.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBDropdownItem",
+          "description": "",
+          "attributes": [
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"a\""
+            },
+            {
+              "name": "to",
+              "value": {
+                "kind": "expression",
+                "type": "string|object"
+              }
+            },
+            {
+              "name": "href",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "disabled",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "active",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "exact",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "newTab",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "submenu",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "submenuIcon",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "divider",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "text",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "header",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/components/MDBDropdownItem.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBDropdownMenu",
+          "description": "",
+          "attributes": [
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"ul\""
+            },
+            {
+              "name": "fadeIn",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"fade-in\""
+            },
+            {
+              "name": "fadeOut",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"fade-out\""
+            },
+            {
+              "name": "animation",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "name": "dark",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "static",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/components/MDBDropdownMenu.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBDropdownToggle",
+          "description": "",
+          "attributes": [
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"button\""
+            },
+            {
+              "name": "href",
+              "value": {
+                "kind": "expression",
+                "type": "string|null"
+              }
+            },
+            {
+              "name": "split",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            }
+          ],
+          "events": [
+            {
+              "name": "toggle-dropdown"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/components/MDBDropdownToggle.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBFile",
+          "description": "",
+          "attributes": [
+            {
+              "name": "id",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "inputClass",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "invalidFeedback",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "isInvalid",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "isValid",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "isValidated",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "label",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "labelClass",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "modelValue",
+              "value": {
+                "kind": "expression",
+                "type": "FileList|array"
+              },
+              "default": "() => []"
+            },
+            {
+              "name": "size",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "tooltipFeedback",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "validFeedback",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "validateOnChange",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "update:modelValue"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/forms/MDBFile.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBFooter",
+          "description": "",
+          "attributes": [
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"footer\""
+            },
+            {
+              "name": "bg",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"light\""
+            },
+            {
+              "name": "text",
+              "value": {
+                "kind": "expression",
+                "type": "string|array"
+              }
+            }
+          ],
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/navigation/MDBFooter.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBIcon",
+          "description": "",
+          "attributes": [
+            {
+              "name": "iconStyle",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"fas\""
+            },
+            {
+              "name": "icon",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "flag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "size",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            }
+          ],
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/content-styles/MDBIcon.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBInput",
+          "description": "",
+          "attributes": [
+            {
+              "name": "id",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "label",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "labelClass",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "modelValue",
+              "value": {
+                "kind": "expression",
+                "type": "string|number|date"
+              }
+            },
+            {
+              "name": "size",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "formOutline",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "name": "wrapperClass",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "inputGroup",
+              "value": {
+                "kind": "expression",
+                "type": "boolean|string"
+              },
+              "default": "false"
+            },
+            {
+              "name": "wrap",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "name": "formText",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "white",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "validationEvent",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "isValidated",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "isValid",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "validFeedback",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "invalidFeedback",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "tooltipFeedback",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"div\""
+            }
+          ],
+          "events": [
+            {
+              "name": "update:modelValue"
+            },
+            {
+              "name": "click-outside"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default"
+            },
+            {
+              "name": "prepend"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/forms/MDBInput.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBListGroup",
+          "description": "",
+          "attributes": [
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"ul\""
+            },
+            {
+              "name": "horizontal",
+              "value": {
+                "kind": "expression",
+                "type": "boolean|string"
+              },
+              "default": "false"
+            },
+            {
+              "name": "flush",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/components/MDBListGroup.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBListGroupItem",
+          "description": "",
+          "attributes": [
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"li\""
+            },
+            {
+              "name": "active",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "disabled",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "action",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "color",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            }
+          ],
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/components/MDBListGroupItem.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBModal",
+          "description": "",
+          "attributes": [
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"div\""
+            },
+            {
+              "name": "modelValue",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "size",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "removeBackdrop",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "staticBackdrop",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "centered",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "bgSrc",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"\""
+            },
+            {
+              "name": "scrollable",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "duration",
+              "value": {
+                "kind": "expression",
+                "type": "number"
+              },
+              "default": "400"
+            },
+            {
+              "name": "labelledby",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "fullscreen",
+              "value": {
+                "kind": "expression",
+                "type": "boolean|string"
+              },
+              "default": "false"
+            },
+            {
+              "name": "animation",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "name": "dialogClasses",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "transform",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "show"
+            },
+            {
+              "name": "shown"
+            },
+            {
+              "name": "hide"
+            },
+            {
+              "name": "hidden"
+            },
+            {
+              "name": "update:modelValue"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/components/MDBModal.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBModalBody",
+          "description": "",
+          "attributes": [
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"div\""
+            }
+          ],
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/components/MDBModalBody.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBModalFooter",
+          "description": "",
+          "attributes": [
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"div\""
+            }
+          ],
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/components/MDBModalFooter.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBModalHeader",
+          "description": "",
+          "attributes": [
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"div\""
+            },
+            {
+              "name": "close",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "name": "closeWhite",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "color",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            }
+          ],
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/components/MDBModalHeader.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBModalTitle",
+          "description": "",
+          "attributes": [
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"h5\""
+            },
+            {
+              "name": "bold",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/components/MDBModalTitle.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBNavbar",
+          "description": "",
+          "attributes": [
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"nav\""
+            },
+            {
+              "name": "bg",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "dark",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "light",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "double",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "expand",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "position",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "transparent",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "scrolling",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "scrollingOffset",
+              "value": {
+                "kind": "expression",
+                "type": "number"
+              },
+              "default": "100"
+            },
+            {
+              "name": "center",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "container",
+              "value": {
+                "kind": "expression",
+                "type": "boolean|string"
+              },
+              "default": "false"
+            },
+            {
+              "name": "classContainer",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "classNavbar",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            }
+          ],
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/navigation/MDBNavbar.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBNavbarBrand",
+          "description": "",
+          "attributes": [
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"div\""
+            }
+          ],
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/navigation/MDBNavbarBrand.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBNavbarItem",
+          "description": "",
+          "attributes": [
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"li\""
+            },
+            {
+              "name": "active",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "disabled",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "exact",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "newTab",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "to",
+              "value": {
+                "kind": "expression",
+                "type": "object|string"
+              }
+            },
+            {
+              "name": "href",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "linkClass",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            }
+          ],
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/navigation/MDBNavbarItem.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBNavbarNav",
+          "description": "",
+          "attributes": [
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"ul\""
+            },
+            {
+              "name": "right",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "center",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "vertical",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "justifyAround",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "class",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "nav",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/navigation/MDBNavbarNav.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBNavbarToggler",
+          "description": "",
+          "attributes": [
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"button\""
+            },
+            {
+              "name": "target",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"#navbarSupportedContent\""
+            },
+            {
+              "name": "togglerClass",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "togglerIcon",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"bars\""
+            },
+            {
+              "name": "togglerSize",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"1x\""
+            },
+            {
+              "name": "iconStyle",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"fas\""
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/navigation/MDBNavbarToggler.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBPageItem",
+          "description": "",
+          "attributes": [
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"li\""
+            },
+            {
+              "name": "active",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "disabled",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "href",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "icon",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "label",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            }
+          ],
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/navigation/MDBPageItem.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBPageNav",
+          "description": "",
+          "attributes": [
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"li\""
+            },
+            {
+              "name": "disabled",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "href",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"#\""
+            },
+            {
+              "name": "prev",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "next",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "icon",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/navigation/MDBPageNav.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBPagination",
+          "description": "",
+          "attributes": [
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"ul\""
+            },
+            {
+              "name": "circle",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "lg",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "sm",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/navigation/MDBPagination.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBPopover",
+          "description": "",
+          "attributes": [
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"span\""
+            },
+            {
+              "name": "modelValue",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "reference",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "popover",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "options",
+              "value": {
+                "kind": "expression",
+                "type": "object"
+              },
+              "default": "{}"
+            },
+            {
+              "name": "offset",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"0, 5\""
+            },
+            {
+              "name": "direction",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"bottom\""
+            },
+            {
+              "name": "maxWidth",
+              "value": {
+                "kind": "expression",
+                "type": "number"
+              },
+              "default": "276"
+            },
+            {
+              "name": "arrow",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "dismissible",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "hover",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "updatePosition",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "true"
+            }
+          ],
+          "slots": [
+            {
+              "name": "reference"
+            },
+            {
+              "name": "header"
+            },
+            {
+              "name": "body"
+            },
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/components/MDBPopover.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBProgress",
+          "description": "",
+          "attributes": [
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"div\""
+            },
+            {
+              "name": "height",
+              "value": {
+                "kind": "expression",
+                "type": "number"
+              }
+            }
+          ],
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/components/MDBProgress.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBProgressBar",
+          "description": "",
+          "attributes": [
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"div\""
+            },
+            {
+              "name": "bg",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "striped",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "animated",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "value",
+              "value": {
+                "kind": "expression",
+                "type": "number"
+              },
+              "default": "0"
+            },
+            {
+              "name": "min",
+              "value": {
+                "kind": "expression",
+                "type": "number"
+              },
+              "default": "0"
+            },
+            {
+              "name": "max",
+              "value": {
+                "kind": "expression",
+                "type": "number"
+              },
+              "default": "100"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/components/MDBProgressBar.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBRadio",
+          "description": "",
+          "attributes": [
+            {
+              "name": "id",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "label",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "inline",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "modelValue",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "wrapperClass",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "labelClass",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "btnCheck",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "required",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "validateOnChange",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "isValidated",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "isValid",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "validFeedback",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "invalidFeedback",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "tooltipFeedback",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "wrap",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "name": "formCheck",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"div\""
+            }
+          ],
+          "events": [
+            {
+              "name": "update:modelValue"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/forms/MDBRadio.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBRange",
+          "description": "",
+          "attributes": [
+            {
+              "name": "id",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "inputClass",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "label",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "labelClass",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "max",
+              "value": {
+                "kind": "expression",
+                "type": "number"
+              },
+              "default": "100"
+            },
+            {
+              "name": "min",
+              "value": {
+                "kind": "expression",
+                "type": "number"
+              },
+              "default": "0"
+            },
+            {
+              "name": "modelValue",
+              "value": {
+                "kind": "expression",
+                "type": "number"
+              },
+              "default": "50"
+            },
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"div\""
+            },
+            {
+              "name": "thumb",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "name": "thumbClass",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "wrapperClass",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "update:modelValue"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/forms/MDBRange.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBRow",
+          "description": "",
+          "attributes": [
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"div\""
+            },
+            {
+              "name": "start",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "end",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "center",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "between",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "around",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "cols",
+              "value": {
+                "kind": "expression",
+                "type": "string|array"
+              }
+            }
+          ],
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/layout/MDBRow.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBSpinner",
+          "description": "",
+          "attributes": [
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"div\""
+            },
+            {
+              "name": "grow",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "color",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "size",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            }
+          ],
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/components/MDBSpinner.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBSwitch",
+          "description": "",
+          "attributes": [
+            {
+              "name": "id",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "inputClass",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "label",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "labelClass",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "modelValue",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"div\""
+            },
+            {
+              "name": "wrapperClass",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "update:modelValue"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/forms/MDBSwitch.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBTabContent",
+          "description": "",
+          "attributes": [
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"div\""
+            },
+            {
+              "name": "col",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"9\""
+            },
+            {
+              "name": "contentClasses",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            }
+          ],
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/navigation/MDBTabContent.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBTabItem",
+          "description": "",
+          "attributes": [
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"a\""
+            },
+            {
+              "name": "tabId",
+              "required": true,
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "href",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            }
+          ],
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/navigation/MDBTabItem.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBTabNav",
+          "description": "",
+          "attributes": [
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"ul\""
+            },
+            {
+              "name": "pills",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "justify",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "fill",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "col",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"3\""
+            },
+            {
+              "name": "tabsClasses",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            }
+          ],
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/navigation/MDBTabNav.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBTabPane",
+          "description": "",
+          "attributes": [
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"div\""
+            },
+            {
+              "name": "tabId",
+              "required": true,
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            }
+          ],
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/navigation/MDBTabPane.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBTable",
+          "description": "",
+          "attributes": [
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"table\""
+            },
+            {
+              "name": "variant",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "dark",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "light",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "border",
+              "value": {
+                "kind": "expression",
+                "type": "boolean|string"
+              },
+              "default": "false"
+            },
+            {
+              "name": "borderless",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "striped",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "hover",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "responsive",
+              "value": {
+                "kind": "expression",
+                "type": "boolean|string"
+              },
+              "default": "false"
+            },
+            {
+              "name": "align",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "sm",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "tableStyle",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "captionTop",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/data/MDBTable.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBTabs",
+          "description": "",
+          "attributes": [
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"div\""
+            },
+            {
+              "name": "modelValue",
+              "required": true,
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "vertical",
+              "value": {
+                "kind": "expression",
+                "type": "boolean|string"
+              },
+              "default": "false"
+            }
+          ],
+          "events": [
+            {
+              "name": "update:modelValue"
+            },
+            {
+              "name": "hide"
+            },
+            {
+              "name": "hidden"
+            },
+            {
+              "name": "show"
+            },
+            {
+              "name": "shown"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/navigation/MDBTabs.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBTextarea",
+          "description": "",
+          "attributes": [
+            {
+              "name": "id",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "rows",
+              "value": {
+                "kind": "expression",
+                "type": "string|number"
+              },
+              "default": "4"
+            },
+            {
+              "name": "label",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "modelValue",
+              "value": {
+                "kind": "expression",
+                "type": "string|number"
+              }
+            },
+            {
+              "name": "size",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "formOutline",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "name": "wrapperClass",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "inputGroup",
+              "value": {
+                "kind": "expression",
+                "type": "boolean|string"
+              },
+              "default": "false"
+            },
+            {
+              "name": "wrap",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "name": "formText",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "white",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "validationEvent",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "isValidated",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "isValid",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "validFeedback",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "invalidFeedback",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "tooltipFeedback",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"div\""
+            }
+          ],
+          "events": [
+            {
+              "name": "update:modelValue"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default"
+            },
+            {
+              "name": "prepend"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/forms/MDBTextarea.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "MDBTooltip",
+          "description": "",
+          "attributes": [
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"span\""
+            },
+            {
+              "name": "modelValue",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "reference",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "popover",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "options",
+              "value": {
+                "kind": "expression",
+                "type": "object"
+              },
+              "default": "{}"
+            },
+            {
+              "name": "offset",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"0, 5\""
+            },
+            {
+              "name": "direction",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"top\""
+            },
+            {
+              "name": "maxWidth",
+              "value": {
+                "kind": "expression",
+                "type": "number"
+              },
+              "default": "276"
+            },
+            {
+              "name": "arrow",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "disabled",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            }
+          ],
+          "slots": [
+            {
+              "name": "reference"
+            },
+            {
+              "name": "tip"
+            }
+          ],
+          "source": {
+            "module": "./src/components/free/components/MDBTooltip.vue",
+            "symbol": "default"
+          }
+        }
+      ]
+    }
+  }
+}

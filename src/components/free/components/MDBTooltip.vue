@@ -3,6 +3,7 @@
     :is="tag"
     ref="triggerEl"
     style="display: inline-block"
+    v-bind="$attrs"
     @mouseover="onMouseOver"
     @mouseout="onMouseOut"
   >
@@ -65,7 +66,7 @@ export default {
     },
     disabled: Boolean,
   },
-  setup(props, { attrs, emit }) {
+  setup(props, { emit }) {
     const {
       setPopper,
       isPopperActive,
@@ -167,7 +168,6 @@ export default {
       widthStyle,
       onMouseOver,
       onMouseOut,
-      attrs,
       props,
     };
   },

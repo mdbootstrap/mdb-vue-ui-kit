@@ -16,7 +16,6 @@
       :aria-labelledby="labelledby"
       role="dialog"
       @click.self="closeModal"
-      v-bind="attrs"
     >
       <div :class="dialogClass" role="document" ref="dialog">
         <div class="modal-content" :style="computedContentStyle">
@@ -91,7 +90,7 @@ export default {
     transform: String,
   },
   emits: ["show", "shown", "hide", "hidden", "update:modelValue"],
-  setup(props, { attrs, emit }) {
+  setup(props, { emit }) {
     const root = ref("root");
     const dialog = ref("dialog");
     const dialogTransform = ref("");
@@ -271,7 +270,6 @@ export default {
       afterEnter,
       beforeLeave,
       afterLeave,
-      attrs,
       props,
     };
   },

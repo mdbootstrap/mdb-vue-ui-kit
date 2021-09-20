@@ -1,0 +1,2372 @@
+{
+  "mdb-accordion/tag": {
+    "type": "string"
+  },
+  "MDBAccordion/tag": {
+    "type": "string"
+  },
+  "mdb-accordion/modelValue": {
+    "type": "string"
+  },
+  "MDBAccordion/modelValue": {
+    "type": "string"
+  },
+  "mdb-accordion/stayOpen": {
+    "type": "boolean"
+  },
+  "MDBAccordion/stayOpen": {
+    "type": "boolean"
+  },
+  "mdb-accordion/flush": {
+    "type": "boolean"
+  },
+  "MDBAccordion/flush": {
+    "type": "boolean"
+  },
+  "mdb-accordion/classes": {
+    "type": "string"
+  },
+  "MDBAccordion/classes": {
+    "type": "string"
+  },
+  "mdb-accordion-item/tag": {
+    "type": "string"
+  },
+  "MDBAccordionItem/tag": {
+    "type": "string"
+  },
+  "mdb-accordion-item/collapseId": {
+    "type": "string"
+  },
+  "MDBAccordionItem/collapseId": {
+    "type": "string"
+  },
+  "mdb-accordion-item/headerTitle": {
+    "type": "string"
+  },
+  "MDBAccordionItem/headerTitle": {
+    "type": "string"
+  },
+  "mdb-accordion-item/headerClasses": {
+    "type": "string"
+  },
+  "MDBAccordionItem/headerClasses": {
+    "type": "string"
+  },
+  "mdb-accordion-item/bodyClasses": {
+    "type": "string"
+  },
+  "MDBAccordionItem/bodyClasses": {
+    "type": "string"
+  },
+  "mdb-accordion-item/itemClasses": {
+    "type": "string"
+  },
+  "MDBAccordionItem/itemClasses": {
+    "type": "string"
+  },
+  "mdb-badge/color": {
+    "type": "string"
+  },
+  "MDBBadge/color": {
+    "type": "string"
+  },
+  "mdb-badge/pill": {
+    "type": "boolean"
+  },
+  "MDBBadge/pill": {
+    "type": "boolean"
+  },
+  "mdb-badge/dot": {
+    "type": "boolean"
+  },
+  "MDBBadge/dot": {
+    "type": "boolean"
+  },
+  "mdb-badge/notification": {
+    "type": "boolean"
+  },
+  "MDBBadge/notification": {
+    "type": "boolean"
+  },
+  "mdb-badge/tag": {
+    "type": "string"
+  },
+  "MDBBadge/tag": {
+    "type": "string"
+  },
+  "mdb-btn/color": {
+    "type": "string"
+  },
+  "MDBBtn/color": {
+    "type": "string"
+  },
+  "mdb-btn/size": {
+    "type": "string"
+  },
+  "MDBBtn/size": {
+    "type": "string"
+  },
+  "mdb-btn/outline": {
+    "type": "string"
+  },
+  "MDBBtn/outline": {
+    "type": "string"
+  },
+  "mdb-btn/rounded": {
+    "type": "boolean"
+  },
+  "MDBBtn/rounded": {
+    "type": "boolean"
+  },
+  "mdb-btn/floating": {
+    "type": "boolean"
+  },
+  "MDBBtn/floating": {
+    "type": "boolean"
+  },
+  "mdb-btn/toggler": {
+    "type": "boolean"
+  },
+  "MDBBtn/toggler": {
+    "type": "boolean"
+  },
+  "mdb-btn/toggle": {
+    "type": "boolean"
+  },
+  "MDBBtn/toggle": {
+    "type": "boolean"
+  },
+  "mdb-btn/role": {
+    "type": "string"
+  },
+  "MDBBtn/role": {
+    "type": "string"
+  },
+  "mdb-btn/type": {
+    "type": "string"
+  },
+  "MDBBtn/type": {
+    "type": "string"
+  },
+  "mdb-btn/tag": {
+    "type": "string"
+  },
+  "MDBBtn/tag": {
+    "type": "string"
+  },
+  "mdb-btn/block": {
+    "type": "boolean"
+  },
+  "MDBBtn/block": {
+    "type": "boolean"
+  },
+  "mdb-btn/ripple": {
+    "type": "object|boolean"
+  },
+  "MDBBtn/ripple": {
+    "type": "object|boolean"
+  },
+  "mdb-btn/picker": {
+    "type": "boolean"
+  },
+  "MDBBtn/picker": {
+    "type": "boolean"
+  },
+  "mdb-btn-close/white": {
+    "type": "boolean"
+  },
+  "MDBBtnClose/white": {
+    "type": "boolean"
+  },
+  "mdb-btn-group/size": {
+    "type": "string"
+  },
+  "MDBBtnGroup/size": {
+    "type": "string"
+  },
+  "mdb-btn-group/vertical": {
+    "type": "boolean"
+  },
+  "MDBBtnGroup/vertical": {
+    "type": "boolean"
+  },
+  "mdb-btn-group/role": {
+    "type": "string"
+  },
+  "MDBBtnGroup/role": {
+    "type": "string"
+  },
+  "mdb-btn-group/tag": {
+    "type": "string"
+  },
+  "MDBBtnGroup/tag": {
+    "type": "string"
+  },
+  "mdb-card/tag": {
+    "type": "string"
+  },
+  "MDBCard/tag": {
+    "type": "string"
+  },
+  "mdb-card/border": {
+    "type": "string"
+  },
+  "MDBCard/border": {
+    "type": "string"
+  },
+  "mdb-card/bg": {
+    "type": "string"
+  },
+  "MDBCard/bg": {
+    "type": "string"
+  },
+  "mdb-card/text": {
+    "type": "string|array"
+  },
+  "MDBCard/text": {
+    "type": "string|array"
+  },
+  "mdb-card/shadow": {
+    "type": "string"
+  },
+  "MDBCard/shadow": {
+    "type": "string"
+  },
+  "mdb-card-body/tag": {
+    "type": "string"
+  },
+  "MDBCardBody/tag": {
+    "type": "string"
+  },
+  "mdb-card-body/text": {
+    "type": "string|array"
+  },
+  "MDBCardBody/text": {
+    "type": "string|array"
+  },
+  "mdb-card-footer/tag": {
+    "type": "string"
+  },
+  "MDBCardFooter/tag": {
+    "type": "string"
+  },
+  "mdb-card-footer/bg": {
+    "type": "string"
+  },
+  "MDBCardFooter/bg": {
+    "type": "string"
+  },
+  "mdb-card-footer/border": {
+    "type": "string"
+  },
+  "MDBCardFooter/border": {
+    "type": "string"
+  },
+  "mdb-card-group/tag": {
+    "type": "string"
+  },
+  "MDBCardGroup/tag": {
+    "type": "string"
+  },
+  "mdb-card-header/tag": {
+    "type": "string"
+  },
+  "MDBCardHeader/tag": {
+    "type": "string"
+  },
+  "mdb-card-header/bg": {
+    "type": "string"
+  },
+  "MDBCardHeader/bg": {
+    "type": "string"
+  },
+  "mdb-card-header/border": {
+    "type": "string"
+  },
+  "MDBCardHeader/border": {
+    "type": "string"
+  },
+  "mdb-card-img/tag": {
+    "type": "string"
+  },
+  "MDBCardImg/tag": {
+    "type": "string"
+  },
+  "mdb-card-img/src": {
+    "type": "string"
+  },
+  "MDBCardImg/src": {
+    "type": "string"
+  },
+  "mdb-card-img/alt": {
+    "type": "string"
+  },
+  "MDBCardImg/alt": {
+    "type": "string"
+  },
+  "mdb-card-img/top": {
+    "type": "boolean"
+  },
+  "MDBCardImg/top": {
+    "type": "boolean"
+  },
+  "mdb-card-img/bottom": {
+    "type": "boolean"
+  },
+  "MDBCardImg/bottom": {
+    "type": "boolean"
+  },
+  "mdb-card-img/fluid": {
+    "type": "boolean"
+  },
+  "MDBCardImg/fluid": {
+    "type": "boolean"
+  },
+  "mdb-card-img/overlay": {
+    "type": "boolean"
+  },
+  "MDBCardImg/overlay": {
+    "type": "boolean"
+  },
+  "mdb-card-link/tag": {
+    "type": "string"
+  },
+  "MDBCardLink/tag": {
+    "type": "string"
+  },
+  "mdb-card-text/tag": {
+    "type": "string"
+  },
+  "MDBCardText/tag": {
+    "type": "string"
+  },
+  "mdb-card-title/tag": {
+    "type": "string"
+  },
+  "MDBCardTitle/tag": {
+    "type": "string"
+  },
+  "mdb-card-title/subtitle": {
+    "type": "boolean"
+  },
+  "MDBCardTitle/subtitle": {
+    "type": "boolean"
+  },
+  "mdb-carousel/captionsClass": {
+    "type": "string"
+  },
+  "MDBCarousel/captionsClass": {
+    "type": "string"
+  },
+  "mdb-carousel/controls": {
+    "type": "boolean"
+  },
+  "MDBCarousel/controls": {
+    "type": "boolean"
+  },
+  "mdb-carousel/dark": {
+    "type": "boolean"
+  },
+  "MDBCarousel/dark": {
+    "type": "boolean"
+  },
+  "mdb-carousel/fade": {
+    "type": "boolean"
+  },
+  "MDBCarousel/fade": {
+    "type": "boolean"
+  },
+  "mdb-carousel/indicators": {
+    "type": "boolean"
+  },
+  "MDBCarousel/indicators": {
+    "type": "boolean"
+  },
+  "mdb-carousel/interval": {
+    "type": "number|boolean"
+  },
+  "MDBCarousel/interval": {
+    "type": "number|boolean"
+  },
+  "mdb-carousel/items": {
+    "type": "array"
+  },
+  "MDBCarousel/items": {
+    "type": "array"
+  },
+  "mdb-carousel/itemsClass": {
+    "type": "string"
+  },
+  "MDBCarousel/itemsClass": {
+    "type": "string"
+  },
+  "mdb-carousel/keyboard": {
+    "type": "boolean"
+  },
+  "MDBCarousel/keyboard": {
+    "type": "boolean"
+  },
+  "mdb-carousel/modelValue": {
+    "type": "number"
+  },
+  "MDBCarousel/modelValue": {
+    "type": "number"
+  },
+  "mdb-carousel/pause": {
+    "type": "string|boolean"
+  },
+  "MDBCarousel/pause": {
+    "type": "string|boolean"
+  },
+  "mdb-carousel/tag": {
+    "type": "string"
+  },
+  "MDBCarousel/tag": {
+    "type": "string"
+  },
+  "mdb-carousel/touch": {
+    "type": "boolean"
+  },
+  "MDBCarousel/touch": {
+    "type": "boolean"
+  },
+  "mdb-collapse/tag": {
+    "type": "string"
+  },
+  "MDBCollapse/tag": {
+    "type": "string"
+  },
+  "mdb-collapse/modelValue": {
+    "type": "boolean"
+  },
+  "MDBCollapse/modelValue": {
+    "type": "boolean"
+  },
+  "mdb-collapse/id": {
+    "type": "string"
+  },
+  "MDBCollapse/id": {
+    "type": "string"
+  },
+  "mdb-collapse/collapseClass": {
+    "type": "string"
+  },
+  "MDBCollapse/collapseClass": {
+    "type": "string"
+  },
+  "mdb-collapse/duration": {
+    "type": "number"
+  },
+  "MDBCollapse/duration": {
+    "type": "number"
+  },
+  "mdb-collapse/sidenav": {
+    "type": "boolean"
+  },
+  "MDBCollapse/sidenav": {
+    "type": "boolean"
+  },
+  "mdb-dropdown/tag": {
+    "type": "string"
+  },
+  "MDBDropdown/tag": {
+    "type": "string"
+  },
+  "mdb-dropdown/btnGroup": {
+    "type": "boolean"
+  },
+  "MDBDropdown/btnGroup": {
+    "type": "boolean"
+  },
+  "mdb-dropdown/dropup": {
+    "type": "boolean"
+  },
+  "MDBDropdown/dropup": {
+    "type": "boolean"
+  },
+  "mdb-dropdown/dropend": {
+    "type": "boolean"
+  },
+  "MDBDropdown/dropend": {
+    "type": "boolean"
+  },
+  "mdb-dropdown/dropstart": {
+    "type": "boolean"
+  },
+  "MDBDropdown/dropstart": {
+    "type": "boolean"
+  },
+  "mdb-dropdown/align": {
+    "type": "string|array"
+  },
+  "MDBDropdown/align": {
+    "type": "string|array"
+  },
+  "mdb-dropdown/updatePosition": {
+    "type": "boolean"
+  },
+  "MDBDropdown/updatePosition": {
+    "type": "boolean"
+  },
+  "mdb-dropdown/offset": {
+    "type": "string"
+  },
+  "MDBDropdown/offset": {
+    "type": "string"
+  },
+  "mdb-dropdown/target": {
+    "type": "string"
+  },
+  "MDBDropdown/target": {
+    "type": "string"
+  },
+  "mdb-dropdown/modelValue": {
+    "type": "boolean"
+  },
+  "MDBDropdown/modelValue": {
+    "type": "boolean"
+  },
+  "mdb-dropdown-item/tag": {
+    "type": "string"
+  },
+  "MDBDropdownItem/tag": {
+    "type": "string"
+  },
+  "mdb-dropdown-item/to": {
+    "type": "string|object"
+  },
+  "MDBDropdownItem/to": {
+    "type": "string|object"
+  },
+  "mdb-dropdown-item/href": {
+    "type": "string"
+  },
+  "MDBDropdownItem/href": {
+    "type": "string"
+  },
+  "mdb-dropdown-item/disabled": {
+    "type": "boolean"
+  },
+  "MDBDropdownItem/disabled": {
+    "type": "boolean"
+  },
+  "mdb-dropdown-item/active": {
+    "type": "boolean"
+  },
+  "MDBDropdownItem/active": {
+    "type": "boolean"
+  },
+  "mdb-dropdown-item/exact": {
+    "type": "boolean"
+  },
+  "MDBDropdownItem/exact": {
+    "type": "boolean"
+  },
+  "mdb-dropdown-item/newTab": {
+    "type": "boolean"
+  },
+  "MDBDropdownItem/newTab": {
+    "type": "boolean"
+  },
+  "mdb-dropdown-item/submenu": {
+    "type": "boolean"
+  },
+  "MDBDropdownItem/submenu": {
+    "type": "boolean"
+  },
+  "mdb-dropdown-item/submenuIcon": {
+    "type": "string"
+  },
+  "MDBDropdownItem/submenuIcon": {
+    "type": "string"
+  },
+  "mdb-dropdown-item/divider": {
+    "type": "boolean"
+  },
+  "MDBDropdownItem/divider": {
+    "type": "boolean"
+  },
+  "mdb-dropdown-item/text": {
+    "type": "boolean"
+  },
+  "MDBDropdownItem/text": {
+    "type": "boolean"
+  },
+  "mdb-dropdown-item/header": {
+    "type": "boolean"
+  },
+  "MDBDropdownItem/header": {
+    "type": "boolean"
+  },
+  "mdb-dropdown-menu/tag": {
+    "type": "string"
+  },
+  "MDBDropdownMenu/tag": {
+    "type": "string"
+  },
+  "mdb-dropdown-menu/fadeIn": {
+    "type": "string"
+  },
+  "MDBDropdownMenu/fadeIn": {
+    "type": "string"
+  },
+  "mdb-dropdown-menu/fadeOut": {
+    "type": "string"
+  },
+  "MDBDropdownMenu/fadeOut": {
+    "type": "string"
+  },
+  "mdb-dropdown-menu/animation": {
+    "type": "boolean"
+  },
+  "MDBDropdownMenu/animation": {
+    "type": "boolean"
+  },
+  "mdb-dropdown-menu/dark": {
+    "type": "boolean"
+  },
+  "MDBDropdownMenu/dark": {
+    "type": "boolean"
+  },
+  "mdb-dropdown-menu/static": {
+    "type": "boolean"
+  },
+  "MDBDropdownMenu/static": {
+    "type": "boolean"
+  },
+  "mdb-dropdown-toggle/tag": {
+    "type": "string"
+  },
+  "MDBDropdownToggle/tag": {
+    "type": "string"
+  },
+  "mdb-dropdown-toggle/href": {
+    "type": "string|null"
+  },
+  "MDBDropdownToggle/href": {
+    "type": "string|null"
+  },
+  "mdb-dropdown-toggle/split": {
+    "type": "boolean"
+  },
+  "MDBDropdownToggle/split": {
+    "type": "boolean"
+  },
+  "mdb-list-group/tag": {
+    "type": "string"
+  },
+  "MDBListGroup/tag": {
+    "type": "string"
+  },
+  "mdb-list-group/horizontal": {
+    "type": "boolean|string"
+  },
+  "MDBListGroup/horizontal": {
+    "type": "boolean|string"
+  },
+  "mdb-list-group/flush": {
+    "type": "boolean"
+  },
+  "MDBListGroup/flush": {
+    "type": "boolean"
+  },
+  "mdb-list-group-item/tag": {
+    "type": "string"
+  },
+  "MDBListGroupItem/tag": {
+    "type": "string"
+  },
+  "mdb-list-group-item/active": {
+    "type": "boolean"
+  },
+  "MDBListGroupItem/active": {
+    "type": "boolean"
+  },
+  "mdb-list-group-item/disabled": {
+    "type": "boolean"
+  },
+  "MDBListGroupItem/disabled": {
+    "type": "boolean"
+  },
+  "mdb-list-group-item/action": {
+    "type": "boolean"
+  },
+  "MDBListGroupItem/action": {
+    "type": "boolean"
+  },
+  "mdb-list-group-item/color": {
+    "type": "string"
+  },
+  "MDBListGroupItem/color": {
+    "type": "string"
+  },
+  "mdb-modal/tag": {
+    "type": "string"
+  },
+  "MDBModal/tag": {
+    "type": "string"
+  },
+  "mdb-modal/modelValue": {
+    "type": "boolean"
+  },
+  "MDBModal/modelValue": {
+    "type": "boolean"
+  },
+  "mdb-modal/size": {
+    "type": "string"
+  },
+  "MDBModal/size": {
+    "type": "string"
+  },
+  "mdb-modal/removeBackdrop": {
+    "type": "boolean"
+  },
+  "MDBModal/removeBackdrop": {
+    "type": "boolean"
+  },
+  "mdb-modal/staticBackdrop": {
+    "type": "boolean"
+  },
+  "MDBModal/staticBackdrop": {
+    "type": "boolean"
+  },
+  "mdb-modal/centered": {
+    "type": "boolean"
+  },
+  "MDBModal/centered": {
+    "type": "boolean"
+  },
+  "mdb-modal/bgSrc": {
+    "type": "string"
+  },
+  "MDBModal/bgSrc": {
+    "type": "string"
+  },
+  "mdb-modal/scrollable": {
+    "type": "boolean"
+  },
+  "MDBModal/scrollable": {
+    "type": "boolean"
+  },
+  "mdb-modal/duration": {
+    "type": "number"
+  },
+  "MDBModal/duration": {
+    "type": "number"
+  },
+  "mdb-modal/labelledby": {
+    "type": "string"
+  },
+  "MDBModal/labelledby": {
+    "type": "string"
+  },
+  "mdb-modal/fullscreen": {
+    "type": "boolean|string"
+  },
+  "MDBModal/fullscreen": {
+    "type": "boolean|string"
+  },
+  "mdb-modal/animation": {
+    "type": "boolean"
+  },
+  "MDBModal/animation": {
+    "type": "boolean"
+  },
+  "mdb-modal/dialogClasses": {
+    "type": "string"
+  },
+  "MDBModal/dialogClasses": {
+    "type": "string"
+  },
+  "mdb-modal/transform": {
+    "type": "string"
+  },
+  "MDBModal/transform": {
+    "type": "string"
+  },
+  "mdb-modal-body/tag": {
+    "type": "string"
+  },
+  "MDBModalBody/tag": {
+    "type": "string"
+  },
+  "mdb-modal-footer/tag": {
+    "type": "string"
+  },
+  "MDBModalFooter/tag": {
+    "type": "string"
+  },
+  "mdb-modal-header/tag": {
+    "type": "string"
+  },
+  "MDBModalHeader/tag": {
+    "type": "string"
+  },
+  "mdb-modal-header/close": {
+    "type": "boolean"
+  },
+  "MDBModalHeader/close": {
+    "type": "boolean"
+  },
+  "mdb-modal-header/closeWhite": {
+    "type": "boolean"
+  },
+  "MDBModalHeader/closeWhite": {
+    "type": "boolean"
+  },
+  "mdb-modal-header/color": {
+    "type": "string"
+  },
+  "MDBModalHeader/color": {
+    "type": "string"
+  },
+  "mdb-modal-title/tag": {
+    "type": "string"
+  },
+  "MDBModalTitle/tag": {
+    "type": "string"
+  },
+  "mdb-modal-title/bold": {
+    "type": "boolean"
+  },
+  "MDBModalTitle/bold": {
+    "type": "boolean"
+  },
+  "mdb-popover/tag": {
+    "type": "string"
+  },
+  "MDBPopover/tag": {
+    "type": "string"
+  },
+  "mdb-popover/modelValue": {
+    "type": "boolean"
+  },
+  "MDBPopover/modelValue": {
+    "type": "boolean"
+  },
+  "mdb-popover/reference": {
+    "type": "string"
+  },
+  "MDBPopover/reference": {
+    "type": "string"
+  },
+  "mdb-popover/popover": {
+    "type": "string"
+  },
+  "MDBPopover/popover": {
+    "type": "string"
+  },
+  "mdb-popover/options": {
+    "type": "object"
+  },
+  "MDBPopover/options": {
+    "type": "object"
+  },
+  "mdb-popover/offset": {
+    "type": "string"
+  },
+  "MDBPopover/offset": {
+    "type": "string"
+  },
+  "mdb-popover/direction": {
+    "type": "string"
+  },
+  "MDBPopover/direction": {
+    "type": "string"
+  },
+  "mdb-popover/maxWidth": {
+    "type": "number"
+  },
+  "MDBPopover/maxWidth": {
+    "type": "number"
+  },
+  "mdb-popover/arrow": {
+    "type": "boolean"
+  },
+  "MDBPopover/arrow": {
+    "type": "boolean"
+  },
+  "mdb-popover/dismissible": {
+    "type": "boolean"
+  },
+  "MDBPopover/dismissible": {
+    "type": "boolean"
+  },
+  "mdb-popover/hover": {
+    "type": "boolean"
+  },
+  "MDBPopover/hover": {
+    "type": "boolean"
+  },
+  "mdb-popover/updatePosition": {
+    "type": "boolean"
+  },
+  "MDBPopover/updatePosition": {
+    "type": "boolean"
+  },
+  "mdb-progress/tag": {
+    "type": "string"
+  },
+  "MDBProgress/tag": {
+    "type": "string"
+  },
+  "mdb-progress/height": {
+    "type": "number"
+  },
+  "MDBProgress/height": {
+    "type": "number"
+  },
+  "mdb-progress-bar/tag": {
+    "type": "string"
+  },
+  "MDBProgressBar/tag": {
+    "type": "string"
+  },
+  "mdb-progress-bar/bg": {
+    "type": "string"
+  },
+  "MDBProgressBar/bg": {
+    "type": "string"
+  },
+  "mdb-progress-bar/striped": {
+    "type": "boolean"
+  },
+  "MDBProgressBar/striped": {
+    "type": "boolean"
+  },
+  "mdb-progress-bar/animated": {
+    "type": "boolean"
+  },
+  "MDBProgressBar/animated": {
+    "type": "boolean"
+  },
+  "mdb-progress-bar/value": {
+    "type": "number"
+  },
+  "MDBProgressBar/value": {
+    "type": "number"
+  },
+  "mdb-progress-bar/min": {
+    "type": "number"
+  },
+  "MDBProgressBar/min": {
+    "type": "number"
+  },
+  "mdb-progress-bar/max": {
+    "type": "number"
+  },
+  "MDBProgressBar/max": {
+    "type": "number"
+  },
+  "mdb-spinner/tag": {
+    "type": "string"
+  },
+  "MDBSpinner/tag": {
+    "type": "string"
+  },
+  "mdb-spinner/grow": {
+    "type": "boolean"
+  },
+  "MDBSpinner/grow": {
+    "type": "boolean"
+  },
+  "mdb-spinner/color": {
+    "type": "string"
+  },
+  "MDBSpinner/color": {
+    "type": "string"
+  },
+  "mdb-spinner/size": {
+    "type": "string"
+  },
+  "MDBSpinner/size": {
+    "type": "string"
+  },
+  "mdb-tooltip/tag": {
+    "type": "string"
+  },
+  "MDBTooltip/tag": {
+    "type": "string"
+  },
+  "mdb-tooltip/modelValue": {
+    "type": "boolean"
+  },
+  "MDBTooltip/modelValue": {
+    "type": "boolean"
+  },
+  "mdb-tooltip/reference": {
+    "type": "string"
+  },
+  "MDBTooltip/reference": {
+    "type": "string"
+  },
+  "mdb-tooltip/popover": {
+    "type": "string"
+  },
+  "MDBTooltip/popover": {
+    "type": "string"
+  },
+  "mdb-tooltip/options": {
+    "type": "object"
+  },
+  "MDBTooltip/options": {
+    "type": "object"
+  },
+  "mdb-tooltip/offset": {
+    "type": "string"
+  },
+  "MDBTooltip/offset": {
+    "type": "string"
+  },
+  "mdb-tooltip/direction": {
+    "type": "string"
+  },
+  "MDBTooltip/direction": {
+    "type": "string"
+  },
+  "mdb-tooltip/maxWidth": {
+    "type": "number"
+  },
+  "MDBTooltip/maxWidth": {
+    "type": "number"
+  },
+  "mdb-tooltip/arrow": {
+    "type": "boolean"
+  },
+  "MDBTooltip/arrow": {
+    "type": "boolean"
+  },
+  "mdb-tooltip/disabled": {
+    "type": "boolean"
+  },
+  "MDBTooltip/disabled": {
+    "type": "boolean"
+  },
+  "mdb-icon/iconStyle": {
+    "type": "string"
+  },
+  "MDBIcon/iconStyle": {
+    "type": "string"
+  },
+  "mdb-icon/icon": {
+    "type": "string"
+  },
+  "MDBIcon/icon": {
+    "type": "string"
+  },
+  "mdb-icon/flag": {
+    "type": "string"
+  },
+  "MDBIcon/flag": {
+    "type": "string"
+  },
+  "mdb-icon/size": {
+    "type": "string"
+  },
+  "MDBIcon/size": {
+    "type": "string"
+  },
+  "mdb-table/tag": {
+    "type": "string"
+  },
+  "MDBTable/tag": {
+    "type": "string"
+  },
+  "mdb-table/variant": {
+    "type": "string"
+  },
+  "MDBTable/variant": {
+    "type": "string"
+  },
+  "mdb-table/dark": {
+    "type": "boolean"
+  },
+  "MDBTable/dark": {
+    "type": "boolean"
+  },
+  "mdb-table/light": {
+    "type": "boolean"
+  },
+  "MDBTable/light": {
+    "type": "boolean"
+  },
+  "mdb-table/border": {
+    "type": "boolean|string"
+  },
+  "MDBTable/border": {
+    "type": "boolean|string"
+  },
+  "mdb-table/borderless": {
+    "type": "boolean"
+  },
+  "MDBTable/borderless": {
+    "type": "boolean"
+  },
+  "mdb-table/striped": {
+    "type": "boolean"
+  },
+  "MDBTable/striped": {
+    "type": "boolean"
+  },
+  "mdb-table/hover": {
+    "type": "boolean"
+  },
+  "MDBTable/hover": {
+    "type": "boolean"
+  },
+  "mdb-table/responsive": {
+    "type": "boolean|string"
+  },
+  "MDBTable/responsive": {
+    "type": "boolean|string"
+  },
+  "mdb-table/align": {
+    "type": "string"
+  },
+  "MDBTable/align": {
+    "type": "string"
+  },
+  "mdb-table/sm": {
+    "type": "boolean"
+  },
+  "MDBTable/sm": {
+    "type": "boolean"
+  },
+  "mdb-table/tableStyle": {
+    "type": "string"
+  },
+  "MDBTable/tableStyle": {
+    "type": "string"
+  },
+  "mdb-table/captionTop": {
+    "type": "boolean"
+  },
+  "MDBTable/captionTop": {
+    "type": "boolean"
+  },
+  "mdb-checkbox/id": {
+    "type": "string"
+  },
+  "MDBCheckbox/id": {
+    "type": "string"
+  },
+  "mdb-checkbox/label": {
+    "type": "string"
+  },
+  "MDBCheckbox/label": {
+    "type": "string"
+  },
+  "mdb-checkbox/modelValue": {
+    "type": "boolean"
+  },
+  "MDBCheckbox/modelValue": {
+    "type": "boolean"
+  },
+  "mdb-checkbox/inline": {
+    "type": "boolean"
+  },
+  "MDBCheckbox/inline": {
+    "type": "boolean"
+  },
+  "mdb-checkbox/wrapperClass": {
+    "type": "string"
+  },
+  "MDBCheckbox/wrapperClass": {
+    "type": "string"
+  },
+  "mdb-checkbox/labelClass": {
+    "type": "string"
+  },
+  "MDBCheckbox/labelClass": {
+    "type": "string"
+  },
+  "mdb-checkbox/inputClass": {
+    "type": "string"
+  },
+  "MDBCheckbox/inputClass": {
+    "type": "string"
+  },
+  "mdb-checkbox/btnCheck": {
+    "type": "boolean"
+  },
+  "MDBCheckbox/btnCheck": {
+    "type": "boolean"
+  },
+  "mdb-checkbox/required": {
+    "type": "boolean"
+  },
+  "MDBCheckbox/required": {
+    "type": "boolean"
+  },
+  "mdb-checkbox/validateOnChange": {
+    "type": "boolean"
+  },
+  "MDBCheckbox/validateOnChange": {
+    "type": "boolean"
+  },
+  "mdb-checkbox/isValidated": {
+    "type": "boolean"
+  },
+  "MDBCheckbox/isValidated": {
+    "type": "boolean"
+  },
+  "mdb-checkbox/isValid": {
+    "type": "boolean"
+  },
+  "MDBCheckbox/isValid": {
+    "type": "boolean"
+  },
+  "mdb-checkbox/validFeedback": {
+    "type": "string"
+  },
+  "MDBCheckbox/validFeedback": {
+    "type": "string"
+  },
+  "mdb-checkbox/invalidFeedback": {
+    "type": "string"
+  },
+  "MDBCheckbox/invalidFeedback": {
+    "type": "string"
+  },
+  "mdb-checkbox/tooltipFeedback": {
+    "type": "boolean"
+  },
+  "MDBCheckbox/tooltipFeedback": {
+    "type": "boolean"
+  },
+  "mdb-checkbox/wrap": {
+    "type": "boolean"
+  },
+  "MDBCheckbox/wrap": {
+    "type": "boolean"
+  },
+  "mdb-checkbox/formCheck": {
+    "type": "boolean"
+  },
+  "MDBCheckbox/formCheck": {
+    "type": "boolean"
+  },
+  "mdb-checkbox/tag": {
+    "type": "string"
+  },
+  "MDBCheckbox/tag": {
+    "type": "string"
+  },
+  "mdb-file/id": {
+    "type": "string"
+  },
+  "MDBFile/id": {
+    "type": "string"
+  },
+  "mdb-file/inputClass": {
+    "type": "string"
+  },
+  "MDBFile/inputClass": {
+    "type": "string"
+  },
+  "mdb-file/invalidFeedback": {
+    "type": "string"
+  },
+  "MDBFile/invalidFeedback": {
+    "type": "string"
+  },
+  "mdb-file/isInvalid": {
+    "type": "boolean"
+  },
+  "MDBFile/isInvalid": {
+    "type": "boolean"
+  },
+  "mdb-file/isValid": {
+    "type": "boolean"
+  },
+  "MDBFile/isValid": {
+    "type": "boolean"
+  },
+  "mdb-file/isValidated": {
+    "type": "boolean"
+  },
+  "MDBFile/isValidated": {
+    "type": "boolean"
+  },
+  "mdb-file/label": {
+    "type": "string"
+  },
+  "MDBFile/label": {
+    "type": "string"
+  },
+  "mdb-file/labelClass": {
+    "type": "string"
+  },
+  "MDBFile/labelClass": {
+    "type": "string"
+  },
+  "mdb-file/modelValue": {
+    "type": "FileList|array"
+  },
+  "MDBFile/modelValue": {
+    "type": "FileList|array"
+  },
+  "mdb-file/size": {
+    "type": "string"
+  },
+  "MDBFile/size": {
+    "type": "string"
+  },
+  "mdb-file/tooltipFeedback": {
+    "type": "boolean"
+  },
+  "MDBFile/tooltipFeedback": {
+    "type": "boolean"
+  },
+  "mdb-file/validFeedback": {
+    "type": "string"
+  },
+  "MDBFile/validFeedback": {
+    "type": "string"
+  },
+  "mdb-file/validateOnChange": {
+    "type": "boolean"
+  },
+  "MDBFile/validateOnChange": {
+    "type": "boolean"
+  },
+  "mdb-input/id": {
+    "type": "string"
+  },
+  "MDBInput/id": {
+    "type": "string"
+  },
+  "mdb-input/label": {
+    "type": "string"
+  },
+  "MDBInput/label": {
+    "type": "string"
+  },
+  "mdb-input/labelClass": {
+    "type": "string"
+  },
+  "MDBInput/labelClass": {
+    "type": "string"
+  },
+  "mdb-input/modelValue": {
+    "type": "string|number|date"
+  },
+  "MDBInput/modelValue": {
+    "type": "string|number|date"
+  },
+  "mdb-input/size": {
+    "type": "string"
+  },
+  "MDBInput/size": {
+    "type": "string"
+  },
+  "mdb-input/formOutline": {
+    "type": "boolean"
+  },
+  "MDBInput/formOutline": {
+    "type": "boolean"
+  },
+  "mdb-input/wrapperClass": {
+    "type": "string"
+  },
+  "MDBInput/wrapperClass": {
+    "type": "string"
+  },
+  "mdb-input/inputGroup": {
+    "type": "boolean|string"
+  },
+  "MDBInput/inputGroup": {
+    "type": "boolean|string"
+  },
+  "mdb-input/wrap": {
+    "type": "boolean"
+  },
+  "MDBInput/wrap": {
+    "type": "boolean"
+  },
+  "mdb-input/formText": {
+    "type": "string"
+  },
+  "MDBInput/formText": {
+    "type": "string"
+  },
+  "mdb-input/white": {
+    "type": "boolean"
+  },
+  "MDBInput/white": {
+    "type": "boolean"
+  },
+  "mdb-input/validationEvent": {
+    "type": "string"
+  },
+  "MDBInput/validationEvent": {
+    "type": "string"
+  },
+  "mdb-input/isValidated": {
+    "type": "boolean"
+  },
+  "MDBInput/isValidated": {
+    "type": "boolean"
+  },
+  "mdb-input/isValid": {
+    "type": "boolean"
+  },
+  "MDBInput/isValid": {
+    "type": "boolean"
+  },
+  "mdb-input/validFeedback": {
+    "type": "string"
+  },
+  "MDBInput/validFeedback": {
+    "type": "string"
+  },
+  "mdb-input/invalidFeedback": {
+    "type": "string"
+  },
+  "MDBInput/invalidFeedback": {
+    "type": "string"
+  },
+  "mdb-input/tooltipFeedback": {
+    "type": "boolean"
+  },
+  "MDBInput/tooltipFeedback": {
+    "type": "boolean"
+  },
+  "mdb-input/tag": {
+    "type": "string"
+  },
+  "MDBInput/tag": {
+    "type": "string"
+  },
+  "mdb-radio/id": {
+    "type": "string"
+  },
+  "MDBRadio/id": {
+    "type": "string"
+  },
+  "mdb-radio/label": {
+    "type": "string"
+  },
+  "MDBRadio/label": {
+    "type": "string"
+  },
+  "mdb-radio/inline": {
+    "type": "boolean"
+  },
+  "MDBRadio/inline": {
+    "type": "boolean"
+  },
+  "mdb-radio/modelValue": {
+    "type": "string"
+  },
+  "MDBRadio/modelValue": {
+    "type": "string"
+  },
+  "mdb-radio/wrapperClass": {
+    "type": "string"
+  },
+  "MDBRadio/wrapperClass": {
+    "type": "string"
+  },
+  "mdb-radio/labelClass": {
+    "type": "string"
+  },
+  "MDBRadio/labelClass": {
+    "type": "string"
+  },
+  "mdb-radio/btnCheck": {
+    "type": "boolean"
+  },
+  "MDBRadio/btnCheck": {
+    "type": "boolean"
+  },
+  "mdb-radio/required": {
+    "type": "boolean"
+  },
+  "MDBRadio/required": {
+    "type": "boolean"
+  },
+  "mdb-radio/validateOnChange": {
+    "type": "boolean"
+  },
+  "MDBRadio/validateOnChange": {
+    "type": "boolean"
+  },
+  "mdb-radio/isValidated": {
+    "type": "boolean"
+  },
+  "MDBRadio/isValidated": {
+    "type": "boolean"
+  },
+  "mdb-radio/isValid": {
+    "type": "boolean"
+  },
+  "MDBRadio/isValid": {
+    "type": "boolean"
+  },
+  "mdb-radio/validFeedback": {
+    "type": "string"
+  },
+  "MDBRadio/validFeedback": {
+    "type": "string"
+  },
+  "mdb-radio/invalidFeedback": {
+    "type": "string"
+  },
+  "MDBRadio/invalidFeedback": {
+    "type": "string"
+  },
+  "mdb-radio/tooltipFeedback": {
+    "type": "boolean"
+  },
+  "MDBRadio/tooltipFeedback": {
+    "type": "boolean"
+  },
+  "mdb-radio/wrap": {
+    "type": "boolean"
+  },
+  "MDBRadio/wrap": {
+    "type": "boolean"
+  },
+  "mdb-radio/formCheck": {
+    "type": "boolean"
+  },
+  "MDBRadio/formCheck": {
+    "type": "boolean"
+  },
+  "mdb-radio/tag": {
+    "type": "string"
+  },
+  "MDBRadio/tag": {
+    "type": "string"
+  },
+  "mdb-range/id": {
+    "type": "string"
+  },
+  "MDBRange/id": {
+    "type": "string"
+  },
+  "mdb-range/inputClass": {
+    "type": "string"
+  },
+  "MDBRange/inputClass": {
+    "type": "string"
+  },
+  "mdb-range/label": {
+    "type": "string"
+  },
+  "MDBRange/label": {
+    "type": "string"
+  },
+  "mdb-range/labelClass": {
+    "type": "string"
+  },
+  "MDBRange/labelClass": {
+    "type": "string"
+  },
+  "mdb-range/max": {
+    "type": "number"
+  },
+  "MDBRange/max": {
+    "type": "number"
+  },
+  "mdb-range/min": {
+    "type": "number"
+  },
+  "MDBRange/min": {
+    "type": "number"
+  },
+  "mdb-range/modelValue": {
+    "type": "number"
+  },
+  "MDBRange/modelValue": {
+    "type": "number"
+  },
+  "mdb-range/tag": {
+    "type": "string"
+  },
+  "MDBRange/tag": {
+    "type": "string"
+  },
+  "mdb-range/thumb": {
+    "type": "boolean"
+  },
+  "MDBRange/thumb": {
+    "type": "boolean"
+  },
+  "mdb-range/thumbClass": {
+    "type": "string"
+  },
+  "MDBRange/thumbClass": {
+    "type": "string"
+  },
+  "mdb-range/wrapperClass": {
+    "type": "string"
+  },
+  "MDBRange/wrapperClass": {
+    "type": "string"
+  },
+  "mdb-switch/id": {
+    "type": "string"
+  },
+  "MDBSwitch/id": {
+    "type": "string"
+  },
+  "mdb-switch/inputClass": {
+    "type": "string"
+  },
+  "MDBSwitch/inputClass": {
+    "type": "string"
+  },
+  "mdb-switch/label": {
+    "type": "string"
+  },
+  "MDBSwitch/label": {
+    "type": "string"
+  },
+  "mdb-switch/labelClass": {
+    "type": "string"
+  },
+  "MDBSwitch/labelClass": {
+    "type": "string"
+  },
+  "mdb-switch/modelValue": {
+    "type": "boolean"
+  },
+  "MDBSwitch/modelValue": {
+    "type": "boolean"
+  },
+  "mdb-switch/tag": {
+    "type": "string"
+  },
+  "MDBSwitch/tag": {
+    "type": "string"
+  },
+  "mdb-switch/wrapperClass": {
+    "type": "string"
+  },
+  "MDBSwitch/wrapperClass": {
+    "type": "string"
+  },
+  "mdb-textarea/id": {
+    "type": "string"
+  },
+  "MDBTextarea/id": {
+    "type": "string"
+  },
+  "mdb-textarea/rows": {
+    "type": "string|number"
+  },
+  "MDBTextarea/rows": {
+    "type": "string|number"
+  },
+  "mdb-textarea/label": {
+    "type": "string"
+  },
+  "MDBTextarea/label": {
+    "type": "string"
+  },
+  "mdb-textarea/modelValue": {
+    "type": "string|number"
+  },
+  "MDBTextarea/modelValue": {
+    "type": "string|number"
+  },
+  "mdb-textarea/size": {
+    "type": "string"
+  },
+  "MDBTextarea/size": {
+    "type": "string"
+  },
+  "mdb-textarea/formOutline": {
+    "type": "boolean"
+  },
+  "MDBTextarea/formOutline": {
+    "type": "boolean"
+  },
+  "mdb-textarea/wrapperClass": {
+    "type": "string"
+  },
+  "MDBTextarea/wrapperClass": {
+    "type": "string"
+  },
+  "mdb-textarea/inputGroup": {
+    "type": "boolean|string"
+  },
+  "MDBTextarea/inputGroup": {
+    "type": "boolean|string"
+  },
+  "mdb-textarea/wrap": {
+    "type": "boolean"
+  },
+  "MDBTextarea/wrap": {
+    "type": "boolean"
+  },
+  "mdb-textarea/formText": {
+    "type": "string"
+  },
+  "MDBTextarea/formText": {
+    "type": "string"
+  },
+  "mdb-textarea/white": {
+    "type": "boolean"
+  },
+  "MDBTextarea/white": {
+    "type": "boolean"
+  },
+  "mdb-textarea/validationEvent": {
+    "type": "string"
+  },
+  "MDBTextarea/validationEvent": {
+    "type": "string"
+  },
+  "mdb-textarea/isValidated": {
+    "type": "boolean"
+  },
+  "MDBTextarea/isValidated": {
+    "type": "boolean"
+  },
+  "mdb-textarea/isValid": {
+    "type": "boolean"
+  },
+  "MDBTextarea/isValid": {
+    "type": "boolean"
+  },
+  "mdb-textarea/validFeedback": {
+    "type": "string"
+  },
+  "MDBTextarea/validFeedback": {
+    "type": "string"
+  },
+  "mdb-textarea/invalidFeedback": {
+    "type": "string"
+  },
+  "MDBTextarea/invalidFeedback": {
+    "type": "string"
+  },
+  "mdb-textarea/tooltipFeedback": {
+    "type": "boolean"
+  },
+  "MDBTextarea/tooltipFeedback": {
+    "type": "boolean"
+  },
+  "mdb-textarea/tag": {
+    "type": "string"
+  },
+  "MDBTextarea/tag": {
+    "type": "string"
+  },
+  "mdb-col/tag": {
+    "type": "string"
+  },
+  "MDBCol/tag": {
+    "type": "string"
+  },
+  "mdb-col/col": {
+    "type": "string"
+  },
+  "MDBCol/col": {
+    "type": "string"
+  },
+  "mdb-col/sm": {
+    "type": "string"
+  },
+  "MDBCol/sm": {
+    "type": "string"
+  },
+  "mdb-col/md": {
+    "type": "string"
+  },
+  "MDBCol/md": {
+    "type": "string"
+  },
+  "mdb-col/lg": {
+    "type": "string"
+  },
+  "MDBCol/lg": {
+    "type": "string"
+  },
+  "mdb-col/xl": {
+    "type": "string"
+  },
+  "MDBCol/xl": {
+    "type": "string"
+  },
+  "mdb-col/offset": {
+    "type": "string"
+  },
+  "MDBCol/offset": {
+    "type": "string"
+  },
+  "mdb-col/offsetSm": {
+    "type": "string"
+  },
+  "MDBCol/offsetSm": {
+    "type": "string"
+  },
+  "mdb-col/offsetMd": {
+    "type": "string"
+  },
+  "MDBCol/offsetMd": {
+    "type": "string"
+  },
+  "mdb-col/offsetLg": {
+    "type": "string"
+  },
+  "MDBCol/offsetLg": {
+    "type": "string"
+  },
+  "mdb-col/offsetXl": {
+    "type": "string"
+  },
+  "MDBCol/offsetXl": {
+    "type": "string"
+  },
+  "mdb-col/auto": {
+    "type": "boolean"
+  },
+  "MDBCol/auto": {
+    "type": "boolean"
+  },
+  "mdb-container/tag": {
+    "type": "string"
+  },
+  "MDBContainer/tag": {
+    "type": "string"
+  },
+  "mdb-container/sm": {
+    "type": "boolean"
+  },
+  "MDBContainer/sm": {
+    "type": "boolean"
+  },
+  "mdb-container/md": {
+    "type": "boolean"
+  },
+  "MDBContainer/md": {
+    "type": "boolean"
+  },
+  "mdb-container/lg": {
+    "type": "boolean"
+  },
+  "MDBContainer/lg": {
+    "type": "boolean"
+  },
+  "mdb-container/xl": {
+    "type": "boolean"
+  },
+  "MDBContainer/xl": {
+    "type": "boolean"
+  },
+  "mdb-container/xxl": {
+    "type": "boolean"
+  },
+  "MDBContainer/xxl": {
+    "type": "boolean"
+  },
+  "mdb-container/fluid": {
+    "type": "boolean"
+  },
+  "MDBContainer/fluid": {
+    "type": "boolean"
+  },
+  "mdb-row/tag": {
+    "type": "string"
+  },
+  "MDBRow/tag": {
+    "type": "string"
+  },
+  "mdb-row/start": {
+    "type": "boolean"
+  },
+  "MDBRow/start": {
+    "type": "boolean"
+  },
+  "mdb-row/end": {
+    "type": "boolean"
+  },
+  "MDBRow/end": {
+    "type": "boolean"
+  },
+  "mdb-row/center": {
+    "type": "boolean"
+  },
+  "MDBRow/center": {
+    "type": "boolean"
+  },
+  "mdb-row/between": {
+    "type": "boolean"
+  },
+  "MDBRow/between": {
+    "type": "boolean"
+  },
+  "mdb-row/around": {
+    "type": "boolean"
+  },
+  "MDBRow/around": {
+    "type": "boolean"
+  },
+  "mdb-row/cols": {
+    "type": "string|array"
+  },
+  "MDBRow/cols": {
+    "type": "string|array"
+  },
+  "mdb-breadcrumb/tag": {
+    "type": "string"
+  },
+  "MDBBreadcrumb/tag": {
+    "type": "string"
+  },
+  "mdb-breadcrumb-item/tag": {
+    "type": "string"
+  },
+  "MDBBreadcrumbItem/tag": {
+    "type": "string"
+  },
+  "mdb-breadcrumb-item/active": {
+    "type": "boolean"
+  },
+  "MDBBreadcrumbItem/active": {
+    "type": "boolean"
+  },
+  "mdb-breadcrumb-item/current": {
+    "type": "string"
+  },
+  "MDBBreadcrumbItem/current": {
+    "type": "string"
+  },
+  "mdb-footer/tag": {
+    "type": "string"
+  },
+  "MDBFooter/tag": {
+    "type": "string"
+  },
+  "mdb-footer/bg": {
+    "type": "string"
+  },
+  "MDBFooter/bg": {
+    "type": "string"
+  },
+  "mdb-footer/text": {
+    "type": "string|array"
+  },
+  "MDBFooter/text": {
+    "type": "string|array"
+  },
+  "mdb-navbar/tag": {
+    "type": "string"
+  },
+  "MDBNavbar/tag": {
+    "type": "string"
+  },
+  "mdb-navbar/bg": {
+    "type": "string"
+  },
+  "MDBNavbar/bg": {
+    "type": "string"
+  },
+  "mdb-navbar/dark": {
+    "type": "boolean"
+  },
+  "MDBNavbar/dark": {
+    "type": "boolean"
+  },
+  "mdb-navbar/light": {
+    "type": "boolean"
+  },
+  "MDBNavbar/light": {
+    "type": "boolean"
+  },
+  "mdb-navbar/double": {
+    "type": "boolean"
+  },
+  "MDBNavbar/double": {
+    "type": "boolean"
+  },
+  "mdb-navbar/expand": {
+    "type": "string"
+  },
+  "MDBNavbar/expand": {
+    "type": "string"
+  },
+  "mdb-navbar/position": {
+    "type": "string"
+  },
+  "MDBNavbar/position": {
+    "type": "string"
+  },
+  "mdb-navbar/transparent": {
+    "type": "boolean"
+  },
+  "MDBNavbar/transparent": {
+    "type": "boolean"
+  },
+  "mdb-navbar/scrolling": {
+    "type": "boolean"
+  },
+  "MDBNavbar/scrolling": {
+    "type": "boolean"
+  },
+  "mdb-navbar/scrollingOffset": {
+    "type": "number"
+  },
+  "MDBNavbar/scrollingOffset": {
+    "type": "number"
+  },
+  "mdb-navbar/center": {
+    "type": "boolean"
+  },
+  "MDBNavbar/center": {
+    "type": "boolean"
+  },
+  "mdb-navbar/container": {
+    "type": "boolean|string"
+  },
+  "MDBNavbar/container": {
+    "type": "boolean|string"
+  },
+  "mdb-navbar/classContainer": {
+    "type": "string"
+  },
+  "MDBNavbar/classContainer": {
+    "type": "string"
+  },
+  "mdb-navbar/classNavbar": {
+    "type": "string"
+  },
+  "MDBNavbar/classNavbar": {
+    "type": "string"
+  },
+  "mdb-navbar-brand/tag": {
+    "type": "string"
+  },
+  "MDBNavbarBrand/tag": {
+    "type": "string"
+  },
+  "mdb-navbar-item/tag": {
+    "type": "string"
+  },
+  "MDBNavbarItem/tag": {
+    "type": "string"
+  },
+  "mdb-navbar-item/active": {
+    "type": "boolean"
+  },
+  "MDBNavbarItem/active": {
+    "type": "boolean"
+  },
+  "mdb-navbar-item/disabled": {
+    "type": "boolean"
+  },
+  "MDBNavbarItem/disabled": {
+    "type": "boolean"
+  },
+  "mdb-navbar-item/exact": {
+    "type": "boolean"
+  },
+  "MDBNavbarItem/exact": {
+    "type": "boolean"
+  },
+  "mdb-navbar-item/newTab": {
+    "type": "boolean"
+  },
+  "MDBNavbarItem/newTab": {
+    "type": "boolean"
+  },
+  "mdb-navbar-item/to": {
+    "type": "object|string"
+  },
+  "MDBNavbarItem/to": {
+    "type": "object|string"
+  },
+  "mdb-navbar-item/href": {
+    "type": "string"
+  },
+  "MDBNavbarItem/href": {
+    "type": "string"
+  },
+  "mdb-navbar-item/linkClass": {
+    "type": "string"
+  },
+  "MDBNavbarItem/linkClass": {
+    "type": "string"
+  },
+  "mdb-navbar-nav/tag": {
+    "type": "string"
+  },
+  "MDBNavbarNav/tag": {
+    "type": "string"
+  },
+  "mdb-navbar-nav/right": {
+    "type": "boolean"
+  },
+  "MDBNavbarNav/right": {
+    "type": "boolean"
+  },
+  "mdb-navbar-nav/center": {
+    "type": "boolean"
+  },
+  "MDBNavbarNav/center": {
+    "type": "boolean"
+  },
+  "mdb-navbar-nav/vertical": {
+    "type": "boolean"
+  },
+  "MDBNavbarNav/vertical": {
+    "type": "boolean"
+  },
+  "mdb-navbar-nav/justifyAround": {
+    "type": "boolean"
+  },
+  "MDBNavbarNav/justifyAround": {
+    "type": "boolean"
+  },
+  "mdb-navbar-nav/class": {
+    "type": "string"
+  },
+  "MDBNavbarNav/class": {
+    "type": "string"
+  },
+  "mdb-navbar-nav/nav": {
+    "type": "boolean"
+  },
+  "MDBNavbarNav/nav": {
+    "type": "boolean"
+  },
+  "mdb-navbar-toggler/tag": {
+    "type": "string"
+  },
+  "MDBNavbarToggler/tag": {
+    "type": "string"
+  },
+  "mdb-navbar-toggler/target": {
+    "type": "string"
+  },
+  "MDBNavbarToggler/target": {
+    "type": "string"
+  },
+  "mdb-navbar-toggler/togglerClass": {
+    "type": "string"
+  },
+  "MDBNavbarToggler/togglerClass": {
+    "type": "string"
+  },
+  "mdb-navbar-toggler/togglerIcon": {
+    "type": "string"
+  },
+  "MDBNavbarToggler/togglerIcon": {
+    "type": "string"
+  },
+  "mdb-navbar-toggler/togglerSize": {
+    "type": "string"
+  },
+  "MDBNavbarToggler/togglerSize": {
+    "type": "string"
+  },
+  "mdb-navbar-toggler/iconStyle": {
+    "type": "string"
+  },
+  "MDBNavbarToggler/iconStyle": {
+    "type": "string"
+  },
+  "mdb-page-item/tag": {
+    "type": "string"
+  },
+  "MDBPageItem/tag": {
+    "type": "string"
+  },
+  "mdb-page-item/active": {
+    "type": "boolean"
+  },
+  "MDBPageItem/active": {
+    "type": "boolean"
+  },
+  "mdb-page-item/disabled": {
+    "type": "boolean"
+  },
+  "MDBPageItem/disabled": {
+    "type": "boolean"
+  },
+  "mdb-page-item/href": {
+    "type": "string"
+  },
+  "MDBPageItem/href": {
+    "type": "string"
+  },
+  "mdb-page-item/icon": {
+    "type": "boolean"
+  },
+  "MDBPageItem/icon": {
+    "type": "boolean"
+  },
+  "mdb-page-item/label": {
+    "type": "string"
+  },
+  "MDBPageItem/label": {
+    "type": "string"
+  },
+  "mdb-page-nav/tag": {
+    "type": "string"
+  },
+  "MDBPageNav/tag": {
+    "type": "string"
+  },
+  "mdb-page-nav/disabled": {
+    "type": "boolean"
+  },
+  "MDBPageNav/disabled": {
+    "type": "boolean"
+  },
+  "mdb-page-nav/href": {
+    "type": "string"
+  },
+  "MDBPageNav/href": {
+    "type": "string"
+  },
+  "mdb-page-nav/prev": {
+    "type": "boolean"
+  },
+  "MDBPageNav/prev": {
+    "type": "boolean"
+  },
+  "mdb-page-nav/next": {
+    "type": "boolean"
+  },
+  "MDBPageNav/next": {
+    "type": "boolean"
+  },
+  "mdb-page-nav/icon": {
+    "type": "boolean"
+  },
+  "MDBPageNav/icon": {
+    "type": "boolean"
+  },
+  "mdb-pagination/tag": {
+    "type": "string"
+  },
+  "MDBPagination/tag": {
+    "type": "string"
+  },
+  "mdb-pagination/circle": {
+    "type": "boolean"
+  },
+  "MDBPagination/circle": {
+    "type": "boolean"
+  },
+  "mdb-pagination/lg": {
+    "type": "boolean"
+  },
+  "MDBPagination/lg": {
+    "type": "boolean"
+  },
+  "mdb-pagination/sm": {
+    "type": "boolean"
+  },
+  "MDBPagination/sm": {
+    "type": "boolean"
+  },
+  "mdb-tab-content/tag": {
+    "type": "string"
+  },
+  "MDBTabContent/tag": {
+    "type": "string"
+  },
+  "mdb-tab-content/col": {
+    "type": "string"
+  },
+  "MDBTabContent/col": {
+    "type": "string"
+  },
+  "mdb-tab-content/contentClasses": {
+    "type": "string"
+  },
+  "MDBTabContent/contentClasses": {
+    "type": "string"
+  },
+  "mdb-tab-item/tag": {
+    "type": "string"
+  },
+  "MDBTabItem/tag": {
+    "type": "string"
+  },
+  "mdb-tab-item/tabId": {
+    "type": "string"
+  },
+  "MDBTabItem/tabId": {
+    "type": "string"
+  },
+  "mdb-tab-item/href": {
+    "type": "string"
+  },
+  "MDBTabItem/href": {
+    "type": "string"
+  },
+  "mdb-tab-nav/tag": {
+    "type": "string"
+  },
+  "MDBTabNav/tag": {
+    "type": "string"
+  },
+  "mdb-tab-nav/pills": {
+    "type": "boolean"
+  },
+  "MDBTabNav/pills": {
+    "type": "boolean"
+  },
+  "mdb-tab-nav/justify": {
+    "type": "boolean"
+  },
+  "MDBTabNav/justify": {
+    "type": "boolean"
+  },
+  "mdb-tab-nav/fill": {
+    "type": "boolean"
+  },
+  "MDBTabNav/fill": {
+    "type": "boolean"
+  },
+  "mdb-tab-nav/col": {
+    "type": "string"
+  },
+  "MDBTabNav/col": {
+    "type": "string"
+  },
+  "mdb-tab-nav/tabsClasses": {
+    "type": "string"
+  },
+  "MDBTabNav/tabsClasses": {
+    "type": "string"
+  },
+  "mdb-tab-pane/tag": {
+    "type": "string"
+  },
+  "MDBTabPane/tag": {
+    "type": "string"
+  },
+  "mdb-tab-pane/tabId": {
+    "type": "string"
+  },
+  "MDBTabPane/tabId": {
+    "type": "string"
+  },
+  "mdb-tabs/tag": {
+    "type": "string"
+  },
+  "MDBTabs/tag": {
+    "type": "string"
+  },
+  "mdb-tabs/modelValue": {
+    "type": "string"
+  },
+  "MDBTabs/modelValue": {
+    "type": "string"
+  },
+  "mdb-tabs/vertical": {
+    "type": "boolean|string"
+  },
+  "MDBTabs/vertical": {
+    "type": "boolean|string"
+  }
+}

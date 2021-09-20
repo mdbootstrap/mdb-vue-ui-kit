@@ -1,5 +1,5 @@
 <template>
-  <component :is="tag" :class="className" role="status" v-bind="attrs">
+  <component :is="tag" :class="className" role="status">
     <span class="visually-hidden">Loading...</span>
     <slot></slot>
   </component>
@@ -22,7 +22,7 @@ export default {
     color: String,
     size: String,
   },
-  setup(props, { attrs }) {
+  setup(props) {
     const className = computed(() => {
       return [
         props.grow ? "spinner-grow" : "spinner-border",
@@ -40,7 +40,6 @@ export default {
     return {
       className,
       props,
-      attrs,
     };
   },
 };

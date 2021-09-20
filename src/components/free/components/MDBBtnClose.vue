@@ -1,5 +1,5 @@
 <template>
-  <button :class="className" aria-label="Close" v-bind="attrs"></button>
+  <button :class="className" aria-label="Close"></button>
 </template>
 
 <script>
@@ -13,14 +13,13 @@ export default {
       default: false,
     },
   },
-  setup(props, { attrs }) {
+  setup(props) {
     const className = computed(() => {
       return ["btn-close", props.white && `btn-close-white`];
     });
 
     return {
       className,
-      attrs,
     };
   },
 };

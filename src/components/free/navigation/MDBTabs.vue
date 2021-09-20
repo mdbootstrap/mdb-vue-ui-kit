@@ -1,5 +1,5 @@
 <template>
-  <component v-if="isVertical" class="row" :is="tag" v-bind="attrs">
+  <component v-if="isVertical" class="row" :is="tag" v-bind="$attrs">
     <slot />
   </component>
   <slot v-else />
@@ -27,7 +27,7 @@ export default {
     },
   },
   emits: ["update:modelValue", "hide", "hidden", "show", "shown"],
-  setup(props, { emit, attrs }) {
+  setup(props, { emit }) {
     const prevTab = ref(null);
     const activeTab = ref(null);
     const activeTabId = ref(props.modelValue);
@@ -111,7 +111,6 @@ export default {
     return {
       isVertical,
       props,
-      attrs,
     };
   },
 };

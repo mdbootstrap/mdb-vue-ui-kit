@@ -5,6 +5,7 @@
     style="display: inline-block"
     v-mdb-click-outside="handleClickOutside"
     :tabindex="dismissible ? 0 : null"
+    v-bind="$attrs"
   >
     <slot name="reference" />
   </component>
@@ -90,7 +91,7 @@ export default {
   directives: {
     mdbClickOutside,
   },
-  setup(props, { attrs, emit }) {
+  setup(props, { emit }) {
     const {
       setPopper,
       isPopperActive,
@@ -235,7 +236,6 @@ export default {
       widthStyle,
       marginStyle,
       handleClickOutside,
-      attrs,
       props,
     };
   },

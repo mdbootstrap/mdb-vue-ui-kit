@@ -1,7 +1,5 @@
 <template>
-  <component :is="tag" :class="className" v-bind="attrs"
-    ><slot></slot
-  ></component>
+  <component :is="tag" :class="className"><slot></slot></component>
 </template>
 
 <script>
@@ -22,7 +20,7 @@ export default {
       type: [String, Array],
     },
   },
-  setup(props, { attrs }) {
+  setup(props) {
     const className = computed(() => {
       return [
         props.bg && `bg-${props.bg}`,
@@ -40,7 +38,6 @@ export default {
     return {
       className,
       props,
-      attrs,
     };
   },
 };

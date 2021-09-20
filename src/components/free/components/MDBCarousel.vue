@@ -2,7 +2,6 @@
   <component
     :is="tag"
     :class="className"
-    v-bind="$attrs"
     @mouseenter="handleMouseenter"
     @mouseleave="handleMouseleave"
     @keydown.right="handleRight"

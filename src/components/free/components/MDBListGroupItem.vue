@@ -5,7 +5,6 @@
     :aria-current="active ? true : null"
     :aria-disabled="disabled ? true : null"
     :disabled="disabled ? true : null"
-    v-bind="attrs"
     ><slot></slot
   ></component>
 </template>
@@ -34,7 +33,7 @@ export default {
     },
     color: String,
   },
-  setup(props, { attrs }) {
+  setup(props) {
     const className = computed(() => {
       return [
         "list-group-item",
@@ -48,7 +47,6 @@ export default {
     return {
       className,
       props,
-      attrs,
     };
   },
 };

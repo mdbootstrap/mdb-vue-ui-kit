@@ -7,7 +7,6 @@
     :aria-expanded="isExpanded"
     aria-label="Toggle navigation"
     @click="handleClick"
-    v-bind="attrs"
   >
     <MDBIcon :icon="togglerIcon" :size="togglerSize" :iconStyle="iconStyle" />
   </component>
@@ -19,7 +18,6 @@ import { MDBIcon } from "@/index.free.js";
 
 export default {
   name: "MDBNavbarToggler",
-  inheritAttrs: false,
   components: {
     MDBIcon,
   },
@@ -48,7 +46,7 @@ export default {
       default: "fas",
     },
   },
-  setup(props, { attrs }) {
+  setup(props) {
     const navTogglerClass = computed(() => {
       return ["navbar-toggler", props.togglerClass];
     });
@@ -64,7 +62,6 @@ export default {
       handleClick,
       isExpanded,
       props,
-      attrs,
     };
   },
 };

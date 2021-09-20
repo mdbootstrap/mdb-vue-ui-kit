@@ -3,7 +3,7 @@
   <input
     type="file"
     :class="inputClassName"
-    v-bind="attrs"
+    v-bind="$attrs"
     :id="uid"
     @change="handleChange"
   />
@@ -40,7 +40,7 @@ export default {
     validateOnChange: Boolean,
   },
   emits: ["update:modelValue"],
-  setup(props, { attrs, emit }) {
+  setup(props, { emit }) {
     const uid = props.id || getUID("MDBFile-");
     const inputValue = ref(props.modelValue);
 
@@ -99,7 +99,6 @@ export default {
     );
 
     return {
-      attrs,
       uid,
       inputClassName,
       labelClassName,

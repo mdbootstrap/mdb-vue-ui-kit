@@ -1,5 +1,5 @@
 <template>
-  <component :is="props.tag" :class="className" v-bind="attrs">
+  <component :is="props.tag" :class="className">
     <router-link
       v-if="to"
       :class="linkClassName"
@@ -49,7 +49,7 @@ export default {
       type: String,
     },
   },
-  setup(props, { attrs }) {
+  setup(props) {
     const className = computed(() => {
       return ["nav-item", !props.to && !props.href && props.active && "active"];
     });
@@ -72,7 +72,6 @@ export default {
 
     return {
       props,
-      attrs,
       className,
       linkClassName,
       tab,

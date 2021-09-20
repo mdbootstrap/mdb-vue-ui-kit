@@ -6,6 +6,7 @@
       :aria-controls="controls"
       :id="uid"
       :href="href"
+      v-bind="$attrs"
       @click.prevent="handleClick(tabId)"
       ref="item"
     >
@@ -19,6 +20,7 @@
     role="tab"
     :aria-controls="controls"
     :id="uid"
+    v-bind="$attrs"
     @click.prevent="handleClick(tabId)"
     ref="item"
   >
@@ -31,6 +33,7 @@ import { computed, inject, onMounted, ref, watchEffect } from "vue";
 
 export default {
   name: "MDBTabItem",
+  inheritAttrs: false,
   props: {
     tag: {
       type: String,
@@ -42,7 +45,7 @@ export default {
     },
     href: String,
   },
-  setup(props, { attrs }) {
+  setup(props) {
     const item = ref("item");
 
     const className = computed(() => {
@@ -89,7 +92,6 @@ export default {
       className,
       handleClick,
       props,
-      attrs,
     };
   },
 };

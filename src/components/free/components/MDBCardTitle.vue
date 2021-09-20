@@ -1,7 +1,5 @@
 <template>
-  <component :is="tagName" :class="className" v-bind="attrs"
-    ><slot></slot
-  ></component>
+  <component :is="tagName" :class="className"><slot></slot></component>
 </template>
 
 <script>
@@ -19,7 +17,7 @@ export default {
       default: false,
     },
   },
-  setup(props, { attrs }) {
+  setup(props) {
     const tagName = computed(() => {
       if (!props.subtitle) {
         return props.tag;
@@ -35,7 +33,6 @@ export default {
       className,
       tagName,
       props,
-      attrs,
     };
   },
 };

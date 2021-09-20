@@ -1,5 +1,5 @@
 <template>
-  <component :is="tag" v-bind="$attrs" :class="className" ref="accordionRef">
+  <component :is="tag" :class="className" ref="accordionRef">
     <slot />
   </component>
 </template>

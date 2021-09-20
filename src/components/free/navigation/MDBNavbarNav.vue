@@ -1,5 +1,5 @@
 <template>
-  <component :is="tag" :class="className" v-bind="attrs">
+  <component :is="tag" :class="className">
     <slot></slot>
   </component>
 </template>
@@ -9,7 +9,6 @@ import { computed } from "vue";
 import MDBCollapse from "../components/MDBCollapse";
 
 export default {
-  inheritAttrs: true,
   name: "MDBNavbarNav",
   components: { MDBCollapse },
   props: {
@@ -41,7 +40,7 @@ export default {
       default: false,
     },
   },
-  setup(props, { attrs }) {
+  setup(props) {
     const className = computed(() => {
       return [
         props.nav ? "nav" : "navbar-nav",
@@ -61,7 +60,6 @@ export default {
     return {
       props,
       className,
-      attrs,
     };
   },
 };

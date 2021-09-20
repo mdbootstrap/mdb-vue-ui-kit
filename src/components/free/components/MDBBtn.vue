@@ -4,7 +4,6 @@
     :type="type"
     :role="role"
     :class="className"
-    v-bind="attrs"
     @click="handleClick"
     v-mdb-ripple="ripple"
   >
@@ -52,9 +51,8 @@ export default {
     picker: Boolean,
   },
   directives: { mdbRipple },
-  inheritAttrs: false,
   emits: ["update:toggle"],
-  setup(props, { attrs, emit }) {
+  setup(props, { emit }) {
     const toggle = ref(props.toggle);
 
     const className = computed(() => {
@@ -79,7 +77,6 @@ export default {
 
     return {
       className,
-      attrs,
       props,
       handleClick,
     };

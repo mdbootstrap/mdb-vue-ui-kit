@@ -1,11 +1,5 @@
 <template>
-  <component
-    :class="navClass"
-    :is="tag"
-    role="navigation"
-    v-bind="attrs"
-    ref="navbar"
-  >
+  <component :class="navClass" :is="tag" role="navigation" ref="navbar">
     <div v-if="container" :class="containerClass">
       <slot></slot>
     </div>
@@ -69,7 +63,7 @@ export default {
     },
     classNavbar: String,
   },
-  setup(props, { attrs }) {
+  setup(props) {
     const navClass = computed(() => {
       return [
         "navbar",
@@ -161,7 +155,6 @@ export default {
       navClass,
       containerClass,
       props,
-      attrs,
     };
   },
 };

@@ -1,0 +1,1402 @@
+{
+  "mdb-accordion": {
+    "attributes": [
+      "tag",
+      "modelValue",
+      "stayOpen",
+      "flush",
+      "classes"
+    ],
+    "description": ""
+  },
+  "MDBAccordion": {
+    "attributes": [
+      "tag",
+      "modelValue",
+      "stayOpen",
+      "flush",
+      "classes"
+    ],
+    "description": ""
+  },
+  "mdb-accordion-item": {
+    "attributes": [
+      "tag",
+      "collapseId",
+      "headerTitle",
+      "headerClasses",
+      "bodyClasses",
+      "itemClasses"
+    ],
+    "description": ""
+  },
+  "MDBAccordionItem": {
+    "attributes": [
+      "tag",
+      "collapseId",
+      "headerTitle",
+      "headerClasses",
+      "bodyClasses",
+      "itemClasses"
+    ],
+    "description": ""
+  },
+  "mdb-badge": {
+    "attributes": [
+      "color",
+      "pill",
+      "dot",
+      "notification",
+      "tag"
+    ],
+    "description": ""
+  },
+  "MDBBadge": {
+    "attributes": [
+      "color",
+      "pill",
+      "dot",
+      "notification",
+      "tag"
+    ],
+    "description": ""
+  },
+  "mdb-btn": {
+    "attributes": [
+      "color",
+      "size",
+      "outline",
+      "rounded",
+      "floating",
+      "toggler",
+      "toggle",
+      "role",
+      "type",
+      "tag",
+      "block",
+      "ripple",
+      "picker"
+    ],
+    "description": ""
+  },
+  "MDBBtn": {
+    "attributes": [
+      "color",
+      "size",
+      "outline",
+      "rounded",
+      "floating",
+      "toggler",
+      "toggle",
+      "role",
+      "type",
+      "tag",
+      "block",
+      "ripple",
+      "picker"
+    ],
+    "description": ""
+  },
+  "mdb-btn-close": {
+    "attributes": [
+      "white"
+    ],
+    "description": ""
+  },
+  "MDBBtnClose": {
+    "attributes": [
+      "white"
+    ],
+    "description": ""
+  },
+  "mdb-btn-group": {
+    "attributes": [
+      "size",
+      "vertical",
+      "role",
+      "tag"
+    ],
+    "description": ""
+  },
+  "MDBBtnGroup": {
+    "attributes": [
+      "size",
+      "vertical",
+      "role",
+      "tag"
+    ],
+    "description": ""
+  },
+  "mdb-card": {
+    "attributes": [
+      "tag",
+      "border",
+      "bg",
+      "text",
+      "shadow"
+    ],
+    "description": ""
+  },
+  "MDBCard": {
+    "attributes": [
+      "tag",
+      "border",
+      "bg",
+      "text",
+      "shadow"
+    ],
+    "description": ""
+  },
+  "mdb-card-body": {
+    "attributes": [
+      "tag",
+      "text"
+    ],
+    "description": ""
+  },
+  "MDBCardBody": {
+    "attributes": [
+      "tag",
+      "text"
+    ],
+    "description": ""
+  },
+  "mdb-card-footer": {
+    "attributes": [
+      "tag",
+      "bg",
+      "border"
+    ],
+    "description": ""
+  },
+  "MDBCardFooter": {
+    "attributes": [
+      "tag",
+      "bg",
+      "border"
+    ],
+    "description": ""
+  },
+  "mdb-card-group": {
+    "attributes": [
+      "tag"
+    ],
+    "description": ""
+  },
+  "MDBCardGroup": {
+    "attributes": [
+      "tag"
+    ],
+    "description": ""
+  },
+  "mdb-card-header": {
+    "attributes": [
+      "tag",
+      "bg",
+      "border"
+    ],
+    "description": ""
+  },
+  "MDBCardHeader": {
+    "attributes": [
+      "tag",
+      "bg",
+      "border"
+    ],
+    "description": ""
+  },
+  "mdb-card-img": {
+    "attributes": [
+      "tag",
+      "src",
+      "alt",
+      "top",
+      "bottom",
+      "fluid",
+      "overlay"
+    ],
+    "description": ""
+  },
+  "MDBCardImg": {
+    "attributes": [
+      "tag",
+      "src",
+      "alt",
+      "top",
+      "bottom",
+      "fluid",
+      "overlay"
+    ],
+    "description": ""
+  },
+  "mdb-card-link": {
+    "attributes": [
+      "tag"
+    ],
+    "description": ""
+  },
+  "MDBCardLink": {
+    "attributes": [
+      "tag"
+    ],
+    "description": ""
+  },
+  "mdb-card-text": {
+    "attributes": [
+      "tag"
+    ],
+    "description": ""
+  },
+  "MDBCardText": {
+    "attributes": [
+      "tag"
+    ],
+    "description": ""
+  },
+  "mdb-card-title": {
+    "attributes": [
+      "tag",
+      "subtitle"
+    ],
+    "description": ""
+  },
+  "MDBCardTitle": {
+    "attributes": [
+      "tag",
+      "subtitle"
+    ],
+    "description": ""
+  },
+  "mdb-carousel": {
+    "attributes": [
+      "captionsClass",
+      "controls",
+      "dark",
+      "fade",
+      "indicators",
+      "interval",
+      "items",
+      "itemsClass",
+      "keyboard",
+      "modelValue",
+      "pause",
+      "tag",
+      "touch"
+    ],
+    "description": ""
+  },
+  "MDBCarousel": {
+    "attributes": [
+      "captionsClass",
+      "controls",
+      "dark",
+      "fade",
+      "indicators",
+      "interval",
+      "items",
+      "itemsClass",
+      "keyboard",
+      "modelValue",
+      "pause",
+      "tag",
+      "touch"
+    ],
+    "description": ""
+  },
+  "mdb-collapse": {
+    "attributes": [
+      "tag",
+      "modelValue",
+      "id",
+      "collapseClass",
+      "duration",
+      "sidenav"
+    ],
+    "description": ""
+  },
+  "MDBCollapse": {
+    "attributes": [
+      "tag",
+      "modelValue",
+      "id",
+      "collapseClass",
+      "duration",
+      "sidenav"
+    ],
+    "description": ""
+  },
+  "mdb-dropdown": {
+    "attributes": [
+      "tag",
+      "btnGroup",
+      "dropup",
+      "dropend",
+      "dropstart",
+      "align",
+      "updatePosition",
+      "offset",
+      "target",
+      "modelValue"
+    ],
+    "description": ""
+  },
+  "MDBDropdown": {
+    "attributes": [
+      "tag",
+      "btnGroup",
+      "dropup",
+      "dropend",
+      "dropstart",
+      "align",
+      "updatePosition",
+      "offset",
+      "target",
+      "modelValue"
+    ],
+    "description": ""
+  },
+  "mdb-dropdown-item": {
+    "attributes": [
+      "tag",
+      "to",
+      "href",
+      "disabled",
+      "active",
+      "exact",
+      "newTab",
+      "submenu",
+      "submenuIcon",
+      "divider",
+      "text",
+      "header"
+    ],
+    "description": ""
+  },
+  "MDBDropdownItem": {
+    "attributes": [
+      "tag",
+      "to",
+      "href",
+      "disabled",
+      "active",
+      "exact",
+      "newTab",
+      "submenu",
+      "submenuIcon",
+      "divider",
+      "text",
+      "header"
+    ],
+    "description": ""
+  },
+  "mdb-dropdown-menu": {
+    "attributes": [
+      "tag",
+      "fadeIn",
+      "fadeOut",
+      "animation",
+      "dark",
+      "static"
+    ],
+    "description": ""
+  },
+  "MDBDropdownMenu": {
+    "attributes": [
+      "tag",
+      "fadeIn",
+      "fadeOut",
+      "animation",
+      "dark",
+      "static"
+    ],
+    "description": ""
+  },
+  "mdb-dropdown-toggle": {
+    "attributes": [
+      "tag",
+      "href",
+      "split"
+    ],
+    "description": ""
+  },
+  "MDBDropdownToggle": {
+    "attributes": [
+      "tag",
+      "href",
+      "split"
+    ],
+    "description": ""
+  },
+  "mdb-list-group": {
+    "attributes": [
+      "tag",
+      "horizontal",
+      "flush"
+    ],
+    "description": ""
+  },
+  "MDBListGroup": {
+    "attributes": [
+      "tag",
+      "horizontal",
+      "flush"
+    ],
+    "description": ""
+  },
+  "mdb-list-group-item": {
+    "attributes": [
+      "tag",
+      "active",
+      "disabled",
+      "action",
+      "color"
+    ],
+    "description": ""
+  },
+  "MDBListGroupItem": {
+    "attributes": [
+      "tag",
+      "active",
+      "disabled",
+      "action",
+      "color"
+    ],
+    "description": ""
+  },
+  "mdb-modal": {
+    "attributes": [
+      "tag",
+      "modelValue",
+      "size",
+      "removeBackdrop",
+      "staticBackdrop",
+      "centered",
+      "bgSrc",
+      "scrollable",
+      "duration",
+      "labelledby",
+      "fullscreen",
+      "animation",
+      "dialogClasses",
+      "transform"
+    ],
+    "description": ""
+  },
+  "MDBModal": {
+    "attributes": [
+      "tag",
+      "modelValue",
+      "size",
+      "removeBackdrop",
+      "staticBackdrop",
+      "centered",
+      "bgSrc",
+      "scrollable",
+      "duration",
+      "labelledby",
+      "fullscreen",
+      "animation",
+      "dialogClasses",
+      "transform"
+    ],
+    "description": ""
+  },
+  "mdb-modal-body": {
+    "attributes": [
+      "tag"
+    ],
+    "description": ""
+  },
+  "MDBModalBody": {
+    "attributes": [
+      "tag"
+    ],
+    "description": ""
+  },
+  "mdb-modal-footer": {
+    "attributes": [
+      "tag"
+    ],
+    "description": ""
+  },
+  "MDBModalFooter": {
+    "attributes": [
+      "tag"
+    ],
+    "description": ""
+  },
+  "mdb-modal-header": {
+    "attributes": [
+      "tag",
+      "close",
+      "closeWhite",
+      "color"
+    ],
+    "description": ""
+  },
+  "MDBModalHeader": {
+    "attributes": [
+      "tag",
+      "close",
+      "closeWhite",
+      "color"
+    ],
+    "description": ""
+  },
+  "mdb-modal-title": {
+    "attributes": [
+      "tag",
+      "bold"
+    ],
+    "description": ""
+  },
+  "MDBModalTitle": {
+    "attributes": [
+      "tag",
+      "bold"
+    ],
+    "description": ""
+  },
+  "mdb-popover": {
+    "attributes": [
+      "tag",
+      "modelValue",
+      "reference",
+      "popover",
+      "options",
+      "offset",
+      "direction",
+      "maxWidth",
+      "arrow",
+      "dismissible",
+      "hover",
+      "updatePosition"
+    ],
+    "description": ""
+  },
+  "MDBPopover": {
+    "attributes": [
+      "tag",
+      "modelValue",
+      "reference",
+      "popover",
+      "options",
+      "offset",
+      "direction",
+      "maxWidth",
+      "arrow",
+      "dismissible",
+      "hover",
+      "updatePosition"
+    ],
+    "description": ""
+  },
+  "mdb-progress": {
+    "attributes": [
+      "tag",
+      "height"
+    ],
+    "description": ""
+  },
+  "MDBProgress": {
+    "attributes": [
+      "tag",
+      "height"
+    ],
+    "description": ""
+  },
+  "mdb-progress-bar": {
+    "attributes": [
+      "tag",
+      "bg",
+      "striped",
+      "animated",
+      "value",
+      "min",
+      "max"
+    ],
+    "description": ""
+  },
+  "MDBProgressBar": {
+    "attributes": [
+      "tag",
+      "bg",
+      "striped",
+      "animated",
+      "value",
+      "min",
+      "max"
+    ],
+    "description": ""
+  },
+  "mdb-spinner": {
+    "attributes": [
+      "tag",
+      "grow",
+      "color",
+      "size"
+    ],
+    "description": ""
+  },
+  "MDBSpinner": {
+    "attributes": [
+      "tag",
+      "grow",
+      "color",
+      "size"
+    ],
+    "description": ""
+  },
+  "mdb-tooltip": {
+    "attributes": [
+      "tag",
+      "modelValue",
+      "reference",
+      "popover",
+      "options",
+      "offset",
+      "direction",
+      "maxWidth",
+      "arrow",
+      "disabled"
+    ],
+    "description": ""
+  },
+  "MDBTooltip": {
+    "attributes": [
+      "tag",
+      "modelValue",
+      "reference",
+      "popover",
+      "options",
+      "offset",
+      "direction",
+      "maxWidth",
+      "arrow",
+      "disabled"
+    ],
+    "description": ""
+  },
+  "mdb-icon": {
+    "attributes": [
+      "iconStyle",
+      "icon",
+      "flag",
+      "size"
+    ],
+    "description": ""
+  },
+  "MDBIcon": {
+    "attributes": [
+      "iconStyle",
+      "icon",
+      "flag",
+      "size"
+    ],
+    "description": ""
+  },
+  "mdb-table": {
+    "attributes": [
+      "tag",
+      "variant",
+      "dark",
+      "light",
+      "border",
+      "borderless",
+      "striped",
+      "hover",
+      "responsive",
+      "align",
+      "sm",
+      "tableStyle",
+      "captionTop"
+    ],
+    "description": ""
+  },
+  "MDBTable": {
+    "attributes": [
+      "tag",
+      "variant",
+      "dark",
+      "light",
+      "border",
+      "borderless",
+      "striped",
+      "hover",
+      "responsive",
+      "align",
+      "sm",
+      "tableStyle",
+      "captionTop"
+    ],
+    "description": ""
+  },
+  "mdb-checkbox": {
+    "attributes": [
+      "id",
+      "label",
+      "modelValue",
+      "inline",
+      "wrapperClass",
+      "labelClass",
+      "inputClass",
+      "btnCheck",
+      "required",
+      "validateOnChange",
+      "isValidated",
+      "isValid",
+      "validFeedback",
+      "invalidFeedback",
+      "tooltipFeedback",
+      "wrap",
+      "formCheck",
+      "tag"
+    ],
+    "description": ""
+  },
+  "MDBCheckbox": {
+    "attributes": [
+      "id",
+      "label",
+      "modelValue",
+      "inline",
+      "wrapperClass",
+      "labelClass",
+      "inputClass",
+      "btnCheck",
+      "required",
+      "validateOnChange",
+      "isValidated",
+      "isValid",
+      "validFeedback",
+      "invalidFeedback",
+      "tooltipFeedback",
+      "wrap",
+      "formCheck",
+      "tag"
+    ],
+    "description": ""
+  },
+  "mdb-file": {
+    "attributes": [
+      "id",
+      "inputClass",
+      "invalidFeedback",
+      "isInvalid",
+      "isValid",
+      "isValidated",
+      "label",
+      "labelClass",
+      "modelValue",
+      "size",
+      "tooltipFeedback",
+      "validFeedback",
+      "validateOnChange"
+    ],
+    "description": ""
+  },
+  "MDBFile": {
+    "attributes": [
+      "id",
+      "inputClass",
+      "invalidFeedback",
+      "isInvalid",
+      "isValid",
+      "isValidated",
+      "label",
+      "labelClass",
+      "modelValue",
+      "size",
+      "tooltipFeedback",
+      "validFeedback",
+      "validateOnChange"
+    ],
+    "description": ""
+  },
+  "mdb-input": {
+    "attributes": [
+      "id",
+      "label",
+      "labelClass",
+      "modelValue",
+      "size",
+      "formOutline",
+      "wrapperClass",
+      "inputGroup",
+      "wrap",
+      "formText",
+      "white",
+      "validationEvent",
+      "isValidated",
+      "isValid",
+      "validFeedback",
+      "invalidFeedback",
+      "tooltipFeedback",
+      "tag"
+    ],
+    "description": ""
+  },
+  "MDBInput": {
+    "attributes": [
+      "id",
+      "label",
+      "labelClass",
+      "modelValue",
+      "size",
+      "formOutline",
+      "wrapperClass",
+      "inputGroup",
+      "wrap",
+      "formText",
+      "white",
+      "validationEvent",
+      "isValidated",
+      "isValid",
+      "validFeedback",
+      "invalidFeedback",
+      "tooltipFeedback",
+      "tag"
+    ],
+    "description": ""
+  },
+  "mdb-radio": {
+    "attributes": [
+      "id",
+      "label",
+      "inline",
+      "modelValue",
+      "wrapperClass",
+      "labelClass",
+      "btnCheck",
+      "required",
+      "validateOnChange",
+      "isValidated",
+      "isValid",
+      "validFeedback",
+      "invalidFeedback",
+      "tooltipFeedback",
+      "wrap",
+      "formCheck",
+      "tag"
+    ],
+    "description": ""
+  },
+  "MDBRadio": {
+    "attributes": [
+      "id",
+      "label",
+      "inline",
+      "modelValue",
+      "wrapperClass",
+      "labelClass",
+      "btnCheck",
+      "required",
+      "validateOnChange",
+      "isValidated",
+      "isValid",
+      "validFeedback",
+      "invalidFeedback",
+      "tooltipFeedback",
+      "wrap",
+      "formCheck",
+      "tag"
+    ],
+    "description": ""
+  },
+  "mdb-range": {
+    "attributes": [
+      "id",
+      "inputClass",
+      "label",
+      "labelClass",
+      "max",
+      "min",
+      "modelValue",
+      "tag",
+      "thumb",
+      "thumbClass",
+      "wrapperClass"
+    ],
+    "description": ""
+  },
+  "MDBRange": {
+    "attributes": [
+      "id",
+      "inputClass",
+      "label",
+      "labelClass",
+      "max",
+      "min",
+      "modelValue",
+      "tag",
+      "thumb",
+      "thumbClass",
+      "wrapperClass"
+    ],
+    "description": ""
+  },
+  "mdb-switch": {
+    "attributes": [
+      "id",
+      "inputClass",
+      "label",
+      "labelClass",
+      "modelValue",
+      "tag",
+      "wrapperClass"
+    ],
+    "description": ""
+  },
+  "MDBSwitch": {
+    "attributes": [
+      "id",
+      "inputClass",
+      "label",
+      "labelClass",
+      "modelValue",
+      "tag",
+      "wrapperClass"
+    ],
+    "description": ""
+  },
+  "mdb-textarea": {
+    "attributes": [
+      "id",
+      "rows",
+      "label",
+      "modelValue",
+      "size",
+      "formOutline",
+      "wrapperClass",
+      "inputGroup",
+      "wrap",
+      "formText",
+      "white",
+      "validationEvent",
+      "isValidated",
+      "isValid",
+      "validFeedback",
+      "invalidFeedback",
+      "tooltipFeedback",
+      "tag"
+    ],
+    "description": ""
+  },
+  "MDBTextarea": {
+    "attributes": [
+      "id",
+      "rows",
+      "label",
+      "modelValue",
+      "size",
+      "formOutline",
+      "wrapperClass",
+      "inputGroup",
+      "wrap",
+      "formText",
+      "white",
+      "validationEvent",
+      "isValidated",
+      "isValid",
+      "validFeedback",
+      "invalidFeedback",
+      "tooltipFeedback",
+      "tag"
+    ],
+    "description": ""
+  },
+  "mdb-col": {
+    "attributes": [
+      "tag",
+      "col",
+      "sm",
+      "md",
+      "lg",
+      "xl",
+      "offset",
+      "offsetSm",
+      "offsetMd",
+      "offsetLg",
+      "offsetXl",
+      "auto"
+    ],
+    "description": ""
+  },
+  "MDBCol": {
+    "attributes": [
+      "tag",
+      "col",
+      "sm",
+      "md",
+      "lg",
+      "xl",
+      "offset",
+      "offsetSm",
+      "offsetMd",
+      "offsetLg",
+      "offsetXl",
+      "auto"
+    ],
+    "description": ""
+  },
+  "mdb-container": {
+    "attributes": [
+      "tag",
+      "sm",
+      "md",
+      "lg",
+      "xl",
+      "xxl",
+      "fluid"
+    ],
+    "description": ""
+  },
+  "MDBContainer": {
+    "attributes": [
+      "tag",
+      "sm",
+      "md",
+      "lg",
+      "xl",
+      "xxl",
+      "fluid"
+    ],
+    "description": ""
+  },
+  "mdb-row": {
+    "attributes": [
+      "tag",
+      "start",
+      "end",
+      "center",
+      "between",
+      "around",
+      "cols"
+    ],
+    "description": ""
+  },
+  "MDBRow": {
+    "attributes": [
+      "tag",
+      "start",
+      "end",
+      "center",
+      "between",
+      "around",
+      "cols"
+    ],
+    "description": ""
+  },
+  "mdb-breadcrumb": {
+    "attributes": [
+      "tag"
+    ],
+    "description": ""
+  },
+  "MDBBreadcrumb": {
+    "attributes": [
+      "tag"
+    ],
+    "description": ""
+  },
+  "mdb-breadcrumb-item": {
+    "attributes": [
+      "tag",
+      "active",
+      "current"
+    ],
+    "description": ""
+  },
+  "MDBBreadcrumbItem": {
+    "attributes": [
+      "tag",
+      "active",
+      "current"
+    ],
+    "description": ""
+  },
+  "mdb-footer": {
+    "attributes": [
+      "tag",
+      "bg",
+      "text"
+    ],
+    "description": ""
+  },
+  "MDBFooter": {
+    "attributes": [
+      "tag",
+      "bg",
+      "text"
+    ],
+    "description": ""
+  },
+  "mdb-navbar": {
+    "attributes": [
+      "tag",
+      "bg",
+      "dark",
+      "light",
+      "double",
+      "expand",
+      "position",
+      "transparent",
+      "scrolling",
+      "scrollingOffset",
+      "center",
+      "container",
+      "classContainer",
+      "classNavbar"
+    ],
+    "description": ""
+  },
+  "MDBNavbar": {
+    "attributes": [
+      "tag",
+      "bg",
+      "dark",
+      "light",
+      "double",
+      "expand",
+      "position",
+      "transparent",
+      "scrolling",
+      "scrollingOffset",
+      "center",
+      "container",
+      "classContainer",
+      "classNavbar"
+    ],
+    "description": ""
+  },
+  "mdb-navbar-brand": {
+    "attributes": [
+      "tag"
+    ],
+    "description": ""
+  },
+  "MDBNavbarBrand": {
+    "attributes": [
+      "tag"
+    ],
+    "description": ""
+  },
+  "mdb-navbar-item": {
+    "attributes": [
+      "tag",
+      "active",
+      "disabled",
+      "exact",
+      "newTab",
+      "to",
+      "href",
+      "linkClass"
+    ],
+    "description": ""
+  },
+  "MDBNavbarItem": {
+    "attributes": [
+      "tag",
+      "active",
+      "disabled",
+      "exact",
+      "newTab",
+      "to",
+      "href",
+      "linkClass"
+    ],
+    "description": ""
+  },
+  "mdb-navbar-nav": {
+    "attributes": [
+      "tag",
+      "right",
+      "center",
+      "vertical",
+      "justifyAround",
+      "class",
+      "nav"
+    ],
+    "description": ""
+  },
+  "MDBNavbarNav": {
+    "attributes": [
+      "tag",
+      "right",
+      "center",
+      "vertical",
+      "justifyAround",
+      "class",
+      "nav"
+    ],
+    "description": ""
+  },
+  "mdb-navbar-toggler": {
+    "attributes": [
+      "tag",
+      "target",
+      "togglerClass",
+      "togglerIcon",
+      "togglerSize",
+      "iconStyle"
+    ],
+    "description": ""
+  },
+  "MDBNavbarToggler": {
+    "attributes": [
+      "tag",
+      "target",
+      "togglerClass",
+      "togglerIcon",
+      "togglerSize",
+      "iconStyle"
+    ],
+    "description": ""
+  },
+  "mdb-page-item": {
+    "attributes": [
+      "tag",
+      "active",
+      "disabled",
+      "href",
+      "icon",
+      "label"
+    ],
+    "description": ""
+  },
+  "MDBPageItem": {
+    "attributes": [
+      "tag",
+      "active",
+      "disabled",
+      "href",
+      "icon",
+      "label"
+    ],
+    "description": ""
+  },
+  "mdb-page-nav": {
+    "attributes": [
+      "tag",
+      "disabled",
+      "href",
+      "prev",
+      "next",
+      "icon"
+    ],
+    "description": ""
+  },
+  "MDBPageNav": {
+    "attributes": [
+      "tag",
+      "disabled",
+      "href",
+      "prev",
+      "next",
+      "icon"
+    ],
+    "description": ""
+  },
+  "mdb-pagination": {
+    "attributes": [
+      "tag",
+      "circle",
+      "lg",
+      "sm"
+    ],
+    "description": ""
+  },
+  "MDBPagination": {
+    "attributes": [
+      "tag",
+      "circle",
+      "lg",
+      "sm"
+    ],
+    "description": ""
+  },
+  "mdb-tab-content": {
+    "attributes": [
+      "tag",
+      "col",
+      "contentClasses"
+    ],
+    "description": ""
+  },
+  "MDBTabContent": {
+    "attributes": [
+      "tag",
+      "col",
+      "contentClasses"
+    ],
+    "description": ""
+  },
+  "mdb-tab-item": {
+    "attributes": [
+      "tag",
+      "tabId",
+      "href"
+    ],
+    "description": ""
+  },
+  "MDBTabItem": {
+    "attributes": [
+      "tag",
+      "tabId",
+      "href"
+    ],
+    "description": ""
+  },
+  "mdb-tab-nav": {
+    "attributes": [
+      "tag",
+      "pills",
+      "justify",
+      "fill",
+      "col",
+      "tabsClasses"
+    ],
+    "description": ""
+  },
+  "MDBTabNav": {
+    "attributes": [
+      "tag",
+      "pills",
+      "justify",
+      "fill",
+      "col",
+      "tabsClasses"
+    ],
+    "description": ""
+  },
+  "mdb-tab-pane": {
+    "attributes": [
+      "tag",
+      "tabId"
+    ],
+    "description": ""
+  },
+  "MDBTabPane": {
+    "attributes": [
+      "tag",
+      "tabId"
+    ],
+    "description": ""
+  },
+  "mdb-tabs": {
+    "attributes": [
+      "tag",
+      "modelValue",
+      "vertical"
+    ],
+    "description": ""
+  },
+  "MDBTabs": {
+    "attributes": [
+      "tag",
+      "modelValue",
+      "vertical"
+    ],
+    "description": ""
+  }
+}

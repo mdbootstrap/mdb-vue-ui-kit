@@ -16,7 +16,7 @@ export default {
     },
     height: Number,
   },
-  setup(props, { attrs }) {
+  setup(props) {
     const className = computed(() => {
       return ["progress"];
     });
@@ -28,7 +28,6 @@ export default {
       className,
       style,
       props,
-      attrs,
     };
   },
 };

@@ -3,7 +3,7 @@
     <input
       :class="inputClassName"
       type="checkbox"
-      v-bind="attrs"
+      v-bind="$attrs"
       :id="uid"
       :checked="inputValue"
       @change="handleChange"
@@ -25,7 +25,7 @@
     v-if="!wrap"
     :class="inputClassName"
     type="checkbox"
-    v-bind="attrs"
+    v-bind="$attrs"
     :id="uid"
     :checked="inputValue"
     @change="handleChange"
@@ -51,6 +51,7 @@ import { getUID } from "../../utils/getUID";
 
 export default {
   name: "MDBCheckbox",
+  inheritAttrs: false,
   props: {
     id: String,
     label: String,
@@ -84,7 +85,7 @@ export default {
     },
   },
   emits: ["update:modelValue"],
-  setup(props, { attrs, emit }) {
+  setup(props, { emit }) {
     const inputRef = ref("inputRef");
     const inputValue = ref(props.modelValue);
     const uid = props.id || getUID("MDBCheckbox-");
@@ -166,7 +167,6 @@ export default {
       inputValue,
       handleChange,
       uid,
-      attrs,
       props,
     };
   },

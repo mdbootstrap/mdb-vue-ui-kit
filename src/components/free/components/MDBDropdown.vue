@@ -1,5 +1,5 @@
 <template>
-  <component :is="tag" :class="className" v-bind="attrs" ref="root">
+  <component :is="tag" :class="className" ref="root">
     <slot />
   </component>
 </template>
@@ -46,7 +46,7 @@ export default {
     modelValue: Boolean,
   },
   emits: ["update:modelValue"],
-  setup(props, { attrs, emit }) {
+  setup(props, { emit }) {
     const className = computed(() => {
       return [
         props.btnGroup ? "btn-group" : "dropdown",
@@ -213,7 +213,6 @@ export default {
     return {
       className,
       root,
-      attrs,
       props,
     };
   },

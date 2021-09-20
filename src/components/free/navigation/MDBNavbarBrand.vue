@@ -1,5 +1,5 @@
 <template>
-  <component :is="isLink" class="navbar-brand" v-bind="attrs">
+  <component :is="isLink" class="navbar-brand">
     <slot></slot>
   </component>
 </template>
@@ -23,7 +23,6 @@ export default {
     return {
       isLink,
       props,
-      attrs,
     };
   },
 };

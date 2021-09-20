@@ -1,5 +1,5 @@
 <template>
-  <component :is="tag" :class="className" v-bind="attrs">
+  <component :is="tag" :class="className">
     <slot></slot>
   </component>
 </template>
@@ -18,7 +18,7 @@ export default {
       type: [String, Array],
     },
   },
-  setup(props, { attrs }) {
+  setup(props) {
     const className = computed(() => {
       return ["card-body", props.text && spreadProps(props.text)];
     });
@@ -33,7 +33,6 @@ export default {
     return {
       className,
       props,
-      attrs,
     };
   },
 };

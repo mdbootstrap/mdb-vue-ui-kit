@@ -1,5 +1,5 @@
 <template>
-  <component :is="tag" v-bind="$attrs" :class="itemClassName" ref="itemRef">
+  <component :is="tag" :class="itemClassName" ref="itemRef">
     <h2 :class="headerClassName">
       <button
         @click="() => toggleAccordion(collapseId)"

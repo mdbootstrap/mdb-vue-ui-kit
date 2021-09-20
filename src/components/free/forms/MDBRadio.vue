@@ -3,7 +3,7 @@
     <input
       :class="inputClassName"
       type="radio"
-      v-bind="attrs"
+      v-bind="$attrs"
       :id="uid"
       @change="handleChange"
       v-model="inputValue"
@@ -25,7 +25,7 @@
     v-if="!wrap"
     :class="inputClassName"
     type="radio"
-    v-bind="attrs"
+    v-bind="$attrs"
     :id="uid"
     @change="handleChange"
     v-model="inputValue"
@@ -51,6 +51,7 @@ import { getUID } from "../../utils/getUID";
 
 export default {
   name: "MDBRadio",
+  inheritAttrs: false,
   props: {
     id: String,
     label: String,
@@ -83,7 +84,7 @@ export default {
     },
   },
   emits: ["update:modelValue"],
-  setup(props, { attrs, emit }) {
+  setup(props, { emit }) {
     const inputRef = ref("inputRef");
     const inputValue = ref(props.modelValue || false);
     const uid = props.id || getUID("MDBRadio-");
@@ -163,7 +164,6 @@ export default {
       validFeedbackClassName,
       invalidFeedbackClassName,
       uid,
-      attrs,
       props,
     };
   },

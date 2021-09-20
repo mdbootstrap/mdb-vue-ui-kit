@@ -1,5 +1,5 @@
 <template>
-  <i :class="className" v-bind="attrs"><slot></slot></i>
+  <i :class="className"><slot></slot></i>
 </template>
 
 <script>
@@ -16,7 +16,7 @@ export default {
     flag: String,
     size: String,
   },
-  setup(props, { attrs }) {
+  setup(props) {
     const className = computed(() => {
       return [
         !props.flag && props.iconStyle,
@@ -27,7 +27,6 @@ export default {
 
     return {
       className,
-      attrs,
     };
   },
 };
