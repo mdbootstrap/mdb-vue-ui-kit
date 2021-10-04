@@ -54,7 +54,7 @@ export default {
       return ["accordion-body", props.bodyClasses];
     });
     const buttonClassName = computed(() => {
-      return ["accordion-button", isActive.value && "collapsed"];
+      return ["accordion-button", !isActive.value && "collapsed"];
     });
 
     const setActiveItem = inject("setActiveItem", null);

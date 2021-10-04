@@ -3908,6 +3908,24 @@ $({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT }, {
 
 /***/ }),
 
+/***/ "d959":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+// runtime helper for setting properties on components
+// in a tree-shakable way
+exports.default = (sfc, props) => {
+    for (const [key, val] of props) {
+        sfc[key] = val;
+    }
+    return sfc;
+};
+
+
+/***/ }),
+
 /***/ "da84":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -7076,13 +7094,19 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 });
 // CONCATENATED MODULE: ./src/components/free/components/MDBBadge.vue?vue&type=script&lang=js
  
+// EXTERNAL MODULE: ./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/exportHelper.js
+var exportHelper = __webpack_require__("d959");
+var exportHelper_default = /*#__PURE__*/__webpack_require__.n(exportHelper);
+
 // CONCATENATED MODULE: ./src/components/free/components/MDBBadge.vue
 
 
 
-MDBBadgevue_type_script_lang_js.render = render
 
-/* harmony default export */ var MDBBadge = (MDBBadgevue_type_script_lang_js);
+
+const __exports__ = /*#__PURE__*/exportHelper_default()(MDBBadgevue_type_script_lang_js, [['render',render]])
+
+/* harmony default export */ var MDBBadge = (__exports__);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBBtn.vue?vue&type=template&id=0bf4910c
 
 function MDBBtnvue_type_template_id_0bf4910c_render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -7407,9 +7431,11 @@ var runRipple = function runRipple(el, waveConfig, options) {
 
 
 
-MDBBtnvue_type_script_lang_js.render = MDBBtnvue_type_template_id_0bf4910c_render
 
-/* harmony default export */ var MDBBtn = (MDBBtnvue_type_script_lang_js);
+
+const MDBBtn_exports_ = /*#__PURE__*/exportHelper_default()(MDBBtnvue_type_script_lang_js, [['render',MDBBtnvue_type_template_id_0bf4910c_render]])
+
+/* harmony default export */ var MDBBtn = (MDBBtn_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBBtnGroup.vue?vue&type=template&id=dd731af4
 
 function MDBBtnGroupvue_type_template_id_dd731af4_render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -7457,9 +7483,11 @@ function MDBBtnGroupvue_type_template_id_dd731af4_render(_ctx, _cache, $props, $
 
 
 
-MDBBtnGroupvue_type_script_lang_js.render = MDBBtnGroupvue_type_template_id_dd731af4_render
 
-/* harmony default export */ var MDBBtnGroup = (MDBBtnGroupvue_type_script_lang_js);
+
+const MDBBtnGroup_exports_ = /*#__PURE__*/exportHelper_default()(MDBBtnGroupvue_type_script_lang_js, [['render',MDBBtnGroupvue_type_template_id_dd731af4_render]])
+
+/* harmony default export */ var MDBBtnGroup = (MDBBtnGroup_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBBtnClose.vue?vue&type=template&id=4a064d15
 
 function MDBBtnClosevue_type_template_id_4a064d15_render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -7495,9 +7523,11 @@ function MDBBtnClosevue_type_template_id_4a064d15_render(_ctx, _cache, $props, $
 
 
 
-MDBBtnClosevue_type_script_lang_js.render = MDBBtnClosevue_type_template_id_4a064d15_render
 
-/* harmony default export */ var MDBBtnClose = (MDBBtnClosevue_type_script_lang_js);
+
+const MDBBtnClose_exports_ = /*#__PURE__*/exportHelper_default()(MDBBtnClosevue_type_script_lang_js, [['render',MDBBtnClosevue_type_template_id_4a064d15_render]])
+
+/* harmony default export */ var MDBBtnClose = (MDBBtnClose_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCard.vue?vue&type=template&id=af7f1b60
 
 function MDBCardvue_type_template_id_af7f1b60_render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -7567,9 +7597,11 @@ var es_string_trim = __webpack_require__("498a");
 
 
 
-MDBCardvue_type_script_lang_js.render = MDBCardvue_type_template_id_af7f1b60_render
 
-/* harmony default export */ var MDBCard = (MDBCardvue_type_script_lang_js);
+
+const MDBCard_exports_ = /*#__PURE__*/exportHelper_default()(MDBCardvue_type_script_lang_js, [['render',MDBCardvue_type_template_id_af7f1b60_render]])
+
+/* harmony default export */ var MDBCard = (MDBCard_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCardBody.vue?vue&type=template&id=192b8857
 
 function MDBCardBodyvue_type_template_id_192b8857_render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -7627,9 +7659,11 @@ function MDBCardBodyvue_type_template_id_192b8857_render(_ctx, _cache, $props, $
 
 
 
-MDBCardBodyvue_type_script_lang_js.render = MDBCardBodyvue_type_template_id_192b8857_render
 
-/* harmony default export */ var MDBCardBody = (MDBCardBodyvue_type_script_lang_js);
+
+const MDBCardBody_exports_ = /*#__PURE__*/exportHelper_default()(MDBCardBodyvue_type_script_lang_js, [['render',MDBCardBodyvue_type_template_id_192b8857_render]])
+
+/* harmony default export */ var MDBCardBody = (MDBCardBody_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCardTitle.vue?vue&type=template&id=464919a0
 
 function MDBCardTitlevue_type_template_id_464919a0_render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -7682,9 +7716,11 @@ function MDBCardTitlevue_type_template_id_464919a0_render(_ctx, _cache, $props, 
 
 
 
-MDBCardTitlevue_type_script_lang_js.render = MDBCardTitlevue_type_template_id_464919a0_render
 
-/* harmony default export */ var MDBCardTitle = (MDBCardTitlevue_type_script_lang_js);
+
+const MDBCardTitle_exports_ = /*#__PURE__*/exportHelper_default()(MDBCardTitlevue_type_script_lang_js, [['render',MDBCardTitlevue_type_template_id_464919a0_render]])
+
+/* harmony default export */ var MDBCardTitle = (MDBCardTitle_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCardText.vue?vue&type=template&id=6e1a98bc
 
 function MDBCardTextvue_type_template_id_6e1a98bc_render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -7725,9 +7761,11 @@ function MDBCardTextvue_type_template_id_6e1a98bc_render(_ctx, _cache, $props, $
 
 
 
-MDBCardTextvue_type_script_lang_js.render = MDBCardTextvue_type_template_id_6e1a98bc_render
 
-/* harmony default export */ var MDBCardText = (MDBCardTextvue_type_script_lang_js);
+
+const MDBCardText_exports_ = /*#__PURE__*/exportHelper_default()(MDBCardTextvue_type_script_lang_js, [['render',MDBCardTextvue_type_template_id_6e1a98bc_render]])
+
+/* harmony default export */ var MDBCardText = (MDBCardText_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCardImg.vue?vue&type=template&id=5041ac57
 
 var _hoisted_1 = {
@@ -7790,9 +7828,11 @@ function MDBCardImgvue_type_template_id_5041ac57_render(_ctx, _cache, $props, $s
 
 
 
-MDBCardImgvue_type_script_lang_js.render = MDBCardImgvue_type_template_id_5041ac57_render
 
-/* harmony default export */ var MDBCardImg = (MDBCardImgvue_type_script_lang_js);
+
+const MDBCardImg_exports_ = /*#__PURE__*/exportHelper_default()(MDBCardImgvue_type_script_lang_js, [['render',MDBCardImgvue_type_template_id_5041ac57_render]])
+
+/* harmony default export */ var MDBCardImg = (MDBCardImg_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCardHeader.vue?vue&type=template&id=600ea459
 
 function MDBCardHeadervue_type_template_id_600ea459_render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -7835,9 +7875,11 @@ function MDBCardHeadervue_type_template_id_600ea459_render(_ctx, _cache, $props,
 
 
 
-MDBCardHeadervue_type_script_lang_js.render = MDBCardHeadervue_type_template_id_600ea459_render
 
-/* harmony default export */ var MDBCardHeader = (MDBCardHeadervue_type_script_lang_js);
+
+const MDBCardHeader_exports_ = /*#__PURE__*/exportHelper_default()(MDBCardHeadervue_type_script_lang_js, [['render',MDBCardHeadervue_type_template_id_600ea459_render]])
+
+/* harmony default export */ var MDBCardHeader = (MDBCardHeader_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCardFooter.vue?vue&type=template&id=2a6d0622
 
 function MDBCardFootervue_type_template_id_2a6d0622_render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -7880,9 +7922,11 @@ function MDBCardFootervue_type_template_id_2a6d0622_render(_ctx, _cache, $props,
 
 
 
-MDBCardFootervue_type_script_lang_js.render = MDBCardFootervue_type_template_id_2a6d0622_render
 
-/* harmony default export */ var MDBCardFooter = (MDBCardFootervue_type_script_lang_js);
+
+const MDBCardFooter_exports_ = /*#__PURE__*/exportHelper_default()(MDBCardFootervue_type_script_lang_js, [['render',MDBCardFootervue_type_template_id_2a6d0622_render]])
+
+/* harmony default export */ var MDBCardFooter = (MDBCardFooter_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCardLink.vue?vue&type=template&id=0b63cf00
 
 function MDBCardLinkvue_type_template_id_0b63cf00_render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -7923,9 +7967,11 @@ function MDBCardLinkvue_type_template_id_0b63cf00_render(_ctx, _cache, $props, $
 
 
 
-MDBCardLinkvue_type_script_lang_js.render = MDBCardLinkvue_type_template_id_0b63cf00_render
 
-/* harmony default export */ var MDBCardLink = (MDBCardLinkvue_type_script_lang_js);
+
+const MDBCardLink_exports_ = /*#__PURE__*/exportHelper_default()(MDBCardLinkvue_type_script_lang_js, [['render',MDBCardLinkvue_type_template_id_0b63cf00_render]])
+
+/* harmony default export */ var MDBCardLink = (MDBCardLink_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCardGroup.vue?vue&type=template&id=02b5609a
 
 function MDBCardGroupvue_type_template_id_02b5609a_render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -7966,9 +8012,11 @@ function MDBCardGroupvue_type_template_id_02b5609a_render(_ctx, _cache, $props, 
 
 
 
-MDBCardGroupvue_type_script_lang_js.render = MDBCardGroupvue_type_template_id_02b5609a_render
 
-/* harmony default export */ var MDBCardGroup = (MDBCardGroupvue_type_script_lang_js);
+
+const MDBCardGroup_exports_ = /*#__PURE__*/exportHelper_default()(MDBCardGroupvue_type_script_lang_js, [['render',MDBCardGroupvue_type_template_id_02b5609a_render]])
+
+/* harmony default export */ var MDBCardGroup = (MDBCardGroup_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCarousel.vue?vue&type=template&id=7ccc3848
 
 var MDBCarouselvue_type_template_id_7ccc3848_hoisted_1 = {
@@ -8348,9 +8396,11 @@ function MDBCarouselvue_type_template_id_7ccc3848_render(_ctx, _cache, $props, $
 
 
 
-MDBCarouselvue_type_script_lang_js.render = MDBCarouselvue_type_template_id_7ccc3848_render
 
-/* harmony default export */ var MDBCarousel = (MDBCarouselvue_type_script_lang_js);
+
+const MDBCarousel_exports_ = /*#__PURE__*/exportHelper_default()(MDBCarouselvue_type_script_lang_js, [['render',MDBCarouselvue_type_template_id_7ccc3848_render]])
+
+/* harmony default export */ var MDBCarousel = (MDBCarousel_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBListGroup.vue?vue&type=template&id=ce4fba6a
 
 function MDBListGroupvue_type_template_id_ce4fba6a_render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -8406,9 +8456,11 @@ function MDBListGroupvue_type_template_id_ce4fba6a_render(_ctx, _cache, $props, 
 
 
 
-MDBListGroupvue_type_script_lang_js.render = MDBListGroupvue_type_template_id_ce4fba6a_render
 
-/* harmony default export */ var MDBListGroup = (MDBListGroupvue_type_script_lang_js);
+
+const MDBListGroup_exports_ = /*#__PURE__*/exportHelper_default()(MDBListGroupvue_type_script_lang_js, [['render',MDBListGroupvue_type_template_id_ce4fba6a_render]])
+
+/* harmony default export */ var MDBListGroup = (MDBListGroup_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBListGroupItem.vue?vue&type=template&id=41198d3e
 
 function MDBListGroupItemvue_type_template_id_41198d3e_render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -8465,9 +8517,11 @@ function MDBListGroupItemvue_type_template_id_41198d3e_render(_ctx, _cache, $pro
 
 
 
-MDBListGroupItemvue_type_script_lang_js.render = MDBListGroupItemvue_type_template_id_41198d3e_render
 
-/* harmony default export */ var MDBListGroupItem = (MDBListGroupItemvue_type_script_lang_js);
+
+const MDBListGroupItem_exports_ = /*#__PURE__*/exportHelper_default()(MDBListGroupItemvue_type_script_lang_js, [['render',MDBListGroupItemvue_type_template_id_41198d3e_render]])
+
+/* harmony default export */ var MDBListGroupItem = (MDBListGroupItem_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBProgress.vue?vue&type=template&id=36949198
 
 function MDBProgressvue_type_template_id_36949198_render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -8517,9 +8571,11 @@ function MDBProgressvue_type_template_id_36949198_render(_ctx, _cache, $props, $
 
 
 
-MDBProgressvue_type_script_lang_js.render = MDBProgressvue_type_template_id_36949198_render
 
-/* harmony default export */ var MDBProgress = (MDBProgressvue_type_script_lang_js);
+
+const MDBProgress_exports_ = /*#__PURE__*/exportHelper_default()(MDBProgressvue_type_script_lang_js, [['render',MDBProgressvue_type_template_id_36949198_render]])
+
+/* harmony default export */ var MDBProgress = (MDBProgress_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBProgressBar.vue?vue&type=template&id=0d6328ee
 
 function MDBProgressBarvue_type_template_id_0d6328ee_render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -8589,9 +8645,11 @@ function MDBProgressBarvue_type_template_id_0d6328ee_render(_ctx, _cache, $props
 
 
 
-MDBProgressBarvue_type_script_lang_js.render = MDBProgressBarvue_type_template_id_0d6328ee_render
 
-/* harmony default export */ var MDBProgressBar = (MDBProgressBarvue_type_script_lang_js);
+
+const MDBProgressBar_exports_ = /*#__PURE__*/exportHelper_default()(MDBProgressBarvue_type_script_lang_js, [['render',MDBProgressBarvue_type_template_id_0d6328ee_render]])
+
+/* harmony default export */ var MDBProgressBar = (MDBProgressBar_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBSpinner.vue?vue&type=template&id=14cc8bc3
 
 
@@ -8644,9 +8702,11 @@ function MDBSpinnervue_type_template_id_14cc8bc3_render(_ctx, _cache, $props, $s
 
 
 
-MDBSpinnervue_type_script_lang_js.render = MDBSpinnervue_type_template_id_14cc8bc3_render
 
-/* harmony default export */ var MDBSpinner = (MDBSpinnervue_type_script_lang_js);
+
+const MDBSpinner_exports_ = /*#__PURE__*/exportHelper_default()(MDBSpinnervue_type_script_lang_js, [['render',MDBSpinnervue_type_template_id_14cc8bc3_render]])
+
+/* harmony default export */ var MDBSpinner = (MDBSpinner_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCollapse.vue?vue&type=template&id=91f569c2
 
 function MDBCollapsevue_type_template_id_91f569c2_render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -9151,9 +9211,11 @@ var offMulti = function offMulti(element, eventArray, handler, delegationFn) {
 
 
 
-MDBCollapsevue_type_script_lang_js.render = MDBCollapsevue_type_template_id_91f569c2_render
 
-/* harmony default export */ var MDBCollapse = (MDBCollapsevue_type_script_lang_js);
+
+const MDBCollapse_exports_ = /*#__PURE__*/exportHelper_default()(MDBCollapsevue_type_script_lang_js, [['render',MDBCollapsevue_type_template_id_91f569c2_render]])
+
+/* harmony default export */ var MDBCollapse = (MDBCollapse_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBDropdown.vue?vue&type=template&id=18860f8b
 
 function MDBDropdownvue_type_template_id_18860f8b_render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -9636,9 +9698,11 @@ var handleBreakpoints = function handleBreakpoints(windowWidth, breakpointValues
 
 
 
-MDBDropdownvue_type_script_lang_js.render = MDBDropdownvue_type_template_id_18860f8b_render
 
-/* harmony default export */ var MDBDropdown = (MDBDropdownvue_type_script_lang_js);
+
+const MDBDropdown_exports_ = /*#__PURE__*/exportHelper_default()(MDBDropdownvue_type_script_lang_js, [['render',MDBDropdownvue_type_template_id_18860f8b_render]])
+
+/* harmony default export */ var MDBDropdown = (MDBDropdown_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBDropdownToggle.vue?vue&type=template&id=eee69ff6
 
 
@@ -9762,9 +9826,11 @@ function MDBDropdownTogglevue_type_template_id_eee69ff6_render(_ctx, _cache, $pr
 
 
 
-MDBDropdownTogglevue_type_script_lang_js.render = MDBDropdownTogglevue_type_template_id_eee69ff6_render
 
-/* harmony default export */ var MDBDropdownToggle = (MDBDropdownTogglevue_type_script_lang_js);
+
+const MDBDropdownToggle_exports_ = /*#__PURE__*/exportHelper_default()(MDBDropdownTogglevue_type_script_lang_js, [['render',MDBDropdownTogglevue_type_template_id_eee69ff6_render]])
+
+/* harmony default export */ var MDBDropdownToggle = (MDBDropdownToggle_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBDropdownMenu.vue?vue&type=template&id=4500226d
 
 function MDBDropdownMenuvue_type_template_id_4500226d_render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -10025,9 +10091,11 @@ function MDBDropdownMenuvue_type_template_id_4500226d_render(_ctx, _cache, $prop
 
 
 
-MDBDropdownMenuvue_type_script_lang_js.render = MDBDropdownMenuvue_type_template_id_4500226d_render
 
-/* harmony default export */ var MDBDropdownMenu = (MDBDropdownMenuvue_type_script_lang_js);
+
+const MDBDropdownMenu_exports_ = /*#__PURE__*/exportHelper_default()(MDBDropdownMenuvue_type_script_lang_js, [['render',MDBDropdownMenuvue_type_template_id_4500226d_render]])
+
+/* harmony default export */ var MDBDropdownMenu = (MDBDropdownMenu_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBDropdownItem.vue?vue&type=template&id=2e4d3715
 
 var MDBDropdownItemvue_type_template_id_2e4d3715_hoisted_1 = {
@@ -10162,9 +10230,11 @@ function MDBDropdownItemvue_type_template_id_2e4d3715_render(_ctx, _cache, $prop
 
 
 
-MDBDropdownItemvue_type_script_lang_js.render = MDBDropdownItemvue_type_template_id_2e4d3715_render
 
-/* harmony default export */ var MDBDropdownItem = (MDBDropdownItemvue_type_script_lang_js);
+
+const MDBDropdownItem_exports_ = /*#__PURE__*/exportHelper_default()(MDBDropdownItemvue_type_script_lang_js, [['render',MDBDropdownItemvue_type_template_id_2e4d3715_render]])
+
+/* harmony default export */ var MDBDropdownItem = (MDBDropdownItem_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBTooltip.vue?vue&type=template&id=12284dc4
 
 var MDBTooltipvue_type_template_id_12284dc4_hoisted_1 = {
@@ -10351,9 +10421,11 @@ function MDBTooltipvue_type_template_id_12284dc4_render(_ctx, _cache, $props, $s
 
 
 
-MDBTooltipvue_type_script_lang_js.render = MDBTooltipvue_type_template_id_12284dc4_render
 
-/* harmony default export */ var MDBTooltip = (MDBTooltipvue_type_script_lang_js);
+
+const MDBTooltip_exports_ = /*#__PURE__*/exportHelper_default()(MDBTooltipvue_type_script_lang_js, [['render',MDBTooltipvue_type_template_id_12284dc4_render]])
+
+/* harmony default export */ var MDBTooltip = (MDBTooltip_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBPopover.vue?vue&type=template&id=425e0b2a
 
 var MDBPopovervue_type_template_id_425e0b2a_hoisted_1 = {
@@ -10609,9 +10681,11 @@ function MDBPopovervue_type_template_id_425e0b2a_render(_ctx, _cache, $props, $s
 
 
 
-MDBPopovervue_type_script_lang_js.render = MDBPopovervue_type_template_id_425e0b2a_render
 
-/* harmony default export */ var MDBPopover = (MDBPopovervue_type_script_lang_js);
+
+const MDBPopover_exports_ = /*#__PURE__*/exportHelper_default()(MDBPopovervue_type_script_lang_js, [['render',MDBPopovervue_type_template_id_425e0b2a_render]])
+
+/* harmony default export */ var MDBPopover = (MDBPopover_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBModal.vue?vue&type=template&id=e95a8f44
 
 function MDBModalvue_type_template_id_e95a8f44_render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -10870,9 +10944,11 @@ var es_number_to_fixed = __webpack_require__("b680");
 
 
 
-MDBModalvue_type_script_lang_js.render = MDBModalvue_type_template_id_e95a8f44_render
 
-/* harmony default export */ var MDBModal = (MDBModalvue_type_script_lang_js);
+
+const MDBModal_exports_ = /*#__PURE__*/exportHelper_default()(MDBModalvue_type_script_lang_js, [['render',MDBModalvue_type_template_id_e95a8f44_render]])
+
+/* harmony default export */ var MDBModal = (MDBModal_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBModalHeader.vue?vue&type=template&id=58a2f464
 
 function MDBModalHeadervue_type_template_id_58a2f464_render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -10934,9 +11010,11 @@ function MDBModalHeadervue_type_template_id_58a2f464_render(_ctx, _cache, $props
 
 
 
-MDBModalHeadervue_type_script_lang_js.render = MDBModalHeadervue_type_template_id_58a2f464_render
 
-/* harmony default export */ var MDBModalHeader = (MDBModalHeadervue_type_script_lang_js);
+
+const MDBModalHeader_exports_ = /*#__PURE__*/exportHelper_default()(MDBModalHeadervue_type_script_lang_js, [['render',MDBModalHeadervue_type_template_id_58a2f464_render]])
+
+/* harmony default export */ var MDBModalHeader = (MDBModalHeader_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBModalTitle.vue?vue&type=template&id=1c7740ce
 
 function MDBModalTitlevue_type_template_id_1c7740ce_render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -10985,9 +11063,11 @@ var es_string_bold = __webpack_require__("cc71");
 
 
 
-MDBModalTitlevue_type_script_lang_js.render = MDBModalTitlevue_type_template_id_1c7740ce_render
 
-/* harmony default export */ var MDBModalTitle = (MDBModalTitlevue_type_script_lang_js);
+
+const MDBModalTitle_exports_ = /*#__PURE__*/exportHelper_default()(MDBModalTitlevue_type_script_lang_js, [['render',MDBModalTitlevue_type_template_id_1c7740ce_render]])
+
+/* harmony default export */ var MDBModalTitle = (MDBModalTitle_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBModalBody.vue?vue&type=template&id=0ab936de
 
 function MDBModalBodyvue_type_template_id_0ab936de_render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -11028,9 +11108,11 @@ function MDBModalBodyvue_type_template_id_0ab936de_render(_ctx, _cache, $props, 
 
 
 
-MDBModalBodyvue_type_script_lang_js.render = MDBModalBodyvue_type_template_id_0ab936de_render
 
-/* harmony default export */ var MDBModalBody = (MDBModalBodyvue_type_script_lang_js);
+
+const MDBModalBody_exports_ = /*#__PURE__*/exportHelper_default()(MDBModalBodyvue_type_script_lang_js, [['render',MDBModalBodyvue_type_template_id_0ab936de_render]])
+
+/* harmony default export */ var MDBModalBody = (MDBModalBody_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBModalFooter.vue?vue&type=template&id=279dc2d8
 
 function MDBModalFootervue_type_template_id_279dc2d8_render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -11071,9 +11153,11 @@ function MDBModalFootervue_type_template_id_279dc2d8_render(_ctx, _cache, $props
 
 
 
-MDBModalFootervue_type_script_lang_js.render = MDBModalFootervue_type_template_id_279dc2d8_render
 
-/* harmony default export */ var MDBModalFooter = (MDBModalFootervue_type_script_lang_js);
+
+const MDBModalFooter_exports_ = /*#__PURE__*/exportHelper_default()(MDBModalFootervue_type_script_lang_js, [['render',MDBModalFootervue_type_template_id_279dc2d8_render]])
+
+/* harmony default export */ var MDBModalFooter = (MDBModalFooter_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBAccordion.vue?vue&type=template&id=58d0f118
 
 function MDBAccordionvue_type_template_id_58d0f118_render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -11135,12 +11219,14 @@ function MDBAccordionvue_type_template_id_58d0f118_render(_ctx, _cache, $props, 
 
 
 
-MDBAccordionvue_type_script_lang_js.render = MDBAccordionvue_type_template_id_58d0f118_render
 
-/* harmony default export */ var MDBAccordion = (MDBAccordionvue_type_script_lang_js);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBAccordionItem.vue?vue&type=template&id=031fe741
 
-function MDBAccordionItemvue_type_template_id_031fe741_render(_ctx, _cache, $props, $setup, $data, $options) {
+const MDBAccordion_exports_ = /*#__PURE__*/exportHelper_default()(MDBAccordionvue_type_script_lang_js, [['render',MDBAccordionvue_type_template_id_58d0f118_render]])
+
+/* harmony default export */ var MDBAccordion = (MDBAccordion_exports_);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBAccordionItem.vue?vue&type=template&id=f2ba7f18
+
+function MDBAccordionItemvue_type_template_id_f2ba7f18_render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_MDBCollapse = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveComponent"])("MDBCollapse");
 
   return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveDynamicComponent"])($props.tag), {
@@ -11175,7 +11261,7 @@ function MDBAccordionItemvue_type_template_id_031fe741_render(_ctx, _cache, $pro
     _: 1
   }, 8, ["class"]);
 }
-// CONCATENATED MODULE: ./src/components/free/components/MDBAccordionItem.vue?vue&type=template&id=031fe741
+// CONCATENATED MODULE: ./src/components/free/components/MDBAccordionItem.vue?vue&type=template&id=f2ba7f18
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBAccordionItem.vue?vue&type=script&lang=js
 
@@ -11211,7 +11297,7 @@ function MDBAccordionItemvue_type_template_id_031fe741_render(_ctx, _cache, $pro
       return ["accordion-body", props.bodyClasses];
     });
     var buttonClassName = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["computed"])(function () {
-      return ["accordion-button", isActive.value && "collapsed"];
+      return ["accordion-button", !isActive.value && "collapsed"];
     });
     var setActiveItem = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["inject"])("setActiveItem", null);
     var activeItem = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["inject"])("activeItem", null);
@@ -11250,9 +11336,11 @@ function MDBAccordionItemvue_type_template_id_031fe741_render(_ctx, _cache, $pro
 
 
 
-MDBAccordionItemvue_type_script_lang_js.render = MDBAccordionItemvue_type_template_id_031fe741_render
 
-/* harmony default export */ var MDBAccordionItem = (MDBAccordionItemvue_type_script_lang_js);
+
+const MDBAccordionItem_exports_ = /*#__PURE__*/exportHelper_default()(MDBAccordionItemvue_type_script_lang_js, [['render',MDBAccordionItemvue_type_template_id_f2ba7f18_render]])
+
+/* harmony default export */ var MDBAccordionItem = (MDBAccordionItem_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/content-styles/MDBIcon.vue?vue&type=template&id=bdb0b948
 
 function MDBIconvue_type_template_id_bdb0b948_render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -11290,9 +11378,11 @@ function MDBIconvue_type_template_id_bdb0b948_render(_ctx, _cache, $props, $setu
 
 
 
-MDBIconvue_type_script_lang_js.render = MDBIconvue_type_template_id_bdb0b948_render
 
-/* harmony default export */ var MDBIcon = (MDBIconvue_type_script_lang_js);
+
+const MDBIcon_exports_ = /*#__PURE__*/exportHelper_default()(MDBIconvue_type_script_lang_js, [['render',MDBIconvue_type_template_id_bdb0b948_render]])
+
+/* harmony default export */ var MDBIcon = (MDBIcon_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBNavbar.vue?vue&type=template&id=6ab4bfe1
 
 function MDBNavbarvue_type_template_id_6ab4bfe1_render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -11439,9 +11529,11 @@ function MDBNavbarvue_type_template_id_6ab4bfe1_render(_ctx, _cache, $props, $se
 
 
 
-MDBNavbarvue_type_script_lang_js.render = MDBNavbarvue_type_template_id_6ab4bfe1_render
 
-/* harmony default export */ var MDBNavbar = (MDBNavbarvue_type_script_lang_js);
+
+const MDBNavbar_exports_ = /*#__PURE__*/exportHelper_default()(MDBNavbarvue_type_script_lang_js, [['render',MDBNavbarvue_type_template_id_6ab4bfe1_render]])
+
+/* harmony default export */ var MDBNavbar = (MDBNavbar_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBNavbarToggler.vue?vue&type=template&id=3ed50c08
 
 function MDBNavbarTogglervue_type_template_id_3ed50c08_render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -11524,9 +11616,11 @@ function MDBNavbarTogglervue_type_template_id_3ed50c08_render(_ctx, _cache, $pro
 
 
 
-MDBNavbarTogglervue_type_script_lang_js.render = MDBNavbarTogglervue_type_template_id_3ed50c08_render
 
-/* harmony default export */ var MDBNavbarToggler = (MDBNavbarTogglervue_type_script_lang_js);
+
+const MDBNavbarToggler_exports_ = /*#__PURE__*/exportHelper_default()(MDBNavbarTogglervue_type_script_lang_js, [['render',MDBNavbarTogglervue_type_template_id_3ed50c08_render]])
+
+/* harmony default export */ var MDBNavbarToggler = (MDBNavbarToggler_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBNavbarBrand.vue?vue&type=template&id=a4b12222
 
 function MDBNavbarBrandvue_type_template_id_a4b12222_render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -11568,9 +11662,11 @@ function MDBNavbarBrandvue_type_template_id_a4b12222_render(_ctx, _cache, $props
 
 
 
-MDBNavbarBrandvue_type_script_lang_js.render = MDBNavbarBrandvue_type_template_id_a4b12222_render
 
-/* harmony default export */ var MDBNavbarBrand = (MDBNavbarBrandvue_type_script_lang_js);
+
+const MDBNavbarBrand_exports_ = /*#__PURE__*/exportHelper_default()(MDBNavbarBrandvue_type_script_lang_js, [['render',MDBNavbarBrandvue_type_template_id_a4b12222_render]])
+
+/* harmony default export */ var MDBNavbarBrand = (MDBNavbarBrand_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBNavbarNav.vue?vue&type=template&id=29bb12e0
 
 function MDBNavbarNavvue_type_template_id_29bb12e0_render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -11638,9 +11734,11 @@ function MDBNavbarNavvue_type_template_id_29bb12e0_render(_ctx, _cache, $props, 
 
 
 
-MDBNavbarNavvue_type_script_lang_js.render = MDBNavbarNavvue_type_template_id_29bb12e0_render
 
-/* harmony default export */ var MDBNavbarNav = (MDBNavbarNavvue_type_script_lang_js);
+
+const MDBNavbarNav_exports_ = /*#__PURE__*/exportHelper_default()(MDBNavbarNavvue_type_script_lang_js, [['render',MDBNavbarNavvue_type_template_id_29bb12e0_render]])
+
+/* harmony default export */ var MDBNavbarNav = (MDBNavbarNav_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBNavbarItem.vue?vue&type=template&id=2217c026
 
 function MDBNavbarItemvue_type_template_id_2217c026_render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -11735,9 +11833,11 @@ function MDBNavbarItemvue_type_template_id_2217c026_render(_ctx, _cache, $props,
 
 
 
-MDBNavbarItemvue_type_script_lang_js.render = MDBNavbarItemvue_type_template_id_2217c026_render
 
-/* harmony default export */ var MDBNavbarItem = (MDBNavbarItemvue_type_script_lang_js);
+
+const MDBNavbarItem_exports_ = /*#__PURE__*/exportHelper_default()(MDBNavbarItemvue_type_script_lang_js, [['render',MDBNavbarItemvue_type_template_id_2217c026_render]])
+
+/* harmony default export */ var MDBNavbarItem = (MDBNavbarItem_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBPagination.vue?vue&type=template&id=087fdc43
 
 function MDBPaginationvue_type_template_id_087fdc43_render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -11790,9 +11890,11 @@ function MDBPaginationvue_type_template_id_087fdc43_render(_ctx, _cache, $props,
 
 
 
-MDBPaginationvue_type_script_lang_js.render = MDBPaginationvue_type_template_id_087fdc43_render
 
-/* harmony default export */ var MDBPagination = (MDBPaginationvue_type_script_lang_js);
+
+const MDBPagination_exports_ = /*#__PURE__*/exportHelper_default()(MDBPaginationvue_type_script_lang_js, [['render',MDBPaginationvue_type_template_id_087fdc43_render]])
+
+/* harmony default export */ var MDBPagination = (MDBPagination_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBPageNav.vue?vue&type=template&id=b80d4e64
 
 var MDBPageNavvue_type_template_id_b80d4e64_hoisted_1 = {
@@ -11895,9 +11997,11 @@ function MDBPageNavvue_type_template_id_b80d4e64_render(_ctx, _cache, $props, $s
 
 
 
-MDBPageNavvue_type_script_lang_js.render = MDBPageNavvue_type_template_id_b80d4e64_render
 
-/* harmony default export */ var MDBPageNav = (MDBPageNavvue_type_script_lang_js);
+
+const MDBPageNav_exports_ = /*#__PURE__*/exportHelper_default()(MDBPageNavvue_type_script_lang_js, [['render',MDBPageNavvue_type_template_id_b80d4e64_render]])
+
+/* harmony default export */ var MDBPageNav = (MDBPageNav_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBPageItem.vue?vue&type=template&id=385d204c
 
 var MDBPageItemvue_type_template_id_385d204c_hoisted_1 = {
@@ -11980,9 +12084,11 @@ function MDBPageItemvue_type_template_id_385d204c_render(_ctx, _cache, $props, $
 
 
 
-MDBPageItemvue_type_script_lang_js.render = MDBPageItemvue_type_template_id_385d204c_render
 
-/* harmony default export */ var MDBPageItem = (MDBPageItemvue_type_script_lang_js);
+
+const MDBPageItem_exports_ = /*#__PURE__*/exportHelper_default()(MDBPageItemvue_type_script_lang_js, [['render',MDBPageItemvue_type_template_id_385d204c_render]])
+
+/* harmony default export */ var MDBPageItem = (MDBPageItem_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBBreadcrumb.vue?vue&type=template&id=d77cd484
 
 function MDBBreadcrumbvue_type_template_id_d77cd484_render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -12023,9 +12129,11 @@ function MDBBreadcrumbvue_type_template_id_d77cd484_render(_ctx, _cache, $props,
 
 
 
-MDBBreadcrumbvue_type_script_lang_js.render = MDBBreadcrumbvue_type_template_id_d77cd484_render
 
-/* harmony default export */ var MDBBreadcrumb = (MDBBreadcrumbvue_type_script_lang_js);
+
+const MDBBreadcrumb_exports_ = /*#__PURE__*/exportHelper_default()(MDBBreadcrumbvue_type_script_lang_js, [['render',MDBBreadcrumbvue_type_template_id_d77cd484_render]])
+
+/* harmony default export */ var MDBBreadcrumb = (MDBBreadcrumb_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBBreadcrumbItem.vue?vue&type=template&id=79379513
 
 function MDBBreadcrumbItemvue_type_template_id_79379513_render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -12079,9 +12187,11 @@ function MDBBreadcrumbItemvue_type_template_id_79379513_render(_ctx, _cache, $pr
 
 
 
-MDBBreadcrumbItemvue_type_script_lang_js.render = MDBBreadcrumbItemvue_type_template_id_79379513_render
 
-/* harmony default export */ var MDBBreadcrumbItem = (MDBBreadcrumbItemvue_type_script_lang_js);
+
+const MDBBreadcrumbItem_exports_ = /*#__PURE__*/exportHelper_default()(MDBBreadcrumbItemvue_type_script_lang_js, [['render',MDBBreadcrumbItemvue_type_template_id_79379513_render]])
+
+/* harmony default export */ var MDBBreadcrumbItem = (MDBBreadcrumbItem_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBFooter.vue?vue&type=template&id=0be9b06d
 
 function MDBFootervue_type_template_id_0be9b06d_render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -12143,9 +12253,11 @@ function MDBFootervue_type_template_id_0be9b06d_render(_ctx, _cache, $props, $se
 
 
 
-MDBFootervue_type_script_lang_js.render = MDBFootervue_type_template_id_0be9b06d_render
 
-/* harmony default export */ var MDBFooter = (MDBFootervue_type_script_lang_js);
+
+const MDBFooter_exports_ = /*#__PURE__*/exportHelper_default()(MDBFootervue_type_script_lang_js, [['render',MDBFootervue_type_template_id_0be9b06d_render]])
+
+/* harmony default export */ var MDBFooter = (MDBFooter_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBTabs.vue?vue&type=template&id=70cb83b3
 
 function MDBTabsvue_type_template_id_70cb83b3_render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -12276,9 +12388,11 @@ function MDBTabsvue_type_template_id_70cb83b3_render(_ctx, _cache, $props, $setu
 
 
 
-MDBTabsvue_type_script_lang_js.render = MDBTabsvue_type_template_id_70cb83b3_render
 
-/* harmony default export */ var MDBTabs = (MDBTabsvue_type_script_lang_js);
+
+const MDBTabs_exports_ = /*#__PURE__*/exportHelper_default()(MDBTabsvue_type_script_lang_js, [['render',MDBTabsvue_type_template_id_70cb83b3_render]])
+
+/* harmony default export */ var MDBTabs = (MDBTabs_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBTabNav.vue?vue&type=template&id=565492f2
 
 function MDBTabNavvue_type_template_id_565492f2_render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -12354,9 +12468,11 @@ var es_array_fill = __webpack_require__("cb29");
 
 
 
-MDBTabNavvue_type_script_lang_js.render = MDBTabNavvue_type_template_id_565492f2_render
 
-/* harmony default export */ var MDBTabNav = (MDBTabNavvue_type_script_lang_js);
+
+const MDBTabNav_exports_ = /*#__PURE__*/exportHelper_default()(MDBTabNavvue_type_script_lang_js, [['render',MDBTabNavvue_type_template_id_565492f2_render]])
+
+/* harmony default export */ var MDBTabNav = (MDBTabNav_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBTabItem.vue?vue&type=template&id=74dbec2c
 
 var MDBTabItemvue_type_template_id_74dbec2c_hoisted_1 = {
@@ -12455,9 +12571,11 @@ function MDBTabItemvue_type_template_id_74dbec2c_render(_ctx, _cache, $props, $s
 
 
 
-MDBTabItemvue_type_script_lang_js.render = MDBTabItemvue_type_template_id_74dbec2c_render
 
-/* harmony default export */ var MDBTabItem = (MDBTabItemvue_type_script_lang_js);
+
+const MDBTabItem_exports_ = /*#__PURE__*/exportHelper_default()(MDBTabItemvue_type_script_lang_js, [['render',MDBTabItemvue_type_template_id_74dbec2c_render]])
+
+/* harmony default export */ var MDBTabItem = (MDBTabItem_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBTabPane.vue?vue&type=template&id=0a87f694
 
 function MDBTabPanevue_type_template_id_0a87f694_render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -12563,9 +12681,11 @@ function MDBTabPanevue_type_template_id_0a87f694_render(_ctx, _cache, $props, $s
 
 
 
-MDBTabPanevue_type_script_lang_js.render = MDBTabPanevue_type_template_id_0a87f694_render
 
-/* harmony default export */ var MDBTabPane = (MDBTabPanevue_type_script_lang_js);
+
+const MDBTabPane_exports_ = /*#__PURE__*/exportHelper_default()(MDBTabPanevue_type_script_lang_js, [['render',MDBTabPanevue_type_template_id_0a87f694_render]])
+
+/* harmony default export */ var MDBTabPane = (MDBTabPane_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/navigation/MDBTabContent.vue?vue&type=template&id=0c1ae399
 
 function MDBTabContentvue_type_template_id_0c1ae399_render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -12629,9 +12749,11 @@ function MDBTabContentvue_type_template_id_0c1ae399_render(_ctx, _cache, $props,
 
 
 
-MDBTabContentvue_type_script_lang_js.render = MDBTabContentvue_type_template_id_0c1ae399_render
 
-/* harmony default export */ var MDBTabContent = (MDBTabContentvue_type_script_lang_js);
+
+const MDBTabContent_exports_ = /*#__PURE__*/exportHelper_default()(MDBTabContentvue_type_script_lang_js, [['render',MDBTabContentvue_type_template_id_0c1ae399_render]])
+
+/* harmony default export */ var MDBTabContent = (MDBTabContent_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/layout/MDBCol.vue?vue&type=template&id=1d471ce6
 
 function MDBColvue_type_template_id_1d471ce6_render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -12706,9 +12828,11 @@ function MDBColvue_type_template_id_1d471ce6_render(_ctx, _cache, $props, $setup
 
 
 
-MDBColvue_type_script_lang_js.render = MDBColvue_type_template_id_1d471ce6_render
 
-/* harmony default export */ var MDBCol = (MDBColvue_type_script_lang_js);
+
+const MDBCol_exports_ = /*#__PURE__*/exportHelper_default()(MDBColvue_type_script_lang_js, [['render',MDBColvue_type_template_id_1d471ce6_render]])
+
+/* harmony default export */ var MDBCol = (MDBCol_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/layout/MDBRow.vue?vue&type=template&id=67cf2ad2
 
 function MDBRowvue_type_template_id_67cf2ad2_render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -12786,9 +12910,11 @@ function MDBRowvue_type_template_id_67cf2ad2_render(_ctx, _cache, $props, $setup
 
 
 
-MDBRowvue_type_script_lang_js.render = MDBRowvue_type_template_id_67cf2ad2_render
 
-/* harmony default export */ var MDBRow = (MDBRowvue_type_script_lang_js);
+
+const MDBRow_exports_ = /*#__PURE__*/exportHelper_default()(MDBRowvue_type_script_lang_js, [['render',MDBRowvue_type_template_id_67cf2ad2_render]])
+
+/* harmony default export */ var MDBRow = (MDBRow_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/layout/MDBContainer.vue?vue&type=template&id=79699a3b
 
 function MDBContainervue_type_template_id_79699a3b_render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -12853,9 +12979,11 @@ function MDBContainervue_type_template_id_79699a3b_render(_ctx, _cache, $props, 
 
 
 
-MDBContainervue_type_script_lang_js.render = MDBContainervue_type_template_id_79699a3b_render
 
-/* harmony default export */ var MDBContainer = (MDBContainervue_type_script_lang_js);
+
+const MDBContainer_exports_ = /*#__PURE__*/exportHelper_default()(MDBContainervue_type_script_lang_js, [['render',MDBContainervue_type_template_id_79699a3b_render]])
+
+/* harmony default export */ var MDBContainer = (MDBContainer_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/data/MDBTable.vue?vue&type=template&id=32a0a5ae
 
 function MDBTablevue_type_template_id_32a0a5ae_render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -12970,9 +13098,11 @@ function MDBTablevue_type_template_id_32a0a5ae_render(_ctx, _cache, $props, $set
 
 
 
-MDBTablevue_type_script_lang_js.render = MDBTablevue_type_template_id_32a0a5ae_render
 
-/* harmony default export */ var MDBTable = (MDBTablevue_type_script_lang_js);
+
+const MDBTable_exports_ = /*#__PURE__*/exportHelper_default()(MDBTablevue_type_script_lang_js, [['render',MDBTablevue_type_template_id_32a0a5ae_render]])
+
+/* harmony default export */ var MDBTable = (MDBTable_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/forms/MDBInput.vue?vue&type=template&id=08af0e7c
 
 var MDBInputvue_type_template_id_08af0e7c_hoisted_1 = {
@@ -13265,9 +13395,11 @@ function MDBInputvue_type_template_id_08af0e7c_render(_ctx, _cache, $props, $set
 
 
 
-MDBInputvue_type_script_lang_js.render = MDBInputvue_type_template_id_08af0e7c_render
 
-/* harmony default export */ var MDBInput = (MDBInputvue_type_script_lang_js);
+
+const MDBInput_exports_ = /*#__PURE__*/exportHelper_default()(MDBInputvue_type_script_lang_js, [['render',MDBInputvue_type_template_id_08af0e7c_render]])
+
+/* harmony default export */ var MDBInput = (MDBInput_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/forms/MDBTextarea.vue?vue&type=template&id=597811ea
 
 var MDBTextareavue_type_template_id_597811ea_hoisted_1 = {
@@ -13521,9 +13653,11 @@ function MDBTextareavue_type_template_id_597811ea_render(_ctx, _cache, $props, $
 
 
 
-MDBTextareavue_type_script_lang_js.render = MDBTextareavue_type_template_id_597811ea_render
 
-/* harmony default export */ var MDBTextarea = (MDBTextareavue_type_script_lang_js);
+
+const MDBTextarea_exports_ = /*#__PURE__*/exportHelper_default()(MDBTextareavue_type_script_lang_js, [['render',MDBTextareavue_type_template_id_597811ea_render]])
+
+/* harmony default export */ var MDBTextarea = (MDBTextarea_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/forms/MDBCheckbox.vue?vue&type=template&id=bfb56e76
 
 function MDBCheckboxvue_type_template_id_bfb56e76_render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -13703,9 +13837,11 @@ function MDBCheckboxvue_type_template_id_bfb56e76_render(_ctx, _cache, $props, $
 
 
 
-MDBCheckboxvue_type_script_lang_js.render = MDBCheckboxvue_type_template_id_bfb56e76_render
 
-/* harmony default export */ var MDBCheckbox = (MDBCheckboxvue_type_script_lang_js);
+
+const MDBCheckbox_exports_ = /*#__PURE__*/exportHelper_default()(MDBCheckboxvue_type_script_lang_js, [['render',MDBCheckboxvue_type_template_id_bfb56e76_render]])
+
+/* harmony default export */ var MDBCheckbox = (MDBCheckbox_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/forms/MDBRadio.vue?vue&type=template&id=527c4306
 
 function MDBRadiovue_type_template_id_527c4306_render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -13887,9 +14023,11 @@ function MDBRadiovue_type_template_id_527c4306_render(_ctx, _cache, $props, $set
 
 
 
-MDBRadiovue_type_script_lang_js.render = MDBRadiovue_type_template_id_527c4306_render
 
-/* harmony default export */ var MDBRadio = (MDBRadiovue_type_script_lang_js);
+
+const MDBRadio_exports_ = /*#__PURE__*/exportHelper_default()(MDBRadiovue_type_script_lang_js, [['render',MDBRadiovue_type_template_id_527c4306_render]])
+
+/* harmony default export */ var MDBRadio = (MDBRadio_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/forms/MDBFile.vue?vue&type=template&id=5623cbba
 
 function MDBFilevue_type_template_id_5623cbba_render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -14006,9 +14144,11 @@ function MDBFilevue_type_template_id_5623cbba_render(_ctx, _cache, $props, $setu
 
 
 
-MDBFilevue_type_script_lang_js.render = MDBFilevue_type_template_id_5623cbba_render
 
-/* harmony default export */ var MDBFile = (MDBFilevue_type_script_lang_js);
+
+const MDBFile_exports_ = /*#__PURE__*/exportHelper_default()(MDBFilevue_type_script_lang_js, [['render',MDBFilevue_type_template_id_5623cbba_render]])
+
+/* harmony default export */ var MDBFile = (MDBFile_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/forms/MDBRange.vue?vue&type=template&id=441711ff
 
 var MDBRangevue_type_template_id_441711ff_hoisted_1 = {
@@ -14163,9 +14303,11 @@ function MDBRangevue_type_template_id_441711ff_render(_ctx, _cache, $props, $set
 
 
 
-MDBRangevue_type_script_lang_js.render = MDBRangevue_type_template_id_441711ff_render
 
-/* harmony default export */ var MDBRange = (MDBRangevue_type_script_lang_js);
+
+const MDBRange_exports_ = /*#__PURE__*/exportHelper_default()(MDBRangevue_type_script_lang_js, [['render',MDBRangevue_type_template_id_441711ff_render]])
+
+/* harmony default export */ var MDBRange = (MDBRange_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/forms/MDBSwitch.vue?vue&type=template&id=b0307a5c
 
 function MDBSwitchvue_type_template_id_b0307a5c_render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -14254,9 +14396,11 @@ function MDBSwitchvue_type_template_id_b0307a5c_render(_ctx, _cache, $props, $se
 
 
 
-MDBSwitchvue_type_script_lang_js.render = MDBSwitchvue_type_template_id_b0307a5c_render
 
-/* harmony default export */ var MDBSwitch = (MDBSwitchvue_type_script_lang_js);
+
+const MDBSwitch_exports_ = /*#__PURE__*/exportHelper_default()(MDBSwitchvue_type_script_lang_js, [['render',MDBSwitchvue_type_template_id_b0307a5c_render]])
+
+/* harmony default export */ var MDBSwitch = (MDBSwitch_exports_);
 // CONCATENATED MODULE: ./src/directives/free/mdbScrollspy.js
 
 
