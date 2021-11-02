@@ -1,6 +1,12 @@
 <template>
-  <component :is="tag" :src="src" :alt="alt" :class="className"></component>
-  <div class="card-img-overlay" v-if="overlay">
+  <component
+    :is="tag"
+    :src="src"
+    :alt="alt"
+    :class="className"
+    v-bind="$attrs"
+  ></component>
+  <div class="card-img-overlay" v-if="overlay" v-bind="$attrs">
     <slot></slot>
   </div>
 </template>

@@ -7766,20 +7766,19 @@ function MDBCardTextvue_type_template_id_6e1a98bc_render(_ctx, _cache, $props, $
 const MDBCardText_exports_ = /*#__PURE__*/exportHelper_default()(MDBCardTextvue_type_script_lang_js, [['render',MDBCardTextvue_type_template_id_6e1a98bc_render]])
 
 /* harmony default export */ var MDBCardText = (MDBCardText_exports_);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCardImg.vue?vue&type=template&id=5041ac57
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCardImg.vue?vue&type=template&id=6acff6c3
 
-var _hoisted_1 = {
-  key: 0,
-  class: "card-img-overlay"
-};
-function MDBCardImgvue_type_template_id_5041ac57_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(external_commonjs_vue_commonjs2_vue_root_Vue_["Fragment"], null, [(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveDynamicComponent"])($props.tag), {
+function MDBCardImgvue_type_template_id_6acff6c3_render(_ctx, _cache, $props, $setup, $data, $options) {
+  return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(external_commonjs_vue_commonjs2_vue_root_Vue_["Fragment"], null, [(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveDynamicComponent"])($props.tag), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["mergeProps"])({
     src: $props.src,
     alt: $props.alt,
     class: $setup.className
-  }, null, 8, ["src", "alt", "class"])), $props.overlay ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])("div", _hoisted_1, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["renderSlot"])(_ctx.$slots, "default")])) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true)], 64);
+  }, _ctx.$attrs), null, 16, ["src", "alt", "class"])), $props.overlay ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])("div", Object(external_commonjs_vue_commonjs2_vue_root_Vue_["mergeProps"])({
+    key: 0,
+    class: "card-img-overlay"
+  }, _ctx.$attrs), [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["renderSlot"])(_ctx.$slots, "default")], 16)) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true)], 64);
 }
-// CONCATENATED MODULE: ./src/components/free/components/MDBCardImg.vue?vue&type=template&id=5041ac57
+// CONCATENATED MODULE: ./src/components/free/components/MDBCardImg.vue?vue&type=template&id=6acff6c3
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCardImg.vue?vue&type=script&lang=js
 
@@ -7830,7 +7829,7 @@ function MDBCardImgvue_type_template_id_5041ac57_render(_ctx, _cache, $props, $s
 
 
 
-const MDBCardImg_exports_ = /*#__PURE__*/exportHelper_default()(MDBCardImgvue_type_script_lang_js, [['render',MDBCardImgvue_type_template_id_5041ac57_render]])
+const MDBCardImg_exports_ = /*#__PURE__*/exportHelper_default()(MDBCardImgvue_type_script_lang_js, [['render',MDBCardImgvue_type_template_id_6acff6c3_render]])
 
 /* harmony default export */ var MDBCardImg = (MDBCardImg_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCardHeader.vue?vue&type=template&id=600ea459
@@ -8019,7 +8018,7 @@ const MDBCardGroup_exports_ = /*#__PURE__*/exportHelper_default()(MDBCardGroupvu
 /* harmony default export */ var MDBCardGroup = (MDBCardGroup_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/free/components/MDBCarousel.vue?vue&type=template&id=7ccc3848
 
-var MDBCarouselvue_type_template_id_7ccc3848_hoisted_1 = {
+var _hoisted_1 = {
   key: 0,
   class: "carousel-indicators"
 };
@@ -8063,7 +8062,7 @@ function MDBCarouselvue_type_template_id_7ccc3848_render(_ctx, _cache, $props, $
     onTouchend: $setup.handleTouchend
   }, {
     default: Object(external_commonjs_vue_commonjs2_vue_root_Vue_["withCtx"])(function () {
-      return [$props.indicators ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])("div", MDBCarouselvue_type_template_id_7ccc3848_hoisted_1, [(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(true), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(external_commonjs_vue_commonjs2_vue_root_Vue_["Fragment"], null, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["renderList"])($props.items, function (item, key) {
+      return [$props.indicators ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])("div", _hoisted_1, [(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(true), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(external_commonjs_vue_commonjs2_vue_root_Vue_["Fragment"], null, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["renderList"])($props.items, function (item, key) {
         return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])("button", {
           key: key,
           type: "button",
