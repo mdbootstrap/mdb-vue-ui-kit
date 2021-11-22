@@ -7,14 +7,15 @@
   --#{$variable-prefix}gutter-y: 0;
   display: flex;
   flex-wrap: wrap;
+  // TODO: Revisit calc order after https://github.com/react-bootstrap/react-bootstrap/issues/6039 is fixed
   margin-top: calc(
-    var(--#{$variable-prefix}gutter-y) * -1
+    -1 * var(--#{$variable-prefix}gutter-y)
   ); // stylelint-disable-line function-disallowed-list
   margin-right: calc(
-    var(--#{$variable-prefix}gutter-x) * -0.5
+    -0.5 * var(--#{$variable-prefix}gutter-x)
   ); // stylelint-disable-line function-disallowed-list
   margin-left: calc(
-    var(--#{$variable-prefix}gutter-x) * -0.5
+    -0.5 * var(--#{$variable-prefix}gutter-x)
   ); // stylelint-disable-line function-disallowed-list
 }
 
@@ -83,8 +84,8 @@
   $breakpoints: $grid-breakpoints
 ) {
   @each $breakpoint in map-keys($breakpoints) {
-    // .row-cols defaults must all appear before .col overrides so they can be overridden.
     $infix: breakpoint-infix($breakpoint, $breakpoints);
+
     @include media-breakpoint-up($breakpoint, $breakpoints) {
       // Provide basic `.col-{bp}` classes for equal-width flexbox columns
       .col#{$infix} {
@@ -102,13 +103,7 @@
           }
         }
       }
-    }
-  }
 
-  @each $breakpoint in map-keys($breakpoints) {
-    $infix: breakpoint-infix($breakpoint, $breakpoints);
-
-    @include media-breakpoint-up($breakpoint, $breakpoints) {
       .col#{$infix}-auto {
         @include make-col-auto();
       }
@@ -122,7 +117,7 @@
 
         // `$columns - 1` because offsetting by the width of an entire row isn't possible
         @for $i from 0 through ($columns - 1) {
-          @if not($infix == "" and $i == 0) {
+          @if not($infix == '' and $i == 0) {
             // Avoid emitting useless .offset-0
             .offset#{$infix}-#{$i} {
               @include make-col-offset($i, $columns);

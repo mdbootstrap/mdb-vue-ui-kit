@@ -17,6 +17,10 @@ export default {
       type: String,
       default: "div",
     },
+    boundary: {
+      type: String,
+      default: "clippingParent",
+    },
     btnGroup: {
       type: Boolean,
       default: false,
@@ -37,11 +41,11 @@ export default {
       type: [String, Array],
       default: "start",
     },
-    updatePosition: {
-      type: Boolean,
-      default: true,
+    offset: {
+      type: [Array, String, Function],
+      default: () => [0, 0],
     },
-    offset: String,
+    popperConfig: [null, Object, Function],
     target: String,
     modelValue: Boolean,
   },
@@ -56,8 +60,14 @@ export default {
       ];
     });
 
-    const { setPopper, isPopperActive, closePopper, openPopper, updatePopper } =
-      MDBPopper();
+    const {
+      setPopper,
+      isPopperActive,
+      closePopper,
+      openPopper,
+      updatePopper,
+      getPopperOffset,
+    } = MDBPopper();
 
     const root = ref("root");
     const triggerEl = ref(null);
@@ -109,17 +119,6 @@ export default {
     // also Poppers visibility triggers DropdownMenu open/close animation
     // with adding/removing 'show' class
 
-    // style fix for .dropup .dropdown-menu
-    // original style 'bottom=100%' corrupts popper position
-    watchEffect(() => {
-      if (isPopperActive.value && props.dropup) {
-        const dropdowns = document.querySelectorAll(".dropup .dropdown-menu");
-        dropdowns.forEach((dropdown) => {
-          dropdown.style.bottom = "auto";
-        });
-      }
-    });
-
     provide("isPopperActive", isPopperActive);
     provide("externalTarget", props.target);
 
@@ -141,12 +140,7 @@ export default {
       ? "left"
       : "bottom";
 
-    const popperSetup = () => {
-      triggerEl.value = props.target
-        ? document.querySelector(props.target)
-        : root.value.querySelector("[data-trigger]");
-      popperEl.value = dropdownMenu.value;
-
+    const getConfig = () => {
       if (typeof props.align === "string") {
         menuAlignClasses.value = `dropdown-menu-${props.align}`;
       } else {
@@ -166,17 +160,44 @@ export default {
 
       const placement = `${popperPosition}-${align}`;
 
-      const config = {
+      let boundary = document.querySelector(props.boundary);
+      if (!boundary) {
+        boundary = props.boundary;
+      }
+
+      const defaultBsPopperConfig = {
         placement,
-        eventsEnabled: props.updatePosition,
-        modifiers: {
-          offset: {
-            offset: props.offset || "0",
+        modifiers: [
+          {
+            name: "preventOverflow",
+            options: {
+              boundary,
+            },
           },
-          preventOverflow: { enabled: true },
-          flip: { enabled: true },
-        },
+          {
+            name: "offset",
+            options: {
+              offset: getPopperOffset(props.offset, root.value),
+            },
+          },
+        ],
       };
+
+      return {
+        ...defaultBsPopperConfig,
+        ...(typeof props.popperConfig === "function"
+          ? props.popperConfig(defaultBsPopperConfig)
+          : props.popperConfig),
+      };
+    };
+
+    const popperSetup = () => {
+      triggerEl.value = props.target
+        ? document.querySelector(props.target)
+        : root.value.querySelector("[data-trigger]");
+      popperEl.value = dropdownMenu.value;
+
+      const config = getConfig();
 
       setPopper(triggerEl.value, popperEl.value, config);
     };

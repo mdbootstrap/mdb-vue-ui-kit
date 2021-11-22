@@ -17,6 +17,10 @@
   >
     {{ label }}
   </label>
+  <div class="form-helper" v-if="!wrap && helper">{{ helper }}</div>
+  <div class="form-helper" v-if="!wrap && counter">
+    <div class="form-counter">{{ currentLength }} / {{ maxlength }}</div>
+  </div>
   <slot v-if="!wrap" />
   <div v-if="!wrap && validFeedback" :class="validFeedbackClassName">
     {{ validFeedback }}
@@ -54,6 +58,10 @@
     <label v-if="label" ref="labelRef" :class="labelClassName" :for="uid">
       {{ label }}
     </label>
+    <div class="form-helper" v-if="helper">{{ helper }}</div>
+    <div class="form-helper" v-if="counter">
+      <div class="form-counter">{{ currentLength }} / {{ maxlength }}</div>
+    </div>
     <slot></slot>
     <div v-if="validFeedback" :class="validFeedbackClassName">
       {{ validFeedback }}
@@ -126,6 +134,12 @@ export default {
     tag: {
       type: String,
       default: "div",
+    },
+    helper: String,
+    counter: Boolean,
+    maxlength: {
+      type: Number,
+      default: 0,
     },
   },
   directives: { mdbClickOutside },
@@ -226,7 +240,17 @@ export default {
       }
     }
 
+    const currentLength = ref(0);
+
     function handleInput(e) {
+      if (props.counter) {
+        if (e.target.value.length > props.maxlength) {
+          e.target.value = inputValue.value;
+          return;
+        }
+
+        currentLength.value = e.target.value.length;
+      }
       inputValue.value = e.target.value;
       emit("update:modelValue", inputValue.value);
     }
@@ -284,6 +308,7 @@ export default {
       notchMiddleWidth,
       clickOutside,
       props,
+      currentLength,
     };
   },
 };

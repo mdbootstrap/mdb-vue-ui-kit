@@ -4,8 +4,10 @@
     ref="triggerEl"
     style="display: inline-block"
     v-bind="$attrs"
-    @mouseover="onMouseOver"
-    @mouseout="onMouseOut"
+    @mouseenter="onMouseEnter"
+    @mouseleave="onMouseLeave"
+    @focus="onMouseEnter"
+    @blur="onMouseLeave"
   >
     <slot name="reference" />
   </component>
@@ -21,13 +23,13 @@
       :style="[widthStyle]"
     >
       <slot name="tip" />
-      <div x-arrow class="tooltip_arrow" v-if="arrow"></div>
+      <div data-popper-arrow class="tooltip_arrow" v-if="arrow"></div>
     </div>
   </transition>
 </template>
 
 <script>
-import { computed, nextTick, onUnmounted, ref, watchEffect } from "vue";
+import { computed, nextTick, ref, watchEffect } from "vue";
 import MDBPopper from "../../utils/MDBPopper.js";
 
 export default {
@@ -41,10 +43,18 @@ export default {
     reference: String,
     popover: String,
     options: {
-      type: Object,
+      type: [Object, Function],
       default() {
         return {};
       },
+    },
+    boundary: {
+      type: String,
+      default: "clippingParent",
+    },
+    fallbackPlacements: {
+      type: Array,
+      default: () => ["top", "right", "bottom", "left"],
     },
     offset: {
       type: String,
@@ -72,7 +82,7 @@ export default {
       isPopperActive,
       openPopper,
       closePopper,
-      destroyPopper,
+      getPopperOffset,
     } = MDBPopper();
     const triggerEl = ref("triggerEl");
     const popperEl = ref("popperEl");
@@ -80,6 +90,53 @@ export default {
     const widthStyle = computed(
       () => `max-width: ${props.maxWidth}px!important`
     );
+
+    const getConfig = () => {
+      const placement = props.direction;
+
+      let boundary = document.querySelector(props.boundary);
+      if (!boundary) {
+        boundary = props.boundary;
+      }
+
+      const defaultBsPopperConfig = {
+        placement,
+        modifiers: [
+          {
+            name: "flip",
+            options: {
+              fallbackPlacements: props.fallbackPlacements,
+            },
+          },
+          {
+            name: "preventOverflow",
+            options: {
+              boundary,
+            },
+          },
+          {
+            name: "offset",
+            options: {
+              offset: getPopperOffset(props.offset, triggerEl.value),
+            },
+          },
+          {
+            name: "arrow",
+            options: {
+              element: `.tooltip_arrow`,
+              padding: 5,
+            },
+          },
+        ],
+      };
+
+      return {
+        ...defaultBsPopperConfig,
+        ...(typeof props.options === "function"
+          ? props.options(defaultBsPopperConfig)
+          : props.options),
+      };
+    };
 
     const popperSetup = () => {
       triggerEl.value = props.reference
@@ -89,19 +146,7 @@ export default {
         ? document.querySelector(props.popover)
         : popperEl.value;
 
-      const placement = props.direction;
-
-      const config = {
-        placement,
-        eventsEnabled: props.updatePosition,
-        modifiers: {
-          offset: {
-            offset: props.arrow ? "0" : props.offset,
-          },
-        },
-        gpuAcceleration: false,
-        ...props.options,
-      };
+      const config = getConfig();
 
       setPopper(triggerEl.value, popperEl.value, config);
     };
@@ -136,7 +181,6 @@ export default {
           closePopper();
           isThrottled.value = false;
         }, 150);
-        destroyPopper();
       }
     });
 
@@ -150,24 +194,20 @@ export default {
       return false;
     });
 
-    const onMouseOver = () => {
+    const onMouseEnter = () => {
       !props.disabled && emit("update:modelValue", true);
     };
-    const onMouseOut = () => {
+    const onMouseLeave = () => {
       !props.disabled && emit("update:modelValue", false);
     };
-
-    onUnmounted(() => {
-      destroyPopper();
-    });
 
     return {
       isActive,
       triggerEl,
       popperEl,
       widthStyle,
-      onMouseOver,
-      onMouseOut,
+      onMouseEnter,
+      onMouseLeave,
       props,
     };
   },

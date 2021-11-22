@@ -6,40 +6,48 @@
   margin: 5px;
 }
 
-.tooltip[x-placement^="top"] .tooltip_arrow {
+.tooltip[data-popper-placement^="top"] .tooltip_arrow {
   border-width: 5px 5px 0 5px;
-  border-color: $tooltip-inner-background-color transparent transparent transparent;
+  border-color: $tooltip-inner-background-color transparent transparent
+    transparent;
   bottom: -5px;
   left: calc(50% - 5px);
   margin-top: 0;
   margin-bottom: 0;
+  left: -5px !important;
 }
 
-.tooltip[x-placement^="bottom"] .tooltip_arrow {
+.tooltip[data-popper-placement^="bottom"] .tooltip_arrow {
   border-width: 0 5px 5px 5px;
-  border-color: transparent transparent $tooltip-inner-background-color transparent;
+  border-color: transparent transparent $tooltip-inner-background-color
+    transparent;
   top: -5px;
   left: calc(50% - 5px);
   margin-top: 0;
   margin-bottom: 0;
+  left: -5px !important;
 }
 
-.tooltip[x-placement^="right"] .tooltip_arrow {
+.tooltip[data-popper-placement^="right"] .tooltip_arrow {
   border-width: 5px 5px 5px 0;
-  border-color: transparent $tooltip-inner-background-color transparent transparent;
+  border-color: transparent $tooltip-inner-background-color transparent
+    transparent;
   left: -5px;
   top: calc(50% - 5px);
   margin-left: 0;
   margin-right: 0;
+  top: -5px !important;
 }
 
-.tooltip[x-placement^="left"] .tooltip_arrow {
+.tooltip[data-popper-placement^="left"] .tooltip_arrow {
   border-width: 5px 0 5px 5px;
-  border-color: transparent transparent transparent $tooltip-inner-background-color;
+  border-color: transparent transparent transparent
+    $tooltip-inner-background-color;
   right: -5px;
   top: calc(50% - 5px);
   margin-left: 0;
   margin-right: 0;
+  top: -5px !important;
 }
 
 .fade-leave-active,

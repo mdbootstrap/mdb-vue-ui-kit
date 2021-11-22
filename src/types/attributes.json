@@ -473,6 +473,12 @@
   "MDBDropdown/tag": {
     "type": "string"
   },
+  "mdb-dropdown/boundary": {
+    "type": "string"
+  },
+  "MDBDropdown/boundary": {
+    "type": "string"
+  },
   "mdb-dropdown/btnGroup": {
     "type": "boolean"
   },
@@ -503,17 +509,17 @@
   "MDBDropdown/align": {
     "type": "string|array"
   },
-  "mdb-dropdown/updatePosition": {
-    "type": "boolean"
-  },
-  "MDBDropdown/updatePosition": {
-    "type": "boolean"
-  },
   "mdb-dropdown/offset": {
-    "type": "string"
+    "type": "array|string|function"
   },
   "MDBDropdown/offset": {
-    "type": "string"
+    "type": "array|string|function"
+  },
+  "mdb-dropdown/popperConfig": {
+    "type": "null|object|function"
+  },
+  "MDBDropdown/popperConfig": {
+    "type": "null|object|function"
   },
   "mdb-dropdown/target": {
     "type": "string"
@@ -653,11 +659,11 @@
   "MDBDropdownToggle/split": {
     "type": "boolean"
   },
-  "mdb-list-group/tag": {
-    "type": "string"
+  "mdb-list-group/flush": {
+    "type": "boolean"
   },
-  "MDBListGroup/tag": {
-    "type": "string"
+  "MDBListGroup/flush": {
+    "type": "boolean"
   },
   "mdb-list-group/horizontal": {
     "type": "boolean|string"
@@ -665,11 +671,17 @@
   "MDBListGroup/horizontal": {
     "type": "boolean|string"
   },
-  "mdb-list-group/flush": {
+  "mdb-list-group/numbered": {
     "type": "boolean"
   },
-  "MDBListGroup/flush": {
+  "MDBListGroup/numbered": {
     "type": "boolean"
+  },
+  "mdb-list-group/tag": {
+    "type": "string"
+  },
+  "MDBListGroup/tag": {
+    "type": "string"
   },
   "mdb-list-group-item/tag": {
     "type": "string"
@@ -785,6 +797,18 @@
   "MDBModal/transform": {
     "type": "string"
   },
+  "mdb-modal/keyboard": {
+    "type": "boolean"
+  },
+  "MDBModal/keyboard": {
+    "type": "boolean"
+  },
+  "mdb-modal/focus": {
+    "type": "boolean"
+  },
+  "MDBModal/focus": {
+    "type": "boolean"
+  },
   "mdb-modal-body/tag": {
     "type": "string"
   },
@@ -858,10 +882,22 @@
     "type": "string"
   },
   "mdb-popover/options": {
-    "type": "object"
+    "type": "object|function"
   },
   "MDBPopover/options": {
-    "type": "object"
+    "type": "object|function"
+  },
+  "mdb-popover/boundary": {
+    "type": "string"
+  },
+  "MDBPopover/boundary": {
+    "type": "string"
+  },
+  "mdb-popover/fallbackPlacements": {
+    "type": "array"
+  },
+  "MDBPopover/fallbackPlacements": {
+    "type": "array"
   },
   "mdb-popover/offset": {
     "type": "string"
@@ -897,12 +933,6 @@
     "type": "boolean"
   },
   "MDBPopover/hover": {
-    "type": "boolean"
-  },
-  "mdb-popover/updatePosition": {
-    "type": "boolean"
-  },
-  "MDBPopover/updatePosition": {
     "type": "boolean"
   },
   "mdb-progress/tag": {
@@ -1008,10 +1038,22 @@
     "type": "string"
   },
   "mdb-tooltip/options": {
-    "type": "object"
+    "type": "object|function"
   },
   "MDBTooltip/options": {
-    "type": "object"
+    "type": "object|function"
+  },
+  "mdb-tooltip/boundary": {
+    "type": "string"
+  },
+  "MDBTooltip/boundary": {
+    "type": "string"
+  },
+  "mdb-tooltip/fallbackPlacements": {
+    "type": "array"
+  },
+  "MDBTooltip/fallbackPlacements": {
+    "type": "array"
   },
   "mdb-tooltip/offset": {
     "type": "string"
@@ -1439,6 +1481,24 @@
   "MDBInput/tag": {
     "type": "string"
   },
+  "mdb-input/helper": {
+    "type": "string"
+  },
+  "MDBInput/helper": {
+    "type": "string"
+  },
+  "mdb-input/counter": {
+    "type": "boolean"
+  },
+  "MDBInput/counter": {
+    "type": "boolean"
+  },
+  "mdb-input/maxlength": {
+    "type": "number"
+  },
+  "MDBInput/maxlength": {
+    "type": "number"
+  },
   "mdb-radio/id": {
     "type": "string"
   },
@@ -1756,6 +1816,24 @@
   },
   "MDBTextarea/tag": {
     "type": "string"
+  },
+  "mdb-textarea/helper": {
+    "type": "string"
+  },
+  "MDBTextarea/helper": {
+    "type": "string"
+  },
+  "mdb-textarea/counter": {
+    "type": "boolean"
+  },
+  "MDBTextarea/counter": {
+    "type": "boolean"
+  },
+  "mdb-textarea/maxLength": {
+    "type": "number"
+  },
+  "MDBTextarea/maxLength": {
+    "type": "number"
   },
   "mdb-col/tag": {
     "type": "string"

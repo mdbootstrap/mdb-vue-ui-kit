@@ -328,13 +328,14 @@
   "mdb-dropdown": {
     "attributes": [
       "tag",
+      "boundary",
       "btnGroup",
       "dropup",
       "dropend",
       "dropstart",
       "align",
-      "updatePosition",
       "offset",
+      "popperConfig",
       "target",
       "modelValue"
     ],
@@ -343,13 +344,14 @@
   "MDBDropdown": {
     "attributes": [
       "tag",
+      "boundary",
       "btnGroup",
       "dropup",
       "dropend",
       "dropstart",
       "align",
-      "updatePosition",
       "offset",
+      "popperConfig",
       "target",
       "modelValue"
     ],
@@ -429,17 +431,19 @@
   },
   "mdb-list-group": {
     "attributes": [
-      "tag",
+      "flush",
       "horizontal",
-      "flush"
+      "numbered",
+      "tag"
     ],
     "description": ""
   },
   "MDBListGroup": {
     "attributes": [
-      "tag",
+      "flush",
       "horizontal",
-      "flush"
+      "numbered",
+      "tag"
     ],
     "description": ""
   },
@@ -478,7 +482,9 @@
       "fullscreen",
       "animation",
       "dialogClasses",
-      "transform"
+      "transform",
+      "keyboard",
+      "focus"
     ],
     "description": ""
   },
@@ -497,7 +503,9 @@
       "fullscreen",
       "animation",
       "dialogClasses",
-      "transform"
+      "transform",
+      "keyboard",
+      "focus"
     ],
     "description": ""
   },
@@ -564,13 +572,14 @@
       "reference",
       "popover",
       "options",
+      "boundary",
+      "fallbackPlacements",
       "offset",
       "direction",
       "maxWidth",
       "arrow",
       "dismissible",
-      "hover",
-      "updatePosition"
+      "hover"
     ],
     "description": ""
   },
@@ -581,13 +590,14 @@
       "reference",
       "popover",
       "options",
+      "boundary",
+      "fallbackPlacements",
       "offset",
       "direction",
       "maxWidth",
       "arrow",
       "dismissible",
-      "hover",
-      "updatePosition"
+      "hover"
     ],
     "description": ""
   },
@@ -654,6 +664,8 @@
       "reference",
       "popover",
       "options",
+      "boundary",
+      "fallbackPlacements",
       "offset",
       "direction",
       "maxWidth",
@@ -669,6 +681,8 @@
       "reference",
       "popover",
       "options",
+      "boundary",
+      "fallbackPlacements",
       "offset",
       "direction",
       "maxWidth",
@@ -832,7 +846,10 @@
       "validFeedback",
       "invalidFeedback",
       "tooltipFeedback",
-      "tag"
+      "tag",
+      "helper",
+      "counter",
+      "maxlength"
     ],
     "description": ""
   },
@@ -855,7 +872,10 @@
       "validFeedback",
       "invalidFeedback",
       "tooltipFeedback",
-      "tag"
+      "tag",
+      "helper",
+      "counter",
+      "maxlength"
     ],
     "description": ""
   },
@@ -978,7 +998,10 @@
       "validFeedback",
       "invalidFeedback",
       "tooltipFeedback",
-      "tag"
+      "tag",
+      "helper",
+      "counter",
+      "maxLength"
     ],
     "description": ""
   },
@@ -1001,7 +1024,10 @@
       "validFeedback",
       "invalidFeedback",
       "tooltipFeedback",
-      "tag"
+      "tag",
+      "helper",
+      "counter",
+      "maxLength"
     ],
     "description": ""
   },

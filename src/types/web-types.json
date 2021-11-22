@@ -1,7 +1,7 @@
 {
   "framework": "vue",
   "name": "mdb-vue-ui-kit",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "contributions": {
     "html": {
       "description-markup": "markdown",
@@ -1245,6 +1245,14 @@
               "default": "\"div\""
             },
             {
+              "name": "boundary",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"clippingParent\""
+            },
+            {
               "name": "btnGroup",
               "value": {
                 "kind": "expression",
@@ -1285,18 +1293,18 @@
               "default": "\"start\""
             },
             {
-              "name": "updatePosition",
-              "value": {
-                "kind": "expression",
-                "type": "boolean"
-              },
-              "default": "true"
-            },
-            {
               "name": "offset",
               "value": {
                 "kind": "expression",
-                "type": "string"
+                "type": "array|string|func"
+              },
+              "default": "() => [0, 0]"
+            },
+            {
+              "name": "popperConfig",
+              "value": {
+                "kind": "expression",
+                "type": "null|object|func"
               }
             },
             {
@@ -1866,6 +1874,28 @@
                 "type": "string"
               },
               "default": "\"div\""
+            },
+            {
+              "name": "helper",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "counter",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "maxlength",
+              "value": {
+                "kind": "expression",
+                "type": "number"
+              },
+              "default": "0"
             }
           ],
           "events": [
@@ -1894,12 +1924,12 @@
           "description": "",
           "attributes": [
             {
-              "name": "tag",
+              "name": "flush",
               "value": {
                 "kind": "expression",
-                "type": "string"
+                "type": "boolean"
               },
-              "default": "\"ul\""
+              "default": "false"
             },
             {
               "name": "horizontal",
@@ -1910,12 +1940,19 @@
               "default": "false"
             },
             {
-              "name": "flush",
+              "name": "numbered",
               "value": {
                 "kind": "expression",
                 "type": "boolean"
+              }
+            },
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "string"
               },
-              "default": "false"
+              "default": "\"ul\""
             }
           ],
           "slots": [
@@ -2092,6 +2129,22 @@
                 "kind": "expression",
                 "type": "string"
               }
+            },
+            {
+              "name": "keyboard",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "name": "focus",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "true"
             }
           ],
           "events": [
@@ -2793,9 +2846,25 @@
               "name": "options",
               "value": {
                 "kind": "expression",
-                "type": "object"
+                "type": "object|func"
               },
-              "default": "{}"
+              "default": "function() {\n  return {};\n}"
+            },
+            {
+              "name": "boundary",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"clippingParent\""
+            },
+            {
+              "name": "fallbackPlacements",
+              "value": {
+                "kind": "expression",
+                "type": "array"
+              },
+              "default": "[\"top\", \"right\", \"bottom\", \"left\"]"
             },
             {
               "name": "offset",
@@ -2844,14 +2913,6 @@
                 "type": "boolean"
               },
               "default": "false"
-            },
-            {
-              "name": "updatePosition",
-              "value": {
-                "kind": "expression",
-                "type": "boolean"
-              },
-              "default": "true"
             }
           ],
           "slots": [
@@ -3862,6 +3923,28 @@
                 "type": "string"
               },
               "default": "\"div\""
+            },
+            {
+              "name": "helper",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "counter",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "maxLength",
+              "value": {
+                "kind": "expression",
+                "type": "number"
+              },
+              "default": "0"
             }
           ],
           "events": [
@@ -3919,9 +4002,25 @@
               "name": "options",
               "value": {
                 "kind": "expression",
-                "type": "object"
+                "type": "object|func"
               },
-              "default": "{}"
+              "default": "function() {\n  return {};\n}"
+            },
+            {
+              "name": "boundary",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "\"clippingParent\""
+            },
+            {
+              "name": "fallbackPlacements",
+              "value": {
+                "kind": "expression",
+                "type": "array"
+              },
+              "default": "[\"top\", \"right\", \"bottom\", \"left\"]"
             },
             {
               "name": "offset",

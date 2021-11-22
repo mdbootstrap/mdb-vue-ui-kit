@@ -14,6 +14,14 @@
   @include transition(transform $offcanvas-transition-duration ease-in-out);
 }
 
+.offcanvas-backdrop {
+  @include overlay-backdrop(
+    $zindex-offcanvas-backdrop,
+    $offcanvas-backdrop-bg,
+    $offcanvas-backdrop-opacity
+  );
+}
+
 .offcanvas-header {
   display: flex;
   align-items: center;
@@ -22,8 +30,9 @@
 
   .btn-close {
     padding: ($offcanvas-padding-y * 0.5) ($offcanvas-padding-x * 0.5);
-    margin: ($offcanvas-padding-y * -0.5) ($offcanvas-padding-x * -0.5)
-      ($offcanvas-padding-y * -0.5) auto;
+    margin-top: $offcanvas-padding-y * -0.5;
+    margin-right: $offcanvas-padding-x * -0.5;
+    margin-bottom: $offcanvas-padding-y * -0.5;
   }
 }
 

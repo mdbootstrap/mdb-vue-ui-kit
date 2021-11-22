@@ -1,4 +1,3 @@
-
 .popover .popover_arrow {
   width: 0;
   height: 0;
@@ -8,74 +7,78 @@
   color: transparent;
 }
 
-.popover[x-placement^="top"] .popover_arrow {
-  border-width: 15px 15px 0 15px;
+.popover[data-popper-placement^="top"] .popover_arrow {
+  border-width: 10px 10px 0 10px;
   border-color: #d6d6d6 transparent transparent transparent;
-  bottom: -15px;
+  bottom: -10px;
   margin-bottom: 0;
+  left: -10px !important;
 }
 
-.popover[x-placement^="top"] .popover_arrow::before {
+.popover[data-popper-placement^="top"] .popover_arrow::before {
   content: "";
   display: inline-block;
   position: absolute;
-  left: -15px;
+  left: -10px;
   bottom: 1.5px;
   border: solid;
-  border-width: 15px 15px 0 15px;
+  border-width: 10px 10px 0 10px;
   border-color: white transparent transparent transparent;
 }
 
-.popover[x-placement^="bottom"] .popover_arrow {
-  border-width: 0 15px 15px 15px;
+.popover[data-popper-placement^="bottom"] .popover_arrow {
+  border-width: 0 10px 10px 10px;
   border-color: transparent transparent #d6d6d6 transparent;
-  top: -15px;
+  top: -10px;
   margin-top: 0;
+  left: -10px !important;
 }
 
-.popover[x-placement^="bottom"] .popover_arrow::before {
+.popover[data-popper-placement^="bottom"] .popover_arrow::before {
   content: "";
   display: inline-block;
   position: absolute;
-  left: -15px;
+  left: -10px;
   top: 1.45px;
   border: solid;
-  border-width: 0 15px 15px 15px;
+  border-width: 0 10px 10px 10px;
   border-color: transparent transparent white transparent;
 }
 
-.popover[x-placement^="right"] .popover_arrow {
-  border-width: 15px 15px 15px 0;
+.popover[data-popper-placement^="right"] .popover_arrow {
+  border-width: 10px 10px 10px 0;
   border-color: transparent #d6d6d6 transparent transparent;
-  left: -15px;
+  left: -10px;
   margin-left: 0;
+  top: -10px !important;
 }
 
-.popover[x-placement^="right"] .popover_arrow::before {
+.popover[data-popper-placement^="right"] .popover_arrow::before {
   content: "";
   display: inline-block;
   position: absolute;
-  top: -15px;
+  top: -10px;
   left: 1.45px;
   border: solid;
-  border-width: 15px 15px 15px 0;
+  border-width: 10px 10px 10px 0;
   border-color: transparent white transparent transparent;
 }
 
-.popover[x-placement^="left"] .popover_arrow {
-  border-width: 15px 0 15px 15px;
+.popover[data-popper-placement^="left"] .popover_arrow {
+  border-width: 10px 0 10px 10px;
   border-color: transparent transparent transparent #d6d6d6;
-  right: -15px;
+  right: -10px;
   margin-right: 0;
+  top: -10px !important;
 }
 
-.popover[x-placement^="left"] .popover_arrow::before {
+.popover[data-popper-placement^="left"] .popover_arrow::before {
   content: "";
   display: inline-block;
   position: absolute;
-  top: -15px;
+  top: -10px;
   right: 1.45px;
   border: solid;
-  border-width: 15px 0 15px 15px;
+  border-width: 10px 0 10px 10px;
   border-color: transparent transparent transparent white;
 }

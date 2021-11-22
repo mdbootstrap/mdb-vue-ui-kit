@@ -12,6 +12,10 @@
   <label v-if="label && !wrap" ref="labelRef" class="form-label" :for="uid">
     {{ label }}
   </label>
+  <div class="form-helper" v-if="!wrap && helper">{{ helper }}</div>
+  <div class="form-helper" v-if="!wrap && counter">
+    <div class="form-counter">{{ currentLength }} / {{ maxLength }}</div>
+  </div>
   <slot v-if="!wrap" />
   <div v-if="!wrap && validFeedback" :class="validFeedbackClassName">
     {{ validFeedback }}
@@ -38,6 +42,10 @@
     <label v-if="label" ref="labelRef" class="form-label" :for="uid">
       {{ label }}
     </label>
+    <div class="form-helper" v-if="helper">{{ helper }}</div>
+    <div class="form-helper" v-if="counter">
+      <div class="form-counter">{{ currentLength }} / {{ maxLength }}</div>
+    </div>
     <div v-if="validFeedback" :class="validFeedbackClassName">
       {{ validFeedback }}
     </div>
@@ -110,6 +118,12 @@ export default {
     tag: {
       type: String,
       default: "div",
+    },
+    helper: String,
+    counter: Boolean,
+    maxLength: {
+      type: Number,
+      default: 0,
     },
   },
   emits: ["update:modelValue"],
@@ -206,7 +220,18 @@ export default {
       }
     }
 
+    const currentLength = ref(0);
+
     function handleInput(e) {
+      if (props.counter) {
+        if (e.target.value.length > props.maxLength) {
+          e.target.value = textareaValue.value;
+          return;
+        }
+
+        currentLength.value = e.target.value.length;
+      }
+
       textareaValue.value = e.target.value;
       emit("update:modelValue", textareaValue.value);
     }
@@ -246,6 +271,7 @@ export default {
       notchLeadingWidth,
       notchMiddleWidth,
       props,
+      currentLength,
     };
   },
 };

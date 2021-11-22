@@ -15,7 +15,15 @@
       :aria-modal="isActive ? true : null"
       :aria-labelledby="labelledby"
       role="dialog"
-      @click.self="closeModal"
+      @click.self="
+        () => {
+          if (staticBackdrop) {
+            animateStaticBackdrop();
+          } else {
+            closeModal();
+          }
+        }
+      "
     >
       <div :class="dialogClass" role="document" ref="dialog">
         <div class="modal-content" :style="computedContentStyle">
@@ -27,16 +35,10 @@
 </template>
 
 <script>
-import {
-  computed,
-  onBeforeUnmount,
-  onMounted,
-  provide,
-  ref,
-  watchEffect,
-} from "vue";
+import { computed, onBeforeUnmount, provide, ref, watchEffect } from "vue";
 
 import { on, off } from "../../utils/MDBEventHandlers";
+import MDBFocusTrap from "@/components/utils/MDBFocusTrap.js";
 
 export default {
   name: "MDBModal",
@@ -88,12 +90,21 @@ export default {
       type: String,
     },
     transform: String,
+    keyboard: {
+      type: Boolean,
+      default: true,
+    },
+    focus: {
+      type: Boolean,
+      default: true,
+    },
   },
   emits: ["show", "shown", "hide", "hidden", "update:modelValue"],
   setup(props, { emit }) {
     const root = ref("root");
     const dialog = ref("dialog");
     const dialogTransform = ref("");
+    const focusTrap = ref(null);
 
     const isActive = ref(props.modelValue);
 
@@ -160,12 +171,11 @@ export default {
       ];
     });
 
-    const closeModal = () => {
-      if (props.staticBackdrop) {
-        animateStaticModal(dialog.value);
-        return;
-      }
+    const animateStaticBackdrop = () => {
+      animateStaticModal(dialog.value);
+    };
 
+    const closeModal = () => {
       emit("update:modelValue", false);
     };
 
@@ -231,6 +241,15 @@ export default {
         emit("shown", root.value);
       }, 400);
       thisElement.value = root.value;
+
+      if (props.keyboard) {
+        on(window, "keyup", handleEscKeyUp);
+      }
+
+      if (props.focus) {
+        focusTrap.value = MDBFocusTrap();
+        focusTrap.value.initFocusTrap(root.value);
+      }
     };
     const beforeLeave = (el) => {
       el.childNodes[0].style.transform = dialogTransform.value;
@@ -242,15 +261,18 @@ export default {
       }, 200);
 
       emit("hide", thisElement.value);
+
+      if (props.keyboard) {
+        off(window, "keyup", handleEscKeyUp);
+      }
+      if (props.focus && focusTrap.value) {
+        focusTrap.value.removeFocusTrap();
+      }
     };
     const afterLeave = () => {
       emit("hidden", thisElement.value);
       shouldOverflow.value = false;
     };
-
-    onMounted(() => {
-      on(window, "keyup", handleEscKeyUp);
-    });
 
     onBeforeUnmount(() => {
       off(window, "keyup", handleEscKeyUp);
@@ -266,6 +288,7 @@ export default {
       dialog,
       isActive,
       closeModal,
+      animateStaticBackdrop,
       enter,
       afterEnter,
       beforeLeave,

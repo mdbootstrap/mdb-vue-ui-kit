@@ -1,5 +1,5 @@
 import { ref, nextTick, reactive } from "vue";
-import Popper from "popper.js";
+import { createPopper } from "@popperjs/core";
 
 function MDBPopper() {
   const isPopperActive = ref(false);
@@ -13,12 +13,14 @@ function MDBPopper() {
     popperEl.value = popper;
     popperOptions.value = {
       placement: "bottom",
-      eventsEnabled: false,
-      modifiers: {
-        offset: {
-          offset: "0",
+      modifiers: [
+        {
+          name: "offset",
+          options: {
+            offset: [0, 0],
+          },
         },
-      },
+      ],
       ...config,
     };
   }
@@ -49,20 +51,20 @@ function MDBPopper() {
 
   function setupPopper() {
     if (popper.value === undefined || !popper.value) {
-      popper.value = new Popper(
+      popper.value = createPopper(
         triggerEl.value,
         popperEl.value,
         popperOptions.value
       );
     } else {
-      popper.value.scheduleUpdate();
+      popper.value.update();
     }
   }
 
   function updatePopper(option, value) {
     popperOptions.value[option] = value;
 
-    popper.value = new Popper(
+    popper.value = createPopper(
       triggerEl.value,
       popperEl.value,
       popperOptions.value
@@ -78,6 +80,18 @@ function MDBPopper() {
     popper.value = undefined;
   }
 
+  function getPopperOffset(offset, element) {
+    if (typeof offset === "string") {
+      return offset.split(",").map((val) => Number.parseInt(val, 10));
+    }
+
+    if (typeof offset === "function") {
+      return (popperData) => offset(popperData, element);
+    }
+
+    return offset;
+  }
+
   return {
     setPopper,
     togglePopper,
@@ -86,6 +100,7 @@ function MDBPopper() {
     closePopper,
     updatePopper,
     destroyPopper,
+    getPopperOffset,
   };
 }
 

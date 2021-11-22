@@ -8,17 +8,18 @@ import { computed } from "vue";
 export default {
   name: "MDBListGroup",
   props: {
-    tag: {
-      type: String,
-      default: "ul",
+    flush: {
+      type: Boolean,
+      default: false,
     },
     horizontal: {
       type: [Boolean, String],
       default: false,
     },
-    flush: {
-      type: Boolean,
-      default: false,
+    numbered: Boolean,
+    tag: {
+      type: String,
+      default: "ul",
     },
   },
   setup(props) {
@@ -27,6 +28,7 @@ export default {
         "list-group",
         props.horizontal && horizontalClass.value,
         props.flush && "list-group-flush",
+        props.numbered && "list-group-numbered",
       ];
     });
 

@@ -23,7 +23,7 @@ export default {
   setup(props) {
     const className = computed(() => {
       return [
-        props.bg && `bg-${props.bg}`,
+        props.bg && props.bg !== "none" && `bg-${props.bg}`,
         props.text && spreadProps(props.text),
       ];
     });

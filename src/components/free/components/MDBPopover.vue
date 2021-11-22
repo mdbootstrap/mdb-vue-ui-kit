@@ -14,7 +14,7 @@
       ref="popperEl"
       :class="{ popover: true, fade: true }"
       v-if="isActive && ($slots.header || $slots.body)"
-      :style="[widthStyle, marginStyle]"
+      :style="[widthStyle]"
     >
       <div class="popover-header" v-if="$slots.header">
         <slot name="header" />
@@ -23,7 +23,7 @@
         <slot name="body" />
       </div>
       <slot />
-      <div x-arrow class="popover_arrow" v-if="arrow"></div>
+      <div data-popper-arrow class="popover_arrow" v-if="arrow"></div>
     </div>
   </transition>
 </template>
@@ -52,10 +52,18 @@ export default {
     reference: String,
     popover: String,
     options: {
-      type: Object,
+      type: [Object, Function],
       default() {
         return {};
       },
+    },
+    boundary: {
+      type: String,
+      default: "clippingParent",
+    },
+    fallbackPlacements: {
+      type: Array,
+      default: () => ["top", "right", "bottom", "left"],
     },
     offset: {
       type: String,
@@ -83,10 +91,6 @@ export default {
       type: Boolean,
       default: false,
     },
-    updatePosition: {
-      type: Boolean,
-      default: true,
-    },
   },
   directives: {
     mdbClickOutside,
@@ -98,6 +102,7 @@ export default {
       openPopper,
       closePopper,
       destroyPopper,
+      getPopperOffset,
     } = MDBPopper();
     const triggerEl = ref("triggerEl");
     const popperEl = ref("popperEl");
@@ -106,31 +111,62 @@ export default {
       () => `max-width: ${props.maxWidth}px!important`
     );
 
-    const marginStyle = computed(() => {
+    const getOffset = () => {
       if (!props.arrow) {
-        return;
+        return props.offset;
       }
 
-      let margin;
-      switch (props.direction) {
-        case "top":
-          margin = "margin-bottom: 16px";
-          break;
-        case "bottom":
-          margin = "margin-top: 16px";
-          break;
-        case "right":
-          margin = "margin-left: 16px";
-          break;
-        case "left":
-          margin = "margin-right: 16px";
-          break;
+      return [0, 10];
+    };
 
-        default:
-          break;
+    const getConfig = () => {
+      const placement = props.direction;
+
+      let boundary = document.querySelector(props.boundary);
+      if (!boundary) {
+        boundary = props.boundary;
       }
-      return margin;
-    });
+
+      const offset = getOffset();
+
+      const defaultBsPopperConfig = {
+        placement,
+        modifiers: [
+          {
+            name: "flip",
+            options: {
+              fallbackPlacements: props.fallbackPlacements,
+            },
+          },
+          {
+            name: "preventOverflow",
+            options: {
+              boundary,
+            },
+          },
+          {
+            name: "offset",
+            options: {
+              offset: getPopperOffset(offset, triggerEl.value),
+            },
+          },
+          {
+            name: "arrow",
+            options: {
+              element: `.popover_arrow`,
+              padding: 5,
+            },
+          },
+        ],
+      };
+
+      return {
+        ...defaultBsPopperConfig,
+        ...(typeof props.options === "function"
+          ? props.options(defaultBsPopperConfig)
+          : props.options),
+      };
+    };
 
     const popperSetup = () => {
       triggerEl.value = props.reference
@@ -140,19 +176,7 @@ export default {
         ? document.querySelector(props.popover)
         : popperEl.value;
 
-      const placement = props.direction;
-
-      const config = {
-        placement,
-        eventsEnabled: props.updatePosition,
-        modifiers: {
-          offset: {
-            offset: props.arrow ? "0" : props.offset,
-          },
-        },
-        gpuAcceleration: false,
-        ...props.options,
-      };
+      const config = getConfig();
 
       setPopper(triggerEl.value, popperEl.value, config);
     };
@@ -234,7 +258,6 @@ export default {
       triggerEl,
       popperEl,
       widthStyle,
-      marginStyle,
       handleClickOutside,
       props,
     };
