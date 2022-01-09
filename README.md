@@ -68,8 +68,6 @@ Trusted by <b>2 000 000+</b> developers & designers. Used by companies like
 
 ###### Tutorial for the latest Bootstrap v.5 Alpha. In this video we'll learn about the changes implemented into v.5.
 
-**[>> Click here for a written tutorial](https://mdbootstrap.com/docs/b5/vue/getting-started/quick-start/)**
-
 <table>
   <tbody>
     <tr>
