@@ -118,6 +118,7 @@ export default {
     const isActive = ref(props.modelValue);
     watchEffect(() => {
       isActive.value = props.modelValue;
+
       if (accordionState) {
         manageAccordion();
       }
@@ -178,22 +179,25 @@ export default {
       el.style.height = "0";
     };
     const enter = (el) => {
-      el.style.height = `${getContentHeight()}px`;
+      el.style.height = collapse.value.scrollHeight + "px";
     };
 
     const afterEnter = (el) => {
       if (!el.classList.contains("show")) {
         el.classList.add("show");
       }
+      el.style.height = "";
     };
 
     const beforeLeave = (el) => {
       if (!el.style.height) {
-        el.style.height = `${el.offsetHeight}px`;
+        el.classList.add("show");
+        el.style.height = collapse.value.scrollHeight + "px";
+        console.log(el.style.height);
       }
     };
     const leave = (el) => {
-      el.style.height = "0";
+      el.style.height = "0px";
     };
 
     const afterLeave = (el) => {
@@ -263,6 +267,7 @@ export default {
     });
 
     return {
+      navbarFlexWrapValue,
       collapse,
       className,
       isActive,
@@ -278,3 +283,9 @@ export default {
   },
 };
 </script>
+
+<style>
+.navbar-collapse.collapsing {
+  height: "";
+}
+</style>

@@ -1,7 +1,7 @@
 {
   "framework": "vue",
   "name": "mdb-vue-ui-kit",
-  "version": "1.8.0",
+  "version": "1.9.0",
   "contributions": {
     "html": {
       "description-markup": "markdown",
@@ -988,6 +988,9 @@
           "events": [
             {
               "name": "update:modelValue"
+            },
+            {
+              "name": "on-validate"
             }
           ],
           "source": {
@@ -1651,6 +1654,9 @@
           "events": [
             {
               "name": "update:modelValue"
+            },
+            {
+              "name": "on-validate"
             }
           ],
           "source": {
@@ -1904,6 +1910,9 @@
             },
             {
               "name": "click-outside"
+            },
+            {
+              "name": "on-validate"
             }
           ],
           "slots": [
@@ -3165,6 +3174,9 @@
           "events": [
             {
               "name": "update:modelValue"
+            },
+            {
+              "name": "on-validate"
             }
           ],
           "source": {
@@ -3950,6 +3962,9 @@
           "events": [
             {
               "name": "update:modelValue"
+            },
+            {
+              "name": "on-validate"
             }
           ],
           "slots": [

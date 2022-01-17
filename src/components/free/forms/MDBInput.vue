@@ -8,6 +8,8 @@
     @input="handleInput"
     ref="inputRef"
     v-mdb-click-outside="clickOutside"
+    @focus="checkDateType(true)"
+    @blur="checkDateType()"
   />
   <label
     v-if="label && !wrap"
@@ -54,6 +56,8 @@
       :value="inputValue"
       @input="handleInput"
       ref="inputRef"
+      @focus="checkDateType(true)"
+      @blur="checkDateType()"
     />
     <label v-if="label" ref="labelRef" :class="labelClassName" :for="uid">
       {{ label }}
@@ -143,7 +147,7 @@ export default {
     },
   },
   directives: { mdbClickOutside },
-  emits: ["update:modelValue", "click-outside"],
+  emits: ["update:modelValue", "click-outside", "on-validate"],
   setup(props, { attrs, emit }) {
     const inputRef = ref("inputRef");
     const inputValue = ref(props.modelValue);
@@ -219,6 +223,7 @@ export default {
         defaultValidatorInvalidFeedback.value = e.target.validationMessage;
       }
       isInputValidated.value = true;
+      emit("on-validate", isInputValid.value);
     };
 
     const bindValidationEvents = () => {
@@ -259,9 +264,19 @@ export default {
       emit("click-outside");
     }
 
+    const isTypeDate = attrs.type && attrs.type === "date";
+    const checkDateType = (isFocused = false) => {
+      if (!isTypeDate) {
+        return;
+      }
+
+      inputRef.value.type = isFocused ? "date" : "text";
+    };
+
     onMounted(() => {
       calcNotch();
       setPlaceholder();
+      checkDateType();
 
       if (props.validationEvent) {
         bindValidationEvents();
@@ -309,6 +324,7 @@ export default {
       clickOutside,
       props,
       currentLength,
+      checkDateType,
     };
   },
 };

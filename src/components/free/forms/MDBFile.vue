@@ -39,7 +39,7 @@ export default {
     validFeedback: String,
     validateOnChange: Boolean,
   },
-  emits: ["update:modelValue"],
+  emits: ["update:modelValue", "on-validate"],
   setup(props, { emit }) {
     const uid = props.id || getUID("MDBFile-");
     const inputValue = ref(props.modelValue);
@@ -70,6 +70,7 @@ export default {
     const handleValidation = (event) => {
       isInputValid.value = event.target.files.length > 0;
       isInputValidated.value = true;
+      emit("on-validate", isInputValid.value);
     };
 
     const handleChange = (event) => {

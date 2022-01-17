@@ -11,8 +11,7 @@
       :aria-required="required"
       ref="inputRef"
     />
-    <label v-if="label" :class="labelClassName" :for="uid">
-      {{ label }}
+    <label v-if="label" :class="labelClassName" :for="uid" v-html="label">
     </label>
     <div v-if="validFeedback" :class="validFeedbackClassName">
       {{ validFeedback }}
@@ -33,8 +32,12 @@
     :aria-required="required"
     ref="inputRef"
   />
-  <label v-if="!wrap && label" :class="labelClassName" :for="uid">
-    {{ label }}
+  <label
+    v-if="!wrap && label"
+    :class="labelClassName"
+    :for="uid"
+    v-html="label"
+  >
   </label>
   <div v-if="!wrap && validFeedback" :class="validFeedbackClassName">
     {{ validFeedback }}
@@ -84,7 +87,7 @@ export default {
       default: "div",
     },
   },
-  emits: ["update:modelValue"],
+  emits: ["update:modelValue", "on-validate"],
   setup(props, { emit }) {
     const inputRef = ref("inputRef");
     const inputValue = ref(props.modelValue);
@@ -124,6 +127,7 @@ export default {
     const handleValidation = (e) => {
       isInputValid.value = e.target.checkValidity();
       isInputValidated.value = true;
+      emit("on-validate", isInputValid.value);
     };
 
     const bindValidationEvent = () => {

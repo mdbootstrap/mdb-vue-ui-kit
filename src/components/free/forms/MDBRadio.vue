@@ -83,7 +83,7 @@ export default {
       default: "div",
     },
   },
-  emits: ["update:modelValue"],
+  emits: ["update:modelValue", "on-validate"],
   setup(props, { emit }) {
     const inputRef = ref("inputRef");
     const inputValue = ref(props.modelValue || false);
@@ -122,6 +122,7 @@ export default {
     const handleValidation = (e) => {
       isInputValid.value = e.target.checkValidity();
       isInputValidated.value = true;
+      emit("on-validate", isInputValid.value);
     };
 
     const bindValidationEvent = () => {

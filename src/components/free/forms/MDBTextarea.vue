@@ -126,7 +126,7 @@ export default {
       default: 0,
     },
   },
-  emits: ["update:modelValue"],
+  emits: ["update:modelValue", "on-validate"],
   setup(props, { attrs, emit }) {
     const textareaRef = ref("textareaRef");
     const textareaValue = ref(props.modelValue);
@@ -199,6 +199,7 @@ export default {
         defaultValidatorInvalidFeedback.value = e.target.validationMessage;
       }
       isInputValidated.value = true;
+      emit("on-validate", isInputValid.value);
     };
 
     const bindValidationEvents = () => {
