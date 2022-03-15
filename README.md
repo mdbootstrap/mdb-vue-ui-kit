@@ -56,7 +56,7 @@ Trusted by <b>2 000 000+</b> developers & designers. Used by companies & institu
       </td>
       <td>
         <ul>
-        <li><b><a href="https://mdbootstrap.com/docs/b5/cvue/">700+ UI components</a></b></li>          
+        <li><b><a href="https://mdbootstrap.com/docs/b5/vue/">700+ UI components</a></b></li>          
          <li>Super simple, 1 minute installation</li>
          <li>Detailed docs & practical examples</li>
          <li>Lots of tutorials</li>
