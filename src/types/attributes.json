@@ -65,6 +65,12 @@
   "MDBAccordionItem/itemClasses": {
     "type": "string"
   },
+  "mdb-badge/badge": {
+    "type": "string"
+  },
+  "MDBBadge/badge": {
+    "type": "string"
+  },
   "mdb-badge/color": {
     "type": "string"
   },
@@ -1108,6 +1114,18 @@
   },
   "MDBIcon/size": {
     "type": "string"
+  },
+  "mdb-icon/fw": {
+    "type": "boolean"
+  },
+  "MDBIcon/fw": {
+    "type": "boolean"
+  },
+  "mdb-icon/solid": {
+    "type": "boolean"
+  },
+  "MDBIcon/solid": {
+    "type": "boolean"
   },
   "mdb-table/tag": {
     "type": "string"

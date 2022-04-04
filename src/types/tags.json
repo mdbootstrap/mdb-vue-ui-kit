@@ -43,6 +43,7 @@
   },
   "mdb-badge": {
     "attributes": [
+      "badge",
       "color",
       "pill",
       "dot",
@@ -53,6 +54,7 @@
   },
   "MDBBadge": {
     "attributes": [
+      "badge",
       "color",
       "pill",
       "dot",
@@ -696,7 +698,9 @@
       "iconStyle",
       "icon",
       "flag",
-      "size"
+      "size",
+      "fw",
+      "solid"
     ],
     "description": ""
   },
@@ -705,7 +709,9 @@
       "iconStyle",
       "icon",
       "flag",
-      "size"
+      "size",
+      "fw",
+      "solid"
     ],
     "description": ""
   },

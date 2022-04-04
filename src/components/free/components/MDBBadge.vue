@@ -10,6 +10,7 @@ import { computed } from "vue";
 export default {
   name: "MDBBadge",
   props: {
+    badge: String,
     color: String,
     pill: Boolean,
     dot: Boolean,
@@ -24,6 +25,7 @@ export default {
       return [
         "badge",
         props.color && `bg-${props.color}`,
+        props.badge && `badge-${props.badge}`,
         props.pill && "rounded-pill",
         props.dot && "badge-dot",
         props.notification && "badge-notification",

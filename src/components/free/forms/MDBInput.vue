@@ -245,7 +245,7 @@ export default {
       }
     }
 
-    const currentLength = ref(0);
+    const currentLength = ref(inputValue.value?.length || 0);
 
     function handleInput(e) {
       if (props.counter) {
@@ -293,6 +293,16 @@ export default {
     });
 
     watchEffect(() => {
+      if (props.counter) {
+        if (props.modelValue?.length > props.maxlength) {
+          inputValue.value = props.modelValue.slice(0, props.maxlength);
+          currentLength.value = props.maxlength;
+          return;
+        }
+
+        currentLength.value = props.modelValue?.length || 0;
+      }
+
       inputValue.value = props.modelValue;
     });
 

@@ -1,7 +1,7 @@
 {
   "framework": "vue",
   "name": "mdb-vue-ui-kit",
-  "version": "1.11.0",
+  "version": "1.12.0",
   "contributions": {
     "html": {
       "description-markup": "markdown",
@@ -121,6 +121,13 @@
           "name": "MDBBadge",
           "description": "",
           "attributes": [
+            {
+              "name": "badge",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
             {
               "name": "color",
               "value": {
@@ -1733,6 +1740,20 @@
               "value": {
                 "kind": "expression",
                 "type": "string"
+              }
+            },
+            {
+              "name": "fw",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "solid",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
               }
             }
           ],

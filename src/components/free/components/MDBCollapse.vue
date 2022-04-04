@@ -193,7 +193,6 @@ export default {
       if (!el.style.height) {
         el.classList.add("show");
         el.style.height = collapse.value.scrollHeight + "px";
-        console.log(el.style.height);
       }
     };
     const leave = (el) => {

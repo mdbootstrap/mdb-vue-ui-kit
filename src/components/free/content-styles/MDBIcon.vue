@@ -15,6 +15,8 @@ export default {
     icon: String,
     flag: String,
     size: String,
+    fw: Boolean,
+    solid: Boolean,
   },
   setup(props) {
     const className = computed(() => {
@@ -22,6 +24,8 @@ export default {
         !props.flag && props.iconStyle,
         props.flag ? `flag flag-${props.flag}` : `fa-${props.icon}`,
         props.size && `fa-${props.size}`,
+        props.fw && "fa-fw",
+        props.solid && "fa-solid",
       ];
     });
 

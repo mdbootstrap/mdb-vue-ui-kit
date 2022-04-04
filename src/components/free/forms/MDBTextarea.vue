@@ -74,6 +74,7 @@ import {
   onMounted,
   onUpdated,
   watchEffect,
+  watch,
   onUnmounted,
 } from "vue";
 import { on, off } from "../../utils/MDBEventHandlers";
@@ -221,7 +222,7 @@ export default {
       }
     }
 
-    const currentLength = ref(0);
+    const currentLength = ref(textareaValue.value?.length || 0);
 
     function handleInput(e) {
       if (props.counter) {
@@ -255,7 +256,29 @@ export default {
       off(textareaRef.value, props.validationEvent, handleValidation);
     });
 
-    watchEffect(() => (textareaValue.value = props.modelValue));
+    watchEffect(() => {
+      if (props.counter) {
+        if (props.modelValue?.length > props.maxLength) {
+          textareaValue.value = props.modelValue.slice(0, props.maxLength);
+          currentLength.value = props.maxLength;
+          return;
+        }
+
+        currentLength.value = props.modelValue?.length || 0;
+      }
+
+      textareaValue.value = props.modelValue;
+    });
+
+    watch(
+      () => props.isValidated,
+      (value) => (isInputValidated.value = value)
+    );
+
+    watch(
+      () => props.isValid,
+      (value) => (isInputValid.value = value)
+    );
 
     return {
       textareaRef,
