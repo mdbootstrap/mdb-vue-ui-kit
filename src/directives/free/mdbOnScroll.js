@@ -3,7 +3,6 @@ export default {
     if (binding.value === false || !el) return;
 
     const options = binding.value;
-
     let isFirstShow = true;
     let isFirstHide = true;
 
@@ -13,7 +12,7 @@ export default {
       const callback = options.callback || options;
 
       const getOffset = () => {
-        var rect = el.getBoundingClientRect();
+        const rect = el.getBoundingClientRect();
         return rect.top;
       };
 

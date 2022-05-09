@@ -1,3 +1,101 @@
 .valid-feedback {
   width: auto;
 }
+
+.is-valid {
+  .form-outline {
+    .form-control {
+      ~ .form-label {
+        color: $valid-color;
+      }
+
+      ~ .form-notch .form-notch-leading,
+      ~ .form-notch .form-notch-middle,
+      ~ .form-notch .form-notch-trailing {
+        border-color: $valid-color;
+      }
+
+      &:focus ~ .form-notch .form-notch-middle,
+      &.active ~ .form-notch .form-notch-middle {
+        border-top: 1px solid transparent;
+      }
+      &:focus ~ .form-notch .form-notch-middle {
+        box-shadow: 0 1px 0 0 $valid-color;
+      }
+      &:focus ~ .form-notch .form-notch-leading {
+        box-shadow: -1px 0 0 0 $valid-color, 0 1px 0 0 $valid-color,
+          0 -1px 0 0 $valid-color;
+      }
+      &:focus ~ .form-notch .form-notch-trailing {
+        box-shadow: 1px 0 0 0 $valid-color, 0 -1px 0 0 $valid-color,
+          0 1px 0 0 $valid-color;
+      }
+
+      &.select-input.focused {
+        & ~ .form-notch .form-notch-leading {
+          box-shadow: -1px 0 0 0 $valid-color, 0 1px 0 0 $valid-color,
+            0 -1px 0 0 $valid-color;
+        }
+
+        & ~ .form-notch .form-notch-middle {
+          box-shadow: 0 1px 0 0 $valid-color;
+          border-top: 1px solid transparent;
+        }
+
+        & ~ .form-notch .form-notch-trailing {
+          box-shadow: 1px 0 0 0 $valid-color, 0 -1px 0 0 $valid-color,
+            0 1px 0 0 $valid-color;
+        }
+      }
+    }
+  }
+}
+
+.is-invalid {
+  .form-outline {
+    .form-control {
+      ~ .form-label {
+        color: $invalid-color;
+      }
+
+      ~ .form-notch .form-notch-leading,
+      ~ .form-notch .form-notch-middle,
+      ~ .form-notch .form-notch-trailing {
+        border-color: $invalid-color;
+      }
+
+      &:focus ~ .form-notch .form-notch-middle,
+      &.active ~ .form-notch .form-notch-middle {
+        border-top: 1px solid transparent;
+      }
+      &:focus ~ .form-notch .form-notch-middle {
+        box-shadow: 0 1px 0 0 $invalid-color;
+      }
+      &:focus ~ .form-notch .form-notch-leading {
+        box-shadow: -1px 0 0 0 $invalid-color, 0 1px 0 0 $invalid-color,
+          0 -1px 0 0 $invalid-color;
+      }
+      &:focus ~ .form-notch .form-notch-trailing {
+        box-shadow: 1px 0 0 0 $invalid-color, 0 -1px 0 0 $invalid-color,
+          0 1px 0 0 $invalid-color;
+      }
+
+      &.select-input.focused {
+        & ~ .form-notch .form-notch-leading {
+          box-shadow: -1px 0 0 0 $invalid-color, 0 1px 0 0 $invalid-color,
+            0 -1px 0 0 $invalid-color;
+        }
+
+        & ~ .form-notch .form-notch-middle {
+          box-shadow: 0 1px 0 0 $invalid-color;
+          border-top: 1px solid transparent;
+        }
+
+        & ~ .form-notch .form-notch-trailing {
+          box-shadow: 1px 0 0 0 $invalid-color, 0 -1px 0 0 $invalid-color,
+            0 1px 0 0 $invalid-color;
+        }
+      }
+    }
+  }
+}
