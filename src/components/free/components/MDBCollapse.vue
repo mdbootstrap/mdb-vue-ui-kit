@@ -58,6 +58,7 @@ export default {
   emits: ["update:modelValue"],
   setup(props, { emit }) {
     const collapse = ref(null);
+    const isActive = ref(props.modelValue);
 
     const className = computed(() => {
       return [
@@ -115,14 +116,24 @@ export default {
       }
     });
 
-    const isActive = ref(props.modelValue);
-    watchEffect(() => {
-      isActive.value = props.modelValue;
+    let isCollapsing = false;
+    watch(
+      () => props.modelValue,
+      (cur, prev) => {
+        if (isCollapsing) {
+          setTimeout(() => {
+            emit("update:modelValue", prev);
+          }, props.duration);
+          return;
+        }
 
-      if (accordionState) {
-        manageAccordion();
+        isActive.value = cur;
+
+        if (accordionState) {
+          manageAccordion();
+        }
       }
-    });
+    );
 
     const openCollapse = () => {
       emit("update:modelValue", true);
@@ -177,6 +188,7 @@ export default {
 
     const beforeEnter = (el) => {
       el.style.height = "0";
+      isCollapsing = true;
     };
     const enter = (el) => {
       el.style.height = collapse.value.scrollHeight + "px";
@@ -187,6 +199,7 @@ export default {
         el.classList.add("show");
       }
       el.style.height = "";
+      isCollapsing = false;
     };
 
     const beforeLeave = (el) => {
@@ -194,6 +207,7 @@ export default {
         el.classList.add("show");
         el.style.height = collapse.value.scrollHeight + "px";
       }
+      isCollapsing = true;
     };
     const leave = (el) => {
       el.style.height = "0px";
@@ -201,6 +215,7 @@ export default {
 
     const afterLeave = (el) => {
       el.classList.add("collapse");
+      isCollapsing = false;
     };
 
     const previousWindowWidth = ref(null);
@@ -282,9 +297,3 @@ export default {
   },
 };
 </script>
-
-<style>
-.navbar-collapse.collapsing {
-  height: "";
-}
-</style>

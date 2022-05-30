@@ -484,7 +484,6 @@
       "fullscreen",
       "animation",
       "dialogClasses",
-      "transform",
       "keyboard",
       "focus"
     ],
@@ -505,7 +504,6 @@
       "fullscreen",
       "animation",
       "dialogClasses",
-      "transform",
       "keyboard",
       "focus"
     ],

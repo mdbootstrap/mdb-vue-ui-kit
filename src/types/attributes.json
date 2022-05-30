@@ -797,12 +797,6 @@
   "MDBModal/dialogClasses": {
     "type": "string"
   },
-  "mdb-modal/transform": {
-    "type": "string"
-  },
-  "MDBModal/transform": {
-    "type": "string"
-  },
   "mdb-modal/keyboard": {
     "type": "boolean"
   },

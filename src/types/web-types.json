@@ -1,7 +1,7 @@
 {
   "framework": "vue",
   "name": "mdb-vue-ui-kit",
-  "version": "1.13.0",
+  "version": "1.14.0",
   "contributions": {
     "html": {
       "description-markup": "markdown",
@@ -2148,13 +2148,6 @@
             },
             {
               "name": "dialogClasses",
-              "value": {
-                "kind": "expression",
-                "type": "string"
-              }
-            },
-            {
-              "name": "transform",
               "value": {
                 "kind": "expression",
                 "type": "string"
