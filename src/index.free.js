@@ -72,6 +72,7 @@ import MDBRange from "@/components/free/forms/MDBRange";
 import MDBSwitch from "@/components/free/forms/MDBSwitch";
 
 /* ------------- Directives ------------- */
+import mdbClickOutside from "@/directives/free/mdbClickOutside";
 import mdbRipple from "@/directives/free/mdbRipple";
 import mdbScrollspy from "@/directives/free/mdbScrollspy";
 
@@ -137,6 +138,7 @@ export {
   MDBFile,
   MDBRange,
   MDBSwitch,
+  mdbClickOutside,
   mdbRipple,
   mdbScrollspy,
 };

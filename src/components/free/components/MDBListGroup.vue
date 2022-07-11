@@ -21,6 +21,14 @@ export default {
       type: String,
       default: "ul",
     },
+    light: {
+      type: Boolean,
+      default: false,
+    },
+    small: {
+      type: Boolean,
+      default: false,
+    },
   },
   setup(props) {
     const className = computed(() => {
@@ -29,6 +37,8 @@ export default {
         props.horizontal && horizontalClass.value,
         props.flush && "list-group-flush",
         props.numbered && "list-group-numbered",
+        props.light && "list-group-light",
+        props.small && "list-group-small",
       ];
     });
 

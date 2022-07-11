@@ -1,7 +1,7 @@
 {
   "framework": "vue",
   "name": "mdb-vue-ui-kit",
-  "version": "1.14.0",
+  "version": "2.0.0",
   "contributions": {
     "html": {
       "description-markup": "markdown",
@@ -845,6 +845,13 @@
                 "type": "boolean"
               },
               "default": "true"
+            },
+            {
+              "name": "innerClass",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
             }
           ],
           "events": [
@@ -1983,6 +1990,22 @@
                 "type": "string"
               },
               "default": "\"ul\""
+            },
+            {
+              "name": "light",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "small",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
             }
           ],
           "slots": [
@@ -2037,6 +2060,30 @@
                 "kind": "expression",
                 "type": "string"
               }
+            },
+            {
+              "name": "noBorder",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "spacing",
+              "value": {
+                "kind": "expression",
+                "type": "boolean|string"
+              },
+              "default": "false"
+            },
+            {
+              "name": "ripple",
+              "value": {
+                "kind": "expression",
+                "type": "object|boolean"
+              },
+              "default": "false"
             }
           ],
           "slots": [

@@ -437,6 +437,12 @@
   "MDBCarousel/touch": {
     "type": "boolean"
   },
+  "mdb-carousel/innerClass": {
+    "type": "string"
+  },
+  "MDBCarousel/innerClass": {
+    "type": "string"
+  },
   "mdb-collapse/tag": {
     "type": "string"
   },
@@ -689,6 +695,18 @@
   "MDBListGroup/tag": {
     "type": "string"
   },
+  "mdb-list-group/light": {
+    "type": "boolean"
+  },
+  "MDBListGroup/light": {
+    "type": "boolean"
+  },
+  "mdb-list-group/small": {
+    "type": "boolean"
+  },
+  "MDBListGroup/small": {
+    "type": "boolean"
+  },
   "mdb-list-group-item/tag": {
     "type": "string"
   },
@@ -718,6 +736,24 @@
   },
   "MDBListGroupItem/color": {
     "type": "string"
+  },
+  "mdb-list-group-item/noBorder": {
+    "type": "boolean"
+  },
+  "MDBListGroupItem/noBorder": {
+    "type": "boolean"
+  },
+  "mdb-list-group-item/spacing": {
+    "type": "boolean|string"
+  },
+  "MDBListGroupItem/spacing": {
+    "type": "boolean|string"
+  },
+  "mdb-list-group-item/ripple": {
+    "type": "object|boolean"
+  },
+  "MDBListGroupItem/ripple": {
+    "type": "object|boolean"
   },
   "mdb-modal/tag": {
     "type": "string"

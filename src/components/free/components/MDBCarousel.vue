@@ -22,9 +22,12 @@
       ></button>
     </div>
 
-    <div class="carousel-inner" ref="carouselInnerRef">
+    <div :class="innerClassName" ref="carouselInnerRef">
       <div v-for="(item, key) in items" class="carousel-item" :key="key">
-        <img :src="item.src" :alt="item.alt" :class="itemsClass" />
+        <video v-if="item.video" class="img-fluid" autoplay loop muted>
+          <source :src="item.video" :type="item.videoType" />
+        </video>
+        <img v-else :src="item.src" :alt="item.alt" :class="itemsClass" />
         <div v-if="item.label || item.caption" :class="captionsClass">
           <h5 v-if="item.label">{{ item.label }}</h5>
           <p v-if="item.caption">{{ item.caption }}</p>
@@ -105,6 +108,7 @@ export default {
       type: Boolean,
       default: true,
     },
+    innerClass: String,
   },
   emits: ["update:modelValue"],
   setup(props, { emit }) {
@@ -115,6 +119,9 @@ export default {
         props.fade && "carousel-fade",
         props.dark && "carousel-dark",
       ];
+    });
+    const innerClassName = computed(() => {
+      return ["carousel-inner", props.innerClass];
     });
 
     const activeItemKey = ref(props.modelValue);
@@ -334,6 +341,7 @@ export default {
 
     return {
       className,
+      innerClassName,
       carouselInnerRef,
       activeItemKey,
       handleMouseenter,

@@ -283,7 +283,8 @@
       "modelValue",
       "pause",
       "tag",
-      "touch"
+      "touch",
+      "innerClass"
     ],
     "description": ""
   },
@@ -301,7 +302,8 @@
       "modelValue",
       "pause",
       "tag",
-      "touch"
+      "touch",
+      "innerClass"
     ],
     "description": ""
   },
@@ -436,7 +438,9 @@
       "flush",
       "horizontal",
       "numbered",
-      "tag"
+      "tag",
+      "light",
+      "small"
     ],
     "description": ""
   },
@@ -445,7 +449,9 @@
       "flush",
       "horizontal",
       "numbered",
-      "tag"
+      "tag",
+      "light",
+      "small"
     ],
     "description": ""
   },
@@ -455,7 +461,10 @@
       "active",
       "disabled",
       "action",
-      "color"
+      "color",
+      "noBorder",
+      "spacing",
+      "ripple"
     ],
     "description": ""
   },
@@ -465,7 +474,10 @@
       "active",
       "disabled",
       "action",
-      "color"
+      "color",
+      "noBorder",
+      "spacing",
+      "ripple"
     ],
     "description": ""
   },
