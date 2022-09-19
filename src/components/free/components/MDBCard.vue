@@ -1,54 +1,39 @@
 <template>
   <component :is="tag" :class="className">
-    <slot></slot>
+    <slot />
   </component>
 </template>
 
-<script>
-import { computed } from "vue";
+<script setup lang="ts">
+import { computed, PropType } from "vue";
 
-export default {
-  name: "MDBCard",
-  props: {
-    tag: {
-      type: String,
-      default: "div",
-    },
-    border: {
-      type: String,
-    },
-    bg: {
-      type: String,
-    },
-    text: {
-      type: [String, Array],
-    },
-    shadow: {
-      type: String,
-    },
+const props = defineProps({
+  tag: {
+    type: String,
+    default: "div",
   },
-  setup(props) {
-    const className = computed(() => {
-      return [
-        "card",
-        props.border && `border border-${props.border}`,
-        props.bg && `bg-${props.bg}`,
-        props.shadow && `shadow-${props.shadow}`,
-        props.text && spreadProps(props.text),
-      ];
-    });
+  border: String,
+  bg: String,
+  text: [String, Array] as PropType<string | string[]>,
+  shadow: String,
+});
 
-    const spreadProps = (props) => {
-      if (typeof props === "string") {
-        return `text-${props}`;
-      }
-      return props.map((prop) => `text-${prop}`.trim()).join(" ");
-    };
+const className = computed(() => {
+  const text = props.text;
 
-    return {
-      className,
-      props,
-    };
-  },
+  return [
+    "card",
+    props.border && `border border-${props.border}`,
+    props.bg && `bg-${props.bg}`,
+    props.shadow && `shadow-${props.shadow}`,
+    props.text && spreadProps(text),
+  ];
+});
+
+const spreadProps = (props: string | string[]) => {
+  if (typeof props === "string") {
+    return `text-${props}`;
+  }
+  return props.map((prop) => `text-${prop}`.trim()).join(" ");
 };
 </script>

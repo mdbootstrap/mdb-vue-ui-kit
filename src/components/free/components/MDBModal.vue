@@ -27,110 +27,94 @@
     >
       <div :class="dialogClass" role="document" ref="dialog">
         <div class="modal-content" :style="computedContentStyle">
-          <slot></slot>
+          <slot />
         </div>
       </div>
     </component>
   </transition>
 </template>
 
-<script>
+<script setup lang="ts">
 import useMDBModal from "../../../composables/free/useMDBModal";
 
-export default {
-  name: "MDBModal",
-  props: {
-    tag: {
-      type: String,
-      default: "div",
-    },
-    modelValue: Boolean,
-    size: {
-      type: String,
-      validator: (value) =>
-        ["sm", "lg", "xl"].indexOf(value.toLowerCase()) > -1,
-    },
-    removeBackdrop: {
-      type: Boolean,
-      default: false,
-    },
-    staticBackdrop: {
-      type: Boolean,
-      default: false,
-    },
-    centered: {
-      type: Boolean,
-      default: false,
-    },
-    bgSrc: {
-      type: String,
-      default: "",
-    },
-    scrollable: {
-      type: Boolean,
-      default: false,
-    },
-    duration: {
-      type: Number,
-      default: 400,
-    },
-    labelledby: String,
-    fullscreen: {
-      type: [Boolean, String],
-      default: false,
-    },
-    animation: {
-      type: Boolean,
-      default: true,
-    },
-    dialogClasses: {
-      type: String,
-    },
-    keyboard: {
-      type: Boolean,
-      default: true,
-    },
-    focus: {
-      type: Boolean,
-      default: true,
-    },
+const props = defineProps({
+  tag: {
+    type: String,
+    default: "div",
   },
-  emits: ["show", "shown", "hide", "hidden", "update:modelValue"],
-  setup(props, { emit }) {
-    const {
-      wrapperClass,
-      dialogClass,
-      backdropStyle,
-      backdropOverflowStyle,
-      computedContentStyle,
-      root,
-      dialog,
-      isActive,
-      closeModal,
-      animateStaticBackdrop,
-      enter,
-      afterEnter,
-      beforeLeave,
-      afterLeave,
-    } = useMDBModal(props, emit);
+  modelValue: Boolean,
+  size: {
+    type: String,
+    validator: (value: string) =>
+      ["sm", "lg", "xl"].indexOf(value.toLowerCase()) > -1,
+  },
+  removeBackdrop: {
+    type: Boolean,
+    default: false,
+  },
+  staticBackdrop: {
+    type: Boolean,
+    default: false,
+  },
+  centered: {
+    type: Boolean,
+    default: false,
+  },
+  bgSrc: {
+    type: String,
+    default: "",
+  },
+  scrollable: {
+    type: Boolean,
+    default: false,
+  },
+  duration: {
+    type: Number,
+    default: 400,
+  },
+  labelledby: String,
+  fullscreen: {
+    type: [Boolean, String],
+    default: false,
+  },
+  animation: {
+    type: Boolean,
+    default: true,
+  },
+  dialogClasses: {
+    type: String,
+  },
+  keyboard: {
+    type: Boolean,
+    default: true,
+  },
+  focus: {
+    type: Boolean,
+    default: true,
+  },
+});
+const emit = defineEmits([
+  "show",
+  "shown",
+  "hide",
+  "hidden",
+  "update:modelValue",
+]);
 
-    return {
-      wrapperClass,
-      dialogClass,
-      backdropStyle,
-      backdropOverflowStyle,
-      computedContentStyle,
-      root,
-      dialog,
-      isActive,
-      closeModal,
-      animateStaticBackdrop,
-      enter,
-      afterEnter,
-      beforeLeave,
-      afterLeave,
-      props,
-    };
-  },
-};
+const {
+  wrapperClass,
+  dialogClass,
+  backdropStyle,
+  backdropOverflowStyle,
+  computedContentStyle,
+  root,
+  dialog,
+  isActive,
+  closeModal,
+  animateStaticBackdrop,
+  enter,
+  afterEnter,
+  beforeLeave,
+  afterLeave,
+} = useMDBModal(props, emit);
 </script>

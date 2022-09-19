@@ -1,28 +1,18 @@
 <template>
-  <component :is="tag" :class="className"><slot></slot></component>
+  <component :is="tag" :class="className">
+    <slot />
+  </component>
 </template>
 
-<script>
+<script setup lang="ts">
 import { computed } from "vue";
 
-export default {
-  name: "MDBBreadcrumb",
-  props: {
-    tag: {
-      type: String,
-      default: "ol",
-    },
+defineProps({
+  tag: {
+    type: String,
+    default: "ol",
   },
+});
 
-  setup(props) {
-    const className = computed(() => {
-      return ["breadcrumb"];
-    });
-
-    return {
-      className,
-      props,
-    };
-  },
-};
+const className = computed(() => ["breadcrumb"]);
 </script>

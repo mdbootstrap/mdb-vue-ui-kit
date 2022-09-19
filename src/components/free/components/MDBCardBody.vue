@@ -1,39 +1,32 @@
 <template>
   <component :is="tag" :class="className">
-    <slot></slot>
+    <slot />
   </component>
 </template>
 
-<script>
-import { computed } from "vue";
+<script setup lang="ts">
+import { computed, PropType } from "vue";
 
-export default {
-  name: "MDBCardBody",
-  props: {
-    tag: {
-      type: String,
-      default: "div",
-    },
-    text: {
-      type: [String, Array],
-    },
+const props = defineProps({
+  tag: {
+    type: String,
+    default: "div",
   },
-  setup(props) {
-    const className = computed(() => {
-      return ["card-body", props.text && spreadProps(props.text)];
-    });
-
-    const spreadProps = (props) => {
-      if (typeof props === "string") {
-        return `text-${props}`;
-      }
-      return props.map((prop) => `text-${prop}`.trim()).join(" ");
-    };
-
-    return {
-      className,
-      props,
-    };
+  text: {
+    type: [String, Array] as PropType<string | string[]>,
   },
+});
+
+const className = computed(() => {
+  const text = props.text;
+
+  return ["card-body", props.text && spreadProps(text)];
+});
+
+const spreadProps = (props: string | string[]) => {
+  if (typeof props === "string") {
+    return `text-${props}`;
+  }
+  return props.map((prop) => `text-${prop}`.trim()).join(" ");
 };
 </script>

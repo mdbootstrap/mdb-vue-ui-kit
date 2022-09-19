@@ -12,57 +12,35 @@
   </component>
 </template>
 
-<script>
+<script setup lang="ts">
 import { computed, ref } from "vue";
-import { MDBIcon } from "@/index.free.js";
+import { MDBIcon } from "../../../index.free";
 
-export default {
-  name: "MDBNavbarToggler",
-  components: {
-    MDBIcon,
+const props = defineProps({
+  tag: {
+    type: String,
+    default: "button",
   },
-  props: {
-    tag: {
-      type: String,
-      default: "button",
-    },
-    target: {
-      type: String,
-      default: "#navbarSupportedContent",
-    },
-    togglerClass: {
-      type: String,
-    },
-    togglerIcon: {
-      type: String,
-      default: "bars",
-    },
-    togglerSize: {
-      type: String,
-      default: "1x",
-    },
-    iconStyle: {
-      type: String,
-      default: "fas",
-    },
+  target: {
+    type: String,
+    default: "#navbarSupportedContent",
   },
-  setup(props) {
-    const navTogglerClass = computed(() => {
-      return ["navbar-toggler", props.togglerClass];
-    });
-
-    const isExpanded = ref(false);
-
-    const handleClick = () => {
-      isExpanded.value = !isExpanded.value;
-    };
-
-    return {
-      navTogglerClass,
-      handleClick,
-      isExpanded,
-      props,
-    };
+  togglerClass: String,
+  togglerIcon: {
+    type: String,
+    default: "bars",
   },
-};
+  togglerSize: {
+    type: String,
+    default: "1x",
+  },
+  iconStyle: {
+    type: String,
+    default: "fas",
+  },
+});
+
+const isExpanded = ref(false);
+const navTogglerClass = computed(() => ["navbar-toggler", props.togglerClass]);
+const handleClick = () => (isExpanded.value = !isExpanded.value);
 </script>

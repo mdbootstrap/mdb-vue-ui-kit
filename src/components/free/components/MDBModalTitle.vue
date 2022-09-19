@@ -1,33 +1,24 @@
 <template>
   <component :is="tag" :class="className">
-    <slot></slot>
+    <slot />
   </component>
 </template>
 
-<script>
+<script setup lang="ts">
 import { computed } from "vue";
 
-export default {
-  name: "MDBModalTitle",
-  props: {
-    tag: {
-      type: String,
-      default: "h5",
-    },
-    bold: {
-      type: Boolean,
-      default: false,
-    },
+const props = defineProps({
+  tag: {
+    type: String,
+    default: "h5",
   },
-  setup(props) {
-    const className = computed(() => {
-      return ["modal-title", props.bold && "font-weight-bold"];
-    });
+  bold: {
+    type: Boolean,
+    default: false,
+  },
+});
 
-    return {
-      className,
-      props,
-    };
-  },
-};
+const className = computed(() => {
+  return ["modal-title", props.bold && "font-weight-bold"];
+});
 </script>

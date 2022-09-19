@@ -7,75 +7,56 @@
       :to="to"
       :target="tab"
     >
-      <slot></slot>
+      <slot />
     </router-link>
     <a v-else-if="href" :href="href" :class="linkClassName" :target="tab">
       <slot></slot>
     </a>
-    <slot v-else> </slot>
+    <slot v-else />
   </component>
 </template>
 
-<script>
-import { computed } from "vue";
+<script setup lang="ts">
+import { computed, PropType } from "vue";
 
-export default {
-  name: "MDBNavbarItem",
-  props: {
-    tag: {
-      type: String,
-      default: "li",
-    },
-    active: {
-      type: Boolean,
-      default: false,
-    },
-    disabled: {
-      type: Boolean,
-    },
-    exact: {
-      type: Boolean,
-      default: false,
-    },
-    newTab: {
-      type: Boolean,
-      default: false,
-    },
-    to: [Object, String],
-    href: {
-      type: String,
-    },
-    linkClass: {
-      type: String,
-    },
+const props = defineProps({
+  tag: {
+    type: String,
+    default: "li",
   },
-  setup(props) {
-    const className = computed(() => {
-      return ["nav-item", !props.to && !props.href && props.active && "active"];
-    });
-
-    const linkClassName = computed(() => {
-      return [
-        "nav-link",
-        props.disabled && "disabled",
-        props.active && "active",
-        props.linkClass,
-      ];
-    });
-    const tab = computed(() => {
-      if (props.newTab) {
-        return "_blank";
-      }
-
-      return false;
-    });
-
-    return {
-      props,
-      className,
-      linkClassName,
-      tab,
-    };
+  active: {
+    type: Boolean,
+    default: false,
   },
-};
+  disabled: Boolean,
+  exact: {
+    type: Boolean,
+    default: false,
+  },
+  newTab: {
+    type: Boolean,
+    default: false,
+  },
+  to: [Object, String] as PropType<{ [props: string]: string } | string>,
+  href: String,
+  linkClass: String,
+});
+
+const className = computed(() => {
+  return ["nav-item", !props.to && !props.href && props.active && "active"];
+});
+const linkClassName = computed(() => {
+  return [
+    "nav-link",
+    props.disabled && "disabled",
+    props.active && "active",
+    props.linkClass,
+  ];
+});
+const tab = computed(() => {
+  if (props.newTab) {
+    return "_blank";
+  }
+  return "";
+});
 </script>

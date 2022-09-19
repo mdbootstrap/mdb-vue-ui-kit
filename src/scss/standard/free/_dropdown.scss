@@ -7,6 +7,12 @@
   box-shadow: $dropdown-box-shadow;
   font-size: $dropdown-font-size;
 
+  INPUT:not(:-webkit-autofill),
+  SELECT:not(:-webkit-autofill),
+  TEXTAREA:not(:-webkit-autofill) {
+    animation-name: none !important;
+  }
+
   > li {
     border-radius: 0;
     &:first-child {
@@ -113,9 +119,4 @@
 
 .fade-out {
   animation-name: fade-out;
-}
-
-.dropdown-divider {
-  border-top: 2px solid $dropdown-divider-bg;
-  opacity: 1;
 }

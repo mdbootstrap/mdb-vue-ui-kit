@@ -1,27 +1,18 @@
 <template>
-  <component :is="tag" :class="className"><slot></slot></component>
+  <component :is="tag" :class="className">
+    <slot />
+  </component>
 </template>
 
-<script>
+<script setup lang="ts">
 import { computed } from "vue";
 
-export default {
-  name: "MDBCardLink",
-  props: {
-    tag: {
-      type: String,
-      default: "a",
-    },
+defineProps({
+  tag: {
+    type: String,
+    default: "a",
   },
-  setup(props) {
-    const className = computed(() => {
-      return ["card-link"];
-    });
+});
 
-    return {
-      className,
-      props,
-    };
-  },
-};
+const className = computed(() => ["card-link"]);
 </script>

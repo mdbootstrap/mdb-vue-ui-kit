@@ -4,60 +4,42 @@
       <slot />
     </component>
   </div>
-  <component v-else :is="tag" :class="className">
+  <component :is="tag" v-else :class="className">
     <slot />
   </component>
 </template>
 
-<script>
+<script setup lang="ts">
 import { computed, inject } from "vue";
+import type { Ref } from "vue";
 
-export default {
-  name: "MDBTabNav",
-  props: {
-    tag: {
-      type: String,
-      default: "ul",
-    },
-    pills: {
-      type: Boolean,
-    },
-    justify: {
-      type: Boolean,
-    },
-    fill: {
-      type: Boolean,
-    },
-    col: {
-      type: String,
-      default: "3",
-    },
-    tabsClasses: String,
+const props = defineProps({
+  tag: {
+    type: String,
+    default: "ul",
   },
-  setup(props) {
-    const className = computed(() => {
-      return [
-        "nav",
-        props.pills ? "nav-pills" : "nav-tabs",
-        props.justify && "nav-justified",
-        props.fill && "nav-fill",
-        isVertical.value && "flex-column",
-        props.tabsClasses && props.tabsClasses,
-      ];
-    });
-
-    const columnClassName = computed(() => {
-      return [`col-${props.col}`];
-    });
-
-    const isVertical = inject("isVertical", false);
-
-    return {
-      className,
-      columnClassName,
-      isVertical,
-      props,
-    };
+  pills: Boolean,
+  justify: Boolean,
+  fill: Boolean,
+  tabsClasses: String,
+  col: {
+    type: String,
+    default: "3",
   },
-};
+});
+
+const isVertical = inject<Ref<boolean>>("isVertical");
+const className = computed(() => {
+  return [
+    "nav",
+    props.pills ? "nav-pills" : "nav-tabs",
+    props.justify && "nav-justified",
+    props.fill && "nav-fill",
+    isVertical.value && "flex-column",
+    props.tabsClasses && props.tabsClasses,
+  ];
+});
+const columnClassName = computed(() => {
+  return [`col-${props.col}`];
+});
 </script>

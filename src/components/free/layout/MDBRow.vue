@@ -1,67 +1,58 @@
 <template>
   <component :is="tag" :class="className">
-    <slot></slot>
+    <slot />
   </component>
 </template>
 
-<script>
-import { computed } from "vue";
+<script setup lang="ts">
+import { computed, PropType } from "vue";
 
-export default {
-  name: "MDBRow",
-  props: {
-    tag: {
-      type: String,
-      default: "div",
-    },
-    start: {
-      type: Boolean,
-      default: false,
-    },
-    end: {
-      type: Boolean,
-      default: false,
-    },
-    center: {
-      type: Boolean,
-      default: false,
-    },
-    between: {
-      type: Boolean,
-      default: false,
-    },
-    around: {
-      type: Boolean,
-      default: false,
-    },
-    cols: {
-      type: [String, Array],
-    },
+const props = defineProps({
+  tag: {
+    type: String,
+    default: "div",
   },
-  setup(props) {
-    const className = computed(() => {
-      return [
-        "row",
-        props.cols ? `${spreadProps(props.cols)}` : "",
-        props.start && "justify-content-start",
-        props.end && "justify-content-end",
-        props.center && "justify-content-center",
-        props.between && "justify-content-between",
-        props.around && "justify-content-around",
-      ];
-    });
-
-    const spreadProps = (props) => {
-      if (typeof props === "string") {
-        return `row-cols-${props}`;
-      }
-      return props.map((prop) => `row-cols-${prop}`.trim()).join(" ");
-    };
-
-    return {
-      className,
-      props,
-    };
+  start: {
+    type: Boolean,
+    default: false,
   },
+  end: {
+    type: Boolean,
+    default: false,
+  },
+  center: {
+    type: Boolean,
+    default: false,
+  },
+  between: {
+    type: Boolean,
+    default: false,
+  },
+  around: {
+    type: Boolean,
+    default: false,
+  },
+  cols: [String, Array] as PropType<string | (string | number)[]>,
+});
+
+const className = computed(() => {
+  const columns = props.cols;
+
+  return [
+    "row",
+    props.cols ? `${spreadProps(columns)}` : "",
+    props.start && "justify-content-start",
+    props.end && "justify-content-end",
+    props.center && "justify-content-center",
+    props.between && "justify-content-between",
+    props.around && "justify-content-around",
+  ];
+});
+
+const spreadProps = (props: string | (string | number)[]) => {
+  if (typeof props === "string") {
+    return `row-cols-${props}`;
+  }
+  return props.map((prop) => `row-cols-${prop}`.trim()).join(" ");
 };
 </script>

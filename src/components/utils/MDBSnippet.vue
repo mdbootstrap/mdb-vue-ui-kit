@@ -44,135 +44,116 @@
   </div>
 </template>
 
-<script>
-import { computed, onMounted, ref, reactive, toRefs } from "vue";
-import MDBBtn from "../free/components/MDBBtn";
+<script setup lang="ts">
+import { computed, onMounted, ref, reactive, toRefs, useSlots } from "vue";
+import MDBBtn from "../free/components/MDBBtn.vue";
 
 // const Entities = require("html-entities").AllHtmlEntities;
 // const entities = new Entities();
-
+//@ts-ignore
 import { PrismEditor } from "vue-prism-editor";
 import "vue-prism-editor/dist/prismeditor.min.css"; // import the styles somewhere
 
 // import highlighting library (you can use any library you want just return html string)
+//@ts-ignore
 import { highlight, languages } from "prismjs/components/prism-core";
 import "prismjs/components/prism-clike";
 import "prismjs/components/prism-javascript";
 import "prismjs/themes/prism-tomorrow.css";
 
-export default {
-  components: {
-    MDBBtn,
-    PrismEditor,
-  },
-  setup(_, { slots }) {
-    /*---- Tab functionality  ----*/
-    const activeTab = ref("template");
+const slots = useSlots();
 
-    const isTemplateActive = computed(() => {
-      return activeTab.value === "template";
-    });
-    const isScriptActive = computed(() => {
-      return activeTab.value === "script";
-    });
-    const isStyleActive = computed(() => {
-      return activeTab.value === "style";
-    });
-    const setCurrentTab = (tab) => {
-      activeTab.value = tab;
-    };
-    /*---- Tab functionality  ----*/
+/*---- Tab functionality  ----*/
+const activeTab = ref("template");
 
-    /*---- Prism functionality  ----*/
-    const components = reactive({
-      template: null,
-      script: null,
-      style: null,
-    });
-
-    const componentRefs = toRefs(components);
-    const { template, script, style } = componentRefs;
-
-    const content = reactive({
-      template: "",
-      script: "",
-      style: "",
-    });
-
-    const highlighter = (code) => {
-      return highlight(code, languages.js); //returns html
-    };
-
-    const setContent = () => {
-      Object.keys(content).map((key) => {
-        if (componentRefs[key].value) {
-          const componentRefInnerContent = wrapTag(
-            componentRefs[key].value,
-            key
-          );
-
-          content[key] = componentRefInnerContent;
-        }
-      });
-    };
-
-    const removeVueData = (elements) => {
-      elements.forEach((el) => {
-        if (el.dataset) {
-          Object.keys(el.dataset).forEach((data) => {
-            if (data.startsWith("v-")) {
-              el.removeAttribute(
-                `data-${data
-                  .split(/(?=[A-Z])/)
-                  .join("-")
-                  .toLowerCase()}`
-              );
-            }
-          });
-        }
-      });
-    };
-
-    const wrapTag = (data, tag) => {
-      const elements = data.querySelectorAll("pre > *");
-
-      removeVueData(elements);
-
-      const innerContent = data.querySelector("pre").innerHTML;
-
-      const wrapper = document.createElement(`${tag}`);
-      wrapper.innerHTML = innerContent;
-
-      return wrapper.outerHTML;
-    };
-    /*---- Prism functionality  ----*/
-
-    onMounted(() => {
-      if (slots.template) {
-        activeTab.value = "template";
-      } else if (!slots.template && slots.script) {
-        activeTab.value = "script";
-      } else if (!slots.template && !slots.script && slots.style) {
-        activeTab.value = "style";
-      }
-
-      setContent();
-    });
-
-    return {
-      slots,
-      isTemplateActive,
-      isScriptActive,
-      isStyleActive,
-      setCurrentTab,
-      template,
-      script,
-      style,
-      content,
-      highlighter,
-    };
-  },
+const isTemplateActive = computed(() => {
+  return activeTab.value === "template";
+});
+const isScriptActive = computed(() => {
+  return activeTab.value === "script";
+});
+const isStyleActive = computed(() => {
+  return activeTab.value === "style";
+});
+const setCurrentTab = (tab: string) => {
+  activeTab.value = tab;
 };
+/*---- Tab functionality  ----*/
+
+/*---- Prism functionality  ----*/
+const components = reactive({
+  template: null,
+  script: null,
+  style: null,
+});
+
+const componentRefs = toRefs(components);
+const { template, script, style } = componentRefs;
+
+const content = reactive({
+  template: "",
+  script: "",
+  style: "",
+});
+
+const highlighter = (code: string) => {
+  return highlight(code, languages.js); //returns html
+};
+
+const setContent = () => {
+  Object.keys(content).map((key) => {
+    if (componentRefs[key].value) {
+      const componentRefInnerContent = wrapTag(componentRefs[key].value, key);
+
+      content[key] = componentRefInnerContent;
+    }
+  });
+};
+
+const removeVueData = (elements: HTMLElement[]) => {
+  elements.forEach((el) => {
+    if (el.dataset) {
+      Object.keys(el.dataset).forEach((data) => {
+        if (data.startsWith("v-")) {
+          el.removeAttribute(
+            `data-${data
+              .split(/(?=[A-Z])/)
+              .join("-")
+              .toLowerCase()}`
+          );
+        }
+      });
+    }
+  });
+};
+
+const wrapTag = (data: HTMLElement, tag: string) => {
+  const elements = Array.from(
+    data.querySelectorAll("pre > *")
+  ) as HTMLElement[];
+
+  removeVueData(elements);
+
+  const innerContent = data.querySelector("pre").innerHTML;
+
+  const wrapper = document.createElement(`${tag}`);
+  wrapper.innerHTML = innerContent;
+
+  return wrapper.outerHTML;
+};
+/*---- Prism functionality  ----*/
+
+onMounted(() => {
+  if (slots.template) {
+    activeTab.value = "template";
+  } else if (!slots.template && slots.script) {
+    activeTab.value = "script";
+  } else if (!slots.template && !slots.script && slots.style) {
+    activeTab.value = "style";
+  }
+
+  setContent();
+});
 </script>
 
 <style scoped lang="scss">

@@ -2,25 +2,17 @@
   <button :class="className" aria-label="Close"></button>
 </template>
 
-<script>
+<script setup lang="ts">
 import { computed } from "vue";
 
-export default {
-  name: "MDBBtnClose",
-  props: {
-    white: {
-      type: Boolean,
-      default: false,
-    },
+const props = defineProps({
+  white: {
+    type: Boolean,
+    default: false,
   },
-  setup(props) {
-    const className = computed(() => {
-      return ["btn-close", props.white && `btn-close-white`];
-    });
+});
 
-    return {
-      className,
-    };
-  },
-};
+const className = computed(() => {
+  return ["btn-close", props.white && `btn-close-white`];
+});
 </script>

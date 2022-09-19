@@ -1,42 +1,35 @@
 <template>
   <component :is="tag" :class="className">
-    <slot></slot>
+    <slot />
   </component>
 </template>
 
-<script>
-import { computed } from "vue";
+<script setup lang="ts">
+import { computed, useAttrs } from "vue";
 
-export default {
-  name: "MDBBadge",
-  props: {
-    badge: String,
-    color: String,
-    pill: Boolean,
-    dot: Boolean,
-    notification: Boolean,
-    tag: {
-      type: String,
-      default: "span",
-    },
+const props = defineProps({
+  badge: String,
+  color: String,
+  pill: Boolean,
+  dot: Boolean,
+  notification: Boolean,
+  tag: {
+    type: String,
+    default: "span",
   },
-  setup(props, { attrs }) {
-    const className = computed(() => {
-      return [
-        "badge",
-        props.color && `bg-${props.color}`,
-        props.badge && `badge-${props.badge}`,
-        props.pill && "rounded-pill",
-        props.dot && "badge-dot",
-        props.notification && "badge-notification",
-      ];
-    });
+});
+const attrs = useAttrs();
 
-    return {
-      className,
-      attrs,
-      props,
-    };
-  },
-};
+const className = computed(() => {
+  return [
+    "badge",
+    props.color && `bg-${props.color}`,
+    props.badge && `badge-${props.badge}`,
+    props.pill && "rounded-pill",
+    props.dot && "badge-dot",
+    props.notification && "badge-notification",
+  ];
+});
+
+defineExpose({ attrs });
 </script>

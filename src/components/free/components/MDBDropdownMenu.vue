@@ -12,7 +12,7 @@
       <slot />
     </component>
   </transition>
-  <teleport v-else :to="externalTarget">
+  <teleport v-else :to="shouldTeleportTo">
     <transition>
       <component
         v-if="isMounted"
@@ -29,219 +29,233 @@
   </teleport>
 </template>
 
-<script>
-import { computed, inject, onMounted, ref, watch } from "vue";
-import { on, off } from "../../utils/MDBEventHandlers.js";
-
+<script lang="ts">
 export default {
-  name: "MDBDropdownMenu",
   inheritAttrs: false,
-  props: {
-    tag: {
-      type: String,
-      default: "ul",
-    },
-    fadeIn: {
-      type: String,
-      default: "fade-in",
-    },
-    fadeOut: {
-      type: String,
-      default: "fade-out",
-    },
-    animation: {
-      type: Boolean,
-      default: true,
-    },
-    dark: {
-      type: Boolean,
-      default: false,
-    },
-    static: {
-      type: Boolean,
-      default: false,
-    },
+};
+</script>
+
+<script setup lang="ts">
+import { computed, inject, onMounted, Ref, ref, watch } from "vue";
+import { on, off } from "../../utils/MDBEventHandlers";
+
+const props = defineProps({
+  tag: {
+    type: String,
+    default: "ul",
   },
-  setup(props) {
-    const className = computed(() => {
-      return [
-        "dropdown-menu",
-        menuAlignClasses.value,
-        fadeClass.value,
-        showClass.value && "show",
-        props.dark && "dropdown-menu-dark",
-      ];
-    });
-    const menuAlignClasses = inject("menuAlignClasses", "dropdown-menu-start");
-    const root = ref("root");
-    const fadeClass = ref("");
-    const showClass = ref(false);
+  fadeIn: {
+    type: String,
+    default: "fade-in",
+  },
+  fadeOut: {
+    type: String,
+    default: "fade-out",
+  },
+  animation: {
+    type: Boolean,
+    default: true,
+  },
+  dark: {
+    type: Boolean,
+    default: false,
+  },
+  static: {
+    type: Boolean,
+    default: false,
+  },
+});
 
-    const staticStyle = computed(() => {
-      return props.static ? { display: "block", position: "static" } : false;
-    });
+const className = computed(() => {
+  return [
+    "dropdown-menu",
+    menuAlignClasses === "dropdown-menu-start"
+      ? "dropdown-menu-start"
+      : menuAlignClasses.value,
+    fadeClass.value,
+    showClass.value && "show",
+    props.dark && "dropdown-menu-dark",
+  ];
+});
+const menuAlignClasses = inject<Ref<string> | "dropdown-menu-start">(
+  "menuAlignClasses",
+  "dropdown-menu-start"
+);
+const root = ref<HTMLElement | string>("root");
+const fadeClass = ref<boolean | string | null>(null);
+const showClass = ref(false);
 
-    const handleAnimation = () => {
-      if (!props.animation) {
-        return;
-      }
+const staticStyle = computed(() => {
+  return props.static ? { display: "block", position: "static" } : false;
+});
 
-      setTimeout(() => {
-        fadeClass.value = false;
-      }, 300);
-    };
+const handleAnimation = () => {
+  if (!props.animation) {
+    return;
+  }
 
-    // ------------------- isActive -------------------
-    // controls if DropdownMenu is presented into DOM by isMounted value
-    // controls close class and animation
+  setTimeout(() => {
+    fadeClass.value = false;
+  }, 300);
+};
 
-    const setMenuMountedState = inject("setMenuMountedState", () => false);
-    const isActive = inject("isActive", false);
-    watch(
-      () => isActive.value,
-      (cur) => {
-        if (cur) {
-          setTimeout(() => {
-            setMenuMountedState(true, root.value);
-          }, 100);
-        } else if (!cur && isPopperActive) {
-          setInactive();
+// ------------------- isActive -------------------
+// controls if DropdownMenu is presented into DOM by isMounted value
+// controls close class and animation
 
-          setTimeout(() => {
-            setMenuMountedState(false);
-          }, 300);
-        }
-      }
-    );
+const setMenuMountedState = inject<
+  (boolean: boolean, menuRef?: HTMLElement) => void
+>("setMenuMountedState", () => false);
+const isActive = inject<Ref<boolean> | false>("isActive", false);
 
-    const setInactive = () => {
-      // keyboard navigation
-      off(document, "keydown", handleDown);
-      count.value = 0;
-
-      // close animation
-      fadeClass.value = props.animation && `animation ${props.fadeOut}`;
-      showClass.value = false;
-
-      handleAnimation();
-    };
-
-    const isMounted = computed(() => {
-      if (props.static) {
-        // standalone DropdownMenu component that needs to be visible always
-        return true;
-      } else if (isActive.value || (!isActive.value && isPopperActive.value)) {
-        return true;
-      } else if (!isActive.value && !isPopperActive.value) {
-        /* eslint-disable */
+if (isActive) {
+  watch(
+    () => isActive.value,
+    (cur) => {
+      if (cur) {
         setTimeout(() => {
-          return false;
+          setMenuMountedState(true, root.value as HTMLElement);
+        }, 100);
+      } else if (!cur && isPopperActive) {
+        setInactive();
+
+        setTimeout(() => {
+          setMenuMountedState(false);
         }, 300);
-        /* eslint-enable */
       }
+    }
+  );
+}
 
+const setInactive = () => {
+  // keyboard navigation
+  off(document, "keydown", handleDown);
+  count.value = 0;
+
+  // close animation
+  fadeClass.value = props.animation && `animation ${props.fadeOut}`;
+  showClass.value = false;
+
+  handleAnimation();
+};
+
+const isMounted = computed(() => {
+  if (props.static) {
+    // standalone DropdownMenu component that needs to be visible always
+    return true;
+  } else if (
+    (isActive && isActive.value) ||
+    (isActive && !isActive.value && isPopperActive && isPopperActive.value)
+  ) {
+    return true;
+  } else if (
+    isActive &&
+    !isActive.value &&
+    isPopperActive &&
+    !isPopperActive.value
+  ) {
+    /* eslint-disable */
+    setTimeout(() => {
       return false;
-    });
+    }, 300);
+    /* eslint-enable */
+  }
 
-    const externalTarget = inject("externalTarget", false);
-    const shouldTeleport = ref(false);
+  return false;
+});
 
-    onMounted(() => {
-      if (externalTarget) {
-        const target = document.body.querySelector(externalTarget);
-        if (target) {
-          shouldTeleport.value = true;
-        }
+const externalTarget = inject<string | false>("externalTarget", false);
+const shouldTeleport = ref(false);
+const shouldTeleportTo = ref("");
+
+onMounted(() => {
+  if (externalTarget) {
+    const target = document.body.querySelector(externalTarget);
+    if (target) {
+      shouldTeleport.value = true;
+      shouldTeleportTo.value = externalTarget as string;
+    }
+  }
+});
+
+// ------------------- isPopperActive -------------------
+// controls if DropdownMenu is visible for user or not
+// controls show class and animation
+const isPopperActive = inject<Ref<boolean>>("isPopperActive", null);
+
+const setActive = () => {
+  on(document, "keydown", handleDown);
+  fadeClass.value = props.animation && `animation ${props.fadeIn}`;
+
+  handleAnimation();
+};
+
+if (isPopperActive) {
+  watch(
+    () => isPopperActive.value,
+    (cur, prev) => {
+      if ((!prev && cur === true) || prev === false) {
+        items.value = (root.value as HTMLElement).querySelectorAll(
+          ".dropdown-item"
+        );
+
+        showClass.value = true;
+        setActive();
       }
-    });
+    }
+  );
+}
 
-    // ------------------- isPopperActive -------------------
-    // controls if DropdownMenu is visible for user or not
-    // controls show class and animation
-    const isPopperActive = inject("isPopperActive", false);
+// ------------------- Utilities for keyboard navigation -------------------
 
-    const setActive = () => {
-      on(document, "keydown", handleDown);
-      fadeClass.value = props.animation && `animation ${props.fadeIn}`;
+const count = ref(0);
+const items = ref(null);
 
-      handleAnimation();
-    };
+const handleEscAndOutsideClick = inject(
+  "handleEscAndOutsideClick",
+  () => false
+);
 
-    watch(
-      () => isPopperActive.value,
-      (cur, prev) => {
-        if ((!prev && cur === true) || prev === false) {
-          items.value = root.value.querySelectorAll(".dropdown-item");
+const handleDown = (event: KeyboardEvent) => {
+  const key = event.key;
+  if (key === "ArrowUp" || key === "ArrowDown") {
+    event.preventDefault();
+  }
 
-          showClass.value = true;
-          setActive();
-        }
+  if (isActive && !isActive.value) {
+    return;
+  }
+
+  items.value.forEach((item: HTMLElement) => {
+    item.classList.remove("active");
+  });
+
+  switch (key) {
+    case "Escape":
+      handleEscAndOutsideClick();
+      return;
+    case "Enter":
+      items.value[count.value - 1]?.click();
+      // setInactive();
+
+      return;
+    case "ArrowUp":
+      count.value--;
+
+      if (count.value <= 0) {
+        count.value = items.value.length;
       }
-    );
-
-    // ------------------- Utilities for keyboard navigation -------------------
-
-    const count = ref(0);
-    const items = ref(null);
-
-    const handleEscAndOutsideClick = inject(
-      "handleEscAndOutsideClick",
-      () => false
-    );
-
-    const handleDown = (e) => {
-      const key = e.key;
-      if (key === "ArrowUp" || key === "ArrowDown") {
-        e.preventDefault();
+      break;
+    case "ArrowDown":
+      count.value++;
+      if (count.value > items.value.length) {
+        count.value = 1;
       }
+      break;
+    default:
+      break;
+  }
 
-      if (!isActive.value) {
-        return;
-      }
-
-      items.value.forEach((item) => {
-        item.classList.remove("active");
-      });
-
-      switch (key) {
-        case "Escape":
-          handleEscAndOutsideClick();
-          return;
-        case "Enter":
-          items.value[count.value - 1]?.click();
-          // setInactive();
-
-          return;
-        case "ArrowUp":
-          count.value--;
-
-          if (count.value <= 0) {
-            count.value = items.value.length;
-          }
-          break;
-        case "ArrowDown":
-          count.value++;
-          if (count.value > items.value.length) {
-            count.value = 1;
-          }
-          break;
-        default:
-          break;
-      }
-
-      items.value[count.value - 1]?.classList.add("active");
-    };
-
-    return {
-      staticStyle,
-      showClass,
-      className,
-      isMounted,
-      shouldTeleport,
-      externalTarget,
-      root,
-      props,
-    };
-  },
+  items.value[count.value - 1]?.classList.add("active");
 };
 </script>

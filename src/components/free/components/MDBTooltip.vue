@@ -28,188 +28,168 @@
   </transition>
 </template>
 
-<script>
-import { computed, nextTick, ref, watchEffect } from "vue";
-import MDBPopper from "../../utils/MDBPopper.js";
+<script setup lang="ts">
+import { computed, nextTick, ref, watchEffect, PropType } from "vue";
+import MDBPopper from "../../utils/MDBPopper";
 
-export default {
-  name: "MDBTooltip",
-  props: {
-    tag: {
-      type: String,
-      default: "span",
+const props = defineProps({
+  tag: {
+    type: String,
+    default: "span",
+  },
+  modelValue: Boolean,
+  reference: String,
+  popover: String,
+  options: {
+    type: [Object, Function] as PropType<{ [props: string]: any } | Function>,
+    default() {
+      return {};
     },
-    modelValue: Boolean,
-    reference: String,
-    popover: String,
-    options: {
-      type: [Object, Function],
-      default() {
-        return {};
+  },
+  boundary: {
+    type: String,
+    default: "clippingParent",
+  },
+  fallbackPlacements: {
+    type: Array as PropType<string[]>,
+    default: () => ["top", "right", "bottom", "left"],
+  },
+  offset: {
+    type: String,
+    default: "0, 5",
+  },
+  direction: {
+    type: String,
+    default: "top",
+    validator: (value: string) =>
+      ["top", "right", "bottom", "left"].indexOf(value.toLowerCase()) > -1,
+  },
+  maxWidth: {
+    type: Number,
+    default: 276,
+  },
+  arrow: {
+    type: Boolean,
+    default: false,
+  },
+  disabled: Boolean,
+});
+const emit = defineEmits(["update:modelValue"]);
+
+const { setPopper, isPopperActive, openPopper, closePopper, getPopperOffset } =
+  MDBPopper();
+const triggerEl = ref<HTMLElement | null>(null);
+const popperEl = ref<HTMLElement | null>(null);
+
+const widthStyle = computed(() => `max-width: ${props.maxWidth}px!important`);
+
+const getConfig = () => {
+  const placement = props.direction;
+
+  let boundary = document.querySelector(props.boundary) as HTMLElement | string;
+  if (!boundary) {
+    boundary = props.boundary;
+  }
+
+  const defaultBsPopperConfig = {
+    placement,
+    modifiers: [
+      {
+        name: "flip",
+        options: {
+          fallbackPlacements: props.fallbackPlacements,
+        },
       },
-    },
-    boundary: {
-      type: String,
-      default: "clippingParent",
-    },
-    fallbackPlacements: {
-      type: Array,
-      default: () => ["top", "right", "bottom", "left"],
-    },
-    offset: {
-      type: String,
-      default: "0, 5",
-    },
-    direction: {
-      type: String,
-      default: "top",
-      validator: (value) =>
-        ["top", "right", "bottom", "left"].indexOf(value.toLowerCase()) > -1,
-    },
-    maxWidth: {
-      type: Number,
-      default: 276,
-    },
-    arrow: {
-      type: Boolean,
-      default: false,
-    },
-    disabled: Boolean,
-  },
-  setup(props, { emit }) {
-    const {
-      setPopper,
-      isPopperActive,
-      openPopper,
-      closePopper,
-      getPopperOffset,
-    } = MDBPopper();
-    const triggerEl = ref("triggerEl");
-    const popperEl = ref("popperEl");
+      {
+        name: "preventOverflow",
+        options: {
+          boundary,
+        },
+      },
+      {
+        name: "offset",
+        options: {
+          offset: getPopperOffset(props.offset, triggerEl.value),
+        },
+      },
+      {
+        name: "arrow",
+        options: {
+          element: `.tooltip_arrow`,
+          padding: 5,
+        },
+      },
+    ],
+  };
 
-    const widthStyle = computed(
-      () => `max-width: ${props.maxWidth}px!important`
-    );
+  return {
+    ...defaultBsPopperConfig,
+    ...(typeof props.options === "function"
+      ? props.options(defaultBsPopperConfig)
+      : props.options),
+  };
+};
 
-    const getConfig = () => {
-      const placement = props.direction;
+const popperSetup = () => {
+  triggerEl.value = props.reference
+    ? document.querySelector(props.reference)
+    : triggerEl.value;
+  popperEl.value = props.popover
+    ? document.querySelector(props.popover)
+    : popperEl.value;
 
-      let boundary = document.querySelector(props.boundary);
-      if (!boundary) {
-        boundary = props.boundary;
-      }
+  const config = getConfig();
 
-      const defaultBsPopperConfig = {
-        placement,
-        modifiers: [
-          {
-            name: "flip",
-            options: {
-              fallbackPlacements: props.fallbackPlacements,
-            },
-          },
-          {
-            name: "preventOverflow",
-            options: {
-              boundary,
-            },
-          },
-          {
-            name: "offset",
-            options: {
-              offset: getPopperOffset(props.offset, triggerEl.value),
-            },
-          },
-          {
-            name: "arrow",
-            options: {
-              element: `.tooltip_arrow`,
-              padding: 5,
-            },
-          },
-        ],
-      };
+  setPopper(triggerEl.value, popperEl.value, config);
+};
 
-      return {
-        ...defaultBsPopperConfig,
-        ...(typeof props.options === "function"
-          ? props.options(defaultBsPopperConfig)
-          : props.options),
-      };
-    };
+const isThrottled = ref(false);
 
-    const popperSetup = () => {
-      triggerEl.value = props.reference
-        ? document.querySelector(props.reference)
-        : triggerEl.value;
-      popperEl.value = props.popover
-        ? document.querySelector(props.popover)
-        : popperEl.value;
+watchEffect(() => {
+  if (props.modelValue) {
+    if (isThrottled.value) {
+      return;
+    }
 
-      const config = getConfig();
+    nextTick(() => {
+      popperSetup();
 
-      setPopper(triggerEl.value, popperEl.value, config);
-    };
-
-    const isThrottled = ref(false);
-
-    watchEffect(() => {
-      if (props.modelValue) {
-        if (isThrottled.value) {
-          return;
-        }
-
-        nextTick(() => {
-          popperSetup();
-
-          setTimeout(openPopper, 0);
-          setTimeout(() => {
-            popperEl.value.classList.add("show");
-          }, 0);
-        });
-      } else {
-        if (!isPopperActive.value) {
-          return;
-        }
-        setTimeout(() => {
-          popperEl.value.classList.remove("show");
-        }, 10);
-
-        isThrottled.value = true;
-
-        setTimeout(() => {
-          closePopper();
-          isThrottled.value = false;
-        }, 150);
-      }
+      setTimeout(openPopper, 0);
+      setTimeout(() => {
+        popperEl.value.classList.add("show");
+      }, 0);
     });
+  } else {
+    if (!isPopperActive.value) {
+      return;
+    }
+    setTimeout(() => {
+      popperEl.value.classList.remove("show");
+    }, 10);
 
-    const isActive = computed(() => {
-      if (props.modelValue || (!props.modelValue && isPopperActive.value)) {
-        return true;
-      } else if (!props.modelValue && !isPopperActive.value) {
-        return false;
-      }
+    isThrottled.value = true;
 
-      return false;
-    });
+    setTimeout(() => {
+      closePopper();
+      isThrottled.value = false;
+    }, 150);
+  }
+});
 
-    const onMouseEnter = () => {
-      !props.disabled && emit("update:modelValue", true);
-    };
-    const onMouseLeave = () => {
-      !props.disabled && emit("update:modelValue", false);
-    };
+const isActive = computed(() => {
+  if (props.modelValue || (!props.modelValue && isPopperActive.value)) {
+    return true;
+  } else if (!props.modelValue && !isPopperActive.value) {
+    return false;
+  }
 
-    return {
-      isActive,
-      triggerEl,
-      popperEl,
-      widthStyle,
-      onMouseEnter,
-      onMouseLeave,
-      props,
-    };
-  },
+  return false;
+});
+
+const onMouseEnter = () => {
+  !props.disabled && emit("update:modelValue", true);
+};
+const onMouseLeave = () => {
+  !props.disabled && emit("update:modelValue", false);
 };
 </script>

@@ -1,29 +1,18 @@
 <template>
   <component :is="isLink" class="navbar-brand">
-    <slot></slot>
+    <slot />
   </component>
 </template>
 
-<script>
-import { computed } from "vue";
+<script setup lang="ts">
+import { computed, useAttrs } from "vue";
 
-export default {
-  name: "MDBNavbarBrand",
-  props: {
-    tag: {
-      type: String,
-      default: "div",
-    },
+const props = defineProps({
+  tag: {
+    type: String,
+    default: "div",
   },
-  setup(props, { attrs }) {
-    const isLink = computed(() => {
-      return attrs.href ? "a" : props.tag;
-    });
-
-    return {
-      isLink,
-      props,
-    };
-  },
-};
+});
+const attrs = useAttrs();
+const isLink = computed(() => (attrs.href ? "a" : props.tag));
 </script>

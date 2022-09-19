@@ -1,34 +1,22 @@
 <template>
   <component :is="tag" :class="className" :style="style">
-    <slot></slot>
+    <slot />
   </component>
 </template>
 
-<script>
+<script setup lang="ts">
 import { computed } from "vue";
 
-export default {
-  name: "MDBProgress",
-  props: {
-    tag: {
-      type: String,
-      default: "div",
-    },
-    height: Number,
+const props = defineProps({
+  tag: {
+    type: String,
+    default: "div",
   },
-  setup(props) {
-    const className = computed(() => {
-      return ["progress"];
-    });
-    const style = computed(() => {
-      return { height: props.height + "px" };
-    });
+  height: Number,
+});
 
-    return {
-      className,
-      style,
-      props,
-    };
-  },
-};
+const className = computed(() => ["progress"]);
+const style = computed(() => {
+  return { height: props.height + "px" };
+});
 </script>

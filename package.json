@@ -1,14 +1,11 @@
 {
   "name": "mdb-vue-ui-kit",
-  "version": "2.0.0",
+  "version": "3.0.0",
+  "type": "module",
   "main": "js/mdb.umd.min.js",
+  "module": "js/mdb.es.min.js",
   "repository": "https://github.com/mdbootstrap/mdb-vue-ui-kit.git",
   "author": "MDBootstrap",
   "license": "MIT",
-  "types": "src/types/main.d.ts",
-  "web-types": "src/types/web-types.json",
-  "vetur": {
-    "tags": "src/types/tags.json",
-    "attributes": "src/types/attributes.json"
-  }
+  "types": "types/index.free.d.ts"
 }

@@ -1,29 +1,18 @@
 <template>
   <component :is="tag" :class="className">
-    <slot></slot>
+    <slot />
   </component>
 </template>
 
-<script>
+<script setup lang="ts">
 import { computed } from "vue";
 
-export default {
-  name: "MDBModalBody",
-  props: {
-    tag: {
-      type: String,
-      default: "div",
-    },
+defineProps({
+  tag: {
+    type: String,
+    default: "div",
   },
-  setup(props) {
-    const className = computed(() => {
-      return ["modal-body"];
-    });
+});
 
-    return {
-      className,
-      props,
-    };
-  },
-};
+const className = computed(() => ["modal-body"]);
 </script>

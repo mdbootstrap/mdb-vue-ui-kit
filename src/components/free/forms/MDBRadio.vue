@@ -7,7 +7,7 @@
       :id="uid"
       @change="handleChange"
       v-model="inputValue"
-      :required="required ? true : null"
+      :required="required ? true : undefined"
       :aria-required="required"
       ref="inputRef"
     />
@@ -29,7 +29,7 @@
     :id="uid"
     @change="handleChange"
     v-model="inputValue"
-    :required="required ? true : null"
+    :required="required ? true : undefined"
     :aria-required="required"
     ref="inputRef"
   />
@@ -44,129 +44,120 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+export default {
+  inheritAttrs: false,
+};
+</script>
+
+<script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref, watch, watchEffect } from "vue";
 import { on, off } from "../../utils/MDBEventHandlers";
 import { getUID } from "../../utils/getUID";
 
-export default {
-  name: "MDBRadio",
-  inheritAttrs: false,
-  props: {
-    id: String,
-    label: String,
-    inline: Boolean,
-    modelValue: String,
-    wrapperClass: String,
-    labelClass: String,
-    btnCheck: Boolean,
-    required: Boolean,
-    validateOnChange: Boolean,
-    isValidated: Boolean,
-    isValid: Boolean,
-    validFeedback: String,
-    invalidFeedback: String,
-    tooltipFeedback: {
-      type: Boolean,
-      default: false,
-    },
-    wrap: {
-      type: Boolean,
-      default: true,
-    },
-    formCheck: {
-      type: Boolean,
-      default: true,
-    },
-    tag: {
-      type: String,
-      default: "div",
-    },
+const props = defineProps({
+  id: String,
+  label: String,
+  inline: Boolean,
+  modelValue: String,
+  wrapperClass: String,
+  labelClass: String,
+  btnCheck: Boolean,
+  required: Boolean,
+  validateOnChange: Boolean,
+  isValidated: Boolean,
+  isValid: Boolean,
+  validFeedback: String,
+  invalidFeedback: String,
+  tooltipFeedback: {
+    type: Boolean,
+    default: false,
   },
-  emits: ["update:modelValue", "on-validate"],
-  setup(props, { emit }) {
-    const inputRef = ref("inputRef");
-    const inputValue = ref(props.modelValue || false);
-    const uid = props.id || getUID("MDBRadio-");
-
-    const wrapperClassName = computed(() => {
-      return [
-        props.formCheck && !props.btnCheck ? "form-check" : "",
-        props.inline && "form-check-inline",
-        props.wrapperClass,
-      ];
-    });
-    const inputClassName = computed(() => {
-      return [
-        props.btnCheck ? "btn-check" : "form-check-input",
-        isInputValidated.value && isInputValid.value && "is-valid",
-        isInputValidated.value && !isInputValid.value && "is-invalid",
-      ];
-    });
-    const labelClassName = computed(() => {
-      return [props.labelClass || "form-check-label"];
-    });
-
-    const validFeedbackClassName = computed(() => {
-      return props.tooltipFeedback ? "valid-tooltip" : "valid-feedback";
-    });
-
-    const invalidFeedbackClassName = computed(() => {
-      return props.tooltipFeedback ? "invalid-tooltip" : "invalid-feedback";
-    });
-
-    // Validation ------------------------
-    const isInputValidated = ref(props.isValidated);
-    const isInputValid = ref(props.isValid);
-
-    const handleValidation = (e) => {
-      isInputValid.value = e.target.checkValidity();
-      isInputValidated.value = true;
-      emit("on-validate", isInputValid.value);
-    };
-
-    const bindValidationEvent = () => {
-      on(inputRef.value, "change", handleValidation);
-    };
-
-    function handleChange(e) {
-      emit("update:modelValue", e.target.value);
-    }
-
-    onMounted(() => {
-      if (props.validateOnChange) {
-        bindValidationEvent();
-      }
-    });
-
-    onUnmounted(() => {
-      off(inputRef.value, "change", handleValidation);
-    });
-
-    watchEffect(() => (inputValue.value = props.modelValue));
-
-    watch(
-      () => props.isValidated,
-      (value) => (isInputValidated.value = value)
-    );
-
-    watch(
-      () => props.isValid,
-      (value) => (isInputValid.value = value)
-    );
-
-    return {
-      inputRef,
-      inputValue,
-      handleChange,
-      wrapperClassName,
-      inputClassName,
-      labelClassName,
-      validFeedbackClassName,
-      invalidFeedbackClassName,
-      uid,
-      props,
-    };
+  wrap: {
+    type: Boolean,
+    default: true,
   },
+  formCheck: {
+    type: Boolean,
+    default: true,
+  },
+  tag: {
+    type: String,
+    default: "div",
+  },
+});
+
+const emit = defineEmits(["update:modelValue", "on-validate"]);
+
+const inputRef = ref<HTMLInputElement | string>("inputRef");
+const inputValue = ref<string | undefined | boolean>(props.modelValue || false);
+const uid = props.id || getUID("MDBRadio-");
+
+const wrapperClassName = computed(() => {
+  return [
+    props.formCheck && !props.btnCheck ? "form-check" : "",
+    props.inline && "form-check-inline",
+    props.wrapperClass,
+  ];
+});
+const inputClassName = computed(() => {
+  return [
+    props.btnCheck ? "btn-check" : "form-check-input",
+    isInputValidated.value && isInputValid.value && "is-valid",
+    isInputValidated.value && !isInputValid.value && "is-invalid",
+  ];
+});
+const labelClassName = computed(() => {
+  return [props.labelClass || "form-check-label"];
+});
+
+const validFeedbackClassName = computed(() => {
+  return props.tooltipFeedback ? "valid-tooltip" : "valid-feedback";
+});
+
+const invalidFeedbackClassName = computed(() => {
+  return props.tooltipFeedback ? "invalid-tooltip" : "invalid-feedback";
+});
+
+// Validation ------------------------
+const isInputValidated = ref(props.isValidated);
+const isInputValid = ref(props.isValid);
+
+const handleValidation = (e: Event) => {
+  const target = e.target as HTMLInputElement;
+  isInputValid.value = target.checkValidity();
+  isInputValidated.value = true;
+  emit("on-validate", isInputValid.value);
 };
+
+const bindValidationEvent = () => {
+  on(inputRef.value as HTMLInputElement, "change", handleValidation);
+};
+
+function handleChange(e: Event) {
+  const target = e.target as HTMLInputElement;
+  emit("update:modelValue", target.value);
+}
+
+onMounted(() => {
+  if (props.validateOnChange) {
+    bindValidationEvent();
+  }
+});
+
+onUnmounted(() => {
+  off(inputRef.value as HTMLInputElement, "change", handleValidation);
+});
+
+watchEffect(() => (inputValue.value = props.modelValue));
+
+watch(
+  () => props.isValidated,
+  (value) => (isInputValidated.value = value)
+);
+
+watch(
+  () => props.isValid,
+  (value) => (isInputValid.value = value)
+);
 </script>

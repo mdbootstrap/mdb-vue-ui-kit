@@ -12,61 +12,53 @@
   </component>
 </template>
 
-<script>
+<script lang="ts">
+export default {
+  inheritAttrs: false,
+};
+</script>
+
+<script setup lang="ts">
 import { ref, computed, watch } from "vue";
 import { getUID } from "../../utils/getUID";
 
-export default {
-  name: "MDBSwitch",
-  inheritAttrs: false,
-  props: {
-    id: String,
-    inputClass: String,
-    label: String,
-    labelClass: String,
-    modelValue: {
-      type: Boolean,
-      default: false,
-    },
-    tag: {
-      type: String,
-      default: "div",
-    },
-    wrapperClass: String,
+const props = defineProps({
+  id: String,
+  inputClass: String,
+  label: String,
+  labelClass: String,
+  modelValue: {
+    type: Boolean,
+    default: false,
   },
-  emits: ["update:modelValue"],
-  setup(props, { emit }) {
-    const inputValue = ref(props.modelValue);
-    const uid = props.id || getUID("MDBSwitch-");
-
-    const wrapperClassName = computed(() => {
-      return ["form-check form-switch", props.wrapperClass];
-    });
-    const inputClassName = computed(() => {
-      return ["form-check-input", props.inputClass];
-    });
-    const labelClassName = computed(() => {
-      return ["form-check-label", props.labelClass];
-    });
-
-    function handleChange() {
-      inputValue.value = !inputValue.value;
-      emit("update:modelValue", inputValue.value);
-    }
-
-    watch(
-      () => props.modelValue,
-      (value) => (inputValue.value = value)
-    );
-
-    return {
-      inputValue,
-      uid,
-      wrapperClassName,
-      inputClassName,
-      labelClassName,
-      handleChange,
-    };
+  tag: {
+    type: String,
+    default: "div",
   },
-};
+  wrapperClass: String,
+});
+const emit = defineEmits(["update:modelValue"]);
+
+const inputValue = ref(props.modelValue);
+const uid = props.id || getUID("MDBSwitch-");
+
+const wrapperClassName = computed(() => {
+  return ["form-check form-switch", props.wrapperClass];
+});
+const inputClassName = computed(() => {
+  return ["form-check-input", props.inputClass];
+});
+const labelClassName = computed(() => {
+  return ["form-check-label", props.labelClass];
+});
+
+function handleChange() {
+  inputValue.value = !inputValue.value;
+  emit("update:modelValue", inputValue.value);
+}
+
+watch(
+  () => props.modelValue,
+  (value) => (inputValue.value = value)
+);
 </script>

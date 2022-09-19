@@ -1,46 +1,33 @@
 <template>
   <component :is="tag" :class="className">
-    <slot></slot>
+    <slot />
     <MDBBtnClose v-if="close" :white="closeWhite" @click.prevent="closeModal" />
   </component>
 </template>
 
-<script>
+<script setup lang="ts">
 import { computed, inject } from "vue";
-import MDBBtnClose from "./MDBBtnClose";
+import MDBBtnClose from "./MDBBtnClose.vue";
 
-export default {
-  name: "MDBModalHeader",
-  components: {
-    MDBBtnClose,
+const props = defineProps({
+  tag: {
+    type: String,
+    default: "div",
   },
-  props: {
-    tag: {
-      type: String,
-      default: "div",
-    },
-    close: {
-      type: Boolean,
-      default: true,
-    },
-    closeWhite: {
-      type: Boolean,
-      default: false,
-    },
-    color: String,
+  close: {
+    type: Boolean,
+    default: true,
   },
-  setup(props) {
-    const closeModal = inject("closeModal", false);
+  closeWhite: {
+    type: Boolean,
+    default: false,
+  },
+  color: String,
+});
 
-    const className = computed(() => {
-      return ["modal-header", props.color && `bg-${props.color}`];
-    });
+const closeModal = inject<() => void>("closeModal");
 
-    return {
-      className,
-      closeModal,
-      props,
-    };
-  },
-};
+const className = computed(() => {
+  return ["modal-header", props.color && `bg-${props.color}`];
+});
 </script>

@@ -9,82 +9,68 @@
     v-mdb-click-outside="handleClickOutside"
     data-trigger
   >
-    <slot v-if="!split"></slot>
+    <slot v-if="!split" />
     <span v-else class="visually-hidden">Toggle Dropdown</span>
   </component>
 </template>
 
-<script>
+<script setup lang="ts">
 import { computed, inject, ref, watchEffect } from "vue";
+import type { Ref } from "vue";
 import MDBBtn from "./MDBBtn.vue";
-import mdbClickOutside from "@/directives/free/mdbClickOutside.js";
+import vMdbClickOutside from "../../../directives/free/mdbClickOutside";
 
-export default {
-  name: "MDBDropdownToggle",
-  components: { MDBBtn },
-  emits: ["toggle-dropdown"],
-  props: {
-    ...MDBBtn.props,
-    tag: {
-      type: String,
-      default: "button",
-    },
-    href: [String, null],
-    split: {
-      type: Boolean,
-      default: false,
-    },
+const props = defineProps({
+  ...MDBBtn.props,
+  tag: {
+    type: String,
+    default: "button",
   },
-  directives: {
-    mdbClickOutside,
+  href: [String, null],
+  split: {
+    type: Boolean,
+    default: false,
   },
-  setup(props) {
-    const className = computed(() => {
-      return [
-        btnClass.value,
-        "dropdown-toggle",
-        props.split && "dropdown-toggle-split",
-        props.size && `btn-${props.size}`,
-        props.outline && `btn-outline-${props.outline}`,
-      ];
-    });
+});
 
-    const btnClass = computed(() => {
-      if (props.tag !== "button") return;
-      const color =
-        props.color && !props.outline
-          ? `btn-${props.color}`
-          : props.outline
-          ? ""
-          : "btn-primary";
-      return `btn ${color}`;
-    });
+const className = computed(() => {
+  return [
+    btnClass.value,
+    "dropdown-toggle",
+    props.split && "dropdown-toggle-split",
+    props.size && `btn-${props.size}`,
+    props.outline && `btn-outline-${props.outline}`,
+  ];
+});
 
-    const expanded = ref(false);
-    const toggle = () => {
-      expanded.value = !expanded.value;
-    };
+const btnClass = computed(() => {
+  if (props.tag !== "button") return;
+  const color =
+    props.color && !props.outline
+      ? `btn-${props.color}`
+      : props.outline
+      ? ""
+      : "btn-primary";
+  return `btn ${color}`;
+});
 
-    const isPopperActive = inject("isPopperActive", false);
-    watchEffect(() => {
-      expanded.value = isPopperActive.value;
-    });
+const expanded = ref(false);
+const toggle = () => {
+  expanded.value = !expanded.value;
+};
 
-    const handleEscAndOutsideClick = inject("handleEscAndOutsideClick", false);
+const isPopperActive = inject<Ref<boolean>>("isPopperActive");
+watchEffect(() => {
+  expanded.value = isPopperActive.value;
+});
 
-    const handleClickOutside = (e) => {
-      if (isPopperActive && !e.target.closest(".dropdown-menu")) {
-        handleEscAndOutsideClick();
-      }
-    };
+const handleEscAndOutsideClick = inject<() => void>("handleEscAndOutsideClick");
 
-    return {
-      className,
-      expanded,
-      toggle,
-      handleClickOutside,
-      props,
-    };
-  },
+const handleClickOutside = (event: Event) => {
+  const target = event.target as HTMLElement;
+
+  if (isPopperActive && !target.closest(".dropdown-menu")) {
+    handleEscAndOutsideClick();
+  }
 };
 </script>

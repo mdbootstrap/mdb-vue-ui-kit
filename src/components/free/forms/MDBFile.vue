@@ -15,98 +15,91 @@
   </div>
 </template>
 
-<script>
-import { computed, ref, watch } from "vue";
+<script setup lang="ts">
+import { computed, ref, watch, PropType } from "vue";
 import { getUID } from "../../utils/getUID";
 
-export default {
-  name: "MDBFile",
-  props: {
-    id: String,
-    inputClass: String,
-    invalidFeedback: String,
-    isInvalid: Boolean,
-    isValid: Boolean,
-    isValidated: Boolean,
-    label: String,
-    labelClass: String,
-    modelValue: {
-      type: [FileList, Array],
-      default: () => [],
-    },
-    size: String,
-    tooltipFeedback: Boolean,
-    validFeedback: String,
-    validateOnChange: Boolean,
+const props = defineProps({
+  id: String,
+  inputClass: String,
+  invalidFeedback: String,
+  isInvalid: Boolean,
+  isValid: Boolean,
+  isValidated: Boolean,
+  label: String,
+  labelClass: String,
+  modelValue: {
+    type: [FileList, Array] as PropType<FileList | File[]>,
+    default: () => [],
   },
-  emits: ["update:modelValue", "on-validate"],
-  setup(props, { emit }) {
-    const uid = props.id || getUID("MDBFile-");
-    const inputValue = ref(props.modelValue);
+  size: String,
+  tooltipFeedback: Boolean,
+  validFeedback: String,
+  validateOnChange: Boolean,
+});
+const emit = defineEmits(["update:modelValue", "on-validate"]);
 
-    const inputClassName = computed(() => {
-      return [
-        "form-control",
-        props.size && `form-control-${props.size}`,
-        isInputValidated.value && isInputValid.value && "is-valid",
-        isInputValidated.value && !isInputValid.value && "is-invalid",
-        props.inputClass,
-      ];
-    });
-    const labelClassName = computed(() => {
-      return ["form-label", props.labelClass];
-    });
-    const validFeedbackClassName = computed(() => {
-      return props.tooltipFeedback ? "valid-tooltip" : "valid-feedback";
-    });
-    const invalidFeedbackClassName = computed(() => {
-      return props.tooltipFeedback ? "invalid-tooltip" : "invalid-feedback";
-    });
+const uid = props.id || getUID("MDBFile-");
+const inputValue = ref(props.modelValue);
 
-    // Validation ------------------------
-    const isInputValidated = ref(props.isValidated);
-    const isInputValid = ref(props.isValid);
+const inputClassName = computed(() => {
+  return [
+    "form-control",
+    props.size && `form-control-${props.size}`,
+    isInputValidated.value && isInputValid.value && "is-valid",
+    isInputValidated.value && !isInputValid.value && "is-invalid",
+    props.inputClass,
+  ];
+});
+const labelClassName = computed(() => {
+  return ["form-label", props.labelClass];
+});
+const validFeedbackClassName = computed(() => {
+  return props.tooltipFeedback ? "valid-tooltip" : "valid-feedback";
+});
+const invalidFeedbackClassName = computed(() => {
+  return props.tooltipFeedback ? "invalid-tooltip" : "invalid-feedback";
+});
 
-    const handleValidation = (event) => {
-      isInputValid.value = event.target.files.length > 0;
-      isInputValidated.value = true;
-      emit("on-validate", isInputValid.value);
-    };
+// Validation ------------------------
+const isInputValidated = ref(props.isValidated);
+const isInputValid = ref(props.isValid);
 
-    const handleChange = (event) => {
-      inputValue.value = event.target.files;
-      emit("update:modelValue", inputValue.value);
-
-      if (props.validateOnChange) {
-        handleValidation(event);
-      }
-    };
-
-    watch(
-      () => props.modelValue,
-      (value) => (inputValue.value = value)
-    );
-
-    watch(
-      () => props.isValidated,
-      (value) => (isInputValidated.value = value)
-    );
-
-    watch(
-      () => props.isValid,
-      (value) => {
-        isInputValid.value = value;
-      }
-    );
-
-    return {
-      uid,
-      inputClassName,
-      labelClassName,
-      validFeedbackClassName,
-      invalidFeedbackClassName,
-      handleChange,
-    };
-  },
+const handleValidation = (event: Event) => {
+  const target = event.target as HTMLInputElement;
+  if (target.files) {
+    isInputValid.value = target.files.length > 0;
+    isInputValidated.value = true;
+    emit("on-validate", isInputValid.value);
+  }
 };
+
+const handleChange = (event: Event) => {
+  const target = event.target as HTMLInputElement;
+  if (target.files) {
+    inputValue.value = target.files;
+    emit("update:modelValue", inputValue.value);
+
+    if (props.validateOnChange) {
+      handleValidation(event);
+    }
+  }
+};
+
+watch(
+  () => props.modelValue,
+  (value) => (inputValue.value = value)
+);
+
+watch(
+  () => props.isValidated,
+  (value) => (isInputValidated.value = value)
+);
+
+watch(
+  () => props.isValid,
+  (value) => {
+    isInputValid.value = value;
+  }
+);
 </script>
