@@ -11,6 +11,12 @@
   </div>
 </template>
 
+<script lang="ts">
+export default {
+  name: "MDBCardImg",
+};
+</script>
+
 <script setup lang="ts">
 import { computed } from "vue";
 

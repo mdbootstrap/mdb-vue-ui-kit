@@ -20,6 +20,12 @@
   </transition>
 </template>
 
+<script lang="ts">
+export default {
+  name: "MDBTabPane",
+};
+</script>
+
 <script setup lang="ts">
 import { computed, ref, inject, watchEffect, onMounted } from "vue";
 import type { Ref } from "vue";

@@ -5,6 +5,12 @@
   <slot v-else />
 </template>
 
+<script lang="ts">
+export default {
+  name: "MDBTabs",
+};
+</script>
+
 <script setup lang="ts">
 import { provide, onMounted, onUnmounted, ref, watch } from "vue";
 import { handleBreakpoints } from "../../utils/MDBBreakpointHandler";

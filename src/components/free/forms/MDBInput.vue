@@ -30,7 +30,7 @@
   <div v-if="!wrap && customInvalidFeedback" :class="invalidFeedbackClassName">
     {{ customInvalidFeedback }}
   </div>
-  <div v-if="!wrap && formOutline" class="form-notch">
+  <div v-if="!wrap && formOutline" class="form-notch" ref="notchRef">
     <div
       class="form-notch-leading"
       :style="{ width: `${notchLeadingWidth}px` }"
@@ -73,7 +73,7 @@
     <div v-if="customInvalidFeedback" :class="invalidFeedbackClassName">
       {{ customInvalidFeedback }}
     </div>
-    <div v-if="formOutline" class="form-notch">
+    <div v-if="formOutline" class="form-notch" ref="notchRef">
       <div
         class="form-notch-leading"
         :style="{ width: `${notchLeadingWidth}px` }"
@@ -169,7 +169,11 @@ const wrapperClassName = computed(() => {
 const inputClassName = computed(() => {
   return [
     "form-control",
-    props.size && `form-control-${props.size}`,
+    props.size
+      ? `form-control-${props.size}`
+      : props.inputGroup &&
+        props.inputGroup !== true &&
+        `form-control-${props.inputGroup}`,
     inputValue.value && "active",
     showPlaceholder.value && "placeholder-active",
     isInputValidated.value && isInputValid.value && "is-valid",
@@ -271,8 +275,28 @@ function clickOutside() {
   emit("click-outside");
 }
 
+const notchRef = ref<HTMLElement>(null);
+const inputNotchElements = ref<NodeListOf<HTMLInputElement>>();
+
+const handleMultipleNotchesVisibility = (isFocused: boolean) => {
+  inputNotchElements.value.forEach(
+    (notch) => (notch.style.opacity = isFocused ? "0" : "1")
+  );
+  if (isFocused) {
+    notchRef.value.style.opacity = "1";
+  }
+};
+
 const isTypeDate = attrs.type && attrs.type === "date";
 const checkDateType = (isFocused = false) => {
+  if (
+    props.label &&
+    props.formOutline &&
+    inputNotchElements.value?.length > 1
+  ) {
+    handleMultipleNotchesVisibility(isFocused);
+  }
+
   if (!isTypeDate) {
     return;
   }
@@ -282,10 +306,27 @@ const checkDateType = (isFocused = false) => {
   }
 };
 
+const isFirstChild = (element: HTMLElement) => {
+  return !Boolean(
+    [...element.parentNode.children].findIndex((item) => item === element)
+  );
+};
+
 onMounted(() => {
   calcNotch();
   setPlaceholder();
   checkDateType();
+
+  if (props.label && props.formOutline) {
+    inputNotchElements.value =
+      inputRef.value.parentNode.querySelectorAll(".form-notch");
+  }
+
+  if (props.label && props.formOutline && !isFirstChild(inputRef.value)) {
+    const labelLeft = parseFloat(getComputedStyle(labelRef.value).left);
+    labelRef.value.style.left = `${labelLeft + inputRef.value.offsetLeft}px`;
+    notchLeadingWidth.value += inputRef.value.offsetLeft;
+  }
 
   if (props.validationEvent) {
     bindValidationEvents();
@@ -335,6 +376,7 @@ defineExpose({
 
 <script lang="ts">
 export default {
+  name: "MDBInput",
   inheritAttrs: false,
 };
 </script>

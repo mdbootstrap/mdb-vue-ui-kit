@@ -12,6 +12,12 @@
   </component>
 </template>
 
+<script lang="ts">
+export default {
+  name: "MDBNavbarToggler",
+};
+</script>
+
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import { MDBIcon } from "../../../index.free";

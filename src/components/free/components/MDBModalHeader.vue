@@ -5,6 +5,12 @@
   </component>
 </template>
 
+<script lang="ts">
+export default {
+  name: "MDBModalHeader",
+};
+</script>
+
 <script setup lang="ts">
 import { computed, inject } from "vue";
 import MDBBtnClose from "./MDBBtnClose.vue";

@@ -6,11 +6,11 @@ declare const _default: {
             tag: string;
             wrap: boolean;
             white: boolean;
+            formOutline: boolean;
+            inputGroup: string | boolean;
             isValidated: boolean;
             isValid: boolean;
             tooltipFeedback: boolean;
-            formOutline: boolean;
-            inputGroup: string | boolean;
             counter: boolean;
             maxlength: number;
         }> & Omit<Readonly<import("vue").ExtractPropTypes<{
@@ -55,9 +55,9 @@ declare const _default: {
             };
         }>> & {
             "onUpdate:modelValue"?: (...args: any[]) => any;
-            "onOn-validate"?: (...args: any[]) => any;
             "onClick-outside"?: (...args: any[]) => any;
-        } & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, "tag" | "wrap" | "white" | "isValidated" | "isValid" | "tooltipFeedback" | "formOutline" | "inputGroup" | "counter" | "maxlength">;
+            "onOn-validate"?: (...args: any[]) => any;
+        } & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, "tag" | "wrap" | "white" | "formOutline" | "inputGroup" | "isValidated" | "isValid" | "tooltipFeedback" | "counter" | "maxlength">;
         $attrs: {
             [x: string]: unknown;
         };
@@ -69,7 +69,7 @@ declare const _default: {
         }>;
         $root: import("vue").ComponentPublicInstance<{}, {}, {}, {}, {}, {}, {}, {}, false, import("vue").ComponentOptionsBase<any, any, any, any, any, any, any, any, any, {}>>;
         $parent: import("vue").ComponentPublicInstance<{}, {}, {}, {}, {}, {}, {}, {}, false, import("vue").ComponentOptionsBase<any, any, any, any, any, any, any, any, any, {}>>;
-        $emit: (event: "update:modelValue" | "on-validate" | "click-outside", ...args: any[]) => void;
+        $emit: (event: "update:modelValue" | "click-outside" | "on-validate", ...args: any[]) => void;
         $el: any;
         $options: import("vue").ComponentOptionsBase<Readonly<import("vue").ExtractPropTypes<{
             id: StringConstructor;
@@ -113,19 +113,19 @@ declare const _default: {
             };
         }>> & {
             "onUpdate:modelValue"?: (...args: any[]) => any;
-            "onOn-validate"?: (...args: any[]) => any;
             "onClick-outside"?: (...args: any[]) => any;
+            "onOn-validate"?: (...args: any[]) => any;
         }, {
             inputRef: import("vue").Ref<HTMLInputElement>;
-        }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("update:modelValue" | "on-validate" | "click-outside")[], string, {
+        }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("update:modelValue" | "click-outside" | "on-validate")[], string, {
             tag: string;
             wrap: boolean;
             white: boolean;
+            formOutline: boolean;
+            inputGroup: string | boolean;
             isValidated: boolean;
             isValid: boolean;
             tooltipFeedback: boolean;
-            formOutline: boolean;
-            inputGroup: string | boolean;
             counter: boolean;
             maxlength: number;
         }> & {
@@ -190,8 +190,8 @@ declare const _default: {
         };
     }>> & {
         "onUpdate:modelValue"?: (...args: any[]) => any;
-        "onOn-validate"?: (...args: any[]) => any;
         "onClick-outside"?: (...args: any[]) => any;
+        "onOn-validate"?: (...args: any[]) => any;
     } & import("vue").ShallowUnwrapRef<{
         inputRef: import("vue").Ref<HTMLInputElement>;
     }> & {} & import("vue").ComponentCustomProperties;
@@ -240,19 +240,19 @@ declare const _default: {
     };
 }>> & {
     "onUpdate:modelValue"?: (...args: any[]) => any;
-    "onOn-validate"?: (...args: any[]) => any;
     "onClick-outside"?: (...args: any[]) => any;
+    "onOn-validate"?: (...args: any[]) => any;
 }, {
     inputRef: import("vue").Ref<HTMLInputElement>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("update:modelValue" | "on-validate" | "click-outside")[], "update:modelValue" | "on-validate" | "click-outside", {
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("update:modelValue" | "click-outside" | "on-validate")[], "update:modelValue" | "click-outside" | "on-validate", {
     tag: string;
     wrap: boolean;
     white: boolean;
+    formOutline: boolean;
+    inputGroup: string | boolean;
     isValidated: boolean;
     isValid: boolean;
     tooltipFeedback: boolean;
-    formOutline: boolean;
-    inputGroup: string | boolean;
     counter: boolean;
     maxlength: number;
 }> & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps & (new () => {

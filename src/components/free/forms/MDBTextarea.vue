@@ -69,6 +69,7 @@
 
 <script lang="ts">
 export default {
+  name: "MDBTextarea",
   inheritAttrs: false,
 };
 </script>
@@ -254,9 +255,28 @@ function handleInput(e: Event) {
   emit("update:modelValue", textareaValue.value);
 }
 
+const isFirstChild = (element: HTMLElement) => {
+  return !Boolean(
+    [...element.parentNode.children].findIndex((item) => item === element)
+  );
+};
+
 onMounted(() => {
   calcNotch();
   setPlaceholder();
+
+  if (
+    props.label &&
+    props.formOutline &&
+    textareaRef.value instanceof HTMLTextAreaElement &&
+    !isFirstChild(textareaRef.value)
+  ) {
+    const textAreaLeft = parseFloat(getComputedStyle(labelRef.value).left);
+    labelRef.value.style.left = `${
+      textAreaLeft + textareaRef.value.offsetLeft
+    }px`;
+    notchLeadingWidth.value += textareaRef.value.offsetLeft;
+  }
 
   if (props.validationEvent) {
     bindValidationEvents();

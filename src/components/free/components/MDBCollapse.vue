@@ -22,6 +22,12 @@
   </transition>
 </template>
 
+<script lang="ts">
+export default {
+  name: "MDBCollapse",
+};
+</script>
+
 <script setup lang="ts">
 import {
   computed,
@@ -53,6 +59,10 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  horizontal: {
+    type: Boolean,
+    default: false,
+  },
 });
 const emit = defineEmits(["update:modelValue"]);
 
@@ -65,6 +75,7 @@ const className = computed(() => {
     props.collapseClass,
     navbarFlexWrapValue && navbarFlexWrapValue.value ? "navbar-collapse" : "",
     showClass.value,
+    props.horizontal && "collapse-horizontal",
   ];
 });
 
@@ -107,6 +118,7 @@ watchEffect(
 onMounted(() => {
   if (isActive.value) {
     collapse.value.style.height = collapse.value.scrollHeight + "px";
+    collapse.value.style.width = collapse.value.scrollWidth + "px";
   }
 
   if (accordionState) {
@@ -193,30 +205,55 @@ const uid = computed(() => {
 });
 
 const beforeEnter = (el: HTMLElement) => {
-  el.style.height = "0";
+  if (props.horizontal) {
+    el.style.width = "0";
+  } else {
+    el.style.height = "0";
+  }
   isCollapsing = true;
 };
 const enter = (el: HTMLElement) => {
-  el.style.height = collapse.value.scrollHeight + "px";
+  if (props.horizontal) {
+    el.style.width = collapse.value.scrollWidth + "px";
+  } else {
+    el.style.height = collapse.value.scrollHeight + "px";
+  }
 };
 
 const afterEnter = (el: HTMLElement) => {
   if (!el.classList.contains("show")) {
     el.classList.add("show");
   }
-  el.style.height = "";
+
+  if (props.horizontal) {
+    el.style.width = "";
+  } else {
+    el.style.height = "";
+  }
+
   isCollapsing = false;
 };
 
 const beforeLeave = (el: HTMLElement) => {
-  if (!el.style.height) {
-    el.classList.add("show");
-    el.style.height = collapse.value.scrollHeight + "px";
+  if (props.horizontal) {
+    if (!el.style.width) {
+      el.classList.add("show");
+      el.style.width = collapse.value.scrollWidth + "px";
+    }
+  } else {
+    if (!el.style.height) {
+      el.classList.add("show");
+      el.style.height = collapse.value.scrollHeight + "px";
+    }
   }
   isCollapsing = true;
 };
 const leave = (el: HTMLElement) => {
-  el.style.height = "0px";
+  if (props.horizontal) {
+    el.style.width = "0px";
+  } else {
+    el.style.height = "0px";
+  }
 };
 
 const afterLeave = (el: HTMLElement) => {

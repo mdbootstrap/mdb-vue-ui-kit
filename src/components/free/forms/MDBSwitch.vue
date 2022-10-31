@@ -14,6 +14,7 @@
 
 <script lang="ts">
 export default {
+  name: "MDBSwitch",
   inheritAttrs: false,
 };
 </script>

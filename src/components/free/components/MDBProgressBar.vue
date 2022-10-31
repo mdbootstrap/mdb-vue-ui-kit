@@ -15,6 +15,12 @@
   ></component>
 </template>
 
+<script lang="ts">
+export default {
+  name: "MDBProgressBar",
+};
+</script>
+
 <script setup lang="ts">
 import { computed } from "vue";
 

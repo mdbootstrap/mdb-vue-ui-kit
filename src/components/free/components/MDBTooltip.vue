@@ -28,6 +28,12 @@
   </transition>
 </template>
 
+<script lang="ts">
+export default {
+  name: "MDBTooltip",
+};
+</script>
+
 <script setup lang="ts">
 import { computed, nextTick, ref, watchEffect, PropType } from "vue";
 import MDBPopper from "../../utils/MDBPopper";

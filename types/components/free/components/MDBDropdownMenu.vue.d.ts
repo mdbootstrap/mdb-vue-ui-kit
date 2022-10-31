@@ -3,12 +3,13 @@ declare const _default: {
         $: import("vue").ComponentInternalInstance;
         $data: {};
         $props: Partial<{
+            filter: boolean;
             tag: string;
             dark: boolean;
-            fadeIn: string;
-            fadeOut: string;
             animation: boolean;
             static: boolean;
+            fadeIn: string;
+            fadeOut: string;
         }> & Omit<Readonly<import("vue").ExtractPropTypes<{
             tag: {
                 type: StringConstructor;
@@ -34,7 +35,11 @@ declare const _default: {
                 type: BooleanConstructor;
                 default: boolean;
             };
-        }>> & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, "tag" | "dark" | "fadeIn" | "fadeOut" | "animation" | "static">;
+            filter: {
+                type: BooleanConstructor;
+                default: boolean;
+            };
+        }>> & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, "filter" | "tag" | "dark" | "animation" | "static" | "fadeIn" | "fadeOut">;
         $attrs: {
             [x: string]: unknown;
         };
@@ -73,13 +78,18 @@ declare const _default: {
                 type: BooleanConstructor;
                 default: boolean;
             };
+            filter: {
+                type: BooleanConstructor;
+                default: boolean;
+            };
         }>>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, {
+            filter: boolean;
             tag: string;
             dark: boolean;
-            fadeIn: string;
-            fadeOut: string;
             animation: boolean;
             static: boolean;
+            fadeIn: string;
+            fadeOut: string;
         }> & {
             beforeCreate?: (() => void) | (() => void)[];
             created?: (() => void) | (() => void)[];
@@ -125,6 +135,10 @@ declare const _default: {
             type: BooleanConstructor;
             default: boolean;
         };
+        filter: {
+            type: BooleanConstructor;
+            default: boolean;
+        };
     }>> & import("vue").ShallowUnwrapRef<{}> & {} & import("vue").ComponentCustomProperties;
     __isFragment?: never;
     __isTeleport?: never;
@@ -154,13 +168,18 @@ declare const _default: {
         type: BooleanConstructor;
         default: boolean;
     };
+    filter: {
+        type: BooleanConstructor;
+        default: boolean;
+    };
 }>>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, {
+    filter: boolean;
     tag: string;
     dark: boolean;
-    fadeIn: string;
-    fadeOut: string;
     animation: boolean;
     static: boolean;
+    fadeIn: string;
+    fadeOut: string;
 }> & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps & (new () => {
     $slots: {
         default: (_: {}) => any;

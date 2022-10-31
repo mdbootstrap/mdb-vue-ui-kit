@@ -23,6 +23,7 @@
 
 <script lang="ts">
 export default {
+  name: "MDBTable",
   inheritAttrs: false,
 };
 </script>

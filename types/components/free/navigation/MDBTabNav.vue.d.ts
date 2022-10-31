@@ -6,8 +6,8 @@ declare const _default: {
             col: string;
             fill: boolean;
             tag: string;
-            justify: boolean;
             pills: boolean;
+            justify: boolean;
         }> & Omit<Readonly<import("vue").ExtractPropTypes<{
             tag: {
                 type: StringConstructor;
@@ -21,7 +21,7 @@ declare const _default: {
                 type: StringConstructor;
                 default: string;
             };
-        }>> & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, "col" | "fill" | "tag" | "justify" | "pills">;
+        }>> & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, "col" | "fill" | "tag" | "pills" | "justify">;
         $attrs: {
             [x: string]: unknown;
         };
@@ -52,8 +52,8 @@ declare const _default: {
             col: string;
             fill: boolean;
             tag: string;
-            justify: boolean;
             pills: boolean;
+            justify: boolean;
         }> & {
             beforeCreate?: (() => void) | (() => void)[];
             created?: (() => void) | (() => void)[];
@@ -108,8 +108,8 @@ declare const _default: {
     col: string;
     fill: boolean;
     tag: string;
-    justify: boolean;
     pills: boolean;
+    justify: boolean;
 }> & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps & (new () => {
     $slots: {
         default: (_: {}) => any;

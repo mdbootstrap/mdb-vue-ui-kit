@@ -7,5 +7,9 @@ declare function MDBStackable(): {
     nextStackElements: () => HTMLElement[];
     calculateStackingOffset: () => any;
     resetStackingOffset: () => void;
+    stackableElements: () => {
+        el: any;
+        rect: any;
+    }[];
 };
 export default MDBStackable;

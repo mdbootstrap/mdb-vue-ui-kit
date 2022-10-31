@@ -46,6 +46,7 @@
 
 <script lang="ts">
 export default {
+  name: "MDBRadio",
   inheritAttrs: false,
 };
 </script>

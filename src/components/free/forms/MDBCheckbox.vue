@@ -49,6 +49,7 @@
 
 <script lang="ts">
 export default {
+  name: "MDBCheckbox",
   inheritAttrs: false,
 };
 </script>

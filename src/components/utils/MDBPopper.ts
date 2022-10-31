@@ -62,6 +62,9 @@ function MDBPopper() {
   }
 
   function setupPopper() {
+    if (!triggerEl.value || !popperEl.value) {
+      return;
+    }
     if (popper.value === undefined || !popper.value) {
       popper.value = createPopper(
         triggerEl.value,

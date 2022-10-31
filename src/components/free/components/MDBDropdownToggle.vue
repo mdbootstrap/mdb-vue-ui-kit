@@ -7,6 +7,7 @@
     aria-haspopup="true"
     @click="toggle"
     v-mdb-click-outside="handleClickOutside"
+    v-mdb-ripple
     data-trigger
   >
     <slot v-if="!split" />
@@ -14,11 +15,18 @@
   </component>
 </template>
 
+<script lang="ts">
+export default {
+  name: "MDBDropdownToggle",
+};
+</script>
+
 <script setup lang="ts">
 import { computed, inject, ref, watchEffect } from "vue";
 import type { Ref } from "vue";
 import MDBBtn from "./MDBBtn.vue";
 import vMdbClickOutside from "../../../directives/free/mdbClickOutside";
+import vMdbRipple from "../../../directives/free/mdbRipple";
 
 const props = defineProps({
   ...MDBBtn.props,

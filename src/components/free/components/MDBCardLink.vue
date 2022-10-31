@@ -4,6 +4,12 @@
   </component>
 </template>
 
+<script lang="ts">
+export default {
+  name: "MDBCardLink",
+};
+</script>
+
 <script setup lang="ts">
 import { computed } from "vue";
 

@@ -6,12 +6,12 @@ declare const _default: {
             required: boolean;
             tag: string;
             wrap: boolean;
-            inline: boolean;
-            btnCheck: boolean;
-            validateOnChange: boolean;
             isValidated: boolean;
             isValid: boolean;
             tooltipFeedback: boolean;
+            inline: boolean;
+            btnCheck: boolean;
+            validateOnChange: boolean;
             formCheck: boolean;
         }> & Omit<Readonly<import("vue").ExtractPropTypes<{
             id: StringConstructor;
@@ -46,7 +46,7 @@ declare const _default: {
         }>> & {
             "onUpdate:modelValue"?: (...args: any[]) => any;
             "onOn-validate"?: (...args: any[]) => any;
-        } & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, "required" | "tag" | "wrap" | "inline" | "btnCheck" | "validateOnChange" | "isValidated" | "isValid" | "tooltipFeedback" | "formCheck">;
+        } & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, "required" | "tag" | "wrap" | "isValidated" | "isValid" | "tooltipFeedback" | "inline" | "btnCheck" | "validateOnChange" | "formCheck">;
         $attrs: {
             [x: string]: unknown;
         };
@@ -97,12 +97,12 @@ declare const _default: {
             required: boolean;
             tag: string;
             wrap: boolean;
-            inline: boolean;
-            btnCheck: boolean;
-            validateOnChange: boolean;
             isValidated: boolean;
             isValid: boolean;
             tooltipFeedback: boolean;
+            inline: boolean;
+            btnCheck: boolean;
+            validateOnChange: boolean;
             formCheck: boolean;
         }> & {
             beforeCreate?: (() => void) | (() => void)[];
@@ -198,12 +198,12 @@ declare const _default: {
     required: boolean;
     tag: string;
     wrap: boolean;
-    inline: boolean;
-    btnCheck: boolean;
-    validateOnChange: boolean;
     isValidated: boolean;
     isValid: boolean;
     tooltipFeedback: boolean;
+    inline: boolean;
+    btnCheck: boolean;
+    validateOnChange: boolean;
     formCheck: boolean;
 }> & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps & (new () => {
     $slots: {};

@@ -18,6 +18,12 @@
   </component>
 </template>
 
+<script lang="ts">
+export default {
+  name: "MDBAccordionItem",
+};
+</script>
+
 <script setup lang="ts">
 import { computed, inject, ref, watchEffect } from "vue";
 import type { Ref } from "vue";

@@ -7,11 +7,11 @@ declare const _default: {
             wrap: boolean;
             maxLength: number;
             white: boolean;
+            formOutline: boolean;
+            inputGroup: string | boolean;
             isValidated: boolean;
             isValid: boolean;
             tooltipFeedback: boolean;
-            formOutline: boolean;
-            inputGroup: string | boolean;
             counter: boolean;
             rows: string | number;
         }> & Omit<Readonly<import("vue").ExtractPropTypes<{
@@ -60,7 +60,7 @@ declare const _default: {
         }>> & {
             "onUpdate:modelValue"?: (...args: any[]) => any;
             "onOn-validate"?: (...args: any[]) => any;
-        } & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, "tag" | "wrap" | "maxLength" | "white" | "isValidated" | "isValid" | "tooltipFeedback" | "formOutline" | "inputGroup" | "counter" | "rows">;
+        } & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, "tag" | "wrap" | "maxLength" | "white" | "formOutline" | "inputGroup" | "isValidated" | "isValid" | "tooltipFeedback" | "counter" | "rows">;
         $attrs: {
             [x: string]: unknown;
         };
@@ -125,11 +125,11 @@ declare const _default: {
             wrap: boolean;
             maxLength: number;
             white: boolean;
+            formOutline: boolean;
+            inputGroup: string | boolean;
             isValidated: boolean;
             isValid: boolean;
             tooltipFeedback: boolean;
-            formOutline: boolean;
-            inputGroup: string | boolean;
             counter: boolean;
             rows: string | number;
         }> & {
@@ -253,11 +253,11 @@ declare const _default: {
     wrap: boolean;
     maxLength: number;
     white: boolean;
+    formOutline: boolean;
+    inputGroup: string | boolean;
     isValidated: boolean;
     isValid: boolean;
     tooltipFeedback: boolean;
-    formOutline: boolean;
-    inputGroup: string | boolean;
     counter: boolean;
     rows: string | number;
 }> & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps & (new () => {

@@ -4,6 +4,12 @@
   </component>
 </template>
 
+<script lang="ts">
+export default {
+  name: "MDBAccordion",
+};
+</script>
+
 <script setup lang="ts">
 import { computed, provide, ref, watchEffect } from "vue";
 

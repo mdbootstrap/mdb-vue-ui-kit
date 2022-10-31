@@ -27,6 +27,7 @@
 
 <script lang="ts">
 export default {
+  name: "MDBRange",
   inheritAttrs: false,
 };
 </script>

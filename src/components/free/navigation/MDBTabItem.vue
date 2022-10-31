@@ -30,6 +30,7 @@
 
 <script lang="ts">
 export default {
+  name: "MDBTabItem",
   inheritAttrs: false,
 };
 </script>

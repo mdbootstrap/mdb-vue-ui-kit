@@ -44,4 +44,5 @@ export default function useMDBModal(props: Partial<Props>, emit: (name: string, 
     dialogTransform: import("vue").Ref<string>;
     animateStaticModal: (el: HTMLElement) => void;
     fullscreenClass: import("vue").ComputedRef<false | string[]>;
+    clickFromBackdrop: import("vue").Ref<boolean>;
 };

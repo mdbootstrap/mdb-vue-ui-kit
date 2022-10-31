@@ -7,6 +7,12 @@
   </component>
 </template>
 
+<script lang="ts">
+export default {
+  name: "MDBNavbar",
+};
+</script>
+
 <script setup lang="ts">
 import { computed, ref, provide, onMounted } from "vue";
 

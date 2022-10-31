@@ -9,8 +9,8 @@ declare const _default: {
             dark: boolean;
             border: string | boolean;
             hover: boolean;
-            sm: boolean;
             striped: boolean;
+            sm: boolean;
             responsive: string | boolean;
             captionTop: boolean;
         }> & Omit<Readonly<import("vue").ExtractPropTypes<{
@@ -57,7 +57,7 @@ declare const _default: {
                 type: BooleanConstructor;
                 default: boolean;
             };
-        }>> & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, "tag" | "borderless" | "light" | "dark" | "border" | "hover" | "sm" | "striped" | "responsive" | "captionTop">;
+        }>> & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, "tag" | "borderless" | "light" | "dark" | "border" | "hover" | "striped" | "sm" | "responsive" | "captionTop">;
         $attrs: {
             [x: string]: unknown;
         };
@@ -122,8 +122,8 @@ declare const _default: {
             dark: boolean;
             border: string | boolean;
             hover: boolean;
-            sm: boolean;
             striped: boolean;
+            sm: boolean;
             responsive: string | boolean;
             captionTop: boolean;
         }> & {
@@ -245,8 +245,8 @@ declare const _default: {
     dark: boolean;
     border: string | boolean;
     hover: boolean;
-    sm: boolean;
     striped: boolean;
+    sm: boolean;
     responsive: string | boolean;
     captionTop: boolean;
 }> & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps & (new () => {

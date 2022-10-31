@@ -28,6 +28,12 @@
   </transition>
 </template>
 
+<script lang="ts">
+export default {
+  name: "MDBPopover",
+};
+</script>
+
 <script setup lang="ts">
 import {
   computed,

@@ -11,6 +11,12 @@
   </component>
 </template>
 
+<script lang="ts">
+export default {
+  name: "MDBBtn",
+};
+</script>
+
 <script setup lang="ts">
 import { ref, computed, PropType } from "vue";
 import vMdbRipple from "../../../directives/free/mdbRipple";

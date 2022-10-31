@@ -16,6 +16,12 @@
   </component>
 </template>
 
+<script lang="ts">
+export default {
+  name: "MDBNavbarItem",
+};
+</script>
+
 <script setup lang="ts">
 import { computed, PropType } from "vue";
 

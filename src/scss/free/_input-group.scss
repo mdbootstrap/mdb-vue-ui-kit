@@ -5,12 +5,13 @@
 
   &:not(.has-validation) > .btn-group:not(:last-child) {
     > :not(:last-child):not(.dropdown-menu),
-    > .dropdown-toggle:last-child, .dropdown-toggle:nth-last-child(n+1) {
+    > .dropdown-toggle:last-child,
+    .dropdown-toggle:nth-last-child(n + 1) {
       @include border-end-radius(0);
     }
   }
 
-  &.has-validation > .btn-group{
+  &.has-validation > .btn-group {
     > :last-child:not(.dropdown-toggle):not(.dropdown-menu),
     > .dropdown-toggle:last-child {
       @include border-end-radius(0);
@@ -43,4 +44,9 @@
     font-size: $input-group-sm-text-font-size;
     line-height: $input-group-sm-text-line-height;
   }
+}
+
+.form-outline .form-control:focus ~ .form-label ~ .form-label {
+  transform: none;
+  color: rgba(0, 0, 0, 0.6);
 }

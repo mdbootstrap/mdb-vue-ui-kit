@@ -4,6 +4,12 @@
   </component>
 </template>
 
+<script lang="ts">
+export default {
+  name: "MDBBadge",
+};
+</script>
+
 <script setup lang="ts">
 import { computed, useAttrs } from "vue";
 
@@ -23,8 +29,8 @@ const attrs = useAttrs();
 const className = computed(() => {
   return [
     "badge",
-    props.color && `bg-${props.color}`,
-    props.badge && `badge-${props.badge}`,
+    props.color && `badge-${props.color}`,
+    props.badge && `bg-${props.badge}`,
     props.pill && "rounded-pill",
     props.dot && "badge-dot",
     props.notification && "badge-notification",

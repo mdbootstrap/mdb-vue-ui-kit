@@ -9,6 +9,12 @@
   </component>
 </template>
 
+<script lang="ts">
+export default {
+  name: "MDBTabNav",
+};
+</script>
+
 <script setup lang="ts">
 import { computed, inject } from "vue";
 import type { Ref } from "vue";

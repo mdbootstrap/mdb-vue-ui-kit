@@ -44,6 +44,12 @@
   </div>
 </template>
 
+<script lang="ts">
+export default {
+  name: "MDBSnippet",
+};
+</script>
+
 <script setup lang="ts">
 import { computed, onMounted, ref, reactive, toRefs, useSlots } from "vue";
 import MDBBtn from "../free/components/MDBBtn.vue";

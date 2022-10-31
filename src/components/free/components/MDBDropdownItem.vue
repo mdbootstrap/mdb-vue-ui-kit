@@ -24,6 +24,7 @@
 
 <script lang="ts">
 export default {
+  name: "MDBDropdownItem",
   inheritAttrs: false,
 };
 </script>

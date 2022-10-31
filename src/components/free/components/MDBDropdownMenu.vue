@@ -9,6 +9,14 @@
       data-popper
       ref="root"
     >
+      <div v-if="filter" class="mt-2 mx-2">
+        <MDBInput
+          v-model="search"
+          role="searchbox"
+          type="text"
+          label="Search"
+        />
+      </div>
       <slot />
     </component>
   </transition>
@@ -23,6 +31,14 @@
         :data-popper="externalTarget"
         ref="root"
       >
+        <div v-if="filter" class="mt-2 mx-2">
+          <MDBInput
+            v-model="search"
+            role="searchbox"
+            type="text"
+            label="Search"
+          />
+        </div>
         <slot />
       </component>
     </transition>
@@ -31,11 +47,13 @@
 
 <script lang="ts">
 export default {
+  name: "MDBDropdownMenu",
   inheritAttrs: false,
 };
 </script>
 
 <script setup lang="ts">
+import { MDBInput } from "../../../index.free";
 import { computed, inject, onMounted, Ref, ref, watch } from "vue";
 import { on, off } from "../../utils/MDBEventHandlers";
 
@@ -61,6 +79,10 @@ const props = defineProps({
     default: false,
   },
   static: {
+    type: Boolean,
+    default: false,
+  },
+  filter: {
     type: Boolean,
     default: false,
   },
@@ -194,6 +216,10 @@ if (isPopperActive) {
   watch(
     () => isPopperActive.value,
     (cur, prev) => {
+      if (!root.value) {
+        return;
+      }
+
       if ((!prev && cur === true) || prev === false) {
         items.value = (root.value as HTMLElement).querySelectorAll(
           ".dropdown-item"
@@ -258,4 +284,33 @@ const handleDown = (event: KeyboardEvent) => {
 
   items.value[count.value - 1]?.classList.add("active");
 };
+
+// filtering
+const search = ref("");
+const dropdownItems = ref([]);
+const handleFilter = () => {
+  dropdownItems.value = [
+    ...(root.value as HTMLElement).querySelectorAll(".dropdown-item"),
+  ];
+  dropdownItems.value.forEach((el) => {
+    el.style.display = "flex";
+  });
+
+  if (search.value) {
+    dropdownItems.value.forEach((el) => {
+      const elText = el.textContent.trim().toLowerCase();
+      const isIncluded = elText.includes(search.value.toLowerCase());
+      if (!isIncluded) {
+        el.style.display = "none";
+      }
+    });
+  }
+};
+
+watch(
+  () => search.value,
+  () => {
+    handleFilter();
+  }
+);
 </script>

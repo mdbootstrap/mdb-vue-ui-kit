@@ -56,6 +56,12 @@
   </component>
 </template>
 
+<script lang="ts">
+export default {
+  name: "MDBCarousel",
+};
+</script>
+
 <script setup lang="ts">
 import { computed, ref, onMounted, onUnmounted, watch, PropType } from "vue";
 

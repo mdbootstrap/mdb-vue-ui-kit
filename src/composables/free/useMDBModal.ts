@@ -38,6 +38,7 @@ export default function useMDBModal(
   const focusTrap = ref(null);
 
   const isActive = ref(props.modelValue);
+  const clickFromBackdrop = ref(false);
 
   const thisElement = ref<HTMLElement | null | string>(null);
 
@@ -234,5 +235,6 @@ export default function useMDBModal(
     dialogTransform,
     animateStaticModal,
     fullscreenClass,
+    clickFromBackdrop,
   };
 }

@@ -15,12 +15,17 @@
       :aria-modal="isActive ? true : null"
       :aria-labelledby="labelledby"
       role="dialog"
+      @mousedown.self="clickFromBackdrop = true"
       @click.self="
         () => {
+          if (!clickFromBackdrop) {
+            return;
+          }
           if (staticBackdrop) {
             animateStaticBackdrop();
           } else {
             closeModal();
+            clickFromBackdrop = false;
           }
         }
       "
@@ -33,6 +38,12 @@
     </component>
   </transition>
 </template>
+
+<script lang="ts">
+export default {
+  name: "MDBModal",
+};
+</script>
 
 <script setup lang="ts">
 import useMDBModal from "../../../composables/free/useMDBModal";
@@ -116,5 +127,6 @@ const {
   afterEnter,
   beforeLeave,
   afterLeave,
+  clickFromBackdrop,
 } = useMDBModal(props, emit);
 </script>

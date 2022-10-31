@@ -15,6 +15,12 @@
   </div>
 </template>
 
+<script lang="ts">
+export default {
+  name: "MDBFile",
+};
+</script>
+
 <script setup lang="ts">
 import { computed, ref, watch, PropType } from "vue";
 import { getUID } from "../../utils/getUID";

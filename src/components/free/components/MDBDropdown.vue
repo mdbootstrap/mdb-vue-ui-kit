@@ -4,6 +4,12 @@
   </component>
 </template>
 
+<script lang="ts">
+export default {
+  name: "MDBDropdown",
+};
+</script>
+
 <script setup lang="ts">
 import {
   computed,
@@ -92,7 +98,36 @@ provide("closePopper", closePopper);
 // by toggling its v-if value on or off
 const isActive = ref(props.modelValue);
 
-watchEffect(() => (isActive.value = props.modelValue));
+const canUpdate = ref(true);
+const canUpdateTimeout = ref(0);
+const syncValuesTimeout = ref(0);
+
+watch(
+  () => props.modelValue,
+  (curr) => {
+    // clears interval so we can sync values after spam clicking dropdown button
+    clearInterval(syncValuesTimeout.value);
+    if (canUpdate.value && curr !== isActive.value) {
+      isActive.value = props.modelValue;
+      canUpdate.value = false;
+    }
+    syncValuesTimeout.value = setTimeout(() => {
+      isActive.value = props.modelValue;
+    }, 300);
+  }
+);
+
+watch(
+  () => canUpdate.value,
+  (curr) => {
+    if (!curr) {
+      canUpdateTimeout.value = setTimeout(() => {
+        canUpdate.value = true;
+      }, 200);
+    }
+  }
+);
+
 provide("isActive", isActive);
 
 // ------------------- isMenuMounted -------------------
@@ -236,6 +271,8 @@ const listenToResize = () => {
 };
 
 onUnmounted(() => {
+  clearInterval(canUpdateTimeout.value);
+  clearInterval(syncValuesTimeout.value);
   off(window, "resize", listenToResize);
 });
 </script>

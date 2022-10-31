@@ -127,6 +127,7 @@ function MDBStackable() {
     nextStackElements,
     calculateStackingOffset,
     resetStackingOffset,
+    stackableElements,
   };
 }
 

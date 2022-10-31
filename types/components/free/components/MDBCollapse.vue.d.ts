@@ -8,6 +8,7 @@ declare const _default: {
             modelValue: boolean;
             duration: number;
             sidenav: boolean;
+            horizontal: boolean;
         }> & Omit<Readonly<import("vue").ExtractPropTypes<{
             tag: {
                 type: StringConstructor;
@@ -24,9 +25,13 @@ declare const _default: {
                 type: BooleanConstructor;
                 default: boolean;
             };
+            horizontal: {
+                type: BooleanConstructor;
+                default: boolean;
+            };
         }>> & {
             "onUpdate:modelValue"?: (...args: any[]) => any;
-        } & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, "tag" | "modelValue" | "duration" | "sidenav">;
+        } & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, "tag" | "modelValue" | "duration" | "sidenav" | "horizontal">;
         $attrs: {
             [x: string]: unknown;
         };
@@ -56,6 +61,10 @@ declare const _default: {
                 type: BooleanConstructor;
                 default: boolean;
             };
+            horizontal: {
+                type: BooleanConstructor;
+                default: boolean;
+            };
         }>> & {
             "onUpdate:modelValue"?: (...args: any[]) => any;
         }, {
@@ -65,6 +74,7 @@ declare const _default: {
             modelValue: boolean;
             duration: number;
             sidenav: boolean;
+            horizontal: boolean;
         }> & {
             beforeCreate?: (() => void) | (() => void)[];
             created?: (() => void) | (() => void)[];
@@ -101,6 +111,10 @@ declare const _default: {
             type: BooleanConstructor;
             default: boolean;
         };
+        horizontal: {
+            type: BooleanConstructor;
+            default: boolean;
+        };
     }>> & {
         "onUpdate:modelValue"?: (...args: any[]) => any;
     } & import("vue").ShallowUnwrapRef<{
@@ -125,6 +139,10 @@ declare const _default: {
         type: BooleanConstructor;
         default: boolean;
     };
+    horizontal: {
+        type: BooleanConstructor;
+        default: boolean;
+    };
 }>> & {
     "onUpdate:modelValue"?: (...args: any[]) => any;
 }, {
@@ -134,6 +152,7 @@ declare const _default: {
     modelValue: boolean;
     duration: number;
     sidenav: boolean;
+    horizontal: boolean;
 }> & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps & (new () => {
     $slots: {
         default: (_: {}) => any;
