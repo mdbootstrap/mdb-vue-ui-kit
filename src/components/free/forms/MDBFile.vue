@@ -16,6 +16,8 @@
 </template>
 
 <script lang="ts">
+export const MDBFileList = typeof FileList !== "undefined" ? FileList : Object;
+
 export default {
   name: "MDBFile",
 };
@@ -35,7 +37,7 @@ const props = defineProps({
   label: String,
   labelClass: String,
   modelValue: {
-    type: [FileList, Array] as PropType<FileList | File[]>,
+    type: [MDBFileList, Array] as PropType<FileList | File[]>,
     default: () => [],
   },
   size: String,

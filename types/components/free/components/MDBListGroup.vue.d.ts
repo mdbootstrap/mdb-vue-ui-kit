@@ -3,9 +3,11 @@ declare const _default: {
         $: import("vue").ComponentInternalInstance;
         $data: {};
         $props: Partial<{
+            small: boolean;
             tag: string;
             flush: boolean;
             horizontal: string | boolean;
+            light: boolean;
             numbered: boolean;
         }> & Omit<Readonly<import("vue").ExtractPropTypes<{
             flush: {
@@ -21,7 +23,9 @@ declare const _default: {
                 type: StringConstructor;
                 default: string;
             };
-        }>> & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, "tag" | "flush" | "horizontal" | "numbered">;
+            light: BooleanConstructor;
+            small: BooleanConstructor;
+        }>> & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, "small" | "tag" | "flush" | "horizontal" | "light" | "numbered">;
         $attrs: {
             [x: string]: unknown;
         };
@@ -31,8 +35,8 @@ declare const _default: {
         $slots: Readonly<{
             [name: string]: import("vue").Slot;
         }>;
-        $root: import("vue").ComponentPublicInstance<{}, {}, {}, {}, {}, {}, {}, {}, false, import("vue").ComponentOptionsBase<any, any, any, any, any, any, any, any, any, {}>>;
-        $parent: import("vue").ComponentPublicInstance<{}, {}, {}, {}, {}, {}, {}, {}, false, import("vue").ComponentOptionsBase<any, any, any, any, any, any, any, any, any, {}>>;
+        $root: import("vue").ComponentPublicInstance<{}, {}, {}, {}, {}, {}, {}, {}, false, import("vue").ComponentOptionsBase<any, any, any, any, any, any, any, any, any, {}, {}, string>, {}>;
+        $parent: import("vue").ComponentPublicInstance<{}, {}, {}, {}, {}, {}, {}, {}, false, import("vue").ComponentOptionsBase<any, any, any, any, any, any, any, any, any, {}, {}, string>, {}>;
         $emit: (event: string, ...args: any[]) => void;
         $el: any;
         $options: import("vue").ComponentOptionsBase<Readonly<import("vue").ExtractPropTypes<{
@@ -49,12 +53,16 @@ declare const _default: {
                 type: StringConstructor;
                 default: string;
             };
+            light: BooleanConstructor;
+            small: BooleanConstructor;
         }>>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, {
+            small: boolean;
             tag: string;
             flush: boolean;
             horizontal: string | boolean;
+            light: boolean;
             numbered: boolean;
-        }> & {
+        }, {}, string> & {
             beforeCreate?: (() => void) | (() => void)[];
             created?: (() => void) | (() => void)[];
             beforeMount?: (() => void) | (() => void)[];
@@ -69,11 +77,11 @@ declare const _default: {
             unmounted?: (() => void) | (() => void)[];
             renderTracked?: ((e: import("vue").DebuggerEvent) => void) | ((e: import("vue").DebuggerEvent) => void)[];
             renderTriggered?: ((e: import("vue").DebuggerEvent) => void) | ((e: import("vue").DebuggerEvent) => void)[];
-            errorCaptured?: ((err: unknown, instance: import("vue").ComponentPublicInstance<{}, {}, {}, {}, {}, {}, {}, {}, false, import("vue").ComponentOptionsBase<any, any, any, any, any, any, any, any, any, {}>>, info: string) => boolean | void) | ((err: unknown, instance: import("vue").ComponentPublicInstance<{}, {}, {}, {}, {}, {}, {}, {}, false, import("vue").ComponentOptionsBase<any, any, any, any, any, any, any, any, any, {}>>, info: string) => boolean | void)[];
+            errorCaptured?: ((err: unknown, instance: import("vue").ComponentPublicInstance<{}, {}, {}, {}, {}, {}, {}, {}, false, import("vue").ComponentOptionsBase<any, any, any, any, any, any, any, any, any, {}, {}, string>, {}>, info: string) => boolean | void) | ((err: unknown, instance: import("vue").ComponentPublicInstance<{}, {}, {}, {}, {}, {}, {}, {}, false, import("vue").ComponentOptionsBase<any, any, any, any, any, any, any, any, any, {}, {}, string>, {}>, info: string) => boolean | void)[];
         };
         $forceUpdate: () => void;
         $nextTick: typeof import("vue").nextTick;
-        $watch(source: string | Function, cb: Function, options?: import("vue").WatchOptions<boolean>): import("vue").WatchStopHandle;
+        $watch<T extends string | ((...args: any) => any)>(source: T, cb: T extends (...args: any) => infer R ? (args_0: R, args_1: R) => any : (...args: any) => any, options?: import("vue").WatchOptions<boolean>): import("vue").WatchStopHandle;
     } & Readonly<import("vue").ExtractPropTypes<{
         flush: {
             type: BooleanConstructor;
@@ -88,7 +96,9 @@ declare const _default: {
             type: StringConstructor;
             default: string;
         };
-    }>> & import("vue").ShallowUnwrapRef<{}> & {} & import("vue").ComponentCustomProperties;
+        light: BooleanConstructor;
+        small: BooleanConstructor;
+    }>> & import("vue").ShallowUnwrapRef<{}> & {} & import("vue").ComponentCustomProperties & {};
     __isFragment?: never;
     __isTeleport?: never;
     __isSuspense?: never;
@@ -106,12 +116,16 @@ declare const _default: {
         type: StringConstructor;
         default: string;
     };
+    light: BooleanConstructor;
+    small: BooleanConstructor;
 }>>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, {
+    small: boolean;
     tag: string;
     flush: boolean;
     horizontal: string | boolean;
+    light: boolean;
     numbered: boolean;
-}> & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps & (new () => {
+}, {}, string> & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps & (new () => {
     $slots: {
         default: (_: {}) => any;
     };

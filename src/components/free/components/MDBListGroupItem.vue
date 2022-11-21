@@ -5,6 +5,7 @@
     :aria-current="active ? true : null"
     :aria-disabled="disabled ? true : null"
     :disabled="disabled ? true : null"
+    v-mdb-ripple="props.ripple"
   >
     <slot />
   </component>
@@ -18,6 +19,7 @@ export default {
 
 <script setup lang="ts">
 import { computed } from "vue";
+import vMdbRipple from "../../../directives/free/mdbRipple";
 
 const props = defineProps({
   tag: {
@@ -37,6 +39,22 @@ const props = defineProps({
     default: false,
   },
   color: String,
+  noBorder: Boolean,
+  spacing: {
+    type: [Boolean, String],
+    default: false,
+  },
+  ripple: {
+    type: [Object, Boolean],
+    default: false,
+  },
+});
+
+const spacingClass = computed(() => {
+  if (!props.spacing) {
+    return;
+  }
+  return props.spacing !== true ? props.spacing : "px-3";
 });
 
 const className = computed(() => {
@@ -46,6 +64,8 @@ const className = computed(() => {
     props.disabled && "disabled",
     props.action && "list-group-item-action",
     props.color && `list-group-item-${props.color}`,
+    props.noBorder && `border-0`,
+    props.spacing && spacingClass.value,
   ];
 });
 </script>

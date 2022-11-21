@@ -27,6 +27,8 @@ const props = defineProps({
     type: String,
     default: "ul",
   },
+  light: Boolean,
+  small: Boolean,
 });
 const className = computed(() => {
   return [
@@ -34,6 +36,8 @@ const className = computed(() => {
     props.horizontal && horizontalClass.value,
     props.flush && "list-group-flush",
     props.numbered && "list-group-numbered",
+    props.light && "list-group-light",
+    props.small && "list-group-small",
   ];
 });
 

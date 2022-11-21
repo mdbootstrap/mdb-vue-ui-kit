@@ -88,6 +88,8 @@ const props = defineProps({
   },
 });
 
+const animationDuration = 550;
+
 const className = computed(() => {
   return [
     "dropdown-menu",
@@ -118,7 +120,7 @@ const handleAnimation = () => {
 
   setTimeout(() => {
     fadeClass.value = false;
-  }, 300);
+  }, animationDuration);
 };
 
 // ------------------- isActive -------------------
@@ -143,7 +145,7 @@ if (isActive) {
 
         setTimeout(() => {
           setMenuMountedState(false);
-        }, 300);
+        }, animationDuration);
       }
     }
   );
@@ -179,7 +181,7 @@ const isMounted = computed(() => {
     /* eslint-disable */
     setTimeout(() => {
       return false;
-    }, 300);
+    }, animationDuration);
     /* eslint-enable */
   }
 

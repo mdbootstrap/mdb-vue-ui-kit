@@ -157,9 +157,13 @@ export default function useMDBModal(
 
     setScrollbar();
 
-    document.body.style.paddingRight = `${scrollbarWidth.value}px`;
-    el.style.paddingRight = `${scrollbarWidth.value}px`;
-    document.body.classList.add("modal-open");
+    isOnlyNonInvasiveModal();
+
+    if (onlyNonInvasiveModal.value) {
+      document.body.style.paddingRight = `${scrollbarWidth.value}px`;
+      el.style.paddingRight = `${scrollbarWidth.value}px`;
+      document.body.classList.add("modal-open");
+    }
 
     emit("show", root.value);
   };
@@ -187,11 +191,14 @@ export default function useMDBModal(
     const child = el.childNodes[0] as HTMLElement;
     child.style.transform = dialogTransform.value;
     el.style.opacity = "0";
-    setTimeout(() => {
-      el.style.paddingRight = "";
-      document.body.style.paddingRight = "";
-      document.body.classList.remove("modal-open");
-    }, 200);
+
+    if (onlyNonInvasiveModal.value) {
+      setTimeout(() => {
+        el.style.paddingRight = "";
+        document.body.style.paddingRight = "";
+        document.body.classList.remove("modal-open");
+      }, 200);
+    }
 
     emit("hide", thisElement.value);
 
@@ -210,6 +217,16 @@ export default function useMDBModal(
   onBeforeUnmount(() => {
     off(window, "keyup", handleEscKeyUp);
   });
+
+  const onlyNonInvasiveModal = ref(true);
+
+  const isOnlyNonInvasiveModal = () => {
+    onlyNonInvasiveModal.value = document.body.classList.contains("modal-open")
+      ? document.querySelector(".modal.non-invasive")
+        ? true
+        : false
+      : true;
+  };
 
   return {
     wrapperClass,
@@ -236,5 +253,7 @@ export default function useMDBModal(
     animateStaticModal,
     fullscreenClass,
     clickFromBackdrop,
+    isOnlyNonInvasiveModal,
+    onlyNonInvasiveModal,
   };
 }
