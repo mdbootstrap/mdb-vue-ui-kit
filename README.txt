@@ -3,13 +3,13 @@ MDB 5 Vue
 Version: FREE 3.1.1
 
 Documentation:
-https://mdbootstrap.com/docs/b5/vue/
+https://mdbootstrap.com/docs/vue/
 
 Installation:
-https://mdbootstrap.com/docs/b5/vue/getting-started/installation/
+https://mdbootstrap.com/docs/vue/getting-started/installation/
 
 CLI & hosting:
-https://mdbootstrap.com/docs/standard/cli/
+https://mdbgo.com/
 
 Support:
 https://mdbootstrap.com/support/cat/vue/
