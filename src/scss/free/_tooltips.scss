@@ -8,8 +8,7 @@
 
 .tooltip[data-popper-placement^="top"] .tooltip_arrow {
   border-width: 5px 5px 0 5px;
-  border-color: $tooltip-inner-background-color transparent transparent
-    transparent;
+  border-color: $tooltip-bg transparent transparent transparent;
   bottom: -5px;
   left: calc(50% - 5px);
   margin-top: 0;
@@ -19,8 +18,7 @@
 
 .tooltip[data-popper-placement^="bottom"] .tooltip_arrow {
   border-width: 0 5px 5px 5px;
-  border-color: transparent transparent $tooltip-inner-background-color
-    transparent;
+  border-color: transparent transparent $tooltip-bg transparent;
   top: -5px;
   left: calc(50% - 5px);
   margin-top: 0;
@@ -30,8 +28,7 @@
 
 .tooltip[data-popper-placement^="right"] .tooltip_arrow {
   border-width: 5px 5px 5px 0;
-  border-color: transparent $tooltip-inner-background-color transparent
-    transparent;
+  border-color: transparent $tooltip-bg transparent transparent;
   left: -5px;
   top: calc(50% - 5px);
   margin-left: 0;
@@ -41,8 +38,7 @@
 
 .tooltip[data-popper-placement^="left"] .tooltip_arrow {
   border-width: 5px 0 5px 5px;
-  border-color: transparent transparent transparent
-    $tooltip-inner-background-color;
+  border-color: transparent transparent transparent $tooltip-bg;
   right: -5px;
   top: calc(50% - 5px);
   margin-left: 0;
@@ -58,4 +54,8 @@
 .fade-enter-to,
 .fade-leave-from {
   opacity: 1;
+}
+
+.tooltip {
+  position: absolute;
 }

@@ -8,7 +8,6 @@
     @after-leave="afterLeave"
     enter-active-class="collapsing"
     leave-active-class="collapsing show"
-    :duration="duration"
   >
     <component
       v-show="isActive"
@@ -132,12 +131,15 @@ onMounted(() => {
 });
 
 let isCollapsing = false;
+const emitInterval = ref(0);
+
 watch(
   () => props.modelValue,
-  (cur, prev) => {
+  (cur) => {
     if (isCollapsing) {
-      setTimeout(() => {
-        emit("update:modelValue", prev);
+      clearInterval(emitInterval.value);
+      emitInterval.value = setTimeout(() => {
+        emit("update:modelValue", isActive.value);
       }, props.duration);
       return;
     }
@@ -210,6 +212,7 @@ const beforeEnter = (el: HTMLElement) => {
   } else {
     el.style.height = "0";
   }
+  el.style.transitionDuration = props.duration + "ms";
   isCollapsing = true;
 };
 const enter = (el: HTMLElement) => {

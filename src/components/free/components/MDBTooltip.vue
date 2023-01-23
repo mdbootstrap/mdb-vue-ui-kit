@@ -170,7 +170,7 @@ watchEffect(() => {
       return;
     }
     setTimeout(() => {
-      popperEl.value.classList.remove("show");
+      popperEl.value && popperEl.value.classList.remove("show");
     }, 10);
 
     isThrottled.value = true;
