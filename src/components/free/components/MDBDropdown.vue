@@ -23,6 +23,7 @@ import {
 import MDBPopper from "../../utils/MDBPopper";
 import { on, off } from "../../utils/MDBEventHandlers";
 import { handleBreakpoints } from "../../utils/MDBBreakpointHandler";
+import { useMotionReduced } from "../../../composables/free/useMotionReduced";
 
 const props = defineProps({
   tag: {
@@ -111,9 +112,12 @@ watch(
       isActive.value = props.modelValue;
       canUpdate.value = false;
     }
-    syncValuesTimeout.value = setTimeout(() => {
-      isActive.value = props.modelValue;
-    }, 300);
+    syncValuesTimeout.value = setTimeout(
+      () => {
+        isActive.value = props.modelValue;
+      },
+      useMotionReduced() ? 0 : 300
+    );
   }
 );
 
@@ -121,9 +125,12 @@ watch(
   () => canUpdate.value,
   (curr) => {
     if (!curr) {
-      canUpdateTimeout.value = setTimeout(() => {
-        canUpdate.value = true;
-      }, 200);
+      canUpdateTimeout.value = setTimeout(
+        () => {
+          canUpdate.value = true;
+        },
+        useMotionReduced() ? 0 : 200
+      );
     }
   }
 );

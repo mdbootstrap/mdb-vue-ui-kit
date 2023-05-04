@@ -174,7 +174,7 @@ const inputClassName = computed(() => {
       : props.inputGroup &&
         props.inputGroup !== true &&
         `form-control-${props.inputGroup}`,
-    inputValue.value && "active",
+    (inputValue.value || inputValue.value === 0) && "active",
     showPlaceholder.value && "placeholder-active",
     isInputValidated.value && isInputValid.value && "is-valid",
     isInputValidated.value && !isInputValid.value && "is-invalid",

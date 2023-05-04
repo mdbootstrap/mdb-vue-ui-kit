@@ -56,6 +56,7 @@ export default {
 import { MDBInput } from "../../../index.free";
 import { computed, inject, onMounted, Ref, ref, watch } from "vue";
 import { on, off } from "../../utils/MDBEventHandlers";
+import { useMotionReduced } from "../../../composables/free/useMotionReduced";
 
 const props = defineProps({
   tag: {
@@ -88,7 +89,7 @@ const props = defineProps({
   },
 });
 
-const animationDuration = 550;
+const animationDuration = useMotionReduced() ? 0 : 550;
 
 const className = computed(() => {
   return [
@@ -137,9 +138,12 @@ if (isActive) {
     () => isActive.value,
     (cur) => {
       if (cur) {
-        setTimeout(() => {
-          setMenuMountedState(true, root.value as HTMLElement);
-        }, 100);
+        setTimeout(
+          () => {
+            setMenuMountedState(true, root.value as HTMLElement);
+          },
+          useMotionReduced() ? 0 : 100
+        );
       } else if (!cur && isPopperActive) {
         setInactive();
 
