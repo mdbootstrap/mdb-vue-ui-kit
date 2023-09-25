@@ -1,6 +1,6 @@
 {
   "name": "mdb-vue-ui-kit",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "type": "module",
   "main": "js/mdb.umd.min.js",
   "module": "js/mdb.es.min.js",

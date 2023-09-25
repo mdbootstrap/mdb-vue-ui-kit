@@ -2,21 +2,58 @@ declare const _default: {
     new (...args: any[]): {
         $: import("vue").ComponentInternalInstance;
         $data: {};
-        $props: Partial<{
-            iconStyle: string;
-            fw: boolean;
-            solid: boolean;
-        }> & Omit<Readonly<import("vue").ExtractPropTypes<{
-            iconStyle: {
-                type: StringConstructor;
-                default: string;
-            };
-            icon: StringConstructor;
-            flag: StringConstructor;
-            size: StringConstructor;
-            fw: BooleanConstructor;
-            solid: BooleanConstructor;
-        }>> & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, "iconStyle" | "fw" | "solid">;
+        $props: {
+            iconStyle?: string;
+            fw?: boolean;
+            solid?: boolean;
+            ref?: import("vue").VNodeRef;
+            style?: unknown;
+            key?: string | number | symbol;
+            ref_for?: boolean;
+            ref_key?: string;
+            onVnodeBeforeMount?: ((vnode: import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                [key: string]: any;
+            }>) => void) | ((vnode: import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                [key: string]: any;
+            }>) => void)[];
+            onVnodeMounted?: ((vnode: import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                [key: string]: any;
+            }>) => void) | ((vnode: import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                [key: string]: any;
+            }>) => void)[];
+            onVnodeBeforeUpdate?: ((vnode: import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                [key: string]: any;
+            }>, oldVNode: import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                [key: string]: any;
+            }>) => void) | ((vnode: import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                [key: string]: any;
+            }>, oldVNode: import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                [key: string]: any;
+            }>) => void)[];
+            onVnodeUpdated?: ((vnode: import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                [key: string]: any;
+            }>, oldVNode: import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                [key: string]: any;
+            }>) => void) | ((vnode: import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                [key: string]: any;
+            }>, oldVNode: import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                [key: string]: any;
+            }>) => void)[];
+            onVnodeBeforeUnmount?: ((vnode: import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                [key: string]: any;
+            }>) => void) | ((vnode: import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                [key: string]: any;
+            }>) => void)[];
+            onVnodeUnmounted?: ((vnode: import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                [key: string]: any;
+            }>) => void) | ((vnode: import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                [key: string]: any;
+            }>) => void)[];
+            class?: unknown;
+            readonly icon?: string;
+            readonly size?: string;
+            readonly flag?: string;
+        };
         $attrs: {
             [x: string]: unknown;
         };
@@ -24,10 +61,10 @@ declare const _default: {
             [x: string]: unknown;
         };
         $slots: Readonly<{
-            [name: string]: import("vue").Slot;
+            [name: string]: import("vue").Slot<any>;
         }>;
-        $root: import("vue").ComponentPublicInstance<{}, {}, {}, {}, {}, {}, {}, {}, false, import("vue").ComponentOptionsBase<any, any, any, any, any, any, any, any, any, {}, {}, string>, {}>;
-        $parent: import("vue").ComponentPublicInstance<{}, {}, {}, {}, {}, {}, {}, {}, false, import("vue").ComponentOptionsBase<any, any, any, any, any, any, any, any, any, {}, {}, string>, {}>;
+        $root: import("vue").ComponentPublicInstance<{}, {}, {}, {}, {}, {}, {}, {}, false, import("vue").ComponentOptionsBase<any, any, any, any, any, any, any, any, any, {}, {}, string, {}>, {}, {}>;
+        $parent: import("vue").ComponentPublicInstance<{}, {}, {}, {}, {}, {}, {}, {}, false, import("vue").ComponentOptionsBase<any, any, any, any, any, any, any, any, any, {}, {}, string, {}>, {}, {}>;
         $emit: (event: string, ...args: any[]) => void;
         $el: any;
         $options: import("vue").ComponentOptionsBase<Readonly<import("vue").ExtractPropTypes<{
@@ -44,7 +81,7 @@ declare const _default: {
             iconStyle: string;
             fw: boolean;
             solid: boolean;
-        }, {}, string> & {
+        }, {}, string, {}> & {
             beforeCreate?: (() => void) | (() => void)[];
             created?: (() => void) | (() => void)[];
             beforeMount?: (() => void) | (() => void)[];
@@ -59,7 +96,7 @@ declare const _default: {
             unmounted?: (() => void) | (() => void)[];
             renderTracked?: ((e: import("vue").DebuggerEvent) => void) | ((e: import("vue").DebuggerEvent) => void)[];
             renderTriggered?: ((e: import("vue").DebuggerEvent) => void) | ((e: import("vue").DebuggerEvent) => void)[];
-            errorCaptured?: ((err: unknown, instance: import("vue").ComponentPublicInstance<{}, {}, {}, {}, {}, {}, {}, {}, false, import("vue").ComponentOptionsBase<any, any, any, any, any, any, any, any, any, {}, {}, string>, {}>, info: string) => boolean | void) | ((err: unknown, instance: import("vue").ComponentPublicInstance<{}, {}, {}, {}, {}, {}, {}, {}, false, import("vue").ComponentOptionsBase<any, any, any, any, any, any, any, any, any, {}, {}, string>, {}>, info: string) => boolean | void)[];
+            errorCaptured?: ((err: unknown, instance: import("vue").ComponentPublicInstance<{}, {}, {}, {}, {}, {}, {}, {}, false, import("vue").ComponentOptionsBase<any, any, any, any, any, any, any, any, any, {}, {}, string, {}>, {}, {}>, info: string) => boolean | void) | ((err: unknown, instance: import("vue").ComponentPublicInstance<{}, {}, {}, {}, {}, {}, {}, {}, false, import("vue").ComponentOptionsBase<any, any, any, any, any, any, any, any, any, {}, {}, string, {}>, {}, {}>, info: string) => boolean | void)[];
         };
         $forceUpdate: () => void;
         $nextTick: typeof import("vue").nextTick;
@@ -92,7 +129,7 @@ declare const _default: {
     iconStyle: string;
     fw: boolean;
     solid: boolean;
-}, {}, string> & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps & (new () => {
+}, {}, string, {}> & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps & (new () => {
     $slots: {
         default: (_: {}) => any;
     };

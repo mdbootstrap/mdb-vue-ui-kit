@@ -145,6 +145,11 @@ export default function useMDBModal(
       : 0;
   };
 
+  const resetScrollbar = () => {
+    document.body.style.paddingRight = "";
+    document.body.classList.remove("modal-open");
+  };
+
   const enter = (el: HTMLElement) => {
     shouldOverflow.value = false;
 
@@ -195,8 +200,7 @@ export default function useMDBModal(
     if (onlyNonInvasiveModal.value) {
       setTimeout(() => {
         el.style.paddingRight = "";
-        document.body.style.paddingRight = "";
-        document.body.classList.remove("modal-open");
+        resetScrollbar();
       }, 200);
     }
 
@@ -214,7 +218,19 @@ export default function useMDBModal(
     shouldOverflow.value = false;
   };
 
+  const isModalActive = () => {
+    return document.body.classList.contains("modal-open") &&
+      document.body.querySelector(".modal.show")
+      ? true
+      : false;
+  };
+
   onBeforeUnmount(() => {
+    if (isModalActive()) {
+      resetScrollbar();
+      document.body.style.overflowY = "";
+    }
+
     off(window, "keyup", handleEscKeyUp);
   });
 

@@ -6,6 +6,7 @@
         :class="buttonClassName"
         aria-expanded="true"
         :aria-controls="collapseId"
+        type="button"
       >
         <i v-if="icon" :class="icon"></i>{{ headerTitle }}
       </button>

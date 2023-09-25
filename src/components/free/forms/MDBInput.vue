@@ -257,16 +257,16 @@ currentLength.value =
 
 function handleInput(e: Event) {
   const target = e.target as HTMLInputElement;
-  if (props.counter) {
-    if (target.value.length > props.maxlength) {
-      if (typeof inputValue.value === "string") {
-        target.value = inputValue.value;
-      }
-      return;
-    }
-
-    currentLength.value = target.value.length;
+  if (
+    props.maxlength &&
+    target.value.length > props.maxlength &&
+    typeof inputValue.value === "string"
+  ) {
+    target.value = inputValue.value;
+    return;
   }
+
+  currentLength.value = target.value.length;
   inputValue.value = target.value;
   emit("update:modelValue", inputValue.value);
 }
@@ -344,16 +344,14 @@ onUnmounted(() => {
 });
 
 watchEffect(() => {
-  if (props.counter) {
-    if (typeof props.modelValue === "string") {
-      if (props.modelValue?.length > props.maxlength) {
-        inputValue.value = props.modelValue.slice(0, props.maxlength);
-        currentLength.value = props.maxlength;
-        return;
-      }
-
-      currentLength.value = props.modelValue?.length || 0;
+  if (typeof props.modelValue === "string") {
+    if (props.maxlength && props.modelValue?.length > props.maxlength) {
+      inputValue.value = props.modelValue.slice(0, props.maxlength);
+      currentLength.value = props.maxlength;
+      return;
     }
+
+    currentLength.value = props.modelValue?.length || 0;
   }
 
   inputValue.value = props.modelValue;

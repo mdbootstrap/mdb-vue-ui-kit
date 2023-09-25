@@ -120,6 +120,25 @@ export const on = function (
   addHandler(element, event, handler, delegationFn);
 };
 
+export const one = function (
+  element: HTMLElement | Document | HTMLBodyElement | Window,
+  event: string,
+  handler: EventListenerOrEventListenerObject,
+  delegationFn: EventListenerOrEventListenerObject = undefined
+) {
+  if (typeof event !== "string" || !element) {
+    return;
+  }
+
+  const [_, originalHandler, typeEvent] = normalizeParams(
+    event,
+    handler,
+    delegationFn
+  );
+
+  element.addEventListener(typeEvent, originalHandler, { once: true });
+};
+
 export const off = function (
   element: HTMLElement | Document | HTMLBodyElement | Window,
   event: string,

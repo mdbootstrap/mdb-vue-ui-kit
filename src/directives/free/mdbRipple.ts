@@ -82,11 +82,13 @@ const colorToRGB = (color: string | number[], defaultColor: number[]) => {
     tempElem.style.color = flag;
 
     if (tempElem.style.color !== flag) {
+      document.body.removeChild(tempElem);
       return defaultColor;
     }
     tempElem.style.color = color;
 
     if (tempElem.style.color === flag || tempElem.style.color === "") {
+      document.body.removeChild(tempElem);
       return defaultColor;
     }
     color = getComputedStyle(tempElem).color;
@@ -255,8 +257,8 @@ const RippleDirective: Directive = {
 
     el.waves = (e: MouseEventWithLayer) => {
       const waveConfig: WaveTypes = {
-        top: e.layerY,
-        left: e.layerX,
+        top: e.offsetY,
+        left: e.offsetX,
         height: el.offsetHeight,
         width: el.offsetWidth,
       };
@@ -266,7 +268,11 @@ const RippleDirective: Directive = {
     el.addEventListener("click", (e) => el.waves(e));
   },
 
-  updated(el: RippleElement) {
+  updated(el: RippleElement, binding: DirectiveBinding) {
+    if (binding.value === false) {
+      return;
+    }
+
     if (!el.classList.contains("ripple-surface")) {
       el.classList.add("ripple-surface");
     }

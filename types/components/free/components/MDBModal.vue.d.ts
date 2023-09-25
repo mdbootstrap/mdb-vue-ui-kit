@@ -2,80 +2,72 @@ declare const _default: {
     new (...args: any[]): {
         $: import("vue").ComponentInternalInstance;
         $data: {};
-        $props: Partial<{
-            tag: string;
-            modelValue: boolean;
-            focus: boolean;
-            duration: number;
-            keyboard: boolean;
-            animation: boolean;
-            staticBackdrop: boolean;
-            centered: boolean;
-            scrollable: boolean;
-            fullscreen: string | boolean;
-            removeBackdrop: boolean;
-            bgSrc: string;
-        }> & Omit<Readonly<import("vue").ExtractPropTypes<{
-            tag: {
-                type: StringConstructor;
-                default: string;
-            };
-            modelValue: BooleanConstructor;
-            size: {
-                type: StringConstructor;
-                validator: (value: string) => boolean;
-            };
-            removeBackdrop: {
-                type: BooleanConstructor;
-                default: boolean;
-            };
-            staticBackdrop: {
-                type: BooleanConstructor;
-                default: boolean;
-            };
-            centered: {
-                type: BooleanConstructor;
-                default: boolean;
-            };
-            bgSrc: {
-                type: StringConstructor;
-                default: string;
-            };
-            scrollable: {
-                type: BooleanConstructor;
-                default: boolean;
-            };
-            duration: {
-                type: NumberConstructor;
-                default: number;
-            };
-            labelledby: StringConstructor;
-            fullscreen: {
-                type: (BooleanConstructor | StringConstructor)[];
-                default: boolean;
-            };
-            animation: {
-                type: BooleanConstructor;
-                default: boolean;
-            };
-            dialogClasses: {
-                type: StringConstructor;
-            };
-            keyboard: {
-                type: BooleanConstructor;
-                default: boolean;
-            };
-            focus: {
-                type: BooleanConstructor;
-                default: boolean;
-            };
-        }>> & {
+        $props: {
+            tag?: string;
+            modelValue?: boolean;
+            focus?: boolean;
+            duration?: number;
+            keyboard?: boolean;
+            animation?: boolean;
+            staticBackdrop?: boolean;
+            centered?: boolean;
+            scrollable?: boolean;
+            fullscreen?: string | boolean;
+            removeBackdrop?: boolean;
+            bgSrc?: string;
+            ref?: import("vue").VNodeRef;
+            style?: unknown;
+            key?: string | number | symbol;
+            ref_for?: boolean;
+            ref_key?: string;
+            onVnodeBeforeMount?: ((vnode: import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                [key: string]: any;
+            }>) => void) | ((vnode: import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                [key: string]: any;
+            }>) => void)[];
+            onVnodeMounted?: ((vnode: import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                [key: string]: any;
+            }>) => void) | ((vnode: import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                [key: string]: any;
+            }>) => void)[];
+            onVnodeBeforeUpdate?: ((vnode: import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                [key: string]: any;
+            }>, oldVNode: import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                [key: string]: any;
+            }>) => void) | ((vnode: import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                [key: string]: any;
+            }>, oldVNode: import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                [key: string]: any;
+            }>) => void)[];
+            onVnodeUpdated?: ((vnode: import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                [key: string]: any;
+            }>, oldVNode: import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                [key: string]: any;
+            }>) => void) | ((vnode: import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                [key: string]: any;
+            }>, oldVNode: import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                [key: string]: any;
+            }>) => void)[];
+            onVnodeBeforeUnmount?: ((vnode: import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                [key: string]: any;
+            }>) => void) | ((vnode: import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                [key: string]: any;
+            }>) => void)[];
+            onVnodeUnmounted?: ((vnode: import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                [key: string]: any;
+            }>) => void) | ((vnode: import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                [key: string]: any;
+            }>) => void)[];
+            class?: unknown;
             "onUpdate:modelValue"?: (...args: any[]) => any;
+            readonly size?: string;
+            readonly dialogClasses?: string;
+            readonly labelledby?: string;
             onShow?: (...args: any[]) => any;
             onHide?: (...args: any[]) => any;
             onHidden?: (...args: any[]) => any;
             onShown?: (...args: any[]) => any;
-        } & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, "tag" | "modelValue" | "focus" | "duration" | "keyboard" | "animation" | "staticBackdrop" | "centered" | "scrollable" | "fullscreen" | "removeBackdrop" | "bgSrc">;
+        };
         $attrs: {
             [x: string]: unknown;
         };
@@ -83,10 +75,10 @@ declare const _default: {
             [x: string]: unknown;
         };
         $slots: Readonly<{
-            [name: string]: import("vue").Slot;
+            [name: string]: import("vue").Slot<any>;
         }>;
-        $root: import("vue").ComponentPublicInstance<{}, {}, {}, {}, {}, {}, {}, {}, false, import("vue").ComponentOptionsBase<any, any, any, any, any, any, any, any, any, {}, {}, string>, {}>;
-        $parent: import("vue").ComponentPublicInstance<{}, {}, {}, {}, {}, {}, {}, {}, false, import("vue").ComponentOptionsBase<any, any, any, any, any, any, any, any, any, {}, {}, string>, {}>;
+        $root: import("vue").ComponentPublicInstance<{}, {}, {}, {}, {}, {}, {}, {}, false, import("vue").ComponentOptionsBase<any, any, any, any, any, any, any, any, any, {}, {}, string, {}>, {}, {}>;
+        $parent: import("vue").ComponentPublicInstance<{}, {}, {}, {}, {}, {}, {}, {}, false, import("vue").ComponentOptionsBase<any, any, any, any, any, any, any, any, any, {}, {}, string, {}>, {}, {}>;
         $emit: (event: "update:modelValue" | "show" | "hide" | "hidden" | "shown", ...args: any[]) => void;
         $el: any;
         $options: import("vue").ComponentOptionsBase<Readonly<import("vue").ExtractPropTypes<{
@@ -162,7 +154,7 @@ declare const _default: {
             fullscreen: string | boolean;
             removeBackdrop: boolean;
             bgSrc: string;
-        }, {}, string> & {
+        }, {}, string, {}> & {
             beforeCreate?: (() => void) | (() => void)[];
             created?: (() => void) | (() => void)[];
             beforeMount?: (() => void) | (() => void)[];
@@ -177,7 +169,7 @@ declare const _default: {
             unmounted?: (() => void) | (() => void)[];
             renderTracked?: ((e: import("vue").DebuggerEvent) => void) | ((e: import("vue").DebuggerEvent) => void)[];
             renderTriggered?: ((e: import("vue").DebuggerEvent) => void) | ((e: import("vue").DebuggerEvent) => void)[];
-            errorCaptured?: ((err: unknown, instance: import("vue").ComponentPublicInstance<{}, {}, {}, {}, {}, {}, {}, {}, false, import("vue").ComponentOptionsBase<any, any, any, any, any, any, any, any, any, {}, {}, string>, {}>, info: string) => boolean | void) | ((err: unknown, instance: import("vue").ComponentPublicInstance<{}, {}, {}, {}, {}, {}, {}, {}, false, import("vue").ComponentOptionsBase<any, any, any, any, any, any, any, any, any, {}, {}, string>, {}>, info: string) => boolean | void)[];
+            errorCaptured?: ((err: unknown, instance: import("vue").ComponentPublicInstance<{}, {}, {}, {}, {}, {}, {}, {}, false, import("vue").ComponentOptionsBase<any, any, any, any, any, any, any, any, any, {}, {}, string, {}>, {}, {}>, info: string) => boolean | void) | ((err: unknown, instance: import("vue").ComponentPublicInstance<{}, {}, {}, {}, {}, {}, {}, {}, false, import("vue").ComponentOptionsBase<any, any, any, any, any, any, any, any, any, {}, {}, string, {}>, {}, {}>, info: string) => boolean | void)[];
         };
         $forceUpdate: () => void;
         $nextTick: typeof import("vue").nextTick;
@@ -319,7 +311,7 @@ declare const _default: {
     fullscreen: string | boolean;
     removeBackdrop: boolean;
     bgSrc: string;
-}, {}, string> & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps & (new () => {
+}, {}, string, {}> & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps & (new () => {
     $slots: {
         default: (_: {}) => any;
     };
