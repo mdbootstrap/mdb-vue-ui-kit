@@ -272,8 +272,8 @@ declare const _default: {
     rows: string | number;
 }, {}, string, {}> & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps & (new () => {
     $slots: {
-        default: (_: {}) => any;
-        prepend: (_: {}) => any;
+        default: {};
+        prepend: {};
     };
 });
 export default _default;

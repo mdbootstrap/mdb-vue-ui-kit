@@ -91,9 +91,9 @@ declare const _default: {
     __isSuspense?: never;
 } & import("vue").ComponentOptionsBase<Readonly<import("vue").ExtractPropTypes<{}>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, {}, {}, string, {}> & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps & (new () => {
     $slots: {
-        template: (_: {}) => any;
-        script: (_: {}) => any;
-        style: (_: {}) => any;
+        template: {};
+        script: {};
+        style: {};
     };
 });
 export default _default;

@@ -137,7 +137,7 @@ declare const _default: {
     current: string;
 }, {}, string, {}> & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps & (new () => {
     $slots: {
-        default: (_: {}) => any;
+        default: {};
     };
 });
 export default _default;

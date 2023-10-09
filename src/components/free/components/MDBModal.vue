@@ -103,6 +103,10 @@ const props = defineProps({
     type: Boolean,
     default: true,
   },
+  keepOverflow: {
+    type: Boolean,
+    default: false,
+  },
 });
 const emit = defineEmits([
   "show",

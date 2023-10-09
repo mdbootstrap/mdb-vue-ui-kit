@@ -5,9 +5,9 @@ declare const _default: {
         $data: {};
         $props: {
             tag?: string;
-            center?: boolean;
             start?: boolean;
             end?: boolean;
+            center?: boolean;
             between?: boolean;
             around?: boolean;
             ref?: import("vue").VNodeRef;
@@ -97,9 +97,9 @@ declare const _default: {
             cols: PropType<string | (string | number)[]>;
         }>>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, {
             tag: string;
-            center: boolean;
             start: boolean;
             end: boolean;
+            center: boolean;
             between: boolean;
             around: boolean;
         }, {}, string, {}> & {
@@ -180,14 +180,14 @@ declare const _default: {
     cols: PropType<string | (string | number)[]>;
 }>>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, {
     tag: string;
-    center: boolean;
     start: boolean;
     end: boolean;
+    center: boolean;
     between: boolean;
     around: boolean;
 }, {}, string, {}> & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps & (new () => {
     $slots: {
-        default: (_: {}) => any;
+        default: {};
     };
 });
 export default _default;

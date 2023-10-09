@@ -273,10 +273,10 @@ declare const _default: {
     dismissible: boolean;
 }, {}, string, {}> & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps & (new () => {
     $slots: {
-        reference: (_: {}) => any;
-        header: (_: {}) => any;
-        body: (_: {}) => any;
-        default: (_: {}) => any;
+        reference: {};
+        header: {};
+        body: {};
+        default: {};
     };
 });
 export default _default;

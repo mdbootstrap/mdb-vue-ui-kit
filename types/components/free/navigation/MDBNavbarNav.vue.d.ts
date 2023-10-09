@@ -5,9 +5,9 @@ declare const _default: {
         $props: {
             nav?: boolean;
             tag?: string;
-            center?: boolean;
             vertical?: boolean;
             right?: boolean;
+            center?: boolean;
             justifyAround?: boolean;
             ref?: import("vue").VNodeRef;
             style?: unknown;
@@ -96,9 +96,9 @@ declare const _default: {
         }>>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, {
             nav: boolean;
             tag: string;
-            center: boolean;
             vertical: boolean;
             right: boolean;
+            center: boolean;
             justifyAround: boolean;
         }, {}, string, {}> & {
             beforeCreate?: (() => void) | (() => void)[];
@@ -179,13 +179,13 @@ declare const _default: {
 }>>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, {
     nav: boolean;
     tag: string;
-    center: boolean;
     vertical: boolean;
     right: boolean;
+    center: boolean;
     justifyAround: boolean;
 }, {}, string, {}> & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps & (new () => {
     $slots: {
-        default: (_: {}) => any;
+        default: {};
     };
 });
 export default _default;

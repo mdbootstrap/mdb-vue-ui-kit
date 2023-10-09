@@ -14,6 +14,7 @@ declare const _default: {
             scrollable?: boolean;
             fullscreen?: string | boolean;
             removeBackdrop?: boolean;
+            keepOverflow?: boolean;
             bgSrc?: string;
             ref?: import("vue").VNodeRef;
             style?: unknown;
@@ -135,6 +136,10 @@ declare const _default: {
                 type: BooleanConstructor;
                 default: boolean;
             };
+            keepOverflow: {
+                type: BooleanConstructor;
+                default: boolean;
+            };
         }>> & {
             "onUpdate:modelValue"?: (...args: any[]) => any;
             onShow?: (...args: any[]) => any;
@@ -153,6 +158,7 @@ declare const _default: {
             scrollable: boolean;
             fullscreen: string | boolean;
             removeBackdrop: boolean;
+            keepOverflow: boolean;
             bgSrc: string;
         }, {}, string, {}> & {
             beforeCreate?: (() => void) | (() => void)[];
@@ -228,6 +234,10 @@ declare const _default: {
             type: BooleanConstructor;
             default: boolean;
         };
+        keepOverflow: {
+            type: BooleanConstructor;
+            default: boolean;
+        };
     }>> & {
         "onUpdate:modelValue"?: (...args: any[]) => any;
         onShow?: (...args: any[]) => any;
@@ -292,6 +302,10 @@ declare const _default: {
         type: BooleanConstructor;
         default: boolean;
     };
+    keepOverflow: {
+        type: BooleanConstructor;
+        default: boolean;
+    };
 }>> & {
     "onUpdate:modelValue"?: (...args: any[]) => any;
     onShow?: (...args: any[]) => any;
@@ -310,10 +324,11 @@ declare const _default: {
     scrollable: boolean;
     fullscreen: string | boolean;
     removeBackdrop: boolean;
+    keepOverflow: boolean;
     bgSrc: string;
 }, {}, string, {}> & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps & (new () => {
     $slots: {
-        default: (_: {}) => any;
+        default: {};
     };
 });
 export default _default;

@@ -180,7 +180,7 @@ declare const _default: {
     horizontal: boolean;
 }, {}, string, {}> & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps & (new () => {
     $slots: {
-        default: (_: {}) => any;
+        default: {};
     };
 });
 export default _default;

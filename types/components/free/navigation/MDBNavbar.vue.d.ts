@@ -8,10 +8,10 @@ declare const _default: {
             light?: boolean;
             dark?: boolean;
             transparent?: boolean;
-            center?: boolean;
             double?: boolean;
             scrolling?: boolean;
             scrollingOffset?: number;
+            center?: boolean;
             ref?: import("vue").VNodeRef;
             style?: unknown;
             key?: string | number | symbol;
@@ -123,10 +123,10 @@ declare const _default: {
             light: boolean;
             dark: boolean;
             transparent: boolean;
-            center: boolean;
             double: boolean;
             scrolling: boolean;
             scrollingOffset: number;
+            center: boolean;
         }, {}, string, {}> & {
             beforeCreate?: (() => void) | (() => void)[];
             created?: (() => void) | (() => void)[];
@@ -241,13 +241,13 @@ declare const _default: {
     light: boolean;
     dark: boolean;
     transparent: boolean;
-    center: boolean;
     double: boolean;
     scrolling: boolean;
     scrollingOffset: number;
+    center: boolean;
 }, {}, string, {}> & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps & (new () => {
     $slots: {
-        default: (_: {}) => any;
+        default: {};
     };
 });
 export default _default;

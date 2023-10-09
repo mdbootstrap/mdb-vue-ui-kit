@@ -249,8 +249,8 @@ declare const _default: {
     arrow: boolean;
 }, {}, string, {}> & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps & (new () => {
     $slots: {
-        reference: (_: {}) => any;
-        tip: (_: {}) => any;
+        reference: {};
+        tip: {};
     };
 });
 export default _default;
