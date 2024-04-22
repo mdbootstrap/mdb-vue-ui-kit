@@ -25,14 +25,12 @@ const props = defineProps({
 });
 
 const className = computed(() => {
-  const text = props.text;
-
   return [
     "card",
     props.border && `border border-${props.border}`,
     props.bg && `bg-${props.bg}`,
     props.shadow && `shadow-${props.shadow}`,
-    props.text && spreadProps(text),
+    props.text && spreadProps(props.text),
   ];
 });
 

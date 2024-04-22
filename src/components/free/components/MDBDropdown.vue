@@ -11,15 +11,7 @@ export default {
 </script>
 
 <script setup lang="ts">
-import {
-  computed,
-  onUnmounted,
-  provide,
-  ref,
-  watchEffect,
-  watch,
-  PropType,
-} from "vue";
+import { computed, onUnmounted, provide, ref, watch, PropType } from "vue";
 import MDBPopper from "../../utils/MDBPopper";
 import { on, off } from "../../utils/MDBEventHandlers";
 import { handleBreakpoints } from "../../utils/MDBBreakpointHandler";
@@ -60,7 +52,7 @@ const props = defineProps({
     >,
     default: () => [0, 0],
   },
-  popperConfig: [null, Object, Function],
+  popperConfig: [null, Object, Function] as PropType<null | Object | Function>,
   target: String,
   modelValue: Boolean,
 });
@@ -85,8 +77,8 @@ const {
 } = MDBPopper();
 
 const root = ref<HTMLDivElement | HTMLElement | null>(null);
-const triggerEl = ref<string | HTMLElement>(null);
-const popperEl = ref<string | HTMLElement>(null);
+const triggerEl = ref<string | HTMLElement | null>(null);
+const popperEl = ref<string | HTMLElement | null>(null);
 const windowWidth = ref(window.innerWidth);
 
 const menuAlignClasses = ref<string | string[]>("");
@@ -227,7 +219,7 @@ const getConfig = () => {
       {
         name: "offset",
         options: {
-          offset: getPopperOffset(props.offset, root.value),
+          offset: getPopperOffset(props.offset, root.value as HTMLElement),
         },
       },
     ],
@@ -244,12 +236,12 @@ const getConfig = () => {
 const popperSetup = () => {
   triggerEl.value = props.target
     ? (document.querySelector(props.target) as HTMLElement)
-    : (root.value.querySelector("[data-trigger]") as HTMLElement);
+    : (root.value?.querySelector("[data-trigger]") as HTMLElement);
   popperEl.value = dropdownMenu.value;
 
   const config = getConfig();
 
-  setPopper(triggerEl.value, popperEl.value, config);
+  setPopper(triggerEl.value, popperEl.value as HTMLElement, config);
 };
 
 const getBreakpointValue = () => {
@@ -266,7 +258,7 @@ const getBreakpointValue = () => {
   );
 
   if (!activeBrakpointValue) {
-    return;
+    return "";
   }
 
   return activeBrakpointValue.includes("start") ? "start" : "end";

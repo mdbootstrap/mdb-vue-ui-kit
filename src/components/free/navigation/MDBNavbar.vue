@@ -111,7 +111,7 @@ const handleScroll = () => {
   }
 };
 
-const navbar = ref<HTMLElement>(null);
+const navbar = ref<HTMLElement | null>(null);
 const navbarFlexWrapValue = ref("nowrap");
 provide("navbarFlexWrapValue", navbarFlexWrapValue);
 
@@ -129,8 +129,8 @@ const handleResize = () => {
 
 onMounted(() => {
   if (
-    getComputedStyle(navbar.value) &&
-    getComputedStyle(navbar.value).flexWrap === "wrap"
+    getComputedStyle(navbar.value as HTMLElement) &&
+    getComputedStyle(navbar.value as HTMLElement).flexWrap === "wrap"
   ) {
     navbarFlexWrapValue.value = "wrap";
   } else {

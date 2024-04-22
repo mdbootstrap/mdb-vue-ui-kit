@@ -63,26 +63,26 @@ const icon = computed(() => {
   return props.icon ? [props.icon] : false;
 });
 
-const setActiveItem = inject<(item: string) => void | null>(
+const setActiveItem = inject<((item: string) => void) | null>(
   "setActiveItem",
   null
 );
 const activeItem = inject<Ref<string> | null>("activeItem", null);
 const stayOpen = inject<Ref<boolean> | boolean>("stayOpen", false);
 
-const isActive = ref(activeItem.value === props.collapseId);
+const isActive = ref(activeItem?.value === props.collapseId);
 
 watchEffect(() => {
   if (stayOpen) {
     return;
   }
-  isActive.value = activeItem.value === props.collapseId;
+  isActive.value = activeItem?.value === props.collapseId;
 });
 
 const toggleAccordion = () => {
   if (stayOpen) {
     isActive.value = !isActive.value;
-  } else {
+  } else if (setActiveItem) {
     isActive.value ? setActiveItem("") : setActiveItem(props.collapseId);
   }
 };

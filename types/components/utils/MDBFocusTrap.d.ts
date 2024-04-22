@@ -1,5 +1,7 @@
-declare function MDBFocusTrap(): {
-    initFocusTrap: (element?: HTMLElement | HTMLBodyElement | string) => boolean;
+type TrapElement = HTMLElement | HTMLBodyElement;
+export interface FocusTrapInstance {
+    initFocusTrap: (element: TrapElement) => boolean;
     removeFocusTrap: () => void;
-};
+}
+declare function MDBFocusTrap(): FocusTrapInstance;
 export default MDBFocusTrap;

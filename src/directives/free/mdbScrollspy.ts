@@ -130,7 +130,7 @@ const ScrollSpyDirective: Directive = {
         const activeElement = activeLinks[0];
         const activeLink = activeElement.scrollspyIndex;
 
-        el.scrollspy.setActive?.(activeLink);
+        el.scrollspy.setActive?.(activeLink as number);
       } else {
         el.scrollspy.setActive?.(-1);
       }
@@ -166,7 +166,7 @@ const ScrollSpyDirective: Directive = {
         }
       }
 
-      el.scrollspy.setActive?.(link.scrollspyIndex);
+      el.scrollspy.setActive?.(link.scrollspyIndex as number);
       link.scrollspyIndex &&
         setParentsActive(el.scrollspy.links[link.scrollspyIndex], el);
       setCollapsibleActive(el.scrollspy.links);

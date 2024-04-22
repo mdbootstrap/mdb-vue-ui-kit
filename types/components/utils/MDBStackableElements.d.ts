@@ -5,11 +5,11 @@ interface StackOptions {
 declare function MDBStackable(): {
     setStack: (proxy: Ref<HTMLElement>, element: HTMLElement, selector: string, options: StackOptions) => void;
     nextStackElements: () => HTMLElement[];
-    calculateStackingOffset: () => any;
+    calculateStackingOffset: () => number;
     resetStackingOffset: () => void;
     stackableElements: () => {
-        el: any;
-        rect: any;
+        el: HTMLElement;
+        rect: DOMRect;
     }[];
 };
 export default MDBStackable;

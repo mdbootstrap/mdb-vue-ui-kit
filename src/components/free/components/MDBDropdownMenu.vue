@@ -209,7 +209,7 @@ onMounted(() => {
 // ------------------- isPopperActive -------------------
 // controls if DropdownMenu is visible for user or not
 // controls show class and animation
-const isPopperActive = inject<Ref<boolean>>("isPopperActive", null);
+const isPopperActive = inject<Ref<boolean> | null>("isPopperActive", null);
 
 const setActive = () => {
   on(document, "keydown", handleDown);
@@ -229,7 +229,7 @@ if (isPopperActive) {
       if ((!prev && cur === true) || prev === false) {
         items.value = (root.value as HTMLElement).querySelectorAll(
           ".dropdown-item"
-        );
+        ) as unknown as HTMLElement[];
 
         showClass.value = true;
         setActive();
@@ -241,7 +241,7 @@ if (isPopperActive) {
 // ------------------- Utilities for keyboard navigation -------------------
 
 const count = ref(0);
-const items = ref(null);
+const items = ref<HTMLElement[] | null>(null);
 
 const handleEscAndOutsideClick = inject(
   "handleEscAndOutsideClick",
@@ -258,29 +258,30 @@ const handleDown = (event: KeyboardEvent) => {
     return;
   }
 
-  items.value.forEach((item: HTMLElement) => {
-    item.classList.remove("active");
-  });
+  items.value &&
+    items.value.forEach((item: HTMLElement) => {
+      item.classList.remove("active");
+    });
 
   switch (key) {
     case "Escape":
       handleEscAndOutsideClick();
       return;
     case "Enter":
-      items.value[count.value - 1]?.click();
+      items.value && items.value[count.value - 1]?.click();
       // setInactive();
 
       return;
     case "ArrowUp":
       count.value--;
 
-      if (count.value <= 0) {
+      if (count.value <= 0 && items.value) {
         count.value = items.value.length;
       }
       break;
     case "ArrowDown":
       count.value++;
-      if (count.value > items.value.length) {
+      if (items.value && count.value > items.value.length) {
         count.value = 1;
       }
       break;
@@ -288,24 +289,24 @@ const handleDown = (event: KeyboardEvent) => {
       break;
   }
 
-  items.value[count.value - 1]?.classList.add("active");
+  items.value && items.value[count.value - 1]?.classList.add("active");
 };
 
 // filtering
 const search = ref("");
-const dropdownItems = ref([]);
+const dropdownItems = ref<HTMLElement[]>([]);
 const handleFilter = () => {
   dropdownItems.value = [
     ...(root.value as HTMLElement).querySelectorAll(".dropdown-item"),
-  ];
+  ] as HTMLElement[];
   dropdownItems.value.forEach((el) => {
     el.style.display = "flex";
   });
 
   if (search.value) {
     dropdownItems.value.forEach((el) => {
-      const elText = el.textContent.trim().toLowerCase();
-      const isIncluded = elText.includes(search.value.toLowerCase());
+      const elText = el.textContent?.trim().toLowerCase();
+      const isIncluded = elText?.includes(search.value.toLowerCase());
       if (!isIncluded) {
         el.style.display = "none";
       }

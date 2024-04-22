@@ -24,9 +24,7 @@ const props = defineProps({
 });
 
 const className = computed(() => {
-  const text = props.text;
-
-  return ["card-body", props.text && spreadProps(text)];
+  return ["card-body", props.text && spreadProps(props.text)];
 });
 
 const spreadProps = (props: string | string[]) => {

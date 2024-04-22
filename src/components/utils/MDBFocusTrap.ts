@@ -8,12 +8,19 @@ type FocusableElement =
   | HTMLSelectElement
   | HTMLTextAreaElement;
 
-function MDBFocusTrap() {
-  const trapElement = ref(null);
-  const firstFocusableElement = ref(null);
-  const lastFocusableElement = ref(null);
+type TrapElement = HTMLElement | HTMLBodyElement;
 
-  function initFocusTrap(element?: HTMLElement | HTMLBodyElement | string) {
+export interface FocusTrapInstance {
+  initFocusTrap: (element: TrapElement) => boolean;
+  removeFocusTrap: () => void;
+}
+
+function MDBFocusTrap(): FocusTrapInstance {
+  const trapElement = ref<TrapElement>();
+  const firstFocusableElement = ref();
+  const lastFocusableElement = ref();
+
+  function initFocusTrap(element: TrapElement) {
     trapElement.value = element;
 
     calculateFocusTrap();
@@ -24,6 +31,9 @@ function MDBFocusTrap() {
   }
 
   function calculateFocusTrap() {
+    if (!trapElement.value) {
+      return;
+    }
     const focusable = Array.from(
       trapElement.value.querySelectorAll(
         'button, a, input, select, textarea, [tabindex]:not([tabindex="-1"])'

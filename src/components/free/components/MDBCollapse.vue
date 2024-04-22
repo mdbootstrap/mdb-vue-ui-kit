@@ -86,7 +86,10 @@ const collapseClass = computed(() => {
     : null;
 });
 
-const accordionState = inject("accordionState", null);
+const accordionState = inject<{
+  itemsCount: number;
+  active: null;
+} | null>("accordionState", null);
 const incrementAccordionItemsCount = inject<(() => number) | false>(
   "incrementAccordionItemsCount",
   false
@@ -115,14 +118,15 @@ watchEffect(
 );
 
 onMounted(() => {
-  if (isActive.value) {
+  if (isActive.value && collapse.value) {
     collapse.value.style.height = collapse.value.scrollHeight + "px";
     collapse.value.style.width = collapse.value.scrollWidth + "px";
   }
 
   if (accordionState) {
-    index.value =
-      incrementAccordionItemsCount && incrementAccordionItemsCount();
+    index.value = incrementAccordionItemsCount
+      ? incrementAccordionItemsCount()
+      : 0;
 
     if (isActive.value) {
       setAccordionActiveItem && setAccordionActiveItem(index.value);
@@ -176,7 +180,10 @@ const showClass = computed(() => {
   return false;
 });
 
-const checkWrapCollapseValue = (cur: string, prev: string | boolean) => {
+const checkWrapCollapseValue = (
+  _cur: string,
+  prev: string | boolean | undefined
+) => {
   if (prev === "null" && props.modelValue) {
     // open on first render when collapsed props
     isActive.value = true;
@@ -206,65 +213,71 @@ const uid = computed(() => {
   return props.id ? props.id : getUID("collapsibleContent-");
 });
 
-const beforeEnter = (el: HTMLElement) => {
+const beforeEnter = (el: Element) => {
+  const element = el as HTMLElement;
   if (props.horizontal) {
-    el.style.width = "0";
+    element.style.width = "0";
   } else {
-    el.style.height = "0";
+    element.style.height = "0";
   }
-  el.style.transitionDuration = props.duration + "ms";
+  element.style.transitionDuration = props.duration + "ms";
   isCollapsing = true;
 };
-const enter = (el: HTMLElement) => {
+const enter = (el: Element) => {
+  const element = el as HTMLElement;
   if (props.horizontal) {
-    el.style.width = collapse.value.scrollWidth + "px";
+    element.style.width = collapse.value?.scrollWidth + "px";
   } else {
-    el.style.height = collapse.value.scrollHeight + "px";
+    element.style.height = collapse.value?.scrollHeight + "px";
   }
 };
 
-const afterEnter = (el: HTMLElement) => {
-  if (!el.classList.contains("show")) {
-    el.classList.add("show");
+const afterEnter = (el: Element) => {
+  const element = el as HTMLElement;
+  if (!element.classList.contains("show")) {
+    element.classList.add("show");
   }
 
   if (props.horizontal) {
-    el.style.width = "";
+    element.style.width = "";
   } else {
-    el.style.height = "";
+    element.style.height = "";
   }
 
   isCollapsing = false;
 };
 
-const beforeLeave = (el: HTMLElement) => {
+const beforeLeave = (el: Element) => {
+  const element = el as HTMLElement;
   if (props.horizontal) {
-    if (!el.style.width) {
-      el.classList.add("show");
-      el.style.width = collapse.value.scrollWidth + "px";
+    if (!element.style.width) {
+      element.classList.add("show");
+      element.style.width = collapse.value?.scrollWidth + "px";
     }
   } else {
-    if (!el.style.height) {
-      el.classList.add("show");
-      el.style.height = collapse.value.scrollHeight + "px";
+    if (!element.style.height) {
+      element.classList.add("show");
+      element.style.height = collapse.value?.scrollHeight + "px";
     }
   }
   isCollapsing = true;
 };
-const leave = (el: HTMLElement) => {
+const leave = (el: Element) => {
+  const element = el as HTMLElement;
   if (props.horizontal) {
-    el.style.width = "0px";
+    element.style.width = "0px";
   } else {
-    el.style.height = "0px";
+    element.style.height = "0px";
   }
 };
 
-const afterLeave = (el: HTMLElement) => {
-  el.classList.add("collapse");
+const afterLeave = (el: Element) => {
+  const element = el as HTMLElement;
+  element.classList.add("collapse");
   isCollapsing = false;
 };
 
-const previousWindowWidth = ref(null);
+const previousWindowWidth = ref<number | null>(null);
 const isThrottled = ref(false);
 
 const handleResize = () => {

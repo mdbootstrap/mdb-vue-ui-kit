@@ -1,5 +1,5 @@
 <template>
-  <li :tabindex="divider ? null : 0">
+  <li :tabindex="divider ? undefined : 0">
     <component
       v-if="hasLinkOrTag"
       v-bind="$attrs"

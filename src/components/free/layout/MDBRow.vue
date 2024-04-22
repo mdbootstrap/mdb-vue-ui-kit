@@ -46,7 +46,7 @@ const className = computed(() => {
 
   return [
     "row",
-    props.cols ? `${spreadProps(columns)}` : "",
+    props.cols && columns ? `${spreadProps(columns)}` : "",
     props.start && "justify-content-start",
     props.end && "justify-content-end",
     props.center && "justify-content-center",

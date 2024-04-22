@@ -1,8 +1,24 @@
+interface Breakpoint {
+  width: number;
+  attr: string | null;
+}
+
+interface BreakpointList {
+  [key: string]: Breakpoint;
+}
+
+interface Ranges {
+  [key: string]: {
+    min: number;
+    max: number;
+  };
+}
+
 export const handleBreakpoints = (
   windowWidth: number,
   breakpointValues: any[]
 ) => {
-  const breakpoints = {
+  const breakpoints: BreakpointList = {
     none: {
       width: 0,
       attr: null,
@@ -39,7 +55,7 @@ export const handleBreakpoints = (
       value.includes(breakpoint) ? breakpoint : false
     )[0];
     if (match) {
-      breakpoints[match].attr = value;
+      breakpoints[match as keyof typeof breakpoints].attr = value;
     } else {
       breakpoints.none.attr = value;
     }
@@ -62,31 +78,35 @@ export const handleBreakpoints = (
   //   }
   // }
 
-  const ranges = {};
-  Object.keys(breakpoints).reduce((acc: string, cur: string, index: number) => {
+  const ranges: Ranges = {};
+  Object.keys(breakpoints).reduce((acc, cur, index) => {
     if (
       (breakpoints[acc].attr && breakpoints[cur].attr) ||
       (breakpoints[acc].attr && !cur)
     ) {
-      ranges[breakpoints[acc].attr] = {
+      ranges[breakpoints[acc].attr as string] = {
         min: breakpoints[acc].width,
         max: breakpoints[cur].width,
       };
       return cur;
     } else if (breakpoints[acc].attr && !breakpoints[cur].attr) {
       if (index === Object.keys(breakpoints).length - 1) {
-        ranges[breakpoints[acc].attr] = {
+        ranges[breakpoints[acc].attr as string] = {
           min: breakpoints[acc].width,
           max: breakpoints[cur].width,
         };
       }
       return acc;
     }
+    return "";
   });
 
   // return single value that matches actual window width range
   const value = Object.keys(ranges).filter((key: string) => {
-    if (windowWidth > ranges[key].min && windowWidth < ranges[key].max) {
+    if (
+      windowWidth > ranges[key as keyof typeof ranges].min &&
+      windowWidth < ranges[key as keyof typeof ranges].max
+    ) {
       return key;
     }
   })[0];

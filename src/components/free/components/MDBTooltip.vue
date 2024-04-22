@@ -115,7 +115,7 @@ const getConfig = () => {
       {
         name: "offset",
         options: {
-          offset: getPopperOffset(props.offset, triggerEl.value),
+          offset: getPopperOffset(props.offset, triggerEl.value as HTMLElement),
         },
       },
       {
@@ -146,7 +146,9 @@ const popperSetup = () => {
 
   const config = getConfig();
 
-  setPopper(triggerEl.value, popperEl.value, config);
+  if (triggerEl.value && popperEl.value) {
+    setPopper(triggerEl.value, popperEl.value, config);
+  }
 };
 
 const isThrottled = ref(false);
@@ -162,7 +164,7 @@ watchEffect(() => {
 
       setTimeout(openPopper, 0);
       setTimeout(() => {
-        popperEl.value.classList.add("show");
+        popperEl.value?.classList.add("show");
       }, 0);
     });
   } else {

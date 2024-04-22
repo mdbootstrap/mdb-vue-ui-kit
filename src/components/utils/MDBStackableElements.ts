@@ -27,12 +27,12 @@ const isVisible = (element: HTMLElement) => {
 };
 
 function MDBStackable() {
-  const stackableElement = ref(null);
-  const stackableSelector = ref(null);
-  const toastProxy = ref(null);
+  const stackableElement = ref<HTMLElement>();
+  const stackableSelector = ref<string>();
+  const toastProxy = ref<Ref<HTMLElement>>();
   const config = reactive<StackOptions>({});
-  const offset = ref(null);
-  const parent = ref(null);
+  const offset = ref<number | null>(null);
+  const parent = ref<HTMLElement>();
 
   function setStack(
     proxy: Ref<HTMLElement>,
@@ -58,12 +58,16 @@ function MDBStackable() {
   }
 
   function stackableElements() {
-    return [...document.querySelectorAll(stackableSelector.value)]
+    return (
+      [
+        ...document.querySelectorAll(stackableSelector.value as string),
+      ] as HTMLElement[]
+    )
       .filter((el, i) => config.filter(el, i))
       .map((el) => ({ el, rect: el.getBoundingClientRect() }))
       .filter(({ el, rect }) => {
         const basicCondition =
-          el.id !== stackableElement.value.id && isVisible(el);
+          el.id !== stackableElement.value?.id && isVisible(el);
         if (offset.value === null) {
           return basicCondition;
         }
@@ -78,13 +82,16 @@ function MDBStackable() {
   function nextStackElements() {
     return [
       ...(document.querySelectorAll(
-        stackableSelector.value
+        stackableSelector.value as string
       ) as NodeListOf<HTMLElement>),
     ]
-      .filter((el) => el.id !== stackableElement.value.id && isVisible(el))
+      .filter((el) => el.id !== stackableElement.value?.id && isVisible(el))
       .filter((el, i) => config.filter(el, i))
       .filter((el) => {
-        return getBoundryOffset(el.getBoundingClientRect()) > offset.value;
+        return (
+          getBoundryOffset(el.getBoundingClientRect()) >
+          (offset.value as number)
+        );
       });
   }
 

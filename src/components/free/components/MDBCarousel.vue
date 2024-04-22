@@ -12,7 +12,7 @@
   >
     <div v-if="indicators" class="carousel-indicators">
       <button
-        v-for="(item, key) in items"
+        v-for="(_, key) in items"
         :key="key"
         type="button"
         :class="activeItemKey === key && 'active'"
@@ -139,7 +139,7 @@ const activeItemKey = ref(props.modelValue);
 const carouselInnerRef = ref<HTMLDivElement | null>(null);
 const isSliding = ref(false);
 
-let slidingInterval = null;
+let slidingInterval: ReturnType<typeof setInterval> | undefined = undefined;
 let isPaused = false;
 
 const prev = () => {
@@ -198,14 +198,12 @@ const slide = (target: string | number) => {
 };
 
 const getTargetKey = (target: string) => {
+  const itemsList = props.items || [];
   if (target === "prev" && activeItemKey.value <= 0) {
-    return props.items.length - 1;
+    return itemsList.length - 1;
   } else if (target === "prev") {
     return activeItemKey.value - 1;
-  } else if (
-    target === "next" &&
-    activeItemKey.value >= props.items.length - 1
-  ) {
+  } else if (target === "next" && activeItemKey.value >= itemsList.length - 1) {
     return 0;
   } else if (target === "next") {
     return activeItemKey.value + 1;
@@ -214,7 +212,10 @@ const getTargetKey = (target: string) => {
   }
 };
 const getTargetSlideOrder = (target: string | number) => {
-  if (target === "next" || target > activeItemKey.value) {
+  if (
+    target === "next" ||
+    (typeof target === "number" && target > activeItemKey.value)
+  ) {
     return true;
   } else {
     return false;
@@ -225,14 +226,17 @@ const getDirectionalClassName = (isNext: boolean) =>
 const getOrderClassName = (isNext: boolean) =>
   isNext ? "carousel-item-next" : "carousel-item-prev";
 const getItem = (key: number) =>
-  carouselInnerRef.value.querySelectorAll(".carousel-item")[key];
+  (carouselInnerRef.value as HTMLDivElement).querySelectorAll(".carousel-item")[
+    key
+  ];
 
 const reloadInterval = () => {
   clearInterval(slidingInterval);
-  slidingInterval = null;
+  slidingInterval = undefined;
 
   const itemInterval =
-    props.items[activeItemKey.value].interval || props.interval;
+    (props.items && props.items[activeItemKey.value].interval) ||
+    props.interval;
 
   slidingInterval = setInterval(() => {
     slide("next");
@@ -243,7 +247,7 @@ const reloadInterval = () => {
 const handleMouseenter = () => {
   if (props.pause === "hover" && props.interval) {
     clearInterval(slidingInterval);
-    slidingInterval = null;
+    slidingInterval = undefined;
     isPaused = true;
   }
 };
@@ -337,10 +341,10 @@ const handleSwipe = () => {
 
 onMounted(() => {
   const currentActiveItem =
-    carouselInnerRef.value.querySelectorAll(".carousel-item")[
+    carouselInnerRef.value?.querySelectorAll(".carousel-item")[
       activeItemKey.value
     ];
-  currentActiveItem.classList.add("active");
+  currentActiveItem?.classList.add("active");
 
   if (props.interval) {
     reloadInterval();
@@ -350,7 +354,7 @@ onMounted(() => {
 onUnmounted(() => {
   if (props.interval) {
     clearInterval(slidingInterval);
-    slidingInterval = null;
+    slidingInterval = undefined;
   }
 });
 

@@ -1,4 +1,5 @@
-type TypeEvent = [boolean, EventListenerOrEventListenerObject, string];
+type EventHandler = ((...args: any) => void) | undefined;
+type TypeEvent = [boolean, EventHandler, string];
 
 const stripNameRegex = /\..*/;
 const customEvents = {
@@ -56,15 +57,15 @@ const nativeEvents = [
 
 function normalizeParams(
   originalTypeEvent: string,
-  handler: EventListenerOrEventListenerObject,
-  delegationFn: EventListenerOrEventListenerObject
+  handler: EventHandler,
+  delegationFn: EventHandler
 ): TypeEvent {
   const delegation = typeof handler === "string";
   const originalHandler = delegation ? delegationFn : handler;
 
   // allow to get the native events from namespaced events ('click.bs.button' --> 'click')
   let typeEvent = originalTypeEvent.replace(stripNameRegex, "");
-  const custom = customEvents[typeEvent];
+  const custom = customEvents[typeEvent as keyof typeof customEvents];
 
   if (custom) {
     typeEvent = custom;
@@ -82,8 +83,8 @@ function normalizeParams(
 function addHandler(
   element: HTMLElement | Document | HTMLBodyElement | Window,
   originalTypeEvent: string,
-  handler: EventListenerOrEventListenerObject,
-  delegationFn: EventListenerOrEventListenerObject
+  handler: EventHandler,
+  delegationFn: EventHandler
 ) {
   if (typeof originalTypeEvent !== "string" || !element) {
     return;
@@ -91,7 +92,7 @@ function addHandler(
 
   if (!handler) {
     handler = delegationFn;
-    delegationFn = null;
+    delegationFn = undefined;
   }
 
   const [delegation, originalHandler, typeEvent] = normalizeParams(
@@ -99,23 +100,31 @@ function addHandler(
     handler,
     delegationFn
   );
-  element.addEventListener(typeEvent, originalHandler, delegation);
+  element.addEventListener(
+    typeEvent,
+    originalHandler as EventListenerOrEventListenerObject,
+    delegation
+  );
 }
 
 function removeHandler(
   element: HTMLElement | Document | HTMLBodyElement | Window,
   typeEvent: string,
-  handler: EventListenerOrEventListenerObject,
-  delegationSelector: EventListenerOrEventListenerObject
+  handler: EventHandler,
+  delegationSelector: EventHandler
 ) {
-  element.removeEventListener(typeEvent, handler, !!delegationSelector);
+  element.removeEventListener(
+    typeEvent,
+    handler as EventListenerOrEventListenerObject,
+    !!delegationSelector
+  );
 }
 
 export const on = function (
   element: HTMLElement | Document | HTMLBodyElement | Window,
   event: string,
-  handler: EventListenerOrEventListenerObject,
-  delegationFn: EventListenerOrEventListenerObject = undefined
+  handler: EventHandler,
+  delegationFn: EventHandler = undefined
 ) {
   addHandler(element, event, handler, delegationFn);
 };
@@ -123,8 +132,8 @@ export const on = function (
 export const one = function (
   element: HTMLElement | Document | HTMLBodyElement | Window,
   event: string,
-  handler: EventListenerOrEventListenerObject,
-  delegationFn: EventListenerOrEventListenerObject = undefined
+  handler: EventHandler,
+  delegationFn: EventHandler = undefined
 ) {
   if (typeof event !== "string" || !element) {
     return;
@@ -136,14 +145,18 @@ export const one = function (
     delegationFn
   );
 
-  element.addEventListener(typeEvent, originalHandler, { once: true });
+  element.addEventListener(
+    typeEvent,
+    originalHandler as EventListenerOrEventListenerObject,
+    { once: true }
+  );
 };
 
 export const off = function (
   element: HTMLElement | Document | HTMLBodyElement | Window,
   event: string,
-  handler: EventListenerOrEventListenerObject,
-  delegationFn: EventListenerOrEventListenerObject = undefined
+  handler: EventHandler,
+  delegationFn: EventHandler = undefined
 ) {
   if (typeof event !== "string" || !element) {
     return;
@@ -159,15 +172,15 @@ export const off = function (
     element,
     typeEvent,
     originalHandler,
-    delegation ? handler : null
+    delegation ? handler : undefined
   );
 };
 
 export const onMulti = function (
   element: HTMLElement | Document | HTMLBodyElement | Window,
   eventArray: string,
-  handler: EventListenerOrEventListenerObject,
-  delegationFn: EventListenerOrEventListenerObject = undefined
+  handler: EventHandler,
+  delegationFn: EventHandler = undefined
 ) {
   const events = eventArray.split(" ");
 
@@ -179,8 +192,8 @@ export const onMulti = function (
 export const offMulti = function (
   element: HTMLElement | Document | HTMLBodyElement | Window,
   eventArray: string,
-  handler: EventListenerOrEventListenerObject,
-  delegationFn: EventListenerOrEventListenerObject = undefined
+  handler: EventHandler,
+  delegationFn: EventHandler = undefined
 ) {
   const events = eventArray.split(" ");
 

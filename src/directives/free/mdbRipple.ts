@@ -16,15 +16,11 @@ interface Styles {
   transitionDelay: string;
   transitionDuration: string;
   backgroundImage?: string;
+  [key: string]: string | undefined;
 }
 
 interface RippleElement extends HTMLDivElement {
   waves: (e: MouseEvent) => void;
-}
-
-interface MouseEventWithLayer extends MouseEvent {
-  layerY: number;
-  layerX: number;
 }
 
 interface WaveTypes {
@@ -161,7 +157,7 @@ const getDiameter = ({ offsetX, offsetY, height, width }: DiameterOptions) => {
 
 const setStyles = (el: HTMLElement, styles: Styles) => {
   for (const property in styles) {
-    el.style[property] = styles[property];
+    (el.style as any)[property] = styles[property];
   }
 };
 
@@ -255,7 +251,7 @@ const RippleDirective: Directive = {
 
     el.classList.add("ripple-surface");
 
-    el.waves = (e: MouseEventWithLayer) => {
+    el.waves = (e: MouseEvent) => {
       const waveConfig: WaveTypes = {
         top: e.offsetY,
         left: e.offsetX,

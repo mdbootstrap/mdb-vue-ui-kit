@@ -8,7 +8,7 @@
     @input="handleInput"
     ref="inputRef"
     v-mdb-click-outside="clickOutside"
-    @focus="checkDateType(true)"
+    @focus="handleFocus"
     @blur="checkDateType()"
   />
   <label
@@ -56,7 +56,7 @@
       :value="inputValue"
       @input="handleInput"
       ref="inputRef"
-      @focus="checkDateType(true)"
+      @focus="handleFocus"
       @blur="checkDateType()"
     />
     <label v-if="label" ref="labelRef" :class="labelClassName" :for="uid">
@@ -229,8 +229,12 @@ const handleValidation = (e: Event) => {
 };
 
 const bindValidationEvents = () => {
-  if (props.validationEvent === "submit") return;
-  typeof inputRef.value !== "string" &&
+  if (props.validationEvent === "submit") {
+    return;
+  }
+
+  inputRef.value &&
+    props.validationEvent &&
     on(inputRef.value, props.validationEvent, handleValidation);
 };
 
@@ -239,6 +243,16 @@ function calcNotch() {
     notchMiddleWidth.value = labelRef.value.clientWidth * 0.8 + 8;
   }
 }
+
+const shouldRecalcNotch = computed(() => {
+  // notchMiddle.width is 8px when the label width equal 0 - value 8 is beeing added to the notchMiddleWidth in the calcNotch method
+  return (
+    props.label &&
+    labelRef.value &&
+    notchMiddleWidth.value === 8 &&
+    labelRef.value.textContent !== ""
+  );
+});
 
 function setPlaceholder() {
   if (attrs.placeholder && !labelRef.value) {
@@ -271,18 +285,27 @@ function handleInput(e: Event) {
   emit("update:modelValue", inputValue.value);
 }
 
+function handleFocus() {
+  checkDateType(true);
+
+  if (props.label && shouldRecalcNotch.value) {
+    calcNotch();
+  }
+}
+
 function clickOutside() {
   emit("click-outside");
 }
 
-const notchRef = ref<HTMLElement>(null);
-const inputNotchElements = ref<NodeListOf<HTMLInputElement>>();
+const notchRef = ref<HTMLElement | null>(null);
+const inputNotchElements = ref<NodeListOf<HTMLInputElement> | null>(null);
 
 const handleMultipleNotchesVisibility = (isFocused: boolean) => {
-  inputNotchElements.value.forEach(
-    (notch) => (notch.style.opacity = isFocused ? "0" : "1")
-  );
-  if (isFocused) {
+  inputNotchElements.value &&
+    inputNotchElements.value.forEach(
+      (notch) => (notch.style.opacity = isFocused ? "0" : "1")
+    );
+  if (isFocused && notchRef.value) {
     notchRef.value.style.opacity = "1";
   }
 };
@@ -292,6 +315,7 @@ const checkDateType = (isFocused = false) => {
   if (
     props.label &&
     props.formOutline &&
+    inputNotchElements.value &&
     inputNotchElements.value?.length > 1
   ) {
     handleMultipleNotchesVisibility(isFocused);
@@ -301,14 +325,16 @@ const checkDateType = (isFocused = false) => {
     return;
   }
 
-  if (typeof inputRef.value !== "string") {
+  if (inputRef.value) {
     inputRef.value.type = isFocused ? "date" : "text";
   }
 };
 
 const isFirstChild = (element: HTMLElement) => {
   return !Boolean(
-    [...element.parentNode.children].findIndex((item) => item === element)
+    [...(element.parentNode as HTMLElement).children].findIndex(
+      (item) => item === element
+    )
   );
 };
 
@@ -317,12 +343,18 @@ onMounted(() => {
   setPlaceholder();
   checkDateType();
 
-  if (props.label && props.formOutline) {
+  if (props.label && props.formOutline && inputRef.value) {
     inputNotchElements.value =
-      inputRef.value.parentNode.querySelectorAll(".form-notch");
+      inputRef.value.parentNode?.querySelectorAll(".form-notch") || null;
   }
 
-  if (props.label && props.formOutline && !isFirstChild(inputRef.value)) {
+  if (
+    props.label &&
+    props.formOutline &&
+    labelRef.value &&
+    inputRef.value &&
+    !isFirstChild(inputRef.value)
+  ) {
     const labelLeft = parseFloat(getComputedStyle(labelRef.value).left);
     labelRef.value.style.left = `${labelLeft + inputRef.value.offsetLeft}px`;
     notchLeadingWidth.value += inputRef.value.offsetLeft;
@@ -339,7 +371,8 @@ onUpdated(() => {
 });
 
 onUnmounted(() => {
-  typeof inputRef.value !== "string" &&
+  inputRef.value &&
+    props.validationEvent &&
     off(inputRef.value, props.validationEvent, handleValidation);
 });
 

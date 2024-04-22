@@ -148,7 +148,7 @@ const getConfig = () => {
       {
         name: "offset",
         options: {
-          offset: getPopperOffset(offset, triggerEl.value),
+          offset: getPopperOffset(offset, triggerEl.value as HTMLElement),
         },
       },
       {
@@ -179,7 +179,9 @@ const popperSetup = () => {
 
   const config = getConfig();
 
-  setPopper(triggerEl.value, popperEl.value, config);
+  if (triggerEl.value && popperEl.value) {
+    setPopper(triggerEl.value, popperEl.value, config);
+  }
 };
 
 watchEffect(() => {
@@ -189,9 +191,9 @@ watchEffect(() => {
 
       setTimeout(openPopper, 0);
       setTimeout(() => {
-        popperEl.value.classList.add("show");
+        popperEl.value?.classList.add("show");
 
-        if (props.hover) {
+        if (props.hover && popperEl.value) {
           on(popperEl.value, "mouseover", onMouseOver);
           on(popperEl.value, "mouseout", onMouseOut);
         }
@@ -202,6 +204,9 @@ watchEffect(() => {
       return;
     }
     setTimeout(() => {
+      if (!popperEl.value) {
+        return;
+      }
       off(popperEl.value, "mouseover", onMouseOver);
       off(popperEl.value, "mouseout", onMouseOut);
 
@@ -237,14 +242,16 @@ const handleClickOutside = () => {
 };
 
 const destroy = () => {
-  off(triggerEl.value, "mouseover", onMouseOver);
-  off(triggerEl.value, "mouseout", onMouseOut);
+  if (triggerEl.value) {
+    off(triggerEl.value, "mouseover", onMouseOver);
+    off(triggerEl.value, "mouseout", onMouseOut);
+  }
 
   destroyPopper();
 };
 
 onMounted(() => {
-  if (props.hover) {
+  if (props.hover && triggerEl.value) {
     on(triggerEl.value, "mouseover", onMouseOver);
     on(triggerEl.value, "mouseout", onMouseOut);
   }

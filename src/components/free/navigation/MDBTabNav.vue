@@ -41,7 +41,7 @@ const className = computed(() => {
     props.pills ? "nav-pills" : "nav-tabs",
     props.justify && "nav-justified",
     props.fill && "nav-fill",
-    isVertical.value && "flex-column",
+    isVertical?.value && "flex-column",
     props.tabsClasses && props.tabsClasses,
   ];
 });

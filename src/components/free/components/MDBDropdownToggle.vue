@@ -69,7 +69,7 @@ const toggle = () => {
 
 const isPopperActive = inject<Ref<boolean>>("isPopperActive");
 watchEffect(() => {
-  expanded.value = isPopperActive.value;
+  expanded.value = isPopperActive ? isPopperActive.value : false;
 });
 
 const handleEscAndOutsideClick = inject<() => void>("handleEscAndOutsideClick");
@@ -78,7 +78,7 @@ const handleClickOutside = (event: Event) => {
   const target = event.target as HTMLElement;
 
   if (isPopperActive && !target.closest(".dropdown-menu")) {
-    handleEscAndOutsideClick();
+    handleEscAndOutsideClick?.();
   }
 };
 </script>

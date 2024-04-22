@@ -41,7 +41,7 @@ const props = defineProps({
   },
 });
 
-const item = ref<HTMLDivElement | HTMLElement>(null);
+const item = ref<HTMLDivElement | HTMLElement | null>(null);
 const className = computed(() => [
   "tab-pane fade",
   isActive.value && "show active",
@@ -65,18 +65,28 @@ onMounted(() => {
   }
 });
 
-const afterEnter = (el: HTMLElement) => {
-  el.style.opacity = "1";
+const afterEnter = (el: Element) => {
+  const element = el as HTMLElement;
+  element.style.opacity = "1";
 };
-const enter = (el: HTMLElement) => {
-  el.style.opacity = "0";
-  emitShown(props.tabId);
+const enter = (el: Element) => {
+  const element = el as HTMLElement;
+  element.style.opacity = "0";
+
+  if (emitShown) {
+    emitShown(props.tabId);
+  }
 };
-const beforeLeave = (el: HTMLElement) => {
-  el.style.opacity = "1";
-  emitHidden(props.tabId);
+const beforeLeave = (el: Element) => {
+  const element = el as HTMLElement;
+  element.style.opacity = "1";
+
+  if (emitHidden) {
+    emitHidden(props.tabId);
+  }
 };
-const afterLeave = (el: HTMLElement) => {
-  el.style.opacity = "0";
+const afterLeave = (el: Element) => {
+  const element = el as HTMLElement;
+  element.style.opacity = "0";
 };
 </script>

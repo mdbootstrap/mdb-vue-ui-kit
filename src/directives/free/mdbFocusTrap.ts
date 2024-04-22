@@ -55,8 +55,8 @@ export default {
       firstFocusableElement.focus();
     };
 
-    el.focusFirstElement = (e: KeyboardEvent, trap = false) => {
-      if (e.key === "Tab") {
+    el.focusFirstElement = (e: KeyboardEvent | undefined, trap = false) => {
+      if (e?.key === "Tab") {
         e.preventDefault();
         el.focusTrap();
       }

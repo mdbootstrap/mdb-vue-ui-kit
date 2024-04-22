@@ -2,7 +2,7 @@ import { ref } from "vue";
 
 const debounce = ref(false);
 
-const onlyModal = ref<boolean>(null);
+const onlyModal = ref<boolean>();
 
 const isOnlyModal = () => {
   onlyModal.value = !document.body.classList.contains("modal-open");

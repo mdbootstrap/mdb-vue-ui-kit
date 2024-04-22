@@ -137,7 +137,7 @@ const emit = defineEmits(["update:modelValue", "on-validate"]);
 
 const attrs = useAttrs();
 
-const textareaRef = ref<HTMLTextAreaElement | string>("textareaRef");
+const textareaRef = ref<HTMLTextAreaElement | null>(null);
 const textareaValue = ref(props.modelValue);
 const labelRef = ref<HTMLLabelElement | null>(null);
 const showPlaceholder = ref(false);
@@ -209,12 +209,12 @@ const handleValidation = (e: Event) => {
 };
 
 const bindValidationEvents = () => {
-  if (props.validationEvent === "submit") return;
-  on(
-    textareaRef.value as HTMLTextAreaElement,
-    props.validationEvent,
-    handleValidation
-  );
+  if (props.validationEvent === "submit") {
+    return;
+  }
+  textareaRef.value &&
+    props.validationEvent &&
+    on(textareaRef.value, props.validationEvent, handleValidation);
 };
 
 function calcNotch() {
@@ -257,7 +257,9 @@ function handleInput(e: Event) {
 
 const isFirstChild = (element: HTMLElement) => {
   return !Boolean(
-    [...element.parentNode.children].findIndex((item) => item === element)
+    [...(element.parentNode as HTMLElement).children].findIndex(
+      (item) => item === element
+    )
   );
 };
 
@@ -268,7 +270,8 @@ onMounted(() => {
   if (
     props.label &&
     props.formOutline &&
-    textareaRef.value instanceof HTMLTextAreaElement &&
+    labelRef.value &&
+    textareaRef.value &&
     !isFirstChild(textareaRef.value)
   ) {
     const textAreaLeft = parseFloat(getComputedStyle(labelRef.value).left);
@@ -289,11 +292,9 @@ onUpdated(() => {
 });
 
 onUnmounted(() => {
-  off(
-    textareaRef.value as HTMLTextAreaElement,
-    props.validationEvent,
-    handleValidation
-  );
+  textareaRef.value &&
+    props.validationEvent &&
+    off(textareaRef.value, props.validationEvent, handleValidation);
 });
 
 watchEffect(() => {

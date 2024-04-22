@@ -35,8 +35,8 @@ const emit = defineEmits([
   "shown",
 ]);
 
-const prevTab = ref<HTMLElement>(null);
-const activeTab = ref<HTMLElement>(null);
+const prevTab = ref<HTMLElement | null>(null);
+const activeTab = ref<HTMLElement | null>(null);
 const activeTabId = ref(props.modelValue);
 
 watch(
@@ -49,7 +49,10 @@ watch(
   }
 );
 
-const updateActiveTab = (element: HTMLElement, tabId: string) => {
+const updateActiveTab = (
+  element: HTMLElement | null,
+  tabId: string | undefined
+) => {
   if (!element) {
     element = document.body.querySelector(`#tab-${tabId}`);
   }

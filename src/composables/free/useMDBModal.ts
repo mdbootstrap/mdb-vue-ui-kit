@@ -1,13 +1,7 @@
-import {
-  computed,
-  EmitsOptions,
-  onBeforeUnmount,
-  provide,
-  ref,
-  watchEffect,
-} from "vue";
+import { computed, onBeforeUnmount, provide, ref, watchEffect } from "vue";
 import { on, off } from "../../components/utils/MDBEventHandlers";
 import MDBFocusTrap from "../../../src/components/utils/MDBFocusTrap";
+import type { FocusTrapInstance } from "../../components/utils/MDBFocusTrap";
 
 export interface Props {
   modelValue: boolean;
@@ -30,12 +24,12 @@ export interface Props {
 
 export default function useMDBModal(
   props: Partial<Props>,
-  emit: (name: string, value?: any) => void
+  emit: (...args: any[]) => void
 ) {
-  const root = ref("root");
+  const root = ref<HTMLElement | string>("root");
   const dialog = ref<HTMLElement | string>("dialog");
   const dialogTransform = ref("");
-  const focusTrap = ref(null);
+  const focusTrap = ref<FocusTrapInstance | null>(null);
 
   const isActive = ref(props.modelValue);
   const clickFromBackdrop = ref(false);
@@ -85,7 +79,7 @@ export default function useMDBModal(
   });
 
   const computedContentStyle = computed(() => {
-    return props.bgSrc ? { "background-image": `url("${props.bgSrc}")` } : null;
+    return props.bgSrc ? { "background-image": `url("${props.bgSrc}")` } : {};
   });
 
   const fullscreenClass = computed(() => {
@@ -150,15 +144,16 @@ export default function useMDBModal(
     document.body.classList.remove("modal-open");
   };
 
-  const enter = (el: HTMLElement) => {
+  const enter = (el: Element) => {
+    const element = el as HTMLElement;
     shouldOverflow.value = false;
 
     dialogTransform.value = "translate(0, -25%)";
 
-    const child = el.childNodes[0] as HTMLElement;
+    const child = element.childNodes[0] as HTMLElement;
     child.style.transform = dialogTransform.value;
-    el.style.opacity = "0";
-    el.style.display = "block";
+    element.style.opacity = "0";
+    element.style.display = "block";
 
     setScrollbar();
 
@@ -166,16 +161,17 @@ export default function useMDBModal(
 
     if (onlyNonInvasiveModal.value) {
       document.body.style.paddingRight = `${scrollbarWidth.value}px`;
-      el.style.paddingRight = `${scrollbarWidth.value}px`;
+      element.style.paddingRight = `${scrollbarWidth.value}px`;
       document.body.classList.add("modal-open");
     }
 
     emit("show", root.value);
   };
-  const afterEnter = (el: HTMLElement) => {
-    const child = el.childNodes[0] as HTMLElement;
+  const afterEnter = (el: Element) => {
+    const element = el as HTMLElement;
+    const child = element.childNodes[0] as HTMLElement;
     child.style.transform = "translate(0,0)";
-    el.style.opacity = "1";
+    element.style.opacity = "1";
 
     setTimeout(() => {
       shouldOverflow.value = true;
@@ -189,17 +185,18 @@ export default function useMDBModal(
 
     if (props.focus) {
       focusTrap.value = MDBFocusTrap();
-      focusTrap.value?.initFocusTrap(root.value);
+      focusTrap.value?.initFocusTrap(root.value as HTMLElement);
     }
   };
-  const beforeLeave = (el: HTMLElement) => {
-    const child = el.childNodes[0] as HTMLElement;
+  const beforeLeave = (el: Element) => {
+    const element = el as HTMLElement;
+    const child = element.childNodes[0] as HTMLElement;
     child.style.transform = dialogTransform.value;
-    el.style.opacity = "0";
+    element.style.opacity = "0";
 
     if (onlyNonInvasiveModal.value) {
       setTimeout(() => {
-        el.style.paddingRight = "";
+        element.style.paddingRight = "";
         resetScrollbar();
       }, 200);
     }

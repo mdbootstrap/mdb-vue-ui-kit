@@ -108,10 +108,15 @@ const highlighter = (code: string) => {
 
 const setContent = () => {
   Object.keys(content).map((key) => {
-    if (componentRefs[key].value) {
-      const componentRefInnerContent = wrapTag(componentRefs[key].value, key);
+    const objectKey = key as keyof typeof componentRefs;
 
-      content[key] = componentRefInnerContent;
+    if (componentRefs[objectKey].value) {
+      const componentRefInnerContent = wrapTag(
+        componentRefs[objectKey].value as unknown as HTMLElement,
+        key
+      );
+
+      content[objectKey] = componentRefInnerContent;
     }
   });
 };
@@ -140,7 +145,7 @@ const wrapTag = (data: HTMLElement, tag: string) => {
 
   removeVueData(elements);
 
-  const innerContent = data.querySelector("pre").innerHTML;
+  const innerContent = (data.querySelector("pre") as HTMLElement).innerHTML;
 
   const wrapper = document.createElement(`${tag}`);
   wrapper.innerHTML = innerContent;

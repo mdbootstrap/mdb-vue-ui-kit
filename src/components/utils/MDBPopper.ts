@@ -9,11 +9,16 @@ interface PopperOptions {
   value?: PopperOptionsValue;
 }
 
+interface PopperInstance {
+  destroy: () => void;
+  update: () => void;
+}
+
 function MDBPopper() {
   const isPopperActive = ref(false);
-  const triggerEl = ref(null);
-  const popperEl = ref(null);
-  const popper = ref(undefined);
+  const triggerEl = ref<HTMLElement>();
+  const popperEl = ref<HTMLElement>();
+  const popper = ref<PopperInstance | undefined | void>(undefined);
   const popperOptions = reactive<PopperOptions>({});
 
   function setPopper(
@@ -77,13 +82,17 @@ function MDBPopper() {
   }
 
   function updatePopper(option: string, value: any) {
-    popperOptions.value[option] = value;
+    if (popperOptions.value) {
+      popperOptions.value[option] = value;
+    }
 
-    popper.value = createPopper(
-      triggerEl.value,
-      popperEl.value,
-      popperOptions.value
-    );
+    if (triggerEl.value && popperEl.value) {
+      popper.value = createPopper(
+        triggerEl.value,
+        popperEl.value,
+        popperOptions.value
+      );
+    }
   }
 
   function destroyPopper() {

@@ -51,7 +51,7 @@ const props = defineProps({
   href: String,
 });
 
-const item = ref<HTMLLinkElement | HTMLElement>(null);
+const item = ref<HTMLLinkElement | HTMLElement | null>(null);
 const className = computed(() => ["nav-link", isActive.value && "active"]);
 const uid = computed(() => `tab-${props.tabId}`);
 const controls = computed(() => `${props.tabId}`);
@@ -66,12 +66,14 @@ watchEffect(
 );
 
 const handleClick = () => {
-  updateActiveTab(item.value, props.tabId);
+  if (item.value !== undefined && updateActiveTab) {
+    updateActiveTab(item.value as HTMLElement, props.tabId);
+  }
 };
 
 onMounted(() => {
   if (isActive.value && updateActiveTab) {
-    updateActiveTab(item.value, props.tabId);
+    updateActiveTab(item.value as HTMLElement, props.tabId);
   }
 });
 </script>

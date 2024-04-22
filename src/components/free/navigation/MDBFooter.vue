@@ -26,7 +26,7 @@ const props = defineProps({
 });
 
 const className = computed(() => {
-  const text = props.text;
+  const text = props.text as string;
 
   return [
     props.bg && props.bg !== "none" && `bg-${props.bg}`,

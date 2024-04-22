@@ -16,7 +16,7 @@ export interface Props {
     labelledby: string;
     tag: string;
 }
-export default function useMDBModal(props: Partial<Props>, emit: (name: string, value?: any) => void): {
+export default function useMDBModal(props: Partial<Props>, emit: (...args: any[]) => void): {
     wrapperClass: import("vue").ComputedRef<string[]>;
     dialogClass: import("vue").ComputedRef<(string | false | string[])[]>;
     backdropStyle: import("vue").ComputedRef<false | {
@@ -25,22 +25,27 @@ export default function useMDBModal(props: Partial<Props>, emit: (name: string, 
     backdropOverflowStyle: import("vue").ComputedRef<string>;
     computedContentStyle: import("vue").ComputedRef<{
         "background-image": string;
+    } | {
+        "background-image"?: undefined;
     }>;
-    root: import("vue").Ref<string>;
+    root: import("vue").Ref<string | HTMLElement>;
     dialog: import("vue").Ref<string | HTMLElement>;
     isActive: import("vue").Ref<boolean>;
     closeModal: () => void;
     animateStaticBackdrop: () => void;
-    enter: (el: HTMLElement) => void;
-    afterEnter: (el: HTMLElement) => void;
-    beforeLeave: (el: HTMLElement) => void;
+    enter: (el: Element) => void;
+    afterEnter: (el: Element) => void;
+    beforeLeave: (el: Element) => void;
     afterLeave: () => void;
     scrollbarWidth: import("vue").Ref<number>;
     setScrollbar: () => void;
     shouldOverflow: import("vue").Ref<boolean>;
     thisElement: import("vue").Ref<string | HTMLElement>;
     handleEscKeyUp: (e: KeyboardEvent) => void;
-    focusTrap: any;
+    focusTrap: import("vue").Ref<{
+        initFocusTrap: (element: HTMLElement | HTMLBodyElement) => boolean;
+        removeFocusTrap: () => void;
+    }>;
     dialogTransform: import("vue").Ref<string>;
     animateStaticModal: (el: HTMLElement) => void;
     fullscreenClass: import("vue").ComputedRef<false | string[]>;
