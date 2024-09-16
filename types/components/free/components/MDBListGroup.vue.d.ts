@@ -4,7 +4,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: boolean;
     };
     horizontal: {
-        type: (BooleanConstructor | StringConstructor)[];
+        type: (StringConstructor | BooleanConstructor)[];
         default: boolean;
     };
     numbered: BooleanConstructor;
@@ -20,7 +20,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: boolean;
     };
     horizontal: {
-        type: (BooleanConstructor | StringConstructor)[];
+        type: (StringConstructor | BooleanConstructor)[];
         default: boolean;
     };
     numbered: BooleanConstructor;
@@ -31,11 +31,11 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     light: BooleanConstructor;
     small: BooleanConstructor;
 }>>, {
-    small: boolean;
     tag: string;
+    light: boolean;
+    small: boolean;
     flush: boolean;
     horizontal: string | boolean;
-    light: boolean;
     numbered: boolean;
 }, {}>, {
     default?(_: {}): any;

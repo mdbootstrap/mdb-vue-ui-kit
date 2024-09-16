@@ -17,12 +17,12 @@ export interface Props {
     tag: string;
 }
 export default function useMDBModal(props: Partial<Props>, emit: (...args: any[]) => void): {
-    wrapperClass: import("vue").ComputedRef<string[]>;
-    dialogClass: import("vue").ComputedRef<(string | false | string[])[]>;
+    wrapperClass: import("vue").ComputedRef<(string | false | undefined)[]>;
+    dialogClass: import("vue").ComputedRef<(string | false | string[] | undefined)[]>;
     backdropStyle: import("vue").ComputedRef<false | {
         "background-color": string;
     }>;
-    backdropOverflowStyle: import("vue").ComputedRef<string>;
+    backdropOverflowStyle: import("vue").ComputedRef<"overflow: hidden" | undefined>;
     computedContentStyle: import("vue").ComputedRef<{
         "background-image": string;
     } | {
@@ -30,7 +30,7 @@ export default function useMDBModal(props: Partial<Props>, emit: (...args: any[]
     }>;
     root: import("vue").Ref<string | HTMLElement>;
     dialog: import("vue").Ref<string | HTMLElement>;
-    isActive: import("vue").Ref<boolean>;
+    isActive: import("vue").Ref<boolean | undefined>;
     closeModal: () => void;
     animateStaticBackdrop: () => void;
     enter: (el: Element) => void;
@@ -40,12 +40,12 @@ export default function useMDBModal(props: Partial<Props>, emit: (...args: any[]
     scrollbarWidth: import("vue").Ref<number>;
     setScrollbar: () => void;
     shouldOverflow: import("vue").Ref<boolean>;
-    thisElement: import("vue").Ref<string | HTMLElement>;
+    thisElement: import("vue").Ref<string | HTMLElement | null>;
     handleEscKeyUp: (e: KeyboardEvent) => void;
     focusTrap: import("vue").Ref<{
         initFocusTrap: (element: HTMLElement | HTMLBodyElement) => boolean;
         removeFocusTrap: () => void;
-    }>;
+    } | null>;
     dialogTransform: import("vue").Ref<string>;
     animateStaticModal: (el: HTMLElement) => void;
     fullscreenClass: import("vue").ComputedRef<false | string[]>;

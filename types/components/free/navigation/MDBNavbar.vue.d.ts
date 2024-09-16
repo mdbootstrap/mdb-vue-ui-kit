@@ -35,7 +35,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: boolean;
     };
     container: {
-        type: (BooleanConstructor | StringConstructor)[];
+        type: (StringConstructor | BooleanConstructor)[];
         default: boolean;
     };
     classContainer: StringConstructor;
@@ -77,13 +77,12 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: boolean;
     };
     container: {
-        type: (BooleanConstructor | StringConstructor)[];
+        type: (StringConstructor | BooleanConstructor)[];
         default: boolean;
     };
     classContainer: StringConstructor;
     classNavbar: StringConstructor;
 }>>, {
-    container: string | boolean;
     tag: string;
     light: boolean;
     dark: boolean;
@@ -92,7 +91,9 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     double: boolean;
     scrolling: boolean;
     scrollingOffset: number;
+    container: string | boolean;
 }, {}>, {
+    default?(_: {}): any;
     default?(_: {}): any;
 }>;
 export default _default;

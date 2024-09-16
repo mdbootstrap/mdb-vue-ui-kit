@@ -19,13 +19,13 @@ declare const _default: import("vue").DefineComponent<{
         default: number;
     };
     items: PropType<{
-        src?: string;
-        alt?: string;
-        label?: string;
-        caption?: string;
-        video?: string;
-        videoType?: string;
-        interval?: number;
+        src?: string | undefined;
+        alt?: string | undefined;
+        label?: string | undefined;
+        caption?: string | undefined;
+        video?: string | undefined;
+        videoType?: string | undefined;
+        interval?: number | undefined;
     }[]>;
     itemsClass: {
         type: StringConstructor;
@@ -40,7 +40,7 @@ declare const _default: import("vue").DefineComponent<{
         default: number;
     };
     pause: {
-        type: (BooleanConstructor | StringConstructor)[];
+        type: (StringConstructor | BooleanConstructor)[];
         default: string;
     };
     tag: {
@@ -77,13 +77,13 @@ declare const _default: import("vue").DefineComponent<{
         default: number;
     };
     items: PropType<{
-        src?: string;
-        alt?: string;
-        label?: string;
-        caption?: string;
-        video?: string;
-        videoType?: string;
-        interval?: number;
+        src?: string | undefined;
+        alt?: string | undefined;
+        label?: string | undefined;
+        caption?: string | undefined;
+        video?: string | undefined;
+        videoType?: string | undefined;
+        interval?: number | undefined;
     }[]>;
     itemsClass: {
         type: StringConstructor;
@@ -98,7 +98,7 @@ declare const _default: import("vue").DefineComponent<{
         default: number;
     };
     pause: {
-        type: (BooleanConstructor | StringConstructor)[];
+        type: (StringConstructor | BooleanConstructor)[];
         default: string;
     };
     tag: {
@@ -111,12 +111,11 @@ declare const _default: import("vue").DefineComponent<{
     };
     innerClass: StringConstructor;
 }>> & {
-    "onUpdate:modelValue"?: (...args: any[]) => any;
+    "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }, {
     tag: string;
-    modelValue: number;
-    pause: string | boolean;
     dark: boolean;
+    pause: string | boolean;
     captionsClass: string;
     controls: boolean;
     fade: boolean;
@@ -124,6 +123,7 @@ declare const _default: import("vue").DefineComponent<{
     interval: number | boolean;
     itemsClass: string;
     keyboard: boolean;
+    modelValue: number;
     touch: boolean;
 }, {}>;
 export default _default;

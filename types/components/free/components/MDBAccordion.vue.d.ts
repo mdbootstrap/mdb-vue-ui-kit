@@ -21,11 +21,11 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     classes: StringConstructor;
     borderless: BooleanConstructor;
 }>> & {
-    "onUpdate:modelValue"?: (...args: any[]) => any;
+    "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }, {
     tag: string;
-    stayOpen: boolean;
     flush: boolean;
+    stayOpen: boolean;
     borderless: boolean;
 }, {}>, {
     default?(_: {}): any;

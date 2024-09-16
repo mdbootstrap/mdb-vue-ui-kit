@@ -14,7 +14,7 @@ declare const _default: import("vue").DefineComponent<{
     labelClass: StringConstructor;
     modelValue: {
         type: PropType<FileList | File[]>;
-        default: () => any[];
+        default: () => never[];
     };
     size: StringConstructor;
     tooltipFeedback: BooleanConstructor;
@@ -34,15 +34,15 @@ declare const _default: import("vue").DefineComponent<{
     labelClass: StringConstructor;
     modelValue: {
         type: PropType<FileList | File[]>;
-        default: () => any[];
+        default: () => never[];
     };
     size: StringConstructor;
     tooltipFeedback: BooleanConstructor;
     validFeedback: StringConstructor;
     validateOnChange: BooleanConstructor;
 }>> & {
-    "onUpdate:modelValue"?: (...args: any[]) => any;
-    "onOn-validate"?: (...args: any[]) => any;
+    "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
+    "onOn-validate"?: ((...args: any[]) => any) | undefined;
 }, {
     modelValue: FileList | File[];
     isValidated: boolean;

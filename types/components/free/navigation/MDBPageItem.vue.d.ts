@@ -42,10 +42,11 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     };
 }>>, {
     tag: string;
-    icon: boolean;
     disabled: boolean;
     active: boolean;
+    icon: boolean;
 }, {}>, {
+    default?(_: {}): any;
     default?(_: {}): any;
 }>;
 export default _default;

@@ -51,10 +51,10 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: number;
     };
 }>>, {
-    value: number;
     tag: string;
     max: number;
     min: number;
+    value: number;
     striped: boolean;
     animated: boolean;
 }, {}>, {

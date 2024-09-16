@@ -62,8 +62,8 @@ declare const _default: import("vue").DefineComponent<{
         default: string;
     };
 }>> & {
-    "onUpdate:modelValue"?: (...args: any[]) => any;
-    "onOn-validate"?: (...args: any[]) => any;
+    "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
+    "onOn-validate"?: ((...args: any[]) => any) | undefined;
 }, {
     tag: string;
     required: boolean;

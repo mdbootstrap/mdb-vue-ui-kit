@@ -9,7 +9,7 @@
     ref="inputRef"
     v-mdb-click-outside="clickOutside"
     @focus="handleFocus"
-    @blur="checkDateType()"
+    @blur="handleBlur"
   />
   <label
     v-if="label && !wrap"
@@ -57,7 +57,7 @@
       @input="handleInput"
       ref="inputRef"
       @focus="handleFocus"
-      @blur="checkDateType()"
+      @blur="handleBlur"
     />
     <label v-if="label" ref="labelRef" :class="labelClassName" :for="uid">
       {{ label }}
@@ -157,6 +157,7 @@ const showPlaceholder = ref(false);
 const notchLeadingWidth = ref(9);
 const notchMiddleWidth = ref(0);
 const uid = props.id || getUID("MDBInput-");
+const isFocused = ref(false);
 
 const wrapperClassName = computed(() => {
   return [
@@ -178,8 +179,18 @@ const inputClassName = computed(() => {
     showPlaceholder.value && "placeholder-active",
     isInputValidated.value && isInputValid.value && "is-valid",
     isInputValidated.value && !isInputValid.value && "is-invalid",
+    isSpecialInput.value && getSpecialInputOpacityClass(),
   ];
 });
+
+const getSpecialInputOpacityClass = () => {
+  if (!isSpecialInput.value) return "";
+
+  const shouldBeVisible =
+    inputValue.value || inputValue.value === 0 || isFocused.value;
+  return shouldBeVisible ? "opacity-1" : "opacity-0";
+};
+
 const labelClassName = computed(() => {
   return ["form-label", props.labelClass];
 });
@@ -254,6 +265,17 @@ const shouldRecalcNotch = computed(() => {
   );
 });
 
+const isSpecialInput = computed(() => {
+  const inputsWithPlaceholder = [
+    "date",
+    "time",
+    "datetime-local",
+    "month",
+    "week",
+  ];
+  return inputsWithPlaceholder.includes(attrs.type as string);
+});
+
 function setPlaceholder() {
   if (attrs.placeholder && !labelRef.value) {
     showPlaceholder.value = true;
@@ -287,10 +309,16 @@ function handleInput(e: Event) {
 
 function handleFocus() {
   checkDateType(true);
+  isFocused.value = true;
 
   if (props.label && shouldRecalcNotch.value) {
     calcNotch();
   }
+}
+
+function handleBlur() {
+  checkDateType();
+  isFocused.value = false;
 }
 
 function clickOutside() {

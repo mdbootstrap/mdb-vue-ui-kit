@@ -13,7 +13,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     };
     wrapperClass: StringConstructor;
     inputGroup: {
-        type: (BooleanConstructor | StringConstructor)[];
+        type: (StringConstructor | BooleanConstructor)[];
         default: boolean;
     };
     wrap: {
@@ -59,7 +59,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     };
     wrapperClass: StringConstructor;
     inputGroup: {
-        type: (BooleanConstructor | StringConstructor)[];
+        type: (StringConstructor | BooleanConstructor)[];
         default: boolean;
     };
     wrap: {
@@ -88,13 +88,13 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: number;
     };
 }>> & {
-    "onUpdate:modelValue"?: (...args: any[]) => any;
-    "onOn-validate"?: (...args: any[]) => any;
+    "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
+    "onOn-validate"?: ((...args: any[]) => any) | undefined;
 }, {
     tag: string;
-    wrap: boolean;
     maxLength: number;
     white: boolean;
+    wrap: boolean;
     formOutline: boolean;
     inputGroup: string | boolean;
     isValidated: boolean;

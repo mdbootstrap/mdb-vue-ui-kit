@@ -34,7 +34,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     };
     labelledby: StringConstructor;
     fullscreen: {
-        type: (BooleanConstructor | StringConstructor)[];
+        type: (StringConstructor | BooleanConstructor)[];
         default: boolean;
     };
     animation: {
@@ -98,7 +98,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     };
     labelledby: StringConstructor;
     fullscreen: {
-        type: (BooleanConstructor | StringConstructor)[];
+        type: (StringConstructor | BooleanConstructor)[];
         default: boolean;
     };
     animation: {
@@ -121,17 +121,17 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: boolean;
     };
 }>> & {
-    "onUpdate:modelValue"?: (...args: any[]) => any;
-    onShow?: (...args: any[]) => any;
-    onHide?: (...args: any[]) => any;
-    onHidden?: (...args: any[]) => any;
-    onShown?: (...args: any[]) => any;
+    "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
+    onShow?: ((...args: any[]) => any) | undefined;
+    onHide?: ((...args: any[]) => any) | undefined;
+    onHidden?: ((...args: any[]) => any) | undefined;
+    onShown?: ((...args: any[]) => any) | undefined;
 }, {
     tag: string;
-    modelValue: boolean;
     focus: boolean;
-    duration: number;
     keyboard: boolean;
+    modelValue: boolean;
+    duration: number;
     animation: boolean;
     staticBackdrop: boolean;
     centered: boolean;

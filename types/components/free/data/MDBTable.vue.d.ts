@@ -13,7 +13,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: boolean;
     };
     border: {
-        type: (BooleanConstructor | StringConstructor)[];
+        type: (StringConstructor | BooleanConstructor)[];
         default: boolean;
     };
     borderless: {
@@ -29,7 +29,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: boolean;
     };
     responsive: {
-        type: (BooleanConstructor | StringConstructor)[];
+        type: (StringConstructor | BooleanConstructor)[];
         default: boolean;
     };
     align: StringConstructor;
@@ -57,7 +57,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: boolean;
     };
     border: {
-        type: (BooleanConstructor | StringConstructor)[];
+        type: (StringConstructor | BooleanConstructor)[];
         default: boolean;
     };
     borderless: {
@@ -73,7 +73,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: boolean;
     };
     responsive: {
-        type: (BooleanConstructor | StringConstructor)[];
+        type: (StringConstructor | BooleanConstructor)[];
         default: boolean;
     };
     align: StringConstructor;
@@ -88,16 +88,17 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     };
 }>>, {
     tag: string;
-    borderless: boolean;
     light: boolean;
     dark: boolean;
     border: string | boolean;
     hover: boolean;
-    sm: boolean;
     striped: boolean;
+    sm: boolean;
+    borderless: boolean;
     responsive: string | boolean;
     captionTop: boolean;
 }, {}>, {
+    default?(_: {}): any;
     default?(_: {}): any;
 }>;
 export default _default;

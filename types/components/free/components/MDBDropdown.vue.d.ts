@@ -32,7 +32,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         type: PropType<string | number[] | (() => string | number[])>;
         default: () => number[];
     };
-    popperConfig: PropType<Object | Function>;
+    popperConfig: PropType<Object | Function | null>;
     target: StringConstructor;
     modelValue: BooleanConstructor;
 }, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
@@ -70,15 +70,15 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         type: PropType<string | number[] | (() => string | number[])>;
         default: () => number[];
     };
-    popperConfig: PropType<Object | Function>;
+    popperConfig: PropType<Object | Function | null>;
     target: StringConstructor;
     modelValue: BooleanConstructor;
 }>> & {
-    "onUpdate:modelValue"?: (...args: any[]) => any;
+    "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }, {
     tag: string;
-    modelValue: boolean;
     align: string | string[];
+    modelValue: boolean;
     offset: string | number[] | (() => string | number[]);
     boundary: string;
     btnGroup: boolean;

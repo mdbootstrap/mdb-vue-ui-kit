@@ -23,10 +23,10 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: string;
     };
 }>>, {
-    tag: string;
     pill: boolean;
     dot: boolean;
     notification: boolean;
+    tag: string;
 }, {}>, {
     default?(_: {}): any;
 }>;

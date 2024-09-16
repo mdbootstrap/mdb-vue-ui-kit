@@ -60,11 +60,12 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     filter: boolean;
     tag: string;
     dark: boolean;
-    animation: boolean;
-    static: boolean;
     fadeIn: string;
     fadeOut: string;
+    animation: boolean;
+    static: boolean;
 }, {}>, {
+    default?(_: {}): any;
     default?(_: {}): any;
 }>;
 export default _default;

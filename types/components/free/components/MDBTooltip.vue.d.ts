@@ -82,14 +82,16 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     };
     disabled: BooleanConstructor;
 }>> & {
-    "onUpdate:modelValue"?: (...args: any[]) => any;
+    "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }, {
     tag: string;
-    modelValue: boolean;
     disabled: boolean;
+    modelValue: boolean;
     offset: string;
     boundary: string;
-    options: {};
+    options: Function | {
+        [props: string]: any;
+    };
     fallbackPlacements: string[];
     direction: string;
     maxWidth: number;

@@ -6,18 +6,18 @@
   .form-outline {
     .form-control {
       ~ .form-label {
-        color: $valid-color;
+        color: $valid-color !important;
       }
 
       ~ .form-notch .form-notch-leading,
       ~ .form-notch .form-notch-middle,
       ~ .form-notch .form-notch-trailing {
-        border-color: $valid-color;
+        border-color: $valid-color !important;
       }
 
       &:focus ~ .form-notch .form-notch-middle,
       &.active ~ .form-notch .form-notch-middle {
-        border-top: 1px solid transparent;
+        border-top: 1px solid transparent !important;
       }
       &:focus ~ .form-notch .form-notch-middle {
         box-shadow: 0 1px 0 0 $valid-color;
@@ -55,18 +55,18 @@
   .form-outline {
     .form-control {
       ~ .form-label {
-        color: $invalid-color;
+        color: $invalid-color !important;
       }
 
       ~ .form-notch .form-notch-leading,
       ~ .form-notch .form-notch-middle,
       ~ .form-notch .form-notch-trailing {
-        border-color: $invalid-color;
+        border-color: $invalid-color !important;
       }
 
       &:focus ~ .form-notch .form-notch-middle,
       &.active ~ .form-notch .form-notch-middle {
-        border-top: 1px solid transparent;
+        border-top: 1px solid transparent !important;
       }
       &:focus ~ .form-notch .form-notch-middle {
         box-shadow: 0 1px 0 0 $invalid-color;

@@ -29,7 +29,7 @@ declare const _default: import("vue").DefineComponent<{
     };
     wrapperClass: StringConstructor;
 }>> & {
-    "onUpdate:modelValue"?: (...args: any[]) => any;
+    "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }, {
     tag: string;
     modelValue: boolean;

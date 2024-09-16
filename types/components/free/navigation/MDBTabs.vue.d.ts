@@ -5,7 +5,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     };
     modelValue: StringConstructor;
     vertical: {
-        type: (BooleanConstructor | StringConstructor)[];
+        type: (StringConstructor | BooleanConstructor)[];
         default: boolean;
     };
 }, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
@@ -21,19 +21,20 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     };
     modelValue: StringConstructor;
     vertical: {
-        type: (BooleanConstructor | StringConstructor)[];
+        type: (StringConstructor | BooleanConstructor)[];
         default: boolean;
     };
 }>> & {
-    "onUpdate:modelValue"?: (...args: any[]) => any;
-    onShow?: (...args: any[]) => any;
-    onHide?: (...args: any[]) => any;
-    onHidden?: (...args: any[]) => any;
-    onShown?: (...args: any[]) => any;
+    "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
+    onShow?: ((...args: any[]) => any) | undefined;
+    onHide?: ((...args: any[]) => any) | undefined;
+    onHidden?: ((...args: any[]) => any) | undefined;
+    onShown?: ((...args: any[]) => any) | undefined;
 }, {
     tag: string;
     vertical: string | boolean;
 }, {}>, {
+    default?(_: {}): any;
     default?(_: {}): any;
 }>;
 export default _default;

@@ -51,8 +51,8 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: boolean;
     };
 }>>, {
-    nav: boolean;
     tag: string;
+    nav: boolean;
     center: boolean;
     vertical: boolean;
     right: boolean;

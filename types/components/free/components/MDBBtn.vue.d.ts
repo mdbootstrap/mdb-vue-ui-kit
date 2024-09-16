@@ -74,7 +74,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     };
     picker: BooleanConstructor;
 }>> & {
-    "onUpdate:toggle"?: (...args: any[]) => any;
+    "onUpdate:toggle"?: ((...args: any[]) => any) | undefined;
 }, {
     tag: string;
     type: string;

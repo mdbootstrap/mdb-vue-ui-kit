@@ -19,9 +19,10 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     };
     contentClasses: StringConstructor;
 }>>, {
-    col: string;
     tag: string;
+    col: string;
 }, {}>, {
+    default?(_: {}): any;
     default?(_: {}): any;
 }>;
 export default _default;

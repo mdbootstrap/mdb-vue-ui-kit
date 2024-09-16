@@ -18,7 +18,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     color: StringConstructor;
     noBorder: BooleanConstructor;
     spacing: {
-        type: (BooleanConstructor | StringConstructor)[];
+        type: (StringConstructor | BooleanConstructor)[];
         default: boolean;
     };
     ripple: {
@@ -45,7 +45,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     color: StringConstructor;
     noBorder: BooleanConstructor;
     spacing: {
-        type: (BooleanConstructor | StringConstructor)[];
+        type: (StringConstructor | BooleanConstructor)[];
         default: boolean;
     };
     ripple: {

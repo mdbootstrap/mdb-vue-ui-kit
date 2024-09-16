@@ -55,12 +55,12 @@ declare const _default: import("vue").DefineComponent<{
     thumbClass: StringConstructor;
     wrapperClass: StringConstructor;
 }>> & {
-    "onUpdate:modelValue"?: (...args: any[]) => any;
+    "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }, {
     tag: string;
-    modelValue: number;
     max: number;
     min: number;
+    modelValue: number;
     thumb: boolean;
 }, {}>;
 export default _default;

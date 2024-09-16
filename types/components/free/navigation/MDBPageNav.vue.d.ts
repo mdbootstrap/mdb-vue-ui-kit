@@ -50,10 +50,10 @@ declare const _default: import("vue").DefineComponent<{
     };
 }>>, {
     tag: string;
-    icon: boolean;
     disabled: boolean;
     next: boolean;
     prev: boolean;
     href: string;
+    icon: boolean;
 }, {}>;
 export default _default;

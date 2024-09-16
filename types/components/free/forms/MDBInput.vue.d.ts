@@ -10,7 +10,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     };
     wrapperClass: StringConstructor;
     inputGroup: {
-        type: (BooleanConstructor | StringConstructor)[];
+        type: (StringConstructor | BooleanConstructor)[];
         default: boolean;
     };
     wrap: {
@@ -39,7 +39,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: number;
     };
 }, {
-    inputRef: import("vue").Ref<HTMLInputElement>;
+    inputRef: import("vue").Ref<HTMLInputElement | null>;
 }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     "update:modelValue": (...args: any[]) => void;
     "click-outside": (...args: any[]) => void;
@@ -56,7 +56,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     };
     wrapperClass: StringConstructor;
     inputGroup: {
-        type: (BooleanConstructor | StringConstructor)[];
+        type: (StringConstructor | BooleanConstructor)[];
         default: boolean;
     };
     wrap: {
@@ -85,13 +85,13 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: number;
     };
 }>> & {
-    "onUpdate:modelValue"?: (...args: any[]) => any;
-    "onClick-outside"?: (...args: any[]) => any;
-    "onOn-validate"?: (...args: any[]) => any;
+    "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
+    "onClick-outside"?: ((...args: any[]) => any) | undefined;
+    "onOn-validate"?: ((...args: any[]) => any) | undefined;
 }, {
     tag: string;
-    wrap: boolean;
     white: boolean;
+    wrap: boolean;
     formOutline: boolean;
     inputGroup: string | boolean;
     isValidated: boolean;
@@ -100,6 +100,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     counter: boolean;
     maxlength: number;
 }, {}>, {
+    default?(_: {}): any;
     default?(_: {}): any;
     prepend?(_: {}): any;
 }>;

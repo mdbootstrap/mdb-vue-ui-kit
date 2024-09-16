@@ -20,7 +20,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: boolean;
     };
 }, {
-    collapse: Ref<HTMLElement | HTMLDivElement>;
+    collapse: Ref<HTMLElement | HTMLDivElement | null>;
 }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     "update:modelValue": (...args: any[]) => void;
 }, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
@@ -44,13 +44,13 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: boolean;
     };
 }>> & {
-    "onUpdate:modelValue"?: (...args: any[]) => any;
+    "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }, {
     tag: string;
     modelValue: boolean;
+    horizontal: boolean;
     duration: number;
     sidenav: boolean;
-    horizontal: boolean;
 }, {}>, {
     default?(_: {}): any;
 }>;

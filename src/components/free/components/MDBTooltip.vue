@@ -14,7 +14,7 @@
   <transition name="fade">
     <div
       ref="popperEl"
-      v-if="isActive"
+      v-if="isActive && !isTipSlotEmpty"
       :class="{
         tooltip: true,
         fade: true,
@@ -35,7 +35,7 @@ export default {
 </script>
 
 <script setup lang="ts">
-import { computed, nextTick, ref, watchEffect, PropType } from "vue";
+import { computed, nextTick, ref, watchEffect, PropType, useSlots } from "vue";
 import MDBPopper from "../../utils/MDBPopper";
 
 const props = defineProps({
@@ -200,4 +200,15 @@ const onMouseEnter = () => {
 const onMouseLeave = () => {
   !props.disabled && emit("update:modelValue", false);
 };
+
+const slots = useSlots();
+
+const isTipSlotEmpty = computed(() => {
+  const tipSlot = slots.tip?.();
+  return (
+    !tipSlot ||
+    tipSlot.length === 0 ||
+    tipSlot.every((node) => !node.children || node.children.length === 0)
+  );
+});
 </script>
