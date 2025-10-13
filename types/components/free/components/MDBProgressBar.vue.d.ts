@@ -24,6 +24,10 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         type: NumberConstructor;
         default: number;
     };
+    circularLabelClass: {
+        type: StringConstructor;
+        default: string;
+    };
 }, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
     tag: {
         type: StringConstructor;
@@ -50,6 +54,10 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         type: NumberConstructor;
         default: number;
     };
+    circularLabelClass: {
+        type: StringConstructor;
+        default: string;
+    };
 }>>, {
     tag: string;
     max: number;
@@ -57,7 +65,9 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     value: number;
     striped: boolean;
     animated: boolean;
+    circularLabelClass: string;
 }, {}>, {
+    default?(_: {}): any;
     default?(_: {}): any;
 }>;
 export default _default;

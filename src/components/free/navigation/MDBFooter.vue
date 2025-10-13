@@ -20,7 +20,7 @@ const props = defineProps({
   },
   bg: {
     type: String,
-    default: "light",
+    default: "body-tertiary",
   },
   text: [String, Array] as PropType<string | (string | string)[]>,
 });

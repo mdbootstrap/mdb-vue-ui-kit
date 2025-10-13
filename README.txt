@@ -1,6 +1,6 @@
 MDB 5 Vue
 
-Version: FREE 6.0.0
+Version: FREE 7.0.0
 
 Documentation:
 https://mdbootstrap.com/docs/vue/

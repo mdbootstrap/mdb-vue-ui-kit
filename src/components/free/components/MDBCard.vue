@@ -28,7 +28,7 @@ const className = computed(() => {
   return [
     "card",
     props.border && `border border-${props.border}`,
-    props.bg && `bg-${props.bg}`,
+    props.bg && `text-bg-${props.bg}`,
     props.shadow && `shadow-${props.shadow}`,
     props.text && spreadProps(props.text),
   ];

@@ -6,13 +6,13 @@
     :aria-valuenow="value"
     :aria-valuemin="min"
     :aria-valuemax="max"
-    :style="[
-      {
-        width: ((value - min) / (max - min)) * 100 + '%',
-      },
-    ]"
-    ><slot></slot
-  ></component>
+    :style="progressBarStyle"
+  >
+    <div v-if="isCircular" :class="progressCircularLabelClass">
+      <slot></slot>
+    </div>
+    <slot v-else></slot>
+  </component>
 </template>
 
 <script lang="ts">
@@ -22,7 +22,7 @@ export default {
 </script>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, inject } from "vue";
 
 const props = defineProps({
   tag: {
@@ -50,7 +50,13 @@ const props = defineProps({
     type: Number,
     default: 100,
   },
+  circularLabelClass: {
+    type: String,
+    default: "progress-label",
+  },
 });
+
+const isCircular = inject<boolean>("isCircular", false);
 
 const className = computed(() => {
   return [
@@ -58,6 +64,26 @@ const className = computed(() => {
     props.bg && `bg-${props.bg}`,
     props.striped && "progress-bar-striped",
     props.animated && "progress-bar-animated",
+  ];
+});
+
+const progressCircularLabelClass = computed(() => {
+  return [props.circularLabelClass];
+});
+
+const progressBarStyle = computed(() => {
+  if (isCircular) {
+    return [
+      {
+        "--percentage": props.value,
+      },
+    ];
+  }
+
+  return [
+    {
+      width: ((props.value - props.min) / (props.max - props.min)) * 100 + "%",
+    },
   ];
 });
 </script>

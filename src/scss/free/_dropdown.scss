@@ -1,3 +1,7 @@
 .dropdown-menu {
   margin-top: auto;
 }
+
+.dropdown-item:not(.disabled):not([disabled]) {
+  cursor: pointer;
+}

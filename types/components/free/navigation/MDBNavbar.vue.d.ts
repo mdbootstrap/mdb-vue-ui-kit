@@ -4,14 +4,6 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: string;
     };
     bg: StringConstructor;
-    dark: {
-        type: BooleanConstructor;
-        default: boolean;
-    };
-    light: {
-        type: BooleanConstructor;
-        default: boolean;
-    };
     double: {
         type: BooleanConstructor;
         default: boolean;
@@ -46,14 +38,6 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: string;
     };
     bg: StringConstructor;
-    dark: {
-        type: BooleanConstructor;
-        default: boolean;
-    };
-    light: {
-        type: BooleanConstructor;
-        default: boolean;
-    };
     double: {
         type: BooleanConstructor;
         default: boolean;
@@ -84,8 +68,6 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     classNavbar: StringConstructor;
 }>>, {
     tag: string;
-    light: boolean;
-    dark: boolean;
     transparent: boolean;
     center: boolean;
     double: boolean;

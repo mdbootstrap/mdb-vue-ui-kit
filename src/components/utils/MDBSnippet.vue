@@ -22,24 +22,24 @@
       <div ref="style" style="display: none" v-if="slots.style">
         <slot name="style"></slot>
       </div>
-      <PrismEditor
+      <MDBPrismEditor
         v-model="content.template"
         v-if="isTemplateActive"
         :highlight="highlighter"
         line-numbers
-      ></PrismEditor>
-      <PrismEditor
+      ></MDBPrismEditor>
+      <MDBPrismEditor
         v-model="content.script"
         v-if="isScriptActive"
         :highlight="highlighter"
         line-numbers
-      ></PrismEditor>
-      <PrismEditor
+      ></MDBPrismEditor>
+      <MDBPrismEditor
         v-model="content.style"
         v-if="isStyleActive"
         :highlight="highlighter"
         line-numbers
-      ></PrismEditor>
+      ></MDBPrismEditor>
     </div>
   </div>
 </template>
@@ -56,9 +56,13 @@ import MDBBtn from "../free/components/MDBBtn.vue";
 
 // const Entities = require("html-entities").AllHtmlEntities;
 // const entities = new Entities();
+
+// vue-prism-editor is vue 2 compatible only.
 //@ts-ignore
-import { PrismEditor } from "vue-prism-editor";
-import "vue-prism-editor/dist/prismeditor.min.css"; // import the styles somewhere
+// import { PrismEditor } from "vue-prism-editor";
+// import "vue-prism-editor/dist/prismeditor.min.css"; // import the styles somewhere
+
+import MDBPrismEditor from "./MDBPrismEditor.vue";
 
 // import highlighting library (you can use any library you want just return html string)
 //@ts-ignore
@@ -394,7 +398,9 @@ pre.line-numbers > code {
   bottom: -5px;
   border-radius: 10px;
   border: 5px solid #fff;
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5) inset, 0 0 10px rgba(0, 0, 0, 0.75);
+  box-shadow:
+    0 0 3px rgba(0, 0, 0, 0.5) inset,
+    0 0 10px rgba(0, 0, 0, 0.75);
 }
 .prism-previewer:after {
   top: 100%;
@@ -449,7 +455,8 @@ pre.line-numbers > code {
 }
 
 .prism-previewer-gradient {
-  background-image: linear-gradient(
+  background-image:
+    linear-gradient(
       45deg,
       #bbb 25%,
       transparent 25%,
@@ -459,7 +466,9 @@ pre.line-numbers > code {
     ),
     linear-gradient(45deg, #bbb 25%, #eee 25%, #eee 75%, #bbb 75%, #bbb);
   background-size: 10px 10px;
-  background-position: 0 0, 5px 5px;
+  background-position:
+    0 0,
+    5px 5px;
 
   width: 64px;
   margin-left: -32px;
@@ -475,11 +484,14 @@ pre.line-numbers > code {
   bottom: -5px;
   border-radius: 10px;
   border: 5px solid #fff;
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5) inset, 0 0 10px rgba(0, 0, 0, 0.75);
+  box-shadow:
+    0 0 3px rgba(0, 0, 0, 0.5) inset,
+    0 0 10px rgba(0, 0, 0, 0.75);
 }
 
 .prism-previewer-color {
-  background-image: linear-gradient(
+  background-image:
+    linear-gradient(
       45deg,
       #bbb 25%,
       transparent 25%,
@@ -489,7 +501,9 @@ pre.line-numbers > code {
     ),
     linear-gradient(45deg, #bbb 25%, #eee 25%, #eee 75%, #bbb 75%, #bbb);
   background-size: 10px 10px;
-  background-position: 0 0, 5px 5px;
+  background-position:
+    0 0,
+    5px 5px;
 }
 .prism-previewer-color:before {
   background-color: inherit;

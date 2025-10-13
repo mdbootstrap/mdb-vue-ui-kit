@@ -1,4 +1,3 @@
-import "vue-prism-editor/dist/prismeditor.min.css";
 import "prismjs/components/prism-clike";
 import "prismjs/components/prism-javascript";
 import "prismjs/themes/prism-tomorrow.css";

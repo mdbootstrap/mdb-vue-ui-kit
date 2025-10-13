@@ -22,14 +22,6 @@ const props = defineProps({
     default: "nav",
   },
   bg: String,
-  dark: {
-    type: Boolean,
-    default: false,
-  },
-  light: {
-    type: Boolean,
-    default: false,
-  },
   double: {
     type: Boolean,
     default: false,
@@ -63,25 +55,23 @@ const props = defineProps({
 const navClass = computed(() => {
   return [
     "navbar",
-    props.dark && "navbar-dark",
-    props.light && "navbar-light",
     props.bg && !props.transparent ? `bg-${props.bg}` : "",
     props.expand
       ? props.expand === "small" || props.expand === "sm"
         ? "navbar-expand-sm"
         : props.expand === "medium" || props.expand === "md"
-        ? "navbar-expand-md"
-        : props.expand === "large" || props.expand === "lg"
-        ? "navbar-expand-lg"
-        : "navbar-expand-xl"
+          ? "navbar-expand-md"
+          : props.expand === "large" || props.expand === "lg"
+            ? "navbar-expand-lg"
+            : "navbar-expand-xl"
       : "",
     props.position === "top"
       ? "fixed-top"
       : props.position === "bottom"
-      ? "fixed-bottom"
-      : props.position === "sticky"
-      ? "sticky-top"
-      : "",
+        ? "fixed-bottom"
+        : props.position === "sticky"
+          ? "sticky-top"
+          : "",
     props.scrolling && scrollingClass.value,
     props.double && "double-nav",
     props.center && "justify-content-center",

@@ -4,14 +4,17 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: string;
     };
     height: NumberConstructor;
+    circular: BooleanConstructor;
 }, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
     tag: {
         type: StringConstructor;
         default: string;
     };
     height: NumberConstructor;
+    circular: BooleanConstructor;
 }>>, {
     tag: string;
+    circular: boolean;
 }, {}>, {
     default?(_: {}): any;
 }>;
